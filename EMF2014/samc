@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+# Compile a SAM program to C source
+
+import sys
+import yaml
+
+prog = yaml.safe_load(sys.stdin.read())
+
+INDENT = 2
+def print_indented(s, level):
+    print(f"{' ' * (level * INDENT)}{s},")
+
+def recursive_len(item):
+    if isinstance(item, list):
+        return sum(recursive_len(subitem) for subitem in item) + 2
+    else:
+        return 1
+
+def compile_sam(l, level=0):
+    for inst in l:
+        if isinstance(inst, list):
+            print_indented(f"({recursive_len(inst) - 2} << SAM_OP_SHIFT) | SAM_INSN_BRA", level)
+            compile_sam(inst, level + 1)
+            print_indented(f"({recursive_len(inst) - 2} << SAM_OP_SHIFT) | SAM_INSN_KET", level)
+        elif inst.startswith("lit"):
+            operand = inst.split(' ')[1]
+            print_indented(f"LSHIFT({operand}, SAM_OP_SHIFT) | SAM_INSN_LIT", level)
+        else:
+            print_indented(f"SAM_INSN_{inst.upper()}", level)
+
+compile_sam(prog)

@@ -1,0 +1,15 @@
+-
+  - lit 21
+  - lit 2
+  - mul
+  - lit 3
+  - neg
+  - lit 0
+  - dup
+  - lit 1
+  - swap
+  - add
+  - lit 0
+  - swap
+  - divmod
+  - pop

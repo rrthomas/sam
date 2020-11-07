@@ -9,55 +9,27 @@
    RISK.  */
 
 
-/* Instructions occupy a word, and take the following forms:
-
-   32-bit Sam:
-
-   1. Opcode in bits 0-1, rest of word is immediate operand.
-      The opcodes are SAM_OP_* below masked with SAM_OP1_MASK.
-   2. Bits 0-1 are 11, opcode in bits 2-3, rest of word is immediate operand.
-      The opcodes are SAM_OP_* below masked with SAM_OP2_MASK.
-   3. Bits 0-3 are 1111, rest of word is instruction opcode.
-      The opcodes are SAM_INSN_* below.
-
-   64-bit Sam:
-
-   1. Opcode in bits 0-2, rest of word is immediate operand.
-      The opcodes are SAM_OP_* below masked with SAM_OP1_MASK == SAM_OP2_MASK.
-   2. Bits 0-3 are 111, rest of word is instruction opcode.
-      The opcodes are SAM_INSN_* below.
+/* Instructions occupy a word, with the opcode in bits 0-7; the rest of word
+   is an immediate operand. The opcodes are SAM_INSN_* below.
 */
 
+/* Stack layout:
 
-/* Sam opcode info.  */
-typedef struct sam_opc_info_t
-{
-  int opcode;		/* opcode bits for particular instruction.  */
-  const char * name;	/* instruction name, where applicable.  */
-} sam_opc_info_t;
+   Each stack item is either a VM instruction, or a stack.
 
-/* Instruction types.  */
-#define SAM_OP_SHIFT 2
-enum {
-  SAM_OP_MASK    = 0x3,
+   Stacks are stored as: BRA instruction (operand is number of words to
+   KET), outer S0, stack items, KET (operand is negative number of words to
+   BRA).
+ */
 
-  /* Bits 0-1.  */
-  SAM_OP_STACK    = 0x0,
-  SAM_OP_LIT      = 0x1,
-  SAM_OP_TRAP     = 0x2,
-  SAM_OP_INSN     = 0x3,
-};
+#define SAM_OP_SHIFT 8
+#define SAM_OP_MASK  ((1 << SAM_OP_SHIFT) - 1)
 
-/* Largest trap code.  */
-#if SAM_WORD_BYTES == 4
-#define SAM_MAX_TRAP ((1 << 30) - 1)
-#else
-#define SAM_MAX_TRAP ((1 << 62) - 1)
-#endif
-
-/* OP_INSN opcodes.  */
+/* Opcodes.  */
 enum {
   SAM_INSN_NOP = 0,
+  SAM_INSN_LIT,
+  SAM_INSN_PUSH,
   SAM_INSN_NOT,
   SAM_INSN_AND,
   SAM_INSN_OR,
@@ -71,20 +43,27 @@ enum {
   SAM_INSN_SWAP,
   SAM_INSN_IDUP,
   SAM_INSN_ISET,
-  SAM_INSN_PUSH,
   SAM_INSN_BRA,
   SAM_INSN_KET,
+  SAM_INSN_LINK,
   SAM_INSN_DO,
-  SAM_INSN_S,
-  SAM_INSN_K,
+  SAM_INSN_IF,
+  SAM_INSN_LOOP,
+  SAM_INSN_REC,
+  SAM_INSN_TIMES,
   SAM_INSN_NEG,
   SAM_INSN_ADD,
   SAM_INSN_MUL,
-  SAM_INSN_DIV,
+  SAM_INSN_DIVMOD,
+  SAM_INSN_UDIVMOD,
   SAM_INSN_EQ,
   SAM_INSN_LT,
-  SAM_INSN_THROW,
   SAM_INSN_CATCH,
+  SAM_INSN_THROW,
+  SAM_INSN_TRAP,
 
-  SAM_INSN_UNDEFINED = 0x3f
+  SAM_INSN_UNDEFINED = 0xff
 };
+
+/* Largest operand.  */
+#define SAM_MAX_OPERAND ((1 << (SAM_WORD_BIT - SAM_OP_SHIFT)) - 1)

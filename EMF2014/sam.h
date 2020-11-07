@@ -33,11 +33,22 @@ enum {
 };
 
 // Stack access
-int sam_pop_stack(sam_word_t *s0, sam_uword_t ssize, sam_uword_t *sp, sam_word_t *val_ptr);
-int sam_push_stack(sam_word_t *s0, sam_uword_t ssize, sam_uword_t *sp, sam_word_t val);
+sam_uword_t sam_stack_item(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t sp, sam_uword_t n);
+sam_uword_t sam_find_code(sam_uword_t depth);
+int sam_pop_stack(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t *sp, sam_word_t *val_ptr);
+int sam_push_stack(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t *sp, sam_word_t val);
 
 // Miscellaneous routines
 sam_word_t sam_run(void);
-int sam_init(sam_word_t *c_array, sam_uword_t stack_size);
+int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp);
 
+// Portable left shift (the behaviour of << with overflow (including on any
+// negative number) is undefined)
+#define LSHIFT(n, p)                            \
+    (((n) & (SAM_UWORD_MAX >> (p))) << (p))
+
+// Debug
+void sam_print_stack(void);
+
+// Traps
 void sam_prim_blit(void);

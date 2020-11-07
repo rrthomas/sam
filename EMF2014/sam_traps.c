@@ -16,8 +16,6 @@
 
 sam_word_t trap_tildav2(sam_uword_t function)
 {
-    sam_word_t temp = 0;
-
     int error = SAM_ERROR_OK;
     switch (function) {
     case TRAP_TILDAV2_BLIT: // ( a-addr -- u )
@@ -29,7 +27,7 @@ sam_word_t trap_tildav2(sam_uword_t function)
         break;
     }
 
- error:
+ /* error: */
     return error;
 }
 

@@ -80,11 +80,12 @@ void SamApp::task() {
         GLCD.CursorToXY(2, 2);           // Position cursor
         GLCD.print("Hello");             // Write text
 
-        int ok = sam_init(&sam_stack[0], SAM_STACK_WORDS);
+        int ok = sam_init(&sam_stack[0], SAM_STACK_WORDS,
+#include "sam_program_len.h"
+                          );
         sam_word_t res = sam_run();
-        sam_float_t real_res = *(sam_float_t *)&res;
         GLCD.CursorToXY(2, 12);
-        GLCD.print(real_res);
+        GLCD.print(res);
 
         Tilda::setLedColor({0, 0, 0});   // LEDs off
 
