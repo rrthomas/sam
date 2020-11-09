@@ -40,25 +40,27 @@ sam_uword_t sam_stack_item(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sa
     for (i = 0; i <= n; i++) {
         sam_uword_t inst = m0[--sp];
         // If instruction is a KET, skip to matching BRA.
-        if ((inst & SAM_OP_MASK) == SAM_INSN_KET)
+        if ((inst & SAM_OP_MASK) == SAM_INSN_KET) {
             sp -= inst >> SAM_OP_SHIFT + 1;
+            assert((m0[sp] & SAM_OP_MASK) == SAM_INSN_BRA); // FIXME: THROW
+        }
     }
     return sp;
 }
 
-// Given the offset of a LINK or BRA instruction, find the first BRA
-// instruction by following any LINKs, and return the stack address of the
-// first code word.
-sam_uword_t sam_find_code(sam_uword_t depth)
+// Given a LINK instruction, find the corresponding BRA instruction, and
+// return the stack address of the first code word.
+sam_uword_t sam_find_code(sam_uword_t code)
 {
-    sam_uword_t n = sam_stack_item(sam_m0, sam_msize, sam_s0, sam_sp, depth);
-    sam_uword_t code = sam_m0[n];
-    sam_uword_t inst;
-    for (inst = code & SAM_OP_MASK; inst == SAM_INSN_LINK; inst = code & SAM_OP_MASK) {
+    sam_uword_t inst = code & SAM_OP_MASK;
+    sam_uword_t n;
+    assert(inst == SAM_INSN_LINK); // FIXME: THROW(SAM_ERROR_NOT_CODE)
+    do {
         n = code >> SAM_OP_SHIFT;
         code = sam_m0[n];
-    }
-    assert(inst == SAM_INSN_BRA); // FIXME: THROW
+        inst = code & SAM_OP_MASK;
+    } while (inst == SAM_INSN_LINK);
+    assert(inst == SAM_INSN_BRA); // FIXME: THROW(SAM_ERROR_NOT_CODE)
     return n + 1;
 }
 

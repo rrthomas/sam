@@ -1,0 +1,29 @@
+-
+  - lit 5
+  -
+    -
+      - lit 1
+      - dup
+    -
+      - lit 1
+      - dup
+      - lit -1
+      - add
+      - lit 1
+      - dup
+      - lit 0
+      - dup
+      - do
+      - lit 0
+      - swap
+      - pop
+      - mul
+    -
+      - pop
+      - pop
+      - lit 1
+    - if
+  - lit 0
+  - dup
+  - do
+  - throw

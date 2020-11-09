@@ -23,27 +23,9 @@
 
 
 // Execution function
-static sam_word_t sam_do(sam_uword_t pc);
-
-static sam_word_t sam_rec(sam_uword_t cond, sam_uword_t then, sam_uword_t rec1, sam_uword_t rec2)
-{
-    sam_word_t error = 0;
-    THROW_IF_ERROR(sam_do(cond));
-    sam_word_t flag;
-    POP(&flag);
-    if (flag)
-        THROW_IF_ERROR(sam_do(then));
-    else {
-        THROW_IF_ERROR(sam_do(rec1));
-        sam_rec(cond, then, rec1, rec2);
-        THROW_IF_ERROR(sam_do(rec2));
-    }
- error:
-    return error;
-}
-
 static sam_word_t sam_do(sam_uword_t pc)
 {
+    sam_word_t pc0 = pc;
     sam_word_t error = SAM_ERROR_OK;
 
     for (;;) {
@@ -179,7 +161,6 @@ static sam_word_t sam_do(sam_uword_t pc)
             }
             break;
         case SAM_INSN_SWAP:
-            // TODO
 #ifdef SAM_DEBUG
             fprintf(stderr, "SWAP\n");
 #endif
@@ -231,41 +212,54 @@ static sam_word_t sam_do(sam_uword_t pc)
             fprintf(stderr, "DO\n");
 #endif
             {
-                sam_uword_t depth;
-                POP((sam_word_t *)&depth);
-                THROW_IF_ERROR(sam_do(sam_find_code(depth)));
+                sam_uword_t code;
+                POP((sam_word_t *)&code);
+                THROW_IF_ERROR(sam_do(sam_find_code(code)));
             }
             break;
         case SAM_INSN_IF:
 #ifdef SAM_DEBUG
             fprintf(stderr, "IF\n");
 #endif
-            // TODO
+            {
+                sam_uword_t cond, then, else_;
+                POP((sam_word_t *)&else_);
+                POP((sam_word_t *)&then);
+                POP((sam_word_t *)&cond);
+                cond = sam_find_code(cond);
+                then = sam_find_code(then);
+                else_ = sam_find_code(else_);
+#ifdef SAM_DEBUG
+                fprintf(stderr, "cond %u then %u else %u\n", cond, then, else_);
+#endif
+                THROW_IF_ERROR(sam_do(cond));
+                sam_word_t flag;
+                POP(&flag);
+                THROW_IF_ERROR(sam_do(flag ? then : else_));
+            }
             break;
         case SAM_INSN_LOOP:
 #ifdef SAM_DEBUG
             fprintf(stderr, "LOOP\n");
 #endif
-            // TODO
+            pc = pc0;
             break;
-        case SAM_INSN_REC:
+        case SAM_INSN_WHILE:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "REC\n");
+            fprintf(stderr, "WHILE\n");
 #endif
             {
-                sam_uword_t cond, then, rec1, rec2;
-                POP((sam_word_t *)&rec2);
-                POP((sam_word_t *)&rec1);
-                POP((sam_word_t *)&then);
+                sam_uword_t cond;
                 POP((sam_word_t *)&cond);
                 cond = sam_find_code(cond);
-                then = sam_find_code(then);
-                rec1 = sam_find_code(rec1);
-                rec2 = sam_find_code(rec2);
 #ifdef SAM_DEBUG
-                fprintf(stderr, "cond %u then %u rec1 %u rec2 %u\n", cond, then, rec1, rec2);
+                fprintf(stderr, "cond %u\n", cond);
 #endif
-                THROW_IF_ERROR(sam_rec(cond, then, rec1, rec2));
+                THROW_IF_ERROR(sam_do(cond));
+                sam_word_t flag;
+                POP(&flag);
+                if (!flag)
+                    return SAM_ERROR_OK;
             }
             break;
         case SAM_INSN_TIMES:
@@ -363,6 +357,17 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t a, b;
+                POP(&a);
+                POP(&b);
+                PUSH(b < a);
+            }
+            break;
+        case SAM_INSN_ULT:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "ULT\n");
+#endif
+            {
+                sam_uword_t a, b;
                 POP((sam_word_t *)&a);
                 POP((sam_word_t *)&b);
                 PUSH(b < a);
