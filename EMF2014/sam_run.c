@@ -25,9 +25,9 @@
 // Execution function
 sam_word_t sam_run(void)
 {
-    sam_word_t pc0, pc;
-    pc0 = pc = 1; // FIXME: use TOS, so we can restart a computation.
     sam_word_t error = SAM_ERROR_OK;
+    sam_word_t pc0, pc;
+    RET;
 
     for (;;) {
         sam_uword_t ir = sam_s0[pc++];

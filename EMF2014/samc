@@ -7,7 +7,7 @@ import yaml
 prog = yaml.safe_load(sys.stdin.read())
 
 INDENT = 2
-def print_indented(s, level):
+def print_indented(s, level=0):
     print(f"{' ' * (level * INDENT)}{s},")
 
 def recursive_len(item):
@@ -16,16 +16,24 @@ def recursive_len(item):
     else:
         return 1
 
+def instruction(inst, op=None):
+    s = f"SAM_INSN_{inst.upper()}"
+    if op != None:
+        s = f"({op} << SAM_OP_SHIFT) | {s}"
+    return s
+
 def compile_sam(l, level=0):
     for inst in l:
         if isinstance(inst, list):
-            print_indented(f"({recursive_len(inst) - 2} << SAM_OP_SHIFT) | SAM_INSN_BRA", level)
+            print_indented(instruction("bra", recursive_len(inst) - 2), level)
             compile_sam(inst, level + 1)
-            print_indented(f"({recursive_len(inst) - 2} << SAM_OP_SHIFT) | SAM_INSN_KET", level)
+            print_indented(instruction("ket", recursive_len(inst) - 2), level)
         elif inst.startswith("lit"):
             operand = inst.split(' ')[1]
-            print_indented(f"LSHIFT({operand}, SAM_OP_SHIFT) | SAM_INSN_LIT", level)
+            print_indented(instruction("lit", operand), level)
         else:
-            print_indented(f"SAM_INSN_{inst.upper()}", level)
+            print_indented(instruction(inst), level)
 
 compile_sam(prog)
+print_indented(instruction("link", 1))
+print_indented(instruction("link", 1))

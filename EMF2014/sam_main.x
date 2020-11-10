@@ -13,6 +13,7 @@ static sam_word_t sam_stack[SAM_STACK_WORDS] = {
 };
 
 int main(void) {
+  sam_word_t error = SAM_ERROR_OK;
   int ok = sam_init(&sam_stack[0], SAM_STACK_WORDS,
 #include "sam_program_len.h"
            ) == SAM_ERROR_OK;
@@ -22,4 +23,6 @@ int main(void) {
   sam_print_stack();
 
   return 0;
+ error:
+  return 1;
 }
