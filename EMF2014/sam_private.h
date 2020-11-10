@@ -9,24 +9,24 @@
 // RISK.
 
 // Errors
-#define THROW(code)                             \
+#define HALT(code)                              \
     do {                                        \
         error = code;                           \
         goto error;                             \
     } while (0)
 
-#define THROW_IF_ERROR(code)                    \
+#define HALT_IF_ERROR(code)                     \
     do {                                        \
         if (code != SAM_ERROR_OK)               \
-            THROW(code);                        \
+            HALT(code);                         \
     } while (0)
 
 
 // Stack access
 #define POP(ptr)                                                        \
-    THROW_IF_ERROR(sam_pop_stack(sam_m0, sam_msize, sam_s0, &sam_sp, ptr))
+    HALT_IF_ERROR(sam_pop_stack(sam_m0, sam_msize, sam_s0, &sam_sp, ptr))
 #define PUSH(v)                                                         \
-    THROW_IF_ERROR(sam_push_stack(sam_m0, sam_msize, sam_s0, &sam_sp, v))
+    HALT_IF_ERROR(sam_push_stack(sam_m0, sam_msize, sam_s0, &sam_sp, v))
 
 
 // Portable arithmetic right shift (the behaviour of >> on signed

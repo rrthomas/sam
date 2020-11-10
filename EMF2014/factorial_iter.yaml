@@ -22,4 +22,4 @@
     - swap
     - pop
   - do
-  - throw
+  - halt

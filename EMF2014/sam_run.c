@@ -129,7 +129,7 @@ static sam_word_t sam_do(sam_uword_t pc)
             fprintf(stderr, "POP\n");
 #endif
             if (sam_sp <= sam_s0)
-                THROW(SAM_ERROR_STACK_UNDERFLOW);
+                HALT(SAM_ERROR_STACK_UNDERFLOW);
             sam_sp--; // FIXME: cope with all stack items
             break;
         case SAM_INSN_DUP:
@@ -140,7 +140,7 @@ static sam_word_t sam_do(sam_uword_t pc)
                 sam_uword_t depth;
                 POP((sam_word_t *)&depth);
                 if (depth >= sam_sp - sam_s0)
-                    THROW(SAM_ERROR_STACK_UNDERFLOW);
+                    HALT(SAM_ERROR_STACK_UNDERFLOW);
                 else // FIXME: cope with all stack items
                     PUSH(sam_m0[sam_sp - (depth + 1)]);
             }
@@ -155,7 +155,7 @@ static sam_word_t sam_do(sam_uword_t pc)
                 sam_word_t value;
                 POP(&value);
                 if (depth >= sam_sp - sam_s0)
-                    THROW(SAM_ERROR_STACK_UNDERFLOW);
+                    HALT(SAM_ERROR_STACK_UNDERFLOW);
                 else
                     sam_m0[sam_sp - (depth + 1)] = value;
             }
@@ -169,7 +169,7 @@ static sam_word_t sam_do(sam_uword_t pc)
                 sam_uword_t depth;
                 POP((sam_word_t *)&depth);
                 if (sam_sp <= sam_s0 || depth >= sam_sp - sam_s0 - 1)
-                    THROW(SAM_ERROR_STACK_UNDERFLOW);
+                    HALT(SAM_ERROR_STACK_UNDERFLOW);
                 else {
                     sam_word_t temp = sam_m0[sam_sp - (depth + 2)];
                     sam_m0[sam_sp - (depth + 2)] = sam_m0[sam_sp - 1];
@@ -214,8 +214,8 @@ static sam_word_t sam_do(sam_uword_t pc)
             {
                 sam_uword_t code;
                 POP((sam_word_t *)&code);
-                THROW_IF_ERROR(sam_find_code(code, &code));
-                THROW_IF_ERROR(sam_do(code));
+                HALT_IF_ERROR(sam_find_code(code, &code));
+                HALT_IF_ERROR(sam_do(code));
             }
             break;
         case SAM_INSN_IF:
@@ -227,16 +227,16 @@ static sam_word_t sam_do(sam_uword_t pc)
                 POP((sam_word_t *)&else_);
                 POP((sam_word_t *)&then);
                 POP((sam_word_t *)&cond);
-                THROW_IF_ERROR(sam_find_code(cond, &cond));
-                THROW_IF_ERROR(sam_find_code(then, &then));
-                THROW_IF_ERROR(sam_find_code(else_, &else_));
+                HALT_IF_ERROR(sam_find_code(cond, &cond));
+                HALT_IF_ERROR(sam_find_code(then, &then));
+                HALT_IF_ERROR(sam_find_code(else_, &else_));
 #ifdef SAM_DEBUG
                 fprintf(stderr, "cond %u then %u else %u\n", cond, then, else_);
 #endif
-                THROW_IF_ERROR(sam_do(cond));
+                HALT_IF_ERROR(sam_do(cond));
                 sam_word_t flag;
                 POP(&flag);
-                THROW_IF_ERROR(sam_do(flag ? then : else_));
+                HALT_IF_ERROR(sam_do(flag ? then : else_));
             }
             break;
         case SAM_INSN_LOOP:
@@ -252,11 +252,11 @@ static sam_word_t sam_do(sam_uword_t pc)
             {
                 sam_uword_t cond;
                 POP((sam_word_t *)&cond);
-                THROW_IF_ERROR(sam_find_code(cond, &cond));
+                HALT_IF_ERROR(sam_find_code(cond, &cond));
 #ifdef SAM_DEBUG
                 fprintf(stderr, "cond %u\n", cond);
 #endif
-                THROW_IF_ERROR(sam_do(cond));
+                HALT_IF_ERROR(sam_do(cond));
                 sam_word_t flag;
                 POP(&flag);
                 if (!flag)
@@ -277,8 +277,8 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
                 sam_uword_t i;
                 for (i = 0; i < n; i++) {
-                    THROW_IF_ERROR(sam_find_code(code, &code));
-                    THROW_IF_ERROR(sam_do(code));
+                    HALT_IF_ERROR(sam_find_code(code, &code));
+                    HALT_IF_ERROR(sam_do(code));
                 }
             }
             break;
@@ -376,24 +376,9 @@ static sam_word_t sam_do(sam_uword_t pc)
                 PUSH(b < a);
             }
             break;
-        case SAM_INSN_CATCH:
+        case SAM_INSN_HALT:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "CATCH\n");
-#endif
-            // TODO
-            {
-                /* sam_word_t *addr; */
-                /* POP((sam_word_t *)&addr); */
-                /* CHECK_ALIGNED(addr); */
-                /* PUSH_RETURN(sam_handler_sp); */
-                /* PUSH_RETURN((sam_uword_t)pc); */
-                /* sam_handler_sp = sam_sp; */
-                /* pc = addr; */
-            }
-            break;
-        case SAM_INSN_THROW:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "THROW\n");
+            fprintf(stderr, "HALT\n");
 #endif
             {
                 if (sam_sp < sam_s0 + 1)
@@ -401,29 +386,20 @@ static sam_word_t sam_do(sam_uword_t pc)
                 else
                     POP(&error);
             error:
-                /* if (sam_handler_sp == 0) */
                 return error;
-                /* // Don't push error code if the stack is full. */
-                /* if (sam_sp - sam_s0 < sam_ssize) */
-                /*     *(sam_sp++) = error; */
-                /* sam_sp = sam_handler_sp; */
-                /* sam_word_t *addr; */
-                /* POP_RETURN((sam_word_t *)&addr); */
-                /* POP_RETURN((sam_word_t *)&sam_handler_sp); */
-                /* pc = addr; */
             }
             break;
         default:
 #ifdef SAM_DEBUG
             fprintf(stderr, "ERROR_INVALID_OPCODE\n");
 #endif
-            THROW(SAM_ERROR_INVALID_OPCODE);
+            HALT(SAM_ERROR_INVALID_OPCODE);
             break;
         case SAM_INSN_TRAP:
 #ifdef SAM_DEBUG
             fprintf(stderr, "TRAP\n");
 #endif
-            THROW_IF_ERROR(trap((sam_uword_t)operand));
+            HALT_IF_ERROR(trap((sam_uword_t)operand));
             break;
         }
 
