@@ -1,9 +1,8 @@
 -
   - lit 5
   -
-    -
-      - lit 1
-      - dup
+    - lit 1
+    - dup
     -
       - lit 1
       - dup

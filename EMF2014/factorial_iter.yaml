@@ -3,9 +3,8 @@
   -
     - lit 1
     -
-      -
-        - lit 1
-        - dup
+      - lit 1
+      - dup
       - while
       - lit 1
       - dup

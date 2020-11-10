@@ -223,19 +223,16 @@ static sam_word_t sam_do(sam_uword_t pc)
             fprintf(stderr, "IF\n");
 #endif
             {
-                sam_uword_t cond, then, else_;
+                sam_uword_t then, else_;
                 POP((sam_word_t *)&else_);
                 POP((sam_word_t *)&then);
-                POP((sam_word_t *)&cond);
-                HALT_IF_ERROR(sam_find_code(cond, &cond));
                 HALT_IF_ERROR(sam_find_code(then, &then));
                 HALT_IF_ERROR(sam_find_code(else_, &else_));
-#ifdef SAM_DEBUG
-                fprintf(stderr, "cond %u then %u else %u\n", cond, then, else_);
-#endif
-                HALT_IF_ERROR(sam_do(cond));
                 sam_word_t flag;
                 POP_INT(flag);
+#ifdef SAM_DEBUG
+                fprintf(stderr, "flag %d then %u else %u\n", flag, then, else_);
+#endif
                 HALT_IF_ERROR(sam_do(flag ? then : else_));
             }
             break;
@@ -250,13 +247,6 @@ static sam_word_t sam_do(sam_uword_t pc)
             fprintf(stderr, "WHILE\n");
 #endif
             {
-                sam_uword_t cond;
-                POP((sam_word_t *)&cond);
-                HALT_IF_ERROR(sam_find_code(cond, &cond));
-#ifdef SAM_DEBUG
-                fprintf(stderr, "cond %u\n", cond);
-#endif
-                HALT_IF_ERROR(sam_do(cond));
                 sam_word_t flag;
                 POP_INT(flag);
                 if (!flag)
