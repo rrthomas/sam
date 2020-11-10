@@ -27,20 +27,18 @@
 // Stack
 
 // Return the offset of stack item n from the top.
-int sam_stack_item(sam_word_t *s0, sam_uword_t ssize, sam_uword_t sp, sam_uword_t n, sam_uword_t *addr)
+int sam_stack_item(sam_uword_t n, sam_uword_t *addr)
 {
-    if (sp > ssize)
-        return SAM_ERROR_STACK_OVERFLOW;
-
+    sam_uword_t sp = sam_sp;
     sam_uword_t i;
     for (i = 0; i <= n; i++) {
         if (sp == 0)
             return SAM_ERROR_STACK_UNDERFLOW;
-        sam_uword_t inst = s0[--sp];
+        sam_uword_t inst = sam_s0[--sp];
         // If instruction is a KET, skip to matching BRA.
         if ((inst & SAM_OP_MASK) == SAM_INSN_KET) {
             sp -= inst >> SAM_OP_SHIFT + 1;
-            if ((s0[sp] & SAM_OP_MASK) != SAM_INSN_BRA)
+            if ((sam_s0[sp] & SAM_OP_MASK) != SAM_INSN_BRA)
                 return SAM_ERROR_BAD_BRACKET;
         }
     }
@@ -66,20 +64,20 @@ int sam_find_code(sam_uword_t code, sam_uword_t *addr)
     return SAM_ERROR_OK;
 }
 
-int sam_pop_stack(sam_word_t *s0, sam_uword_t ssize, sam_uword_t *sp, sam_word_t *val_ptr)
+int sam_pop_stack(sam_word_t *val_ptr)
 {
-    sam_uword_t error = sam_stack_item(s0, ssize, *sp, 0, sp);
+    sam_uword_t error = sam_stack_item(0, &sam_sp);
     if (error == SAM_ERROR_OK)
-        *val_ptr = s0[*sp];
+        *val_ptr = sam_s0[sam_sp];
     return error;
 }
 
-int sam_push_stack(sam_word_t *s0, sam_uword_t ssize, sam_uword_t *sp, sam_word_t val)
+int sam_push_stack(sam_word_t val)
 {
-    if (*sp >= ssize)
+    if (sam_sp >= sam_ssize)
         return SAM_ERROR_STACK_OVERFLOW;
-    s0[*sp] = val;
-    (*sp)++;
+    sam_s0[sam_sp] = val;
+    sam_sp++;
     return SAM_ERROR_OK;
 }
 

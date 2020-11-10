@@ -37,10 +37,10 @@
     ((x) >> (p))
 
 // Stack access
-#define POP(ptr)                                                        \
-    HALT_IF_ERROR(sam_pop_stack(sam_s0, sam_ssize, &sam_sp, ptr))
-#define PUSH(val)                                                       \
-    HALT_IF_ERROR(sam_push_stack(sam_s0, sam_ssize, &sam_sp, val))
+#define POP(ptr)                                \
+    HALT_IF_ERROR(sam_pop_stack(ptr))
+#define PUSH(val)                               \
+    HALT_IF_ERROR(sam_push_stack(val))
 
 #define _POP_INSN(var, insn, rshift)                    \
     do {                                                \
