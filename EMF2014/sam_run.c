@@ -41,7 +41,7 @@ static sam_word_t sam_do(sam_uword_t pc)
 #ifdef SAM_DEBUG
             fprintf(stderr, "LIT\n");
 #endif
-            PUSH(operand);
+            PUSH(ir);
             break;
         case SAM_INSN_NOP:
 #ifdef SAM_DEBUG
@@ -54,8 +54,8 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t a;
-                POP(&a);
-                PUSH(~a);
+                POP_INT(a);
+                PUSH_INT(~a);
             }
             break;
         case SAM_INSN_AND:
@@ -64,9 +64,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t a, b;
-                POP(&a);
-                POP(&b);
-                PUSH(a & b);
+                POP_INT(a);
+                POP_INT(b);
+                PUSH_INT(a & b);
             }
             break;
         case SAM_INSN_OR:
@@ -75,9 +75,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t a, b;
-                POP(&a);
-                POP(&b);
-                PUSH(a | b);
+                POP_INT(a);
+                POP_INT(b);
+                PUSH_INT(a | b);
             }
             break;
         case SAM_INSN_XOR:
@@ -86,9 +86,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t a, b;
-                POP(&a);
-                POP(&b);
-                PUSH(a ^ b);
+                POP_INT(a);
+                POP_INT(b);
+                PUSH_INT(a ^ b);
             }
             break;
         case SAM_INSN_LSH:
@@ -97,9 +97,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t shift, value;
-                POP(&shift);
-                POP(&value);
-                PUSH(shift < (sam_word_t)SAM_WORD_BIT ? LSHIFT(value, shift) : 0);
+                POP_INT(shift);
+                POP_INT(value);
+                PUSH_INT(shift < (sam_word_t)SAM_WORD_BIT ? LSHIFT(value, shift) : 0);
             }
             break;
         case SAM_INSN_RSH:
@@ -108,9 +108,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t shift, value;
-                POP(&shift);
-                POP(&value);
-                PUSH(shift < (sam_word_t)SAM_WORD_BIT ? (sam_word_t)((sam_uword_t)value >> shift) : 0);
+                POP_INT(shift);
+                POP_INT(value);
+                PUSH_INT(shift < (sam_word_t)SAM_WORD_BIT ? (sam_word_t)((sam_uword_t)value >> shift) : 0);
             }
             break;
         case SAM_INSN_ARSH:
@@ -119,9 +119,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t shift, value;
-                POP(&shift);
-                POP(&value);
-                PUSH(ARSHIFT(value, shift));
+                POP_INT(shift);
+                POP_INT(value);
+                PUSH_INT(ARSHIFT(value, shift));
             }
             break;
         case SAM_INSN_POP:
@@ -138,7 +138,7 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_uword_t depth;
-                POP((sam_word_t *)&depth);
+                POP_UINT(depth);
                 if (depth >= sam_sp - sam_s0)
                     HALT(SAM_ERROR_STACK_UNDERFLOW);
                 else // FIXME: cope with all stack items
@@ -151,7 +151,7 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_uword_t depth;
-                POP((sam_word_t *)&depth);
+                POP_UINT(depth);
                 sam_word_t value;
                 POP(&value);
                 if (depth >= sam_sp - sam_s0)
@@ -167,7 +167,7 @@ static sam_word_t sam_do(sam_uword_t pc)
             {
                 // FIXME: Cope with all stack items
                 sam_uword_t depth;
-                POP((sam_word_t *)&depth);
+                POP_UINT(depth);
                 if (sam_sp <= sam_s0 || depth >= sam_sp - sam_s0 - 1)
                     HALT(SAM_ERROR_STACK_UNDERFLOW);
                 else {
@@ -235,7 +235,7 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
                 HALT_IF_ERROR(sam_do(cond));
                 sam_word_t flag;
-                POP(&flag);
+                POP_INT(flag);
                 HALT_IF_ERROR(sam_do(flag ? then : else_));
             }
             break;
@@ -258,7 +258,7 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
                 HALT_IF_ERROR(sam_do(cond));
                 sam_word_t flag;
-                POP(&flag);
+                POP_INT(flag);
                 if (!flag)
                     return SAM_ERROR_OK;
             }
@@ -269,15 +269,15 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_uword_t n;
-                POP((sam_word_t *)&n);
+                POP_UINT(n);
                 sam_uword_t code;
                 POP((sam_word_t *)&code);
+                HALT_IF_ERROR(sam_find_code(code, &code));
 #ifdef SAM_DEBUG
                 fprintf(stderr, "n %u code %u\n", n, code);
 #endif
                 sam_uword_t i;
                 for (i = 0; i < n; i++) {
-                    HALT_IF_ERROR(sam_find_code(code, &code));
                     HALT_IF_ERROR(sam_do(code));
                 }
             }
@@ -288,8 +288,11 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_uword_t a;
-                POP((sam_word_t *)&a);
-                PUSH((sam_word_t)-a);
+                POP_UINT(a);
+#ifdef SAM_DEBUG
+                fprintf(stderr, "a = %u\n", a);
+#endif
+                PUSH_INT((sam_word_t)-a);
             }
             break;
         case SAM_INSN_ADD:
@@ -298,9 +301,12 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_uword_t a, b;
-                POP((sam_word_t *)&a);
-                POP((sam_word_t *)&b);
-                PUSH((sam_word_t)(b + a));
+                POP_UINT(a);
+                POP_UINT(b);
+#ifdef SAM_DEBUG
+                fprintf(stderr, "a = %u, b = %u\n", a, b);
+#endif
+                PUSH_INT((sam_word_t)(b + a));
             }
             break;
         case SAM_INSN_MUL:
@@ -309,9 +315,12 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_uword_t a, b;
-                POP((sam_word_t *)&a);
-                POP((sam_word_t *)&b);
-                PUSH((sam_word_t)(a * b));
+                POP_UINT(a);
+                POP_UINT(b);
+#ifdef SAM_DEBUG
+                fprintf(stderr, "a = %u, b = %u\n", a, b);
+#endif
+                PUSH_INT((sam_word_t)(a * b));
             }
             break;
         case SAM_INSN_DIVMOD:
@@ -320,14 +329,17 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t divisor, dividend;
-                POP(&divisor);
-                POP(&dividend);
+                POP_INT(divisor);
+                POP_INT(dividend);
+#ifdef SAM_DEBUG
+                fprintf(stderr, "divisor = %d, dividend = %d\n", divisor, dividend);
+#endif
                 if (dividend == SAM_WORD_MIN && divisor == -1) {
-                    PUSH(SAM_WORD_MIN);
-                    PUSH(0);
+                    PUSH_INT(SAM_INT_MIN);
+                    PUSH_INT(0);
                 } else {
-                    PUSH(DIV_CATCH_ZERO(dividend, divisor));
-                    PUSH(MOD_CATCH_ZERO(dividend, divisor));
+                    PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
+                    PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
                 }
             }
             break;
@@ -337,10 +349,10 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_uword_t divisor, dividend;
-                POP((sam_word_t *)&divisor);
-                POP((sam_word_t *)&dividend);
-                PUSH(DIV_CATCH_ZERO(dividend, divisor));
-                PUSH(MOD_CATCH_ZERO(dividend, divisor));
+                POP_UINT(divisor);
+                POP_UINT(dividend);
+                PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
+                PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
             }
             break;
         case SAM_INSN_EQ:
@@ -349,9 +361,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t a, b;
-                POP(&a);
-                POP(&b);
-                PUSH(a == b);
+                POP_INT(a);
+                POP_INT(b);
+                PUSH_INT(a == b);
             }
             break;
         case SAM_INSN_LT:
@@ -360,9 +372,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_word_t a, b;
-                POP(&a);
-                POP(&b);
-                PUSH(b < a);
+                POP_INT(a);
+                POP_INT(b);
+                PUSH_INT(b < a);
             }
             break;
         case SAM_INSN_ULT:
@@ -371,9 +383,9 @@ static sam_word_t sam_do(sam_uword_t pc)
 #endif
             {
                 sam_uword_t a, b;
-                POP((sam_word_t *)&a);
-                POP((sam_word_t *)&b);
-                PUSH(b < a);
+                POP_UINT(a);
+                POP_UINT(b);
+                PUSH_INT(b < a);
             }
             break;
         case SAM_INSN_HALT:
@@ -384,7 +396,7 @@ static sam_word_t sam_do(sam_uword_t pc)
                 if (sam_sp < sam_s0 + 1)
                     error = SAM_ERROR_STACK_UNDERFLOW;
                 else
-                    POP(&error);
+                    POP_INT(error);
             error:
                 return error;
             }
