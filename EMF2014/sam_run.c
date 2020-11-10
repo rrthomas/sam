@@ -214,7 +214,8 @@ static sam_word_t sam_do(sam_uword_t pc)
             {
                 sam_uword_t code;
                 POP((sam_word_t *)&code);
-                THROW_IF_ERROR(sam_do(sam_find_code(code)));
+                THROW_IF_ERROR(sam_find_code(code, &code));
+                THROW_IF_ERROR(sam_do(code));
             }
             break;
         case SAM_INSN_IF:
@@ -226,9 +227,9 @@ static sam_word_t sam_do(sam_uword_t pc)
                 POP((sam_word_t *)&else_);
                 POP((sam_word_t *)&then);
                 POP((sam_word_t *)&cond);
-                cond = sam_find_code(cond);
-                then = sam_find_code(then);
-                else_ = sam_find_code(else_);
+                THROW_IF_ERROR(sam_find_code(cond, &cond));
+                THROW_IF_ERROR(sam_find_code(then, &then));
+                THROW_IF_ERROR(sam_find_code(else_, &else_));
 #ifdef SAM_DEBUG
                 fprintf(stderr, "cond %u then %u else %u\n", cond, then, else_);
 #endif
@@ -251,7 +252,7 @@ static sam_word_t sam_do(sam_uword_t pc)
             {
                 sam_uword_t cond;
                 POP((sam_word_t *)&cond);
-                cond = sam_find_code(cond);
+                THROW_IF_ERROR(sam_find_code(cond, &cond));
 #ifdef SAM_DEBUG
                 fprintf(stderr, "cond %u\n", cond);
 #endif
@@ -275,8 +276,10 @@ static sam_word_t sam_do(sam_uword_t pc)
                 fprintf(stderr, "n %u code %u\n", n, code);
 #endif
                 sam_uword_t i;
-                for (i = 0; i < n; i++)
-                    THROW_IF_ERROR(sam_do(sam_find_code(code)));
+                for (i = 0; i < n; i++) {
+                    THROW_IF_ERROR(sam_find_code(code, &code));
+                    THROW_IF_ERROR(sam_do(code));
+                }
             }
             break;
         case SAM_INSN_NEG:

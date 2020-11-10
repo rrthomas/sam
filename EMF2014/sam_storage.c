@@ -8,8 +8,6 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
-#include <assert.h>
-#include <stdio.h>
 #include <string.h>
 
 #include "sam.h"
@@ -29,7 +27,7 @@
 // Stack
 
 // Return the offset of stack item n from the top.
-sam_uword_t sam_stack_item(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t sp, sam_uword_t n)
+int sam_stack_item(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t sp, sam_uword_t n, sam_uword_t *addr)
 {
     if (sp <= s0)
         return SAM_ERROR_STACK_UNDERFLOW;
@@ -42,33 +40,38 @@ sam_uword_t sam_stack_item(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sa
         // If instruction is a KET, skip to matching BRA.
         if ((inst & SAM_OP_MASK) == SAM_INSN_KET) {
             sp -= inst >> SAM_OP_SHIFT + 1;
-            assert((m0[sp] & SAM_OP_MASK) == SAM_INSN_BRA); // FIXME: THROW
+            if ((m0[sp] & SAM_OP_MASK) != SAM_INSN_BRA)
+                return SAM_ERROR_BAD_BRACKET;
         }
     }
-    return sp;
+    *addr = sp;
+    return SAM_ERROR_OK;
 }
 
 // Given a LINK instruction, find the corresponding BRA instruction, and
 // return the stack address of the first code word.
-sam_uword_t sam_find_code(sam_uword_t code)
+int sam_find_code(sam_uword_t code, sam_uword_t *addr)
 {
     sam_uword_t inst = code & SAM_OP_MASK;
-    sam_uword_t n;
-    assert(inst == SAM_INSN_LINK); // FIXME: THROW(SAM_ERROR_NOT_CODE)
+    if (inst != SAM_INSN_LINK)
+        return SAM_ERROR_NOT_CODE;
     do {
-        n = code >> SAM_OP_SHIFT;
-        code = sam_m0[n];
+        *addr = code >> SAM_OP_SHIFT;
+        code = sam_m0[*addr];
         inst = code & SAM_OP_MASK;
     } while (inst == SAM_INSN_LINK);
-    assert(inst == SAM_INSN_BRA); // FIXME: THROW(SAM_ERROR_NOT_CODE)
-    return n + 1;
+    if (inst != SAM_INSN_BRA)
+        return SAM_ERROR_NOT_CODE;
+    (*addr)++;
+    return SAM_ERROR_OK;
 }
 
 int sam_pop_stack(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t *sp, sam_word_t *val_ptr)
 {
-    *sp = sam_stack_item(m0, msize, s0, *sp, 0);
-    *val_ptr = m0[*sp];
-    return SAM_ERROR_OK;
+    sam_uword_t error = sam_stack_item(m0, msize, s0, *sp, 0, sp);
+    if (error == SAM_ERROR_OK)
+        *val_ptr = m0[*sp];
+    return error;
 }
 
 int sam_push_stack(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t *sp, sam_word_t val)

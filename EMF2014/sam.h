@@ -25,14 +25,15 @@ enum {
     SAM_ERROR_STACK_UNDERFLOW = -2,
     SAM_ERROR_STACK_OVERFLOW = -3,
     SAM_ERROR_NOT_CODE = -4,
+    SAM_ERROR_BAD_BRACKET = -5,
     SAM_ERROR_INVALID_LIBRARY = -16,
     SAM_ERROR_INVALID_FUNCTION = -17,
     SAM_ERROR_BREAK = -256,
 };
 
 // Stack access
-sam_uword_t sam_stack_item(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t sp, sam_uword_t n);
-sam_uword_t sam_find_code(sam_uword_t code);
+int sam_stack_item(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t sp, sam_uword_t n, sam_uword_t *addr);
+int sam_find_code(sam_uword_t code, sam_uword_t *addr);
 int sam_pop_stack(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t *sp, sam_word_t *val_ptr);
 int sam_push_stack(sam_word_t *m0, sam_uword_t msize, sam_uword_t s0, sam_uword_t *sp, sam_word_t val);
 
