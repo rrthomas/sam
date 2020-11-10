@@ -23,9 +23,10 @@
 
 
 // Execution function
-static sam_word_t sam_do(sam_uword_t pc)
+sam_word_t sam_run(void)
 {
-    sam_word_t pc0 = pc;
+    sam_word_t pc0, pc;
+    pc0 = pc = 1; // FIXME: use TOS, so we can restart a computation.
     sam_word_t error = SAM_ERROR_OK;
 
     for (;;) {
@@ -200,7 +201,8 @@ static sam_word_t sam_do(sam_uword_t pc)
 #ifdef SAM_DEBUG
             fprintf(stderr, "KET\n");
 #endif
-            return SAM_ERROR_OK;
+            RET;
+            break;
         case SAM_INSN_LINK:
 #ifdef SAM_DEBUG
             fprintf(stderr, "LINK\n");
@@ -215,7 +217,7 @@ static sam_word_t sam_do(sam_uword_t pc)
                 sam_uword_t code;
                 POP((sam_word_t *)&code);
                 HALT_IF_ERROR(sam_find_code(code, &code));
-                HALT_IF_ERROR(sam_do(code));
+                DO(code);
             }
             break;
         case SAM_INSN_IF:
@@ -233,7 +235,7 @@ static sam_word_t sam_do(sam_uword_t pc)
 #ifdef SAM_DEBUG
                 fprintf(stderr, "flag %d then %u else %u\n", flag, then, else_);
 #endif
-                HALT_IF_ERROR(sam_do(flag ? then : else_));
+                DO(flag ? then : else_);
             }
             break;
         case SAM_INSN_LOOP:
@@ -250,7 +252,7 @@ static sam_word_t sam_do(sam_uword_t pc)
                 sam_word_t flag;
                 POP_INT(flag);
                 if (!flag)
-                    return SAM_ERROR_OK;
+                    RET;
             }
             break;
         case SAM_INSN_NEG:
@@ -363,15 +365,13 @@ static sam_word_t sam_do(sam_uword_t pc)
 #ifdef SAM_DEBUG
             fprintf(stderr, "HALT\n");
 #endif
-            {
-                if (sam_sp < sam_s0 + 1)
-                    error = SAM_ERROR_STACK_UNDERFLOW;
-                else
-                    POP_INT(error);
+            if (sam_sp < sam_s0 + 1)
+                error = SAM_ERROR_STACK_UNDERFLOW;
+            else
+                POP_INT(error);
             error:
-                return error;
-            }
-            break;
+            DO(pc); // Save pc, pc0 so we can restart.
+            return error;
         default:
 #ifdef SAM_DEBUG
             fprintf(stderr, "ERROR_INVALID_OPCODE\n");
@@ -387,9 +387,4 @@ static sam_word_t sam_do(sam_uword_t pc)
         }
 
     }
-}
-
-sam_word_t sam_run(void)
-{
-    return sam_do(1);
 }

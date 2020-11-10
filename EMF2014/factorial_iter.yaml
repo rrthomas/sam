@@ -3,21 +3,25 @@
   -
     - lit 1
     -
-      - lit 1
+      - lit 5
       - dup
       - while
       - lit 1
+      - swap
+      - lit 5
       - dup
       - mul
-      - lit 0
+      - lit 4
       - swap
       - lit -1
       - add
-      - lit 0
+      - lit 4
+      - swap
+      - lit 1
       - swap
       - loop
     - do
-    - lit 0
+    - lit 2
     - swap
     - pop
   - do

@@ -1,28 +1,33 @@
 -
   - lit 5
   -
-    - lit 1
+    - lit 3
     - dup
     -
-      - lit 1
+      - lit 5
       - dup
       - lit -1
       - add
-      - lit 1
+      - lit 5
       - dup
       - lit 0
       - dup
       - do
-      - lit 0
+      - pop
+      - lit 6
+      - dup
+      - mul
+      - lit 5
       - swap
       - pop
-      - mul
     -
-      - pop
-      - pop
       - lit 1
+      - lit 5
+      - swap
+      - pop
     - if
   - lit 0
   - dup
   - do
+  - pop
   - halt

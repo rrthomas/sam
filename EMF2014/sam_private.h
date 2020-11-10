@@ -66,6 +66,21 @@
 #define PUSH_LINK(addr)                         \
     _PUSH_INSN(addr, SAM_INSN_LINK)
 
+// Execution
+#define DO(addr)                                \
+    do {                                        \
+        PUSH_LINK(pc0);                         \
+        PUSH_LINK(pc);                          \
+        pc0 = pc = addr;                        \
+    } while (0)
+#define RET                                     \
+    do {                                        \
+        POP_LINK(pc);                           \
+        POP_LINK(pc0);                          \
+        if (pc == 0)                            \
+            HALT(SAM_ERROR_OK);                 \
+    } while (0)
+
 // Traps
 sam_word_t trap(sam_word_t code);
 sam_word_t trap_tildav2(sam_uword_t function);
