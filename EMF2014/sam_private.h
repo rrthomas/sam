@@ -22,25 +22,6 @@
     } while (0)
 
 
-// Stack access
-#define POP(ptr)                                                        \
-    HALT_IF_ERROR(sam_pop_stack(sam_m0, sam_msize, sam_s0, &sam_sp, ptr))
-#define PUSH(val)                                                       \
-    HALT_IF_ERROR(sam_push_stack(sam_m0, sam_msize, sam_s0, &sam_sp, val))
-
-#define POP_INT(var)                                                    \
-    do {                                                                \
-        HALT_IF_ERROR(sam_pop_stack(sam_m0, sam_msize, sam_s0, &sam_sp, &var)); \
-        var = ARSHIFT(var, SAM_OP_SHIFT);                               \
-    } while (0)
-#define POP_UINT(var)                                                   \
-    do {                                                                \
-        HALT_IF_ERROR(sam_pop_stack(sam_m0, sam_msize, sam_s0, &sam_sp, &var)); \
-        var >>= SAM_OP_SHIFT;                                           \
-    } while (0)
-#define PUSH_INT(val)                                                   \
-    HALT_IF_ERROR(sam_push_stack(sam_m0, sam_msize, sam_s0, &sam_sp, ((val) << SAM_OP_SHIFT) | SAM_INSN_LIT));
-
 // Portable arithmetic right shift (the behaviour of >> on signed
 // quantities is implementation-defined in C99)
 #if HAVE_ARITHMETIC_RSHIFT
@@ -50,6 +31,40 @@
 #define ARSHIFT(n, p)                                                   \
     (((n) >> (p)) | (sam_word_t)(LSHIFT(-((n) < 0), (SAM_WORD_BIT - p))))
 #endif
+
+// Matching macro for logical shift
+#define LRSHIFT(x, p)                           \
+    ((x) >> (p))
+
+// Stack access
+#define POP(ptr)                                                        \
+    HALT_IF_ERROR(sam_pop_stack(sam_m0, sam_msize, sam_s0, &sam_sp, ptr))
+#define PUSH(val)                                                       \
+    HALT_IF_ERROR(sam_push_stack(sam_m0, sam_msize, sam_s0, &sam_sp, val))
+
+#define _POP_INSN(var, insn, rshift)                    \
+    do {                                                \
+        POP(&var);                                      \
+        if ((var & SAM_OP_MASK) != insn)                \
+            HALT(SAM_ERROR_NOT_NUMBER);                 \
+        var = rshift(var, SAM_OP_SHIFT);                \
+    } while (0)
+#define _PUSH_INSN(val, insn)                   \
+    PUSH(LSHIFT((val), SAM_OP_SHIFT) | insn)
+
+#define _POP_INT(var, rshift)                   \
+    _POP_INSN(var, SAM_INSN_LIT, rshift)
+#define POP_INT(var)                            \
+    _POP_INT(var, ARSHIFT)
+#define POP_UINT(var)                           \
+    _POP_INT(var, LRSHIFT)
+#define PUSH_INT(val)                           \
+    _PUSH_INSN(val, SAM_INSN_LIT)
+
+#define POP_LINK(var)                           \
+    _POP_INSN(var, SAM_INSN_LINK, LRSHIFT)
+#define PUSH_LINK(addr)                         \
+    _PUSH_INSN(addr, SAM_INSN_LINK)
 
 // Traps
 sam_word_t trap(sam_word_t code);

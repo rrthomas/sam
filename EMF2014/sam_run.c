@@ -193,7 +193,7 @@ static sam_word_t sam_do(sam_uword_t pc)
 #ifdef SAM_DEBUG
             fprintf(stderr, "BRA\n");
 #endif
-            PUSH((((sam_word_t)pc - 1) << SAM_OP_SHIFT) | SAM_INSN_LINK);
+            PUSH_LINK(pc - 1);
             pc += operand + 1; // Skip to next instruction
             break;
         case SAM_INSN_KET:
