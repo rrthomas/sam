@@ -30,7 +30,7 @@ sam_word_t sam_run(void)
     sam_word_t error = SAM_ERROR_OK;
 
     for (;;) {
-        sam_uword_t ir = sam_m0[pc++];
+        sam_uword_t ir = sam_s0[pc++];
         sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OP_SHIFT);
 #ifdef SAM_DEBUG
         fprintf(stderr, "sam_do: pc = %u, sp = %u, ir = %x\n", pc - 1, sam_sp, ir);
@@ -129,7 +129,7 @@ sam_word_t sam_run(void)
 #ifdef SAM_DEBUG
             fprintf(stderr, "POP\n");
 #endif
-            if (sam_sp <= sam_s0)
+            if (sam_sp == 0)
                 HALT(SAM_ERROR_STACK_UNDERFLOW);
             sam_sp--; // FIXME: cope with all stack items
             break;
@@ -140,10 +140,10 @@ sam_word_t sam_run(void)
             {
                 sam_uword_t depth;
                 POP_UINT(depth);
-                if (depth >= sam_sp - sam_s0)
+                if (depth >= sam_sp)
                     HALT(SAM_ERROR_STACK_UNDERFLOW);
                 else // FIXME: cope with all stack items
-                    PUSH(sam_m0[sam_sp - (depth + 1)]);
+                    PUSH(sam_s0[sam_sp - (depth + 1)]);
             }
             break;
         case SAM_INSN_SET:
@@ -155,10 +155,10 @@ sam_word_t sam_run(void)
                 POP_UINT(depth);
                 sam_word_t value;
                 POP(&value);
-                if (depth >= sam_sp - sam_s0)
+                if (depth >= sam_sp)
                     HALT(SAM_ERROR_STACK_UNDERFLOW);
                 else
-                    sam_m0[sam_sp - (depth + 1)] = value;
+                    sam_s0[sam_sp - (depth + 1)] = value;
             }
             break;
         case SAM_INSN_SWAP:
@@ -169,12 +169,12 @@ sam_word_t sam_run(void)
                 // FIXME: Cope with all stack items
                 sam_uword_t depth;
                 POP_UINT(depth);
-                if (sam_sp <= sam_s0 || depth >= sam_sp - sam_s0 - 1)
+                if (sam_sp == 0 || depth >= sam_sp - 1)
                     HALT(SAM_ERROR_STACK_UNDERFLOW);
                 else {
-                    sam_word_t temp = sam_m0[sam_sp - (depth + 2)];
-                    sam_m0[sam_sp - (depth + 2)] = sam_m0[sam_sp - 1];
-                    sam_m0[sam_sp - 1] = temp;
+                    sam_word_t temp = sam_s0[sam_sp - (depth + 2)];
+                    sam_s0[sam_sp - (depth + 2)] = sam_s0[sam_sp - 1];
+                    sam_s0[sam_sp - 1] = temp;
                 }
             }
             break;
@@ -365,7 +365,7 @@ sam_word_t sam_run(void)
 #ifdef SAM_DEBUG
             fprintf(stderr, "HALT\n");
 #endif
-            if (sam_sp < sam_s0 + 1)
+            if (sam_sp < 1)
                 error = SAM_ERROR_STACK_UNDERFLOW;
             else
                 POP_INT(error);

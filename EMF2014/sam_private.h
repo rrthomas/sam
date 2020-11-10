@@ -38,9 +38,9 @@
 
 // Stack access
 #define POP(ptr)                                                        \
-    HALT_IF_ERROR(sam_pop_stack(sam_m0, sam_msize, sam_s0, &sam_sp, ptr))
+    HALT_IF_ERROR(sam_pop_stack(sam_s0, sam_ssize, &sam_sp, ptr))
 #define PUSH(val)                                                       \
-    HALT_IF_ERROR(sam_push_stack(sam_m0, sam_msize, sam_s0, &sam_sp, val))
+    HALT_IF_ERROR(sam_push_stack(sam_s0, sam_ssize, &sam_sp, val))
 
 #define _POP_INSN(var, insn, rshift)                    \
     do {                                                \
