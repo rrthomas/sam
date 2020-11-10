@@ -263,25 +263,6 @@ static sam_word_t sam_do(sam_uword_t pc)
                     return SAM_ERROR_OK;
             }
             break;
-        case SAM_INSN_TIMES:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "TIMES\n");
-#endif
-            {
-                sam_uword_t n;
-                POP_UINT(n);
-                sam_uword_t code;
-                POP((sam_word_t *)&code);
-                HALT_IF_ERROR(sam_find_code(code, &code));
-#ifdef SAM_DEBUG
-                fprintf(stderr, "n %u code %u\n", n, code);
-#endif
-                sam_uword_t i;
-                for (i = 0; i < n; i++) {
-                    HALT_IF_ERROR(sam_do(code));
-                }
-            }
-            break;
         case SAM_INSN_NEG:
 #ifdef SAM_DEBUG
             fprintf(stderr, "NEG\n");

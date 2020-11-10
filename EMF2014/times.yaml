@@ -1,8 +1,0 @@
--
-  - lit 1
-  -
-    - lit 1
-    - add
-  - lit 3
-  - times
-  - halt
