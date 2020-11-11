@@ -42,12 +42,12 @@
 #define PUSH(val)                               \
     HALT_IF_ERROR(sam_push_stack(val))
 
-#define _POP_INSN(var, insn, rshift)                    \
-    do {                                                \
-        POP(&var);                                      \
-        if ((var & SAM_OP_MASK) != insn)                \
-            HALT(SAM_ERROR_NOT_NUMBER);                 \
-        var = rshift(var, SAM_OP_SHIFT);                \
+#define _POP_INSN(var, insn, rshift)            \
+    do {                                        \
+        POP(&var);                              \
+        if ((var & SAM_OP_MASK) != insn)        \
+            HALT(SAM_ERROR_NOT_NUMBER);         \
+        var = rshift(var, SAM_OP_SHIFT);        \
     } while (0)
 #define _PUSH_INSN(val, insn)                   \
     PUSH(LSHIFT((val), SAM_OP_SHIFT) | insn)
