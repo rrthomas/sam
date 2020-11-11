@@ -101,6 +101,7 @@ sam_word_t sam_run(void)
             fprintf(stderr, "SET\n");
 #endif
             {
+                // FIXME: cope with all stack items
                 sam_uword_t depth;
                 POP_UINT(depth);
                 sam_word_t value;
