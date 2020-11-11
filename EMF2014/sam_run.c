@@ -232,17 +232,8 @@ sam_word_t sam_run(void)
                 HALT_IF_ERROR(sam_find_code(else_, &else_));
                 sam_word_t flag;
                 POP_INT(flag);
-#ifdef SAM_DEBUG
-                fprintf(stderr, "flag %d then %u else %u\n", flag, then, else_);
-#endif
                 DO(flag ? then : else_);
             }
-            break;
-        case SAM_INSN_LOOP:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "LOOP\n");
-#endif
-            pc = pc0;
             break;
         case SAM_INSN_WHILE:
 #ifdef SAM_DEBUG
@@ -255,6 +246,12 @@ sam_word_t sam_run(void)
                     RET;
             }
             break;
+        case SAM_INSN_LOOP:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "LOOP\n");
+#endif
+            pc = pc0;
+            break;
         case SAM_INSN_NEG:
 #ifdef SAM_DEBUG
             fprintf(stderr, "NEG\n");
@@ -262,9 +259,6 @@ sam_word_t sam_run(void)
             {
                 sam_uword_t a;
                 POP_UINT(a);
-#ifdef SAM_DEBUG
-                fprintf(stderr, "a = %u\n", a);
-#endif
                 PUSH_INT((sam_word_t)-a);
             }
             break;
@@ -276,9 +270,6 @@ sam_word_t sam_run(void)
                 sam_uword_t a, b;
                 POP_UINT(a);
                 POP_UINT(b);
-#ifdef SAM_DEBUG
-                fprintf(stderr, "a = %u, b = %u\n", a, b);
-#endif
                 PUSH_INT((sam_word_t)(b + a));
             }
             break;
@@ -290,9 +281,6 @@ sam_word_t sam_run(void)
                 sam_uword_t a, b;
                 POP_UINT(a);
                 POP_UINT(b);
-#ifdef SAM_DEBUG
-                fprintf(stderr, "a = %u, b = %u\n", a, b);
-#endif
                 PUSH_INT((sam_word_t)(a * b));
             }
             break;
@@ -304,9 +292,6 @@ sam_word_t sam_run(void)
                 sam_word_t divisor, dividend;
                 POP_INT(divisor);
                 POP_INT(dividend);
-#ifdef SAM_DEBUG
-                fprintf(stderr, "divisor = %d, dividend = %d\n", divisor, dividend);
-#endif
                 if (dividend == SAM_WORD_MIN && divisor == -1) {
                     PUSH_INT(SAM_INT_MIN);
                     PUSH_INT(0);
