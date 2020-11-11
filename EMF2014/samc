@@ -19,7 +19,7 @@ def recursive_len(item):
 def instruction(inst, op=None):
     s = f"SAM_INSN_{inst.upper()}"
     if op != None:
-        s = f"(({op}) << SAM_OP_SHIFT) | {s}"
+        s = f"LSHIFT({op}, SAM_OP_SHIFT) | {s}"
     return s
 
 def compile_sam(l, level=0):
