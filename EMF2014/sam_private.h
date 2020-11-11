@@ -66,6 +66,12 @@
 #define PUSH_LINK(addr)                         \
     _PUSH_INSN(addr, SAM_INSN_LINK)
 
+#define PUSH_PUSH(val)                                      \
+    do {                                                    \
+        _PUSH_INSN((val >> SAM_OP_SHIFT), SAM_INSN_PUSH);   \
+        _PUSH_INSN((val & SAM_OP_MASK), SAM_INSN__PUSH);    \
+    } while (0)
+
 // Execution
 #define DO(addr)                                \
     do {                                        \

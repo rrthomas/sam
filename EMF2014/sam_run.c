@@ -83,8 +83,17 @@ sam_word_t sam_run(void)
                 POP_UINT(depth);
                 if (depth >= sam_sp)
                     HALT(SAM_ERROR_STACK_UNDERFLOW);
-                else // FIXME: cope with all stack items
-                    PUSH(sam_s0[sam_sp - (depth + 1)]);
+                else {
+                    sam_uword_t addr;
+                    HALT_IF_ERROR(sam_stack_item(depth, &addr));
+                    sam_uword_t opcode = sam_s0[addr] & SAM_OP_MASK;
+                    if (opcode == SAM_INSN_BRA)
+                        PUSH_LINK(addr);
+                    else if (opcode == SAM_INSN_PUSH)
+                        PUSH_PUSH(sam_s0[addr]);
+                    else
+                        PUSH(sam_s0[addr]);
+                }
             }
             break;
         case SAM_INSN_SET:
