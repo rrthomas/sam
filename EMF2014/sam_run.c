@@ -30,7 +30,7 @@ sam_word_t sam_run(void)
     RET;
 
     for (;;) {
-        sam_uword_t ir = sam_s0[pc++];
+        sam_uword_t ir = sam_s0[pc++]; // FIXME: range-check all accesses
         sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OP_SHIFT);
 #ifdef SAM_DEBUG
         fprintf(stderr, "sam_do: pc = %u, sp = %u, ir = %x\n", pc - 1, sam_sp, ir);
@@ -48,6 +48,23 @@ sam_word_t sam_run(void)
             fprintf(stderr, "LIT\n");
 #endif
             PUSH(ir);
+            break;
+        case SAM_INSN_PUSH:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "PUSH\n");
+#endif
+            {
+                sam_uword_t operand2 = sam_s0[pc++];
+                if ((operand2 & SAM_OP_MASK) != SAM_INSN__PUSH)
+                    HALT(SAM_ERROR_UNPAIRED_PUSH);
+                PUSH((ir & ~SAM_OP_MASK) | ((operand2 >> SAM_OP_SHIFT) & SAM_OP_MASK));
+            }
+            break;
+        case SAM_INSN__PUSH:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "_PUSH\n");
+#endif
+            HALT(SAM_ERROR_UNPAIRED_PUSH);
             break;
         case SAM_INSN_POP:
 #ifdef SAM_DEBUG

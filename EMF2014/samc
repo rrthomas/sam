@@ -19,11 +19,12 @@ def recursive_len(item):
 def instruction(inst, op=None):
     s = f"SAM_INSN_{inst.upper()}"
     if op != None:
-        s = f"({op} << SAM_OP_SHIFT) | {s}"
+        s = f"(({op}) << SAM_OP_SHIFT) | {s}"
     return s
 
 def compile_sam(l, level=0):
-    for inst in l:
+    while len(l) > 0:
+        inst = l.pop(0)
         if isinstance(inst, list):
             print_indented(instruction("bra", recursive_len(inst) - 2), level)
             compile_sam(inst, level + 1)
@@ -31,9 +32,14 @@ def compile_sam(l, level=0):
         elif inst.startswith("lit"):
             operand = inst.split(' ')[1]
             print_indented(instruction("lit", operand), level)
+        elif inst == "push":
+            operand = l.pop(0)
+            print_indented(instruction("push", f"{operand} >> SAM_OP_SHIFT"))
+            print_indented(instruction("_push", f"{operand} & SAM_OP_MASK"))
         else:
             print_indented(instruction(inst), level)
 
 compile_sam(prog)
+
 print_indented(instruction("link", 1))
 print_indented(instruction("link", 1))

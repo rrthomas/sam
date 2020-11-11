@@ -1,0 +1,5 @@
+- nop
+- push
+- SAM_INSN_HALT
+- lit 42
+

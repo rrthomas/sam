@@ -35,12 +35,17 @@ int sam_stack_item(sam_uword_t n, sam_uword_t *addr)
         if (sp == 0)
             return SAM_ERROR_STACK_UNDERFLOW;
         sam_uword_t inst = sam_s0[--sp];
+        sam_uword_t opcode = inst & SAM_OP_MASK;
         // If instruction is a KET, skip to matching BRA.
-        if ((inst & SAM_OP_MASK) == SAM_INSN_KET) {
+        if (opcode == SAM_INSN_KET) {
             sp -= inst >> SAM_OP_SHIFT + 1;
             if ((sam_s0[sp] & SAM_OP_MASK) != SAM_INSN_BRA)
                 return SAM_ERROR_BAD_BRACKET;
-        }
+        } else if (opcode == SAM_INSN__PUSH) {
+            if (sam_s0[--sp] != SAM_INSN_PUSH)
+                return SAM_ERROR_UNPAIRED_PUSH;
+        } else if (opcode == SAM_INSN_PUSH)
+            return SAM_ERROR_UNPAIRED_PUSH;
     }
     *addr = sp;
     return SAM_ERROR_OK;
