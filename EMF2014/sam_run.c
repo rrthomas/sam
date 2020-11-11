@@ -72,7 +72,7 @@ sam_word_t sam_run(void)
 #endif
             if (sam_sp == 0)
                 HALT(SAM_ERROR_STACK_UNDERFLOW);
-            sam_sp--; // FIXME: cope with all stack items
+            HALT_IF_ERROR(sam_stack_item(0, &sam_sp));
             break;
         case SAM_INSN_DUP:
 #ifdef SAM_DEBUG
