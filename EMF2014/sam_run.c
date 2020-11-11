@@ -38,92 +38,16 @@ sam_word_t sam_run(void)
 #endif
 
         switch (ir & SAM_OP_MASK) {
-        case SAM_INSN_LIT:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "LIT\n");
-#endif
-            PUSH(ir);
-            break;
         case SAM_INSN_NOP:
 #ifdef SAM_DEBUG
             fprintf(stderr, "NOP\n");
 #endif
             break;
-        case SAM_INSN_NOT:
+        case SAM_INSN_LIT:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "NOT\n");
+            fprintf(stderr, "LIT\n");
 #endif
-            {
-                sam_word_t a;
-                POP_INT(a);
-                PUSH_INT(~a);
-            }
-            break;
-        case SAM_INSN_AND:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "AND\n");
-#endif
-            {
-                sam_word_t a, b;
-                POP_INT(a);
-                POP_INT(b);
-                PUSH_INT(a & b);
-            }
-            break;
-        case SAM_INSN_OR:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "OR\n");
-#endif
-            {
-                sam_word_t a, b;
-                POP_INT(a);
-                POP_INT(b);
-                PUSH_INT(a | b);
-            }
-            break;
-        case SAM_INSN_XOR:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "XOR\n");
-#endif
-            {
-                sam_word_t a, b;
-                POP_INT(a);
-                POP_INT(b);
-                PUSH_INT(a ^ b);
-            }
-            break;
-        case SAM_INSN_LSH:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "LSH\n");
-#endif
-            {
-                sam_word_t shift, value;
-                POP_INT(shift);
-                POP_INT(value);
-                PUSH_INT(shift < (sam_word_t)SAM_WORD_BIT ? LSHIFT(value, shift) : 0);
-            }
-            break;
-        case SAM_INSN_RSH:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "RSH\n");
-#endif
-            {
-                sam_word_t shift, value;
-                POP_INT(shift);
-                POP_INT(value);
-                PUSH_INT(shift < (sam_word_t)SAM_WORD_BIT ? (sam_word_t)((sam_uword_t)value >> shift) : 0);
-            }
-            break;
-        case SAM_INSN_ARSH:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "ARSH\n");
-#endif
-            {
-                sam_word_t shift, value;
-                POP_INT(shift);
-                POP_INT(value);
-                PUSH_INT(ARSHIFT(value, shift));
-            }
+            PUSH(ir);
             break;
         case SAM_INSN_POP:
 #ifdef SAM_DEBUG
@@ -251,6 +175,82 @@ sam_word_t sam_run(void)
             fprintf(stderr, "LOOP\n");
 #endif
             pc = pc0;
+            break;
+        case SAM_INSN_NOT:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "NOT\n");
+#endif
+            {
+                sam_word_t a;
+                POP_INT(a);
+                PUSH_INT(~a);
+            }
+            break;
+        case SAM_INSN_AND:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "AND\n");
+#endif
+            {
+                sam_word_t a, b;
+                POP_INT(a);
+                POP_INT(b);
+                PUSH_INT(a & b);
+            }
+            break;
+        case SAM_INSN_OR:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "OR\n");
+#endif
+            {
+                sam_word_t a, b;
+                POP_INT(a);
+                POP_INT(b);
+                PUSH_INT(a | b);
+            }
+            break;
+        case SAM_INSN_XOR:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "XOR\n");
+#endif
+            {
+                sam_word_t a, b;
+                POP_INT(a);
+                POP_INT(b);
+                PUSH_INT(a ^ b);
+            }
+            break;
+        case SAM_INSN_LSH:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "LSH\n");
+#endif
+            {
+                sam_word_t shift, value;
+                POP_INT(shift);
+                POP_INT(value);
+                PUSH_INT(shift < (sam_word_t)SAM_WORD_BIT ? LSHIFT(value, shift) : 0);
+            }
+            break;
+        case SAM_INSN_RSH:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "RSH\n");
+#endif
+            {
+                sam_word_t shift, value;
+                POP_INT(shift);
+                POP_INT(value);
+                PUSH_INT(shift < (sam_word_t)SAM_WORD_BIT ? (sam_word_t)((sam_uword_t)value >> shift) : 0);
+            }
+            break;
+        case SAM_INSN_ARSH:
+#ifdef SAM_DEBUG
+            fprintf(stderr, "ARSH\n");
+#endif
+            {
+                sam_word_t shift, value;
+                POP_INT(shift);
+                POP_INT(value);
+                PUSH_INT(ARSHIFT(value, shift));
+            }
             break;
         case SAM_INSN_NEG:
 #ifdef SAM_DEBUG
