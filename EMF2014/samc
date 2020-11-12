@@ -32,6 +32,9 @@ def compile_sam(l, level=0):
         elif inst.startswith("lit"):
             operand = inst.split(' ')[1]
             print_indented(instruction("lit", operand), level)
+        elif inst.startswith("trap"):
+            operand = inst.split(' ')[1]
+            print_indented(instruction("trap", f"TRAP_{operand}"), level)
         elif inst == "push":
             operand = l.pop(0)
             print_indented(instruction("push", f"{operand} >> SAM_OP_SHIFT"))

@@ -38,6 +38,7 @@
 extern "C" {
 #include "sam.h"
 #include "sam_opcodes.h"
+#include "sam_traps.h"
 }
 
 // Use this as a boilerplate app class. If you create a new one, make sure to also register it in the AppManager
@@ -84,8 +85,9 @@ void SamApp::task() {
 #include "sam_program_len.h"
                           );
         sam_word_t res = sam_run();
-        GLCD.CursorToXY(2, 12);
-        GLCD.print(res);
+        (void)res;
+        // GLCD.CursorToXY(2, 12);
+        // GLCD.print(res);
 
         Tilda::setLedColor({0, 0, 0});   // LEDs off
 

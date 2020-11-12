@@ -1,0 +1,2 @@
+#!/bin/sh
+/home/rrt/.local/lib/processing-3.5.4/processing-java --sketch=glcdMakeBitmap --run "$@"

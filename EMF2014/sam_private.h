@@ -17,8 +17,9 @@
 
 #define HALT_IF_ERROR(code)                     \
     do {                                        \
-        if (code != SAM_ERROR_OK)               \
-            HALT(code);                         \
+        sam_word_t _err = code;                 \
+        if (_err != SAM_ERROR_OK)               \
+            HALT(_err);                         \
     } while (0)
 
 
@@ -83,8 +84,6 @@
     do {                                        \
         POP_LINK(pc);                           \
         POP_LINK(pc0);                          \
-        if (pc == 0)                            \
-            HALT(SAM_ERROR_OK);                 \
     } while (0)
 
 // Traps

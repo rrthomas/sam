@@ -29,9 +29,9 @@ enum {
     SAM_ERROR_NOT_CODE = -5,
     SAM_ERROR_BAD_BRACKET = -6,
     SAM_ERROR_UNPAIRED_PUSH = -7,
-    SAM_ERROR_INVALID_LIBRARY = -16,
     SAM_ERROR_INVALID_FUNCTION = -17,
     SAM_ERROR_BREAK = -256,
+    SAM_ERROR_TRAP_INIT = -257,
 };
 
 // Stack access
@@ -53,4 +53,6 @@ int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp);
 void sam_print_stack(void);
 
 // Traps
-void sam_prim_blit(void);
+sam_word_t sam_traps_init(void);
+void sam_traps_finish(void);
+sam_word_t sam_trap(sam_uword_t function);

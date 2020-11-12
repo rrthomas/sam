@@ -394,9 +394,8 @@ sam_word_t sam_run(void)
 #ifdef SAM_DEBUG
             fprintf(stderr, "TRAP\n");
 #endif
-            HALT_IF_ERROR(trap((sam_uword_t)operand));
+            HALT_IF_ERROR(sam_trap((sam_uword_t)operand));
             break;
         }
-
     }
 }
