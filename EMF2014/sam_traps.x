@@ -28,6 +28,13 @@ static SDL_Surface *srf;
 
 static void update_screen(void)
 {
+    SDL_UpdateWindowSurface(win);
+    SDL_ShowWindow(win);
+}
+
+int sam_traps_window_used(void)
+{
+    return SDL_GetWindowFlags(win) & SDL_WINDOW_SHOWN;
 }
 
 // Code adapted from https://www.thecrazyprogrammer.com/2017/01/bresenhams-line-drawing-algorithm-c-c.html
@@ -127,7 +134,7 @@ sam_word_t sam_traps_init(void)
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
         return SAM_ERROR_TRAP_INIT;
 
-    win = SDL_CreateWindow("SAM", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, DISPLAY_WIDTH * PIXEL_SIZE, DISPLAY_HEIGHT * PIXEL_SIZE, SDL_WINDOW_SHOWN);
+    win = SDL_CreateWindow("SAM", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, DISPLAY_WIDTH * PIXEL_SIZE, DISPLAY_HEIGHT * PIXEL_SIZE, SDL_WINDOW_HIDDEN);
     if (win == NULL)
         return SAM_ERROR_TRAP_INIT;
 
@@ -139,7 +146,6 @@ sam_word_t sam_traps_init(void)
 
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
-    SDL_UpdateWindowSurface(win);
 
     return SAM_ERROR_OK;
 }
@@ -173,7 +179,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(color);
             SDL_SetRenderDrawColor(ren, color, color, color, 255);
             SDL_RenderClear(ren);
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_SETDOT:
@@ -184,7 +190,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(x);
             SDL_SetRenderDrawColor(ren, color, color, color, 255);
             SDL_RenderDrawPoint(ren, x, y);
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_DRAWLINE:
@@ -196,7 +202,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(y1);
             POP_UINT(x1);
             drawline(x1, y1, x2, y2, color);
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_DRAWRECT:
@@ -210,7 +216,7 @@ sam_word_t sam_trap(sam_uword_t function)
             SDL_SetRenderDrawColor(ren, color, color, color, 255);
             SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height };
             SDL_RenderDrawRect(ren, &rect);
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_DRAWROUNDRECT:
@@ -223,7 +229,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(y);
             POP_UINT(x);
             roundedRectangleRGBA(ren, x, y, x + width - 1, y + height - 1, radius, color, color, color, 255);
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_FILLRECT:
@@ -237,7 +243,7 @@ sam_word_t sam_trap(sam_uword_t function)
             SDL_SetRenderDrawColor(ren, color, color, color, 255);
             SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height };
             SDL_RenderFillRect(ren, &rect);
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_INVERTRECT:
@@ -254,7 +260,7 @@ sam_word_t sam_trap(sam_uword_t function)
                     SDL_SetRenderDrawColor(ren, ~color, ~color, ~color, 255);
                     SDL_RenderDrawPoint(ren, i, j);
                 }
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_DRAWCIRCLE:
@@ -266,7 +272,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(xCenter);
             // Use roundedRectangle to match GLCD.
             roundedRectangleRGBA(ren, xCenter - radius, yCenter - radius, xCenter + radius, yCenter + radius, radius, color, color, color, 255);
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_FILLCIRCLE:
@@ -277,7 +283,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(yCenter);
             POP_UINT(xCenter);
             fillcircle(xCenter, yCenter, radius, color);
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     case TRAP_DRAWBITMAP:
@@ -289,7 +295,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(bitmap);
             SDL_SetRenderDrawColor(ren, color, color, color, 255);
             // TODO
-            SDL_UpdateWindowSurface(win);
+            update_screen();
         }
         break;
     default:

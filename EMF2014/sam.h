@@ -59,3 +59,4 @@ void sam_print_stack(void);
 sam_word_t sam_traps_init(void);
 void sam_traps_finish(void);
 sam_word_t sam_trap(sam_uword_t function);
+int sam_traps_window_used(void);
