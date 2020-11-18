@@ -25,17 +25,20 @@ enum {
     SAM_ERROR_INVALID_OPCODE = -1,
     SAM_ERROR_STACK_UNDERFLOW = -2,
     SAM_ERROR_STACK_OVERFLOW = -3,
-    SAM_ERROR_NOT_NUMBER = -4,
-    SAM_ERROR_NOT_CODE = -5,
-    SAM_ERROR_BAD_BRACKET = -6,
-    SAM_ERROR_UNPAIRED_PUSH = -7,
+    SAM_ERROR_NOT_INT = -4,
+    SAM_ERROR_NOT_FLOAT = -5,
+    SAM_ERROR_NOT_CODE = -6,
+    SAM_ERROR_BAD_BRACKET = -7,
+    SAM_ERROR_UNPAIRED_FLOAT = -8,
+    SAM_ERROR_UNPAIRED_PUSH = -9,
+    SAM_ERROR_INVALID_SWAP = -10,
     SAM_ERROR_INVALID_FUNCTION = -17,
     SAM_ERROR_BREAK = -256,
     SAM_ERROR_TRAP_INIT = -257,
 };
 
 // Stack access
-int sam_stack_item(sam_uword_t n, sam_uword_t *addr);
+int sam_stack_item(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size);
 int sam_find_code(sam_uword_t code, sam_uword_t *addr);
 int sam_pop_stack(sam_word_t *val_ptr);
 int sam_push_stack(sam_word_t val);

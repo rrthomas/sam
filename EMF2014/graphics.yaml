@@ -1,57 +1,57 @@
 -
   - trap WHITE
   - trap CLEARSCREEN
-  - lit 5
-  - lit 10
+  - int 5
+  - int 10
   - trap BLACK
   - trap SETDOT
-  - lit 2
-  - lit 10
+  - int 2
+  - int 10
   - trap BLACK
   - trap SETDOT
-  - lit 2
-  - lit 5
+  - int 2
+  - int 5
   - trap BLACK
   - trap SETDOT
-  - lit 1
-  - lit 1
-  - lit 11
-  - lit 5
+  - int 1
+  - int 1
+  - int 11
+  - int 5
   - trap BLACK
   - trap DRAWLINE
-  - lit 4
-  - lit 12
-  - lit 6
-  - lit 8
+  - int 4
+  - int 12
+  - int 6
+  - int 8
   - trap BLACK
   - trap DRAWRECT
-  - lit 6
-  - lit 14
-  - lit 2
-  - lit 4
+  - int 6
+  - int 14
+  - int 2
+  - int 4
   - trap BLACK
   - trap FILLRECT
-  - lit 7
-  - lit 16
-  - lit 2
-  - lit 5
+  - int 7
+  - int 16
+  - int 2
+  - int 5
   - trap INVERTRECT
-  - lit 11
-  - lit 12
-  - lit 6
-  - lit 8
-  - lit 3
+  - int 11
+  - int 12
+  - int 6
+  - int 8
+  - int 3
   - trap BLACK
   - trap DRAWROUNDRECT
-  - lit 21
-  - lit 16
-  - lit 4
+  - int 21
+  - int 16
+  - int 4
   - trap BLACK
   - trap DRAWCIRCLE
-  - lit 29
-  - lit 16
-  - lit 4
+  - int 29
+  - int 16
+  - int 4
   - trap BLACK
   - trap FILLCIRCLE
-  - lit 0
+  - int 0
   - halt

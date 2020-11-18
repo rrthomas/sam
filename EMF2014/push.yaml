@@ -1,5 +1,3 @@
 - nop
-- push
-- SAM_INSN_HALT
-- lit 42
-
+- push SAM_INSN_HALT
+- int 42

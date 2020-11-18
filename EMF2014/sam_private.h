@@ -38,39 +38,54 @@
     ((x) >> (p))
 
 // Stack access
-#define POP(ptr)                                \
+#define POP_WORD(ptr)                           \
     HALT_IF_ERROR(sam_pop_stack(ptr))
-#define PUSH(val)                               \
+#define PUSH_WORD(val)                          \
     HALT_IF_ERROR(sam_push_stack(val))
 
 #define _POP_INSN(var, insn, rshift)            \
     do {                                        \
-        POP(&var);                              \
+        POP_WORD(&var);                         \
         if ((var & SAM_OP_MASK) != insn)        \
-            HALT(SAM_ERROR_NOT_NUMBER);         \
+            HALT(SAM_ERROR_NOT_INT);            \
         var = rshift(var, SAM_OP_SHIFT);        \
     } while (0)
-#define _PUSH_INSN(val, insn)                   \
-    PUSH(LSHIFT((val), SAM_OP_SHIFT) | insn)
+#define _PUSH_INSN(val, insn)                           \
+    PUSH_WORD(LSHIFT((val), SAM_OP_SHIFT) | insn)
 
 #define _POP_INT(var, rshift)                   \
-    _POP_INSN(var, SAM_INSN_LIT, rshift)
+    _POP_INSN(var, SAM_INSN_INT, rshift)
 #define POP_INT(var)                            \
     _POP_INT(var, ARSHIFT)
 #define POP_UINT(var)                           \
     _POP_INT(var, LRSHIFT)
 #define PUSH_INT(val)                           \
-    _PUSH_INSN(val, SAM_INSN_LIT)
+    _PUSH_INSN(val, SAM_INSN_INT)
 
 #define POP_LINK(var)                           \
     _POP_INSN(var, SAM_INSN_LINK, LRSHIFT)
 #define PUSH_LINK(addr)                         \
     _PUSH_INSN(addr, SAM_INSN_LINK)
 
-#define PUSH_PUSH(val)                                      \
-    do {                                                    \
-        _PUSH_INSN((val >> SAM_OP_SHIFT), SAM_INSN_PUSH);   \
-        _PUSH_INSN((val & SAM_OP_MASK), SAM_INSN__PUSH);    \
+#define POP_FLOAT(var)                                                  \
+    do {                                                                \
+        sam_uword_t w2;                                                 \
+        POP_WORD(&w2);                                                  \
+        if ((w2 & SAM_OP_MASK) != SAM_INSN__FLOAT)                      \
+            HALT(SAM_ERROR_NOT_FLOAT);                                  \
+        sam_uword_t w1;                                                 \
+        POP_WORD(&w1);                                                  \
+        if ((w1 & SAM_OP_MASK) != SAM_INSN_FLOAT)                       \
+            HALT(SAM_ERROR_UNPAIRED_FLOAT);                             \
+        w1 = ((w1 & ~SAM_OP_MASK) | ((w2 >> SAM_OP_SHIFT) & SAM_OP_MASK)); \
+        var = *(sam_float_t *)&w1;                                      \
+    } while (0)
+
+#define PUSH_FLOAT(val)                                                 \
+    do {                                                                \
+        sam_float_t v = val;                                            \
+        _PUSH_INSN((*(sam_uword_t *)&v >> SAM_OP_SHIFT), SAM_INSN_FLOAT); \
+        _PUSH_INSN((*(sam_uword_t *)&v & SAM_OP_MASK), SAM_INSN__FLOAT); \
     } while (0)
 
 // Execution

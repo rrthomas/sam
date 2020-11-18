@@ -1,28 +1,30 @@
 -
-  - lit 5
+  - float 5.0
   -
-    - lit 1
+    - float 1.0
     -
-      - lit 5
+      - int 5
       - dup
+      - f2i
       - while
-      - lit 1
+      - int 1
       - swap
-      - lit 5
+      - int 5
       - dup
       - mul
-      - lit 4
+      - int 4
       - swap
-      - lit -1
+      - float -1.0
       - add
-      - lit 4
+      - int 4
       - swap
-      - lit 1
+      - int 1
       - swap
       - loop
     - do
-    - lit 2
+    - int 2
     - swap
     - pop
   - do
+  - f2i
   - halt

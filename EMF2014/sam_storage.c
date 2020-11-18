@@ -27,11 +27,12 @@
 // Stack
 
 // Return the offset of stack item n from the top.
-int sam_stack_item(sam_uword_t n, sam_uword_t *addr)
+int sam_stack_item(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
 {
-    sam_uword_t sp = sam_sp;
-    sam_uword_t i;
+    sam_uword_t sp = sam_sp, last_opcode = 0;
+    sam_uword_t i, last_sp;
     for (i = 0; i <= n; i++) {
+        last_sp = sp;
         if (sp == 0)
             return SAM_ERROR_STACK_UNDERFLOW;
         sam_uword_t inst = sam_s0[--sp];
@@ -42,12 +43,19 @@ int sam_stack_item(sam_uword_t n, sam_uword_t *addr)
             if ((sam_s0[sp] & SAM_OP_MASK) != SAM_INSN_BRA)
                 return SAM_ERROR_BAD_BRACKET;
         } else if (opcode == SAM_INSN__PUSH) {
-            if (sam_s0[--sp] != SAM_INSN_PUSH)
+            if (sam_s0[--sp] & SAM_OP_MASK != SAM_INSN_PUSH)
                 return SAM_ERROR_UNPAIRED_PUSH;
-        } else if (opcode == SAM_INSN_PUSH)
+        } else if (opcode == SAM_INSN_PUSH && last_opcode != SAM_INSN__PUSH)
             return SAM_ERROR_UNPAIRED_PUSH;
+        else if (opcode == SAM_INSN__FLOAT) {
+            if (sam_s0[--sp] & SAM_OP_MASK != SAM_INSN_FLOAT)
+                return SAM_ERROR_UNPAIRED_FLOAT;
+        } else if (opcode == SAM_INSN_FLOAT && last_opcode != SAM_INSN__FLOAT)
+            return SAM_ERROR_UNPAIRED_FLOAT;
+        last_opcode = opcode;
     }
     *addr = sp;
+    *size = last_sp - sp;
     return SAM_ERROR_OK;
 }
 
@@ -71,10 +79,10 @@ int sam_find_code(sam_uword_t code, sam_uword_t *addr)
 
 int sam_pop_stack(sam_word_t *val_ptr)
 {
-    sam_uword_t error = sam_stack_item(0, &sam_sp);
-    if (error == SAM_ERROR_OK)
-        *val_ptr = sam_s0[sam_sp];
-    return error;
+    if (sam_sp == 0)
+        return SAM_ERROR_STACK_UNDERFLOW;
+    *val_ptr = sam_s0[--sam_sp];
+    return SAM_ERROR_OK;
 }
 
 int sam_push_stack(sam_word_t val)

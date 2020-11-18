@@ -1,32 +1,32 @@
 -
-  - lit 5
+  - int 5
   -
-    - lit 3
+    - int 3
     - dup
     -
-      - lit 5
+      - int 5
       - dup
-      - lit -1
+      - int -1
       - add
-      - lit 5
+      - int 5
       - dup
-      - lit 0
+      - int 0
       - dup
       - do
       - pop
-      - lit 6
+      - int 6
       - dup
       - mul
-      - lit 5
+      - int 5
       - swap
       - pop
     -
-      - lit 1
-      - lit 5
+      - int 1
+      - int 5
       - swap
       - pop
     - if
-  - lit 0
+  - int 0
   - dup
   - do
   - pop

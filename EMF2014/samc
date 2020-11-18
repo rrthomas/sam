@@ -2,19 +2,16 @@
 # Compile a SAM program to C source
 
 import sys
+import struct
+
 import yaml
+
 
 prog = yaml.safe_load(sys.stdin.read())
 
 INDENT = 2
-def print_indented(s, level=0):
-    print(f"{' ' * (level * INDENT)}{s},")
-
-def recursive_len(item):
-    if isinstance(item, list):
-        return sum(recursive_len(subitem) for subitem in item) + 2
-    else:
-        return 1
+def indented(s, level=0):
+    return f"{' ' * (level * INDENT)}{s},"
 
 def instruction(inst, op=None):
     s = f"SAM_INSN_{inst.upper()}"
@@ -22,27 +19,49 @@ def instruction(inst, op=None):
         s = f"LSHIFT({op}, SAM_OP_SHIFT) | {s}"
     return s
 
-def compile_sam(l, level=0):
-    while len(l) > 0:
-        inst = l.pop(0)
-        if isinstance(inst, list):
-            print_indented(instruction("bra", recursive_len(inst) - 2), level)
-            compile_sam(inst, level + 1)
-            print_indented(instruction("ket", recursive_len(inst) - 2), level)
-        elif inst.startswith("lit"):
-            operand = inst.split(' ')[1]
-            print_indented(instruction("lit", operand), level)
-        elif inst.startswith("trap"):
-            operand = inst.split(' ')[1]
-            print_indented(instruction("trap", f"TRAP_{operand}"), level)
-        elif inst == "push":
-            operand = l.pop(0)
-            print_indented(instruction("push", f"{operand} >> SAM_OP_SHIFT"))
-            print_indented(instruction("_push", f"{operand} & SAM_OP_MASK"))
-        else:
-            print_indented(instruction(inst), level)
+def compile_inst(inst, level=0):
+    if isinstance(inst, list):
+        words, nwords = compile_list(inst, level + 1)
+        words.insert(0, indented(instruction("bra", nwords), level))
+        words.append(indented(instruction("ket", nwords), level))
+        return words, nwords + 2
 
-compile_sam(prog)
+    toks = inst.split(' ')
+    inst = toks[0]
+    operand = None
+    if len(toks) > 1:
+        operand = toks[1]
 
-print_indented(instruction("link", 1))
-print_indented(instruction("link", 1))
+    if inst == "int":
+        return [indented(instruction("int", operand), level)], 1
+    elif inst == "float":
+        f = struct.pack('!f', float(operand)).hex()
+        return [
+            indented(instruction("float", f"0x{f} >> SAM_OP_SHIFT"), level),
+            indented(instruction("_float", f"0x{f} & SAM_OP_MASK"), level),
+        ], 2
+    elif inst == "trap":
+        return [indented(instruction("trap", f"TRAP_{operand}"), level)], 1
+    elif inst == "push":
+        return [
+            indented(instruction("push", f"{operand} >> SAM_OP_SHIFT"), level),
+            indented(instruction("_push", f"{operand} & SAM_OP_MASK"), level),
+        ], 2
+    else:
+        return [indented(instruction(inst), level)], 1
+
+def compile_list(l, level=0):
+    words = []
+    nwords = 0
+    for inst in l:
+        sub_words, n_sub_words = compile_inst(inst, level)
+        words.extend(sub_words)
+        nwords += n_sub_words
+    return words, nwords
+
+words, _ = compile_list(prog)
+for word in words:
+    print(word)
+
+print(indented(instruction("link", 1)))
+print(indented(instruction("link", 1)))
