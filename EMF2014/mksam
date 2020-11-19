@@ -9,4 +9,4 @@ fi
 
 ./samc < $1 > sam_program.h
 wc -l < sam_program.h > sam_program_len.h
-gcc -W -m32 -g -D_GNU_SOURCE -DSAM_DEBUG -o sam sam_*.c -x c sam_main.x -x c sam_traps.x -lm -lSDL2 -lSDL2_gfx
+gcc -Wall -Wextra -m32 -g -D_GNU_SOURCE -DSAM_DEBUG -o sam sam_*.c -x c sam_main.x -x c sam_traps.x -lm -lSDL2 -lSDL2_gfx

@@ -17,11 +17,11 @@ void debug(const char *fmt, ...)
     va_end(ap);
 }
 
-static char *disas(sam_word_t *addr)
+static char *disas(sam_uword_t *addr)
 {
     char *text;
     sam_word_t inst;
-    assert(sam_stack_peek((*addr)++, &inst) == SAM_ERROR_OK);
+    assert(sam_stack_peek((*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     switch (inst & SAM_OP_MASK) {
     case SAM_INSN_NOP:
         asprintf(&text, "nop");

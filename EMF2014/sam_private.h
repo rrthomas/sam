@@ -45,7 +45,7 @@
 
 #define _POP_INSN(var, insn, rshift)            \
     do {                                        \
-        POP_WORD(&var);                         \
+        POP_WORD((sam_word_t *)&var);           \
         if ((var & SAM_OP_MASK) != insn)        \
             HALT(SAM_ERROR_NOT_INT);            \
         var = rshift(var, SAM_OP_SHIFT);        \
@@ -70,11 +70,11 @@
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
         sam_uword_t w2;                                                 \
-        POP_WORD(&w2);                                                  \
+        POP_WORD((sam_word_t *)&w2);                                    \
         if ((w2 & SAM_OP_MASK) != SAM_INSN__FLOAT)                      \
             HALT(SAM_ERROR_NOT_FLOAT);                                  \
         sam_uword_t w1;                                                 \
-        POP_WORD(&w1);                                                  \
+        POP_WORD((sam_word_t *)&w1);                                    \
         if ((w1 & SAM_OP_MASK) != SAM_INSN_FLOAT)                       \
             HALT(SAM_ERROR_UNPAIRED_FLOAT);                             \
         w1 = ((w1 & ~SAM_OP_MASK) | ((w2 >> SAM_OP_SHIFT) & SAM_OP_MASK)); \

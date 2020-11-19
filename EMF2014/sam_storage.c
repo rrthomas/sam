@@ -49,12 +49,10 @@ int sam_stack_poke(sam_uword_t addr, sam_uword_t val)
 // The blocks may overlap.
 static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
 {
-    sam_word_t error = SAM_ERROR_OK;
     if (size > sam_ssize || src > sam_ssize - size || dst > sam_ssize - size)
         return SAM_ERROR_INVALID_ADDRESS;
     memmove(&sam_s0[dst], &sam_s0[src], size * sizeof(sam_word_t));
- error:
-    return error;
+    return SAM_ERROR_OK;
 }
 
 // Swap `size` words anywhere within allocated stack memory.
@@ -83,7 +81,7 @@ static sam_word_t swap_n(sam_uword_t addr1, sam_uword_t addr2, sam_uword_t size)
 static sam_word_t roll_left(sam_uword_t addr)
 {
     sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t i, temp;
+    sam_uword_t temp;
     HALT_IF_ERROR(sam_stack_peek(sam_sp, &temp));
     HALT_IF_ERROR(move_n(addr + 1, addr, sam_sp - addr - 1));
     HALT_IF_ERROR(sam_stack_poke(addr, temp));
@@ -94,7 +92,7 @@ static sam_word_t roll_left(sam_uword_t addr)
 static sam_word_t roll_right(sam_uword_t addr)
 {
     sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t i, temp;
+    sam_uword_t temp;
     HALT_IF_ERROR(sam_stack_peek(addr, &temp));
     HALT_IF_ERROR(move_n(addr, addr + 1, sam_sp - addr - 1));
     HALT_IF_ERROR(sam_stack_poke(sam_sp, temp));
@@ -107,12 +105,15 @@ static sam_word_t roll_right(sam_uword_t addr)
 // The blocks must not overlap; from < to.
 static sam_word_t swap_compact(sam_uword_t from, sam_uword_t from_size, sam_uword_t to, sam_uword_t to_size)
 {
+    sam_word_t error = SAM_ERROR_OK;
     sam_uword_t small_size = MIN(from_size, to_size);
     sam_uword_t big_size = MAX(from_size, to_size);
     swap_n(from, to, small_size);
     sam_uword_t i;
     for (i = 0; i < big_size - small_size; i++)
-        (from_size < to_size ? roll_left : roll_right)(from + (big_size - small_size));
+        HALT_IF_ERROR((from_size < to_size ? roll_left : roll_right)(from + (big_size - small_size)));
+ error:
+    return error;
 }
 
 // Swap two blocks of possibly unequal size in the stack.
@@ -178,7 +179,7 @@ int sam_stack_item(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
         sam_uword_t opcode = inst & SAM_OP_MASK;
         // If instruction is a KET, skip to matching BRA.
         if (opcode == SAM_INSN_KET) {
-            sp -= inst >> SAM_OP_SHIFT + 1;
+            sp -= (inst >> SAM_OP_SHIFT) + 1;
             sam_uword_t opcode2;
             HALT_IF_ERROR(sam_stack_peek(sp, &opcode2));
             if ((opcode2 & SAM_OP_MASK) != SAM_INSN_BRA)
@@ -230,7 +231,7 @@ int sam_pop_stack(sam_word_t *val_ptr)
     sam_word_t error = SAM_ERROR_OK;
     if (sam_sp == 0)
         return SAM_ERROR_STACK_UNDERFLOW;
-    HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, val_ptr));
+    HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, (sam_uword_t *)val_ptr));
     sam_sp--; // Decrement here so argument to sam_stack_peek is valid.
  error:
     return error;
