@@ -1,10 +1,21 @@
+#ifdef SAM_DEBUG
+
 #include <assert.h>
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "sam_private.h"
+
+void debug(const char *fmt, ...)
+{
+    va_list ap;
+    va_start(ap, fmt);
+    vfprintf(stderr, fmt, ap);
+    va_end(ap);
+}
 
 static char *disas(sam_word_t *addr)
 {
@@ -151,14 +162,13 @@ static void print_disas(sam_uword_t level, const char *s)
     sam_uword_t i;
     for (i = 0; i < level * 2; i++)
         putc(' ', stderr);
-    fprintf(stderr, "- %s\n", s);
+    debug("- %s\n", s);
 }
 
-void sam_print_stack(void)
+static void print_stack(sam_uword_t from, sam_uword_t to)
 {
-    fprintf(stderr, "Stack: (%u words)\n", sam_sp);
     sam_uword_t i, level = 0;
-    for (i = 0; i < sam_sp; ) {
+    for (i = from; i < to; ) {
         sam_uword_t opcode;
         assert(sam_stack_peek(i, &opcode) == SAM_ERROR_OK);
         opcode &= SAM_OP_MASK;
@@ -177,3 +187,20 @@ void sam_print_stack(void)
         }
     }
 }
+
+void sam_print_stack(void)
+{
+    debug("Stack: (%u word(s))\n", sam_sp);
+    print_stack(0, sam_sp);
+}
+
+void sam_print_working_stack(void)
+{
+    sam_uword_t static_len =
+#include "sam_program_len.h"
+        - 2; // Subtract the initial return values.
+    debug("Working stack: (%u word(s))\n", sam_sp - static_len);
+    print_stack(static_len, sam_sp);
+}
+
+#endif

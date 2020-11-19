@@ -39,7 +39,7 @@ sam_word_t sam_run(void)
         sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OP_SHIFT);
 #ifdef SAM_DEBUG
         fprintf(stderr, "sam_do: pc = %u, sp = %u, ir = %x\n", pc - 1, sam_sp, ir);
-        sam_print_stack();
+        sam_print_working_stack();
 #endif
 
         switch (ir & SAM_OP_MASK) {

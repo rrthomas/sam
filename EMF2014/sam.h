@@ -57,7 +57,11 @@ int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp);
     (((n) & (SAM_UWORD_MAX >> (p))) << (p))
 
 // Debug
+#ifdef SAM_DEBUG
 void sam_print_stack(void);
+void sam_print_working_stack(void);
+void debug(const char *fmt, ...);
+#endif
 
 // Traps
 sam_word_t sam_traps_init(void);
