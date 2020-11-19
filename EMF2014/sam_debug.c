@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,7 +9,8 @@
 static char *disas(sam_word_t *addr)
 {
     char *text;
-    sam_word_t inst = sam_s0[(*addr)++];
+    sam_word_t inst;
+    assert(sam_stack_peek((*addr)++, &inst) == SAM_ERROR_OK);
     switch (inst & SAM_OP_MASK) {
     case SAM_INSN_NOP:
         asprintf(&text, "nop");
@@ -18,7 +20,8 @@ static char *disas(sam_word_t *addr)
         break;
     case SAM_INSN_FLOAT:
         {
-            sam_uword_t w2 = sam_s0[(*addr)++];
+            sam_uword_t w2;
+            assert(sam_stack_peek((*addr)++, &w2) == SAM_ERROR_OK);
             if ((w2 & SAM_OP_MASK) == SAM_INSN__FLOAT) {
                 sam_uword_t f = (inst & ~SAM_OP_MASK) | ((w2 >> SAM_OP_SHIFT) & SAM_OP_MASK);
                 asprintf(&text, "float %f", *(sam_float_t *)&f);
@@ -37,7 +40,8 @@ static char *disas(sam_word_t *addr)
         break;
     case SAM_INSN_PUSH:
         {
-            sam_uword_t w2 = sam_s0[(*addr)++];
+            sam_uword_t w2;
+            assert(sam_stack_peek((*addr)++, &w2) == SAM_ERROR_OK);
             if ((w2 & SAM_OP_MASK) == SAM_INSN__PUSH) {
                 asprintf(&text, "push 0x%x", ((inst & ~SAM_OP_MASK) |
                                                ((w2 >> SAM_OP_SHIFT) & SAM_OP_MASK)));
@@ -155,7 +159,9 @@ void sam_print_stack(void)
     fprintf(stderr, "Stack: (%u words)\n", sam_sp);
     sam_uword_t i, level = 0;
     for (i = 0; i < sam_sp; ) {
-        sam_uword_t opcode = sam_s0[i] & SAM_OP_MASK;
+        sam_uword_t opcode;
+        assert(sam_stack_peek(i, &opcode) == SAM_ERROR_OK);
+        opcode &= SAM_OP_MASK;
         if (opcode == SAM_INSN_BRA) {
             print_disas(level, "");
             level++;

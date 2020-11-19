@@ -20,119 +20,11 @@
 #include "sam_opcodes.h"
 #include "sam_private.h"
 
-#include "minmax.h"
 
 // Division macros
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))
 #define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
 
-
-// Swap `size` words anywhere within allocated stack memory.
-// The blocks must not overlap.
-static sam_word_t swap_n(sam_uword_t addr1, sam_uword_t addr2, sam_uword_t size)
-{
-    sam_uword_t i;
-    if (size > sam_ssize || addr1 > sam_ssize - size || addr2 > sam_ssize - size)
-        return SAM_ERROR_STACK_OVERFLOW;
-    if ((addr1 >= addr2 && addr1 - addr2 < size) ||
-        (addr1 < addr2 && addr2 - addr1 < size))
-        return SAM_ERROR_INVALID_SWAP;
-    for (i = 0; i < size; i++) {
-        sam_uword_t temp;
-        temp = sam_s0[addr1 + i];
-        sam_s0[addr1 + i] = sam_s0[addr2 + i];
-        sam_s0[addr2 + i] = temp;
-    }
-    return SAM_ERROR_OK;
-}
-
-// Move `size` words anywhere within allocated stack memory.
-// The blocks may overlap.
-static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
-{
-    if (size > sam_ssize || src > sam_ssize - size || dst > sam_ssize - size)
-        return SAM_ERROR_STACK_OVERFLOW;
-    memmove(&sam_s0[dst], &sam_s0[src], size * sizeof(sam_uword_t));
-    return SAM_ERROR_OK;
-}
-
-static sam_word_t roll_left(sam_uword_t addr)
-{
-    sam_uword_t i, temp;
-    temp = sam_s0[sam_sp];
-    for (i = sam_sp; i > addr; i--)
-        sam_s0[i] = sam_s0[i - 1];
-    sam_s0[addr] = temp;
-}
-
-static sam_word_t roll_right(sam_uword_t addr)
-{
-    sam_uword_t i, temp;
-    temp = sam_s0[addr];
-    for (i = addr; i < sam_sp; i++)
-        sam_s0[i] = sam_s0[i + 1];
-    sam_s0[sam_sp] = temp;
-}
-
-// Swap two blocks of possibly unequal size in the stack.
-// The blocks must not overlap; from < to.
-static sam_word_t swap_compact(sam_uword_t from, sam_uword_t from_size, sam_uword_t to, sam_uword_t to_size)
-{
-    sam_uword_t small_size = MIN(from_size, to_size);
-    sam_uword_t big_size = MAX(from_size, to_size);
-    swap_n(from, to, small_size);
-    sam_uword_t i;
-    for (i = 0; i < big_size - small_size; i++)
-        (from_size < to_size ? roll_left : roll_right)(from + (big_size - small_size));
-}
-
-// Swap two blocks of possibly unequal size in the stack.
-// The blocks must not overlap.
-// Uses an extra (big_size - small_size) words of stack space.
-static sam_word_t swap_fast(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
-{
-    sam_uword_t from, from_size, to, to_size;
-    if (addr1 < addr2) {
-        from = addr1;
-        from_size = size1;
-        to = addr2;
-        to_size = size2;
-    } else {
-        from = addr2;
-        from_size = size2;
-        to = addr1;
-        to_size = size1;
-    }
-
-    if (from + from_size > to)
-        return SAM_ERROR_INVALID_SWAP;
-
-    if (from_size < to_size) {
-        move_n(from + to_size, from + from_size, sam_sp - (from + from_size));
-        swap_n(from, to + (to_size - from_size), from_size);
-        move_n(from + from_size, sam_sp, to_size - from_size);
-   } else if (from_size > to_size) {
-        swap_n(from, to, to_size);
-        move_n(sam_sp, from + to_size, from_size - to_size);
-        move_n(from + to_size, from + from_size, sam_sp - (from + to_size));
-    } else
-        swap_n(to, from, from_size);
-    return SAM_ERROR_OK;
-}
-
-// Swap two blocks of possibly unequal size in the stack.
-// The blocks must not overlap.
-static sam_word_t swap(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
-{
-    sam_uword_t big_size = MAX(size1, size2);
-    sam_uword_t small_size = MIN(size1, size2);
-    if (size1 > sam_sp || size2 > sam_sp || addr1 > sam_sp - size1 || addr2 > sam_sp - size2)
-        return SAM_ERROR_STACK_OVERFLOW;
-    if (sam_sp - small_size > sam_ssize - big_size)
-        return swap_compact(addr1, size1, addr2, size2);
-    else
-        return swap_fast(addr1, size1, addr2, size2);
-}
 
 // Execution function
 sam_word_t sam_run(void)
@@ -142,7 +34,8 @@ sam_word_t sam_run(void)
     RET;
 
     for (;;) {
-        sam_uword_t ir = sam_s0[pc++]; // FIXME: range-check all accesses
+        sam_uword_t ir;
+        HALT_IF_ERROR(sam_stack_peek(pc++, &ir));
         sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OP_SHIFT);
 #ifdef SAM_DEBUG
         fprintf(stderr, "sam_do: pc = %u, sp = %u, ir = %x\n", pc - 1, sam_sp, ir);
@@ -166,7 +59,8 @@ sam_word_t sam_run(void)
             fprintf(stderr, "FLOAT\n");
 #endif
             {
-                sam_uword_t operand2 = sam_s0[pc++];
+                sam_uword_t operand2;
+                HALT_IF_ERROR(sam_stack_peek(pc++, &operand2));
                 if ((operand2 & SAM_OP_MASK) != SAM_INSN__FLOAT)
                     HALT(SAM_ERROR_UNPAIRED_FLOAT);
                 PUSH_WORD(ir);
@@ -204,7 +98,8 @@ sam_word_t sam_run(void)
             fprintf(stderr, "PUSH\n");
 #endif
             {
-                sam_uword_t operand2 = sam_s0[pc++];
+                sam_uword_t operand2;
+                HALT_IF_ERROR(sam_stack_peek(pc++, &operand2));
                 if ((operand2 & SAM_OP_MASK) != SAM_INSN__PUSH)
                     HALT(SAM_ERROR_UNPAIRED_PUSH);
                 PUSH_WORD((ir & ~SAM_OP_MASK) | ((operand2 >> SAM_OP_SHIFT) & SAM_OP_MASK));
@@ -237,13 +132,18 @@ sam_word_t sam_run(void)
                 else {
                     sam_uword_t addr, size;
                     HALT_IF_ERROR(sam_stack_item(depth, &addr, &size));
-                    sam_uword_t opcode = sam_s0[addr] & SAM_OP_MASK;
+                    sam_uword_t opcode;
+                    HALT_IF_ERROR(sam_stack_peek(addr, &opcode));
+                    opcode &= SAM_OP_MASK;
                     if (opcode == SAM_INSN_BRA)
                         PUSH_LINK(addr);
                     else {
                         sam_uword_t i;
-                        for (i = 0; i < size; i++)
-                            PUSH_WORD(sam_s0[addr + i]);
+                        for (i = 0; i < size; i++) {
+                            sam_uword_t temp;
+                            HALT_IF_ERROR(sam_stack_peek(addr + i, &temp));
+                            PUSH_WORD(temp);
+                        }
                     }
                 }
             }
@@ -260,7 +160,7 @@ sam_word_t sam_run(void)
                     HALT(SAM_ERROR_STACK_UNDERFLOW);
                 sam_word_t value;
                 POP_WORD(&value);
-                sam_s0[sam_sp - (depth + 1)] = value;
+                HALT_IF_ERROR(sam_stack_poke(sam_sp - (depth + 1), value));
             }
             break;
         case SAM_INSN_SWAP:
@@ -273,7 +173,7 @@ sam_word_t sam_run(void)
                 sam_uword_t addr1, size1, addr2, size2;
                 HALT_IF_ERROR(sam_stack_item(0, &addr1, &size1));
                 HALT_IF_ERROR(sam_stack_item(depth + 1, &addr2, &size2));
-                swap(addr1, size1, addr2, size2);
+                sam_stack_swap(addr1, size1, addr2, size2);
             }
             break;
         case SAM_INSN_IDUP:
@@ -466,140 +366,164 @@ sam_word_t sam_run(void)
 #ifdef SAM_DEBUG
             fprintf(stderr, "LT\n");
 #endif
-            switch (sam_s0[sam_sp - 1] & SAM_OP_MASK) {
-            case SAM_INSN_INT:
-                {
-                    sam_word_t a, b;
-                    POP_INT(a);
-                    POP_INT(b);
-                    PUSH_INT(a < b);
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN_INT:
+                    {
+                        sam_word_t a, b;
+                        POP_INT(a);
+                        POP_INT(b);
+                        PUSH_INT(a < b);
+                    }
+                    break;
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a, b;
+                        POP_FLOAT(a);
+                        POP_FLOAT(b);
+                        PUSH_INT(a < b);
+                    }
+                    break;
                 }
-                break;
-            case SAM_INSN__FLOAT:
-                {
-                    sam_float_t a, b;
-                    POP_FLOAT(a);
-                    POP_FLOAT(b);
-                    PUSH_INT(a < b);
-                }
-                break;
             }
             break;
         case SAM_INSN_NEG:
 #ifdef SAM_DEBUG
             fprintf(stderr, "NEG\n");
 #endif
-            switch (sam_s0[sam_sp - 1] & SAM_OP_MASK) {
-            case SAM_INSN_INT:
-                {
-                    sam_uword_t a;
-                    POP_UINT(a);
-                    PUSH_INT(-a);
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN_INT:
+                    {
+                        sam_uword_t a;
+                        POP_UINT(a);
+                        PUSH_INT(-a);
+                    }
+                    break;
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a;
+                        POP_FLOAT(a);
+                        PUSH_FLOAT(-a);
+                    }
+                    break;
                 }
-                break;
-            case SAM_INSN__FLOAT:
-                {
-                    sam_float_t a;
-                    POP_FLOAT(a);
-                    PUSH_FLOAT(-a);
-                }
-                break;
             }
             break;
         case SAM_INSN_ADD:
 #ifdef SAM_DEBUG
             fprintf(stderr, "ADD\n");
 #endif
-            switch (sam_s0[sam_sp - 1] & SAM_OP_MASK) {
-            case SAM_INSN_INT:
-                {
-                    sam_uword_t a, b;
-                    POP_UINT(a);
-                    POP_UINT(b);
-                    PUSH_INT((sam_word_t)(b + a));
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN_INT:
+                    {
+                        sam_uword_t a, b;
+                        POP_UINT(a);
+                        POP_UINT(b);
+                        PUSH_INT((sam_word_t)(b + a));
+                    }
+                    break;
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a, b;
+                        POP_FLOAT(a);
+                        POP_FLOAT(b);
+                        PUSH_FLOAT(a + b);
+                    }
+                    break;
                 }
-                break;
-            case SAM_INSN__FLOAT:
-                {
-                    sam_float_t a, b;
-                    POP_FLOAT(a);
-                    POP_FLOAT(b);
-                    PUSH_FLOAT(a + b);
-                }
-                break;
             }
             break;
         case SAM_INSN_MUL:
 #ifdef SAM_DEBUG
             fprintf(stderr, "MUL\n");
 #endif
-            switch (sam_s0[sam_sp - 1] & SAM_OP_MASK) {
-            case SAM_INSN_INT:
-                {
-                    sam_uword_t a, b;
-                    POP_UINT(a);
-                    POP_UINT(b);
-                    PUSH_INT((sam_word_t)(a * b));
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN_INT:
+                    {
+                        sam_uword_t a, b;
+                        POP_UINT(a);
+                        POP_UINT(b);
+                        PUSH_INT((sam_word_t)(a * b));
+                    }
+                    break;
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a, b;
+                        POP_FLOAT(a);
+                        POP_FLOAT(b);
+                        PUSH_FLOAT(a * b);
+                    }
+                    break;
                 }
-                break;
-            case SAM_INSN__FLOAT:
-                {
-                    sam_float_t a, b;
-                    POP_FLOAT(a);
-                    POP_FLOAT(b);
-                    PUSH_FLOAT(a * b);
-                }
-                break;
             }
             break;
         case SAM_INSN_DIV:
 #ifdef SAM_DEBUG
             fprintf(stderr, "DIV\n");
 #endif
-            switch (sam_s0[sam_sp - 1] & SAM_OP_MASK) {
-            case SAM_INSN_INT:
-                {
-                    sam_word_t divisor, dividend;
-                    POP_INT(divisor);
-                    POP_INT(dividend);
-                    if (dividend == SAM_WORD_MIN && divisor == -1) {
-                        PUSH_INT(SAM_INT_MIN);
-                    } else {
-                        PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN_INT:
+                    {
+                        sam_word_t divisor, dividend;
+                        POP_INT(divisor);
+                        POP_INT(dividend);
+                        if (dividend == SAM_WORD_MIN && divisor == -1) {
+                            PUSH_INT(SAM_INT_MIN);
+                        } else {
+                            PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
+                        }
                     }
+                    break;
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t divisor, dividend;
+                        POP_FLOAT(divisor);
+                        POP_FLOAT(dividend);
+                        PUSH_FLOAT(DIV_CATCH_ZERO(divisor, dividend));
+                    }
+                    break;
                 }
-                break;
-            case SAM_INSN__FLOAT:
-                {
-                    sam_float_t divisor, dividend;
-                    POP_FLOAT(divisor);
-                    POP_FLOAT(dividend);
-                    PUSH_FLOAT(DIV_CATCH_ZERO(divisor, dividend));
-                }
-                break;
             }
             break;
         case SAM_INSN_REM:
 #ifdef SAM_DEBUG
             fprintf(stderr, "REM\n");
 #endif
-            switch (sam_s0[sam_sp - 1] & SAM_OP_MASK) {
-            case SAM_INSN_INT:
-                {
-                    sam_uword_t divisor, dividend;
-                    POP_UINT(divisor);
-                    POP_UINT(dividend);
-                    PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN_INT:
+                    {
+                        sam_uword_t divisor, dividend;
+                        POP_UINT(divisor);
+                        POP_UINT(dividend);
+                        PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
+                    }
+                    break;
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t divisor, dividend;
+                        POP_FLOAT(divisor);
+                        POP_FLOAT(dividend);
+                        PUSH_FLOAT(divisor == 0 ? dividend : fmodf(divisor, dividend));
+                    }
+                    break;
                 }
-                break;
-            case SAM_INSN__FLOAT:
-                {
-                    sam_float_t divisor, dividend;
-                    POP_FLOAT(divisor);
-                    POP_FLOAT(dividend);
-                    PUSH_FLOAT(divisor == 0 ? dividend : fmodf(divisor, dividend));
-                }
-                break;
             }
             break;
         case SAM_INSN_HALT:
