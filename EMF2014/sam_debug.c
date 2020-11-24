@@ -196,11 +196,25 @@ void sam_print_stack(void)
 
 void sam_print_working_stack(void)
 {
-    sam_uword_t static_len =
-#include "sam_program_len.h"
-        - 2; // Subtract the initial return values.
+    sam_uword_t static_len = sam_program_len - 2; // Subtract the initial return values.
     debug("Working stack: (%u word(s))\n", sam_sp - static_len);
     print_stack(static_len, sam_sp);
+}
+
+/* Dump screen as a PBM */
+void sam_dump_screen(void)
+{
+    debug("P1\n");
+    debug("# SAM screen dump\n");
+    debug("%u %u\n", SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT);
+    for (size_t j = 0; j < SAM_DISPLAY_HEIGHT; j++) {
+        for (size_t i = 0; i < SAM_DISPLAY_WIDTH; i++) {
+            debug("%d", sam_getpixel(i, j) ? 0 : 1);
+            if (i < SAM_DISPLAY_WIDTH - 1)
+                debug(" ");
+        }
+        debug("\n");
+    }
 }
 
 #endif

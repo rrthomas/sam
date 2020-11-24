@@ -30,10 +30,10 @@ sam_word_t sam_trap(sam_uword_t function)
         PUSH_INT(WHITE);
         break;
     case TRAP_DISPLAY_WIDTH:
-        PUSH_INT(64);
+        PUSH_INT(SAM_DISPLAY_WIDTH);
         break;
     case TRAP_DISPLAY_HEIGHT:
-        PUSH_INT(128);
+        PUSH_INT(SAM_DISPLAY_HEIGHT);
         break;
     case TRAP_CLEARSCREEN:
         {

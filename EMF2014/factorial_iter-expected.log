@@ -1,0 +1,1002 @@
+Stack: (38 word(s))
+- 
+  - float 5.000000
+  - 
+    - float 1.000000
+    - 
+      - int 5
+      - dup
+      - f2i
+      - while
+      - int 1
+      - swap
+      - int 5
+      - dup
+      - mul
+      - int 4
+      - swap
+      - float -1.000000
+      - add
+      - int 4
+      - swap
+      - int 1
+      - swap
+      - loop
+    - do
+    - int 2
+    - swap
+    - pop
+  - do
+  - f2i
+  - halt
+- link 1
+- link 1
+sam_do: pc = 1, sp = 36, ir = 40a00002
+Working stack: (0 word(s))
+FLOAT
+sam_do: pc = 3, sp = 38, ir = 1b0e
+Working stack: (2 word(s))
+- float 5.000000
+BRA
+sam_do: pc = 32, sp = 39, ir = 11
+Working stack: (3 word(s))
+- float 5.000000
+- link 3
+DO
+sam_do: pc = 4, sp = 40, ir = 3f800002
+Working stack: (4 word(s))
+- float 5.000000
+- link 1
+- link 33
+FLOAT
+sam_do: pc = 6, sp = 42, ir = 130e
+Working stack: (6 word(s))
+- float 5.000000
+- link 1
+- link 33
+- float 1.000000
+BRA
+sam_do: pc = 27, sp = 43, ir = 11
+Working stack: (7 word(s))
+- float 5.000000
+- link 1
+- link 33
+- float 1.000000
+- link 6
+DO
+sam_do: pc = 7, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 5.000000
+- link 1
+- link 33
+- float 1.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 8, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 5.000000
+- link 1
+- link 33
+- float 1.000000
+- link 4
+- link 28
+- int 5
+DUP
+sam_do: pc = 9, sp = 46, ir = 5
+Working stack: (10 word(s))
+- float 5.000000
+- link 1
+- link 33
+- float 1.000000
+- link 4
+- link 28
+- float 5.000000
+F2I
+sam_do: pc = 10, sp = 45, ir = 13
+Working stack: (9 word(s))
+- float 5.000000
+- link 1
+- link 33
+- float 1.000000
+- link 4
+- link 28
+- int 5
+WHILE
+sam_do: pc = 11, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 5.000000
+- link 1
+- link 33
+- float 1.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 12, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 5.000000
+- link 1
+- link 33
+- float 1.000000
+- link 4
+- link 28
+- int 1
+SWAP
+sam_do: pc = 13, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 1.000000
+INT
+sam_do: pc = 14, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 1.000000
+- int 5
+DUP
+sam_do: pc = 15, sp = 46, ir = 20
+Working stack: (10 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 1.000000
+- float 5.000000
+MUL
+sam_do: pc = 16, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+INT
+sam_do: pc = 17, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+- int 4
+SWAP
+sam_do: pc = 18, sp = 44, ir = bf800002
+Working stack: (8 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+FLOAT
+sam_do: pc = 20, sp = 46, ir = 1f
+Working stack: (10 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+- float -1.000000
+ADD
+sam_do: pc = 21, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 4.000000
+INT
+sam_do: pc = 22, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 5.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 4.000000
+- int 4
+SWAP
+sam_do: pc = 23, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 4.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+INT
+sam_do: pc = 24, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 4.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+- int 1
+SWAP
+sam_do: pc = 25, sp = 44, ir = 14
+Working stack: (8 word(s))
+- float 4.000000
+- link 1
+- link 33
+- float 5.000000
+- link 4
+- link 28
+LOOP
+sam_do: pc = 7, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 4.000000
+- link 1
+- link 33
+- float 5.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 8, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 4.000000
+- link 1
+- link 33
+- float 5.000000
+- link 4
+- link 28
+- int 5
+DUP
+sam_do: pc = 9, sp = 46, ir = 5
+Working stack: (10 word(s))
+- float 4.000000
+- link 1
+- link 33
+- float 5.000000
+- link 4
+- link 28
+- float 4.000000
+F2I
+sam_do: pc = 10, sp = 45, ir = 13
+Working stack: (9 word(s))
+- float 4.000000
+- link 1
+- link 33
+- float 5.000000
+- link 4
+- link 28
+- int 4
+WHILE
+sam_do: pc = 11, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 4.000000
+- link 1
+- link 33
+- float 5.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 12, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 4.000000
+- link 1
+- link 33
+- float 5.000000
+- link 4
+- link 28
+- int 1
+SWAP
+sam_do: pc = 13, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 4.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+INT
+sam_do: pc = 14, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 4.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+- int 5
+DUP
+sam_do: pc = 15, sp = 46, ir = 20
+Working stack: (10 word(s))
+- float 4.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 5.000000
+- float 4.000000
+MUL
+sam_do: pc = 16, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 4.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 20.000000
+INT
+sam_do: pc = 17, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 4.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 20.000000
+- int 4
+SWAP
+sam_do: pc = 18, sp = 44, ir = bf800002
+Working stack: (8 word(s))
+- float 20.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 4.000000
+FLOAT
+sam_do: pc = 20, sp = 46, ir = 1f
+Working stack: (10 word(s))
+- float 20.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 4.000000
+- float -1.000000
+ADD
+sam_do: pc = 21, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 20.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 3.000000
+INT
+sam_do: pc = 22, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 20.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 3.000000
+- int 4
+SWAP
+sam_do: pc = 23, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 3.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 20.000000
+INT
+sam_do: pc = 24, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 3.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 20.000000
+- int 1
+SWAP
+sam_do: pc = 25, sp = 44, ir = 14
+Working stack: (8 word(s))
+- float 3.000000
+- link 1
+- link 33
+- float 20.000000
+- link 4
+- link 28
+LOOP
+sam_do: pc = 7, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 3.000000
+- link 1
+- link 33
+- float 20.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 8, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 3.000000
+- link 1
+- link 33
+- float 20.000000
+- link 4
+- link 28
+- int 5
+DUP
+sam_do: pc = 9, sp = 46, ir = 5
+Working stack: (10 word(s))
+- float 3.000000
+- link 1
+- link 33
+- float 20.000000
+- link 4
+- link 28
+- float 3.000000
+F2I
+sam_do: pc = 10, sp = 45, ir = 13
+Working stack: (9 word(s))
+- float 3.000000
+- link 1
+- link 33
+- float 20.000000
+- link 4
+- link 28
+- int 3
+WHILE
+sam_do: pc = 11, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 3.000000
+- link 1
+- link 33
+- float 20.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 12, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 3.000000
+- link 1
+- link 33
+- float 20.000000
+- link 4
+- link 28
+- int 1
+SWAP
+sam_do: pc = 13, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 3.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 20.000000
+INT
+sam_do: pc = 14, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 3.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 20.000000
+- int 5
+DUP
+sam_do: pc = 15, sp = 46, ir = 20
+Working stack: (10 word(s))
+- float 3.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 20.000000
+- float 3.000000
+MUL
+sam_do: pc = 16, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 3.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 60.000000
+INT
+sam_do: pc = 17, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 3.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 60.000000
+- int 4
+SWAP
+sam_do: pc = 18, sp = 44, ir = bf800002
+Working stack: (8 word(s))
+- float 60.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 3.000000
+FLOAT
+sam_do: pc = 20, sp = 46, ir = 1f
+Working stack: (10 word(s))
+- float 60.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 3.000000
+- float -1.000000
+ADD
+sam_do: pc = 21, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 60.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 2.000000
+INT
+sam_do: pc = 22, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 60.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 2.000000
+- int 4
+SWAP
+sam_do: pc = 23, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 2.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 60.000000
+INT
+sam_do: pc = 24, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 2.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 60.000000
+- int 1
+SWAP
+sam_do: pc = 25, sp = 44, ir = 14
+Working stack: (8 word(s))
+- float 2.000000
+- link 1
+- link 33
+- float 60.000000
+- link 4
+- link 28
+LOOP
+sam_do: pc = 7, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 2.000000
+- link 1
+- link 33
+- float 60.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 8, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 2.000000
+- link 1
+- link 33
+- float 60.000000
+- link 4
+- link 28
+- int 5
+DUP
+sam_do: pc = 9, sp = 46, ir = 5
+Working stack: (10 word(s))
+- float 2.000000
+- link 1
+- link 33
+- float 60.000000
+- link 4
+- link 28
+- float 2.000000
+F2I
+sam_do: pc = 10, sp = 45, ir = 13
+Working stack: (9 word(s))
+- float 2.000000
+- link 1
+- link 33
+- float 60.000000
+- link 4
+- link 28
+- int 2
+WHILE
+sam_do: pc = 11, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 2.000000
+- link 1
+- link 33
+- float 60.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 12, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 2.000000
+- link 1
+- link 33
+- float 60.000000
+- link 4
+- link 28
+- int 1
+SWAP
+sam_do: pc = 13, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 2.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 60.000000
+INT
+sam_do: pc = 14, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 2.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 60.000000
+- int 5
+DUP
+sam_do: pc = 15, sp = 46, ir = 20
+Working stack: (10 word(s))
+- float 2.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 60.000000
+- float 2.000000
+MUL
+sam_do: pc = 16, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 2.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+INT
+sam_do: pc = 17, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 2.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+- int 4
+SWAP
+sam_do: pc = 18, sp = 44, ir = bf800002
+Working stack: (8 word(s))
+- float 120.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 2.000000
+FLOAT
+sam_do: pc = 20, sp = 46, ir = 1f
+Working stack: (10 word(s))
+- float 120.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 2.000000
+- float -1.000000
+ADD
+sam_do: pc = 21, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 120.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 1.000000
+INT
+sam_do: pc = 22, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 120.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 1.000000
+- int 4
+SWAP
+sam_do: pc = 23, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 1.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+INT
+sam_do: pc = 24, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 1.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+- int 1
+SWAP
+sam_do: pc = 25, sp = 44, ir = 14
+Working stack: (8 word(s))
+- float 1.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+LOOP
+sam_do: pc = 7, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 1.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 8, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 1.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+- int 5
+DUP
+sam_do: pc = 9, sp = 46, ir = 5
+Working stack: (10 word(s))
+- float 1.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+- float 1.000000
+F2I
+sam_do: pc = 10, sp = 45, ir = 13
+Working stack: (9 word(s))
+- float 1.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+- int 1
+WHILE
+sam_do: pc = 11, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 1.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 12, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 1.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+- int 1
+SWAP
+sam_do: pc = 13, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 1.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+INT
+sam_do: pc = 14, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 1.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+- int 5
+DUP
+sam_do: pc = 15, sp = 46, ir = 20
+Working stack: (10 word(s))
+- float 1.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+- float 1.000000
+MUL
+sam_do: pc = 16, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 1.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+INT
+sam_do: pc = 17, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 1.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+- int 4
+SWAP
+sam_do: pc = 18, sp = 44, ir = bf800002
+Working stack: (8 word(s))
+- float 120.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 1.000000
+FLOAT
+sam_do: pc = 20, sp = 46, ir = 1f
+Working stack: (10 word(s))
+- float 120.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 1.000000
+- float -1.000000
+ADD
+sam_do: pc = 21, sp = 44, ir = 401
+Working stack: (8 word(s))
+- float 120.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 0.000000
+INT
+sam_do: pc = 22, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 120.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 0.000000
+- int 4
+SWAP
+sam_do: pc = 23, sp = 44, ir = 101
+Working stack: (8 word(s))
+- float 0.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+INT
+sam_do: pc = 24, sp = 45, ir = b
+Working stack: (9 word(s))
+- float 0.000000
+- link 1
+- link 33
+- link 28
+- link 4
+- float 120.000000
+- int 1
+SWAP
+sam_do: pc = 25, sp = 44, ir = 14
+Working stack: (8 word(s))
+- float 0.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+LOOP
+sam_do: pc = 7, sp = 44, ir = 501
+Working stack: (8 word(s))
+- float 0.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+INT
+sam_do: pc = 8, sp = 45, ir = 9
+Working stack: (9 word(s))
+- float 0.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+- int 5
+DUP
+sam_do: pc = 9, sp = 46, ir = 5
+Working stack: (10 word(s))
+- float 0.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+- float 0.000000
+F2I
+sam_do: pc = 10, sp = 45, ir = 13
+Working stack: (9 word(s))
+- float 0.000000
+- link 1
+- link 33
+- float 120.000000
+- link 4
+- link 28
+- int 0
+WHILE
+sam_do: pc = 28, sp = 42, ir = 201
+Working stack: (6 word(s))
+- float 0.000000
+- link 1
+- link 33
+- float 120.000000
+INT
+sam_do: pc = 29, sp = 43, ir = b
+Working stack: (7 word(s))
+- float 0.000000
+- link 1
+- link 33
+- float 120.000000
+- int 2
+SWAP
+sam_do: pc = 30, sp = 42, ir = 8
+Working stack: (6 word(s))
+- float 120.000000
+- link 1
+- link 33
+- float 0.000000
+POP
+sam_do: pc = 31, sp = 40, ir = 1b0f
+Working stack: (4 word(s))
+- float 120.000000
+- link 1
+- link 33
+KET
+sam_do: pc = 33, sp = 38, ir = 5
+Working stack: (2 word(s))
+- float 120.000000
+F2I
+sam_do: pc = 34, sp = 37, ir = 23
+Working stack: (1 word(s))
+- int 120
+HALT
+sam_run returns 120

@@ -64,7 +64,12 @@ void debug(const char *fmt, ...);
 #endif
 
 // Traps
+#define SAM_DISPLAY_WIDTH 64
+#define SAM_DISPLAY_HEIGHT 128
+
 sam_word_t sam_traps_init(void);
 void sam_traps_finish(void);
 sam_word_t sam_trap(sam_uword_t function);
 int sam_traps_window_used(void);
+uint32_t sam_getpixel(int x, int y);
+void sam_dump_screen(void);

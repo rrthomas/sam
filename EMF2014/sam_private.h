@@ -101,6 +101,11 @@
         POP_LINK(pc0);                          \
     } while (0)
 
+// Program
+#define SAM_STACK_WORDS 4096
+extern sam_word_t sam_stack[SAM_STACK_WORDS];
+extern sam_word_t sam_program_len;
+
 // Traps
 sam_word_t trap(sam_word_t code);
 sam_word_t trap_tildav2(sam_uword_t function);

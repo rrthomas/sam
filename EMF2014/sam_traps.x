@@ -19,8 +19,6 @@
 #include "sam_private.h"
 #include "sam_traps.h"
 
-#define DISPLAY_WIDTH 64
-#define DISPLAY_HEIGHT 128
 #define PIXEL_SIZE 8
 static SDL_Window *win;
 static SDL_Renderer *ren;
@@ -97,11 +95,11 @@ static void fillcircle(uint8_t xCenter, uint8_t yCenter, uint8_t radius, uint8_t
 }
 
 // Code from https://stackoverflow.com/questions/53033971/how-to-get-the-color-of-a-specific-pixel-from-sdl-surface
-Uint32 getpixel(SDL_Surface *surface, int x, int y)
+uint32_t sam_getpixel(int x, int y)
 {
-    int bpp = surface->format->BytesPerPixel;
+    int bpp = srf->format->BytesPerPixel;
     /* Here p is the address to the pixel we want to retrieve */
-    Uint8 *p = (Uint8 *)surface->pixels + y * surface->pitch * PIXEL_SIZE + x * bpp * PIXEL_SIZE;
+    Uint8 *p = (Uint8 *)srf->pixels + y * srf->pitch * PIXEL_SIZE + x * bpp * PIXEL_SIZE;
 
     switch (bpp)
         {
@@ -134,13 +132,13 @@ sam_word_t sam_traps_init(void)
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
         return SAM_ERROR_TRAP_INIT;
 
-    win = SDL_CreateWindow("SAM", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, DISPLAY_WIDTH * PIXEL_SIZE, DISPLAY_HEIGHT * PIXEL_SIZE, SDL_WINDOW_HIDDEN);
+    win = SDL_CreateWindow("SAM", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SAM_DISPLAY_WIDTH * PIXEL_SIZE, SAM_DISPLAY_HEIGHT * PIXEL_SIZE, SDL_WINDOW_HIDDEN);
     if (win == NULL)
         return SAM_ERROR_TRAP_INIT;
 
     srf = SDL_GetWindowSurface(win);
     ren = SDL_CreateSoftwareRenderer(srf);
-    SDL_RenderSetLogicalSize(ren, DISPLAY_WIDTH, DISPLAY_HEIGHT);
+    SDL_RenderSetLogicalSize(ren, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT);
     if (ren == NULL)
         return SAM_ERROR_TRAP_INIT;
 
@@ -168,10 +166,10 @@ sam_word_t sam_trap(sam_uword_t function)
         PUSH_INT(0xffffff);
         break;
     case TRAP_DISPLAY_WIDTH:
-        PUSH_INT(DISPLAY_WIDTH);
+        PUSH_INT(SAM_DISPLAY_WIDTH);
         break;
     case TRAP_DISPLAY_HEIGHT:
-        PUSH_INT(DISPLAY_HEIGHT);
+        PUSH_INT(SAM_DISPLAY_HEIGHT);
         break;
     case TRAP_CLEARSCREEN:
         {
@@ -256,7 +254,7 @@ sam_word_t sam_trap(sam_uword_t function)
             sam_word_t i, j;
             for (i = x; i < x + width; i++)
                 for (j = y; j < y + height; j++) {
-                    Uint8 color = (Uint8)getpixel(srf, i, j);
+                    Uint8 color = (Uint8)sam_getpixel(i, j);
                     SDL_SetRenderDrawColor(ren, ~color, ~color, ~color, 255);
                     SDL_RenderDrawPoint(ren, i, j);
                 }

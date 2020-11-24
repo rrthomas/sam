@@ -1,0 +1,19 @@
+Stack: (6 word(s))
+- nop
+- push 0x23
+- int 42
+- link 1
+- link 1
+sam_do: pc = 1, sp = 4, ir = 6
+Working stack: (0 word(s))
+PUSH
+sam_do: pc = 3, sp = 5, ir = 2a01
+Working stack: (1 word(s))
+- halt
+INT
+sam_do: pc = 4, sp = 6, ir = 23
+Working stack: (2 word(s))
+- halt
+- int 42
+HALT
+sam_run returns 42

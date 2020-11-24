@@ -3,10 +3,38 @@
 set -e
 
 if test $# -lt 1; then
-    echo Usage: mksam PROGRAM.YAML
+    echo Usage: mksam PROGRAM.YAML [EXE-NAME]
     exit 1
 fi
+PROGRAM=$1
 
-./samc < $1 > sam_program.h
-wc -l < sam_program.h > sam_program_len.h
-gcc -Wall -Wextra -m32 -g -D_GNU_SOURCE -DSAM_DEBUG -o sam sam_*.c -x c sam_main.x -x c sam_traps.x -lm -lSDL2 -lSDL2_gfx
+TEST_EXE=sam
+if test $# -gt 1; then
+    TEST_EXE=$2
+fi
+
+PROGRAM_SOURCE=$PROGRAM.c
+PROGRAM_ASM=${PROGRAM}_asm.c
+PROGRAM_LEN_SOURCE=${PROGRAM}_len.c
+
+./samc < $PROGRAM > $PROGRAM_ASM
+
+cat <<EOF > $PROGRAM_SOURCE
+#include "sam.h"
+#include "sam_opcodes.h"
+#include "sam_traps.h"
+#include "sam_private.h"
+
+sam_word_t sam_stack[SAM_STACK_WORDS] = {
+EOF
+cat $PROGRAM_ASM >> $PROGRAM_SOURCE
+echo "};" >> $PROGRAM_SOURCE
+
+cat <<EOF > $PROGRAM_LEN_SOURCE
+#include "sam.h"
+sam_uword_t sam_program_len =
+EOF
+wc -l < $PROGRAM_ASM >> $PROGRAM_LEN_SOURCE
+echo ";" >> $PROGRAM_LEN_SOURCE
+
+gcc -Wall -Wextra -m32 -g -D_GNU_SOURCE -DSAM_DEBUG -o $TEST_EXE sam_*.c $PROGRAM_SOURCE $PROGRAM_LEN_SOURCE -x c sam_main.x -x c sam_traps.x -lm -lSDL2 -lSDL2_gfx
