@@ -164,13 +164,47 @@ sam_word_t sam_stack_swap(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr
         return swap_fast(addr1, size1, addr2, size2);
 }
 
-// Return the offset of stack item n from the top.
-int sam_stack_item(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
+static int stack_item_bottom(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
+{
+    if (n >= sam_sp)
+        return SAM_ERROR_STACK_OVERFLOW;
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t sp = n, inst;
+    HALT_IF_ERROR(sam_stack_peek(sp++, &inst));
+    sam_uword_t opcode = inst & SAM_OP_MASK;
+    // If instruction is a BRA, skip to matching KET.
+    if (opcode == SAM_INSN_BRA) {
+        sp += inst >> SAM_OP_SHIFT;
+        sam_uword_t opcode2;
+        HALT_IF_ERROR(sam_stack_peek(sp++, &opcode2));
+        if ((opcode2 & SAM_OP_MASK) != SAM_INSN_KET)
+            return SAM_ERROR_BAD_BRACKET;
+    } else if (opcode == SAM_INSN_PUSH) {
+        sam_uword_t opcode2;
+        HALT_IF_ERROR(sam_stack_peek(sp++, &opcode2));
+        if ((opcode2 & SAM_OP_MASK) != SAM_INSN__PUSH)
+            return SAM_ERROR_UNPAIRED_PUSH;
+    } else if (opcode == SAM_INSN__PUSH)
+        return SAM_ERROR_UNPAIRED_PUSH;
+    else if (opcode == SAM_INSN_FLOAT) {
+        sam_uword_t opcode2;
+        HALT_IF_ERROR(sam_stack_peek(sp++, &opcode2));
+        if ((opcode2 & SAM_OP_MASK) != SAM_INSN__FLOAT)
+            return SAM_ERROR_UNPAIRED_FLOAT;
+    } else if (opcode == SAM_INSN__FLOAT)
+        return SAM_ERROR_UNPAIRED_FLOAT;
+    *addr = n;
+    *size = sp - n;
+ error:
+    return error;
+}
+
+static int stack_item_top(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t sp = sam_sp, last_opcode = 0;
     sam_uword_t i, last_sp;
-    for (i = 0; i <= n; i++) {
+    for (i = 0; i < n; i++) {
         last_sp = sp;
         if (sp == 0)
             return SAM_ERROR_STACK_UNDERFLOW;
@@ -204,6 +238,16 @@ int sam_stack_item(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
     *size = last_sp - sp;
  error:
     return error;
+}
+
+// If n < 0, return offset of stack item n from top; otherwise,
+// check n is the address of a stack item, and return it.
+int sam_stack_item(sam_word_t n, sam_uword_t *addr, sam_uword_t *size)
+{
+    if (n >= 0)
+        return stack_item_bottom(n, addr, size);
+    else
+        return stack_item_top(-n, addr, size);
 }
 
 // Given a LINK instruction, find the corresponding BRA instruction, and

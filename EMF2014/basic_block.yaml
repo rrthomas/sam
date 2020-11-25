@@ -4,12 +4,12 @@
   - mul
   - int 3
   - neg
-  - int 0
+  - int -1
   - dup
-  - int 1
+  - int -3
   - swap
   - add
-  - int 0
+  - int -2
   - swap
   - div
   - halt

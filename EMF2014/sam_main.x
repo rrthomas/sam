@@ -14,10 +14,10 @@ int main(void) {
     int res = sam_init(&sam_stack[0], SAM_STACK_WORDS, sam_program_len);
     HALT_IF_ERROR(res);
     sam_print_stack();
-    printf("sam_run returns %d\n", sam_run());
 
  error:
 #ifdef SAM_DEBUG
+    debug("sam_run returns %d\n", sam_run());
     if (sam_traps_window_used()) {
         sam_dump_screen();
         getchar();

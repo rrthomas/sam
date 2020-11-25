@@ -58,10 +58,10 @@ Stack: (60 word(s))
   - halt
 - link 1
 - link 1
-sam_do: pc = 1, sp = 58, ir = 124
+sam_do: pc = 1, sp = 58, ir = 123
 Working stack: (0 word(s))
 TRAP
-sam_do: pc = 2, sp = 59, ir = 424
+sam_do: pc = 2, sp = 59, ir = 423
 Working stack: (1 word(s))
 - int -1
 TRAP
@@ -72,12 +72,12 @@ sam_do: pc = 4, sp = 59, ir = a01
 Working stack: (1 word(s))
 - int 5
 INT
-sam_do: pc = 5, sp = 60, ir = 24
+sam_do: pc = 5, sp = 60, ir = 23
 Working stack: (2 word(s))
 - int 5
 - int 10
 TRAP
-sam_do: pc = 6, sp = 61, ir = 524
+sam_do: pc = 6, sp = 61, ir = 523
 Working stack: (3 word(s))
 - int 5
 - int 10
@@ -90,12 +90,12 @@ sam_do: pc = 8, sp = 59, ir = a01
 Working stack: (1 word(s))
 - int 2
 INT
-sam_do: pc = 9, sp = 60, ir = 24
+sam_do: pc = 9, sp = 60, ir = 23
 Working stack: (2 word(s))
 - int 2
 - int 10
 TRAP
-sam_do: pc = 10, sp = 61, ir = 524
+sam_do: pc = 10, sp = 61, ir = 523
 Working stack: (3 word(s))
 - int 2
 - int 10
@@ -108,12 +108,12 @@ sam_do: pc = 12, sp = 59, ir = 501
 Working stack: (1 word(s))
 - int 2
 INT
-sam_do: pc = 13, sp = 60, ir = 24
+sam_do: pc = 13, sp = 60, ir = 23
 Working stack: (2 word(s))
 - int 2
 - int 5
 TRAP
-sam_do: pc = 14, sp = 61, ir = 524
+sam_do: pc = 14, sp = 61, ir = 523
 Working stack: (3 word(s))
 - int 2
 - int 5
@@ -137,14 +137,14 @@ Working stack: (3 word(s))
 - int 1
 - int 11
 INT
-sam_do: pc = 19, sp = 62, ir = 24
+sam_do: pc = 19, sp = 62, ir = 23
 Working stack: (4 word(s))
 - int 1
 - int 1
 - int 11
 - int 5
 TRAP
-sam_do: pc = 20, sp = 63, ir = 624
+sam_do: pc = 20, sp = 63, ir = 623
 Working stack: (5 word(s))
 - int 1
 - int 1
@@ -170,14 +170,14 @@ Working stack: (3 word(s))
 - int 12
 - int 6
 INT
-sam_do: pc = 25, sp = 62, ir = 24
+sam_do: pc = 25, sp = 62, ir = 23
 Working stack: (4 word(s))
 - int 4
 - int 12
 - int 6
 - int 8
 TRAP
-sam_do: pc = 26, sp = 63, ir = 724
+sam_do: pc = 26, sp = 63, ir = 723
 Working stack: (5 word(s))
 - int 4
 - int 12
@@ -203,14 +203,14 @@ Working stack: (3 word(s))
 - int 14
 - int 2
 INT
-sam_do: pc = 31, sp = 62, ir = 24
+sam_do: pc = 31, sp = 62, ir = 23
 Working stack: (4 word(s))
 - int 6
 - int 14
 - int 2
 - int 4
 TRAP
-sam_do: pc = 32, sp = 63, ir = 924
+sam_do: pc = 32, sp = 63, ir = 923
 Working stack: (5 word(s))
 - int 6
 - int 14
@@ -236,7 +236,7 @@ Working stack: (3 word(s))
 - int 16
 - int 2
 INT
-sam_do: pc = 37, sp = 62, ir = a24
+sam_do: pc = 37, sp = 62, ir = a23
 Working stack: (4 word(s))
 - int 7
 - int 16
@@ -268,7 +268,7 @@ Working stack: (4 word(s))
 - int 6
 - int 8
 INT
-sam_do: pc = 43, sp = 63, ir = 24
+sam_do: pc = 43, sp = 63, ir = 23
 Working stack: (5 word(s))
 - int 11
 - int 12
@@ -276,7 +276,7 @@ Working stack: (5 word(s))
 - int 8
 - int 3
 TRAP
-sam_do: pc = 44, sp = 64, ir = 824
+sam_do: pc = 44, sp = 64, ir = 823
 Working stack: (6 word(s))
 - int 11
 - int 12
@@ -297,13 +297,13 @@ Working stack: (2 word(s))
 - int 21
 - int 16
 INT
-sam_do: pc = 48, sp = 61, ir = 24
+sam_do: pc = 48, sp = 61, ir = 23
 Working stack: (3 word(s))
 - int 21
 - int 16
 - int 4
 TRAP
-sam_do: pc = 49, sp = 62, ir = b24
+sam_do: pc = 49, sp = 62, ir = b23
 Working stack: (4 word(s))
 - int 21
 - int 16
@@ -322,13 +322,13 @@ Working stack: (2 word(s))
 - int 29
 - int 16
 INT
-sam_do: pc = 53, sp = 61, ir = 24
+sam_do: pc = 53, sp = 61, ir = 23
 Working stack: (3 word(s))
 - int 29
 - int 16
 - int 4
 TRAP
-sam_do: pc = 54, sp = 62, ir = c24
+sam_do: pc = 54, sp = 62, ir = c23
 Working stack: (4 word(s))
 - int 29
 - int 16
@@ -338,10 +338,11 @@ TRAP
 sam_do: pc = 55, sp = 58, ir = 1
 Working stack: (0 word(s))
 INT
-sam_do: pc = 56, sp = 59, ir = 23
+sam_do: pc = 56, sp = 59, ir = 22
 Working stack: (1 word(s))
 - int 0
 HALT
+sam_run returns 0
 P1
 # SAM screen dump
 64 128
@@ -473,4 +474,3 @@ P1
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-sam_run returns 0

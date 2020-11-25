@@ -30,7 +30,7 @@
 sam_word_t sam_run(void)
 {
     sam_word_t error = SAM_ERROR_OK;
-    sam_word_t pc0, pc;
+    sam_word_t pc;
     RET;
 
     for (;;) {
@@ -118,49 +118,30 @@ sam_word_t sam_run(void)
             if (sam_sp == 0)
                 HALT(SAM_ERROR_STACK_UNDERFLOW);
             sam_uword_t size;
-            HALT_IF_ERROR(sam_stack_item(0, &sam_sp, &size));
+            HALT_IF_ERROR(sam_stack_item(-1, &sam_sp, &size));
             break;
         case SAM_INSN_DUP:
 #ifdef SAM_DEBUG
             fprintf(stderr, "DUP\n");
 #endif
             {
-                sam_uword_t depth;
-                POP_UINT(depth);
-                if (depth >= sam_sp)
-                    HALT(SAM_ERROR_STACK_UNDERFLOW);
+                sam_word_t pos;
+                POP_INT(pos);
+                sam_uword_t addr, size;
+                HALT_IF_ERROR(sam_stack_item(pos, &addr, &size));
+                sam_uword_t opcode;
+                HALT_IF_ERROR(sam_stack_peek(addr, &opcode));
+                opcode &= SAM_OP_MASK;
+                if (opcode == SAM_INSN_BRA)
+                    PUSH_LINK(addr);
                 else {
-                    sam_uword_t addr, size;
-                    HALT_IF_ERROR(sam_stack_item(depth, &addr, &size));
-                    sam_uword_t opcode;
-                    HALT_IF_ERROR(sam_stack_peek(addr, &opcode));
-                    opcode &= SAM_OP_MASK;
-                    if (opcode == SAM_INSN_BRA)
-                        PUSH_LINK(addr);
-                    else {
-                        sam_uword_t i;
-                        for (i = 0; i < size; i++) {
-                            sam_uword_t temp;
-                            HALT_IF_ERROR(sam_stack_peek(addr + i, &temp));
-                            PUSH_WORD(temp);
-                        }
+                    sam_uword_t i;
+                    for (i = 0; i < size; i++) {
+                        sam_uword_t temp;
+                        HALT_IF_ERROR(sam_stack_peek(addr + i, &temp));
+                        PUSH_WORD(temp);
                     }
                 }
-            }
-            break;
-        case SAM_INSN_SET:
-#ifdef SAM_DEBUG
-            fprintf(stderr, "SET\n");
-#endif
-            {
-                // FIXME: cope with all stack items
-                sam_uword_t depth;
-                POP_UINT(depth);
-                if (depth >= sam_sp)
-                    HALT(SAM_ERROR_STACK_UNDERFLOW);
-                sam_word_t value;
-                POP_WORD(&value);
-                HALT_IF_ERROR(sam_stack_poke(sam_sp - (depth + 1), value));
             }
             break;
         case SAM_INSN_SWAP:
@@ -168,11 +149,11 @@ sam_word_t sam_run(void)
             fprintf(stderr, "SWAP\n");
 #endif
             {
-                sam_uword_t depth;
-                POP_UINT(depth);
+                sam_word_t pos;
+                POP_INT(pos);
                 sam_uword_t addr1, size1, addr2, size2;
-                HALT_IF_ERROR(sam_stack_item(0, &addr1, &size1));
-                HALT_IF_ERROR(sam_stack_item(depth + 1, &addr2, &size2));
+                HALT_IF_ERROR(sam_stack_item(-1, &addr1, &size1));
+                HALT_IF_ERROR(sam_stack_item(pos, &addr2, &size2));
                 sam_stack_swap(addr1, size1, addr2, size2);
             }
             break;
@@ -248,7 +229,7 @@ sam_word_t sam_run(void)
 #ifdef SAM_DEBUG
             fprintf(stderr, "LOOP\n");
 #endif
-            pc = pc0;
+            pc = sam_pc0;
             break;
         case SAM_INSN_NOT:
 #ifdef SAM_DEBUG
@@ -535,7 +516,7 @@ sam_word_t sam_run(void)
             else
                 POP_INT(error);
             error:
-            DO(pc); // Save pc, pc0 so we can restart.
+            DO(pc); // Save pc, sam_pc0 so we can restart.
             return error;
         default:
 #ifdef SAM_DEBUG

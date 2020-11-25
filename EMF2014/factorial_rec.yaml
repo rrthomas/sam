@@ -1,33 +1,26 @@
 -
   - int 5
   -
-    - int 3
+    - int -3
     - dup
     -
-      - int 5
+      - int -5
       - dup
       - int -1
       - add
-      - int 5
-      - dup
-      - int 0
-      - dup
+      - link 2
       - do
-      - pop
-      - int 6
+      - int -6
       - dup
       - mul
-      - int 5
+      - int -6
       - swap
       - pop
     -
       - int 1
-      - int 5
+      - int -6
       - swap
       - pop
     - if
-  - int 0
-  - dup
   - do
-  - pop
   - halt

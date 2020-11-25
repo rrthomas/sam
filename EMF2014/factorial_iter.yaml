@@ -3,26 +3,26 @@
   -
     - float 1.0
     -
-      - int 5
+      - int -6
       - dup
       - f2i
       - while
-      - int 1
+      - int -3
       - swap
-      - int 5
+      - int -6
       - dup
       - mul
-      - int 4
+      - int -6
       - swap
       - float -1.0
       - add
-      - int 4
+      - int -6
       - swap
-      - int 1
+      - int -3
       - swap
       - loop
     - do
-    - int 2
+    - int -4
     - swap
     - pop
   - do

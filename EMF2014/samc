@@ -32,8 +32,8 @@ def compile_inst(inst, level=0):
     if len(toks) > 1:
         operand = toks[1]
 
-    if inst == "int":
-        return [indented(instruction("int", operand), level)], 1
+    if inst in ("int", "link"):
+        return [indented(instruction(inst, operand), level)], 1
     elif inst == "float":
         f = struct.pack('!f', float(operand)).hex()
         return [

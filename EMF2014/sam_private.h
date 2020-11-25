@@ -91,14 +91,14 @@
 // Execution
 #define DO(addr)                                \
     do {                                        \
-        PUSH_LINK(pc0);                         \
+        PUSH_LINK(sam_pc0);                     \
         PUSH_LINK(pc);                          \
-        pc0 = pc = addr;                        \
+        sam_pc0 = pc = addr;                    \
     } while (0)
 #define RET                                     \
     do {                                        \
         POP_LINK(pc);                           \
-        POP_LINK(pc0);                          \
+        POP_LINK(sam_pc0);                      \
     } while (0)
 
 // Program

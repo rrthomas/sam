@@ -69,9 +69,6 @@ static char *disas(sam_uword_t *addr)
     case SAM_INSN_DUP:
         asprintf(&text, "dup");
         break;
-    case SAM_INSN_SET:
-        asprintf(&text, "set");
-        break;
     case SAM_INSN_SWAP:
         asprintf(&text, "swap");
         break;

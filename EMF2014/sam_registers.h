@@ -10,3 +10,4 @@
 
 R(ssize, sam_uword_t) // Size of stack in words
 R(sp, sam_uword_t) // Number of words (NOT items!) in current stack
+R(pc0, sam_uword_t) // Start of current routine

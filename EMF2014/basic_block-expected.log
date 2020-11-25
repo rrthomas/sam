@@ -5,12 +5,12 @@ Stack: (18 word(s))
   - mul
   - int 3
   - neg
-  - int 0
+  - int -1
   - dup
-  - int 1
+  - int -3
   - swap
   - add
-  - int 0
+  - int -2
   - swap
   - div
   - halt
@@ -23,7 +23,7 @@ sam_do: pc = 2, sp = 17, ir = 201
 Working stack: (1 word(s))
 - int 21
 INT
-sam_do: pc = 3, sp = 18, ir = 20
+sam_do: pc = 3, sp = 18, ir = 1f
 Working stack: (2 word(s))
 - int 21
 - int 2
@@ -32,12 +32,12 @@ sam_do: pc = 4, sp = 17, ir = 301
 Working stack: (1 word(s))
 - int 42
 INT
-sam_do: pc = 5, sp = 18, ir = 1e
+sam_do: pc = 5, sp = 18, ir = 1d
 Working stack: (2 word(s))
 - int 42
 - int 3
 NEG
-sam_do: pc = 6, sp = 18, ir = 1
+sam_do: pc = 6, sp = 18, ir = ffffff01
 Working stack: (2 word(s))
 - int 42
 - int -3
@@ -46,44 +46,44 @@ sam_do: pc = 7, sp = 19, ir = 9
 Working stack: (3 word(s))
 - int 42
 - int -3
-- int 0
+- int -1
 DUP
-sam_do: pc = 8, sp = 19, ir = 101
+sam_do: pc = 8, sp = 19, ir = fffffd01
 Working stack: (3 word(s))
 - int 42
 - int -3
 - int -3
 INT
-sam_do: pc = 9, sp = 20, ir = b
+sam_do: pc = 9, sp = 20, ir = a
 Working stack: (4 word(s))
 - int 42
 - int -3
 - int -3
-- int 1
+- int -3
 SWAP
-sam_do: pc = 10, sp = 19, ir = 1f
+sam_do: pc = 10, sp = 19, ir = 1e
 Working stack: (3 word(s))
 - int -3
 - int -3
 - int 42
 ADD
-sam_do: pc = 11, sp = 18, ir = 1
+sam_do: pc = 11, sp = 18, ir = fffffe01
 Working stack: (2 word(s))
 - int -3
 - int 39
 INT
-sam_do: pc = 12, sp = 19, ir = b
+sam_do: pc = 12, sp = 19, ir = a
 Working stack: (3 word(s))
 - int -3
 - int 39
-- int 0
+- int -2
 SWAP
-sam_do: pc = 13, sp = 18, ir = 21
+sam_do: pc = 13, sp = 18, ir = 20
 Working stack: (2 word(s))
 - int 39
 - int -3
 DIV
-sam_do: pc = 14, sp = 17, ir = 23
+sam_do: pc = 14, sp = 17, ir = 22
 Working stack: (1 word(s))
 - int -13
 HALT
