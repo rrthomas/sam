@@ -179,8 +179,7 @@ static void print_stack(sam_uword_t from, sam_uword_t to)
         } else if (opcode == SAM_INSN_KET) {
             level--;
             i++;
-        }
-        else {
+        } else {
             char *text = disas(&i);
             print_disas(level, text);
             free(text);
