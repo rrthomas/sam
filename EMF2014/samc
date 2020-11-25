@@ -19,12 +19,20 @@ def instruction(inst, op=None):
         s = f"LSHIFT({op}, SAM_OP_SHIFT) | {s}"
     return s
 
-def compile_inst(inst, level=0):
-    if isinstance(inst, list):
-        words, nwords = compile_list(inst, level + 1)
+def compile_inst(inst, level, pc):
+    labels = {}
+
+    if isinstance(inst, dict): # label
+        assert(len(inst) == 1)
+        (label, inst), *_ = inst.items()
+        labels[label] = pc
+
+    if isinstance(inst, list): # sub-routine
+        words, sub_labels, nwords = compile_list(inst, level + 1, pc + 1)
         words.insert(0, indented(instruction("bra", nwords), level))
         words.append(indented(instruction("ket", nwords), level))
-        return words, nwords + 2
+        labels.update(sub_labels)
+        return words, labels, nwords + 2
 
     toks = inst.split(' ')
     inst = toks[0]
@@ -33,33 +41,37 @@ def compile_inst(inst, level=0):
         operand = toks[1]
 
     if inst in ("int", "link"):
-        return [indented(instruction(inst, operand), level)], 1
+        return [indented(instruction(inst, operand), level)], labels, 1
     elif inst == "float":
         f = struct.pack('!f', float(operand)).hex()
         return [
             indented(instruction("float", f"0x{f} >> SAM_OP_SHIFT"), level),
             indented(instruction("_float", f"0x{f} & SAM_OP_MASK"), level),
-        ], 2
+        ], labels, 2
     elif inst == "trap":
-        return [indented(instruction("trap", f"TRAP_{operand}"), level)], 1
+        return [indented(instruction("trap", f"TRAP_{operand}"), level)], labels, 1
     elif inst == "push":
         return [
             indented(instruction("push", f"{operand} >> SAM_OP_SHIFT"), level),
             indented(instruction("_push", f"{operand} & SAM_OP_MASK"), level),
-        ], 2
+        ], labels, 2
     else:
-        return [indented(instruction(inst), level)], 1
+        return [indented(instruction(inst), level)], labels, 1
 
-def compile_list(l, level=0):
-    words = []
-    nwords = 0
+def compile_list(l, level=0, pc0=0):
+    labels, words = {}, []
+    pc = pc0
     for inst in l:
-        sub_words, n_sub_words = compile_inst(inst, level)
+        sub_words, sub_labels, n_sub_words = compile_inst(inst, level, pc)
         words.extend(sub_words)
-        nwords += n_sub_words
-    return words, nwords
+        labels.update(sub_labels)
+        pc += n_sub_words
+    return words, labels, pc - pc0
 
-words, _ = compile_list(prog)
+words, labels, _ = compile_list(prog)
+
+for label, n in labels.items():
+    print(f"#define {label} {n}")
 for word in words:
     print(word)
 

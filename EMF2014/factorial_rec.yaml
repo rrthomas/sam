@@ -1,6 +1,6 @@
 -
   - int 5
-  -
+  - fact:
     - int -3
     - dup
     -
@@ -8,7 +8,7 @@
       - dup
       - int -1
       - add
-      - link 2
+      - link fact
       - do
       - int -6
       - dup
