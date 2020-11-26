@@ -38,25 +38,25 @@ sam_word_t sam_run(void)
         HALT_IF_ERROR(sam_stack_peek(pc++, &ir));
         sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OP_SHIFT);
 #ifdef SAM_DEBUG
-        fprintf(stderr, "sam_do: pc = %u, sp = %u, ir = %x\n", pc - 1, sam_sp, ir);
+        debug("sam_do: pc = %u, sp = %u, ir = %x\n", pc - 1, sam_sp, ir);
         sam_print_working_stack();
 #endif
 
         switch (ir & SAM_OP_MASK) {
         case SAM_INSN_NOP:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "NOP\n");
+            debug("NOP\n");
 #endif
             break;
         case SAM_INSN_INT:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "INT\n");
+            debug("INT\n");
 #endif
             PUSH_WORD(ir);
             break;
         case SAM_INSN_FLOAT:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "FLOAT\n");
+            debug("FLOAT\n");
 #endif
             {
                 sam_uword_t operand2;
@@ -69,13 +69,13 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN__FLOAT:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "_FLOAT\n");
+            debug("_FLOAT\n");
 #endif
             HALT(SAM_ERROR_UNPAIRED_FLOAT);
             break;
         case SAM_INSN_I2F:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "I2F\n");
+            debug("I2F\n");
 #endif
             {
                 sam_word_t i;
@@ -85,7 +85,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_F2I:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "F2I\n");
+            debug("F2I\n");
 #endif
             {
                 sam_float_t f;
@@ -95,7 +95,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_PUSH:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "PUSH\n");
+            debug("PUSH\n");
 #endif
             {
                 sam_uword_t operand2;
@@ -107,13 +107,13 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN__PUSH:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "_PUSH\n");
+            debug("_PUSH\n");
 #endif
             HALT(SAM_ERROR_UNPAIRED_PUSH);
             break;
         case SAM_INSN_POP:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "POP\n");
+            debug("POP\n");
 #endif
             if (sam_sp == 0)
                 HALT(SAM_ERROR_STACK_UNDERFLOW);
@@ -122,7 +122,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_DUP:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "DUP\n");
+            debug("DUP\n");
 #endif
             {
                 sam_word_t pos;
@@ -146,7 +146,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_SWAP:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "SWAP\n");
+            debug("SWAP\n");
 #endif
             {
                 sam_word_t pos;
@@ -160,37 +160,37 @@ sam_word_t sam_run(void)
         case SAM_INSN_IDUP:
             // TODO
 #ifdef SAM_DEBUG
-            fprintf(stderr, "IDUP\n");
+            debug("IDUP\n");
 #endif
             break;
         case SAM_INSN_ISET:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "ISET\n");
+            debug("ISET\n");
 #endif
             // TODO
             break;
         case SAM_INSN_BRA:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "BRA\n");
+            debug("BRA\n");
 #endif
             PUSH_LINK(pc - 1);
             pc += operand + 1; // Skip to next instruction
             break;
         case SAM_INSN_KET:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "KET\n");
+            debug("KET\n");
 #endif
             RET;
             break;
         case SAM_INSN_LINK:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "LINK\n");
+            debug("LINK\n");
 #endif
             PUSH_WORD(ir); // Push the same link on the stack
             break;
         case SAM_INSN_DO:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "DO\n");
+            debug("DO\n");
 #endif
             {
                 sam_uword_t code;
@@ -201,7 +201,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_IF:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "IF\n");
+            debug("IF\n");
 #endif
             {
                 sam_uword_t then, else_;
@@ -216,7 +216,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_WHILE:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "WHILE\n");
+            debug("WHILE\n");
 #endif
             {
                 sam_word_t flag;
@@ -227,13 +227,13 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_LOOP:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "LOOP\n");
+            debug("LOOP\n");
 #endif
             pc = sam_pc0;
             break;
         case SAM_INSN_NOT:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "NOT\n");
+            debug("NOT\n");
 #endif
             {
                 sam_word_t a;
@@ -243,7 +243,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_AND:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "AND\n");
+            debug("AND\n");
 #endif
             {
                 sam_word_t a, b;
@@ -254,7 +254,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_OR:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "OR\n");
+            debug("OR\n");
 #endif
             {
                 sam_word_t a, b;
@@ -265,7 +265,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_XOR:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "XOR\n");
+            debug("XOR\n");
 #endif
             {
                 sam_word_t a, b;
@@ -276,7 +276,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_LSH:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "LSH\n");
+            debug("LSH\n");
 #endif
             {
                 sam_word_t shift, value;
@@ -287,7 +287,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_RSH:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "RSH\n");
+            debug("RSH\n");
 #endif
             {
                 sam_word_t shift, value;
@@ -298,7 +298,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_ARSH:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "ARSH\n");
+            debug("ARSH\n");
 #endif
             {
                 sam_word_t shift, value;
@@ -309,7 +309,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_EQ:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "EQ\n");
+            debug("EQ\n");
 #endif
             {
                 sam_word_t x;
@@ -345,7 +345,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_LT:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "LT\n");
+            debug("LT\n");
 #endif
             {
                 sam_uword_t operand;
@@ -372,7 +372,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_NEG:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "NEG\n");
+            debug("NEG\n");
 #endif
             {
                 sam_uword_t operand;
@@ -397,7 +397,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_ADD:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "ADD\n");
+            debug("ADD\n");
 #endif
             {
                 sam_uword_t operand;
@@ -424,7 +424,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_MUL:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "MUL\n");
+            debug("MUL\n");
 #endif
             {
                 sam_uword_t operand;
@@ -451,7 +451,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_DIV:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "DIV\n");
+            debug("DIV\n");
 #endif
             {
                 sam_uword_t operand;
@@ -482,7 +482,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_REM:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "REM\n");
+            debug("REM\n");
 #endif
             {
                 sam_uword_t operand;
@@ -509,7 +509,7 @@ sam_word_t sam_run(void)
             break;
         case SAM_INSN_HALT:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "HALT\n");
+            debug("HALT\n");
 #endif
             if (sam_sp < 1)
                 error = SAM_ERROR_STACK_UNDERFLOW;
@@ -520,13 +520,13 @@ sam_word_t sam_run(void)
             return error;
         default:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "ERROR_INVALID_OPCODE\n");
+            debug("ERROR_INVALID_OPCODE\n");
 #endif
             HALT(SAM_ERROR_INVALID_OPCODE);
             break;
         case SAM_INSN_TRAP:
 #ifdef SAM_DEBUG
-            fprintf(stderr, "TRAP\n");
+            debug("TRAP\n");
 #endif
             HALT_IF_ERROR(sam_trap((sam_uword_t)operand));
             break;
