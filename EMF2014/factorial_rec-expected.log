@@ -2166,7 +2166,7 @@ Working stack: (3 word(s))
 - link 1
 - link 28
 KET
-sam_do: pc = 28, sp = 31, ir = 22
+sam_do: pc = 28, sp = 31, ir = fe
 Working stack: (1 word(s))
 - int 120
 HALT

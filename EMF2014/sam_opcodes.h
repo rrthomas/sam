@@ -61,10 +61,8 @@ enum {
   SAM_INSN_MUL,
   SAM_INSN_DIV,
   SAM_INSN_REM,
-  SAM_INSN_HALT,
-  SAM_INSN_TRAP,
-
-  SAM_INSN_UNDEFINED = 0xff
+  SAM_INSN_HALT = 0xfe,
+  SAM_INSN_TRAP = 0xff,
 };
 
 /* Largest operand.  */

@@ -83,7 +83,7 @@ Working stack: (2 word(s))
 - int 39
 - int -3
 DIV
-sam_do: pc = 14, sp = 17, ir = 22
+sam_do: pc = 14, sp = 17, ir = fe
 Working stack: (1 word(s))
 - int -13
 HALT

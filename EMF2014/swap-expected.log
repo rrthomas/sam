@@ -151,7 +151,7 @@ Working stack: (12 word(s))
 - int 2
 - float 1.000000
 INT
-sam_do: pc = 22, sp = 37, ir = 22
+sam_do: pc = 22, sp = 37, ir = fe
 Working stack: (13 word(s))
 - int 2
 - int 1
