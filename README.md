@@ -20,7 +20,7 @@ The SAM-specific files are in `Mk2-Firmware/EMF2014`. SAM itself is in the sourc
 
 ## Building SAM
 
-To build on a GNU-compatible system you will need GCC, Python (for the `samc` assembler) and SDL2 (on Ubuntu-compatible systems, install package `libsdl2-gfx-dev:i386`). Run the script `mksam` with the desired code, and then run the resulting `sam` binary; for example:
+To build on a GNU-compatible system you will need GCC, Python 3 (for the `samc` assembler) with pyyaml and pyyaml-include, and SDL2 (on Ubuntu-compatible systems, install package `libsdl2-gfx-dev:i386`). Run the script `mksam` with the desired code, and then run the resulting `sam` binary; for example:
 
 ```
 ./mksam graphics.yaml

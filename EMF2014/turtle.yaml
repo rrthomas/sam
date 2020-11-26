@@ -1,128 +1,114 @@
 -
-  -
-    - pen_x: float 0.0
-    - pen_y: float 0.0
-    - pen_theta: float 0.0
-    - pen_color: int 0
-    - pen_drawing: int 0
-    - init:
-      - trap WHITE
-      - trap CLEARSCREEN
-      - float 0.0
-      - int pen_x
-      - swap
-      - pop
-      - float 0.0
-      - int pen_y
-      - swap
-      - pop
-      - float 0.0
-      - int pen_theta
-      - swap
-      - pop
-      - trap BLACK
-      - int pen_color
-      - swap
-      - pop
-      - int 0
-      - int pen_drawing
-      - swap
-      - pop
-    - penup:
-      - int 0
-      - int pen_drawing
-      - swap
-      - pop
-    - pendown:
-      - int 1
-      - int pen_drawing
-      - swap
-      - pop
-      - int pen_x
-      - dup
-      - f2i
-      - int pen_y
-      - dup
-      - f2i
-      - int pen_color
-      - dup
-      - trap SETDOT
-    - turn:
-      - int pen_theta
-      - dup
-      - int -4
-      - dup
-      - add
-      - int pen_theta
-      - swap
-      - pop
-      - int -3
-      - swap
-      - pop
-      - int -2
-      - swap
-    - go:
-      - int pen_x
-      - dup
-      - f2i
-      - int pen_y
-      - dup
-      - f2i
-      - int pen_theta
-      - dup
-      - int -1
-      - dup
-      - cos
-      - int -2
-      - swap
-      - sin
-      - int -7
-      - dup
-      - mul
-      - int -7
-      - swap
-      - mul
-      - int pen_x
-      - dup
-      - add
-      - int -6
-      - swap
-      - int pen_y
-      - dup
-      - add
-      - int -6
-      - dup
-      - int pen_x
-      - swap
-      - pop
-      - int -1
-      - dup
-      - int pen_y
-      - swap
-      - pop
-      - f2i
-      - int -6
-      - dup
-      - f2i
-      - int -2
-      - swap
-      - int pen_color
-      - trap DRAWLINE
-      - int -3
-      - swap
-      - pop
-      - int -2
-      - swap
-  - link init
-  - do
-  - link pendown
-  - do
-  - float 45.0
-  - rad
-  - link turn
-  - do
-  - float 50.0
-  - link go
-  - do
-  - int 0
-  - halt
+  - pen_x: float 0.0
+  - pen_y: float 0.0
+  - pen_theta: float 0.0
+  - pen_color: int 0
+  - pen_drawing: int 0
+  - init:
+    - trap WHITE
+    - trap CLEARSCREEN
+    - float 0.0
+    - int pen_x
+    - swap
+    - pop
+    - float 0.0
+    - int pen_y
+    - swap
+    - pop
+    - float 0.0
+    - int pen_theta
+    - swap
+    - pop
+    - trap BLACK
+    - int pen_color
+    - swap
+    - pop
+    - int 0
+    - int pen_drawing
+    - swap
+    - pop
+  - penup:
+    - int 0
+    - int pen_drawing
+    - swap
+    - pop
+  - pendown:
+    - int 1
+    - int pen_drawing
+    - swap
+    - pop
+    - int pen_x
+    - dup
+    - f2i
+    - int pen_y
+    - dup
+    - f2i
+    - int pen_color
+    - dup
+    - trap SETDOT
+  - turn:
+    - int pen_theta
+    - dup
+    - int -4
+    - dup
+    - add
+    - int pen_theta
+    - swap
+    - pop
+    - int -3
+    - swap
+    - pop
+    - int -2
+    - swap
+  - go:
+    - int pen_x
+    - dup
+    - f2i
+    - int pen_y
+    - dup
+    - f2i
+    - int pen_theta
+    - dup
+    - int -1
+    - dup
+    - cos
+    - int -2
+    - swap
+    - sin
+    - int -7
+    - dup
+    - mul
+    - int -7
+    - swap
+    - mul
+    - int pen_x
+    - dup
+    - add
+    - int -6
+    - swap
+    - int pen_y
+    - dup
+    - add
+    - int -6
+    - dup
+    - int pen_x
+    - swap
+    - pop
+    - int -1
+    - dup
+    - int pen_y
+    - swap
+    - pop
+    - f2i
+    - int -6
+    - dup
+    - f2i
+    - int -2
+    - swap
+    - int pen_color
+    - trap DRAWLINE
+    - int -3
+    - swap
+    - pop
+    - int -2
+    - swap

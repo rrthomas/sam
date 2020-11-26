@@ -5,8 +5,9 @@ import sys
 import struct
 
 import yaml
+from yamlinclude import YamlIncludeConstructor
 
-
+YamlIncludeConstructor.add_to_loader_class(loader_class=yaml.SafeLoader)
 prog = yaml.safe_load(sys.stdin.read())
 
 INDENT = 2
