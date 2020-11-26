@@ -141,6 +141,18 @@ static char *disas(sam_uword_t *addr)
     case SAM_INSN_REM:
         asprintf(&text, "rem");
         break;
+    case SAM_INSN_SIN:
+        asprintf(&text, "sin");
+        break;
+    case SAM_INSN_COS:
+        asprintf(&text, "cos");
+        break;
+    case SAM_INSN_DEG:
+        asprintf(&text, "deg");
+        break;
+    case SAM_INSN_RAD:
+        asprintf(&text, "rad");
+        break;
     case SAM_INSN_HALT:
         asprintf(&text, "halt");
         break;

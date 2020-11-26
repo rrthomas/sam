@@ -507,6 +507,85 @@ sam_word_t sam_run(void)
                 }
             }
             break;
+        case SAM_INSN_SIN:
+#ifdef SAM_DEBUG
+            debug("SIN\n");
+#endif
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a;
+                        POP_FLOAT(a);
+                        PUSH_FLOAT(sinf(a));
+                    }
+                    break;
+                }
+            }
+            break;
+        case SAM_INSN_COS:
+#ifdef SAM_DEBUG
+            debug("COS\n");
+#endif
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a;
+                        POP_FLOAT(a);
+                        PUSH_FLOAT(cosf(a));
+                    }
+                    break;
+                }
+            }
+            break;
+        case SAM_INSN_DEG:
+#ifdef SAM_DEBUG
+            debug("DEG\n");
+#endif
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a;
+                        POP_FLOAT(a);
+                        PUSH_FLOAT(a * (M_1_PI * 180.0));
+                    }
+                    break;
+                }
+            }
+            break;
+        case SAM_INSN_RAD:
+#ifdef SAM_DEBUG
+            debug("RAD\n");
+#endif
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN_INT:
+                    {
+                        sam_uword_t a;
+                        POP_UINT(a);
+                        PUSH_INT(-a);
+                    }
+                    break;
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a;
+                        POP_FLOAT(a);
+                        PUSH_FLOAT(a * (M_PI / 180.0));
+                    }
+                    break;
+                }
+            }
+            break;
         case SAM_INSN_HALT:
 #ifdef SAM_DEBUG
             debug("HALT\n");
