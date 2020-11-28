@@ -1,6 +1,4 @@
 -
-  - trap WHITE
-  - trap CLEARSCREEN
   - int 5
   - int 10
   - trap BLACK

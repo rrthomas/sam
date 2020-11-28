@@ -26,8 +26,8 @@ static SDL_Surface *srf;
 
 static void update_screen(void)
 {
-    SDL_UpdateWindowSurface(win);
     SDL_ShowWindow(win);
+    SDL_UpdateWindowSurface(win);
 }
 
 int sam_traps_window_used(void)
@@ -49,11 +49,11 @@ static void drawline(int x1, int y1, int x2, int y2, uint8_t color)
     int p = 2 * dy - dx;
 
     if (dx == 0)
-        vlineRGBA(ren, x1, y1, y2, color, color, color, 255);
+        vlineRGBA(ren, x1, y1, y2, color, color, color, SDL_ALPHA_OPAQUE);
     else if (dy == 0)
-        hlineRGBA(ren, x1, x2, y1, color, color, color, 255);
+        hlineRGBA(ren, x1, x2, y1, color, color, color, SDL_ALPHA_OPAQUE);
     else {
-        SDL_SetRenderDrawColor(ren, color, color, color, 255);
+        SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
         while (x <= x_) {
             SDL_RenderDrawPoint(ren, x, y);
             if (p >= 0) {
@@ -142,7 +142,7 @@ sam_word_t sam_traps_init(void)
     if (ren == NULL)
         return SAM_ERROR_TRAP_INIT;
 
-    SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(ren);
 
     return SAM_ERROR_OK;
@@ -175,7 +175,7 @@ sam_word_t sam_trap(sam_uword_t function)
         {
             sam_word_t color;
             POP_UINT(color);
-            SDL_SetRenderDrawColor(ren, color, color, color, 255);
+            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
             SDL_RenderClear(ren);
             update_screen();
         }
@@ -186,7 +186,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(color);
             POP_UINT(y);
             POP_UINT(x);
-            SDL_SetRenderDrawColor(ren, color, color, color, 255);
+            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
             SDL_RenderDrawPoint(ren, x, y);
             update_screen();
         }
@@ -211,7 +211,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            SDL_SetRenderDrawColor(ren, color, color, color, 255);
+            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
             SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height };
             SDL_RenderDrawRect(ren, &rect);
             update_screen();
@@ -226,7 +226,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            roundedRectangleRGBA(ren, x, y, x + width - 1, y + height - 1, radius, color, color, color, 255);
+            roundedRectangleRGBA(ren, x, y, x + width - 1, y + height - 1, radius, color, color, color, SDL_ALPHA_OPAQUE);
             update_screen();
         }
         break;
@@ -238,7 +238,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            SDL_SetRenderDrawColor(ren, color, color, color, 255);
+            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
             SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height };
             SDL_RenderFillRect(ren, &rect);
             update_screen();
@@ -255,7 +255,7 @@ sam_word_t sam_trap(sam_uword_t function)
             for (i = x; i < x + width; i++)
                 for (j = y; j < y + height; j++) {
                     Uint8 color = (Uint8)sam_getpixel(i, j);
-                    SDL_SetRenderDrawColor(ren, ~color, ~color, ~color, 255);
+                    SDL_SetRenderDrawColor(ren, ~color, ~color, ~color, SDL_ALPHA_OPAQUE);
                     SDL_RenderDrawPoint(ren, i, j);
                 }
             update_screen();
@@ -269,7 +269,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(yCenter);
             POP_UINT(xCenter);
             // Use roundedRectangle to match GLCD.
-            roundedRectangleRGBA(ren, xCenter - radius, yCenter - radius, xCenter + radius, yCenter + radius, radius, color, color, color, 255);
+            roundedRectangleRGBA(ren, xCenter - radius, yCenter - radius, xCenter + radius, yCenter + radius, radius, color, color, color, SDL_ALPHA_OPAQUE);
             update_screen();
         }
         break;
@@ -291,7 +291,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(y);
             POP_UINT(x);
             POP_UINT(bitmap);
-            SDL_SetRenderDrawColor(ren, color, color, color, 255);
+            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
             // TODO
             update_screen();
         }
