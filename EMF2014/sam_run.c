@@ -25,6 +25,22 @@
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))
 #define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
 
+// Adapted from https://stackoverflow.com/questions/101439/the-most-efficient-way-to-implement-an-integer-based-power-function-powint-int
+static sam_uword_t powi(sam_uword_t base, sam_uword_t exp)
+{
+    sam_uword_t result = 1;
+    for (;;) {
+        if (exp & 1)
+            result *= base;
+        exp >>= 1;
+        if (exp == 0)
+            break;
+        base *= base;
+    }
+
+    return result;
+}
+
 
 // Execution function
 sam_word_t sam_run(void)
@@ -502,6 +518,33 @@ sam_word_t sam_run(void)
                         POP_FLOAT(divisor);
                         POP_FLOAT(dividend);
                         PUSH_FLOAT(divisor == 0 ? dividend : fmodf(divisor, dividend));
+                    }
+                    break;
+                }
+            }
+            break;
+        case SAM_INSN_POW:
+#ifdef SAM_DEBUG
+            debug("POW\n");
+#endif
+            {
+                sam_uword_t operand;
+                HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                switch (operand & SAM_OP_MASK) {
+                case SAM_INSN_INT:
+                    {
+                        sam_uword_t a, b;
+                        POP_UINT(a);
+                        POP_UINT(b);
+                        PUSH_INT(powi(a, b));
+                    }
+                    break;
+                case SAM_INSN__FLOAT:
+                    {
+                        sam_float_t a, b;
+                        POP_FLOAT(a);
+                        POP_FLOAT(b);
+                        PUSH_FLOAT(powf(a, b));
                     }
                     break;
                 }
