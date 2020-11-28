@@ -4,7 +4,7 @@
   - do
   - link pendown
   - do
-  - float 45.0
+  - float -45.0
   - rad
   - link turn
   - do

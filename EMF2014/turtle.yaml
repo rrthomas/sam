@@ -5,8 +5,6 @@
   - pen_color: int 0
   - pen_drawing: int 0
   - init:
-    - trap WHITE
-    - trap CLEARSCREEN
     - float 0.0
     - int pen_x
     - swap
@@ -51,6 +49,7 @@
     - dup
     - int -4
     - dup
+    - neg
     - add
     - int pen_theta
     - swap
