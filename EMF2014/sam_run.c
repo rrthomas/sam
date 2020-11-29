@@ -106,7 +106,7 @@ sam_word_t sam_run(void)
             {
                 sam_float_t f;
                 POP_FLOAT(f);
-                PUSH_INT((sam_word_t)f);
+                PUSH_INT((sam_word_t)rint(f));
             }
             break;
         case SAM_INSN_PUSH:
