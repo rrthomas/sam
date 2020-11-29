@@ -11,11 +11,11 @@ TESTS = \
 	basic_block.yaml \
 	factorial_iter.yaml \
 	factorial_rec.yaml \
-	graphics.yaml \
 	push.yaml \
 	swap.yaml \
-	turtle-demo.yaml \
-	levy-c.yaml \
+	screen_graphics.yaml \
+	screen_turtle-demo.yaml \
+	screen_levy-c.yaml \
 	$(EMPTY)
 
 RESULTS = \

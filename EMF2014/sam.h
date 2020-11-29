@@ -59,6 +59,8 @@ int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp);
 
 // Debug
 #ifdef SAM_DEBUG
+#include <stdbool.h>
+extern bool do_debug;
 void sam_print_stack(void);
 void sam_print_working_stack(void);
 void debug(const char *fmt, ...);
@@ -73,4 +75,4 @@ void sam_traps_finish(void);
 sam_word_t sam_trap(sam_uword_t function);
 int sam_traps_window_used(void);
 uint32_t sam_getpixel(int x, int y);
-void sam_dump_screen(void);
+void sam_dump_screen(const char *filename);

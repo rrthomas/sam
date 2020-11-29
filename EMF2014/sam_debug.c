@@ -9,12 +9,16 @@
 #include "sam_opcodes.h"
 #include "sam_private.h"
 
+bool do_debug = false;
+
 void debug(const char *fmt, ...)
 {
-    va_list ap;
-    va_start(ap, fmt);
-    vfprintf(stderr, fmt, ap);
-    va_end(ap);
+    if (do_debug) {
+        va_list ap;
+        va_start(ap, fmt);
+        vfprintf(stderr, fmt, ap);
+        va_end(ap);
+    }
 }
 
 static char *disas(sam_uword_t *addr)
@@ -173,7 +177,7 @@ static void print_disas(sam_uword_t level, const char *s)
 {
     sam_uword_t i;
     for (i = 0; i < level * 2; i++)
-        putc(' ', stderr);
+        debug(" ");
     debug("- %s\n", s);
 }
 
@@ -213,18 +217,24 @@ void sam_print_working_stack(void)
 }
 
 /* Dump screen as a PBM */
-void sam_dump_screen(void)
+void sam_dump_screen(const char *filename)
 {
-    debug("P1\n");
-    debug("# SAM screen dump\n");
-    debug("%u %u\n", SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT);
-    for (size_t j = 0; j < SAM_DISPLAY_HEIGHT; j++) {
-        for (size_t i = 0; i < SAM_DISPLAY_WIDTH; i++) {
-            debug("%d", sam_getpixel(i, j) ? 0 : 1);
-            if (i < SAM_DISPLAY_WIDTH - 1)
-                debug(" ");
+    FILE *fp = fopen(filename, "w");
+    if (fp == NULL)
+        debug("could not open file %s\n", filename);
+    else {
+        fprintf(fp, "P1\n");
+        fprintf(fp, "# SAM screen dump\n");
+        fprintf(fp, "%u %u\n", SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT);
+        for (size_t j = 0; j < SAM_DISPLAY_HEIGHT; j++) {
+            for (size_t i = 0; i < SAM_DISPLAY_WIDTH; i++) {
+                fprintf(fp, "%d", sam_getpixel(i, j) ? 0 : 1);
+                if (i < SAM_DISPLAY_WIDTH - 1)
+                    fprintf(fp, " ");
+            }
+            fprintf(fp, "\n");
         }
-        debug("\n");
+        fclose(fp);
     }
 }
 

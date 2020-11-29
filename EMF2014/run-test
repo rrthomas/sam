@@ -8,6 +8,14 @@ name=${1%.yaml}
 basename=$(basename $name)
 sam_exe=test-$basename
 
+graphics_log=""
+if [[ "${basename#screen_}" != "$basename" ]]; then
+    graphics_log="--dump-screen $basename-output.pbm"
+fi
+
 ./mksam "$test_file" $sam_exe
-./$sam_exe > "$basename-output.log" 2>&1
+./$sam_exe --debug $graphics_log > "$basename-output.log" 2>&1
 diff -u "$srcdir/$basename-expected.log" "$basename-output.log"
+if [[ "$graphics_log" != "" ]]; then
+    diff -u "$srcdir/$basename-expected.pbm" "$basename-output.pbm"
+fi
