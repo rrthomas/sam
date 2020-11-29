@@ -28,7 +28,6 @@ static sam_word_t *sam_s0;
 
 // Stack
 
-// FIXME: Replace these with proper stack accesses
 int sam_stack_peek(sam_uword_t addr, sam_uword_t *val)
 {
     if (addr >= sam_sp)
