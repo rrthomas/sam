@@ -14,6 +14,8 @@ TESTS = \
 	graphics.yaml \
 	push.yaml \
 	swap.yaml \
+	turtle-demo.yaml \
+	levy-c.yaml \
 	$(EMPTY)
 
 RESULTS = \
@@ -23,9 +25,12 @@ RESULTS = \
 	graphics-expected.log \
 	push-expected.log \
 	swap-expected.log \
+	turtle-demo.log \
+	levy-c.log \
 	$(EMPTY)
 
-EXTRA_DIST = $(SH_LOG_COMPILER) $(TESTS) $(INPUTS) $(RESULTS)
+EXTRA_DIST = $(SH_LOG_COMPILER) $(TESTS) $(INPUTS) $(RESULTS) \
+	turtle.yaml
 
 AM_TESTS_ENVIRONMENT = srcdir=$(srcdir) MKSAM=$(builddir)/mksam SAM=$(builddir)/sam$(EXEEXT);
 

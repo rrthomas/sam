@@ -7,8 +7,10 @@
 /factorial_iter.log
 /factorial_rec.log
 /graphics.log
+/levy-c.log
 /push.log
 /swap.log
+/turtle-demo.log
 /Makefile
 /Makefile.in
 /aclocal.m4
