@@ -39,29 +39,53 @@ int sam_traps_window_used(void)
 // Because SDL_RenderDrawLine's output is not pixel-scaled
 static void drawline(int x1, int y1, int x2, int y2, uint8_t color)
 {
-    int x = MIN(x1, x2);
-    int x_ = MAX(x1, x2);
-    int y = MIN(y1, y2);
-    int y_ = MAX(y1, y2);
-
-    int dx = x_ - x;
-    int dy = y_ - y;
-    int p = 2 * dy - dx;
-
-    if (dx == 0)
+    if (x1 == x2)
         vlineRGBA(ren, x1, y1, y2, color, color, color, SDL_ALPHA_OPAQUE);
-    else if (dy == 0)
+    else if (y1 == y2)
         hlineRGBA(ren, x1, x2, y1, color, color, color, SDL_ALPHA_OPAQUE);
     else {
+        int dx = abs(x1 - x2);
+        int dy = abs(y1 - y2);
+
         SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
-        while (x <= x_) {
-            SDL_RenderDrawPoint(ren, x, y);
-            if (p >= 0) {
+        if (dx >= dy) {
+            int p = 2 * dy - dx;
+            int x, x_, y, y_;
+            if (x1 < x2) {
+                x = x1; y = y1;
+                x_ = x2; y_ = y2;
+            } else {
+                x = x2; y = y2;
+                x_ = x1; y_ = y1;
+            }
+            while (x <= x_) {
+                SDL_RenderDrawPoint(ren, x, y);
+                if (p >= 0) {
+                    y += (y < y_) ? 1 : -1;
+                    p += 2 * dy - 2 * dx;
+                } else
+                    p += 2 * dy;
+                x++;
+            }
+        } else {
+            int p = 2 * dx - dy;
+            int x, x_, y, y_;
+            if (y1 < y2) {
+                x = x1; y = y1;
+                x_ = x2; y_ = y2;
+            } else {
+                x = x2; y = y2;
+                x_ = x1; y_ = y1;
+            }
+            while (y <= y_) {
+                SDL_RenderDrawPoint(ren, x, y);
+                if (p >= 0) {
+                    x += (x < x_) ? 1 : -1;
+                    p += 2 * dx - 2 * dy;
+                } else
+                    p += 2 * dx;
                 y++;
-                p += 2 * dy - 2 * dx;
-            } else
-                p += 2 * dy;
-            x++;
+            }
         }
     }
 }
