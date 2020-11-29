@@ -13,9 +13,9 @@ if test $# -gt 1; then
     TEST_EXE=$2
 fi
 
-PROGRAM_SOURCE=$PROGRAM.c
-PROGRAM_ASM=${PROGRAM}_asm.c
-PROGRAM_LEN_SOURCE=${PROGRAM}_len.c
+PROGRAM_SOURCE=$PROGRAM.x
+PROGRAM_ASM=${PROGRAM}_asm.x
+PROGRAM_LEN_SOURCE=${PROGRAM}_len.x
 
 ./samc < $PROGRAM > $PROGRAM_ASM
 
@@ -37,4 +37,8 @@ EOF
 cat $PROGRAM_ASM | grep -v "^#" | wc -l >> $PROGRAM_LEN_SOURCE
 echo ";" >> $PROGRAM_LEN_SOURCE
 
-gcc -Wall -Wextra -m32 -g -D_GNU_SOURCE -DSAM_DEBUG -o $TEST_EXE sam_*.c $PROGRAM_SOURCE $PROGRAM_LEN_SOURCE -x c sam_main.x -x c sam_traps.x -lm -lSDL2 -lSDL2_gfx
+# For Arduino
+cp $PROGRAM_ASM sam_program_asm.h
+cp $PROGRAM_LEN_SOURCE sam_program_len.h
+
+gcc -Wall -Wextra -m32 -g -D_GNU_SOURCE -DSAM_DEBUG -o $TEST_EXE sam_*.c -x c $PROGRAM_SOURCE -x c $PROGRAM_LEN_SOURCE -x c sam_main.x -x c sam_traps.x -lm -lSDL2 -lSDL2_gfx

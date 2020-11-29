@@ -68,7 +68,7 @@ bool SamApp::keepAlive() const {
 // SamApp::task?
 #define SAM_STACK_WORDS 4096
 static sam_word_t sam_stack[SAM_STACK_WORDS] = {
-#include "sam_program.h"
+#include "sam_program_asm.h"
 };
 
 void SamApp::task() {
@@ -81,9 +81,8 @@ void SamApp::task() {
         GLCD.CursorToXY(2, 2);           // Position cursor
         GLCD.print("Hello");             // Write text
 
-        int ok = sam_init(&sam_stack[0], SAM_STACK_WORDS,
 #include "sam_program_len.h"
-                          );
+        int ok = sam_init(&sam_stack[0], SAM_STACK_WORDS, sam_program_len);
         sam_word_t res = sam_run();
         (void)res;
         // GLCD.CursorToXY(2, 12);
