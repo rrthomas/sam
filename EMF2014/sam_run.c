@@ -356,6 +356,9 @@ sam_word_t sam_run(void)
                         PUSH_INT(x == y && x2 == y2);
                     }
                     break;
+                default:
+                    HALT(SAM_ERROR_NOT_NUMBER);
+                    break;
                 }
             }
             break;
@@ -383,6 +386,9 @@ sam_word_t sam_run(void)
                         PUSH_INT(a < b);
                     }
                     break;
+                default:
+                    HALT(SAM_ERROR_NOT_NUMBER);
+                    break;
                 }
             }
             break;
@@ -407,6 +413,9 @@ sam_word_t sam_run(void)
                         POP_FLOAT(a);
                         PUSH_FLOAT(-a);
                     }
+                    break;
+                default:
+                    HALT(SAM_ERROR_NOT_NUMBER);
                     break;
                 }
             }
@@ -435,6 +444,9 @@ sam_word_t sam_run(void)
                         PUSH_FLOAT(a + b);
                     }
                     break;
+                default:
+                    HALT(SAM_ERROR_NOT_NUMBER);
+                    break;
                 }
             }
             break;
@@ -461,6 +473,9 @@ sam_word_t sam_run(void)
                         POP_FLOAT(b);
                         PUSH_FLOAT(a * b);
                     }
+                    break;
+                default:
+                    HALT(SAM_ERROR_NOT_NUMBER);
                     break;
                 }
             }
@@ -493,6 +508,9 @@ sam_word_t sam_run(void)
                         PUSH_FLOAT(DIV_CATCH_ZERO(divisor, dividend));
                     }
                     break;
+                default:
+                    HALT(SAM_ERROR_NOT_NUMBER);
+                    break;
                 }
             }
             break;
@@ -519,6 +537,9 @@ sam_word_t sam_run(void)
                         POP_FLOAT(dividend);
                         PUSH_FLOAT(divisor == 0 ? dividend : fmodf(divisor, dividend));
                     }
+                    break;
+                default:
+                    HALT(SAM_ERROR_NOT_NUMBER);
                     break;
                 }
             }
@@ -547,6 +568,9 @@ sam_word_t sam_run(void)
                         PUSH_FLOAT(powf(a, b));
                     }
                     break;
+                default:
+                    HALT(SAM_ERROR_NOT_NUMBER);
+                    break;
                 }
             }
             break;
@@ -564,6 +588,9 @@ sam_word_t sam_run(void)
                         POP_FLOAT(a);
                         PUSH_FLOAT(sinf(a));
                     }
+                    break;
+                default:
+                    HALT(SAM_ERROR_NOT_FLOAT);
                     break;
                 }
             }
@@ -583,6 +610,9 @@ sam_word_t sam_run(void)
                         PUSH_FLOAT(cosf(a));
                     }
                     break;
+                default:
+                    HALT(SAM_ERROR_NOT_FLOAT);
+                    break;
                 }
             }
             break;
@@ -601,6 +631,9 @@ sam_word_t sam_run(void)
                         PUSH_FLOAT(a * (M_1_PI * 180.0));
                     }
                     break;
+                default:
+                    HALT(SAM_ERROR_NOT_FLOAT);
+                    break;
                 }
             }
             break;
@@ -612,19 +645,15 @@ sam_word_t sam_run(void)
                 sam_uword_t operand;
                 HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
                 switch (operand & SAM_OP_MASK) {
-                case SAM_INSN_INT:
-                    {
-                        sam_uword_t a;
-                        POP_UINT(a);
-                        PUSH_INT(-a);
-                    }
-                    break;
                 case SAM_INSN__FLOAT:
                     {
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(a * (M_PI / 180.0));
                     }
+                    break;
+                default:
+                    HALT(SAM_ERROR_NOT_FLOAT);
                     break;
                 }
             }
