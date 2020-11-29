@@ -10,12 +10,16 @@ executed.
 
 SAM was designed for the TiLDA Mke badge (whose hardware seems to be
 codenamed “sam”), an Arduino Due-compatible device designed for
-Electromagnetic Field 2014. It can also be run on a GNU-compatible system
-with SDL2.
+Electromagnetic Field 2014. It can also be run on most personal computers (it needs a C compiler and SDL2).
 
 SAM was invented as a tenth birthday present for my nephew, Sam. It was
 named after my first computer, a Sinclair ZX81, “Super Advanced Micro”.
 Sam’s logo is a simpatico astute mongrel called Sam.
+
+
+## The idea
+
+SAM is a simple, concrete system for teaching programming. It is low-level enough that it exposes most of the fundamental issues of dealing with computers, and high level enough that one can comfortably program in its machine code. It has only one sort of state—the stack—to understand, which can be inspected in its entirety, and corresponds homoiconically to the program and state. It can be interrupted and resumed, and is easy to study and reason about.
 
 
 ## The code
@@ -108,3 +112,6 @@ TiLDA v2 Firmware
   and submit a pull request for review
 * Please do not commit to master
 * For discussing changes, please point your IRC client at #tilda on Freenode
+
+<!--  LocalWords:  homoiconically
+ -->
