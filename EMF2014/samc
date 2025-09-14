@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # Compile a SAM program to C source
 
-import sys
 import struct
+import sys
 
 import yaml
-from yamlinclude import YamlIncludeConstructor
+import yaml_include
 
-YamlIncludeConstructor.add_to_loader_class(loader_class=yaml.SafeLoader)
-prog = yaml.safe_load(sys.stdin.read())
+
+yaml.add_constructor("!include", yaml_include.Constructor(base_dir="."))
+prog = yaml.full_load(sys.stdin.read())
 
 INDENT = 2
 def indented(s, level=0):
