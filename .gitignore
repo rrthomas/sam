@@ -2,8 +2,6 @@
 /*.trs
 /*-output.log
 /*-output.pbm
-/sam_program_asm.h
-/sam_program_len.h
 /test-*
 /test-suite.log
 /basic_block.log
