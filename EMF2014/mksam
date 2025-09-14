@@ -41,4 +41,4 @@ echo ";" >> $PROGRAM_LEN_SOURCE
 cp $PROGRAM_ASM sam_program_asm.h
 cp $PROGRAM_LEN_SOURCE sam_program_len.h
 
-gcc -Wall -Wextra -m32 -g -D_GNU_SOURCE -DSAM_DEBUG -o $TEST_EXE sam_*.c -x c $PROGRAM_SOURCE -x c $PROGRAM_LEN_SOURCE -x c sam_main.x -x c sam_traps.x -lm -lSDL2 -lSDL2_gfx
+gcc -Wall -Wextra -g -D_GNU_SOURCE -DSAM_DEBUG -o $TEST_EXE sam_*.c -x c $PROGRAM_SOURCE -x c $PROGRAM_LEN_SOURCE -x c sam_main.x -x c sam_traps.x -lm -lSDL2 -lSDL2_gfx
