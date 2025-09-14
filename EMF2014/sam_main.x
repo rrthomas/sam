@@ -91,11 +91,12 @@ int main(int argc, char *argv[]) {
     int res = sam_init(&sam_stack[0], SAM_STACK_WORDS, sam_program_len);
     HALT_IF_ERROR(res);
     sam_print_stack();
+    res = sam_run();
 
  error:
 #ifdef SAM_DEBUG
     if (do_debug) {
-        debug("sam_run returns %d\n", sam_run());
+        debug("sam_run returns %d\n", res);
         if (sam_traps_window_used()) {
             if (screen_pbm_file != NULL)
                 sam_dump_screen(screen_pbm_file);
