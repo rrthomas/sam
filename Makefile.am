@@ -1,6 +1,8 @@
 # Tests Makefile.am
 #
-# Copyright (C) Reuben Thomas 2020
+# © 2020-2025 Reuben Thomas <rrt@sc3d.org>
+
+SUBDIRS = doc
 
 TEST_EXTENSIONS = .yaml
 YAML_LOG_COMPILER = $(srcdir)/run-test
