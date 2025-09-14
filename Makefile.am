@@ -29,6 +29,11 @@ RESULTS = \
 	levy-c.log \
 	$(EMPTY)
 
+CLOC = cloc --force-lang="C",h
+
+loc:
+	$(CLOC) *.c *.h
+
 EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(INPUTS) $(RESULTS) \
 	turtle.yaml
 
