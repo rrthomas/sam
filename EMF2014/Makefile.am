@@ -29,7 +29,7 @@ RESULTS = \
 	levy-c.log \
 	$(EMPTY)
 
-EXTRA_DIST = $(SH_LOG_COMPILER) $(TESTS) $(INPUTS) $(RESULTS) \
+EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(INPUTS) $(RESULTS) \
 	turtle.yaml
 
 AM_TESTS_ENVIRONMENT = srcdir=$(srcdir) MKSAM=$(builddir)/mksam SAM=$(builddir)/sam$(EXEEXT);
