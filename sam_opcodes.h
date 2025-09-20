@@ -69,6 +69,3 @@ enum {
   SAM_INSN_HALT = 0xfe,
   SAM_INSN_TRAP = 0xff,
 };
-
-/* Largest operand.  */
-#define SAM_MAX_OPERAND ((1 << (SAM_WORD_BIT - SAM_OP_SHIFT)) - 1)
