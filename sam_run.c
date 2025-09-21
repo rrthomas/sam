@@ -174,7 +174,7 @@ sam_word_t sam_run(void)
             }
             break;
         case SAM_INSN_IDUP:
-            // TODO
+            // TODO: DUP an inner item (takes stack index and inner index)
 #ifdef SAM_DEBUG
             debug("IDUP\n");
 #endif
@@ -183,7 +183,7 @@ sam_word_t sam_run(void)
 #ifdef SAM_DEBUG
             debug("ISET\n");
 #endif
-            // TODO
+            // TODO: SET an inner item (takes stack index and inner index)
             break;
         case SAM_INSN_BRA:
 #ifdef SAM_DEBUG
