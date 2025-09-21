@@ -38,7 +38,7 @@ script `mksam` with the desired code, and then run the resulting `sam`
 binary; for example:
 
 ```
-./mksam graphics.yaml
+./mksam screen_levy-c.yaml
 ./sam
 ```
 
