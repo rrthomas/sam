@@ -1,3 +1,5 @@
+Makefile
+Makefile.in
 /*.yaml*.x
 /*.trs
 /*-output.log
@@ -15,8 +17,6 @@
 /screen_levy-c.pbm
 /screen_turtle-demo.log
 /screen_turtle-demo.pbm
-/Makefile
-/Makefile.in
 /aclocal.m4
 /autom4te.cache
 /config.log

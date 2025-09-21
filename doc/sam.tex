@@ -1,0 +1,431 @@
+%
+% The definition of SAM
+%
+% Reuben Thomas
+%
+% Started 20th September 2025
+%
+
+\documentclass[english]{scrartcl}
+\usepackage[british]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{newpxtext,booktabs,hyperref}
+
+% Alter some default parameters for general typesetting
+
+\frenchspacing
+
+
+% Macros for this document
+
+% Old font abbreviation
+% Should use defoldfonts package, but see https://github.com/komascript/defoldfonts/issues/1
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+
+% Font for stack pictures; macro \spic includes italic correction
+\newfont{\spfont}{cmsltt10 scaled 1000}
+\newcommand{\spic}[1]{{\spfont\setlength{\baselineskip}{\normalbaselineskip}#1\/}}
+
+% Common stack items
+\newcommand{\x}[1]{\spic{x$_{#1}$}}
+\newcommand{\s}[1]{\spic{s$_{#1}$}}
+\newcommand{\I}[1]{\spic{i$_{#1}$}}
+\newcommand{\n}[1]{\spic{n$_{#1}$}}
+\newcommand{\f}[1]{\spic{f$_{#1}$}}
+\newcommand{\U}[1]{\spic{u$_{#1}$}}
+\newcommand{\C}[1]{\spic{c$_{#1}$}}
+
+% Lay out an instruction definition
+
+% Define the widths of the stack comment and description columns
+\newlength{\itemwidth}\itemwidth=\textwidth \advance\itemwidth by -0.25in
+\newlength{\instname}\instname=0.5in
+\newlength{\stackcom}\stackcom=\itemwidth \advance\stackcom by -\instname
+\newcommand{\inst}[3]{\item[]\parbox{\itemwidth}%
+{\makebox[\instname][l]{\tt #1}%
+\makebox[\stackcom][r]{\tt ( \spic{#2} )}\\[0.5ex]#3}}
+
+% Lay out an external interface call
+
+\newlength{\innerwidth}\innerwidth=\itemwidth \advance\innerwidth by -0.5in
+\newcommand{\iface}[4]{\item[]\parbox{\itemwidth}{{\textbf{#1}} ({\textit{#2}}\/) :
+#3\\[0.5ex]\hspace*{0.4in}\parbox{\innerwidth}{#4}}}
+
+% Lay out a line of the opcode table
+
+\newcommand{\opcodetbl}[4]{0x#1 & {\tt #2} & 0x#3 & {\tt #4} \\}
+\newcommand{\opcodetblone}[2]{0x#1 & {\tt #2} \\}
+
+
+\title{The SAM Virtual Machine}
+\author{Reuben Thomas}
+\date{21st September 2025}
+
+\begin{document}
+\maketitle
+
+\subsection*{Typographical notes}
+
+VM instructions and registers are shown in {\tt Typewriter} font; interface calls are shown in \textbf{Bold} type, and followed by empty parentheses.
+
+SAM can be built as a library and embedded in other programs. A small interface is provided for other programs to control SAM.
+
+Addresses are given in bytes and refer to SAM’s address space except where stated. Addresses are written in hexadecimal; hex numbers are prefixed with “0x”.
+
+
+\section{Introduction}
+
+SAM is a simple virtual machine designed playfully to teach some elements of low-level programming. It is programmed with an assembly language written as YAML.
+
+SAM is self-contained, and performs I/O via the {\tt TRAP} instruction, which provides access to I/O and possibly implementation-dependent facilities.
+
+
+\section{Architecture}
+
+SAM is a stack-based VM. Its memory is a single stack of items, each of which is a VM instruction or a stack. It has no other memory. It has a handful of registers.
+
+
+\subsection{Registers}
+\label{registers}
+
+The registers are set out in table~\ref{regtable}.
+
+\begin{table}[htbp]
+  \begin{center}
+    \begin{tabular}{cp{3.5in}} \toprule
+      \textbf{Register} & \textbf{Function} \\ \midrule
+      {\tt SSIZE} & The {\tt S}tack {\tt SIZE}. The size of the stack in words. \\
+      {\tt SP} & The {\tt S}tack {\tt P}ointer. The number of words in the current stack. \\
+      {\tt IR} & The {\tt I}nstruction {\tt R}egister holds the currently-executing instruction word. \\
+      {\tt OP} & The {\tt OP}erand is the operand encoded in the current instruction. \\
+      {\tt I} & The opcode of the currently executing {\tt I}nstruction. \\
+      {\tt PC} & The {\tt P}rogram {\tt C}ounter points to the next instruction. \\
+      {\tt PC0} & Points to the start of the currently executing stack. \\
+      \bottomrule
+    \end{tabular}
+    \caption{\label{regtable}SAM’s registers}
+  \end{center}
+\end{table}
+
+All of the registers are word-sized.
+
+
+\subsection{The stack}
+
+The stack is a LIFO stack of VM instructions encoded as 4-byte words.
+
+The stack is addressed with signed integers.
+
+A positive address \spic{n} refers to the \spic{n}th word, starting from zero at the bottom of the stack.
+
+A negative address $-$\spic{n} refers to the \spic{n}th stack item, counting from $1$ at the top of the stack.
+
+A valid address is one that points to a valid instruction word whose opcode’s name does not start with an underscore.
+
+
+\subsection{Operation}
+\label{operation}
+
+Before SAM is started, the stack should be given suitable contents, {\tt SSIZE} and {\tt SP} set appropriately, and {\tt PC0} set to point to some code in the stack.
+
+\begin{tabbing}
+  \hspace{0.5in}\=perform a {\tt KEY} instruction\+ \\*
+  begin\=\+ \\*
+  load the stack item at {\tt PC} into {\tt IR} \\*
+  set {\tt I} to the least significant byte of {\tt IR} \\*
+  set {\tt OP} to {\tt IR} arithmetically shifted one byte to the right \\*
+  increment {\tt PC} \\*
+  execute the instruction whose opcode is in {\tt I} \- \\*
+  repeat
+\end{tabbing}
+
+Note that \textbf{run()} does not perform the initialisation specified above; that must be performed before calling it.
+
+
+\subsection{Termination and errors}
+
+When SAM encounters a {\tt HALT} instruction (see section~\ref{exceptinst}),
+it pops an integer from the top of the stack and returns it as its reason code. If an error occurs while popping the integer, that error code is returned instead.
+
+Error codes are signed numbers. Negative codes are reserved for SAM; positive error codes may be used by user code.
+
+Table~\ref{excepttable} lists the errors and the conditions under which they are raised. Some further specific error conditions are documented with the instructions that raise them.
+
+\begin{table}[htbp]
+  \begin{center}
+    \begin{tabular}{lrp{2.5in}} \toprule
+      \textbf{Code} & \textbf{Value} & \textbf{Meaning} \\ \midrule
+      {\tt OK} & $0$ & No error. \\
+      {\tt INVALID\_OPCODE} & $-1$ & An attempt was made to execute an invalid opcode (see section~\ref{opcodes}). \\
+      {\tt INVALID\_ADDRESS} & $-2$ & Invalid address. \\
+      {\tt STACK\_UNDERFLOW} & $-3$ & The stack has underflowed, that is, an attempt was made to pop when it was empty. \\
+      {\tt STACK\_OVERFLOW} & $-4$ & The stack has overflowed, that is, an attempt was made to push to it when it already contained {\tt SSIZE} words, or an attempt was made to access beyond the current top of the stack. \\
+      {\tt NOT\_NUMBER} & $-5$ & A stack item expected to be a number was not. \\
+      {\tt NOT\_INT} & $-6$ & A stack item expected to be an integer was not. \\
+      {\tt NOT\_FLOAT} & $-7$ & A stack item expected to be a float was not. \\
+      {\tt NOT\_CODE} & $-8$ & An item expected to be code was not. \\
+      {\tt BAD\_BRACKET} & $-9$ & No matching {\tt KET} found for a {\tt BRA}, or vice versa. \\
+      {\tt UNPAIRED\_FLOAT} & $-10$ & A {\tt FLOAT} instruction was not followed by {\tt \_FLOAT}. \\
+      {\tt UNPAIRED\_PUSH} & $-11$ & A {\tt PUSH} instruction was not followed by {\tt \_PUSH}. \\
+      {\tt INVALID\_SWAP} & $-12$ & A {\tt SWAP} instruction was given invalid arguments. \\
+      {\tt INVALID\_FUNCTION} & $-13$ & An invalid function number was given to  {\tt TRAP}. \\
+      \bottomrule
+\end{tabular}
+\caption{\label{excepttable}Errors raised by SAM}
+\end{center}
+\end{table}
+
+
+\section{Instruction set}
+\label{instset}
+
+The instruction set is listed in sections~\ref{nopinst} to~\ref{accessinst}, with the instructions grouped according to function. The instructions are given in the following format:
+
+\begin{description}
+\inst{NAME}{before -- after}{Description.}
+\end{description}
+
+The first line has the name of the instruction on the left and the stack comment, which shows the effect of the instruction on the stack, on the right. Underneath is the description.
+
+\textbf{Stack comments} are written {\tt ( \spic{before -- after} )} where \spic{before} and \spic{after} are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the \textbf{stack effect}). An instruction only affects the items shown in its stack comments. The brackets and dashes serve merely to delimit the stack comment and to separate \spic{before} from \spic{after}. \textbf{Stack pictures} are a representation of the top-most items on the stack, and are written \spic{i$_1$ i$_2$\dots i$_{n-1}$ i$_n$} where the \spic{i$_k$} are stack items, each of which occupies a whole number of words, with \spic{i$_n$} being on top of the stack. The symbols denoting different types of stack item are shown in table~\ref{typetable}.
+
+
+\subsection{Types and their representations}
+
+\begin{table}[htbp]
+  \begin{center}
+    \begin{tabular}{cl} \toprule
+      \textbf{Symbol} & \textbf{Data type} \\ \midrule
+      \spic{i} & a signed integer \\
+      \spic{f} & a floating-point number \\
+      \spic{n} & a number (integer or floating point) \\
+      \spic{l} & a link (pointer to code) \\
+      \spic{s} & a scalar (anything other than a stack) \\
+      \spic{c} & a code item (stack or link) \\
+      \spic{x} & an unspecified item \\
+      \bottomrule
+    \end{tabular}
+    \caption{\label{typetable}Types used in stack comments}
+  \end{center}
+\end{table}
+
+Each type may be suffixed by a number in stack pictures; if the same combination of type and suffix appears more than once in a stack comment, it refers to identical stack items.
+
+Integers are stored as the top three bytes of an {\tt INT} instruction, in twos-complement form.
+
+Floats are 32-bit IEEE floats, whose top three bytes are stored in the top three bytes of a {\tt FLOAT} instruction and bottom byte is in the second byte of the paired {\tt \_FLOAT} instruction.
+
+A stack is encoded as a {\tt BRA} instruction followed by the nested stack items and ending with a {\tt KET} instruction. A link to a stack is encoded in a {\tt LINK} instruction as the address of its {\tt BRA} instruction.
+
+
+\subsection{Do nothing}
+\label{nopinst}
+
+\begin{description}
+\inst{NOP}{--}{Do nothing.}
+\end{description}
+
+
+\subsection{Literals}
+\label{literals}
+
+These instructions encode literal values.
+
+\nopagebreak
+
+\begin{description}
+  \inst{INT}{-- i}{Push {\tt OP} on to the stack.}
+  \inst{FLOAT}{-- f}{Push the float encoded in the {\tt FLOAT} and following {\tt \_FLOAT} instruction on to the stack, or raise the error {\tt UNPAIRED\_FLOAT} if the following instruction is not a {\tt \_FLOAT} instruction. Increment {\tt PC}.}
+  \inst{\_FLOAT}{}{Raise the error {\tt UNPAIRED\_FLOAT}. This instruction should never be executed.}
+\end{description}
+
+
+\subsection{Numeric type conversion}
+
+Numeric conversions:
+
+\nopagebreak
+
+\begin{description}
+  \inst{I2F}{i -- f}{Raise the error {\tt NOT\_INT} if the top-most stack item is not an integer. Otherwise, pop it, convert the integer to a float, and push the float.}
+  \inst{F2I}{f -- i}{Raise the error {\tt NOT\_FLOAT} if the top-most stack item is not a float. Otherwise, pop it, convert the float to an integer, and push the integer.}
+\end{description}
+
+
+\subsection{Stack manipulation}
+\label{stackinst}
+
+These instructions manage the stack.
+
+\begin{description}
+\inst{PUSH}{-- x}{Push the word encoded in the {\tt PUSH} and following {\tt \_PUSH} instruction on to the stack, or raise the error {\tt UNPAIRED\_PUSH} if the following instruction is not a {\tt \_PUSH} instruction. Increment {\tt PC}.}
+\inst{\_PUSH}{}{Raise the error {\tt UNPAIRED\_PUSH}. This instruction should never be executed.}
+\inst{POP}{x --}{If the stack is empty, raise the error {\tt STACK\_UNDERFLOW}. Pop \spic{x} from the stack.}
+\inst{DUP}{i -- x}{Pop \spic{i} from the top of the stack. Push the \spic{i}th stack item to the stack. If that item is a stack, push a {\tt LINK} instruction pointing to it.}
+\inst{SWAP}{\x1 i -- \x2}{Pop \spic{i} from the stack. Swap the stack item \x1 with the \spic{i}th item, \x2.}
+\inst{IDUP}{\I1 \I2 -- x}{Push the \I1th item of the \I2th stack element, which must be a stack or link, to the top of the stack.}
+\inst{ISET}{x \I1 \I2 --}{Set the \I1th item of the \I2th stack element, which must be a stack or link, to \spic{x}.}
+\end{description}
+
+
+\subsection{Control structures}
+\label{control}
+
+These instructions implement loops, conditions and subroutine calls.
+
+\nopagebreak
+
+\begin{description}
+\inst{BRA}{-- l}{Push ${\tt PC} - 1$ on to the stack, and add ${\tt IR} + 1$ to {\tt PC}.}
+\inst{KET}{l$_1$ l$_2$ --}{Pop \spic{l}$_2$ into {\tt PC} and \spic{l}$_1$ into {\tt PC0}.}
+\inst{LINK}{-- x}{Push {\tt IR} on to the stack.}
+\inst{DO}{i -- \x1 \x2}{Pop \spic{i}. If the stack item at that index is not a stack, raise {\tt NOT\_CODE}. Push {\tt PC0} then {\tt PC} to the stack, and set both {\tt PC0} and {\tt PC} to \spic{i}.}
+\inst{IF}{i \C1 \C2 --}{Pop \C1 and \C2. If either stack item is not code, raise {\tt NOT\_CODE}. Pop \spic{i}. If it is zero, perform the action of {\tt DO} on \C1, otherwise on \C2.}
+\inst{WHILE}{i --}{Pop \spic{i}. If it is zero, perform the action of {\tt KET}.}
+\inst{LOOP}{}{Set {\tt PC} to {\tt PC0}.}
+\end{description}
+
+
+\subsection{Logic and shifts}
+
+These instructions consist of bitwise logical operators and bitwise shifts. The result of performing the specified operation on the argument or arguments is left on the stack.
+
+Logic functions:
+
+\nopagebreak
+
+\begin{description}
+\inst{NOT}{\x1 -- \x2}{Invert all bits of \x1, giving its logical inverse \x2.}
+\inst{AND}{\x1 \x2 -- \x3}{\x3 is the bit-by-bit logical “and” of \x1 with \x2.}
+\inst{OR}{\x1 \x2 -- \x3}{\x3 is the bit-by-bit inclusive-or of \x1 with \x2.}
+\inst{XOR}{\x1 \x2 -- \x3}{\x3 is the bit-by-bit exclusive-or of \x1 with \x2.}
+\end{description}
+
+Shifts:
+
+\nopagebreak
+
+\begin{description}
+\inst{LSH}{\x1 u -- \x2}{Perform a logical left shift of \spic{u} bit-places on \x1, giving \x2. Put zero into the least significant bits vacated by the shift.}
+\inst{RSH}{\x1 u -- \x2}{Perform a logical right shift of \spic{u} bit-places on \x1, giving \x2. Put zero into the most significant bits vacated by the shift.}
+\inst{ARSH}{\x1 u -- \x2}{Perform an arithmetic right shift of \spic{u} bit-places on \x1, giving \x2. Copy the most significant bit into the most significant bits vacated by the shift.}
+\end{description}
+
+
+\subsection{Comparison}
+
+\begin{description}
+\inst{EQ}{\s1 \s2 -- i}{\spic{i} is $1$ if \n1 and \n2 are equal, and $0$ otherwise. Integers, floats and links are compared.}
+\inst{LT}{\n1 \n2 -- i}{\spic{i} is $1$ is \n1 is less than \n2 and $0$ otherwise.}
+\end{description}
+
+
+\subsection{Arithmetic}
+\label{arithmetic}
+
+These instructions consist of monadic and dyadic operators. All calculations are made without bounds or overflow checking, except as detailed for certain instructions.
+
+The result of dividing by zero is zero. Integer division rounds the quotient towards zero; signed division of $-2^{31}$ by $-1$ gives a quotient of $-2^{31}$ and a remainder of $0$.
+
+\begin{description}
+\inst{NEG}{\n1 -- \n2}{Negate \n1, giving its arithmetic inverse \n2.}
+\inst{ADD}{\n1 \n2 -- \n3}{Add \n2 to \n1, giving the sum \n3.}
+\inst{MUL}{\n1 \n2 -- \n3}{Multiply \n1 by \n2, giving the product \n3.}
+\inst{DIV}{\n1 \n2 -- \n3}{Divide \n1 by \n2, giving the quotient \n3.}
+\inst{REM}{\n1 \n2 -- \n3}{Divide \n1 by \n2, giving the remainder \n3.}
+\inst{POW}{\n1 \n2 -- \n3}{Raise \n1 to the power \n2, giving the result \n3.}
+\end{description}
+
+
+\subsection{Trigonometry}
+
+Trigonometric functions:
+
+\nopagebreak
+
+\begin{description}
+\inst{SIN}{\f1 -- \f2}{Calculate $sin$~\f1, giving the result \f2.}
+\inst{COS}{\f1 -- \f2}{Calculate $sin$~\f1, giving the result \f2.}
+\inst{DEG}{\f1 -- \f2}{Convert \f1 radians to degrees, giving the result \f2.}
+\inst{RAD}{\f1 -- \f2}{Convert \f1 degrees to radians, giving the result \f2.}
+\end{description}
+
+
+\subsection{Errors}
+\label{exceptinst}
+
+These instructions give access to SAM’s error mechanisms.
+
+\begin{description}
+\inst{HALT}{x --}{Stop SAM, returning reason code \spic{x} to the calling program (see section~\ref{calls}).}
+\end{description}
+
+
+\subsection{External access}
+\label{accessinst}
+
+These instructions allow access to I/O and other system facilities.
+
+\begin{description}
+\inst{TRAP}{n --}{Execute trap \spic{n}. Further stack items may also be consumed and returned, depending on \spic{n}. If the trap is invalid, raise {\tt INVALID\_FUNCTION}.}
+\end{description}
+
+
+\subsection{Opcodes}
+\label{opcodes}
+
+Table~\ref{opcodetable} lists the opcodes in numerical order. All
+undefined opcodes raise error {\tt INVALID\_OPCODE}.
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{*{2}{cc}} \toprule
+\textbf{Opcode} & \textbf{Instruction} & \textbf{Opcode} & \textbf{Instruction} \\ \midrule
+\opcodetbl{00}{NOP}	{15}{AND}
+\opcodetbl{01}{INT}	{16}{OR}
+\opcodetbl{02}{FLOAT}	{17}{XOR}
+\opcodetbl{03}{\_FLOAT}	{18}{LSH}
+\opcodetbl{04}{I2F}	{19}{RSH}
+\opcodetbl{05}{F2I}	{1a}{ARSH}
+\opcodetbl{06}{PUSH}	{1b}{EQ}
+\opcodetbl{07}{\_PUSH}	{1c}{LT}
+\opcodetbl{08}{POP}	{1d}{NEG}
+\opcodetbl{09}{DUP}	{1e}{ADD}
+\opcodetbl{0a}{SWAP}	{1f}{MUL}
+\opcodetbl{0b}{IDUP}	{20}{DIV}
+\opcodetbl{0c}{ISET}	{21}{REM}
+\opcodetbl{0d}{BRA}	{22}{POW}
+\opcodetbl{0e}{KET}	{23}{SIN}
+\opcodetbl{0f}{LINK}	{24}{COS}
+\opcodetbl{10}{DO}	{25}{DEG}
+\opcodetbl{11}{IF}	{26}{RAD}
+\opcodetblone{12}{WHILE}
+\opcodetbl{13}{LOOP}	{fe}{HALT}
+\opcodetbl{14}{NOT}	{ff}{TRAP}
+ \bottomrule
+\end{tabular}
+\caption{\label{opcodetable}SAM’s opcodes}
+\end{center}
+\end{table}
+
+
+\section{External interface}
+
+SAM’s external interface comes in three parts. The calling interface allows SAM to be controlled by other programs. The {\tt TRAP} instruction allows implementations to provide access to system facilities, code written in other languages, and the speed of machine code in time-critical situations. The assembly format allows compiled code to be saved, reloaded and shared between systems.
+
+
+\subsection{Assembly format}
+\label{assembly}
+
+TODO.
+
+\subsection{Calling interface}
+\label{calls}
+
+See \texttt{sam.h}.
+
+
+% \section*{Acknowledgements}
+
+
+\end{document}
