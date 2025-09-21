@@ -1,6 +1,6 @@
 /* Sam instruction set description.
 
-   (c) Reuben Thomas 1994-2020
+   (c) Reuben Thomas 1994-2025
 
    The package is distributed under the GNU Public License version 3, or,
    at your option, any later version.
@@ -18,8 +18,7 @@
    Each stack item is either a VM instruction, or a stack.
 
    Stacks are stored as: BRA instruction (operand is number of words to
-   KET), outer S0, stack items, KET (operand is negative number of words to
-   BRA).
+   KET), stack items, KET (operand is negative number of words to BRA).
  */
 
 #define SAM_OP_SHIFT 8
