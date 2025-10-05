@@ -15,7 +15,7 @@
 #define PACKAGE_BUGREPORT "rrt@sc3d.org"
 
 #define SAM_COPYRIGHT_STRING                    \
-    "Copyright (C) 2020 Reuben Thomas."
+    "Copyright (C) 2020-2025 Reuben Thomas."
 #define SAM_VERSION_STRING                      \
     PACKAGE_NAME " " VERSION
 
@@ -98,6 +98,7 @@ int main(int argc, char *argv[]) {
     if (do_debug) {
         debug("sam_run returns %d\n", res);
         if (sam_traps_window_used()) {
+            debug("window used!\n");
             if (screen_pbm_file != NULL)
                 sam_dump_screen(screen_pbm_file);
             getchar();
