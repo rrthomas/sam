@@ -13,6 +13,8 @@
 #include <stdlib.h>
 #include <getopt.h>
 
+#include <SDL2/SDL_timer.h>
+
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "sam_traps.h"
@@ -38,6 +40,7 @@ struct option longopts[] = {
 
 int main(int argc, char *argv[]) {
     char *screen_pbm_file = NULL;
+    bool do_wait = false;
 
     for (;;) {
         int this_optind = optind ? optind : 1, longindex = -1, c;
@@ -61,9 +64,12 @@ int main(int argc, char *argv[]) {
             do_debug = true;
             break;
         case 1:
-            screen_pbm_file = optarg;
+            do_wait = true;
             break;
         case 2:
+            screen_pbm_file = optarg;
+            break;
+        case 3:
             {
 #define OPT_COLUMN_WIDTH 24
                 char buf[OPT_COLUMN_WIDTH + 1];
@@ -81,7 +87,7 @@ int main(int argc, char *argv[]) {
                         "Report bugs to " PACKAGE_BUGREPORT ".\n");
                 exit (EXIT_SUCCESS);
             }
-        case 3:
+        case 4:
             printf (SAM_VERSION_STRING "\n"
                     SAM_COPYRIGHT_STRING "\n"
                     PACKAGE_NAME " comes with ABSOLUTELY NO WARRANTY.\n"
@@ -105,14 +111,18 @@ int main(int argc, char *argv[]) {
 #ifdef SAM_DEBUG
     if (do_debug) {
         debug("sam_run returns %d\n", res);
-        if (sam_traps_window_used()) {
-            debug("window used!\n");
+        if (sam_traps_window_used())
             if (screen_pbm_file != NULL)
                 sam_dump_screen(screen_pbm_file);
-            getchar();
-        }
     }
 #endif
+
+    if (do_wait && sam_traps_window_used ()) {
+        while (!sam_traps_process_events()) {
+            SDL_Delay(sam_update_interval);
+        }
+    }
+
     sam_traps_finish();
     return error;
 }

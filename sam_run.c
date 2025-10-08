@@ -682,5 +682,7 @@ sam_word_t sam_run(void)
             HALT_IF_ERROR(sam_trap((sam_uword_t)operand));
             break;
         }
+
+        sam_traps_process_events();
     }
 }
