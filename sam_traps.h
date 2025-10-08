@@ -1,6 +1,6 @@
 // The trap opcodes.
 //
-// (c) Reuben Thomas 1994-2020
+// (c) Reuben Thomas 2020
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
