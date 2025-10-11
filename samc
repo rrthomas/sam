@@ -9,7 +9,6 @@ import yaml_include
 
 
 yaml.add_constructor("!include", yaml_include.Constructor(base_dir="."))
-prog = yaml.full_load(sys.stdin.read())
 
 INDENT = 2
 
@@ -89,12 +88,21 @@ def compile_list(l, level=0, pc0=0):
     return words, labels, pc - pc0
 
 
-words, labels, _ = compile_list(prog)
+def compile() -> str:
+    prog = yaml.full_load(sys.stdin.read())
 
-for label, n in labels.items():
-    print(f"#define {label} {n}")
-for word in words:
-    print(word)
+    c_source = []
+    words, labels, _ = compile_list(prog)
 
-print(indented(instruction("link", 1)))
-print(indented(instruction("link", 1)))
+    for label, n in labels.items():
+        c_source.append(f"#define {label} {n}")
+    for word in words:
+        c_source.append(word)
+
+    c_source.append(indented(instruction("link", 1)))
+    c_source.append(indented(instruction("link", 1)))
+
+    return "\n".join(c_source)
+
+
+print(compile())
