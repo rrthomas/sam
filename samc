@@ -2,6 +2,7 @@
 # Compile a SAM program to C source
 
 import struct
+import subprocess
 import sys
 
 import yaml
@@ -88,11 +89,11 @@ def compile_list(l, level=0, pc0=0):
     return words, labels, pc - pc0
 
 
-def compile() -> str:
-    prog = yaml.full_load(sys.stdin.read())
+def compile(program_file: str) -> tuple[list[str], int]:
+    prog = yaml.full_load(open(program_file).read())
 
     c_source = []
-    words, labels, _ = compile_list(prog)
+    words, labels, n_words = compile_list(prog)
 
     for label, n in labels.items():
         c_source.append(f"#define {label} {n}")
@@ -102,7 +103,54 @@ def compile() -> str:
     c_source.append(indented(instruction("link", 1)))
     c_source.append(indented(instruction("link", 1)))
 
-    return "\n".join(c_source)
+    return c_source, n_words + 2
 
 
-print(compile())
+if not (1 < len(sys.argv) < 4):
+    print("Usage: samc PROGRAM.YAML [EXE-NAME]")
+    exit(1)
+
+PROGRAM = sys.argv[1]
+
+TEST_EXE = "sam"
+if len(sys.argv) == 3:
+    TEST_EXE = sys.argv[2]
+
+PROGRAM_SOURCE = f"{PROGRAM}.c"
+
+c_source, program_words = compile(PROGRAM)
+
+with open(PROGRAM_SOURCE, "w") as fh:
+    fh.write(f"""\
+#include "sam.h"
+#include "sam_opcodes.h"
+#include "sam_traps.h"
+#include "sam_private.h"
+
+sam_uword_t sam_program_len = {program_words};
+
+sam_word_t sam_stack[SAM_STACK_WORDS] = {{
+""")
+    fh.write("\n".join(c_source))
+    fh.write("};")
+
+subprocess.check_call(
+    [
+        "gcc",
+        "-Wall",
+        "-Wextra",
+        "-g",
+        "-D_GNU_SOURCE",
+        "-DSAM_DEBUG",
+        "-o",
+        TEST_EXE,
+        "sam_main.c",
+        PROGRAM_SOURCE,
+        "-L",
+        ".libs",
+        "-lsam",
+        "-lm",
+        "-lSDL2",
+        "-lSDL2_gfx",
+    ]
+)

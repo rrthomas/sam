@@ -4,6 +4,22 @@
 
 SUBDIRS = doc
 
+noinst_LTLIBRARIES = libsam.la
+
+AM_CPPFLAGS = -DSAM_DEBUG
+
+libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) -lm
+libsam_la_SOURCES = \
+	sam.h \
+	sam_private.h \
+	sam_opcodes.h \
+	sam_registers.h \
+	sam_traps.h \
+	sam_debug.c \
+	sam_storage.c \
+	sam_run.c \
+	sam_traps.c
+
 TEST_EXTENSIONS = .yaml
 YAML_LOG_COMPILER = $(srcdir)/run-test
 
@@ -34,12 +50,12 @@ RESULTS = \
 CLOC = cloc --force-lang="C",h
 
 loc:
-	$(CLOC) *.c *.h
+	$(CLOC) $(libsam_la_SOURCES)
 
-EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(INPUTS) $(RESULTS) \
+EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(RESULTS) \
 	turtle.yaml
 
-AM_TESTS_ENVIRONMENT = srcdir=$(srcdir) MKSAM=$(builddir)/mksam SAM=$(builddir)/sam$(EXEEXT);
+AM_TESTS_ENVIRONMENT = export SAMC=$(builddir)/samc;
 
 clean-local:
 	rm -f *-output.log

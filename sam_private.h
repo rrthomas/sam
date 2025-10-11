@@ -104,7 +104,7 @@
 // Program
 #define SAM_STACK_WORDS 4096
 extern sam_word_t sam_stack[SAM_STACK_WORDS];
-extern sam_word_t sam_program_len;
+extern sam_uword_t sam_program_len;
 
 // Traps
 sam_word_t trap(sam_word_t code);

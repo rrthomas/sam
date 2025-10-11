@@ -34,11 +34,11 @@ C files end in `.x` so they are not automatically built by the Arduino IDE.)
 To build on a GNU-compatible system you will need GCC, Python 3 (for the
 `samc` assembler) with pyyaml and pyyaml-include, and SDL2 (on
 Ubuntu-compatible systems, install package `libsdl2-gfx-dev:i386`). Run the
-script `mksam` with the desired code, and then run the resulting `sam`
+script `samc` with the desired code, and then run the resulting `sam`
 binary; for example:
 
 ```
-./mksam screen_levy-c.yaml
+./samc screen_levy-c.yaml
 ./sam
 ```
 
