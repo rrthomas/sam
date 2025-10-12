@@ -1,6 +1,6 @@
 // Allocate storage for the registers and memory.
 //
-// (c) Reuben Thomas 1994-2020
+// (c) Reuben Thomas 1994-2025
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -24,6 +24,8 @@
 #include "sam_registers.h"
 #undef R
 static sam_word_t *sam_s0;
+sam_uword_t sam_program_len;
+sam_word_t *sam_stack;
 
 
 // Stack
@@ -297,7 +299,7 @@ int sam_init(sam_word_t *s0, sam_uword_t ssize, sam_uword_t sp)
     if ((sam_s0 = s0) == NULL)
         return -1;
     sam_ssize = ssize;
-    sam_sp = sp;
+    sam_program_len = sam_sp = sp;
 
     return 0;
 }
