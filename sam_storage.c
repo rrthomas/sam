@@ -25,7 +25,6 @@
 #undef R
 static sam_word_t *sam_s0;
 sam_uword_t sam_program_len;
-sam_word_t *sam_stack;
 
 
 // Stack

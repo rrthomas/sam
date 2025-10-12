@@ -102,8 +102,7 @@ int main(int argc, char *argv[]) {
 
     sam_word_t error = SAM_ERROR_OK;
     HALT_IF_ERROR(sam_traps_init());
-    sam_stack = SAM_PROGRAM;
-    int res = sam_init(&sam_stack[0], SAM_STACK_WORDS, SAM_PROGRAM_LEN);
+    int res = sam_init(SAM_PROGRAM, SAM_STACK_WORDS, SAM_PROGRAM_LEN);
     HALT_IF_ERROR(res);
     sam_print_stack();
     res = sam_run();
