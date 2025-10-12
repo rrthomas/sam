@@ -1,19 +1,18 @@
--
-  - int 1
-  - int 2
-  - int -2
-  - swap
-  - float 1.0
-  - float 2.0
-  - int -2
-  - swap
-  - int 1
-  - float 2.0
-  - int -2
-  - swap
-  - float 1.0
-  - int 2
-  - int -2
-  - swap
-  - int 0
-  - halt
+- int 1
+- int 2
+- int -2
+- swap
+- float 1.0
+- float 2.0
+- int -2
+- swap
+- int 1
+- float 2.0
+- int -2
+- swap
+- float 1.0
+- int 2
+- int -2
+- swap
+- int 0
+- halt

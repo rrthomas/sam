@@ -2,14 +2,12 @@ Makefile
 Makefile.in
 *.o
 *.lo
-__pycache__
+stamp-h1
 /.deps
 /.libs
-/*.yaml*.c
 /*.trs
 /*-output.log
 /*-output.pbm
-/libsam.la
 /test-*
 /test-suite.log
 /basic_block.log
@@ -24,7 +22,6 @@ __pycache__
 /screen_turtle-demo.log
 /screen_turtle-demo.pbm
 /aclocal.m4
-/ar-lib
 /autom4te.cache
 /compile
 /config.guess
@@ -32,11 +29,8 @@ __pycache__
 /config.log
 /config.status
 /configure
-/depcomp
 /install-sh
-/libtool
-/ltmain.sh
+/main.c
 /missing
 /test-driver
 /sam
-/venv

@@ -1,26 +1,25 @@
--
-  - int 5
-  - fact:
-    - int -3
+- int 5
+- fact:
+  - int -3
+  - dup
+  -
+    - int -5
     - dup
-    -
-      - int -5
-      - dup
-      - int -1
-      - add
-      - link fact
-      - do
-      - int -6
-      - dup
-      - mul
-      - int -6
-      - swap
-      - pop
-    -
-      - int 1
-      - int -6
-      - swap
-      - pop
-    - if
-  - do
-  - halt
+    - int -1
+    - add
+    - link fact
+    - do
+    - int -6
+    - dup
+    - mul
+    - int -6
+    - swap
+    - pop
+  -
+    - int 1
+    - int -6
+    - swap
+    - pop
+  - if
+- do
+- halt
