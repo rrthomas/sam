@@ -9,6 +9,8 @@ __pycache__
 /*.trs
 /*-output.log
 /*-output.pbm
+/dist
+/sam.egg-info
 /libsam.la
 /test-*
 /test-suite.log
@@ -38,5 +40,4 @@ __pycache__
 /ltmain.sh
 /missing
 /test-driver
-/sam
 /venv

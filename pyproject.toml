@@ -1,0 +1,62 @@
+[project]
+name = "sam"
+version = "0.1"
+description = "The Simple Abstract Machine"
+license = "GPL-3.0-or-later"
+authors = [
+    {name = "Reuben Thomas", email = "rrt@sc3d.org"}
+]
+readme = "README.md"
+urls = {Homepage = "https://github.com/rrthomas/sam"}
+requires-python = ">= 3.10"
+dependencies = [
+    "importlib_resources >= 5.10",
+]
+classifiers = [
+    "Environment :: Console",
+    "Programming Language :: Python :: 3",
+]
+
+[project.scripts]
+sam = "sam:main"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[build-system]
+requires = [
+    "setuptools >= 62.3.0",
+]
+
+[tool.setuptools]
+packages = [
+    "sam",
+    "sam.subcommand",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::UserWarning"]
+xfail_strict = true
+
+[tool.ruff.lint]
+select = ["D", "E", "F", "I", "UP"]
+ignore = ["D1", "D401", "D415", "E501"]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.tox]
+env_list = ["3.10", "3.11", "3.12", "3.13"]
+
+[tool.tox.env_run_base]
+deps = ["pyright", "pytest", "ruff", "types-setuptools"]
+commands = [
+    ["pyright", "sam"],
+    ["ruff", "check", "sam"],
+    ["pytest", "-Wdefault", {replace = "posargs", extend = true}],
+]
+extras = ["test"]

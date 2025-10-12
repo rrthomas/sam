@@ -4,7 +4,7 @@
 
 SUBDIRS = doc
 
-noinst_LTLIBRARIES = libsam.la
+lib_LTLIBRARIES = libsam.la
 
 AM_CPPFLAGS = -DSAM_DEBUG
 
@@ -59,3 +59,20 @@ AM_TESTS_ENVIRONMENT = export SAMC=$(builddir)/samc;
 
 clean-local:
 	rm -f *-output.log
+
+python-build: libsam.la
+	ctypesgen -o sam/sam_ctypes.py -L $(builddir)/.libs -lsam sam.h sam_private.h
+	python -m build
+
+python-dist:
+	git diff --exit-code && \
+	rm -rf ./dist && \
+	mkdir dist && \
+	$(MAKE) build
+
+python-release:
+	$(MAKE) test && \
+	$(MAKE) dist && \
+	twine upload dist/* && \
+	git tag v$$(grep version pyproject.toml | grep -o "[0-9.]\+") && \
+	git push --tags
