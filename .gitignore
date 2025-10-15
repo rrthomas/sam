@@ -9,6 +9,8 @@ __pycache__
 /*.trs
 /*-output.log
 /*-output.pbm
+/*_vala.stamp
+/*_vala.stamp-t
 /libsam.la
 /test-*
 /test-suite.log
@@ -28,6 +30,8 @@ __pycache__
 /autom4te.cache
 /compile
 /config.guess
+/config.h
+/config.h.in
 /config.sub
 /config.log
 /config.status
@@ -36,7 +40,9 @@ __pycache__
 /install-sh
 /libtool
 /ltmain.sh
+/main.c
 /missing
 /test-driver
 /sam
+/stamp-h1
 /venv
