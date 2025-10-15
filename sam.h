@@ -1,5 +1,8 @@
 // Sam interpreter APIs and primitives.
 
+#ifndef SAM_SAM
+#define SAM_SAM
+
 #include <stdint.h>
 #include <limits.h>
 
@@ -79,3 +82,5 @@ int sam_traps_window_used(void);
 uint32_t sam_getpixel(int x, int y);
 void sam_dump_screen(const char *filename);
 void sam_update_screen(void);
+
+#endif

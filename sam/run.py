@@ -15,7 +15,6 @@ from .sam_ctypes import (
     sam_init,
     # sam_print_stack,
     sam_run,
-    sam_stack,
     sam_traps_finish,
     sam_traps_init,
     sam_traps_process_events,
@@ -26,11 +25,11 @@ from .warnings_util import warn
 
 
 def run(program: str, debug: bool, wait: bool, screen_pbm_file: str | None):
-    c_source, program_words = compile(program)
+    stack, program_words = compile(program)
 
     if sam_traps_init() != SAM_ERROR_OK:
         exit(1)
-    res = sam_init(sam_stack, SAM_STACK_WORDS, program_words)
+    res = sam_init(stack, SAM_STACK_WORDS, program_words)
     if res != SAM_ERROR_OK:
         exit(1)
     # sam_print_stack()

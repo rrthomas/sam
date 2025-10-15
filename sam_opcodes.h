@@ -21,11 +21,13 @@
    KET), stack items, KET (operand is negative number of words to BRA).
  */
 
-#define SAM_OP_SHIFT 8
-#define SAM_OP_MASK  ((1 << SAM_OP_SHIFT) - 1)
+#include "sam.h"
+
+extern const int SAM_OP_SHIFT;
+extern const sam_word_t SAM_OP_MASK;
 
 /* Opcodes.  */
-enum {
+enum SAM_INSN {
   SAM_INSN_NOP = 0,
   SAM_INSN_INT,
   SAM_INSN_FLOAT,

@@ -61,7 +61,7 @@ clean-local:
 	rm -f *-output.log
 
 python-build: libsam.la
-	ctypesgen -o sam/sam_ctypes.py -L $(builddir)/.libs -lsam sam.h sam_private.h
+	ctypesgen -o sam/sam_ctypes.py -L $(builddir)/.libs -lsam sam.h sam_private.h sam_opcodes.h sam_traps.h
 	python -m build
 
 python-dist:

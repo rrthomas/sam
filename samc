@@ -19,7 +19,7 @@ def indented(s, level=0):
 
 
 def instruction(inst, op=None):
-    s = f"SAM_INSN_{inst.upper()}"
+    s = inst.upper()
     if op is not None:
         s = f"LSHIFT({op}, SAM_OP_SHIFT) | {s}"
     return s
