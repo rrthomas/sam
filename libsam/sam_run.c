@@ -20,9 +20,6 @@
 #include "sam_opcodes.h"
 #include "sam_private.h"
 
-// Instruction constants
-const int SAM_OP_SHIFT = 8;
-const sam_word_t SAM_OP_MASK = (1 << SAM_OP_SHIFT) - 1;
 
 // Division macros
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))

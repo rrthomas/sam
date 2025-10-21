@@ -1,0 +1,37 @@
+// Bind libsam into Go.
+package libsam
+
+//#cgo LDFLAGS: -lSDL2 -lSDL2_gfx -lm
+//#include "sam.h"
+import "C"
+
+func SamRun() C.sam_word_t {
+	return C.sam_run()
+}
+
+func SamInit(m0 *C.sam_word_t, msize C.sam_uword_t, sp C.sam_uword_t) {
+	C.sam_init(m0, msize, sp)
+}
+
+func TrapsInit() C.sam_word_t {
+	return C.sam_traps_init()
+}
+
+const (
+	ERROR_OK               = C.SAM_ERROR_OK
+	ERROR_INVALID_OPCODE   = C.SAM_ERROR_INVALID_OPCODE
+	ERROR_INVALID_ADDRESS  = C.SAM_ERROR_INVALID_ADDRESS
+	ERROR_STACK_UNDERFLOW  = C.SAM_ERROR_STACK_UNDERFLOW
+	ERROR_STACK_OVERFLOW   = C.SAM_ERROR_STACK_OVERFLOW
+	ERROR_NOT_NUMBER       = C.SAM_ERROR_NOT_NUMBER
+	ERROR_NOT_INT          = C.SAM_ERROR_NOT_INT
+	ERROR_NOT_FLOAT        = C.SAM_ERROR_NOT_FLOAT
+	ERROR_NOT_CODE         = C.SAM_ERROR_NOT_CODE
+	ERROR_BAD_BRACKET      = C.SAM_ERROR_BAD_BRACKET
+	ERROR_UNPAIRED_FLOAT   = C.SAM_ERROR_UNPAIRED_FLOAT
+	ERROR_UNPAIRED_PUSH    = C.SAM_ERROR_UNPAIRED_PUSH
+	ERROR_INVALID_SWAP     = C.SAM_ERROR_INVALID_SWAP
+	ERROR_INVALID_FUNCTION = C.SAM_ERROR_INVALID_FUNCTION
+	ERROR_BREAK            = C.SAM_ERROR_BREAK
+	ERROR_TRAP_INIT        = C.SAM_ERROR_TRAP_INIT
+)
