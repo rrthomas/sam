@@ -505,7 +505,7 @@ sam_word_t sam_run(void)
                         sam_float_t divisor, dividend;
                         POP_FLOAT(divisor);
                         POP_FLOAT(dividend);
-                        PUSH_FLOAT(DIV_CATCH_ZERO(divisor, dividend));
+                        PUSH_FLOAT(DIV_CATCH_ZERO(dividend, divisor));
                     }
                     break;
                 default:
