@@ -129,7 +129,7 @@ A valid address is one that points to a valid instruction word whose opcode’s 
 Before SAM is started, the stack should be given suitable contents, {\tt SSIZE} and {\tt SP} set appropriately, and {\tt PC0} set to point to some code in the stack.
 
 \begin{tabbing}
-  \hspace{0.5in}\=perform a {\tt KEY} instruction\+ \\*
+  \hspace{0.5in}\=perform a {\tt KET} instruction\+ \\*
   begin\=\+ \\*
   load the stack item at {\tt PC} into {\tt IR} \\*
   set {\tt I} to the least significant byte of {\tt IR} \\*
@@ -276,7 +276,7 @@ These instructions implement loops, conditions and subroutine calls.
 \nopagebreak
 
 \begin{description}
-\inst{BRA}{-- l}{Push ${\tt PC} - 1$ on to the stack, and add ${\tt IR} + 1$ to {\tt PC}.}
+\inst{BRA}{-- l}{Push ${\tt PC} - 1$ on to the stack, and add ${\tt OP} + 1$ to {\tt PC}.}
 \inst{KET}{l$_1$ l$_2$ --}{Pop \spic{l}$_2$ into {\tt PC} and \spic{l}$_1$ into {\tt PC0}.}
 \inst{LINK}{-- x}{Push {\tt IR} on to the stack.}
 \inst{DO}{i -- \x1 \x2}{Pop \spic{i}. If the stack item at that index is not a stack, raise {\tt NOT\_CODE}. Push {\tt PC0} then {\tt PC} to the stack, and set both {\tt PC0} and {\tt PC} to \spic{i}.}
