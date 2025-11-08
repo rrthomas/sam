@@ -1,6 +1,6 @@
 # SAM
 
-<img src="Dog/noun_Dog_79221.svg" width=64 alt="logo">
+<img src="Dog/sam.svg" width=256 alt="logo">
 
 SAM is a Simple Abstract Machine intended as a teaching tool and toy.
 
