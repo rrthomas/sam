@@ -15,6 +15,7 @@ dist_doc_DATA = $(LATEX_PDFS)
 all: pdf
 
 pdf-local: $(LATEX_PDFS)
+	$(LATEXMK) $(LATEX_SRCS)
 
 MAINTAINERCLEANFILES = $(LATEX_PDFS)
 
