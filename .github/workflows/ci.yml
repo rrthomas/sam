@@ -1,0 +1,76 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ASAN_FLAGS: "-fsanitize=address -fsanitize=undefined"
+
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get -y install golang libsdl2-gfx-dev latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-extra
+      - name: configure
+        run: autoreconf -fi && ./configure && go mod download
+        env:
+          CFLAGS: -g ${{ env.ASAN_FLAGS }}
+          CXXFLAGS: -g ${{ env.ASAN_FLAGS }}
+          LDFLAGS: ${{ env.ASAN_FLAGS }}
+      - name: make
+        run: make --jobs=`nproc`
+      - name: make check
+        run: make check --jobs=`nproc` || ( cat test-suite.log && exit 1 )
+      - name: make distcheck
+        # normal build is with ASAN, distcheck is without ASAN. Both are covered.
+        run: make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test-suite.log && exit 1 )
+
+  # build-macos:
+  #   runs-on: macos-latest
+  #   steps:
+  #   - uses: actions/checkout@v5
+  #   - name: Install dependencies
+  #     run: |
+  #       brew install automake pkg-config go sdl2_gfx texlive
+  #       # Prepend optional brew binary directories to PATH
+  #       echo "$(brew --prefix)/opt/m4/bin:${PATH}" >> $GITHUB_PATH
+  #   - name: configure
+  #     run: autoreconf -fi && ./configure && go mod download
+  #   - name: make
+  #     run: make --jobs=`nproc`
+  #   - name: make check
+  #     run: make check --jobs=`nproc` || ( cat test-suite.log && exit 1 )
+  #   - name: make distcheck
+  #     run: make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test-suite.log && exit 1 )
+
+  # build-windows:
+  #   runs-on: windows-latest
+  #   defaults:
+  #     run:
+  #       shell: msys2 {0}
+  #   strategy:
+  #     matrix:
+  #       include:
+  #       - { sys: mingw64, env: x86_64 }
+  #   steps:
+  #   - uses: msys2/setup-msys2@v2
+  #     with:
+  #       release: false
+  #       msystem: ${{matrix.sys}}
+  #       install: >-
+  #         patch git groff
+  #         mingw-w64-${{matrix.env}}-autotools
+  #         mingw-w64-${{matrix.env}}-pkg-config
+  #         mingw-w64-${{matrix.env}}-gcc
+  #         mingw-w64-${{matrix.env}}-go
+  #         mingw-w64-${{matrix.env}}-SDL2_gfx
+  #   - uses: actions/checkout@v5
+  #   - name: configure
+  #     run: autoreconf -fi && ./configure && go mod download
+  #   - name: make
+  #     run: make --jobs=`nproc`
+  #   - name: make check
+  #     run: make check --jobs=`nproc` || ( cat test-suite.log && exit 1 )
+  #   - name: make distcheck
+  #     run: make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test-suite.log && exit 1 )
