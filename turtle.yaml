@@ -30,59 +30,59 @@
   - int pen_drawing
   - set
   - int pen_x
-  - dup
+  - get
   - f2i
   - int pen_y
-  - dup
+  - get
   - f2i
   - int pen_color
-  - dup
+  - get
   - trap SETDOT
 - turn:
   - int pen_theta
-  - dup
+  - get
   - int -4
-  - dup
+  - get
   - neg
   - add
   - int pen_theta
   - set
 - go:
   - int pen_theta
-  - dup
+  - get
   - cos
   - int -4
-  - dup
+  - get
   - mul
   - int pen_x
-  - dup
+  - get
   - add
   - int pen_theta
-  - dup
+  - get
   - sin
   - int -5
-  - dup
+  - get
   - mul
   - int pen_y
-  - dup
+  - get
   - add
   - int pen_drawing
-  - dup
+  - get
   -
     - int pen_x
-    - dup
+    - get
     - f2i
     - int pen_y
-    - dup
+    - get
     - f2i
     - int -6
-    - dup
+    - get
     - f2i
     - int -6
-    - dup
+    - get
     - f2i
     - int pen_color
-    - dup
+    - get
     - trap DRAWLINE
   - []
   - if

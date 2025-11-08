@@ -78,14 +78,14 @@ static char *disas(sam_uword_t *addr)
     case SAM_INSN_POP:
         xasprintf(&text, "pop");
         break;
-    case SAM_INSN_DUP:
-        xasprintf(&text, "dup");
+    case SAM_INSN_GET:
+        xasprintf(&text, "get");
         break;
     case SAM_INSN_SET:
         xasprintf(&text, "set");
         break;
-    case SAM_INSN_IDUP:
-        xasprintf(&text, "idup");
+    case SAM_INSN_IGET:
+        xasprintf(&text, "iget");
         break;
     case SAM_INSN_ISET:
         xasprintf(&text, "iset");

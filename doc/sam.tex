@@ -260,9 +260,9 @@ These instructions manage the stack.
 \inst{PUSH}{-- x}{Push the word encoded in the {\tt PUSH} and following {\tt \_PUSH} instruction on to the stack, or raise the error {\tt UNPAIRED\_PUSH} if the following instruction is not a {\tt \_PUSH} instruction. Increment {\tt PC}.}
 \inst{\_PUSH}{}{Raise the error {\tt UNPAIRED\_PUSH}. This instruction should never be executed.}
 \inst{POP}{x --}{If the stack is empty, raise the error {\tt STACK\_UNDERFLOW}. Pop \spic{x} from the stack.}
-\inst{DUP}{i -- x}{Pop \spic{i} from the top of the stack. Push the \spic{i}th stack item to the stack. If that item is a stack, push a {\tt LINK} instruction pointing to it.}
+\inst{GET}{i -- x}{Pop \spic{i} from the top of the stack. Push the \spic{i}th stack item to the stack. If that item is a stack, push a {\tt LINK} instruction pointing to it.}
 \inst{SET}{\x1 i -- }{Pop \spic{i} and \x1 from the stack. Set the \spic{i}th stack item to \x1.}
-\inst{IDUP}{\I1 \I2 -- x}{Push the \I1th item of the \I2th stack element, which must be a stack or link, to the top of the stack.}
+\inst{IGET}{\I1 \I2 -- x}{Push the \I1th item of the \I2th stack element, which must be a stack or link, to the top of the stack.}
 \inst{ISET}{x \I1 \I2 --}{Set the \I1th item of the \I2th stack element, which must be a stack or link, to \spic{x}.}
 \end{description}
 
@@ -389,9 +389,9 @@ undefined opcodes raise error {\tt INVALID\_OPCODE}.
 \opcodetbl{06}{PUSH}	{1b}{EQ}
 \opcodetbl{07}{\_PUSH}	{1c}{LT}
 \opcodetbl{08}{POP}	{1d}{NEG}
-\opcodetbl{09}{DUP}	{1e}{ADD}
+\opcodetbl{09}{GET}	{1e}{ADD}
 \opcodetbl{0a}{SET}	{1f}{MUL}
-\opcodetbl{0b}{IDUP}	{20}{DIV}
+\opcodetbl{0b}{IGET}	{20}{DIV}
 \opcodetbl{0c}{ISET}	{21}{REM}
 \opcodetbl{0d}{BRA}	{22}{POW}
 \opcodetbl{0e}{KET}	{23}{SIN}

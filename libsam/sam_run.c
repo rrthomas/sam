@@ -139,9 +139,9 @@ sam_word_t sam_run(void)
             sam_uword_t size;
             HALT_IF_ERROR(sam_stack_item(-1, &sam_sp, &size));
             break;
-        case SAM_INSN_DUP:
+        case SAM_INSN_GET:
 #ifdef SAM_DEBUG
-            debug("DUP\n");
+            debug("GET\n");
 #endif
             {
                 sam_word_t pos;
@@ -177,10 +177,10 @@ sam_word_t sam_run(void)
                 sam_sp -= size2;
             }
             break;
-        case SAM_INSN_IDUP:
-            // TODO: DUP an inner item (takes stack index and inner index)
+        case SAM_INSN_IGET:
+            // TODO: GET an inner item (takes stack index and inner index)
 #ifdef SAM_DEBUG
-            debug("IDUP\n");
+            debug("IGET\n");
 #endif
             break;
         case SAM_INSN_ISET:

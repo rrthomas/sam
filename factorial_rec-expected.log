@@ -3,16 +3,16 @@ Stack: (30 word(s))
   - int 5
   - 
     - int -3
-    - dup
+    - get
     - 
       - int -5
-      - dup
+      - get
       - int -1
       - add
       - link 2
       - do
       - int -6
-      - dup
+      - get
       - mul
       - int -6
       - set
@@ -49,7 +49,7 @@ Working stack: (4 word(s))
 - link 1
 - link 26
 - int -3
-DUP
+GET
 sam_do: pc = 5, sp = 32, ir = b0d
 Working stack: (4 word(s))
 - int 5
@@ -90,7 +90,7 @@ Working stack: (6 word(s))
 - link 3
 - link 24
 - int -5
-DUP
+GET
 sam_do: pc = 8, sp = 34, ir = ffffff01
 Working stack: (6 word(s))
 - int 5
@@ -151,7 +151,7 @@ Working stack: (9 word(s))
 - link 6
 - link 12
 - int -3
-DUP
+GET
 sam_do: pc = 5, sp = 37, ir = b0d
 Working stack: (9 word(s))
 - int 5
@@ -217,7 +217,7 @@ Working stack: (11 word(s))
 - link 3
 - link 24
 - int -5
-DUP
+GET
 sam_do: pc = 8, sp = 39, ir = ffffff01
 Working stack: (11 word(s))
 - int 5
@@ -308,7 +308,7 @@ Working stack: (14 word(s))
 - link 6
 - link 12
 - int -3
-DUP
+GET
 sam_do: pc = 5, sp = 42, ir = b0d
 Working stack: (14 word(s))
 - int 5
@@ -399,7 +399,7 @@ Working stack: (16 word(s))
 - link 3
 - link 24
 - int -5
-DUP
+GET
 sam_do: pc = 8, sp = 44, ir = ffffff01
 Working stack: (16 word(s))
 - int 5
@@ -520,7 +520,7 @@ Working stack: (19 word(s))
 - link 6
 - link 12
 - int -3
-DUP
+GET
 sam_do: pc = 5, sp = 47, ir = b0d
 Working stack: (19 word(s))
 - int 5
@@ -636,7 +636,7 @@ Working stack: (21 word(s))
 - link 3
 - link 24
 - int -5
-DUP
+GET
 sam_do: pc = 8, sp = 49, ir = ffffff01
 Working stack: (21 word(s))
 - int 5
@@ -787,7 +787,7 @@ Working stack: (24 word(s))
 - link 6
 - link 12
 - int -3
-DUP
+GET
 sam_do: pc = 5, sp = 52, ir = b0d
 Working stack: (24 word(s))
 - int 5
@@ -928,7 +928,7 @@ Working stack: (26 word(s))
 - link 3
 - link 24
 - int -5
-DUP
+GET
 sam_do: pc = 8, sp = 54, ir = ffffff01
 Working stack: (26 word(s))
 - int 5
@@ -1109,7 +1109,7 @@ Working stack: (29 word(s))
 - link 6
 - link 12
 - int -3
-DUP
+GET
 sam_do: pc = 5, sp = 57, ir = b0d
 Working stack: (29 word(s))
 - int 5
@@ -1433,7 +1433,7 @@ Working stack: (27 word(s))
 - link 24
 - int 1
 - int -6
-DUP
+GET
 sam_do: pc = 14, sp = 55, ir = 1f
 Working stack: (27 word(s))
 - int 5
@@ -1625,7 +1625,7 @@ Working stack: (22 word(s))
 - link 24
 - int 1
 - int -6
-DUP
+GET
 sam_do: pc = 14, sp = 50, ir = 1f
 Working stack: (22 word(s))
 - int 5
@@ -1782,7 +1782,7 @@ Working stack: (17 word(s))
 - link 24
 - int 2
 - int -6
-DUP
+GET
 sam_do: pc = 14, sp = 45, ir = 1f
 Working stack: (17 word(s))
 - int 5
@@ -1904,7 +1904,7 @@ Working stack: (12 word(s))
 - link 24
 - int 6
 - int -6
-DUP
+GET
 sam_do: pc = 14, sp = 40, ir = 1f
 Working stack: (12 word(s))
 - int 5
@@ -1991,7 +1991,7 @@ Working stack: (7 word(s))
 - link 24
 - int 24
 - int -6
-DUP
+GET
 sam_do: pc = 14, sp = 35, ir = 1f
 Working stack: (7 word(s))
 - int 5

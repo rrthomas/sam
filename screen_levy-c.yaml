@@ -24,7 +24,7 @@
 - float 48.0
 - levy_c:
   - int -4
-  - dup
+  - get
   -
     - float -45.0
     - rad
@@ -32,11 +32,11 @@
     - do
     - pop
     - int -6
-    - dup
+    - get
     - int -1
     - add
     - int -6
-    - dup
+    - get
     - float 0.70710678
     - mul
     - link levy_c
@@ -57,7 +57,7 @@
     - pop
   -
     - int -5
-    - dup
+    - get
     - link go
     - do
     - pop

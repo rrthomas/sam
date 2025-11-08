@@ -3,18 +3,18 @@
   - float 1.0
   -
     - int -6
-    - dup
+    - get
     - f2i
     - while
     - int -3
-    - dup
+    - get
     - int -7
-    - dup
+    - get
     - mul
     - int -4
     - set
     - int -6
-    - dup
+    - get
     - float -1.0
     - add
     - int -7

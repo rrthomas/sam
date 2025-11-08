@@ -5,18 +5,18 @@ Stack: (37 word(s))
     - float 1.000000
     - 
       - int -6
-      - dup
+      - get
       - f2i
       - while
       - int -3
-      - dup
+      - get
       - int -7
-      - dup
+      - get
       - mul
       - int -4
       - set
       - int -6
-      - dup
+      - get
       - float -1.000000
       - add
       - int -7
@@ -81,7 +81,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 9, sp = 45, ir = 5
 Working stack: (10 word(s))
 - float 5.000000
@@ -120,7 +120,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -3
-DUP
+GET
 sam_do: pc = 13, sp = 45, ir = fffff901
 Working stack: (10 word(s))
 - float 5.000000
@@ -141,7 +141,7 @@ Working stack: (11 word(s))
 - link 28
 - float 1.000000
 - int -7
-DUP
+GET
 sam_do: pc = 15, sp = 47, ir = 1f
 Working stack: (12 word(s))
 - float 5.000000
@@ -192,7 +192,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 5.000000
@@ -262,7 +262,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 9, sp = 45, ir = 5
 Working stack: (10 word(s))
 - float 4.000000
@@ -301,7 +301,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -3
-DUP
+GET
 sam_do: pc = 13, sp = 45, ir = fffff901
 Working stack: (10 word(s))
 - float 4.000000
@@ -322,7 +322,7 @@ Working stack: (11 word(s))
 - link 28
 - float 5.000000
 - int -7
-DUP
+GET
 sam_do: pc = 15, sp = 47, ir = 1f
 Working stack: (12 word(s))
 - float 4.000000
@@ -373,7 +373,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 4.000000
@@ -443,7 +443,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 9, sp = 45, ir = 5
 Working stack: (10 word(s))
 - float 3.000000
@@ -482,7 +482,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -3
-DUP
+GET
 sam_do: pc = 13, sp = 45, ir = fffff901
 Working stack: (10 word(s))
 - float 3.000000
@@ -503,7 +503,7 @@ Working stack: (11 word(s))
 - link 28
 - float 20.000000
 - int -7
-DUP
+GET
 sam_do: pc = 15, sp = 47, ir = 1f
 Working stack: (12 word(s))
 - float 3.000000
@@ -554,7 +554,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 3.000000
@@ -624,7 +624,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 9, sp = 45, ir = 5
 Working stack: (10 word(s))
 - float 2.000000
@@ -663,7 +663,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -3
-DUP
+GET
 sam_do: pc = 13, sp = 45, ir = fffff901
 Working stack: (10 word(s))
 - float 2.000000
@@ -684,7 +684,7 @@ Working stack: (11 word(s))
 - link 28
 - float 60.000000
 - int -7
-DUP
+GET
 sam_do: pc = 15, sp = 47, ir = 1f
 Working stack: (12 word(s))
 - float 2.000000
@@ -735,7 +735,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 2.000000
@@ -805,7 +805,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 9, sp = 45, ir = 5
 Working stack: (10 word(s))
 - float 1.000000
@@ -844,7 +844,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -3
-DUP
+GET
 sam_do: pc = 13, sp = 45, ir = fffff901
 Working stack: (10 word(s))
 - float 1.000000
@@ -865,7 +865,7 @@ Working stack: (11 word(s))
 - link 28
 - float 120.000000
 - int -7
-DUP
+GET
 sam_do: pc = 15, sp = 47, ir = 1f
 Working stack: (12 word(s))
 - float 1.000000
@@ -916,7 +916,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 1.000000
@@ -986,7 +986,7 @@ Working stack: (9 word(s))
 - link 4
 - link 28
 - int -6
-DUP
+GET
 sam_do: pc = 9, sp = 45, ir = 5
 Working stack: (10 word(s))
 - float 0.000000

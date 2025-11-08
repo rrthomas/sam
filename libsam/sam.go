@@ -82,9 +82,9 @@ const (
 	INSN_PUSH   = C.SAM_INSN_PUSH
 	INSN__PUSH  = C.SAM_INSN__PUSH
 	INSN_POP    = C.SAM_INSN_POP
-	INSN_DUP    = C.SAM_INSN_DUP
+	INSN_GET    = C.SAM_INSN_GET
 	INSN_SET    = C.SAM_INSN_SET
-	INSN_IDUP   = C.SAM_INSN_IDUP
+	INSN_IGET   = C.SAM_INSN_IGET
 	INSN_ISET   = C.SAM_INSN_ISET
 	INSN_BRA    = C.SAM_INSN_BRA
 	INSN_KET    = C.SAM_INSN_KET
@@ -126,9 +126,9 @@ var Instructions = map[string]int{
 	"push":   INSN_PUSH,
 	"_push":  INSN__PUSH,
 	"pop":    INSN_POP,
-	"dup":    INSN_DUP,
+	"get":    INSN_GET,
 	"set":    INSN_SET,
-	"idup":   INSN_IDUP,
+	"iget":   INSN_IGET,
 	"iset":   INSN_ISET,
 	"bra":    INSN_BRA,
 	"ket":    INSN_KET,
