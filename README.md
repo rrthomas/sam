@@ -28,34 +28,29 @@ program and state. It can be interrupted and resumed, and is easy to study
 and reason about.
 
 
-## The code
+## Installing and using SAM
 
-The SAM-specific files are in `Mk2-Firmware/EMF2014`. SAM itself is in the
-source files `sam*`. The logo files are in the directory `Dog`.
-
-
-## Building SAM
-
-To build you will need Go, a C compiler, and SDL2 (on Debian-compatible
-systems, install package `libsdl2-gfx-dev`).
-
-To compile and run a program:
+To install SAM, you need Go:
 
 ```
-go run . --wait screen_levy-c.yaml
+go install github.com/rrthomas/sam@latest
 ```
 
-Debugging output is shown in the terminal. If a window has opened, close it
-to end the program.
-
-To be able to build the documentation and run the tests:
+Then run the `sam` command. To run a program, e.g.:
 
 ```
-autoreconf -fi
-./configure
+sam screen_levy-c.yaml
 ```
 
-Then to build the documentation: `make`, and to run the tests, `make check`.
+Debugging output (with the `--debug` option) is shown in the terminal.
+
+If you use the `--wait` option, and the program opens a window, then you
+need to close the window to stop SAM at the end.
+
+Documentation on the SAM virtual machine is in `doc/sam.pdf`.
+
+See `HACKING.md` for information about developing SAM.
+
 
 <!--  LocalWords:  homoiconically
  -->
