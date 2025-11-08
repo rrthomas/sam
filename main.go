@@ -35,11 +35,7 @@ const STACK_WORDS = 4096
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use: "sam",
-	Version: `Copyright (C) 2025 Reuben Thomas <rrt@sc3d.org>
-
-Licence GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.`,
+	Version: "0.1",
 	Short: "SAM, the Super-Awesome Machine",
 	Long:  `A simple virtual machine and run time for playful low-level programming.`,
 	Args:  cobra.ExactArgs(1),
@@ -99,4 +95,11 @@ func init() {
 	rootCmd.Flags().BoolVar(&debug, "debug", false, "output debug information to standard error")
 	rootCmd.Flags().BoolVar(&wait, "wait", false, "wait for user to close window on termination")
 	rootCmd.Flags().StringVar(&pbmFile, "dump-screen", "", "display version information and exit")
+	rootCmd.SetVersionTemplate(`{{.DisplayName}} {{.Version}}
+
+Copyright (C) 2025 Reuben Thomas <rrt@sc3d.org>
+
+Licence GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.`)
 }
