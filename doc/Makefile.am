@@ -15,12 +15,14 @@ dist_doc_DATA = $(LATEX_PDFS)
 all: pdf
 
 pdf-local: $(LATEX_PDFS)
-	$(LATEXMK) $(LATEX_SRCS)
+	for file in $(LATEX_SRCS); do \
+		$(LATEXMK) -r $(srcdir)/latexmkrc $(srcdir)/$$file; \
+	done	
 
 MAINTAINERCLEANFILES = $(LATEX_PDFS)
 
 clean-local:
 	$(LATEXMK) -r $(srcdir)/latexmkrc -C -f $(LATEX_SRCS) \
-		$(builddir)/sam.tex
+		$(srcdir)/sam.tex
 
 EXTRA_DIST = $(LATEX_SRCS) $(LATEX_PDFS) latexmkrc

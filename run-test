@@ -12,8 +12,8 @@ if [[ "${basename#screen_}" != "$basename" ]]; then
     graphics_log="--dump-screen $basename-output.pbm"
 fi
 
-go run . --debug $graphics_log "$test_file" > "$basename-output.log" 2>&1
-diff -u "$srcdir/$basename-expected.log" "$basename-output.log"
+go run $srcdir --debug $graphics_log "$test_file" > "$basename-output.log" 2>&1
+diff -u "$name-expected.log" "$basename-output.log"
 if [[ "$graphics_log" != "" ]]; then
-    diff -u "$srcdir/$basename-expected.pbm" "$basename-output.pbm"
+    diff -u "$name-expected.pbm" "$basename-output.pbm"
 fi
