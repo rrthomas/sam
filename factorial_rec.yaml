@@ -13,13 +13,11 @@
     - dup
     - mul
     - int -6
-    - swap
-    - pop
+    - set
   -
     - int 1
     - int -6
-    - swap
-    - pop
+    - set
   - if
 - do
 - halt

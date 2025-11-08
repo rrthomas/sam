@@ -8,13 +8,16 @@
 - i2f
 - link go
 - do
+- pop
 - float -90.0
 - rad
 - link turn
 - do
+- pop
 - float 30.0
 - link go
 - do
+- pop
 - link pendown
 - do
 - int 8
@@ -27,6 +30,7 @@
     - rad
     - link turn
     - do
+    - pop
     - int -6
     - dup
     - int -1
@@ -41,6 +45,7 @@
     - rad
     - link turn
     - do
+    - pop
     - link levy_c
     - do
     - pop
@@ -49,11 +54,13 @@
     - rad
     - link turn
     - do
+    - pop
   -
     - int -5
     - dup
     - link go
     - do
+    - pop
   - if
 - do
 - pop

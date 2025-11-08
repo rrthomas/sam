@@ -167,8 +167,7 @@ Table~\ref{excepttable} lists the errors and the conditions under which they are
       {\tt BAD\_BRACKET} & $-9$ & No matching {\tt KET} found for a {\tt BRA}, or vice versa. \\
       {\tt UNPAIRED\_FLOAT} & $-10$ & A {\tt FLOAT} instruction was not followed by {\tt \_FLOAT}. \\
       {\tt UNPAIRED\_PUSH} & $-11$ & A {\tt PUSH} instruction was not followed by {\tt \_PUSH}. \\
-      {\tt INVALID\_SWAP} & $-12$ & A {\tt SWAP} instruction was given invalid arguments. \\
-      {\tt INVALID\_FUNCTION} & $-13$ & An invalid function number was given to  {\tt TRAP}. \\
+      {\tt INVALID\_FUNCTION} & $-12$ & An invalid function number was given to  {\tt TRAP}. \\
       \bottomrule
 \end{tabular}
 \caption{\label{excepttable}Errors raised by SAM}
@@ -262,7 +261,7 @@ These instructions manage the stack.
 \inst{\_PUSH}{}{Raise the error {\tt UNPAIRED\_PUSH}. This instruction should never be executed.}
 \inst{POP}{x --}{If the stack is empty, raise the error {\tt STACK\_UNDERFLOW}. Pop \spic{x} from the stack.}
 \inst{DUP}{i -- x}{Pop \spic{i} from the top of the stack. Push the \spic{i}th stack item to the stack. If that item is a stack, push a {\tt LINK} instruction pointing to it.}
-\inst{SWAP}{\x1 i -- \x2}{Pop \spic{i} from the stack. Swap the stack item \x1 with the \spic{i}th item, \x2.}
+\inst{SET}{\x1 i -- }{Pop \spic{i} and \x1 from the stack. Set the \spic{i}th stack item to \x1.}
 \inst{IDUP}{\I1 \I2 -- x}{Push the \I1th item of the \I2th stack element, which must be a stack or link, to the top of the stack.}
 \inst{ISET}{x \I1 \I2 --}{Set the \I1th item of the \I2th stack element, which must be a stack or link, to \spic{x}.}
 \end{description}
@@ -391,7 +390,7 @@ undefined opcodes raise error {\tt INVALID\_OPCODE}.
 \opcodetbl{07}{\_PUSH}	{1c}{LT}
 \opcodetbl{08}{POP}	{1d}{NEG}
 \opcodetbl{09}{DUP}	{1e}{ADD}
-\opcodetbl{0a}{SWAP}	{1f}{MUL}
+\opcodetbl{0a}{SET}	{1f}{MUL}
 \opcodetbl{0b}{IDUP}	{20}{DIV}
 \opcodetbl{0c}{ISET}	{21}{REM}
 \opcodetbl{0d}{BRA}	{22}{POW}

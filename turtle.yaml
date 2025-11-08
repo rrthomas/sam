@@ -8,34 +8,27 @@
   - trap CLEARSCREEN
   - float 0.0
   - int pen_x
-  - swap
-  - pop
+  - set
   - float 0.0
   - int pen_y
-  - swap
-  - pop
+  - set
   - float 0.0
   - int pen_theta
-  - swap
-  - pop
+  - set
   - trap BLACK
   - int pen_color
-  - swap
-  - pop
+  - set
   - int 0
   - int pen_drawing
-  - swap
-  - pop
+  - set
 - penup:
   - int 0
   - int pen_drawing
-  - swap
-  - pop
+  - set
 - pendown:
   - int 1
   - int pen_drawing
-  - swap
-  - pop
+  - set
   - int pen_x
   - dup
   - f2i
@@ -53,42 +46,26 @@
   - neg
   - add
   - int pen_theta
-  - swap
-  - pop
-  - int -3
-  - swap
-  - pop
-  - int -2
-  - swap
+  - set
 - go:
-  - int pen_x
-  - dup
-  - int pen_y
-  - dup
   - int pen_theta
   - dup
-  - int -1
-  - dup
   - cos
-  - int -2
-  - swap
+  - int -4
+  - dup
+  - mul
+  - int pen_x
+  - dup
+  - add
+  - int pen_theta
+  - dup
   - sin
-  - int -7
+  - int -5
   - dup
   - mul
-  - int -7
-  - swap
-  - mul
-  - int -2
-  - swap
-  - int -6
+  - int pen_y
   - dup
   - add
-  - int -3
-  - swap
-  - add
-  - int -2
-  - swap
   - int pen_drawing
   - dup
   -
@@ -110,13 +87,6 @@
   - []
   - if
   - int pen_y
-  - swap
-  - pop
+  - set
   - int pen_x
-  - swap
-  - pop
-  - int -3
-  - swap
-  - pop
-  - int -2
-  - swap
+  - set

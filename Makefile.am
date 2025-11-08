@@ -13,7 +13,7 @@ TESTS = \
 	basic_block.yaml \
 	factorial_iter.yaml \
 	factorial_rec.yaml \
-	swap.yaml \
+	set.yaml \
 	screen_graphics.yaml \
 	screen_turtle-demo.yaml \
 	screen_levy-c.yaml \
@@ -24,7 +24,7 @@ RESULTS = \
 	factorial_iter-expected.log \
 	factorial_rec-expected.log \
 	graphics-expected.log \
-	swap-expected.log \
+	set-expected.log \
 	turtle-demo.log \
 	levy-c.log \
 	$(EMPTY)

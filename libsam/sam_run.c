@@ -163,9 +163,9 @@ sam_word_t sam_run(void)
                 }
             }
             break;
-        case SAM_INSN_SWAP:
+        case SAM_INSN_SET:
 #ifdef SAM_DEBUG
-            debug("SWAP\n");
+            debug("SET\n");
 #endif
             {
                 sam_word_t pos;
@@ -173,7 +173,8 @@ sam_word_t sam_run(void)
                 sam_uword_t addr1, size1, addr2, size2;
                 HALT_IF_ERROR(sam_stack_item(-1, &addr1, &size1));
                 HALT_IF_ERROR(sam_stack_item(pos, &addr2, &size2));
-                sam_stack_swap(addr1, size1, addr2, size2);
+                sam_stack_set(addr1, size1, addr2, size2);
+                sam_sp -= size2;
             }
             break;
         case SAM_INSN_IDUP:

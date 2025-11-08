@@ -55,113 +55,18 @@ static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
     return SAM_ERROR_OK;
 }
 
-// Swap `size` words anywhere within allocated stack memory.
+// Overwrite one block with another of possibly unequal size in the stack.
 // The blocks must not overlap.
-static sam_word_t swap_n(sam_uword_t addr1, sam_uword_t addr2, sam_uword_t size)
+sam_word_t sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
 {
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t i;
-    if (size > sam_ssize || addr1 > sam_ssize - size || addr2 > sam_ssize - size)
-        return SAM_ERROR_INVALID_ADDRESS;
-    if ((addr1 >= addr2 && addr1 - addr2 < size) ||
-        (addr1 < addr2 && addr2 - addr1 < size))
-        return SAM_ERROR_INVALID_SWAP;
-    for (i = 0; i < size; i++) {
-        sam_uword_t temp1;
-        HALT_IF_ERROR(sam_stack_peek(addr1 + i, &temp1));
-        sam_uword_t temp2;
-        HALT_IF_ERROR(sam_stack_peek(addr2 + i, &temp2));
-        HALT_IF_ERROR(sam_stack_poke(addr1 + i, temp2));
-        HALT_IF_ERROR(sam_stack_poke(addr2 + i, temp1));
-    }
- error:
-    return error;
-}
-
-static sam_word_t roll_left(sam_uword_t addr)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t temp;
-    HALT_IF_ERROR(sam_stack_peek(sam_sp, &temp));
-    HALT_IF_ERROR(move_n(addr + 1, addr, sam_sp - addr - 1));
-    HALT_IF_ERROR(sam_stack_poke(addr, temp));
- error:
-    return error;
-}
-
-static sam_word_t roll_right(sam_uword_t addr)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t temp;
-    HALT_IF_ERROR(sam_stack_peek(addr, &temp));
-    HALT_IF_ERROR(move_n(addr, addr + 1, sam_sp - addr - 1));
-    HALT_IF_ERROR(sam_stack_poke(sam_sp, temp));
-    return SAM_ERROR_OK;
- error:
-    return error;
-}
-
-// Swap two blocks of possibly unequal size in the stack.
-// The blocks must not overlap; from < to.
-static sam_word_t swap_compact(sam_uword_t from, sam_uword_t from_size, sam_uword_t to, sam_uword_t to_size)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t small_size = MIN(from_size, to_size);
-    sam_uword_t big_size = MAX(from_size, to_size);
-    swap_n(from, to, small_size);
-    sam_uword_t i;
-    for (i = 0; i < big_size - small_size; i++)
-        HALT_IF_ERROR((from_size < to_size ? roll_left : roll_right)(from + (big_size - small_size)));
- error:
-    return error;
-}
-
-// Swap two blocks of possibly unequal size in the stack.
-// The blocks must not overlap.
-// Uses an extra (big_size - small_size) words of stack space.
-static sam_word_t swap_fast(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
-{
-    sam_uword_t from, from_size, to, to_size;
-    if (addr1 < addr2) {
-        from = addr1;
-        from_size = size1;
-        to = addr2;
-        to_size = size2;
-    } else {
-        from = addr2;
-        from_size = size2;
-        to = addr1;
-        to_size = size1;
-    }
-
-    if (from + from_size > to)
-        return SAM_ERROR_INVALID_SWAP;
-
-    if (from_size < to_size) {
-        move_n(from + to_size, from + from_size, sam_sp - (from + from_size));
-        swap_n(from, to + (to_size - from_size), from_size);
-        move_n(from + from_size, sam_sp, to_size - from_size);
-   } else if (from_size > to_size) {
-        swap_n(from, to, to_size);
-        move_n(sam_sp, from + to_size, from_size - to_size);
-        move_n(from + to_size, from + from_size, sam_sp - (from + to_size));
-    } else
-        swap_n(to, from, from_size);
-    return SAM_ERROR_OK;
-}
-
-// Swap two blocks of possibly unequal size in the stack.
-// The blocks must not overlap.
-sam_word_t sam_stack_swap(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
-{
-    sam_uword_t big_size = MAX(size1, size2);
-    sam_uword_t small_size = MIN(size1, size2);
     if (size1 > sam_sp || size2 > sam_sp || addr1 > sam_sp - size1 || addr2 > sam_sp - size2)
         return SAM_ERROR_STACK_OVERFLOW;
-    if (sam_sp - small_size > sam_ssize - big_size)
-        return swap_compact(addr1, size1, addr2, size2);
-    else
-        return swap_fast(addr1, size1, addr2, size2);
+    if (size1 > size2)
+        move_n(addr1 + size2, addr1 + size1, sam_sp - (addr1 + size1));
+    move_n(addr2, addr1, size1);
+    if (size1 < size2)
+        move_n(addr1 + size1, addr1 + size2, sam_sp - (addr1 + size1));
+    return SAM_ERROR_OK;
 }
 
 static int stack_item_bottom(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)

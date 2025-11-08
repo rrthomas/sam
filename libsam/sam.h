@@ -36,8 +36,7 @@ enum {
     SAM_ERROR_BAD_BRACKET = -9,
     SAM_ERROR_UNPAIRED_FLOAT = -10,
     SAM_ERROR_UNPAIRED_PUSH = -11,
-    SAM_ERROR_INVALID_SWAP = -12,
-    SAM_ERROR_INVALID_FUNCTION = -13,
+    SAM_ERROR_INVALID_FUNCTION = -12,
     SAM_ERROR_BREAK = -256,
     SAM_ERROR_TRAP_INIT = -257,
 };
@@ -45,7 +44,7 @@ enum {
 // Stack access
 int sam_stack_peek(sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_uword_t addr, sam_uword_t val);
-sam_word_t sam_stack_swap(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2);
+sam_word_t sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2);
 int sam_stack_item(sam_word_t n, sam_uword_t *addr, sam_uword_t *size);
 int sam_find_code(sam_uword_t code, sam_uword_t *addr);
 int sam_pop_stack(sam_word_t *val_ptr);

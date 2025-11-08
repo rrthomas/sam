@@ -7,23 +7,22 @@
     - f2i
     - while
     - int -3
-    - swap
-    - int -6
+    - dup
+    - int -7
     - dup
     - mul
+    - int -4
+    - set
     - int -6
-    - swap
+    - dup
     - float -1.0
     - add
-    - int -6
-    - swap
-    - int -3
-    - swap
+    - int -7
+    - set
     - loop
   - do
   - int -4
-  - swap
-  - pop
+  - set
 - do
 - f2i
 - halt

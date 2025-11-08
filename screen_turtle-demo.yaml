@@ -7,8 +7,10 @@
 - rad
 - link turn
 - do
+- pop
 - float 50.0
 - link go
 - do
+- pop
 - int 0
 - halt
