@@ -280,7 +280,7 @@ These instructions implement loops, conditions and subroutine calls.
 \inst{KET}{l$_1$ l$_2$ --}{Pop \spic{l}$_2$ into {\tt PC} and \spic{l}$_1$ into {\tt PC0}.}
 \inst{LINK}{-- x}{Push {\tt IR} on to the stack.}
 \inst{DO}{i -- \x1 \x2}{Pop \spic{i}. If the stack item at that index is not a stack, raise {\tt NOT\_CODE}. Push {\tt PC0} then {\tt PC} to the stack, and set both {\tt PC0} and {\tt PC} to \spic{i}.}
-\inst{IF}{i \C1 \C2 --}{Pop \C1 and \C2. If either stack item is not code, raise {\tt NOT\_CODE}. Pop \spic{i}. If it is zero, perform the action of {\tt DO} on \C1, otherwise on \C2.}
+\inst{IF}{i \C1 \C2 --}{Pop \C1 and \C2. If either stack item is not code, raise {\tt NOT\_CODE}. Pop \spic{i}. If it is non-zero, perform the action of {\tt DO} on \C1, otherwise on \C2.}
 \inst{WHILE}{i --}{Pop \spic{i}. If it is zero, perform the action of {\tt KET}.}
 \inst{LOOP}{}{Set {\tt PC} to {\tt PC0}.}
 \end{description}
