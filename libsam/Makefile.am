@@ -6,6 +6,7 @@ noinst_LTLIBRARIES = libsam.la
 
 AM_CPPFLAGS = -DSAM_DEBUG
 
+libsam_la_CFLAGS = $(SDL2_CFLAGS)
 libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) -lm
 libsam_la_SOURCES = \
 	minmax.h \
