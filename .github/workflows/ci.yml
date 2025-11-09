@@ -4,14 +4,24 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     env:
       ASAN_FLAGS: "-fsanitize=address -fsanitize=undefined"
 
     steps:
       - uses: actions/checkout@v5
-      - name: Install dependencies
+      - name: Install dependencies (Ubuntu)
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         run: sudo apt-get update && sudo apt-get -y install golang libsdl2-gfx-dev latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-extra
+      - name: Install dependencies (macOS)
+        if: ${{ matrix.os == 'macos-latest' }}
+        run: |
+          brew install coreutils automake pkg-config go sdl2_gfx texlive
+          # Prepend optional brew binary directories to PATH
+          echo "$(brew --prefix)/opt/m4/bin:${PATH}" >> $GITHUB_PATH
       - name: configure
         run: autoreconf -fi && ./configure && go mod download
         env:
@@ -25,24 +35,6 @@ jobs:
       - name: make distcheck
         # normal build is with ASAN, distcheck is without ASAN. Both are covered.
         run: make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test-suite.log && exit 1 )
-
-  # build-macos:
-  #   runs-on: macos-latest
-  #   steps:
-  #   - uses: actions/checkout@v5
-  #   - name: Install dependencies
-  #     run: |
-  #       brew install automake pkg-config go sdl2_gfx texlive
-  #       # Prepend optional brew binary directories to PATH
-  #       echo "$(brew --prefix)/opt/m4/bin:${PATH}" >> $GITHUB_PATH
-  #   - name: configure
-  #     run: autoreconf -fi && ./configure && go mod download
-  #   - name: make
-  #     run: make --jobs=`nproc`
-  #   - name: make check
-  #     run: make check --jobs=`nproc` || ( cat test-suite.log && exit 1 )
-  #   - name: make distcheck
-  #     run: make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test-suite.log && exit 1 )
 
   # build-windows:
   #   runs-on: windows-latest
