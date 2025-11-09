@@ -41,6 +41,7 @@ loc:
 	$(CLOC) libsam/*.[ch] *.go
 
 EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(RESULTS) \
+	HACKING.md \
  	turtle.yaml \
 	go.mod \
 	go.sum \
