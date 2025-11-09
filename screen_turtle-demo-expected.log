@@ -102,7 +102,7 @@ Stack: (128 word(s))
   - link 51
   - do
   - pop
-  - float 50.000000
+  - float 500.000000
   - link 61
   - do
   - pop
@@ -450,32 +450,32 @@ Working stack: (3 word(s))
 - link 1
 - float -0.785398
 POP
-sam_do: pc = 118, sp = 127, ir = 42480002
+sam_do: pc = 118, sp = 127, ir = 43fa0002
 Working stack: (1 word(s))
 - link 1
 FLOAT
 sam_do: pc = 120, sp = 129, ir = 3d0f
 Working stack: (3 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 LINK
 sam_do: pc = 121, sp = 130, ir = 10
 Working stack: (4 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 61
 DO
 sam_do: pc = 62, sp = 131, ir = 601
 Working stack: (5 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
 INT
 sam_do: pc = 63, sp = 132, ir = 9
 Working stack: (6 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
 - int 6
@@ -483,7 +483,7 @@ GET
 sam_do: pc = 64, sp = 133, ir = 24
 Working stack: (7 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
 - float 0.785398
@@ -491,7 +491,7 @@ COS
 sam_do: pc = 65, sp = 133, ir = fffffc01
 Working stack: (7 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
 - float 0.707107
@@ -499,7 +499,7 @@ INT
 sam_do: pc = 66, sp = 134, ir = 9
 Working stack: (8 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
 - float 0.707107
@@ -508,170 +508,170 @@ GET
 sam_do: pc = 67, sp = 135, ir = 1f
 Working stack: (9 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
 - float 0.707107
-- float 50.000000
+- float 500.000000
 MUL
 sam_do: pc = 68, sp = 133, ir = 201
 Working stack: (7 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 INT
 sam_do: pc = 69, sp = 134, ir = 9
 Working stack: (8 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 - int 2
 GET
 sam_do: pc = 70, sp = 135, ir = 1e
 Working stack: (9 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 - float 0.000000
 ADD
 sam_do: pc = 71, sp = 133, ir = 601
 Working stack: (7 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 INT
 sam_do: pc = 72, sp = 134, ir = 9
 Working stack: (8 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 - int 6
 GET
 sam_do: pc = 73, sp = 135, ir = 23
 Working stack: (9 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 - float 0.785398
 SIN
 sam_do: pc = 74, sp = 135, ir = fffffb01
 Working stack: (9 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 - float 0.707107
 INT
 sam_do: pc = 75, sp = 136, ir = 9
 Working stack: (10 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 - float 0.707107
 - int -5
 GET
 sam_do: pc = 76, sp = 137, ir = 1f
 Working stack: (11 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 - float 0.707107
-- float 50.000000
+- float 500.000000
 MUL
 sam_do: pc = 77, sp = 135, ir = 401
 Working stack: (9 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 INT
 sam_do: pc = 78, sp = 136, ir = 9
 Working stack: (10 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - int 4
 GET
 sam_do: pc = 79, sp = 137, ir = 1e
 Working stack: (11 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - float 0.000000
 ADD
 sam_do: pc = 80, sp = 135, ir = 901
 Working stack: (9 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 INT
 sam_do: pc = 81, sp = 136, ir = 9
 Working stack: (10 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - int 9
 GET
 sam_do: pc = 82, sp = 136, ir = f0d
 Working stack: (10 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - int 1
 BRA
 sam_do: pc = 99, sp = 137, ir = d
 Working stack: (11 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - int 1
 - link 82
 BRA
 sam_do: pc = 101, sp = 138, ir = 11
 Working stack: (12 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - int 1
 - link 82
 - link 99
@@ -679,22 +679,22 @@ IF
 sam_do: pc = 83, sp = 137, ir = 201
 Working stack: (11 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 INT
 sam_do: pc = 84, sp = 138, ir = 9
 Working stack: (12 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 2
@@ -702,11 +702,11 @@ GET
 sam_do: pc = 85, sp = 139, ir = 5
 Working stack: (13 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - float 0.000000
@@ -714,11 +714,11 @@ F2I
 sam_do: pc = 86, sp = 138, ir = 401
 Working stack: (12 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
@@ -726,11 +726,11 @@ INT
 sam_do: pc = 87, sp = 139, ir = 9
 Working stack: (13 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
@@ -739,11 +739,11 @@ GET
 sam_do: pc = 88, sp = 140, ir = 5
 Working stack: (14 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
@@ -752,11 +752,11 @@ F2I
 sam_do: pc = 89, sp = 139, ir = fffffa01
 Working stack: (13 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
@@ -765,11 +765,11 @@ INT
 sam_do: pc = 90, sp = 140, ir = 9
 Working stack: (14 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
@@ -779,166 +779,166 @@ GET
 sam_do: pc = 91, sp = 141, ir = 5
 Working stack: (15 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
 - int 0
-- float 35.355339
+- float 353.553375
 F2I
 sam_do: pc = 92, sp = 140, ir = fffffa01
 Working stack: (14 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
 - int 0
-- int 35
+- int 354
 INT
 sam_do: pc = 93, sp = 141, ir = 9
 Working stack: (15 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
 - int 0
-- int 35
+- int 354
 - int -6
 GET
 sam_do: pc = 94, sp = 142, ir = 5
 Working stack: (16 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
 - int 0
-- int 35
-- float 35.355339
+- int 354
+- float 353.553375
 F2I
 sam_do: pc = 95, sp = 141, ir = 801
 Working stack: (15 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
 - int 0
-- int 35
-- int 35
+- int 354
+- int 354
 INT
 sam_do: pc = 96, sp = 142, ir = 9
 Working stack: (16 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
 - int 0
-- int 35
-- int 35
+- int 354
+- int 354
 - int 8
 GET
 sam_do: pc = 97, sp = 142, ir = 6ff
 Working stack: (16 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 - int 0
 - int 0
-- int 35
-- int 35
+- int 354
+- int 354
 - int 0
 TRAP
 sam_do: pc = 98, sp = 137, ir = f0e
 Working stack: (11 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - link 62
 - link 102
 KET
 sam_do: pc = 102, sp = 135, ir = 401
 Working stack: (9 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 INT
 sam_do: pc = 103, sp = 136, ir = a
 Working stack: (10 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
-- float 35.355339
+- float 353.553375
+- float 353.553375
 - int 4
 SET
 sam_do: pc = 104, sp = 133, ir = 201
 Working stack: (7 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 INT
 sam_do: pc = 105, sp = 134, ir = a
 Working stack: (8 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
-- float 35.355339
+- float 353.553375
 - int 2
 SET
 sam_do: pc = 106, sp = 131, ir = 2c0e
 Working stack: (5 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 - link 1
 - link 122
 KET
 sam_do: pc = 122, sp = 129, ir = 8
 Working stack: (3 word(s))
 - link 1
-- float 50.000000
+- float 500.000000
 POP
 sam_do: pc = 123, sp = 127, ir = 1
 Working stack: (1 word(s))

@@ -69,8 +69,8 @@ void debug(const char *fmt, ...);
 #endif
 
 // Traps
-#define SAM_DISPLAY_WIDTH 64
-#define SAM_DISPLAY_HEIGHT 128
+#define SAM_DISPLAY_WIDTH 800
+#define SAM_DISPLAY_HEIGHT 600
 extern const unsigned sam_update_interval;
 
 sam_word_t sam_traps_init(void);

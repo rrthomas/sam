@@ -1,335 +1,305 @@
-Stack: (58 word(s))
+Stack: (53 word(s))
 - 
-  - int 5
+  - int 50
+  - int 100
+  - trap 0
+  - trap 5
+  - int 20
+  - int 100
+  - trap 0
+  - trap 5
+  - int 20
+  - int 50
+  - trap 0
+  - trap 5
   - int 10
-  - trap 0
-  - trap 5
-  - int 2
   - int 10
-  - trap 0
-  - trap 5
-  - int 2
-  - int 5
-  - trap 0
-  - trap 5
-  - int 1
-  - int 1
-  - int 11
-  - int 5
+  - int 110
+  - int 50
   - trap 0
   - trap 6
-  - int 4
-  - int 12
-  - int 6
-  - int 8
+  - int 40
+  - int 120
+  - int 60
+  - int 80
   - trap 0
   - trap 7
-  - int 6
-  - int 14
-  - int 2
-  - int 4
+  - int 60
+  - int 140
+  - int 20
+  - int 40
   - trap 0
   - trap 9
-  - int 7
-  - int 16
-  - int 2
-  - int 5
-  - trap 10
-  - int 11
-  - int 12
-  - int 6
-  - int 8
-  - int 3
+  - int 110
+  - int 120
+  - int 60
+  - int 80
+  - int 30
   - trap 0
   - trap 8
-  - int 21
-  - int 16
-  - int 4
+  - int 210
+  - int 160
+  - int 40
+  - trap 0
+  - trap 10
+  - int 290
+  - int 160
+  - int 40
   - trap 0
   - trap 11
-  - int 29
-  - int 16
-  - int 4
-  - trap 0
-  - trap 12
   - int 0
   - halt
 - link 1
 - link 1
-sam_do: pc = 1, sp = 56, ir = 501
+sam_do: pc = 1, sp = 51, ir = 3201
 Working stack: (0 word(s))
 INT
-sam_do: pc = 2, sp = 57, ir = a01
+sam_do: pc = 2, sp = 52, ir = 6401
 Working stack: (1 word(s))
-- int 5
+- int 50
 INT
-sam_do: pc = 3, sp = 58, ir = ff
+sam_do: pc = 3, sp = 53, ir = ff
 Working stack: (2 word(s))
-- int 5
+- int 50
+- int 100
+TRAP
+sam_do: pc = 4, sp = 54, ir = 5ff
+Working stack: (3 word(s))
+- int 50
+- int 100
+- int 0
+TRAP
+sam_do: pc = 5, sp = 51, ir = 1401
+Working stack: (0 word(s))
+INT
+sam_do: pc = 6, sp = 52, ir = 6401
+Working stack: (1 word(s))
+- int 20
+INT
+sam_do: pc = 7, sp = 53, ir = ff
+Working stack: (2 word(s))
+- int 20
+- int 100
+TRAP
+sam_do: pc = 8, sp = 54, ir = 5ff
+Working stack: (3 word(s))
+- int 20
+- int 100
+- int 0
+TRAP
+sam_do: pc = 9, sp = 51, ir = 1401
+Working stack: (0 word(s))
+INT
+sam_do: pc = 10, sp = 52, ir = 3201
+Working stack: (1 word(s))
+- int 20
+INT
+sam_do: pc = 11, sp = 53, ir = ff
+Working stack: (2 word(s))
+- int 20
+- int 50
+TRAP
+sam_do: pc = 12, sp = 54, ir = 5ff
+Working stack: (3 word(s))
+- int 20
+- int 50
+- int 0
+TRAP
+sam_do: pc = 13, sp = 51, ir = a01
+Working stack: (0 word(s))
+INT
+sam_do: pc = 14, sp = 52, ir = a01
+Working stack: (1 word(s))
 - int 10
-TRAP
-sam_do: pc = 4, sp = 59, ir = 5ff
-Working stack: (3 word(s))
-- int 5
+INT
+sam_do: pc = 15, sp = 53, ir = 6e01
+Working stack: (2 word(s))
 - int 10
-- int 0
-TRAP
-sam_do: pc = 5, sp = 56, ir = 201
-Working stack: (0 word(s))
-INT
-sam_do: pc = 6, sp = 57, ir = a01
-Working stack: (1 word(s))
-- int 2
-INT
-sam_do: pc = 7, sp = 58, ir = ff
-Working stack: (2 word(s))
-- int 2
 - int 10
-TRAP
-sam_do: pc = 8, sp = 59, ir = 5ff
+INT
+sam_do: pc = 16, sp = 54, ir = 3201
 Working stack: (3 word(s))
-- int 2
 - int 10
-- int 0
-TRAP
-sam_do: pc = 9, sp = 56, ir = 201
-Working stack: (0 word(s))
+- int 10
+- int 110
 INT
-sam_do: pc = 10, sp = 57, ir = 501
-Working stack: (1 word(s))
-- int 2
-INT
-sam_do: pc = 11, sp = 58, ir = ff
-Working stack: (2 word(s))
-- int 2
-- int 5
-TRAP
-sam_do: pc = 12, sp = 59, ir = 5ff
-Working stack: (3 word(s))
-- int 2
-- int 5
-- int 0
-TRAP
-sam_do: pc = 13, sp = 56, ir = 101
-Working stack: (0 word(s))
-INT
-sam_do: pc = 14, sp = 57, ir = 101
-Working stack: (1 word(s))
-- int 1
-INT
-sam_do: pc = 15, sp = 58, ir = b01
-Working stack: (2 word(s))
-- int 1
-- int 1
-INT
-sam_do: pc = 16, sp = 59, ir = 501
-Working stack: (3 word(s))
-- int 1
-- int 1
-- int 11
-INT
-sam_do: pc = 17, sp = 60, ir = ff
+sam_do: pc = 17, sp = 55, ir = ff
 Working stack: (4 word(s))
-- int 1
-- int 1
-- int 11
-- int 5
+- int 10
+- int 10
+- int 110
+- int 50
 TRAP
-sam_do: pc = 18, sp = 61, ir = 6ff
+sam_do: pc = 18, sp = 56, ir = 6ff
 Working stack: (5 word(s))
-- int 1
-- int 1
-- int 11
-- int 5
+- int 10
+- int 10
+- int 110
+- int 50
 - int 0
 TRAP
-sam_do: pc = 19, sp = 56, ir = 401
+sam_do: pc = 19, sp = 51, ir = 2801
 Working stack: (0 word(s))
 INT
-sam_do: pc = 20, sp = 57, ir = c01
+sam_do: pc = 20, sp = 52, ir = 7801
 Working stack: (1 word(s))
-- int 4
+- int 40
 INT
-sam_do: pc = 21, sp = 58, ir = 601
+sam_do: pc = 21, sp = 53, ir = 3c01
 Working stack: (2 word(s))
-- int 4
-- int 12
+- int 40
+- int 120
 INT
-sam_do: pc = 22, sp = 59, ir = 801
+sam_do: pc = 22, sp = 54, ir = 5001
 Working stack: (3 word(s))
-- int 4
-- int 12
-- int 6
+- int 40
+- int 120
+- int 60
 INT
-sam_do: pc = 23, sp = 60, ir = ff
+sam_do: pc = 23, sp = 55, ir = ff
 Working stack: (4 word(s))
-- int 4
-- int 12
-- int 6
-- int 8
+- int 40
+- int 120
+- int 60
+- int 80
 TRAP
-sam_do: pc = 24, sp = 61, ir = 7ff
+sam_do: pc = 24, sp = 56, ir = 7ff
 Working stack: (5 word(s))
-- int 4
-- int 12
-- int 6
-- int 8
+- int 40
+- int 120
+- int 60
+- int 80
 - int 0
 TRAP
-sam_do: pc = 25, sp = 56, ir = 601
+sam_do: pc = 25, sp = 51, ir = 3c01
 Working stack: (0 word(s))
 INT
-sam_do: pc = 26, sp = 57, ir = e01
+sam_do: pc = 26, sp = 52, ir = 8c01
 Working stack: (1 word(s))
-- int 6
+- int 60
 INT
-sam_do: pc = 27, sp = 58, ir = 201
+sam_do: pc = 27, sp = 53, ir = 1401
 Working stack: (2 word(s))
-- int 6
-- int 14
+- int 60
+- int 140
 INT
-sam_do: pc = 28, sp = 59, ir = 401
+sam_do: pc = 28, sp = 54, ir = 2801
 Working stack: (3 word(s))
-- int 6
-- int 14
-- int 2
+- int 60
+- int 140
+- int 20
 INT
-sam_do: pc = 29, sp = 60, ir = ff
+sam_do: pc = 29, sp = 55, ir = ff
 Working stack: (4 word(s))
-- int 6
-- int 14
-- int 2
-- int 4
+- int 60
+- int 140
+- int 20
+- int 40
 TRAP
-sam_do: pc = 30, sp = 61, ir = 9ff
+sam_do: pc = 30, sp = 56, ir = 9ff
 Working stack: (5 word(s))
-- int 6
-- int 14
-- int 2
-- int 4
+- int 60
+- int 140
+- int 20
+- int 40
 - int 0
 TRAP
-sam_do: pc = 31, sp = 56, ir = 701
+sam_do: pc = 31, sp = 51, ir = 6e01
 Working stack: (0 word(s))
 INT
-sam_do: pc = 32, sp = 57, ir = 1001
+sam_do: pc = 32, sp = 52, ir = 7801
 Working stack: (1 word(s))
-- int 7
+- int 110
 INT
-sam_do: pc = 33, sp = 58, ir = 201
+sam_do: pc = 33, sp = 53, ir = 3c01
 Working stack: (2 word(s))
-- int 7
-- int 16
+- int 110
+- int 120
 INT
-sam_do: pc = 34, sp = 59, ir = 501
+sam_do: pc = 34, sp = 54, ir = 5001
 Working stack: (3 word(s))
-- int 7
-- int 16
-- int 2
+- int 110
+- int 120
+- int 60
 INT
-sam_do: pc = 35, sp = 60, ir = aff
+sam_do: pc = 35, sp = 55, ir = 1e01
 Working stack: (4 word(s))
-- int 7
-- int 16
-- int 2
-- int 5
-TRAP
-sam_do: pc = 36, sp = 56, ir = b01
-Working stack: (0 word(s))
+- int 110
+- int 120
+- int 60
+- int 80
 INT
-sam_do: pc = 37, sp = 57, ir = c01
-Working stack: (1 word(s))
-- int 11
-INT
-sam_do: pc = 38, sp = 58, ir = 601
-Working stack: (2 word(s))
-- int 11
-- int 12
-INT
-sam_do: pc = 39, sp = 59, ir = 801
-Working stack: (3 word(s))
-- int 11
-- int 12
-- int 6
-INT
-sam_do: pc = 40, sp = 60, ir = 301
-Working stack: (4 word(s))
-- int 11
-- int 12
-- int 6
-- int 8
-INT
-sam_do: pc = 41, sp = 61, ir = ff
+sam_do: pc = 36, sp = 56, ir = ff
 Working stack: (5 word(s))
-- int 11
-- int 12
-- int 6
-- int 8
-- int 3
+- int 110
+- int 120
+- int 60
+- int 80
+- int 30
 TRAP
-sam_do: pc = 42, sp = 62, ir = 8ff
+sam_do: pc = 37, sp = 57, ir = 8ff
 Working stack: (6 word(s))
-- int 11
-- int 12
-- int 6
-- int 8
-- int 3
+- int 110
+- int 120
+- int 60
+- int 80
+- int 30
 - int 0
 TRAP
-sam_do: pc = 43, sp = 56, ir = 1501
+sam_do: pc = 38, sp = 51, ir = d201
 Working stack: (0 word(s))
 INT
-sam_do: pc = 44, sp = 57, ir = 1001
+sam_do: pc = 39, sp = 52, ir = a001
 Working stack: (1 word(s))
-- int 21
+- int 210
 INT
-sam_do: pc = 45, sp = 58, ir = 401
+sam_do: pc = 40, sp = 53, ir = 2801
 Working stack: (2 word(s))
-- int 21
-- int 16
+- int 210
+- int 160
 INT
-sam_do: pc = 46, sp = 59, ir = ff
+sam_do: pc = 41, sp = 54, ir = ff
 Working stack: (3 word(s))
-- int 21
-- int 16
-- int 4
+- int 210
+- int 160
+- int 40
 TRAP
-sam_do: pc = 47, sp = 60, ir = bff
+sam_do: pc = 42, sp = 55, ir = aff
 Working stack: (4 word(s))
-- int 21
-- int 16
-- int 4
+- int 210
+- int 160
+- int 40
 - int 0
 TRAP
-sam_do: pc = 48, sp = 56, ir = 1d01
+sam_do: pc = 43, sp = 51, ir = 12201
 Working stack: (0 word(s))
 INT
-sam_do: pc = 49, sp = 57, ir = 1001
+sam_do: pc = 44, sp = 52, ir = a001
 Working stack: (1 word(s))
-- int 29
+- int 290
 INT
-sam_do: pc = 50, sp = 58, ir = 401
+sam_do: pc = 45, sp = 53, ir = 2801
 Working stack: (2 word(s))
-- int 29
-- int 16
+- int 290
+- int 160
 INT
-sam_do: pc = 51, sp = 59, ir = ff
+sam_do: pc = 46, sp = 54, ir = ff
 Working stack: (3 word(s))
-- int 29
-- int 16
-- int 4
+- int 290
+- int 160
+- int 40
 TRAP
-sam_do: pc = 52, sp = 60, ir = cff
+sam_do: pc = 47, sp = 55, ir = bff
 Working stack: (4 word(s))
-- int 29
-- int 16
-- int 4
+- int 290
+- int 160
+- int 40
 - int 0
 TRAP
-sam_do: pc = 53, sp = 56, ir = 1
+sam_do: pc = 48, sp = 51, ir = 1
 Working stack: (0 word(s))
 INT
-sam_do: pc = 54, sp = 57, ir = fe
+sam_do: pc = 49, sp = 52, ir = fe
 Working stack: (1 word(s))
 - int 0
 HALT

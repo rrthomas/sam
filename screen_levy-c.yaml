@@ -1,27 +1,38 @@
 - !include turtle.yaml
 - link init
 - do
-# Move to top right of screen and point towards bottom
-- trap DISPLAY_WIDTH
-- int -16
-- add
-- i2f
-- link go
-- do
-- pop
+# Move just down from top left of screen and point towards right
 - float -90.0
 - rad
 - link turn
 - do
 - pop
-- float 30.0
+- trap DISPLAY_HEIGHT
+- i2f
+- float 4.0
+- div
+- link go
+- do
+- pop
+- float 90.0
+- rad
+- link turn
+- do
+- pop
+- trap DISPLAY_WIDTH
+- i2f
+- float 4.0
+- div
 - link go
 - do
 - pop
 - link pendown
 - do
 - int 8
-- float 48.0
+- trap DISPLAY_WIDTH
+- i2f
+- float 2.0
+- div
 - levy_c:
   - int -4
   - get

@@ -22,7 +22,7 @@
 
 const unsigned sam_update_interval = 10; // milliseconds between screen updates
 
-#define PIXEL_SIZE 8
+#define PIXEL_SIZE 2
 static SDL_Window *win;
 static SDL_Renderer *ren;
 static SDL_Surface *srf;
@@ -75,89 +75,6 @@ int sam_traps_process_events(void)
 int sam_traps_window_used(void)
 {
     return SDL_GetWindowFlags(win) & SDL_WINDOW_SHOWN;
-}
-
-// Code adapted from https://www.thecrazyprogrammer.com/2017/01/bresenhams-line-drawing-algorithm-c-c.html
-// Because SDL_RenderDrawLine's output is not pixel-scaled
-static void drawline(int x1, int y1, int x2, int y2, uint8_t color)
-{
-    if (x1 == x2)
-        vlineRGBA(ren, x1, y1, y2, color, color, color, SDL_ALPHA_OPAQUE);
-    else if (y1 == y2)
-        hlineRGBA(ren, x1, x2, y1, color, color, color, SDL_ALPHA_OPAQUE);
-    else {
-        int dx = abs(x1 - x2);
-        int dy = abs(y1 - y2);
-
-        SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
-        if (dx >= dy) {
-            int p = 2 * dy - dx;
-            int x, x_, y, y_;
-            if (x1 < x2) {
-                x = x1; y = y1;
-                x_ = x2; y_ = y2;
-            } else {
-                x = x2; y = y2;
-                x_ = x1; y_ = y1;
-            }
-            while (x <= x_) {
-                SDL_RenderDrawPoint(ren, x, y);
-                if (p >= 0) {
-                    y += (y < y_) ? 1 : -1;
-                    p += 2 * dy - 2 * dx;
-                } else
-                    p += 2 * dy;
-                x++;
-            }
-        } else {
-            int p = 2 * dx - dy;
-            int x, x_, y, y_;
-            if (y1 < y2) {
-                x = x1; y = y1;
-                x_ = x2; y_ = y2;
-            } else {
-                x = x2; y = y2;
-                x_ = x1; y_ = y1;
-            }
-            while (y <= y_) {
-                SDL_RenderDrawPoint(ren, x, y);
-                if (p >= 0) {
-                    x += (x < x_) ? 1 : -1;
-                    p += 2 * dx - 2 * dy;
-                } else
-                    p += 2 * dx;
-                y++;
-            }
-        }
-    }
-}
-
-// Adapted from glcd.cpp to get pixel-perfect copy!
-static void fillcircle(uint8_t xCenter, uint8_t yCenter, uint8_t radius, uint8_t color)
-{
-    drawline(xCenter, yCenter - radius, xCenter, yCenter + radius, color);
-
-    int f = 1 - radius;
-    int ddF_x = 1;
-    int ddF_y = -2 * radius;
-    uint8_t x = 0;
-    uint8_t y = radius;
-
-    while (x < y) {
-        if (f >= 0) {
-            y--;
-            ddF_y += 2;
-            f += ddF_y;
-        }
-        x++;
-        ddF_x += 2;
-        f += ddF_x;
-
-        drawline(xCenter + x, yCenter + y, xCenter + x, yCenter - y, color);
-        drawline(xCenter - x, yCenter + y, xCenter - x, yCenter - y, color);
-        drawline(xCenter + y, yCenter + x, y + xCenter, yCenter - x, color);
-        drawline(xCenter - y, yCenter + x, xCenter - y, yCenter - x, color);
-    }
 }
 
 // Code from https://stackoverflow.com/questions/53033971/how-to-get-the-color-of-a-specific-pixel-from-sdl-surface
@@ -254,8 +171,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(color);
             POP_UINT(y);
             POP_UINT(x);
-            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
-            SDL_RenderDrawPoint(ren, x, y);
+            pixelRGBA(ren, x, y, color, color, color, SDL_ALPHA_OPAQUE);
             need_window = true;
         }
         break;
@@ -267,7 +183,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(x2);
             POP_UINT(y1);
             POP_UINT(x1);
-            drawline(x1, y1, x2, y2, color);
+            lineRGBA(ren, x1, y1, x2, y2, color, color, color, SDL_ALPHA_OPAQUE);
             need_window = true;
         }
         break;
@@ -279,9 +195,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
-            SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height };
-            SDL_RenderDrawRect(ren, &rect);
+            rectangleRGBA(ren, x, y, x + width - 1, y + height - 1, color, color, color, SDL_ALPHA_OPAQUE);
             need_window = true;
         }
         break;
@@ -306,26 +220,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
-            SDL_Rect rect = { .x = x, .y = y, .w = width, .h = height };
-            SDL_RenderFillRect(ren, &rect);
-            need_window = true;
-        }
-        break;
-    case TRAP_INVERTRECT:
-        {
-            sam_word_t x, y, width, height;
-            POP_UINT(height);
-            POP_UINT(width);
-            POP_UINT(y);
-            POP_UINT(x);
-            sam_word_t i, j;
-            for (i = x; i < x + width; i++)
-                for (j = y; j < y + height; j++) {
-                    Uint8 color = (Uint8)sam_getpixel(i, j);
-                    SDL_SetRenderDrawColor(ren, ~color, ~color, ~color, SDL_ALPHA_OPAQUE);
-                    SDL_RenderDrawPoint(ren, i, j);
-                }
+            boxRGBA(ren, x, y, x + width - 1, y + height - 1, color, color, color, SDL_ALPHA_OPAQUE);
             need_window = true;
         }
         break;
@@ -336,8 +231,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(radius);
             POP_UINT(yCenter);
             POP_UINT(xCenter);
-            // Use roundedRectangle to match GLCD.
-            roundedRectangleRGBA(ren, xCenter - radius, yCenter - radius, xCenter + radius, yCenter + radius, radius, color, color, color, SDL_ALPHA_OPAQUE);
+            circleRGBA(ren, xCenter, yCenter, radius, color, color, color, SDL_ALPHA_OPAQUE);
             need_window = true;
         }
         break;
@@ -348,7 +242,7 @@ sam_word_t sam_trap(sam_uword_t function)
             POP_UINT(radius);
             POP_UINT(yCenter);
             POP_UINT(xCenter);
-            fillcircle(xCenter, yCenter, radius, color);
+            filledCircleRGBA(ren, xCenter, yCenter, radius, color, color, color, SDL_ALPHA_OPAQUE);
             need_window = true;
         }
         break;
