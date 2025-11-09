@@ -12,6 +12,9 @@ PKG_PROG_PKG_CONFIG
 LT_INIT
 AC_PATH_PROG([LATEXMK], [latexmk], [AC_MSG_ERROR([latexmk not found])])
 
+# Checks for libraries.
+PKG_CHECK_MODULES(SDL2, [sdl2 SDL2_gfx])
+
 # Generate output
 AC_CONFIG_FILES([Makefile libsam/Makefile doc/Makefile])
 AC_OUTPUT
