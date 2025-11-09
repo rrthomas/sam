@@ -42,7 +42,7 @@ loc:
 
 EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(RESULTS) \
 	HACKING.md \
- 	turtle.yaml \
+	turtle.yaml \
 	go.mod \
 	go.sum \
 	main.go \
