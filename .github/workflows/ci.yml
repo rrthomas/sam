@@ -22,14 +22,16 @@ jobs:
           brew install coreutils automake pkg-config go sdl2_gfx texlive
           # Prepend optional brew binary directories to PATH
           echo "$(brew --prefix)/opt/m4/bin:${PATH}" >> $GITHUB_PATH
+          echo "LIBRARY_PATH=\"$(brew --prefix sdl2)/lib:$(brew --prefix sdl2_gfx)/lib\"" >> $GITHUB_ENV
+          echo "C_INCLUDE_PATH=\"$(brew --prefix sdl2)/include/SDL2:$(brew --prefix sdl2_gfx)/include/SDL2\"" >> $GITHUB_ENV
       - name: configure
         run: autoreconf -fi && ./configure && go mod download
+      - name: make
+        run: make --jobs=`nproc`
         env:
           CFLAGS: -g ${{ env.ASAN_FLAGS }}
           CXXFLAGS: -g ${{ env.ASAN_FLAGS }}
           LDFLAGS: ${{ env.ASAN_FLAGS }}
-      - name: make
-        run: make --jobs=`nproc`
       - name: make check
         run: make check --jobs=`nproc` || ( cat test-suite.log && exit 1 )
       - name: make distcheck
