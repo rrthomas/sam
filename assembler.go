@@ -146,7 +146,6 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
 		seq := n.(ast.ArrayNode)
-		// sub-routine
 		i := seq.ArrayRange()
 		pc0 := len(a.code)
 		a.assemble(libsam.INSN_BRA, 0) // placeholder
@@ -203,8 +202,15 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 func Assemble(progFile string) []libsam.Word {
 	prog := readProg(progFile)
 	a := assembler{labels: map[string]int{}}
-	ast.Walk(&a, prog)
-	a.assemble(libsam.INSN_LINK, 1)
-	a.assemble(libsam.INSN_LINK, 1)
+	if prog.Type() != ast.SequenceType {
+		panic("program must be a list of instructions")
+	}
+
+	// The top level is assembled without nesting in a BRA/KET pair.
+	seq := prog.(ast.ArrayNode)
+	i := seq.ArrayRange()
+	for i.Next() {
+		ast.Walk(&a, i.Value())
+	}
 	return a.code
 }

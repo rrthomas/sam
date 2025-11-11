@@ -1,53 +1,68 @@
-Stack: (13 word(s))
-- 
-  - int 21
-  - int 2
-  - mul
-  - int 3
-  - neg
-  - add
-  - int -3
-  - div
-  - halt
-- link 1
-- link 1
-sam_do: pc = 1, sp = 11, ir = 1501
-Working stack: (0 word(s))
+Stack: (9 word(s))
+- int 21
+- int 2
+- mul
+- int 3
+- neg
+- add
+- int -3
+- div
+- halt
+sam_do: pc = 0, sp = 9, ir = 1501
+Working stack: (2 word(s))
+- div
+- halt
 INT
-sam_do: pc = 2, sp = 12, ir = 201
-Working stack: (1 word(s))
+sam_do: pc = 1, sp = 10, ir = 201
+Working stack: (3 word(s))
+- div
+- halt
 - int 21
 INT
-sam_do: pc = 3, sp = 13, ir = 1f
-Working stack: (2 word(s))
+sam_do: pc = 2, sp = 11, ir = 1f
+Working stack: (4 word(s))
+- div
+- halt
 - int 21
 - int 2
 MUL
-sam_do: pc = 4, sp = 12, ir = 301
-Working stack: (1 word(s))
+sam_do: pc = 3, sp = 10, ir = 301
+Working stack: (3 word(s))
+- div
+- halt
 - int 42
 INT
-sam_do: pc = 5, sp = 13, ir = 1d
-Working stack: (2 word(s))
+sam_do: pc = 4, sp = 11, ir = 1d
+Working stack: (4 word(s))
+- div
+- halt
 - int 42
 - int 3
 NEG
-sam_do: pc = 6, sp = 13, ir = 1e
-Working stack: (2 word(s))
+sam_do: pc = 5, sp = 11, ir = 1e
+Working stack: (4 word(s))
+- div
+- halt
 - int 42
 - int -3
 ADD
-sam_do: pc = 7, sp = 12, ir = fffffd01
-Working stack: (1 word(s))
+sam_do: pc = 6, sp = 10, ir = fffffd01
+Working stack: (3 word(s))
+- div
+- halt
 - int 39
 INT
-sam_do: pc = 8, sp = 13, ir = 20
-Working stack: (2 word(s))
+sam_do: pc = 7, sp = 11, ir = 20
+Working stack: (4 word(s))
+- div
+- halt
 - int 39
 - int -3
 DIV
-sam_do: pc = 9, sp = 12, ir = fe
-Working stack: (1 word(s))
+sam_do: pc = 8, sp = 10, ir = fe
+Working stack: (3 word(s))
+- div
+- halt
 - int -13
 HALT
 sam_run returns -13

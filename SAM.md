@@ -47,10 +47,9 @@ A valid address is one that points to a valid instruction word whose opcode’s 
 
 ### Operation
 
-Before SAM is started, the stack should be given suitable contents, `SSIZE` and `SP` set appropriately, and `PC0` set to point to some code in the stack.
+Before SAM is started, the stack should be given suitable contents, `SSIZE` and `SP` set appropriately, and `PC` and `PC0` set to point to some code in the stack.
 
 ```
-perform a `KET` instruction
 begin
   load the stack item at `PC` into `IR`
   set `I` to the least significant byte of `IR`

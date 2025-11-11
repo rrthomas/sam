@@ -1,6 +1,6 @@
 // The interpreter main loop.
 //
-// (c) Reuben Thomas 1994-2020
+// (c) Reuben Thomas 1994-2025
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -49,8 +49,9 @@ static sam_uword_t powi(sam_uword_t base, sam_uword_t exp)
 sam_word_t sam_run(void)
 {
     sam_word_t error = SAM_ERROR_OK;
-    sam_word_t pc;
-    RET;
+    sam_word_t pc = 0;
+    
+    sam_pc0 = 0;
 
     for (;;) {
         sam_uword_t ir;
