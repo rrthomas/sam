@@ -14,7 +14,7 @@ C compiler, as well as SDL2 and SDL2_gfx (on Debian-compatible systems,
 install package `libsdl2-gfx-dev`).
 
 For more precise examples of building on various operating systems, see
-`.github/workflow/ci.yml`.
+`.github/workflows/ci.yml`.
 
 To simply run SAM via its front end, use Go:
 
