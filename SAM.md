@@ -194,7 +194,7 @@ These instructions implement loops, conditions and subroutine calls.
 
 > `BRA` → `l`
 >
-> Push `PC`–1 on to the stack, and add `OP`+1 to `PC`.
+> Push a link to `PC`–1 on to the stack, and add `OP`+1 to `PC`.
 
 > `KET` `l`<sub>1</sub> `l`<sub>2</sub> →
 >
