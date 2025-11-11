@@ -34,11 +34,11 @@ const STACK_WORDS = 4096
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use: "sam",
+	Use:     "sam",
 	Version: "0.1",
-	Short: "SAM, the Super-Awesome Machine",
-	Long:  `A simple virtual machine and run time for playful low-level programming.`,
-	Args:  cobra.ExactArgs(1),
+	Short:   "SAM, the Super-Awesome Machine",
+	Long:    `A simple virtual machine and run time for playful low-level programming.`,
+	Args:    cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		libsam.SetDebug(debug)
 		prog_file := args[0]
@@ -94,7 +94,7 @@ func init() {
 {{.Flags.FlagUsages}}`)
 	rootCmd.Flags().BoolVar(&debug, "debug", false, "output debug information to standard error")
 	rootCmd.Flags().BoolVar(&wait, "wait", false, "wait for user to close window on termination")
-	rootCmd.Flags().StringVar(&pbmFile, "dump-screen", "", "display version information and exit")
+	rootCmd.Flags().StringVar(&pbmFile, "dump-screen", "", "output screen to PBM file `FILE`")
 	rootCmd.SetVersionTemplate(`{{.DisplayName}} {{.Version}}
 
 Copyright (C) 2025 Reuben Thomas <rrt@sc3d.org>
