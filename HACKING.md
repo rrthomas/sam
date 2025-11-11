@@ -19,7 +19,7 @@ For more precise examples of building on various operating systems, see
 To simply run SAM via its front end, use Go:
 
 ```
-go run . --wait screen_levy-c.yaml
+go run .
 ```
 
 The autotools build system is used to build and install the C library and

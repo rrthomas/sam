@@ -39,7 +39,7 @@ go install github.com/rrthomas/sam@latest
 Then run the `sam` command. To run a program, e.g.:
 
 ```
-sam screen_levy-c.yaml
+sam --wait screen_levy-c.yaml
 ```
 
 Debugging output (with the `--debug` option) is shown in the terminal.
