@@ -57,10 +57,11 @@ var rootCmd = &cobra.Command{
 
 		if debug {
 			fmt.Printf("sam_run returns %d\n", res)
-			if libsam.TrapsWindowUsed() {
-				if pbmFile != "" {
-					libsam.DumpScreen(pbmFile)
-				}
+		}
+
+		if libsam.TrapsWindowUsed() {
+			if pbmFile != "" {
+				libsam.DumpScreen(pbmFile)
 			}
 		}
 
