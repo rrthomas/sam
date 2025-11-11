@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v5
       - name: Install dependencies (Ubuntu)
         if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: sudo apt-get update && sudo apt-get -y install golang libsdl2-gfx-dev latexmk texlive-latex-recommended texlive-latex-extra texlive-fonts-extra
+        run: sudo apt-get update && sudo apt-get -y install golang libsdl2-gfx-dev
       - name: Install dependencies (macOS)
         if: ${{ matrix.os == 'macos-latest' }}
         run: |

@@ -47,7 +47,7 @@ Debugging output (with the `--debug` option) is shown in the terminal.
 If you use the `--wait` option, and the program opens a window, then you
 need to close the window to stop SAM at the end.
 
-Documentation on the SAM virtual machine is in `doc/sam.pdf`.
+Documentation on the SAM virtual machine is in `SAM.md`.
 
 See `HACKING.md` for information about developing SAM.
 

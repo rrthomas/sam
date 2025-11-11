@@ -23,14 +23,13 @@ go run .
 ```
 
 The autotools build system is used to build and install the C library and
-documentation, and run the tests. To use this, you’ll need automake,
-autoconf, libtool, a LaTeX system, and latexmk.
+run the tests. To use this, you’ll need automake, autoconf, and libtool.
 
-To be able to build the documentation and run the tests:
+To be able to build the library and run the tests:
 
 ```
 autoreconf -fi
 ./configure
 ```
 
-Then to build the documentation: `make`, and to run the tests, `make check`.
+Then to build the library, `make`, and to run the tests, `make check`.

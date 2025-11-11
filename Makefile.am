@@ -2,7 +2,7 @@
 #
 # © 2020-2025 Reuben Thomas <rrt@sc3d.org>
 
-SUBDIRS = libsam doc
+SUBDIRS = libsam
 
 TEST_EXTENSIONS = .yaml
 YAML_LOG_COMPILER = $(srcdir)/run-test
@@ -42,6 +42,7 @@ loc:
 
 EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(RESULTS) \
 	HACKING.md \
+	SAM.md \
 	turtle.yaml \
 	go.mod \
 	go.sum \
