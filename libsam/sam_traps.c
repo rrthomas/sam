@@ -10,8 +10,8 @@
 
 #include <stdbool.h>
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL.h>
+#include <SDL2_gfxPrimitives.h>
 
 #include "minmax.h"
 

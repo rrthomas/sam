@@ -1,8 +1,9 @@
 // Bind libsam into Go.
 package libsam
 
-//#cgo LDFLAGS: -lSDL2 -lSDL2_gfx -lm
+//#cgo LDFLAGS: -lm
 //#cgo CFLAGS: -DSAM_DEBUG
+//#cgo pkg-config: sdl2 SDL2_gfx
 //#include "sam.h"
 //#include "sam_opcodes.h"
 //#include "sam_traps.h"
