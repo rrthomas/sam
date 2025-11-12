@@ -32,13 +32,13 @@ Working stack: (2 word(s))
 - f2i
 - halt
 FLOAT
-sam_do: pc = 2, sp = 35, ir = 1a0d
+sam_do: pc = 2, sp = 35, ir = 1a06
 Working stack: (4 word(s))
 - f2i
 - halt
 - float 5.000000
 BRA
-sam_do: pc = 30, sp = 36, ir = 10
+sam_do: pc = 30, sp = 36, ir = 11
 Working stack: (5 word(s))
 - f2i
 - halt
@@ -53,7 +53,7 @@ Working stack: (6 word(s))
 - link 0
 - link 31
 FLOAT
-sam_do: pc = 5, sp = 39, ir = 130d
+sam_do: pc = 5, sp = 39, ir = 1306
 Working stack: (8 word(s))
 - f2i
 - halt
@@ -62,7 +62,7 @@ Working stack: (8 word(s))
 - link 31
 - float 1.000000
 BRA
-sam_do: pc = 26, sp = 40, ir = 10
+sam_do: pc = 26, sp = 40, ir = 11
 Working stack: (9 word(s))
 - f2i
 - halt
@@ -83,7 +83,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 7, sp = 42, ir = 9
+sam_do: pc = 7, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -95,7 +95,7 @@ Working stack: (11 word(s))
 - link 27
 - int -6
 GET
-sam_do: pc = 8, sp = 43, ir = 5
+sam_do: pc = 8, sp = 43, ir = a
 Working stack: (12 word(s))
 - f2i
 - halt
@@ -107,7 +107,7 @@ Working stack: (12 word(s))
 - link 27
 - float 5.000000
 F2I
-sam_do: pc = 9, sp = 42, ir = 12
+sam_do: pc = 9, sp = 42, ir = 13
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -130,7 +130,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 11, sp = 42, ir = 9
+sam_do: pc = 11, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -154,7 +154,7 @@ Working stack: (12 word(s))
 - link 27
 - float 1.000000
 INT
-sam_do: pc = 13, sp = 44, ir = 9
+sam_do: pc = 13, sp = 44, ir = c
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -167,7 +167,7 @@ Working stack: (13 word(s))
 - float 1.000000
 - int -7
 GET
-sam_do: pc = 14, sp = 45, ir = 1f
+sam_do: pc = 14, sp = 45, ir = 20
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -192,7 +192,7 @@ Working stack: (12 word(s))
 - link 27
 - float 5.000000
 INT
-sam_do: pc = 16, sp = 44, ir = a
+sam_do: pc = 16, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -216,7 +216,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 18, sp = 42, ir = 9
+sam_do: pc = 18, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -240,7 +240,7 @@ Working stack: (12 word(s))
 - link 27
 - float 5.000000
 FLOAT
-sam_do: pc = 21, sp = 45, ir = 1e
+sam_do: pc = 21, sp = 45, ir = 1f
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -265,7 +265,7 @@ Working stack: (12 word(s))
 - link 27
 - float 4.000000
 INT
-sam_do: pc = 23, sp = 44, ir = a
+sam_do: pc = 23, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -278,7 +278,7 @@ Working stack: (13 word(s))
 - float 4.000000
 - int -7
 SET
-sam_do: pc = 24, sp = 41, ir = 13
+sam_do: pc = 24, sp = 41, ir = 14
 Working stack: (10 word(s))
 - f2i
 - halt
@@ -300,7 +300,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 7, sp = 42, ir = 9
+sam_do: pc = 7, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -312,7 +312,7 @@ Working stack: (11 word(s))
 - link 27
 - int -6
 GET
-sam_do: pc = 8, sp = 43, ir = 5
+sam_do: pc = 8, sp = 43, ir = a
 Working stack: (12 word(s))
 - f2i
 - halt
@@ -324,7 +324,7 @@ Working stack: (12 word(s))
 - link 27
 - float 4.000000
 F2I
-sam_do: pc = 9, sp = 42, ir = 12
+sam_do: pc = 9, sp = 42, ir = 13
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -347,7 +347,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 11, sp = 42, ir = 9
+sam_do: pc = 11, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -371,7 +371,7 @@ Working stack: (12 word(s))
 - link 27
 - float 5.000000
 INT
-sam_do: pc = 13, sp = 44, ir = 9
+sam_do: pc = 13, sp = 44, ir = c
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -384,7 +384,7 @@ Working stack: (13 word(s))
 - float 5.000000
 - int -7
 GET
-sam_do: pc = 14, sp = 45, ir = 1f
+sam_do: pc = 14, sp = 45, ir = 20
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -409,7 +409,7 @@ Working stack: (12 word(s))
 - link 27
 - float 20.000000
 INT
-sam_do: pc = 16, sp = 44, ir = a
+sam_do: pc = 16, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -433,7 +433,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 18, sp = 42, ir = 9
+sam_do: pc = 18, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -457,7 +457,7 @@ Working stack: (12 word(s))
 - link 27
 - float 4.000000
 FLOAT
-sam_do: pc = 21, sp = 45, ir = 1e
+sam_do: pc = 21, sp = 45, ir = 1f
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -482,7 +482,7 @@ Working stack: (12 word(s))
 - link 27
 - float 3.000000
 INT
-sam_do: pc = 23, sp = 44, ir = a
+sam_do: pc = 23, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -495,7 +495,7 @@ Working stack: (13 word(s))
 - float 3.000000
 - int -7
 SET
-sam_do: pc = 24, sp = 41, ir = 13
+sam_do: pc = 24, sp = 41, ir = 14
 Working stack: (10 word(s))
 - f2i
 - halt
@@ -517,7 +517,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 7, sp = 42, ir = 9
+sam_do: pc = 7, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -529,7 +529,7 @@ Working stack: (11 word(s))
 - link 27
 - int -6
 GET
-sam_do: pc = 8, sp = 43, ir = 5
+sam_do: pc = 8, sp = 43, ir = a
 Working stack: (12 word(s))
 - f2i
 - halt
@@ -541,7 +541,7 @@ Working stack: (12 word(s))
 - link 27
 - float 3.000000
 F2I
-sam_do: pc = 9, sp = 42, ir = 12
+sam_do: pc = 9, sp = 42, ir = 13
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -564,7 +564,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 11, sp = 42, ir = 9
+sam_do: pc = 11, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -588,7 +588,7 @@ Working stack: (12 word(s))
 - link 27
 - float 20.000000
 INT
-sam_do: pc = 13, sp = 44, ir = 9
+sam_do: pc = 13, sp = 44, ir = c
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -601,7 +601,7 @@ Working stack: (13 word(s))
 - float 20.000000
 - int -7
 GET
-sam_do: pc = 14, sp = 45, ir = 1f
+sam_do: pc = 14, sp = 45, ir = 20
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -626,7 +626,7 @@ Working stack: (12 word(s))
 - link 27
 - float 60.000000
 INT
-sam_do: pc = 16, sp = 44, ir = a
+sam_do: pc = 16, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -650,7 +650,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 18, sp = 42, ir = 9
+sam_do: pc = 18, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -674,7 +674,7 @@ Working stack: (12 word(s))
 - link 27
 - float 3.000000
 FLOAT
-sam_do: pc = 21, sp = 45, ir = 1e
+sam_do: pc = 21, sp = 45, ir = 1f
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -699,7 +699,7 @@ Working stack: (12 word(s))
 - link 27
 - float 2.000000
 INT
-sam_do: pc = 23, sp = 44, ir = a
+sam_do: pc = 23, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -712,7 +712,7 @@ Working stack: (13 word(s))
 - float 2.000000
 - int -7
 SET
-sam_do: pc = 24, sp = 41, ir = 13
+sam_do: pc = 24, sp = 41, ir = 14
 Working stack: (10 word(s))
 - f2i
 - halt
@@ -734,7 +734,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 7, sp = 42, ir = 9
+sam_do: pc = 7, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -746,7 +746,7 @@ Working stack: (11 word(s))
 - link 27
 - int -6
 GET
-sam_do: pc = 8, sp = 43, ir = 5
+sam_do: pc = 8, sp = 43, ir = a
 Working stack: (12 word(s))
 - f2i
 - halt
@@ -758,7 +758,7 @@ Working stack: (12 word(s))
 - link 27
 - float 2.000000
 F2I
-sam_do: pc = 9, sp = 42, ir = 12
+sam_do: pc = 9, sp = 42, ir = 13
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -781,7 +781,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 11, sp = 42, ir = 9
+sam_do: pc = 11, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -805,7 +805,7 @@ Working stack: (12 word(s))
 - link 27
 - float 60.000000
 INT
-sam_do: pc = 13, sp = 44, ir = 9
+sam_do: pc = 13, sp = 44, ir = c
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -818,7 +818,7 @@ Working stack: (13 word(s))
 - float 60.000000
 - int -7
 GET
-sam_do: pc = 14, sp = 45, ir = 1f
+sam_do: pc = 14, sp = 45, ir = 20
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -843,7 +843,7 @@ Working stack: (12 word(s))
 - link 27
 - float 120.000000
 INT
-sam_do: pc = 16, sp = 44, ir = a
+sam_do: pc = 16, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -867,7 +867,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 18, sp = 42, ir = 9
+sam_do: pc = 18, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -891,7 +891,7 @@ Working stack: (12 word(s))
 - link 27
 - float 2.000000
 FLOAT
-sam_do: pc = 21, sp = 45, ir = 1e
+sam_do: pc = 21, sp = 45, ir = 1f
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -916,7 +916,7 @@ Working stack: (12 word(s))
 - link 27
 - float 1.000000
 INT
-sam_do: pc = 23, sp = 44, ir = a
+sam_do: pc = 23, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -929,7 +929,7 @@ Working stack: (13 word(s))
 - float 1.000000
 - int -7
 SET
-sam_do: pc = 24, sp = 41, ir = 13
+sam_do: pc = 24, sp = 41, ir = 14
 Working stack: (10 word(s))
 - f2i
 - halt
@@ -951,7 +951,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 7, sp = 42, ir = 9
+sam_do: pc = 7, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -963,7 +963,7 @@ Working stack: (11 word(s))
 - link 27
 - int -6
 GET
-sam_do: pc = 8, sp = 43, ir = 5
+sam_do: pc = 8, sp = 43, ir = a
 Working stack: (12 word(s))
 - f2i
 - halt
@@ -975,7 +975,7 @@ Working stack: (12 word(s))
 - link 27
 - float 1.000000
 F2I
-sam_do: pc = 9, sp = 42, ir = 12
+sam_do: pc = 9, sp = 42, ir = 13
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -998,7 +998,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 11, sp = 42, ir = 9
+sam_do: pc = 11, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -1022,7 +1022,7 @@ Working stack: (12 word(s))
 - link 27
 - float 120.000000
 INT
-sam_do: pc = 13, sp = 44, ir = 9
+sam_do: pc = 13, sp = 44, ir = c
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -1035,7 +1035,7 @@ Working stack: (13 word(s))
 - float 120.000000
 - int -7
 GET
-sam_do: pc = 14, sp = 45, ir = 1f
+sam_do: pc = 14, sp = 45, ir = 20
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -1060,7 +1060,7 @@ Working stack: (12 word(s))
 - link 27
 - float 120.000000
 INT
-sam_do: pc = 16, sp = 44, ir = a
+sam_do: pc = 16, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -1084,7 +1084,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 18, sp = 42, ir = 9
+sam_do: pc = 18, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -1108,7 +1108,7 @@ Working stack: (12 word(s))
 - link 27
 - float 1.000000
 FLOAT
-sam_do: pc = 21, sp = 45, ir = 1e
+sam_do: pc = 21, sp = 45, ir = 1f
 Working stack: (14 word(s))
 - f2i
 - halt
@@ -1133,7 +1133,7 @@ Working stack: (12 word(s))
 - link 27
 - float 0.000000
 INT
-sam_do: pc = 23, sp = 44, ir = a
+sam_do: pc = 23, sp = 44, ir = d
 Working stack: (13 word(s))
 - f2i
 - halt
@@ -1146,7 +1146,7 @@ Working stack: (13 word(s))
 - float 0.000000
 - int -7
 SET
-sam_do: pc = 24, sp = 41, ir = 13
+sam_do: pc = 24, sp = 41, ir = 14
 Working stack: (10 word(s))
 - f2i
 - halt
@@ -1168,7 +1168,7 @@ Working stack: (10 word(s))
 - link 3
 - link 27
 INT
-sam_do: pc = 7, sp = 42, ir = 9
+sam_do: pc = 7, sp = 42, ir = c
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -1180,7 +1180,7 @@ Working stack: (11 word(s))
 - link 27
 - int -6
 GET
-sam_do: pc = 8, sp = 43, ir = 5
+sam_do: pc = 8, sp = 43, ir = a
 Working stack: (12 word(s))
 - f2i
 - halt
@@ -1192,7 +1192,7 @@ Working stack: (12 word(s))
 - link 27
 - float 0.000000
 F2I
-sam_do: pc = 9, sp = 42, ir = 12
+sam_do: pc = 9, sp = 42, ir = 13
 Working stack: (11 word(s))
 - f2i
 - halt
@@ -1213,7 +1213,7 @@ Working stack: (8 word(s))
 - link 31
 - float 120.000000
 INT
-sam_do: pc = 28, sp = 40, ir = a
+sam_do: pc = 28, sp = 40, ir = d
 Working stack: (9 word(s))
 - f2i
 - halt
@@ -1223,7 +1223,7 @@ Working stack: (9 word(s))
 - float 120.000000
 - int -4
 SET
-sam_do: pc = 29, sp = 37, ir = 1a0e
+sam_do: pc = 29, sp = 37, ir = 1a07
 Working stack: (6 word(s))
 - f2i
 - halt
@@ -1231,13 +1231,13 @@ Working stack: (6 word(s))
 - link 0
 - link 31
 KET
-sam_do: pc = 31, sp = 35, ir = 5
+sam_do: pc = 31, sp = 35, ir = a
 Working stack: (4 word(s))
 - f2i
 - halt
 - float 120.000000
 F2I
-sam_do: pc = 32, sp = 34, ir = fe
+sam_do: pc = 32, sp = 34, ir = 28
 Working stack: (3 word(s))
 - f2i
 - halt

@@ -27,13 +27,13 @@ Working stack: (2 word(s))
 - do
 - halt
 INT
-sam_do: pc = 1, sp = 27, ir = 150d
+sam_do: pc = 1, sp = 27, ir = 1506
 Working stack: (3 word(s))
 - do
 - halt
 - int 5
 BRA
-sam_do: pc = 24, sp = 28, ir = 10
+sam_do: pc = 24, sp = 28, ir = 11
 Working stack: (4 word(s))
 - do
 - halt
@@ -48,7 +48,7 @@ Working stack: (5 word(s))
 - link 0
 - link 25
 INT
-sam_do: pc = 3, sp = 30, ir = 9
+sam_do: pc = 3, sp = 30, ir = c
 Working stack: (6 word(s))
 - do
 - halt
@@ -57,7 +57,7 @@ Working stack: (6 word(s))
 - link 25
 - int -3
 GET
-sam_do: pc = 4, sp = 30, ir = b0d
+sam_do: pc = 4, sp = 30, ir = b06
 Working stack: (6 word(s))
 - do
 - halt
@@ -66,7 +66,7 @@ Working stack: (6 word(s))
 - link 25
 - int 5
 BRA
-sam_do: pc = 17, sp = 31, ir = 30d
+sam_do: pc = 17, sp = 31, ir = 306
 Working stack: (7 word(s))
 - do
 - halt
@@ -76,7 +76,7 @@ Working stack: (7 word(s))
 - int 5
 - link 4
 BRA
-sam_do: pc = 22, sp = 32, ir = 11
+sam_do: pc = 22, sp = 32, ir = 12
 Working stack: (8 word(s))
 - do
 - halt
@@ -97,7 +97,7 @@ Working stack: (7 word(s))
 - link 2
 - link 23
 INT
-sam_do: pc = 6, sp = 32, ir = 9
+sam_do: pc = 6, sp = 32, ir = c
 Working stack: (8 word(s))
 - do
 - halt
@@ -119,7 +119,7 @@ Working stack: (8 word(s))
 - link 23
 - int 5
 INT
-sam_do: pc = 8, sp = 33, ir = 1e
+sam_do: pc = 8, sp = 33, ir = 1f
 Working stack: (9 word(s))
 - do
 - halt
@@ -131,7 +131,7 @@ Working stack: (9 word(s))
 - int 5
 - int -1
 ADD
-sam_do: pc = 9, sp = 32, ir = 10f
+sam_do: pc = 9, sp = 32, ir = 110
 Working stack: (8 word(s))
 - do
 - halt
@@ -142,7 +142,7 @@ Working stack: (8 word(s))
 - link 23
 - int 4
 LINK
-sam_do: pc = 10, sp = 33, ir = 10
+sam_do: pc = 10, sp = 33, ir = 11
 Working stack: (9 word(s))
 - do
 - halt
@@ -167,7 +167,7 @@ Working stack: (10 word(s))
 - link 5
 - link 11
 INT
-sam_do: pc = 3, sp = 35, ir = 9
+sam_do: pc = 3, sp = 35, ir = c
 Working stack: (11 word(s))
 - do
 - halt
@@ -181,7 +181,7 @@ Working stack: (11 word(s))
 - link 11
 - int -3
 GET
-sam_do: pc = 4, sp = 35, ir = b0d
+sam_do: pc = 4, sp = 35, ir = b06
 Working stack: (11 word(s))
 - do
 - halt
@@ -195,7 +195,7 @@ Working stack: (11 word(s))
 - link 11
 - int 4
 BRA
-sam_do: pc = 17, sp = 36, ir = 30d
+sam_do: pc = 17, sp = 36, ir = 306
 Working stack: (12 word(s))
 - do
 - halt
@@ -210,7 +210,7 @@ Working stack: (12 word(s))
 - int 4
 - link 4
 BRA
-sam_do: pc = 22, sp = 37, ir = 11
+sam_do: pc = 22, sp = 37, ir = 12
 Working stack: (13 word(s))
 - do
 - halt
@@ -241,7 +241,7 @@ Working stack: (12 word(s))
 - link 2
 - link 23
 INT
-sam_do: pc = 6, sp = 37, ir = 9
+sam_do: pc = 6, sp = 37, ir = c
 Working stack: (13 word(s))
 - do
 - halt
@@ -273,7 +273,7 @@ Working stack: (13 word(s))
 - link 23
 - int 4
 INT
-sam_do: pc = 8, sp = 38, ir = 1e
+sam_do: pc = 8, sp = 38, ir = 1f
 Working stack: (14 word(s))
 - do
 - halt
@@ -290,7 +290,7 @@ Working stack: (14 word(s))
 - int 4
 - int -1
 ADD
-sam_do: pc = 9, sp = 37, ir = 10f
+sam_do: pc = 9, sp = 37, ir = 110
 Working stack: (13 word(s))
 - do
 - halt
@@ -306,7 +306,7 @@ Working stack: (13 word(s))
 - link 23
 - int 3
 LINK
-sam_do: pc = 10, sp = 38, ir = 10
+sam_do: pc = 10, sp = 38, ir = 11
 Working stack: (14 word(s))
 - do
 - halt
@@ -341,7 +341,7 @@ Working stack: (15 word(s))
 - link 5
 - link 11
 INT
-sam_do: pc = 3, sp = 40, ir = 9
+sam_do: pc = 3, sp = 40, ir = c
 Working stack: (16 word(s))
 - do
 - halt
@@ -360,7 +360,7 @@ Working stack: (16 word(s))
 - link 11
 - int -3
 GET
-sam_do: pc = 4, sp = 40, ir = b0d
+sam_do: pc = 4, sp = 40, ir = b06
 Working stack: (16 word(s))
 - do
 - halt
@@ -379,7 +379,7 @@ Working stack: (16 word(s))
 - link 11
 - int 3
 BRA
-sam_do: pc = 17, sp = 41, ir = 30d
+sam_do: pc = 17, sp = 41, ir = 306
 Working stack: (17 word(s))
 - do
 - halt
@@ -399,7 +399,7 @@ Working stack: (17 word(s))
 - int 3
 - link 4
 BRA
-sam_do: pc = 22, sp = 42, ir = 11
+sam_do: pc = 22, sp = 42, ir = 12
 Working stack: (18 word(s))
 - do
 - halt
@@ -440,7 +440,7 @@ Working stack: (17 word(s))
 - link 2
 - link 23
 INT
-sam_do: pc = 6, sp = 42, ir = 9
+sam_do: pc = 6, sp = 42, ir = c
 Working stack: (18 word(s))
 - do
 - halt
@@ -482,7 +482,7 @@ Working stack: (18 word(s))
 - link 23
 - int 3
 INT
-sam_do: pc = 8, sp = 43, ir = 1e
+sam_do: pc = 8, sp = 43, ir = 1f
 Working stack: (19 word(s))
 - do
 - halt
@@ -504,7 +504,7 @@ Working stack: (19 word(s))
 - int 3
 - int -1
 ADD
-sam_do: pc = 9, sp = 42, ir = 10f
+sam_do: pc = 9, sp = 42, ir = 110
 Working stack: (18 word(s))
 - do
 - halt
@@ -525,7 +525,7 @@ Working stack: (18 word(s))
 - link 23
 - int 2
 LINK
-sam_do: pc = 10, sp = 43, ir = 10
+sam_do: pc = 10, sp = 43, ir = 11
 Working stack: (19 word(s))
 - do
 - halt
@@ -570,7 +570,7 @@ Working stack: (20 word(s))
 - link 5
 - link 11
 INT
-sam_do: pc = 3, sp = 45, ir = 9
+sam_do: pc = 3, sp = 45, ir = c
 Working stack: (21 word(s))
 - do
 - halt
@@ -594,7 +594,7 @@ Working stack: (21 word(s))
 - link 11
 - int -3
 GET
-sam_do: pc = 4, sp = 45, ir = b0d
+sam_do: pc = 4, sp = 45, ir = b06
 Working stack: (21 word(s))
 - do
 - halt
@@ -618,7 +618,7 @@ Working stack: (21 word(s))
 - link 11
 - int 2
 BRA
-sam_do: pc = 17, sp = 46, ir = 30d
+sam_do: pc = 17, sp = 46, ir = 306
 Working stack: (22 word(s))
 - do
 - halt
@@ -643,7 +643,7 @@ Working stack: (22 word(s))
 - int 2
 - link 4
 BRA
-sam_do: pc = 22, sp = 47, ir = 11
+sam_do: pc = 22, sp = 47, ir = 12
 Working stack: (23 word(s))
 - do
 - halt
@@ -694,7 +694,7 @@ Working stack: (22 word(s))
 - link 2
 - link 23
 INT
-sam_do: pc = 6, sp = 47, ir = 9
+sam_do: pc = 6, sp = 47, ir = c
 Working stack: (23 word(s))
 - do
 - halt
@@ -746,7 +746,7 @@ Working stack: (23 word(s))
 - link 23
 - int 2
 INT
-sam_do: pc = 8, sp = 48, ir = 1e
+sam_do: pc = 8, sp = 48, ir = 1f
 Working stack: (24 word(s))
 - do
 - halt
@@ -773,7 +773,7 @@ Working stack: (24 word(s))
 - int 2
 - int -1
 ADD
-sam_do: pc = 9, sp = 47, ir = 10f
+sam_do: pc = 9, sp = 47, ir = 110
 Working stack: (23 word(s))
 - do
 - halt
@@ -799,7 +799,7 @@ Working stack: (23 word(s))
 - link 23
 - int 1
 LINK
-sam_do: pc = 10, sp = 48, ir = 10
+sam_do: pc = 10, sp = 48, ir = 11
 Working stack: (24 word(s))
 - do
 - halt
@@ -854,7 +854,7 @@ Working stack: (25 word(s))
 - link 5
 - link 11
 INT
-sam_do: pc = 3, sp = 50, ir = 9
+sam_do: pc = 3, sp = 50, ir = c
 Working stack: (26 word(s))
 - do
 - halt
@@ -883,7 +883,7 @@ Working stack: (26 word(s))
 - link 11
 - int -3
 GET
-sam_do: pc = 4, sp = 50, ir = b0d
+sam_do: pc = 4, sp = 50, ir = b06
 Working stack: (26 word(s))
 - do
 - halt
@@ -912,7 +912,7 @@ Working stack: (26 word(s))
 - link 11
 - int 1
 BRA
-sam_do: pc = 17, sp = 51, ir = 30d
+sam_do: pc = 17, sp = 51, ir = 306
 Working stack: (27 word(s))
 - do
 - halt
@@ -942,7 +942,7 @@ Working stack: (27 word(s))
 - int 1
 - link 4
 BRA
-sam_do: pc = 22, sp = 52, ir = 11
+sam_do: pc = 22, sp = 52, ir = 12
 Working stack: (28 word(s))
 - do
 - halt
@@ -1003,7 +1003,7 @@ Working stack: (27 word(s))
 - link 2
 - link 23
 INT
-sam_do: pc = 6, sp = 52, ir = 9
+sam_do: pc = 6, sp = 52, ir = c
 Working stack: (28 word(s))
 - do
 - halt
@@ -1065,7 +1065,7 @@ Working stack: (28 word(s))
 - link 23
 - int 1
 INT
-sam_do: pc = 8, sp = 53, ir = 1e
+sam_do: pc = 8, sp = 53, ir = 1f
 Working stack: (29 word(s))
 - do
 - halt
@@ -1097,7 +1097,7 @@ Working stack: (29 word(s))
 - int 1
 - int -1
 ADD
-sam_do: pc = 9, sp = 52, ir = 10f
+sam_do: pc = 9, sp = 52, ir = 110
 Working stack: (28 word(s))
 - do
 - halt
@@ -1128,7 +1128,7 @@ Working stack: (28 word(s))
 - link 23
 - int 0
 LINK
-sam_do: pc = 10, sp = 53, ir = 10
+sam_do: pc = 10, sp = 53, ir = 11
 Working stack: (29 word(s))
 - do
 - halt
@@ -1193,7 +1193,7 @@ Working stack: (30 word(s))
 - link 5
 - link 11
 INT
-sam_do: pc = 3, sp = 55, ir = 9
+sam_do: pc = 3, sp = 55, ir = c
 Working stack: (31 word(s))
 - do
 - halt
@@ -1227,7 +1227,7 @@ Working stack: (31 word(s))
 - link 11
 - int -3
 GET
-sam_do: pc = 4, sp = 55, ir = b0d
+sam_do: pc = 4, sp = 55, ir = b06
 Working stack: (31 word(s))
 - do
 - halt
@@ -1261,7 +1261,7 @@ Working stack: (31 word(s))
 - link 11
 - int 0
 BRA
-sam_do: pc = 17, sp = 56, ir = 30d
+sam_do: pc = 17, sp = 56, ir = 306
 Working stack: (32 word(s))
 - do
 - halt
@@ -1296,7 +1296,7 @@ Working stack: (32 word(s))
 - int 0
 - link 4
 BRA
-sam_do: pc = 22, sp = 57, ir = 11
+sam_do: pc = 22, sp = 57, ir = 12
 Working stack: (33 word(s))
 - do
 - halt
@@ -1403,7 +1403,7 @@ Working stack: (33 word(s))
 - link 23
 - int 1
 INT
-sam_do: pc = 20, sp = 58, ir = a
+sam_do: pc = 20, sp = 58, ir = d
 Working stack: (34 word(s))
 - do
 - halt
@@ -1440,7 +1440,7 @@ Working stack: (34 word(s))
 - int 1
 - int -6
 SET
-sam_do: pc = 21, sp = 56, ir = 30e
+sam_do: pc = 21, sp = 56, ir = 307
 Working stack: (32 word(s))
 - do
 - halt
@@ -1475,7 +1475,7 @@ Working stack: (32 word(s))
 - link 2
 - link 23
 KET
-sam_do: pc = 23, sp = 54, ir = 150e
+sam_do: pc = 23, sp = 54, ir = 1507
 Working stack: (30 word(s))
 - do
 - halt
@@ -1539,7 +1539,7 @@ Working stack: (28 word(s))
 - link 23
 - int 1
 INT
-sam_do: pc = 12, sp = 53, ir = 9
+sam_do: pc = 12, sp = 53, ir = c
 Working stack: (29 word(s))
 - do
 - halt
@@ -1571,7 +1571,7 @@ Working stack: (29 word(s))
 - int 1
 - int -6
 GET
-sam_do: pc = 13, sp = 53, ir = 1f
+sam_do: pc = 13, sp = 53, ir = 20
 Working stack: (29 word(s))
 - do
 - halt
@@ -1634,7 +1634,7 @@ Working stack: (28 word(s))
 - link 23
 - int 1
 INT
-sam_do: pc = 15, sp = 53, ir = a
+sam_do: pc = 15, sp = 53, ir = d
 Working stack: (29 word(s))
 - do
 - halt
@@ -1666,7 +1666,7 @@ Working stack: (29 word(s))
 - int 1
 - int -6
 SET
-sam_do: pc = 16, sp = 51, ir = b0e
+sam_do: pc = 16, sp = 51, ir = b07
 Working stack: (27 word(s))
 - do
 - halt
@@ -1696,7 +1696,7 @@ Working stack: (27 word(s))
 - link 2
 - link 23
 KET
-sam_do: pc = 23, sp = 49, ir = 150e
+sam_do: pc = 23, sp = 49, ir = 1507
 Working stack: (25 word(s))
 - do
 - halt
@@ -1750,7 +1750,7 @@ Working stack: (23 word(s))
 - link 23
 - int 1
 INT
-sam_do: pc = 12, sp = 48, ir = 9
+sam_do: pc = 12, sp = 48, ir = c
 Working stack: (24 word(s))
 - do
 - halt
@@ -1777,7 +1777,7 @@ Working stack: (24 word(s))
 - int 1
 - int -6
 GET
-sam_do: pc = 13, sp = 48, ir = 1f
+sam_do: pc = 13, sp = 48, ir = 20
 Working stack: (24 word(s))
 - do
 - halt
@@ -1830,7 +1830,7 @@ Working stack: (23 word(s))
 - link 23
 - int 2
 INT
-sam_do: pc = 15, sp = 48, ir = a
+sam_do: pc = 15, sp = 48, ir = d
 Working stack: (24 word(s))
 - do
 - halt
@@ -1857,7 +1857,7 @@ Working stack: (24 word(s))
 - int 2
 - int -6
 SET
-sam_do: pc = 16, sp = 46, ir = b0e
+sam_do: pc = 16, sp = 46, ir = b07
 Working stack: (22 word(s))
 - do
 - halt
@@ -1882,7 +1882,7 @@ Working stack: (22 word(s))
 - link 2
 - link 23
 KET
-sam_do: pc = 23, sp = 44, ir = 150e
+sam_do: pc = 23, sp = 44, ir = 1507
 Working stack: (20 word(s))
 - do
 - halt
@@ -1926,7 +1926,7 @@ Working stack: (18 word(s))
 - link 23
 - int 2
 INT
-sam_do: pc = 12, sp = 43, ir = 9
+sam_do: pc = 12, sp = 43, ir = c
 Working stack: (19 word(s))
 - do
 - halt
@@ -1948,7 +1948,7 @@ Working stack: (19 word(s))
 - int 2
 - int -6
 GET
-sam_do: pc = 13, sp = 43, ir = 1f
+sam_do: pc = 13, sp = 43, ir = 20
 Working stack: (19 word(s))
 - do
 - halt
@@ -1991,7 +1991,7 @@ Working stack: (18 word(s))
 - link 23
 - int 6
 INT
-sam_do: pc = 15, sp = 43, ir = a
+sam_do: pc = 15, sp = 43, ir = d
 Working stack: (19 word(s))
 - do
 - halt
@@ -2013,7 +2013,7 @@ Working stack: (19 word(s))
 - int 6
 - int -6
 SET
-sam_do: pc = 16, sp = 41, ir = b0e
+sam_do: pc = 16, sp = 41, ir = b07
 Working stack: (17 word(s))
 - do
 - halt
@@ -2033,7 +2033,7 @@ Working stack: (17 word(s))
 - link 2
 - link 23
 KET
-sam_do: pc = 23, sp = 39, ir = 150e
+sam_do: pc = 23, sp = 39, ir = 1507
 Working stack: (15 word(s))
 - do
 - halt
@@ -2067,7 +2067,7 @@ Working stack: (13 word(s))
 - link 23
 - int 6
 INT
-sam_do: pc = 12, sp = 38, ir = 9
+sam_do: pc = 12, sp = 38, ir = c
 Working stack: (14 word(s))
 - do
 - halt
@@ -2084,7 +2084,7 @@ Working stack: (14 word(s))
 - int 6
 - int -6
 GET
-sam_do: pc = 13, sp = 38, ir = 1f
+sam_do: pc = 13, sp = 38, ir = 20
 Working stack: (14 word(s))
 - do
 - halt
@@ -2117,7 +2117,7 @@ Working stack: (13 word(s))
 - link 23
 - int 24
 INT
-sam_do: pc = 15, sp = 38, ir = a
+sam_do: pc = 15, sp = 38, ir = d
 Working stack: (14 word(s))
 - do
 - halt
@@ -2134,7 +2134,7 @@ Working stack: (14 word(s))
 - int 24
 - int -6
 SET
-sam_do: pc = 16, sp = 36, ir = b0e
+sam_do: pc = 16, sp = 36, ir = b07
 Working stack: (12 word(s))
 - do
 - halt
@@ -2149,7 +2149,7 @@ Working stack: (12 word(s))
 - link 2
 - link 23
 KET
-sam_do: pc = 23, sp = 34, ir = 150e
+sam_do: pc = 23, sp = 34, ir = 1507
 Working stack: (10 word(s))
 - do
 - halt
@@ -2173,7 +2173,7 @@ Working stack: (8 word(s))
 - link 23
 - int 24
 INT
-sam_do: pc = 12, sp = 33, ir = 9
+sam_do: pc = 12, sp = 33, ir = c
 Working stack: (9 word(s))
 - do
 - halt
@@ -2185,7 +2185,7 @@ Working stack: (9 word(s))
 - int 24
 - int -6
 GET
-sam_do: pc = 13, sp = 33, ir = 1f
+sam_do: pc = 13, sp = 33, ir = 20
 Working stack: (9 word(s))
 - do
 - halt
@@ -2208,7 +2208,7 @@ Working stack: (8 word(s))
 - link 23
 - int 120
 INT
-sam_do: pc = 15, sp = 33, ir = a
+sam_do: pc = 15, sp = 33, ir = d
 Working stack: (9 word(s))
 - do
 - halt
@@ -2220,7 +2220,7 @@ Working stack: (9 word(s))
 - int 120
 - int -6
 SET
-sam_do: pc = 16, sp = 31, ir = b0e
+sam_do: pc = 16, sp = 31, ir = b07
 Working stack: (7 word(s))
 - do
 - halt
@@ -2230,7 +2230,7 @@ Working stack: (7 word(s))
 - link 2
 - link 23
 KET
-sam_do: pc = 23, sp = 29, ir = 150e
+sam_do: pc = 23, sp = 29, ir = 1507
 Working stack: (5 word(s))
 - do
 - halt
@@ -2238,7 +2238,7 @@ Working stack: (5 word(s))
 - link 0
 - link 25
 KET
-sam_do: pc = 25, sp = 27, ir = fe
+sam_do: pc = 25, sp = 27, ir = 28
 Working stack: (3 word(s))
 - do
 - halt

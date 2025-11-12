@@ -19,7 +19,7 @@ Working stack: (3 word(s))
 - halt
 - int 21
 INT
-sam_do: pc = 2, sp = 11, ir = 1f
+sam_do: pc = 2, sp = 11, ir = 20
 Working stack: (4 word(s))
 - div
 - halt
@@ -32,14 +32,14 @@ Working stack: (3 word(s))
 - halt
 - int 42
 INT
-sam_do: pc = 4, sp = 11, ir = 1d
+sam_do: pc = 4, sp = 11, ir = 1e
 Working stack: (4 word(s))
 - div
 - halt
 - int 42
 - int 3
 NEG
-sam_do: pc = 5, sp = 11, ir = 1e
+sam_do: pc = 5, sp = 11, ir = 1f
 Working stack: (4 word(s))
 - div
 - halt
@@ -52,14 +52,14 @@ Working stack: (3 word(s))
 - halt
 - int 39
 INT
-sam_do: pc = 7, sp = 11, ir = 20
+sam_do: pc = 7, sp = 11, ir = 21
 Working stack: (4 word(s))
 - div
 - halt
 - int 39
 - int -3
 DIV
-sam_do: pc = 8, sp = 10, ir = fe
+sam_do: pc = 8, sp = 10, ir = 28
 Working stack: (3 word(s))
 - div
 - halt
