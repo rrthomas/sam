@@ -18,7 +18,7 @@
 #include "sam_private.h"
 
 // Instruction constants
-const int SAM_OP_SHIFT = 8;
+const int SAM_OP_SHIFT = 4;
 const sam_word_t SAM_OP_MASK = (1 << SAM_OP_SHIFT) - 1;
 
 

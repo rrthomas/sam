@@ -8,8 +8,7 @@
    THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
    RISK.  */
 
-
-// Instructions occupy a word, with the opcode in bits 0-7; the rest of word
+// Instructions occupy a word, with the opcode in bits 0-3; the rest of word
 // is an immediate operand. The opcodes are SAM_INSN_* below.
 
 // Stack layout:
