@@ -21,7 +21,7 @@ void debug(const char *fmt, ...)
     }
 }
 
-void xasprintf(char **text, const char *fmt, ...)
+static void xasprintf(char **text, const char *fmt, ...)
 {
     va_list ap;
     va_start(ap, fmt);
