@@ -1,6 +1,6 @@
 // Private implementation-specific APIs that are shared between modules.
 //
-// (c) Reuben Thomas 1994-2020
+// (c) Reuben Thomas 1994-2025
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -25,13 +25,8 @@
 
 // Portable arithmetic right shift (the behaviour of >> on signed
 // quantities is implementation-defined in C99)
-#if HAVE_ARITHMETIC_RSHIFT
-#define ARSHIFT(n, p)                           \
-    ((sam_word_t)(n) >> (p))
-#else
 #define ARSHIFT(n, p)                                                   \
     (((n) >> (p)) | (sam_word_t)(LSHIFT(-((n) < 0), (SAM_WORD_BIT - p))))
-#endif
 
 // Matching macro for logical shift
 #define LRSHIFT(x, p)                           \
