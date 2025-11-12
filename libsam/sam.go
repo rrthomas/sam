@@ -6,7 +6,6 @@ package libsam
 //#cgo pkg-config: sdl2 SDL2_gfx
 //#include "sam.h"
 //#include "sam_opcodes.h"
-//#include "sam_traps.h"
 import "C"
 
 type Word = C.sam_word_t
@@ -47,6 +46,12 @@ func SetDebug(flag bool) {
 	}
 }
 
+func StackPeek(addr Uword) (int, Uword) {
+	var val Uword
+	res := C.sam_stack_peek(addr, &val)
+	return int(res), val
+}
+
 func PrintStack() {
 	C.sam_print_stack()
 }
@@ -69,96 +74,65 @@ const (
 	ERROR_UNPAIRED_FLOAT   = C.SAM_ERROR_UNPAIRED_FLOAT
 	ERROR_UNPAIRED_PUSH    = C.SAM_ERROR_UNPAIRED_PUSH
 	ERROR_INVALID_FUNCTION = C.SAM_ERROR_INVALID_FUNCTION
-	ERROR_BREAK            = C.SAM_ERROR_BREAK
 	ERROR_TRAP_INIT        = C.SAM_ERROR_TRAP_INIT
 )
 
 const (
-	INSN_NOP    = C.SAM_INSN_NOP
+	INSN_TRAP   = C.SAM_INSN_TRAP
 	INSN_INT    = C.SAM_INSN_INT
 	INSN_FLOAT  = C.SAM_INSN_FLOAT
 	INSN__FLOAT = C.SAM_INSN__FLOAT
-	INSN_I2F    = C.SAM_INSN_I2F
-	INSN_F2I    = C.SAM_INSN_F2I
 	INSN_PUSH   = C.SAM_INSN_PUSH
 	INSN__PUSH  = C.SAM_INSN__PUSH
-	INSN_POP    = C.SAM_INSN_POP
-	INSN_GET    = C.SAM_INSN_GET
-	INSN_SET    = C.SAM_INSN_SET
-	INSN_IGET   = C.SAM_INSN_IGET
-	INSN_ISET   = C.SAM_INSN_ISET
 	INSN_BRA    = C.SAM_INSN_BRA
 	INSN_KET    = C.SAM_INSN_KET
 	INSN_LINK   = C.SAM_INSN_LINK
-	INSN_DO     = C.SAM_INSN_DO
-	INSN_IF     = C.SAM_INSN_IF
-	INSN_WHILE  = C.SAM_INSN_WHILE
-	INSN_LOOP   = C.SAM_INSN_LOOP
-	INSN_NOT    = C.SAM_INSN_NOT
-	INSN_AND    = C.SAM_INSN_AND
-	INSN_OR     = C.SAM_INSN_OR
-	INSN_XOR    = C.SAM_INSN_XOR
-	INSN_LSH    = C.SAM_INSN_LSH
-	INSN_RSH    = C.SAM_INSN_RSH
-	INSN_ARSH   = C.SAM_INSN_ARSH
-	INSN_EQ     = C.SAM_INSN_EQ
-	INSN_LT     = C.SAM_INSN_LT
-	INSN_NEG    = C.SAM_INSN_NEG
-	INSN_ADD    = C.SAM_INSN_ADD
-	INSN_MUL    = C.SAM_INSN_MUL
-	INSN_DIV    = C.SAM_INSN_DIV
-	INSN_REM    = C.SAM_INSN_REM
-	INSN_POW    = C.SAM_INSN_POW
-	INSN_SIN    = C.SAM_INSN_SIN
-	INSN_COS    = C.SAM_INSN_COS
-	INSN_DEG    = C.SAM_INSN_DEG
-	INSN_RAD    = C.SAM_INSN_RAD
-	INSN_HALT   = C.SAM_INSN_HALT
-	INSN_TRAP   = C.SAM_INSN_TRAP
 )
 
 var Instructions = map[string]int{
-	"nop":    INSN_NOP,
+	"trap":   INSN_TRAP,
 	"int":    INSN_INT,
 	"float":  INSN_FLOAT,
 	"_float": INSN__FLOAT,
-	"i2f":    INSN_I2F,
-	"f2i":    INSN_F2I,
 	"push":   INSN_PUSH,
 	"_push":  INSN__PUSH,
-	"pop":    INSN_POP,
-	"get":    INSN_GET,
-	"set":    INSN_SET,
-	"iget":   INSN_IGET,
-	"iset":   INSN_ISET,
 	"bra":    INSN_BRA,
 	"ket":    INSN_KET,
 	"link":   INSN_LINK,
-	"do":     INSN_DO,
-	"if":     INSN_IF,
-	"while":  INSN_WHILE,
-	"loop":   INSN_LOOP,
-	"not":    INSN_NOT,
-	"and":    INSN_AND,
-	"or":     INSN_OR,
-	"xor":    INSN_XOR,
-	"lsh":    INSN_LSH,
-	"rsh":    INSN_RSH,
-	"arsh":   INSN_ARSH,
-	"eq":     INSN_EQ,
-	"lt":     INSN_LT,
-	"neg":    INSN_NEG,
-	"add":    INSN_ADD,
-	"mul":    INSN_MUL,
-	"div":    INSN_DIV,
-	"rem":    INSN_REM,
-	"pow":    INSN_POW,
-	"sin":    INSN_SIN,
-	"cos":    INSN_COS,
-	"deg":    INSN_DEG,
-	"rad":    INSN_RAD,
-	"halt":   INSN_HALT,
-	"trap":   INSN_TRAP,
+
+	// Instructions encoded as traps.
+	"nop":   INSN_TRAP | (C.TRAP_NOP << OP_SHIFT),
+	"i2f":   INSN_TRAP | (C.TRAP_I2F << OP_SHIFT),
+	"f2i":   INSN_TRAP | (C.TRAP_F2I << OP_SHIFT),
+	"pop":   INSN_TRAP | (C.TRAP_POP << OP_SHIFT),
+	"get":   INSN_TRAP | (C.TRAP_GET << OP_SHIFT),
+	"set":   INSN_TRAP | (C.TRAP_SET << OP_SHIFT),
+	"iget":  INSN_TRAP | (C.TRAP_IGET << OP_SHIFT),
+	"iset":  INSN_TRAP | (C.TRAP_ISET << OP_SHIFT),
+	"do":    INSN_TRAP | (C.TRAP_DO << OP_SHIFT),
+	"if":    INSN_TRAP | (C.TRAP_IF << OP_SHIFT),
+	"while": INSN_TRAP | (C.TRAP_WHILE << OP_SHIFT),
+	"loop":  INSN_TRAP | (C.TRAP_LOOP << OP_SHIFT),
+	"not":   INSN_TRAP | (C.TRAP_NOT << OP_SHIFT),
+	"and":   INSN_TRAP | (C.TRAP_AND << OP_SHIFT),
+	"or":    INSN_TRAP | (C.TRAP_OR << OP_SHIFT),
+	"xor":   INSN_TRAP | (C.TRAP_XOR << OP_SHIFT),
+	"lsh":   INSN_TRAP | (C.TRAP_LSH << OP_SHIFT),
+	"rsh":   INSN_TRAP | (C.TRAP_RSH << OP_SHIFT),
+	"arsh":  INSN_TRAP | (C.TRAP_ARSH << OP_SHIFT),
+	"eq":    INSN_TRAP | (C.TRAP_EQ << OP_SHIFT),
+	"lt":    INSN_TRAP | (C.TRAP_LT << OP_SHIFT),
+	"neg":   INSN_TRAP | (C.TRAP_NEG << OP_SHIFT),
+	"add":   INSN_TRAP | (C.TRAP_ADD << OP_SHIFT),
+	"mul":   INSN_TRAP | (C.TRAP_MUL << OP_SHIFT),
+	"div":   INSN_TRAP | (C.TRAP_DIV << OP_SHIFT),
+	"rem":   INSN_TRAP | (C.TRAP_REM << OP_SHIFT),
+	"pow":   INSN_TRAP | (C.TRAP_POW << OP_SHIFT),
+	"sin":   INSN_TRAP | (C.TRAP_SIN << OP_SHIFT),
+	"cos":   INSN_TRAP | (C.TRAP_COS << OP_SHIFT),
+	"deg":   INSN_TRAP | (C.TRAP_DEG << OP_SHIFT),
+	"rad":   INSN_TRAP | (C.TRAP_RAD << OP_SHIFT),
+	"halt":  INSN_TRAP | (C.TRAP_HALT << OP_SHIFT),
 }
 
 var Traps = map[string]int{

@@ -29,14 +29,89 @@ static void xasprintf(char **text, const char *fmt, ...)
     va_end(ap);
 }
 
+char *trap_name(sam_word_t trap_code) {
+    switch (trap_code) {
+        case TRAP_NOP:
+            return "nop";
+        case TRAP_I2F:
+            return "i2f";
+        case TRAP_F2I:
+            return "f2i";
+        case TRAP_POP:
+            return "pop";
+        case TRAP_GET:
+            return "get";
+        case TRAP_SET:
+            return "set";
+        case TRAP_IGET:
+            return "iget";
+        case TRAP_ISET:
+            return "iset";
+        case TRAP_DO:
+            return "do";
+        case TRAP_IF:
+            return "if";
+        case TRAP_WHILE:
+            return "while";
+        case TRAP_LOOP:
+            return "loop";
+        case TRAP_NOT:
+            return "not";
+        case TRAP_AND:
+            return "and";
+        case TRAP_OR:
+            return "or";
+        case TRAP_XOR:
+            return "xor";
+        case TRAP_LSH:
+            return "lsh";
+        case TRAP_RSH:
+            return "rsh";
+        case TRAP_ARSH:
+            return "arsh";
+        case TRAP_EQ:
+            return "eq";
+        case TRAP_LT:
+            return "lt";
+        case TRAP_NEG:
+            return "neg";
+        case TRAP_ADD:
+            return "add";
+        case TRAP_MUL:
+            return "mul";
+        case TRAP_DIV:
+            return "div";
+        case TRAP_REM:
+            return "rem";
+        case TRAP_POW:
+            return "pow";
+        case TRAP_SIN:
+            return "sin";
+        case TRAP_COS:
+            return "cos";
+        case TRAP_DEG:
+            return "deg";
+        case TRAP_RAD:
+            return "rad";
+        case TRAP_HALT:
+            return "halt";
+        default:
+        {
+            char *text;
+            xasprintf(&text, "trap %d", trap_code);
+            return text;
+        }
+    }
+}
+
 static char *disas(sam_uword_t *addr)
 {
     char *text;
     sam_word_t inst;
     assert(sam_stack_peek((*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     switch (inst & SAM_OP_MASK) {
-    case SAM_INSN_NOP:
-        xasprintf(&text, "nop");
+    case SAM_INSN_TRAP:
+        xasprintf(&text, "%s", trap_name(inst >> SAM_OP_SHIFT));
         break;
     case SAM_INSN_INT:
         xasprintf(&text, "int %d", ARSHIFT(inst, SAM_OP_SHIFT));
@@ -55,12 +130,6 @@ static char *disas(sam_uword_t *addr)
     case SAM_INSN__FLOAT:
         xasprintf(&text, "*** UNPAIRED FLOAT ***");
         break;
-    case SAM_INSN_I2F:
-        xasprintf(&text, "i2f");
-        break;
-    case SAM_INSN_F2I:
-        xasprintf(&text, "f2i");
-        break;
     case SAM_INSN_PUSH:
         {
             sam_uword_t w2;
@@ -75,21 +144,6 @@ static char *disas(sam_uword_t *addr)
     case SAM_INSN__PUSH:
         xasprintf(&text, "*** UNPAIRED PUSH ***");
         break;
-    case SAM_INSN_POP:
-        xasprintf(&text, "pop");
-        break;
-    case SAM_INSN_GET:
-        xasprintf(&text, "get");
-        break;
-    case SAM_INSN_SET:
-        xasprintf(&text, "set");
-        break;
-    case SAM_INSN_IGET:
-        xasprintf(&text, "iget");
-        break;
-    case SAM_INSN_ISET:
-        xasprintf(&text, "iset");
-        break;
     case SAM_INSN_BRA:
         xasprintf(&text, "*** UNEXPECTED BRA ***");
         break;
@@ -98,81 +152,6 @@ static char *disas(sam_uword_t *addr)
         break;
     case SAM_INSN_LINK:
         xasprintf(&text, "link %d", inst >> SAM_OP_SHIFT);
-        break;
-    case SAM_INSN_DO:
-        xasprintf(&text, "do");
-        break;
-    case SAM_INSN_IF:
-        xasprintf(&text, "if");
-        break;
-    case SAM_INSN_WHILE:
-        xasprintf(&text, "while");
-        break;
-    case SAM_INSN_LOOP:
-        xasprintf(&text, "loop");
-        break;
-    case SAM_INSN_NOT:
-        xasprintf(&text, "not");
-        break;
-    case SAM_INSN_AND:
-        xasprintf(&text, "and");
-        break;
-    case SAM_INSN_OR:
-        xasprintf(&text, "or");
-        break;
-    case SAM_INSN_XOR:
-        xasprintf(&text, "xor");
-        break;
-    case SAM_INSN_LSH:
-        xasprintf(&text, "lsh");
-        break;
-    case SAM_INSN_RSH:
-        xasprintf(&text, "rsh");
-        break;
-    case SAM_INSN_ARSH:
-        xasprintf(&text, "arsh");
-        break;
-    case SAM_INSN_EQ:
-        xasprintf(&text, "eq");
-        break;
-    case SAM_INSN_LT:
-        xasprintf(&text, "lt");
-        break;
-    case SAM_INSN_NEG:
-        xasprintf(&text, "neg");
-        break;
-    case SAM_INSN_ADD:
-        xasprintf(&text, "add");
-        break;
-    case SAM_INSN_MUL:
-        xasprintf(&text, "mul");
-        break;
-    case SAM_INSN_DIV:
-        xasprintf(&text, "div");
-        break;
-    case SAM_INSN_REM:
-        xasprintf(&text, "rem");
-        break;
-    case SAM_INSN_POW:
-        xasprintf(&text, "pow");
-        break;
-    case SAM_INSN_SIN:
-        xasprintf(&text, "sin");
-        break;
-    case SAM_INSN_COS:
-        xasprintf(&text, "cos");
-        break;
-    case SAM_INSN_DEG:
-        xasprintf(&text, "deg");
-        break;
-    case SAM_INSN_RAD:
-        xasprintf(&text, "rad");
-        break;
-    case SAM_INSN_HALT:
-        xasprintf(&text, "halt");
-        break;
-    case SAM_INSN_TRAP:
-        xasprintf(&text, "trap %d", inst >> SAM_OP_SHIFT);
         break;
     default:
         xasprintf(&text, "*** INVALID OPCODE ***");

@@ -12,57 +12,57 @@ sam_do: pc = 0, sp = 9, ir = 1501
 Working stack: (2 word(s))
 - div
 - halt
-INT
+int
 sam_do: pc = 1, sp = 10, ir = 201
 Working stack: (3 word(s))
 - div
 - halt
 - int 21
-INT
-sam_do: pc = 2, sp = 11, ir = 20
+int
+sam_do: pc = 2, sp = 11, ir = 1700
 Working stack: (4 word(s))
 - div
 - halt
 - int 21
 - int 2
-MUL
+mul
 sam_do: pc = 3, sp = 10, ir = 301
 Working stack: (3 word(s))
 - div
 - halt
 - int 42
-INT
-sam_do: pc = 4, sp = 11, ir = 1e
+int
+sam_do: pc = 4, sp = 11, ir = 1500
 Working stack: (4 word(s))
 - div
 - halt
 - int 42
 - int 3
-NEG
-sam_do: pc = 5, sp = 11, ir = 1f
+neg
+sam_do: pc = 5, sp = 11, ir = 1600
 Working stack: (4 word(s))
 - div
 - halt
 - int 42
 - int -3
-ADD
+add
 sam_do: pc = 6, sp = 10, ir = fffffd01
 Working stack: (3 word(s))
 - div
 - halt
 - int 39
-INT
-sam_do: pc = 7, sp = 11, ir = 21
+int
+sam_do: pc = 7, sp = 11, ir = 1800
 Working stack: (4 word(s))
 - div
 - halt
 - int 39
 - int -3
-DIV
-sam_do: pc = 8, sp = 10, ir = 28
+div
+sam_do: pc = 8, sp = 10, ir = 1f00
 Working stack: (3 word(s))
 - div
 - halt
 - int -13
-HALT
-sam_run returns -13
+halt
+sam_run returns -3327

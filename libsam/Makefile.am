@@ -14,7 +14,6 @@ libsam_la_SOURCES = \
 	sam_private.h \
 	sam_opcodes.h \
 	sam_registers.h \
-	sam_traps.h \
 	sam_debug.c \
 	sam_storage.c \
 	sam_run.c \

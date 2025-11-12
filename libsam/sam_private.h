@@ -8,6 +8,8 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
+#include "sam.h"
+
 // Errors
 #define HALT(code)                              \
     do {                                        \
@@ -87,12 +89,12 @@
 #define DO(addr)                                \
     do {                                        \
         PUSH_LINK(sam_pc0);                     \
-        PUSH_LINK(pc);                          \
-        sam_pc0 = pc = addr;                    \
+        PUSH_LINK(sam_pc);                      \
+        sam_pc0 = sam_pc = addr;                \
     } while (0)
 #define RET                                     \
     do {                                        \
-        POP_LINK(pc);                           \
+        POP_LINK(sam_pc);                       \
         POP_LINK(sam_pc0);                      \
     } while (0)
 

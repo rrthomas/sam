@@ -25,6 +25,7 @@ typedef float sam_float_t;
 // Error codes
 enum {
     SAM_ERROR_OK = 0,
+    SAM_ERROR_HALT = 1,
     SAM_ERROR_INVALID_OPCODE = -1,
     SAM_ERROR_INVALID_ADDRESS = -2,
     SAM_ERROR_STACK_UNDERFLOW = -3,
@@ -37,8 +38,7 @@ enum {
     SAM_ERROR_UNPAIRED_FLOAT = -10,
     SAM_ERROR_UNPAIRED_PUSH = -11,
     SAM_ERROR_INVALID_FUNCTION = -12,
-    SAM_ERROR_BREAK = -256,
-    SAM_ERROR_TRAP_INIT = -257,
+    SAM_ERROR_TRAP_INIT = -13,
 };
 
 // Stack access
@@ -63,6 +63,7 @@ int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp);
 #ifdef SAM_DEBUG
 #include <stdbool.h>
 extern bool do_debug;
+char *trap_name(sam_word_t trap_code);
 void sam_print_stack(void);
 void sam_print_working_stack(void);
 void debug(const char *fmt, ...);
