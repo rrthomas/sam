@@ -15,9 +15,9 @@
 //
 // Each stack item is either a VM instruction, or a stack.
 //
-// Stacks are stored as: BRA instruction (operand is number of words to
-// KET), a number of words, KET (operand is negative number of words to
-// BRA).
+// Stacks are stored as: STACK instruction (operand is positive number of
+// words to final STACK), a number of words, STACK (operand is negative
+// number of words to initial STACK).
 
 #include "sam.h"
 
@@ -32,8 +32,7 @@ enum SAM_INSN {
   SAM_INSN__FLOAT,
   SAM_INSN_PUSH,
   SAM_INSN__PUSH,
-  SAM_INSN_BRA,
-  SAM_INSN_KET,
+  SAM_INSN_STACK, // Used for BRA and KET.
   SAM_INSN_LINK,
 };
 

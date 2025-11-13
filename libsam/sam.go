@@ -84,8 +84,7 @@ const (
 	INSN__FLOAT = C.SAM_INSN__FLOAT
 	INSN_PUSH   = C.SAM_INSN_PUSH
 	INSN__PUSH  = C.SAM_INSN__PUSH
-	INSN_BRA    = C.SAM_INSN_BRA
-	INSN_KET    = C.SAM_INSN_KET
+	INSN_STACK  = C.SAM_INSN_STACK
 	INSN_LINK   = C.SAM_INSN_LINK
 )
 
@@ -96,8 +95,7 @@ var Instructions = map[string]int{
 	"_float": INSN__FLOAT,
 	"push":   INSN_PUSH,
 	"_push":  INSN__PUSH,
-	"bra":    INSN_BRA,
-	"ket":    INSN_KET,
+	"stack":  INSN_STACK,
 	"link":   INSN_LINK,
 
 	// Instructions encoded as traps.

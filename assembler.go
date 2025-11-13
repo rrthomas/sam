@@ -148,13 +148,13 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		seq := n.(ast.ArrayNode)
 		i := seq.ArrayRange()
 		pc0 := len(a.code)
-		a.assemble(libsam.INSN_BRA, 0) // placeholder
+		a.assemble(libsam.INSN_STACK, 0) // placeholder
 		for i.Next() {
 			ast.Walk(a, i.Value())
 		}
 		pc := len(a.code)
-		len := pc - pc0 - 1
-		a.assemble(libsam.INSN_KET, libsam.Word(len))
+		len := pc - pc0
+		a.assemble(libsam.INSN_STACK, -libsam.Word(len))
 		a.code[pc0] |= libsam.Word(len << libsam.OP_SHIFT)
 		return nil
 	case ast.StringType:
@@ -206,7 +206,7 @@ func Assemble(progFile string) []libsam.Word {
 		panic("program must be a list of instructions")
 	}
 
-	// The top level is assembled without nesting in a BRA/KET pair.
+	// The top level is assembled without nesting in a STACK pair.
 	seq := prog.(ast.ArrayNode)
 	i := seq.ArrayRange()
 	for i.Next() {

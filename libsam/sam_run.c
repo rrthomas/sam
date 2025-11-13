@@ -85,18 +85,16 @@ sam_word_t sam_run(void)
 #endif
             HALT(SAM_ERROR_UNPAIRED_PUSH);
             break;
-        case SAM_INSN_BRA:
+        case SAM_INSN_STACK:
 #ifdef SAM_DEBUG
-            debug("bra\n");
+            debug("%s\n", operand > 0 ? "bra" : "ket");
 #endif
-            PUSH_LINK(sam_pc - 1);
-            sam_pc += operand + 1; // Skip to next instruction
-            break;
-        case SAM_INSN_KET:
-#ifdef SAM_DEBUG
-            debug("ket\n");
-#endif
-            RET;
+            if (operand > 0) {
+                PUSH_LINK(sam_pc - 1);
+                sam_pc += operand; // Skip to next instruction
+            } else {
+                RET;
+            }
             break;
         case SAM_INSN_LINK:
 #ifdef SAM_DEBUG

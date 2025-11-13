@@ -107,12 +107,12 @@ Stack: (124 word(s))
 - pop
 - int 0
 - halt
-sam_do: pc = 0, sp = 124, ir = 696
+sam_do: pc = 0, sp = 124, ir = 6a6
 Working stack: (2 word(s))
 - int 0
 - halt
 bra
-sam_do: pc = 107, sp = 125, ir = 98
+sam_do: pc = 107, sp = 125, ir = 97
 Working stack: (3 word(s))
 - int 0
 - halt
@@ -277,7 +277,7 @@ Working stack: (7 word(s))
 - int 0
 - int 8
 set
-sam_do: pc = 30, sp = 127, ir = 147
+sam_do: pc = 30, sp = 127, ir = fffffeb6
 Working stack: (5 word(s))
 - int 0
 - halt
@@ -285,7 +285,7 @@ Working stack: (5 word(s))
 - link 0
 - link 109
 ket
-sam_do: pc = 109, sp = 125, ir = 248
+sam_do: pc = 109, sp = 125, ir = 247
 Working stack: (3 word(s))
 - int 0
 - halt
@@ -412,7 +412,7 @@ Working stack: (8 word(s))
 - int 0
 - int 0
 trap 37
-sam_do: pc = 49, sp = 127, ir = c7
+sam_do: pc = 49, sp = 127, ir = ffffff36
 Working stack: (5 word(s))
 - int 0
 - halt
@@ -433,7 +433,7 @@ Working stack: (5 word(s))
 - link 0
 - float -45.000000
 rad
-sam_do: pc = 114, sp = 127, ir = 328
+sam_do: pc = 114, sp = 127, ir = 327
 Working stack: (5 word(s))
 - int 0
 - halt
@@ -531,7 +531,7 @@ Working stack: (10 word(s))
 - float 0.785398
 - int 5
 set
-sam_do: pc = 59, sp = 129, ir = 87
+sam_do: pc = 59, sp = 129, ir = ffffff76
 Working stack: (7 word(s))
 - int 0
 - halt
@@ -553,7 +553,7 @@ Working stack: (3 word(s))
 - halt
 - link 0
 float
-sam_do: pc = 119, sp = 127, ir = 3c8
+sam_do: pc = 119, sp = 127, ir = 3c7
 Working stack: (5 word(s))
 - int 0
 - halt
@@ -786,7 +786,7 @@ Working stack: (12 word(s))
 - float 353.553375
 - int 8
 get
-sam_do: pc = 81, sp = 134, ir = f6
+sam_do: pc = 81, sp = 134, ir = 106
 Working stack: (12 word(s))
 - int 0
 - halt
@@ -798,7 +798,7 @@ Working stack: (12 word(s))
 - float 353.553375
 - int 1
 bra
-sam_do: pc = 98, sp = 135, ir = 6
+sam_do: pc = 98, sp = 135, ir = 16
 Working stack: (13 word(s))
 - int 0
 - halt
@@ -1060,7 +1060,7 @@ Working stack: (18 word(s))
 - int 354
 - int 0
 trap 38
-sam_do: pc = 97, sp = 135, ir = f7
+sam_do: pc = 97, sp = 135, ir = ffffff06
 Working stack: (13 word(s))
 - int 0
 - halt
@@ -1117,7 +1117,7 @@ Working stack: (10 word(s))
 - float 353.553375
 - int 1
 set
-sam_do: pc = 105, sp = 129, ir = 2c7
+sam_do: pc = 105, sp = 129, ir = fffffd36
 Working stack: (7 word(s))
 - int 0
 - halt

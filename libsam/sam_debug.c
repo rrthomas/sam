@@ -144,11 +144,8 @@ static char *disas(sam_uword_t *addr)
     case SAM_INSN__PUSH:
         xasprintf(&text, "*** UNPAIRED PUSH ***");
         break;
-    case SAM_INSN_BRA:
-        xasprintf(&text, "*** UNEXPECTED BRA ***");
-        break;
-    case SAM_INSN_KET:
-        xasprintf(&text, "*** UNEXPECTED KET ***");
+    case SAM_INSN_STACK:
+        xasprintf(&text, "*** UNEXPECTED %s ***", ARSHIFT(inst, SAM_OP_SHIFT) > 0 ? "BRA" : "KET");
         break;
     case SAM_INSN_LINK:
         xasprintf(&text, "link %d", inst >> SAM_OP_SHIFT);
@@ -174,12 +171,13 @@ static void print_stack(sam_uword_t from, sam_uword_t to)
     for (i = from; i < to; ) {
         sam_uword_t opcode;
         assert(sam_stack_peek(i, &opcode) == SAM_ERROR_OK);
+        sam_word_t operand = ARSHIFT((sam_word_t)opcode, SAM_OP_SHIFT);
         opcode &= SAM_OP_MASK;
-        if (opcode == SAM_INSN_BRA) {
+        if (opcode == SAM_INSN_STACK && operand > 0) {
             print_disas(level, "");
             level++;
             i++;
-        } else if (opcode == SAM_INSN_KET) {
+        } else if (opcode == SAM_INSN_STACK && operand < 0) {
             level--;
             i++;
         } else {

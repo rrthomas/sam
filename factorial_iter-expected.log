@@ -32,7 +32,7 @@ Working stack: (2 word(s))
 - f2i
 - halt
 float
-sam_do: pc = 2, sp = 35, ir = 1a6
+sam_do: pc = 2, sp = 35, ir = 1b6
 Working stack: (4 word(s))
 - f2i
 - halt
@@ -53,7 +53,7 @@ Working stack: (6 word(s))
 - link 0
 - link 31
 float
-sam_do: pc = 5, sp = 39, ir = 136
+sam_do: pc = 5, sp = 39, ir = 146
 Working stack: (8 word(s))
 - f2i
 - halt
@@ -1223,7 +1223,7 @@ Working stack: (9 word(s))
 - float 120.000000
 - int -4
 set
-sam_do: pc = 29, sp = 37, ir = 1a7
+sam_do: pc = 29, sp = 37, ir = fffffe56
 Working stack: (6 word(s))
 - f2i
 - halt

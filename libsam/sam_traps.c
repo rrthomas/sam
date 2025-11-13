@@ -196,7 +196,7 @@ sam_word_t sam_trap(sam_uword_t function)
             sam_uword_t opcode;
             HALT_IF_ERROR(sam_stack_peek(addr, &opcode));
             opcode &= SAM_OP_MASK;
-            if (opcode == SAM_INSN_BRA)
+            if (opcode == SAM_INSN_STACK)
                 PUSH_LINK(addr);
             else {
                 sam_uword_t i;

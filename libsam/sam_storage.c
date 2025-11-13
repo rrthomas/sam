@@ -9,7 +9,6 @@
 // RISK.
 
 #include <string.h>
-#include "minmax.h"
 
 #include "sam.h"
 #include "sam_opcodes.h"
@@ -77,12 +76,14 @@ static int stack_item_bottom(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size
     sam_uword_t sp = n, inst;
     HALT_IF_ERROR(sam_stack_peek(sp++, &inst));
     sam_uword_t opcode = inst & SAM_OP_MASK;
-    // If instruction is a BRA, skip to matching KET.
-    if (opcode == SAM_INSN_BRA) {
-        sp += inst >> SAM_OP_SHIFT;
+    sam_word_t operand = ARSHIFT(inst, SAM_OP_SHIFT);
+    // If instruction is a STACK with positive argument, skip to matching
+    // STACK.
+    if (opcode == SAM_INSN_STACK && operand > 0) {
+        sp += operand;
         sam_uword_t opcode2;
         HALT_IF_ERROR(sam_stack_peek(sp++, &opcode2));
-        if ((opcode2 & SAM_OP_MASK) != SAM_INSN_KET)
+        if ((opcode2 & SAM_OP_MASK) != SAM_INSN_STACK)
             return SAM_ERROR_BAD_BRACKET;
     } else if (opcode == SAM_INSN_PUSH) {
         sam_uword_t opcode2;
@@ -116,12 +117,14 @@ static int stack_item_top(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
         sam_uword_t inst;
         HALT_IF_ERROR(sam_stack_peek(--sp, &inst));
         sam_uword_t opcode = inst & SAM_OP_MASK;
-        // If instruction is a KET, skip to matching BRA.
-        if (opcode == SAM_INSN_KET) {
+        sam_word_t operand = ARSHIFT(inst, SAM_OP_SHIFT);
+        // If instruction is a STACK with negative argument, skip to matching
+        // STACK.
+        if (opcode == SAM_INSN_STACK && operand < 0) {
             sp -= (inst >> SAM_OP_SHIFT) + 1;
             sam_uword_t opcode2;
             HALT_IF_ERROR(sam_stack_peek(sp, &opcode2));
-            if ((opcode2 & SAM_OP_MASK) != SAM_INSN_BRA)
+            if ((opcode2 & SAM_OP_MASK) != SAM_INSN_STACK)
                 return SAM_ERROR_BAD_BRACKET;
         } else if (opcode == SAM_INSN__PUSH) {
             sam_uword_t opcode2;
@@ -155,8 +158,8 @@ int sam_stack_item(sam_word_t n, sam_uword_t *addr, sam_uword_t *size)
         return stack_item_top(-n, addr, size);
 }
 
-// Given a LINK instruction, find the corresponding BRA instruction, and
-// return the stack address of the first code word.
+// Given a LINK instruction, find the corresponding initial STACK
+// instruction, and return the stack address of the first code word.
 int sam_find_code(sam_uword_t code, sam_uword_t *addr)
 {
     sam_word_t error = SAM_ERROR_OK;
@@ -168,7 +171,7 @@ int sam_find_code(sam_uword_t code, sam_uword_t *addr)
         HALT_IF_ERROR(sam_stack_peek(*addr, &code));
         inst = code & SAM_OP_MASK;
     } while (inst == SAM_INSN_LINK);
-    if (inst != SAM_INSN_BRA)
+    if (inst != SAM_INSN_STACK)
         return SAM_ERROR_NOT_CODE;
     (*addr)++;
  error:
