@@ -72,16 +72,16 @@ The following table lists the errors and the conditions under which they are rai
 | `OK` | No error. |
 | `INVALID_OPCODE` | An attempt was made to execute an invalid opcode. |
 | `INVALID_ADDRESS` | Invalid address. |
-|`STACK_UNDERFLOW` | The stack has underflowed, that is, an attempt was made to pop when it was empty. |
-|`STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` words, or an attempt was made to access beyond the current top of the stack. |
-|`NOT_NUMBER` | A stack item expected to be a number was not. |
-|`NOT_INT` | A stack item expected to be an integer was not. |
-|`NOT_FLOAT` | A stack item expected to be a float was not. |
-|`NOT_CODE` | An item expected to be code was not. |
-|`BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
-|`UNPAIRED_FLOAT` | A `FLOAT` instruction was not followed by `_FLOAT`. |
-|`UNPAIRED_PUSH` | A `PUSH` instruction was not followed by `_PUSH`. |
-|`INVALID_FUNCTION` | An invalid function number was given to  `TRAP`. |
+| `STACK_UNDERFLOW` | The stack has underflowed, that is, an attempt was made to pop when it was empty. |
+| `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` words, or an attempt was made to access beyond the current top of the stack. |
+| `NOT_NUMBER` | A stack item expected to be a number was not. |
+| `NOT_INT` | A stack item expected to be an integer was not. |
+| `NOT_FLOAT` | A stack item expected to be a float was not. |
+| `NOT_CODE` | An item expected to be code was not. |
+| `BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
+| `UNPAIRED_FLOAT` | A `FLOAT` instruction was not followed by `_FLOAT`. |
+| `UNPAIRED_PUSH` | A `PUSH` instruction was not followed by `_PUSH`. |
+| `INVALID_FUNCTION` | An invalid function number was given to  `TRAP`. |
 
 
 ## Instruction set
@@ -93,7 +93,7 @@ The instruction set is listed below, with the instructions grouped according to 
 >
 > Description.
 
-**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`iₙ₋₁` `iₙ` where the `iₖ` are stack items, each of which occupies a whole number of words, with `i`<sub>n</sub> being on top of the stack. The symbols denoting different types of stack item are shown next.
+**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`iₙ₋₁` `iₙ` where the `iₖ` are stack items, each of which occupies a whole number of words, with `iₙ` being on top of the stack. The symbols denoting different types of stack item are shown next.
 
 
 ### Types and their representations
@@ -289,7 +289,7 @@ Shifts:
 > `EQ`  
 > `s₁` `s₂` → `i`
 >
-> `i` is 1 if `n₁` and `n₂` are equal, and 0 otherwise. Integers, floats and links are compared.
+> `i` is 1 if `s₁` and `s₂` are equal, and 0 otherwise. Integers, floats and links are compared.
 
 > `LT`  
 > `n₁` `n₂` → `i`
@@ -302,10 +302,10 @@ Shifts:
 
 These instructions consist of monadic and dyadic operators. All calculations are made without bounds or overflow checking, except as detailed for certain instructions.
 
-The result of dividing by zero is zero. Integer division rounds the quotient towards zero; signed division of –2<sup>31</sup> by –1 gives a quotient of –2<sup>31</sup> and a remainder of 0.
+The result of dividing by zero is zero. Integer division rounds the quotient towards zero; signed division of –2³¹ by –1 gives a quotient of –2³¹ and a remainder of 0.
 
 > `NEG`  
-> `n₁`` → `n₂`
+> `n₁` → `n₂`
 >
 > Negate `n₁`, giving its arithmetic inverse `n₂`.
 
@@ -330,7 +330,7 @@ The result of dividing by zero is zero. Integer division rounds the quotient tow
 > Divide `n₁` by `n₂`, giving the remainder `n₃`.
 
 > `POW`  
-> `n₁` `n₂` → ``n₃`
+> `n₁` `n₂` → `n₃`
 >
 > Raise `n₁` to the power `n₂`, giving the result `n₃`.
 
@@ -351,7 +351,7 @@ Trigonometric functions:
 > Calculate *cos* `f₁`, giving the result `f₂`.
 
 > `DEG`  
-> `f₁`` → `f₂`
+> `f₁` → `f₂`
 >
 > Convert `f₁` radians to degrees, giving the result `f₂`.
 
