@@ -142,16 +142,23 @@ func (a *assembler) assembleInstruction(tokens []string) {
 	}
 }
 
+func (a *assembler) assembleSequence(n ast.Node) {
+	if n.Type() != ast.SequenceType {
+		panic("program must be a list of instructions")
+	}
+	seq := n.(ast.ArrayNode)
+	i := seq.ArrayRange()
+	for i.Next() {
+		ast.Walk(a, i.Value())
+	}
+}
+
 func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
-		seq := n.(ast.ArrayNode)
-		i := seq.ArrayRange()
 		pc0 := len(a.code)
 		a.assemble(libsam.INSN_STACK, 0) // placeholder
-		for i.Next() {
-			ast.Walk(a, i.Value())
-		}
+		a.assembleSequence(n)
 		pc := len(a.code)
 		len := pc - pc0
 		a.assemble(libsam.INSN_STACK, -libsam.Word(len))
@@ -202,15 +209,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 func Assemble(progFile string) []libsam.Word {
 	prog := readProg(progFile)
 	a := assembler{labels: map[string]int{}}
-	if prog.Type() != ast.SequenceType {
-		panic("program must be a list of instructions")
-	}
-
 	// The top level is assembled without nesting in a STACK pair.
-	seq := prog.(ast.ArrayNode)
-	i := seq.ArrayRange()
-	for i.Next() {
-		ast.Walk(&a, i.Value())
-	}
+	a.assembleSequence(prog)
 	return a.code
 }
