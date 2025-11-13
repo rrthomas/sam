@@ -93,7 +93,7 @@ The instruction set is listed below, with the instructions grouped according to 
 >
 > Description.
 
-**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`i`<sub>n-1</sub> `i`<sub>n</sub> where the `i`<sub>k</sub> are stack items, each of which occupies a whole number of words, with `i`<sub>n</sub> being on top of the stack. The symbols denoting different types of stack item are shown next.
+**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`iₙ₋₁` `iₙ` where the `iₖ` are stack items, each of which occupies a whole number of words, with `i`<sub>n</sub> being on top of the stack. The symbols denoting different types of stack item are shown next.
 
 
 ### Types and their representations
