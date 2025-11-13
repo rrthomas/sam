@@ -88,11 +88,12 @@ The following table lists the errors and the conditions under which they are rai
 
 The instruction set is listed below, with the instructions grouped according to function. The instructions are given in the following format:
 
-> `NAME` `before → after`
+> `NAME`  
+> `before` → `after`
 >
 > Description.
 
-**Stack comments** are written `before → after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`i`<sub>n-1</sub> `i`<sub>n</sub> where the `i`<sub>k</sub> are stack items, each of which occupies a whole number of words, with `i`<sub>n</sub> being on top of the stack. The symbols denoting different types of stack item are shown next.
+**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`i`<sub>n-1</sub> `i`<sub>n</sub> where the `i`<sub>k</sub> are stack items, each of which occupies a whole number of words, with `i`<sub>n</sub> being on top of the stack. The symbols denoting different types of stack item are shown next.
 
 
 ### Types and their representations
@@ -119,7 +120,8 @@ A stack is encoded as a `BRA` instruction followed by the nested stack items and
 ### Do nothing
 
 
-> `NOP` →
+> `NOP`  
+> →
 >
 > Do nothing.
 
@@ -128,11 +130,13 @@ A stack is encoded as a `BRA` instruction followed by the nested stack items and
 
 These instructions encode literal values.
 
-> `INT` → `i`
+> `INT`  
+> → `i`
 >
 > Push `OP` on to the stack.
 
-> `FLOAT` → `f`
+> `FLOAT`  
+> → `f`
 >
 > Push the float encoded in the `FLOAT` and following `_FLOAT` instruction on to the stack, or raise the error `UNPAIRED_FLOAT` if the following instruction is not a `_FLOAT` instruction. Increment `PC`.
 
@@ -145,11 +149,13 @@ These instructions encode literal values.
 
 Numeric conversions:
 
-> `I2F` `i` → `f`
+> `I2F`  
+> `i` → `f`
 >
 > Raise the error `NOT_INT` if the top-most stack item is not an integer. Otherwise, pop it, convert the integer to a float, and push the float.
 
-> `F2I` `f` → `i`
+> `F2I`  
+> `f` → `i`
 >
 > Raise the error `NOT_FLOAT` if the top-most stack item is not a float. Otherwise, pop it, convert the float to an integer, and push the integer.
 
@@ -158,7 +164,8 @@ Numeric conversions:
 
 These instructions manage the stack.
 
-> `PUSH` → `x`
+> `PUSH`  
+> → `x`
 >
 > Push the word encoded in the `PUSH` and following `_PUSH` instruction on to the stack, or raise the error `UNPAIRED_PUSH` if the following instruction is not a `_PUSH` instruction. Increment `PC`.
 
@@ -166,23 +173,28 @@ These instructions manage the stack.
 >
 > Raise the error `UNPAIRED_PUSH`. This instruction should never be executed.
 
-> `POP` `x ` →
+> `POP`  
+> `x` →
 >
 > If the stack is empty, raise the error `STACK_UNDERFLOW`. Pop `x` from the stack.
 
-> `GET` `i ` → `x`
+> `GET` `i`  
+> → `x`
 >
 > Pop `i` from the top of the stack. Push the `i`th stack item to the stack. If that item is a stack, push a `LINK` instruction pointing to it.
 
-> `SET` `x i` →
+> `SET`  
+> `x` `i` →
 >
 > Pop `i` and `x` from the stack. Set the `i`th stack item to `x`.
 
-> `IGET` `i₁` `i₂` → `x`
+> `IGET`  
+> `i₁` `i₂` → `x`
 >
 > Push the `i₁`th item of the `i₂`th stack element, which must be a stack or link, to the stack.
 
-> `ISET` `x` `i₁` `i₂` →
+> `ISET`  
+> `x` `i₁` `i₂` →
 >
 > Set the `i₁`th item of the `i₂`th, which must be a stack or link, to `x`.
 
@@ -191,27 +203,33 @@ These instructions manage the stack.
 
 These instructions implement loops, conditions and subroutine calls.
 
-> `BRA` → `l`
+> `BRA`  
+> → `l`
 >
 > Push a link to `PC`–1 on to the stack, and add `OP`+1 to `PC`.
 
-> `KET` `l₁` `l₂` →
+> `KET`  
+> `l₁` `l₂` →
 >
 > Pop `l₂` into `PC` and `l₁` into `PC0`.
 
-> `LINK` → `l`
+> `LINK`  
+> → `l`
 >
 > Push `IR` on to the stack.
 
-> `DO` `i` → `l₁` `l₂`
+> `DO`  
+> `i` → `l₁` `l₂`
 >
 > Pop `i`. If the stack item at that index is not a stack, raise `NOT_CODE`. Push `PC0` then `PC` to the stack, and set both `PC0` and `PC` to `i`.
 
-> `IF` `i` `c₁` `c₂` →
+> `IF`  
+> `i` `c₁` `c₂` →
 >
 > Pop `c₁` and `c₂`. If either stack item is not code, raise `NOT_CODE`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
 
-> `WHILE` `i` →
+> `WHILE`  
+> `i` →
 >
 > Pop `i`. If it is zero, perform the action of `KET`.
 
@@ -226,34 +244,41 @@ These instructions consist of bitwise logical operators and bitwise shifts. The 
 
 Logic functions:
 
-> `NOT` `x₁` → `x₂`
+> `NOT`  
+> `x₁` → `x₂`
 >
 > Invert all bits of `x₁`, giving its logical inverse `x₂`.
 
-> `AND` `x₁` `x₂` → `x₃`
+> `AND`  
+> `x₁` `x₂` → `x₃`
 >
 > `x₃` is the bit-by-bit logical “and” of `x₁` with `x₂`.
 
-> `OR` `x₁` `x₂` → `x₃`
+> `OR`  
+> `x₁` `x₂` → `x₃`
 >
 > `x₃` is the bit-by-bit inclusive-or of `x₁` with `x₂`.
 
-> `XOR` `x₁` `x₂` → `x₃`
+> `XOR`  
+> `x₁` `x₂` → `x₃`
 >
 > `x₃` is the bit-by-bit exclusive-or of `x₁` with `x₂`.
 
 
 Shifts:
 
-> `LSH` `x₁` `u` → `x₂`
+> `LSH`  
+> `x₁` `u` → `x₂`
 >
 > Perform a logical left shift of `u` bit-places on `x₁`, giving `x₂`. Put zero into the least significant bits vacated by the shift.
 
-> `RSH` `x₁` `u` → `x₂`
+> `RSH`  
+> `x₁` `u` → `x₂`
 >
 > Perform a logical right shift of `u` bit-places on `x₁`, giving `x₂`. Put zero into the most significant bits vacated by the shift.
 
-> `ARSH` `x₁` `u` → `x₂`
+> `ARSH`  
+> `x₁` `u` → `x₂`
 >
 > Perform an arithmetic right shift of `u` bit-places on `x₁`, giving `x₂`. Copy the most significant bit into the most significant bits vacated by the shift.
 
@@ -261,11 +286,13 @@ Shifts:
 
 ### Comparison
 
-> `EQ` `s₁` `s₂` → `i`
+> `EQ`  
+> `s₁` `s₂` → `i`
 >
 > `i` is 1 if `n₁` and `n₂` are equal, and 0 otherwise. Integers, floats and links are compared.
 
-> `LT` `n₁` `n₂` → `i`
+> `LT`  
+> `n₁` `n₂` → `i`
 >
 > `i` is 1 is `n₁` is less than `n₂` and 0 otherwise.
 
@@ -277,27 +304,33 @@ These instructions consist of monadic and dyadic operators. All calculations are
 
 The result of dividing by zero is zero. Integer division rounds the quotient towards zero; signed division of –2<sup>31</sup> by –1 gives a quotient of –2<sup>31</sup> and a remainder of 0.
 
-> `NEG` `n₁`` → `n₂`
+> `NEG`  
+> `n₁`` → `n₂`
 >
 > Negate `n₁`, giving its arithmetic inverse `n₂`.
 
-> `ADD` `n₁` `n₂` → `n₃`
+> `ADD`  
+> `n₁` `n₂` → `n₃`
 >
 > Add `n₂` to `n₁`, giving the sum `n₃`.
 
-> `MUL` `n₁` `n₂` → `n₃`
+> `MUL`  
+> `n₁` `n₂` → `n₃`
 >
 > Multiply `n₁` by `n₂`, giving the product `n₃`.
 
-> `DIV` `n₁` `n₂` → `n₃`
+> `DIV`  
+> `n₁` `n₂` → `n₃`
 >
 > Divide `n₁` by `n₂`, giving the quotient `n₃`.
 
-> `REM` `n₁` `n₂` → `n₃`
+> `REM`  
+> `n₁` `n₂` → `n₃`
 >
 > Divide `n₁` by `n₂`, giving the remainder `n₃`.
 
-> `POW` `n₁` `n₂` → ``n₃`
+> `POW`  
+> `n₁` `n₂` → ``n₃`
 >
 > Raise `n₁` to the power `n₂`, giving the result `n₃`.
 
@@ -307,19 +340,23 @@ The result of dividing by zero is zero. Integer division rounds the quotient tow
 
 Trigonometric functions:
 
-> `SIN` `f₁` → `f₂`
+> `SIN`  
+> `f₁` → `f₂`
 >
 > Calculate *sin* `f₁`, giving the result `f₂`.
 
-> `COS` `f₁` → `f₂`
+> `COS`  
+> `f₁` → `f₂`
 >
 > Calculate *cos* `f₁`, giving the result `f₂`.
 
-> `DEG` `f₁`` → `f₂`
+> `DEG`  
+> `f₁`` → `f₂`
 >
 > Convert `f₁` radians to degrees, giving the result `f₂`.
 
-> `RAD` `f₁` → `f₂`
+> `RAD`  
+> `f₁` → `f₂`
 >
 > Convert `f₁` degrees to radians, giving the result `f₂`.
 
@@ -329,7 +366,8 @@ Trigonometric functions:
 
 These instructions give access to SAM’s error mechanisms.
 
-> `HALT` `n` →
+> `HALT`  
+> `n` →
 >
 > Stop SAM, returning reason code `n` to the calling program.
 
@@ -339,7 +377,8 @@ These instructions give access to SAM’s error mechanisms.
 
 These instructions allow access to I/O and other system facilities.
 
-> `TRAP` `n` →
+> `TRAP`  
+> `n` →
 >
 > Execute trap `n`. Further stack items may also be consumed and returned, depending on `n`. If the trap is invalid, raise `INVALID_FUNCTION`.
 
@@ -353,6 +392,7 @@ SAM’s external interface comes in three parts. The calling interface allows SA
 ### Assembly format
 
 TODO.
+
 
 ### Calling interface
 
