@@ -342,7 +342,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_NUMBER);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -369,7 +369,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_NUMBER);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -394,7 +394,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_NUMBER);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -421,7 +421,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_NUMBER);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -448,7 +448,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_NUMBER);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -479,7 +479,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_NUMBER);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -506,7 +506,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_NUMBER);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -533,7 +533,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_NUMBER);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -551,7 +551,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_FLOAT);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -569,7 +569,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_FLOAT);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -587,7 +587,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_FLOAT);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }
@@ -605,7 +605,7 @@ sam_word_t sam_trap(sam_uword_t function)
                 }
                 break;
             default:
-                HALT(SAM_ERROR_NOT_FLOAT);
+                HALT(SAM_ERROR_WRONG_TYPE);
                 break;
             }
         }

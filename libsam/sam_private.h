@@ -51,7 +51,7 @@
     PUSH_WORD(LSHIFT((val), SAM_OP_SHIFT) | insn)
 
 #define _POP_INT(var, rshift)                   \
-    _POP_INSN(var, SAM_INSN_INT, rshift, SAM_ERROR_NOT_INT)
+    _POP_INSN(var, SAM_INSN_INT, rshift, SAM_ERROR_WRONG_TYPE)
 #define POP_INT(var)                            \
     _POP_INT(var, ARSHIFT)
 #define POP_UINT(var)                           \
@@ -60,7 +60,7 @@
     _PUSH_INSN(val, SAM_INSN_INT)
 
 #define POP_LINK(var)                           \
-    _POP_INSN(var, SAM_INSN_LINK, LRSHIFT, SAM_ERROR_NOT_CODE)
+    _POP_INSN(var, SAM_INSN_LINK, LRSHIFT, SAM_ERROR_WRONG_TYPE)
 #define PUSH_LINK(addr)                         \
     _PUSH_INSN(addr, SAM_INSN_LINK)
 
@@ -69,7 +69,7 @@
         sam_uword_t w2;                                                 \
         POP_WORD((sam_word_t *)&w2);                                    \
         if ((w2 & SAM_OP_MASK) != SAM_INSN__FLOAT)                      \
-            HALT(SAM_ERROR_NOT_FLOAT);                                  \
+            HALT(SAM_ERROR_WRONG_TYPE);                                 \
         sam_uword_t w1;                                                 \
         POP_WORD((sam_word_t *)&w1);                                    \
         if ((w1 & SAM_OP_MASK) != SAM_INSN_FLOAT)                       \

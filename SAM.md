@@ -74,10 +74,7 @@ The following table lists the errors and the conditions under which they are rai
 | `INVALID_ADDRESS` | Invalid address. |
 | `STACK_UNDERFLOW` | The stack has underflowed, that is, an attempt was made to pop when it was empty. |
 | `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` words, or an attempt was made to access beyond the current top of the stack. |
-| `NOT_NUMBER` | A stack item expected to be a number was not. |
-| `NOT_INT` | A stack item expected to be an integer was not. |
-| `NOT_FLOAT` | A stack item expected to be a float was not. |
-| `NOT_CODE` | An item expected to be code was not. |
+| `WRONG_TYPE` | A stack item is not of the type expected. |
 | `BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
 | `UNPAIRED_FLOAT` | A `FLOAT` instruction was not followed by `_FLOAT`. |
 | `UNPAIRED_PUSH` | A `PUSH` instruction was not followed by `_PUSH`. |
@@ -152,12 +149,12 @@ Numeric conversions:
 > `I2F`  
 > `i` → `f`
 >
-> Raise the error `NOT_INT` if the top-most stack item is not an integer. Otherwise, pop it, convert the integer to a float, and push the float.
+> Raise the error `WRONG_TYPE` if the top-most stack item is not an integer. Otherwise, pop it, convert the integer to a float, and push the float.
 
 > `F2I`  
 > `f` → `i`
 >
-> Raise the error `NOT_FLOAT` if the top-most stack item is not a float. Otherwise, pop it, convert the float to an integer, and push the integer.
+> Raise the error `WRONG_TYPE` if the top-most stack item is not a float. Otherwise, pop it, convert the float to an integer, and push the integer.
 
 
 ### Stack manipulation
@@ -221,12 +218,12 @@ These instructions implement loops, conditions and subroutine calls.
 > `DO`  
 > `i` → `l₁` `l₂`
 >
-> Pop `i`. If the stack item at that index is not a stack, raise `NOT_CODE`. Push `PC0` then `PC` to the stack, and set both `PC0` and `PC` to `i`.
+> Pop `i`. If the stack item at that index is not a stack, raise `WRONG_TYPE`. Push `PC0` then `PC` to the stack, and set both `PC0` and `PC` to `i`.
 
 > `IF`  
 > `i` `c₁` `c₂` →
 >
-> Pop `c₁` and `c₂`. If either stack item is not code, raise `NOT_CODE`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
+> Pop `c₁` and `c₂`. If either stack item is not code, raise `WRONG_TYPE`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
 
 > `WHILE`  
 > `i` →
