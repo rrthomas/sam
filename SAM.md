@@ -92,7 +92,7 @@ The instruction set is listed below, with the instructions grouped according to 
 >
 > Description.
 
-**Stack comments** are written `before → after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i`<sub>1</sub> `i`<sub>2</sub>…`i`<sub>n-1</sub> `i`<sub>n</sub> where the `i`<sub>k</sub> are stack items, each of which occupies a whole number of words, with `i`<sub>n</sub> being on top of the stack. The symbols denoting different types of stack item are shown next.
+**Stack comments** are written `before → after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`i`<sub>n-1</sub> `i`<sub>n</sub> where the `i`<sub>k</sub> are stack items, each of which occupies a whole number of words, with `i`<sub>n</sub> being on top of the stack. The symbols denoting different types of stack item are shown next.
 
 
 ### Types and their representations
@@ -178,13 +178,13 @@ These instructions manage the stack.
 >
 > Pop `i` and `x` from the stack. Set the `i`th stack item to `x`.
 
-> `IGET` `i`<sub>1</sub> `i`<sub>2</sub> → `x`
+> `IGET` `i₁` `i₂` → `x`
 >
-> Push the `i`<sub>1</sub>th item of the `i`<sub>2</sub>th stack element, which must be a stack or link, to the stack.
+> Push the `i₁`th item of the `i₂`th stack element, which must be a stack or link, to the stack.
 
-> `ISET` `x` `i`<sub>1</sub> `i`<sub>2</sub> →
+> `ISET` `x` `i₁` `i₂` →
 >
-> Set the `i`<sub>1</sub>th item of the `i`<sub>2</sub>th, which must be a stack or link, to `x`.
+> Set the `i₁`th item of the `i₂`th, which must be a stack or link, to `x`.
 
 
 ### Control structures
@@ -195,21 +195,21 @@ These instructions implement loops, conditions and subroutine calls.
 >
 > Push a link to `PC`–1 on to the stack, and add `OP`+1 to `PC`.
 
-> `KET` `l`<sub>1</sub> `l`<sub>2</sub> →
+> `KET` `l₁` `l₂` →
 >
-> Pop `l`<sub>2</sub> into `PC` and `l`<sub>1</sub> into `PC0`.
+> Pop `l₂` into `PC` and `l₁` into `PC0`.
 
 > `LINK` → `l`
 >
 > Push `IR` on to the stack.
 
-> `DO` `i` → `l`<sub>1</sub> `l`<sub>2</sub>
+> `DO` `i` → `l₁` `l₂`
 >
 > Pop `i`. If the stack item at that index is not a stack, raise `NOT_CODE`. Push `PC0` then `PC` to the stack, and set both `PC0` and `PC` to `i`.
 
-> `IF` `i` `c`<sub>1</sub> `c`<sub>2</sub> →
+> `IF` `i` `c₁` `c₂` →
 >
-> Pop `c`<sub>1</sub> and `c`<sub>2</sub>. If either stack item is not code, raise `NOT_CODE`. Pop `i`. If it is non-zero, perform the action of `DO` on `c`<sub>1</sub>, otherwise on `c`<sub>2</sub>.
+> Pop `c₁` and `c₂`. If either stack item is not code, raise `NOT_CODE`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
 
 > `WHILE` `i` →
 >
@@ -226,48 +226,48 @@ These instructions consist of bitwise logical operators and bitwise shifts. The 
 
 Logic functions:
 
-> `NOT` `x`<sub>1</sub> → `x`<sub>2</sub>
+> `NOT` `x₁` → `x₂`
 >
-> Invert all bits of `x`<sub>1</sub>, giving its logical inverse `x`<sub>2</sub>.
+> Invert all bits of `x₁`, giving its logical inverse `x₂`.
 
-> `AND` `x`<sub>1</sub> `x`<sub>2</sub> → `x`<sub>3</sub>
+> `AND` `x₁` `x₂` → `x₃`
 >
-> `x`<sub>3</sub> is the bit-by-bit logical “and” of `x`<sub>1</sub> with `x`<sub>2</sub>.
+> `x₃` is the bit-by-bit logical “and” of `x₁` with `x₂`.
 
-> `OR` `x`<sub>1</sub> `x`<sub>2</sub> → `x`<sub>3</sub>
+> `OR` `x₁` `x₂` → `x₃`
 >
-> `x`<sub>3</sub> is the bit-by-bit inclusive-or of `x`<sub>1</sub> with `x`<sub>2</sub>.
+> `x₃` is the bit-by-bit inclusive-or of `x₁` with `x₂`.
 
-> `XOR` `x`<sub>1</sub> `x`<sub>2</sub> → `x`<sub>3</sub>
+> `XOR` `x₁` `x₂` → `x₃`
 >
-> `x`<sub>3</sub> is the bit-by-bit exclusive-or of `x`<sub>1</sub> with `x`<sub>2</sub>.
+> `x₃` is the bit-by-bit exclusive-or of `x₁` with `x₂`.
 
 
 Shifts:
 
-> `LSH` `x`<sub>1</sub> `u` → `x`<sub>2</sub>
+> `LSH` `x₁` `u` → `x₂`
 >
-> Perform a logical left shift of `u` bit-places on `x`<sub>1</sub>, giving `x`<sub>2</sub>. Put zero into the least significant bits vacated by the shift.
+> Perform a logical left shift of `u` bit-places on `x₁`, giving `x₂`. Put zero into the least significant bits vacated by the shift.
 
-> `RSH` `x`<sub>1</sub> `u` → `x`<sub>2</sub>
+> `RSH` `x₁` `u` → `x₂`
 >
-> Perform a logical right shift of `u` bit-places on `x`<sub>1</sub>, giving `x`<sub>2</sub>. Put zero into the most significant bits vacated by the shift.
+> Perform a logical right shift of `u` bit-places on `x₁`, giving `x₂`. Put zero into the most significant bits vacated by the shift.
 
-> `ARSH` `x`<sub>1</sub> `u` → `x`<sub>2</sub>
+> `ARSH` `x₁` `u` → `x₂`
 >
-> Perform an arithmetic right shift of `u` bit-places on `x`<sub>1</sub>, giving `x`<sub>2</sub>. Copy the most significant bit into the most significant bits vacated by the shift.
+> Perform an arithmetic right shift of `u` bit-places on `x₁`, giving `x₂`. Copy the most significant bit into the most significant bits vacated by the shift.
 
 
 
 ### Comparison
 
-> `EQ` `s`<sub>1</sub> `s`<sub>2</sub> → `i`
+> `EQ` `s₁` `s₂` → `i`
 >
-> `i` is 1 if `n`<sub>1</sub> and `n`<sub>2</sub> are equal, and 0 otherwise. Integers, floats and links are compared.
+> `i` is 1 if `n₁` and `n₂` are equal, and 0 otherwise. Integers, floats and links are compared.
 
-> `LT` `n`<sub>1</sub> `n`<sub>2</sub> → `i`
+> `LT` `n₁` `n₂` → `i`
 >
-> `i` is 1 is `n`<sub>1</sub> is less than `n`<sub>2</sub> and 0 otherwise.
+> `i` is 1 is `n₁` is less than `n₂` and 0 otherwise.
 
 
 
@@ -277,29 +277,29 @@ These instructions consist of monadic and dyadic operators. All calculations are
 
 The result of dividing by zero is zero. Integer division rounds the quotient towards zero; signed division of –2<sup>31</sup> by –1 gives a quotient of –2<sup>31</sup> and a remainder of 0.
 
-> `NEG` `n`<sub>1</sub>` → `n`<sub>2</sub>
+> `NEG` `n₁`` → `n₂`
 >
-> Negate `n`<sub>1</sub>, giving its arithmetic inverse `n`<sub>2</sub>.
+> Negate `n₁`, giving its arithmetic inverse `n₂`.
 
-> `ADD` `n`<sub>1</sub> `n`<sub>2</sub> → `n`<sub>3</sub>
+> `ADD` `n₁` `n₂` → `n₃`
 >
-> Add `n`<sub>2</sub> to `n`<sub>1</sub>, giving the sum `n`<sub>3</sub>.
+> Add `n₂` to `n₁`, giving the sum `n₃`.
 
-> `MUL` `n`<sub>1</sub> `n`<sub>2</sub> → `n`<sub>3</sub>
+> `MUL` `n₁` `n₂` → `n₃`
 >
-> Multiply `n`<sub>1</sub> by `n`<sub>2</sub>, giving the product `n`<sub>3</sub>.
+> Multiply `n₁` by `n₂`, giving the product `n₃`.
 
-> `DIV` `n`<sub>1</sub> `n`<sub>2</sub> → `n`<sub>3</sub>
+> `DIV` `n₁` `n₂` → `n₃`
 >
-> Divide `n`<sub>1</sub> by `n`<sub>2</sub>, giving the quotient `n`<sub>3</sub>.
+> Divide `n₁` by `n₂`, giving the quotient `n₃`.
 
-> `REM` `n`<sub>1</sub> `n`<sub>2</sub> → `n`<sub>3</sub>
+> `REM` `n₁` `n₂` → `n₃`
 >
-> Divide `n`<sub>1</sub> by `n`<sub>2</sub>, giving the remainder `n`<sub>3</sub>.
+> Divide `n₁` by `n₂`, giving the remainder `n₃`.
 
-> `POW` `n`<sub>1</sub> `n`<sub>2</sub> → ``n`<sub>3</sub>
+> `POW` `n₁` `n₂` → ``n₃`
 >
-> Raise `n`<sub>1</sub> to the power `n`<sub>2</sub>, giving the result `n`<sub>3</sub>.
+> Raise `n₁` to the power `n₂`, giving the result `n₃`.
 
 
 
@@ -307,21 +307,21 @@ The result of dividing by zero is zero. Integer division rounds the quotient tow
 
 Trigonometric functions:
 
-> `SIN` `f`<sub>1</sub> → `f`<sub>2</sub>
+> `SIN` `f₁` → `f₂`
 >
-> Calculate *sin* `f`<sub>1</sub>, giving the result `f`<sub>2</sub>.
+> Calculate *sin* `f₁`, giving the result `f₂`.
 
-> `COS` `f`<sub>1</sub> → `f`<sub>2</sub>
+> `COS` `f₁` → `f₂`
 >
-> Calculate *cos* `f`<sub>1</sub>, giving the result `f`<sub>2</sub>.
+> Calculate *cos* `f₁`, giving the result `f₂`.
 
-> `DEG` `f`<sub>1</sub>` → `f`<sub>2</sub>
+> `DEG` `f₁`` → `f₂`
 >
-> Convert `f`<sub>1</sub> radians to degrees, giving the result `f`<sub>2</sub>.
+> Convert `f₁` radians to degrees, giving the result `f₂`.
 
-> `RAD` `f`<sub>1</sub> → `f`<sub>2</sub>
+> `RAD` `f₁` → `f₂`
 >
-> Convert `f`<sub>1</sub> degrees to radians, giving the result `f`<sub>2</sub>.
+> Convert `f₁` degrees to radians, giving the result `f₂`.
 
 
 
