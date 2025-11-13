@@ -121,7 +121,7 @@ static int stack_item_top(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
         // If instruction is a STACK with negative argument, skip to matching
         // STACK.
         if (opcode == SAM_INSN_STACK && operand < 0) {
-            sp -= (inst >> SAM_OP_SHIFT) + 1;
+            sp += operand;
             sam_uword_t opcode2;
             HALT_IF_ERROR(sam_stack_peek(sp, &opcode2));
             if ((opcode2 & SAM_OP_MASK) != SAM_INSN_STACK)
