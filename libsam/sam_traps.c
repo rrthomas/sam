@@ -229,7 +229,7 @@ sam_word_t sam_trap(sam_uword_t function)
         {
             sam_uword_t code;
             POP_WORD((sam_word_t *)&code);
-            HALT_IF_ERROR(sam_find_code(code, &code));
+            HALT_IF_ERROR(sam_find_stack(code, &code));
             DO(code);
         }
         break;
@@ -238,8 +238,8 @@ sam_word_t sam_trap(sam_uword_t function)
             sam_uword_t then, else_;
             POP_WORD((sam_word_t *)&else_);
             POP_WORD((sam_word_t *)&then);
-            HALT_IF_ERROR(sam_find_code(then, &then));
-            HALT_IF_ERROR(sam_find_code(else_, &else_));
+            HALT_IF_ERROR(sam_find_stack(then, &then));
+            HALT_IF_ERROR(sam_find_stack(else_, &else_));
             sam_word_t flag;
             POP_INT(flag);
             DO(flag ? then : else_);
