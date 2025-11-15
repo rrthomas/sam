@@ -8,58 +8,58 @@ Stack: (9 word(s))
 - int -3
 - div
 - halt
-sam_do: pc = 0, sp = 9, ir = a9
+sam_run: pc0 = 0, pc = 0, sp = 9, ir = a9
 Working stack: (2 word(s))
 - div
 - halt
 int
-sam_do: pc = 1, sp = 10, ir = 11
+sam_run: pc0 = 0, pc = 1, sp = 10, ir = 11
 Working stack: (3 word(s))
 - div
 - halt
 - int 21
 int
-sam_do: pc = 2, sp = 11, ir = b8
+sam_run: pc0 = 0, pc = 2, sp = 11, ir = b8
 Working stack: (4 word(s))
 - div
 - halt
 - int 21
 - int 2
 mul
-sam_do: pc = 3, sp = 10, ir = 19
+sam_run: pc0 = 0, pc = 3, sp = 10, ir = 19
 Working stack: (3 word(s))
 - div
 - halt
 - int 42
 int
-sam_do: pc = 4, sp = 11, ir = a8
+sam_run: pc0 = 0, pc = 4, sp = 11, ir = a8
 Working stack: (4 word(s))
 - div
 - halt
 - int 42
 - int 3
 neg
-sam_do: pc = 5, sp = 11, ir = b0
+sam_run: pc0 = 0, pc = 5, sp = 11, ir = b0
 Working stack: (4 word(s))
 - div
 - halt
 - int 42
 - int -3
 add
-sam_do: pc = 6, sp = 10, ir = ffffffe9
+sam_run: pc0 = 0, pc = 6, sp = 10, ir = ffffffe9
 Working stack: (3 word(s))
 - div
 - halt
 - int 39
 int
-sam_do: pc = 7, sp = 11, ir = c0
+sam_run: pc0 = 0, pc = 7, sp = 11, ir = c0
 Working stack: (4 word(s))
 - div
 - halt
 - int 39
 - int -3
 div
-sam_do: pc = 8, sp = 10, ir = f8
+sam_run: pc0 = 0, pc = 8, sp = 10, ir = f8
 Working stack: (3 word(s))
 - div
 - halt

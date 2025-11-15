@@ -34,7 +34,7 @@ sam_word_t sam_run(void)
         HALT_IF_ERROR(sam_stack_peek(sam_pc++, &ir));
         sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OP_SHIFT);
 #ifdef SAM_DEBUG
-        debug("sam_do: pc = %u, sp = %u, ir = %x\n", sam_pc - 1, sam_sp, ir);
+        debug("sam_run: pc0 = %u, pc = %u, sp = %u, ir = %x\n", sam_pc0, sam_pc - 1, sam_sp, ir);
         sam_print_working_stack();
 #endif
 
