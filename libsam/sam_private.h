@@ -111,10 +111,21 @@ int _sam_get_stack(sam_uword_t *addr);
         PUSH_INT(sam_pc);                       \
         sam_pc0 = sam_pc = addr;                \
     } while (0)
-#define RET                                     \
-    do {                                        \
-        POP_INT(sam_pc);                        \
-        POP_INT(sam_pc0);                       \
+#define RET                                                             \
+    do {                                                                \
+        POP_INT(sam_pc);                                                \
+        POP_INT(sam_pc0);                                               \
+        if (sam_pc0 > sam_sp)                                           \
+            HALT(SAM_ERROR_STACK_OVERFLOW);                             \
+        sam_uword_t _size = sam_ssize;                                  \
+        if (sam_pc0 > 0) {                                              \
+            sam_uword_t _stack;                                         \
+            HALT_IF_ERROR(sam_stack_peek(sam_pc0 - 1, &_stack));        \
+            _CHECK_TYPE(_stack, SAM_INSN_STACK);                        \
+            _size = (ARSHIFT(_stack, SAM_OP_SHIFT)) - 1;                \
+        }                                                               \
+        if (sam_pc > sam_pc0 + _size)                                   \
+            HALT(SAM_ERROR_STACK_OVERFLOW);                             \
     } while (0)
 
 // Program
