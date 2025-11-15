@@ -35,23 +35,26 @@
     ((x) >> (p))
 
 // Stack access
+#define _CHECK_TYPE(var, insn)                  \
+    if ((var & SAM_OP_MASK) != insn)            \
+        HALT(SAM_ERROR_WRONG_TYPE);
+
 #define POP_WORD(ptr)                           \
     HALT_IF_ERROR(sam_pop_stack(ptr))
 #define PUSH_WORD(val)                          \
     HALT_IF_ERROR(sam_push_stack(val))
 
-#define _POP_INSN(var, insn, rshift, err)       \
+#define _POP_INSN(var, insn, rshift)            \
     do {                                        \
         POP_WORD((sam_word_t *)&var);           \
-        if ((var & SAM_OP_MASK) != insn)        \
-            HALT(err);                          \
+        _CHECK_TYPE(var, insn);                 \
         var = rshift(var, SAM_OP_SHIFT);        \
     } while (0)
-#define _PUSH_INSN(val, insn)                           \
+#define _PUSH_INSN(val, insn)                   \
     PUSH_WORD(LSHIFT((val), SAM_OP_SHIFT) | insn)
 
 #define _POP_INT(var, rshift)                   \
-    _POP_INSN(var, SAM_INSN_INT, rshift, SAM_ERROR_WRONG_TYPE)
+    _POP_INSN(var, SAM_INSN_INT, rshift)
 #define POP_INT(var)                            \
     _POP_INT(var, ARSHIFT)
 #define POP_UINT(var)                           \
@@ -59,8 +62,16 @@
 #define PUSH_INT(val)                           \
     _PUSH_INSN(val, SAM_INSN_INT)
 
-#define POP_LINK(var)                           \
-    _POP_INSN(var, SAM_INSN_LINK, LRSHIFT, SAM_ERROR_WRONG_TYPE)
+int _sam_get_stack(sam_uword_t *addr);
+
+#define POP_LINK(var)                                 \
+    do {                                              \
+        _POP_INSN(var, SAM_INSN_LINK, LRSHIFT);       \
+        sam_uword_t _stack;                           \
+        HALT_IF_ERROR(sam_stack_peek(var, &_stack));  \
+        _CHECK_TYPE(_stack, SAM_INSN_STACK);          \
+        var++;                                        \
+    } while(0)
 #define PUSH_LINK(addr)                         \
     _PUSH_INSN(addr, SAM_INSN_LINK)
 
@@ -88,14 +99,14 @@
 // Execution
 #define DO(addr)                                \
     do {                                        \
-        PUSH_LINK(sam_pc0);                     \
-        PUSH_LINK(sam_pc);                      \
+        PUSH_INT(sam_pc0);                      \
+        PUSH_INT(sam_pc);                       \
         sam_pc0 = sam_pc = addr;                \
     } while (0)
 #define RET                                     \
     do {                                        \
-        POP_LINK(sam_pc);                       \
-        POP_LINK(sam_pc0);                      \
+        POP_INT(sam_pc);                        \
+        POP_INT(sam_pc0);                       \
     } while (0)
 
 // Program

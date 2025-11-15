@@ -228,18 +228,15 @@ sam_word_t sam_trap(sam_uword_t function)
     case TRAP_DO:
         {
             sam_uword_t code;
-            POP_WORD((sam_word_t *)&code);
-            HALT_IF_ERROR(sam_find_stack(code, &code));
+            POP_LINK(code);
             DO(code);
         }
         break;
     case TRAP_IF:
         {
             sam_uword_t then, else_;
-            POP_WORD((sam_word_t *)&else_);
-            POP_WORD((sam_word_t *)&then);
-            HALT_IF_ERROR(sam_find_stack(then, &then));
-            HALT_IF_ERROR(sam_find_stack(else_, &else_));
+            POP_LINK(else_);
+            POP_LINK(then);
             sam_word_t flag;
             POP_INT(flag);
             DO(flag ? then : else_);

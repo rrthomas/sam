@@ -50,16 +50,16 @@ Working stack: (6 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 float
 sam_do: pc = 5, sp = 39, ir = a6
 Working stack: (8 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
 bra
 sam_do: pc = 26, sp = 40, ir = 40
@@ -67,8 +67,8 @@ Working stack: (9 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
 - link 5
 do
@@ -77,22 +77,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 7, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 8, sp = 43, ir = 10
@@ -100,11 +100,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 5.000000
 f2i
 sam_do: pc = 9, sp = 42, ir = 50
@@ -112,11 +112,11 @@ Working stack: (11 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int 5
 while
 sam_do: pc = 10, sp = 41, ir = ffffffe9
@@ -124,22 +124,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 11, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -3
 get
 sam_do: pc = 12, sp = 43, ir = ffffffc9
@@ -147,11 +147,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 1.000000
 int
 sam_do: pc = 13, sp = 44, ir = 20
@@ -159,11 +159,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 1.000000
 - int -7
 get
@@ -172,11 +172,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 1.000000
 - float 5.000000
 mul
@@ -185,11 +185,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 5.000000
 int
 sam_do: pc = 16, sp = 44, ir = 28
@@ -197,11 +197,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 1.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 5.000000
 - int -4
 set
@@ -210,22 +210,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 18, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 19, sp = 43, ir = bf800002
@@ -233,11 +233,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 5.000000
 float
 sam_do: pc = 21, sp = 45, ir = b0
@@ -245,11 +245,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 5.000000
 - float -1.000000
 add
@@ -258,11 +258,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 4.000000
 int
 sam_do: pc = 23, sp = 44, ir = 28
@@ -270,11 +270,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 5.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 4.000000
 - int -7
 set
@@ -283,33 +283,33 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 loop
 sam_do: pc = 6, sp = 41, ir = ffffffd1
 Working stack: (10 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 7, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 8, sp = 43, ir = 10
@@ -317,11 +317,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 4.000000
 f2i
 sam_do: pc = 9, sp = 42, ir = 50
@@ -329,11 +329,11 @@ Working stack: (11 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int 4
 while
 sam_do: pc = 10, sp = 41, ir = ffffffe9
@@ -341,22 +341,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 11, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -3
 get
 sam_do: pc = 12, sp = 43, ir = ffffffc9
@@ -364,11 +364,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 5.000000
 int
 sam_do: pc = 13, sp = 44, ir = 20
@@ -376,11 +376,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 5.000000
 - int -7
 get
@@ -389,11 +389,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 5.000000
 - float 4.000000
 mul
@@ -402,11 +402,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 20.000000
 int
 sam_do: pc = 16, sp = 44, ir = 28
@@ -414,11 +414,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 5.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 20.000000
 - int -4
 set
@@ -427,22 +427,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 18, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 19, sp = 43, ir = bf800002
@@ -450,11 +450,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 4.000000
 float
 sam_do: pc = 21, sp = 45, ir = b0
@@ -462,11 +462,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 4.000000
 - float -1.000000
 add
@@ -475,11 +475,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 3.000000
 int
 sam_do: pc = 23, sp = 44, ir = 28
@@ -487,11 +487,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 4.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 3.000000
 - int -7
 set
@@ -500,33 +500,33 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 loop
 sam_do: pc = 6, sp = 41, ir = ffffffd1
 Working stack: (10 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 7, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 8, sp = 43, ir = 10
@@ -534,11 +534,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 3.000000
 f2i
 sam_do: pc = 9, sp = 42, ir = 50
@@ -546,11 +546,11 @@ Working stack: (11 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int 3
 while
 sam_do: pc = 10, sp = 41, ir = ffffffe9
@@ -558,22 +558,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 11, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -3
 get
 sam_do: pc = 12, sp = 43, ir = ffffffc9
@@ -581,11 +581,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 20.000000
 int
 sam_do: pc = 13, sp = 44, ir = 20
@@ -593,11 +593,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 20.000000
 - int -7
 get
@@ -606,11 +606,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 20.000000
 - float 3.000000
 mul
@@ -619,11 +619,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 60.000000
 int
 sam_do: pc = 16, sp = 44, ir = 28
@@ -631,11 +631,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 20.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 60.000000
 - int -4
 set
@@ -644,22 +644,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 18, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 19, sp = 43, ir = bf800002
@@ -667,11 +667,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 3.000000
 float
 sam_do: pc = 21, sp = 45, ir = b0
@@ -679,11 +679,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 3.000000
 - float -1.000000
 add
@@ -692,11 +692,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 2.000000
 int
 sam_do: pc = 23, sp = 44, ir = 28
@@ -704,11 +704,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 3.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 2.000000
 - int -7
 set
@@ -717,33 +717,33 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 loop
 sam_do: pc = 6, sp = 41, ir = ffffffd1
 Working stack: (10 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 7, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 8, sp = 43, ir = 10
@@ -751,11 +751,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 2.000000
 f2i
 sam_do: pc = 9, sp = 42, ir = 50
@@ -763,11 +763,11 @@ Working stack: (11 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int 2
 while
 sam_do: pc = 10, sp = 41, ir = ffffffe9
@@ -775,22 +775,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 11, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -3
 get
 sam_do: pc = 12, sp = 43, ir = ffffffc9
@@ -798,11 +798,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 60.000000
 int
 sam_do: pc = 13, sp = 44, ir = 20
@@ -810,11 +810,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 60.000000
 - int -7
 get
@@ -823,11 +823,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 60.000000
 - float 2.000000
 mul
@@ -836,11 +836,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 120.000000
 int
 sam_do: pc = 16, sp = 44, ir = 28
@@ -848,11 +848,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 60.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 120.000000
 - int -4
 set
@@ -861,22 +861,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 18, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 19, sp = 43, ir = bf800002
@@ -884,11 +884,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 2.000000
 float
 sam_do: pc = 21, sp = 45, ir = b0
@@ -896,11 +896,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 2.000000
 - float -1.000000
 add
@@ -909,11 +909,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 1.000000
 int
 sam_do: pc = 23, sp = 44, ir = 28
@@ -921,11 +921,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 2.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 1.000000
 - int -7
 set
@@ -934,33 +934,33 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 loop
 sam_do: pc = 6, sp = 41, ir = ffffffd1
 Working stack: (10 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 7, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 8, sp = 43, ir = 10
@@ -968,11 +968,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 1.000000
 f2i
 sam_do: pc = 9, sp = 42, ir = 50
@@ -980,11 +980,11 @@ Working stack: (11 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int 1
 while
 sam_do: pc = 10, sp = 41, ir = ffffffe9
@@ -992,22 +992,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 11, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -3
 get
 sam_do: pc = 12, sp = 43, ir = ffffffc9
@@ -1015,11 +1015,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 120.000000
 int
 sam_do: pc = 13, sp = 44, ir = 20
@@ -1027,11 +1027,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 120.000000
 - int -7
 get
@@ -1040,11 +1040,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 120.000000
 - float 1.000000
 mul
@@ -1053,11 +1053,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 120.000000
 int
 sam_do: pc = 16, sp = 44, ir = 28
@@ -1065,11 +1065,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 120.000000
 - int -4
 set
@@ -1078,22 +1078,22 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 18, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 19, sp = 43, ir = bf800002
@@ -1101,11 +1101,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 1.000000
 float
 sam_do: pc = 21, sp = 45, ir = b0
@@ -1113,11 +1113,11 @@ Working stack: (14 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 1.000000
 - float -1.000000
 add
@@ -1126,11 +1126,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 0.000000
 int
 sam_do: pc = 23, sp = 44, ir = 28
@@ -1138,11 +1138,11 @@ Working stack: (13 word(s))
 - f2i
 - halt
 - float 1.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 0.000000
 - int -7
 set
@@ -1151,33 +1151,33 @@ Working stack: (10 word(s))
 - f2i
 - halt
 - float 0.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 loop
 sam_do: pc = 6, sp = 41, ir = ffffffd1
 Working stack: (10 word(s))
 - f2i
 - halt
 - float 0.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 int
 sam_do: pc = 7, sp = 42, ir = 20
 Working stack: (11 word(s))
 - f2i
 - halt
 - float 0.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int -6
 get
 sam_do: pc = 8, sp = 43, ir = 10
@@ -1185,11 +1185,11 @@ Working stack: (12 word(s))
 - f2i
 - halt
 - float 0.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - float 0.000000
 f2i
 sam_do: pc = 9, sp = 42, ir = 50
@@ -1197,11 +1197,11 @@ Working stack: (11 word(s))
 - f2i
 - halt
 - float 0.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
-- link 3
-- link 27
+- int 3
+- int 27
 - int 0
 while
 sam_do: pc = 27, sp = 39, ir = ffffffe1
@@ -1209,8 +1209,8 @@ Working stack: (8 word(s))
 - f2i
 - halt
 - float 0.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
 int
 sam_do: pc = 28, sp = 40, ir = 28
@@ -1218,8 +1218,8 @@ Working stack: (9 word(s))
 - f2i
 - halt
 - float 0.000000
-- link 0
-- link 31
+- int 0
+- int 31
 - float 120.000000
 - int -4
 set
@@ -1228,8 +1228,8 @@ Working stack: (6 word(s))
 - f2i
 - halt
 - float 120.000000
-- link 0
-- link 31
+- int 0
+- int 31
 ket
 sam_do: pc = 31, sp = 35, ir = 10
 Working stack: (4 word(s))

@@ -47,14 +47,14 @@ A valid address is one that points to a valid instruction word whose opcode’s 
 
 ### Operation
 
-Before SAM is started, the stack should be given suitable contents, `SSIZE` and `SP` set appropriately, and `PC` and `PC0` set to point to some code in the stack.
+Before SAM is started, the stack should be given suitable contents, `SSIZE` and `SP` set appropriately, `PC0` to the address of the first word in some stack, and `PC` to the address of some item in the stack pointed to by `PC0`.
 
 ```
 begin
   load the stack item at `PC` into `IR`
   set `I` to the least significant byte of `IR`
   set `OP` to `IR` arithmetically shifted one byte to the right
-  increment `PC`
+  increment `PC` to point to the next stack item
   execute the instruction whose opcode is in `I`
 repeat
 ```
@@ -102,7 +102,6 @@ The instruction set is listed below, with the instructions grouped according to 
 | `n`    | a number (integer or floating point) |
 | `l`    | a link (pointer to a stack) |
 | `s`    | a scalar (anything other than a stack) |
-| `c`    | a code item (stack or link) |
 | `x`    | an unspecified item |
 
 Each type may be suffixed by a number in stack pictures; if the same combination of type and suffix appears more than once in a stack comment, it refers to identical stack items.
@@ -203,12 +202,12 @@ These instructions implement loops, conditions and subroutine calls.
 > `BRA`  
 > → `l`
 >
-> Push a link to `PC`–1 on to the stack, and add `OP`+1 to `PC`.
+> Push `PC`–1 on to the stack as an integer, and add `OP`+1 to `PC`.
 
 > `KET`  
-> `l₁` `l₂` →
+> `i₁` `i₂` →
 >
-> Pop `l₂` into `PC` and `l₁` into `PC0`.
+> Pop `i₂` into `PC` and `i₁` into `PC0`.
 
 > `LINK`  
 > → `l`
@@ -216,14 +215,14 @@ These instructions implement loops, conditions and subroutine calls.
 > Push `IR` on to the stack.
 
 > `DO`  
-> `i` → `l₁` `l₂`
+> `l` → `i₁` `i₂`
 >
-> Pop `i`. If the stack item at that index is not a stack, raise `WRONG_TYPE`. Push `PC0` then `PC` to the stack, and set both `PC0` and `PC` to `i`.
+> Pop `l`. If it is not a link, raise `WRONG_TYPE`. Push `PC0` then `PC` to the stack as integers, and set both `PC0` and `PC` to the address of the first word of the stack pointed to by `l`.
 
 > `IF`  
-> `i` `c₁` `c₂` →
+> `i` `l₁` `l₂` →
 >
-> Pop `c₁` and `c₂`. If either stack item is not code, raise `WRONG_TYPE`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
+> Pop `l₁` and `l₂`. If either stack item is not a link, raise `WRONG_TYPE`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
 
 > `WHILE`  
 > `i` →

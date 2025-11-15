@@ -158,24 +158,6 @@ int sam_stack_item(sam_word_t n, sam_uword_t *addr, sam_uword_t *size)
         return stack_item_top(-n, addr, size);
 }
 
-// Given a LINK instruction, find the corresponding initial STACK
-// instruction, and return the stack address of the first code word.
-int sam_find_stack(sam_uword_t link, sam_uword_t *addr)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t inst = link & SAM_OP_MASK;
-    if (inst != SAM_INSN_LINK)
-        return SAM_ERROR_WRONG_TYPE;
-    *addr = link >> SAM_OP_SHIFT;
-    HALT_IF_ERROR(sam_stack_peek(*addr, &link));
-    inst = link & SAM_OP_MASK;
-    if (inst != SAM_INSN_STACK)
-        return SAM_ERROR_WRONG_TYPE;
-    (*addr)++;
- error:
-    return error;
-}
-
 int sam_pop_stack(sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;

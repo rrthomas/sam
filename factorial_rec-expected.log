@@ -45,16 +45,16 @@ Working stack: (5 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
+- int 0
+- int 25
 int
 sam_do: pc = 3, sp = 30, ir = 20
 Working stack: (6 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
+- int 0
+- int 25
 - int -3
 get
 sam_do: pc = 4, sp = 30, ir = 66
@@ -62,8 +62,8 @@ Working stack: (6 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
+- int 0
+- int 25
 - int 5
 bra
 sam_do: pc = 17, sp = 31, ir = 26
@@ -71,8 +71,8 @@ Working stack: (7 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
+- int 0
+- int 25
 - int 5
 - link 4
 bra
@@ -81,8 +81,8 @@ Working stack: (8 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
+- int 0
+- int 25
 - int 5
 - link 4
 - link 17
@@ -92,20 +92,20 @@ Working stack: (7 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 int
 sam_do: pc = 6, sp = 32, ir = 20
 Working stack: (8 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int -5
 get
 sam_do: pc = 7, sp = 32, ir = fffffff9
@@ -113,10 +113,10 @@ Working stack: (8 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 5
 int
 sam_do: pc = 8, sp = 33, ir = b0
@@ -124,10 +124,10 @@ Working stack: (9 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 5
 - int -1
 add
@@ -136,10 +136,10 @@ Working stack: (8 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
 link
 sam_do: pc = 10, sp = 33, ir = 40
@@ -147,10 +147,10 @@ Working stack: (9 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
 - link 1
 do
@@ -159,26 +159,26 @@ Working stack: (10 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
+- int 5
+- int 11
 int
 sam_do: pc = 3, sp = 35, ir = 20
 Working stack: (11 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
+- int 5
+- int 11
 - int -3
 get
 sam_do: pc = 4, sp = 35, ir = 66
@@ -186,13 +186,13 @@ Working stack: (11 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
+- int 5
+- int 11
 - int 4
 bra
 sam_do: pc = 17, sp = 36, ir = 26
@@ -200,13 +200,13 @@ Working stack: (12 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
+- int 5
+- int 11
 - int 4
 - link 4
 bra
@@ -215,13 +215,13 @@ Working stack: (13 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
+- int 5
+- int 11
 - int 4
 - link 4
 - link 17
@@ -231,30 +231,30 @@ Working stack: (12 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 int
 sam_do: pc = 6, sp = 37, ir = 20
 Working stack: (13 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int -5
 get
 sam_do: pc = 7, sp = 37, ir = fffffff9
@@ -262,15 +262,15 @@ Working stack: (13 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 4
 int
 sam_do: pc = 8, sp = 38, ir = b0
@@ -278,15 +278,15 @@ Working stack: (14 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 4
 - int -1
 add
@@ -295,15 +295,15 @@ Working stack: (13 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
 link
 sam_do: pc = 10, sp = 38, ir = 40
@@ -311,15 +311,15 @@ Working stack: (14 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
 - link 1
 do
@@ -328,36 +328,36 @@ Working stack: (15 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
+- int 5
+- int 11
 int
 sam_do: pc = 3, sp = 40, ir = 20
 Working stack: (16 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
+- int 5
+- int 11
 - int -3
 get
 sam_do: pc = 4, sp = 40, ir = 66
@@ -365,18 +365,18 @@ Working stack: (16 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
+- int 5
+- int 11
 - int 3
 bra
 sam_do: pc = 17, sp = 41, ir = 26
@@ -384,18 +384,18 @@ Working stack: (17 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
+- int 5
+- int 11
 - int 3
 - link 4
 bra
@@ -404,18 +404,18 @@ Working stack: (18 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
+- int 5
+- int 11
 - int 3
 - link 4
 - link 17
@@ -425,40 +425,40 @@ Working stack: (17 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 int
 sam_do: pc = 6, sp = 42, ir = 20
 Working stack: (18 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int -5
 get
 sam_do: pc = 7, sp = 42, ir = fffffff9
@@ -466,20 +466,20 @@ Working stack: (18 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
 int
 sam_do: pc = 8, sp = 43, ir = b0
@@ -487,20 +487,20 @@ Working stack: (19 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
 - int -1
 add
@@ -509,20 +509,20 @@ Working stack: (18 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 link
 sam_do: pc = 10, sp = 43, ir = 40
@@ -530,20 +530,20 @@ Working stack: (19 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 - link 1
 do
@@ -552,46 +552,46 @@ Working stack: (20 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
 int
 sam_do: pc = 3, sp = 45, ir = 20
 Working stack: (21 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
 - int -3
 get
 sam_do: pc = 4, sp = 45, ir = 66
@@ -599,23 +599,23 @@ Working stack: (21 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
 - int 2
 bra
 sam_do: pc = 17, sp = 46, ir = 26
@@ -623,23 +623,23 @@ Working stack: (22 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
 - int 2
 - link 4
 bra
@@ -648,23 +648,23 @@ Working stack: (23 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
 - int 2
 - link 4
 - link 17
@@ -674,50 +674,50 @@ Working stack: (22 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 int
 sam_do: pc = 6, sp = 47, ir = 20
 Working stack: (23 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int -5
 get
 sam_do: pc = 7, sp = 47, ir = fffffff9
@@ -725,25 +725,25 @@ Working stack: (23 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 int
 sam_do: pc = 8, sp = 48, ir = b0
@@ -751,25 +751,25 @@ Working stack: (24 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 - int -1
 add
@@ -778,25 +778,25 @@ Working stack: (23 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 link
 sam_do: pc = 10, sp = 48, ir = 40
@@ -804,25 +804,25 @@ Working stack: (24 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 - link 1
 do
@@ -831,56 +831,56 @@ Working stack: (25 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
+- int 5
+- int 11
 int
 sam_do: pc = 3, sp = 50, ir = 20
 Working stack: (26 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
+- int 5
+- int 11
 - int -3
 get
 sam_do: pc = 4, sp = 50, ir = 66
@@ -888,28 +888,28 @@ Working stack: (26 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
+- int 5
+- int 11
 - int 1
 bra
 sam_do: pc = 17, sp = 51, ir = 26
@@ -917,28 +917,28 @@ Working stack: (27 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
+- int 5
+- int 11
 - int 1
 - link 4
 bra
@@ -947,28 +947,28 @@ Working stack: (28 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
+- int 5
+- int 11
 - int 1
 - link 4
 - link 17
@@ -978,60 +978,60 @@ Working stack: (27 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 int
 sam_do: pc = 6, sp = 52, ir = 20
 Working stack: (28 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int -5
 get
 sam_do: pc = 7, sp = 52, ir = fffffff9
@@ -1039,30 +1039,30 @@ Working stack: (28 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 int
 sam_do: pc = 8, sp = 53, ir = b0
@@ -1070,30 +1070,30 @@ Working stack: (29 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 - int -1
 add
@@ -1102,30 +1102,30 @@ Working stack: (28 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 0
 link
 sam_do: pc = 10, sp = 53, ir = 40
@@ -1133,30 +1133,30 @@ Working stack: (29 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 0
 - link 1
 do
@@ -1165,66 +1165,66 @@ Working stack: (30 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
-- int 2
-- link 5
-- link 11
-- link 2
-- link 23
-- int 1
-- link 5
-- link 11
-- link 2
-- link 23
 - int 0
-- link 5
-- link 11
+- int 25
+- int 2
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
+- int 1
+- int 5
+- int 11
+- int 2
+- int 23
+- int 0
+- int 5
+- int 11
 int
 sam_do: pc = 3, sp = 55, ir = 20
 Working stack: (31 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
-- int 2
-- link 5
-- link 11
-- link 2
-- link 23
-- int 1
-- link 5
-- link 11
-- link 2
-- link 23
 - int 0
-- link 5
-- link 11
+- int 25
+- int 2
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
+- int 1
+- int 5
+- int 11
+- int 2
+- int 23
+- int 0
+- int 5
+- int 11
 - int -3
 get
 sam_do: pc = 4, sp = 55, ir = 66
@@ -1232,33 +1232,33 @@ Working stack: (31 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
-- int 2
-- link 5
-- link 11
-- link 2
-- link 23
-- int 1
-- link 5
-- link 11
-- link 2
-- link 23
 - int 0
-- link 5
-- link 11
+- int 25
+- int 2
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
+- int 1
+- int 5
+- int 11
+- int 2
+- int 23
+- int 0
+- int 5
+- int 11
 - int 0
 bra
 sam_do: pc = 17, sp = 56, ir = 26
@@ -1266,33 +1266,33 @@ Working stack: (32 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
-- int 2
-- link 5
-- link 11
-- link 2
-- link 23
-- int 1
-- link 5
-- link 11
-- link 2
-- link 23
 - int 0
-- link 5
-- link 11
+- int 25
+- int 2
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
+- int 1
+- int 5
+- int 11
+- int 2
+- int 23
+- int 0
+- int 5
+- int 11
 - int 0
 - link 4
 bra
@@ -1301,33 +1301,33 @@ Working stack: (33 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
-- int 2
-- link 5
-- link 11
-- link 2
-- link 23
-- int 1
-- link 5
-- link 11
-- link 2
-- link 23
 - int 0
-- link 5
-- link 11
+- int 25
+- int 2
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
+- int 1
+- int 5
+- int 11
+- int 2
+- int 23
+- int 0
+- int 5
+- int 11
 - int 0
 - link 4
 - link 17
@@ -1337,70 +1337,70 @@ Working stack: (32 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
-- int 2
-- link 5
-- link 11
-- link 2
-- link 23
-- int 1
-- link 5
-- link 11
-- link 2
-- link 23
 - int 0
-- link 5
-- link 11
-- link 2
-- link 23
+- int 25
+- int 2
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
+- int 1
+- int 5
+- int 11
+- int 2
+- int 23
+- int 0
+- int 5
+- int 11
+- int 2
+- int 23
 int
 sam_do: pc = 19, sp = 57, ir = ffffffd1
 Working stack: (33 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
-- int 2
-- link 5
-- link 11
-- link 2
-- link 23
-- int 1
-- link 5
-- link 11
-- link 2
-- link 23
 - int 0
-- link 5
-- link 11
-- link 2
-- link 23
+- int 25
+- int 2
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
+- int 1
+- int 5
+- int 11
+- int 2
+- int 23
+- int 0
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 int
 sam_do: pc = 20, sp = 58, ir = 28
@@ -1408,35 +1408,35 @@ Working stack: (34 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
-- int 2
-- link 5
-- link 11
-- link 2
-- link 23
-- int 1
-- link 5
-- link 11
-- link 2
-- link 23
 - int 0
-- link 5
-- link 11
-- link 2
-- link 23
+- int 25
+- int 2
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
+- int 1
+- int 5
+- int 11
+- int 2
+- int 23
+- int 0
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 - int -6
 set
@@ -1445,98 +1445,98 @@ Working stack: (32 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 ket
 sam_do: pc = 23, sp = 54, ir = ffffff56
 Working stack: (30 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
+- int 5
+- int 11
 ket
 sam_do: pc = 11, sp = 52, ir = ffffffd1
 Working stack: (28 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 int
 sam_do: pc = 12, sp = 53, ir = 20
@@ -1544,30 +1544,30 @@ Working stack: (29 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 - int -6
 get
@@ -1576,30 +1576,30 @@ Working stack: (29 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 - int 1
 mul
@@ -1608,30 +1608,30 @@ Working stack: (28 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 int
 sam_do: pc = 15, sp = 53, ir = 28
@@ -1639,30 +1639,30 @@ Working stack: (29 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 - int -6
 set
@@ -1671,83 +1671,83 @@ Working stack: (27 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 ket
 sam_do: pc = 23, sp = 49, ir = ffffff56
 Working stack: (25 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
-- link 5
-- link 11
+- int 5
+- int 11
 ket
 sam_do: pc = 11, sp = 47, ir = ffffffd1
 Working stack: (23 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 int
 sam_do: pc = 12, sp = 48, ir = 20
@@ -1755,25 +1755,25 @@ Working stack: (24 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 - int -6
 get
@@ -1782,25 +1782,25 @@ Working stack: (24 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 1
 - int 2
 mul
@@ -1809,25 +1809,25 @@ Working stack: (23 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 int
 sam_do: pc = 15, sp = 48, ir = 28
@@ -1835,25 +1835,25 @@ Working stack: (24 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 - int -6
 set
@@ -1862,68 +1862,68 @@ Working stack: (22 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
-- link 2
-- link 23
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
+- int 2
+- int 23
 ket
 sam_do: pc = 23, sp = 44, ir = ffffff56
 Working stack: (20 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
-- int 4
-- link 5
-- link 11
-- link 2
-- link 23
-- int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 0
+- int 25
 - int 2
-- link 5
-- link 11
+- int 23
+- int 4
+- int 5
+- int 11
+- int 2
+- int 23
+- int 3
+- int 5
+- int 11
+- int 2
+- int 23
+- int 2
+- int 5
+- int 11
 ket
 sam_do: pc = 11, sp = 42, ir = ffffffd1
 Working stack: (18 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 int
 sam_do: pc = 12, sp = 43, ir = 20
@@ -1931,20 +1931,20 @@ Working stack: (19 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 - int -6
 get
@@ -1953,20 +1953,20 @@ Working stack: (19 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 2
 - int 3
 mul
@@ -1975,20 +1975,20 @@ Working stack: (18 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 6
 int
 sam_do: pc = 15, sp = 43, ir = 28
@@ -1996,20 +1996,20 @@ Working stack: (19 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 3
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 6
 - int -6
 set
@@ -2018,53 +2018,53 @@ Working stack: (17 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 6
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 ket
 sam_do: pc = 23, sp = 39, ir = ffffff56
 Working stack: (15 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 6
-- link 5
-- link 11
+- int 5
+- int 11
 ket
 sam_do: pc = 11, sp = 37, ir = ffffffd1
 Working stack: (13 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 6
 int
 sam_do: pc = 12, sp = 38, ir = 20
@@ -2072,15 +2072,15 @@ Working stack: (14 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 6
 - int -6
 get
@@ -2089,15 +2089,15 @@ Working stack: (14 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 6
 - int 4
 mul
@@ -2106,15 +2106,15 @@ Working stack: (13 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 24
 int
 sam_do: pc = 15, sp = 38, ir = 28
@@ -2122,15 +2122,15 @@ Working stack: (14 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 4
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 - int 24
 - int -6
 set
@@ -2139,38 +2139,38 @@ Working stack: (12 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 24
-- link 5
-- link 11
-- link 2
-- link 23
+- int 5
+- int 11
+- int 2
+- int 23
 ket
 sam_do: pc = 23, sp = 34, ir = ffffff56
 Working stack: (10 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 24
-- link 5
-- link 11
+- int 5
+- int 11
 ket
 sam_do: pc = 11, sp = 32, ir = ffffffd1
 Working stack: (8 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 24
 int
 sam_do: pc = 12, sp = 33, ir = 20
@@ -2178,10 +2178,10 @@ Working stack: (9 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 24
 - int -6
 get
@@ -2190,10 +2190,10 @@ Working stack: (9 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 24
 - int 5
 mul
@@ -2202,10 +2202,10 @@ Working stack: (8 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 120
 int
 sam_do: pc = 15, sp = 33, ir = 28
@@ -2213,10 +2213,10 @@ Working stack: (9 word(s))
 - do
 - halt
 - int 5
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 - int 120
 - int -6
 set
@@ -2225,18 +2225,18 @@ Working stack: (7 word(s))
 - do
 - halt
 - int 120
-- link 0
-- link 25
-- link 2
-- link 23
+- int 0
+- int 25
+- int 2
+- int 23
 ket
 sam_do: pc = 23, sp = 29, ir = ffffff56
 Working stack: (5 word(s))
 - do
 - halt
 - int 120
-- link 0
-- link 25
+- int 0
+- int 25
 ket
 sam_do: pc = 25, sp = 27, ir = f8
 Working stack: (3 word(s))
