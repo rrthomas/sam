@@ -148,12 +148,12 @@ Numeric conversions:
 > `I2F`  
 > `i` → `f`
 >
-> Raise the error `WRONG_TYPE` if the top-most stack item is not an integer. Otherwise, pop it, convert the integer to a float, and push the float.
+> Pop `i`, convert the integer to a float, and push the float.
 
 > `F2I`  
 > `f` → `i`
 >
-> Raise the error `WRONG_TYPE` if the top-most stack item is not a float. Otherwise, pop it, convert the float to an integer, and push the integer.
+> Pop `f`, convert the float to an integer, and push the integer.
 
 
 ### Stack manipulation
@@ -217,12 +217,12 @@ These instructions implement loops, conditions and subroutine calls.
 > `DO`  
 > `l` → `i₁` `i₂`
 >
-> Pop `l`. If it is not a link, raise `WRONG_TYPE`. Push `PC0` then `PC` to the stack as integers, and set both `PC0` and `PC` to the address of the first word of the stack pointed to by `l`.
+> Pop `l`. Push `PC0` then `PC` to the stack as integers, and set both `PC0` and `PC` to the address of the first word of the stack pointed to by `l`.
 
 > `IF`  
 > `i` `l₁` `l₂` →
 >
-> Pop `l₁` and `l₂`. If either stack item is not a link, raise `WRONG_TYPE`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
+> Pop `l₁` and `l₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
 
 > `WHILE`  
 > `i` →
