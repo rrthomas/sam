@@ -196,9 +196,8 @@ void sam_print_stack(void)
 
 void sam_print_working_stack(void)
 {
-    sam_uword_t static_len = sam_program_len - 2; // Subtract the initial return values.
-    debug("Working stack: (%u word(s))\n", sam_sp - static_len);
-    print_stack(static_len, sam_sp);
+    debug("Working stack: (%u word(s))\n", sam_sp - sam_program_len);
+    print_stack(sam_program_len, sam_sp);
 }
 
 /* Dump screen as a PBM */
