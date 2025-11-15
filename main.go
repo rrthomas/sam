@@ -56,6 +56,7 @@ var rootCmd = &cobra.Command{
 		res = libsam.Run()
 
 		if debug {
+			libsam.PrintStack()
 			fmt.Printf("sam_run returns %d\n", res)
 		}
 

@@ -185,14 +185,14 @@ These instructions manage the stack.
 > Pop `i` and `x` from the stack. Set the `i`th stack item to `x`.
 
 > `IGET`  
-> `i₁` `i₂` → `x`
+> `i` `l` → `x`
 >
-> Push the `i₁`th item of the `i₂`th stack element, which must be a stack or link, to the stack.
+> Push the `i`th item of the stack pointed to by `l` to the stack.
 
 > `ISET`  
-> `x` `i₁` `i₂` →
+> `x` `i` `l` →
 >
-> Set the `i₁`th item of the `i₂`th, which must be a stack or link, to `x`.
+> Set the `i`th item of the stack pointed to by `l`th to `x`.
 
 
 ### Control structures

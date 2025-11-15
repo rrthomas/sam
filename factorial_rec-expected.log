@@ -2036,4 +2036,30 @@ sam_run: pc0 = 0, pc = 25, sp = 27, ir = f8
 Working stack: (1 word(s))
 - int 120
 halt
+Stack: (28 word(s))
+- int 5
+- 
+  - int -3
+  - get
+  - 
+    - int -5
+    - get
+    - int -1
+    - add
+    - link 1
+    - do
+    - int -6
+    - get
+    - mul
+    - int -6
+    - set
+  - 
+    - int 1
+    - int -6
+    - set
+  - if
+- do
+- halt
+- int 0
+- int 26
 sam_run returns 961

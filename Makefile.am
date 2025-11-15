@@ -13,7 +13,9 @@ AM_TESTS_ENVIRONMENT = export srcdir=$(srcdir); \
 	cp $(srcdir)/turtle.yaml .;
 
 TESTS = \
+	average.yaml \
 	basic_block.yaml \
+	double_list.yaml \
 	factorial_iter.yaml \
 	factorial_rec.yaml \
 	set.yaml \
@@ -23,7 +25,9 @@ TESTS = \
 	$(EMPTY)
 
 RESULTS = \
+	average-expected.log \
 	basic_block-expected.log \
+	double_list-expected.log \
 	factorial_iter-expected.log \
 	factorial_rec-expected.log \
 	screen_graphics-expected.log \

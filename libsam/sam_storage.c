@@ -44,6 +44,27 @@ int sam_stack_poke(sam_uword_t addr, sam_uword_t val)
     return SAM_ERROR_OK;
 }
 
+// Push the stack item at `addr` of size `size` to the top of the stack.
+int sam_stack_push(sam_uword_t addr, sam_uword_t size)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t opcode;
+    HALT_IF_ERROR(sam_stack_peek(addr, &opcode));
+    opcode &= SAM_OP_MASK;
+    if (opcode == SAM_INSN_STACK)
+      PUSH_LINK(addr);
+    else {
+      sam_uword_t i;
+      for (i = 0; i < size; i++) {
+        sam_uword_t temp;
+        HALT_IF_ERROR(sam_stack_peek(addr + i, &temp));
+        PUSH_WORD(temp);
+      }
+    }
+error:
+    return error;
+}
+
 // Move `size` words anywhere within allocated stack memory.
 // The blocks may overlap.
 static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
@@ -56,7 +77,7 @@ static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
 
 // Overwrite one block with another of possibly unequal size in the stack.
 // The blocks must not overlap.
-sam_word_t sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
+int sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
 {
     if (size1 > sam_sp || size2 > sam_sp || addr1 > sam_sp - size1 || addr2 > sam_sp - size2)
         return SAM_ERROR_STACK_OVERFLOW;
@@ -68,94 +89,95 @@ sam_word_t sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2
     return SAM_ERROR_OK;
 }
 
-static int stack_item_bottom(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
+static int stack_item_bottom(sam_uword_t s0, sam_uword_t sp,sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
 {
-    if (n >= sam_sp)
+    if (n >= s0 + sp)
         return SAM_ERROR_STACK_OVERFLOW;
     sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t sp = n, inst;
-    HALT_IF_ERROR(sam_stack_peek(sp++, &inst));
+    sam_uword_t p = s0 + n, inst;
+    HALT_IF_ERROR(sam_stack_peek(p++, &inst));
     sam_uword_t opcode = inst & SAM_OP_MASK;
     sam_word_t operand = ARSHIFT(inst, SAM_OP_SHIFT);
     // If instruction is a STACK with positive argument, skip to matching
     // STACK.
     if (opcode == SAM_INSN_STACK && operand > 0) {
-        sp += operand;
+        p += operand;
         sam_uword_t opcode2;
-        HALT_IF_ERROR(sam_stack_peek(sp++, &opcode2));
+        HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
         if ((opcode2 & SAM_OP_MASK) != SAM_INSN_STACK)
             return SAM_ERROR_BAD_BRACKET;
     } else if (opcode == SAM_INSN_PUSH) {
         sam_uword_t opcode2;
-        HALT_IF_ERROR(sam_stack_peek(sp++, &opcode2));
+        HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
         if ((opcode2 & SAM_OP_MASK) != SAM_INSN__PUSH)
             return SAM_ERROR_UNPAIRED_PUSH;
     } else if (opcode == SAM_INSN__PUSH)
         return SAM_ERROR_UNPAIRED_PUSH;
     else if (opcode == SAM_INSN_FLOAT) {
         sam_uword_t opcode2;
-        HALT_IF_ERROR(sam_stack_peek(sp++, &opcode2));
+        HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
         if ((opcode2 & SAM_OP_MASK) != SAM_INSN__FLOAT)
             return SAM_ERROR_UNPAIRED_FLOAT;
     } else if (opcode == SAM_INSN__FLOAT)
         return SAM_ERROR_UNPAIRED_FLOAT;
-    *addr = n;
-    *size = sp - n;
+    *addr = s0 + n;
+    *size = p - (s0 + n);
  error:
     return error;
 }
 
-static int stack_item_top(sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
+static int stack_item_top(sam_uword_t s0, sam_uword_t sp, sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
 {
     sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t sp = sam_sp, last_opcode = 0;
+    sam_uword_t p = s0 + sp, last_opcode = 0;
     sam_uword_t i, last_sp;
     for (i = 0; i < n; i++) {
-        last_sp = sp;
-        if (sp == 0)
+        last_sp = p;
+        if (p == s0)
             return SAM_ERROR_STACK_UNDERFLOW;
         sam_uword_t inst;
-        HALT_IF_ERROR(sam_stack_peek(--sp, &inst));
+        HALT_IF_ERROR(sam_stack_peek(--p, &inst));
         sam_uword_t opcode = inst & SAM_OP_MASK;
         sam_word_t operand = ARSHIFT(inst, SAM_OP_SHIFT);
         // If instruction is a STACK with negative argument, skip to matching
         // STACK.
         if (opcode == SAM_INSN_STACK && operand < 0) {
-            sp += operand;
+            p += operand;
             sam_uword_t opcode2;
-            HALT_IF_ERROR(sam_stack_peek(sp, &opcode2));
+            HALT_IF_ERROR(sam_stack_peek(p, &opcode2));
             if ((opcode2 & SAM_OP_MASK) != SAM_INSN_STACK)
                 return SAM_ERROR_BAD_BRACKET;
         } else if (opcode == SAM_INSN__PUSH) {
             sam_uword_t opcode2;
-            HALT_IF_ERROR(sam_stack_peek(--sp, &opcode2));
+            HALT_IF_ERROR(sam_stack_peek(--p, &opcode2));
             if ((opcode2 & SAM_OP_MASK) != SAM_INSN_PUSH)
                 return SAM_ERROR_UNPAIRED_PUSH;
         } else if (opcode == SAM_INSN_PUSH && last_opcode != SAM_INSN__PUSH)
             return SAM_ERROR_UNPAIRED_PUSH;
         else if (opcode == SAM_INSN__FLOAT) {
             sam_uword_t opcode2;
-            HALT_IF_ERROR(sam_stack_peek(--sp, &opcode2));
+            HALT_IF_ERROR(sam_stack_peek(--p, &opcode2));
             if ((opcode2 & SAM_OP_MASK) != SAM_INSN_FLOAT)
                 return SAM_ERROR_UNPAIRED_FLOAT;
         } else if (opcode == SAM_INSN_FLOAT && last_opcode != SAM_INSN__FLOAT)
             return SAM_ERROR_UNPAIRED_FLOAT;
         last_opcode = opcode;
     }
-    *addr = sp;
-    *size = last_sp - sp;
+    *addr = p;
+    *size = last_sp - p;
  error:
     return error;
 }
 
+// s0 and sp give the address of the stack to consider.
 // If n < 0, return offset of stack item n from top; otherwise,
 // check n is the address of a stack item, and return it.
-int sam_stack_item(sam_word_t n, sam_uword_t *addr, sam_uword_t *size)
+int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr, sam_uword_t *size)
 {
     if (n >= 0)
-        return stack_item_bottom(n, addr, size);
+        return stack_item_bottom(s0, sp, n, addr, size);
     else
-        return stack_item_top(-n, addr, size);
+        return stack_item_top(s0, sp, -n, addr, size);
 }
 
 int sam_pop_stack(sam_word_t *val_ptr)

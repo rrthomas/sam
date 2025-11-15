@@ -75,6 +75,14 @@ int _sam_get_stack(sam_uword_t *addr);
 #define PUSH_LINK(addr)                         \
     _PUSH_INSN(addr, SAM_INSN_LINK)
 
+#define POP_STACK(addr_var, size_var)                     \
+    do {                                                  \
+        POP_LINK(addr_var);                               \
+        sam_uword_t _insn;                                \
+        HALT_IF_ERROR(sam_stack_peek(addr_var - 1, &_insn)); \
+        size_var = (ARSHIFT(_insn, SAM_OP_SHIFT)) - 1;    \
+    } while(0)
+
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
         sam_uword_t w2;                                                 \

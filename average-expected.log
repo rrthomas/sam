@@ -1,0 +1,826 @@
+Stack: (41 word(s))
+- 
+  - float 2.000000
+  - float 5.000000
+  - float 10.000000
+  - float 20.000000
+- float 0.000000
+- int -4
+- 
+  - int -3
+  - get
+  - link 0
+  - iget
+  - int -5
+  - get
+  - add
+  - int -5
+  - set
+  - int -3
+  - get
+  - int 1
+  - add
+  - int -1
+  - get
+  - int -5
+  - set
+  - while
+  - loop
+- do
+- pop
+- float 4.000000
+- div
+- int 0
+- halt
+sam_run: pc0 = 0, pc = 0, sp = 41, ir = 4e
+Working stack: (0 word(s))
+bra
+sam_run: pc0 = 0, pc = 10, sp = 42, ir = 2
+Working stack: (1 word(s))
+- link 0
+float
+sam_run: pc0 = 0, pc = 12, sp = 44, ir = ffffffe1
+Working stack: (3 word(s))
+- link 0
+- float 0.000000
+int
+sam_run: pc0 = 0, pc = 13, sp = 45, ir = a6
+Working stack: (4 word(s))
+- link 0
+- float 0.000000
+- int -4
+bra
+sam_run: pc0 = 0, pc = 34, sp = 46, ir = 40
+Working stack: (5 word(s))
+- link 0
+- float 0.000000
+- int -4
+- link 13
+do
+sam_run: pc0 = 14, pc = 14, sp = 47, ir = ffffffe9
+Working stack: (6 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+int
+sam_run: pc0 = 14, pc = 15, sp = 48, ir = 20
+Working stack: (7 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+- int -3
+get
+sam_run: pc0 = 14, pc = 16, sp = 48, ir = 7
+Working stack: (7 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+- int -4
+link
+sam_run: pc0 = 14, pc = 17, sp = 49, ir = 30
+Working stack: (8 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+- int -4
+- link 0
+iget
+sam_run: pc0 = 14, pc = 18, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+- float 2.000000
+int
+sam_run: pc0 = 14, pc = 19, sp = 50, ir = 20
+Working stack: (9 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+- float 2.000000
+- int -5
+get
+sam_run: pc0 = 14, pc = 20, sp = 51, ir = b0
+Working stack: (10 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+- float 2.000000
+- float 0.000000
+add
+sam_run: pc0 = 14, pc = 21, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+- float 2.000000
+int
+sam_run: pc0 = 14, pc = 22, sp = 50, ir = 28
+Working stack: (9 word(s))
+- link 0
+- float 0.000000
+- int -4
+- int 0
+- int 35
+- float 2.000000
+- int -5
+set
+sam_run: pc0 = 14, pc = 23, sp = 47, ir = ffffffe9
+Working stack: (6 word(s))
+- link 0
+- float 2.000000
+- int -4
+- int 0
+- int 35
+int
+sam_run: pc0 = 14, pc = 24, sp = 48, ir = 20
+Working stack: (7 word(s))
+- link 0
+- float 2.000000
+- int -4
+- int 0
+- int 35
+- int -3
+get
+sam_run: pc0 = 14, pc = 25, sp = 48, ir = 9
+Working stack: (7 word(s))
+- link 0
+- float 2.000000
+- int -4
+- int 0
+- int 35
+- int -4
+int
+sam_run: pc0 = 14, pc = 26, sp = 49, ir = b0
+Working stack: (8 word(s))
+- link 0
+- float 2.000000
+- int -4
+- int 0
+- int 35
+- int -4
+- int 1
+add
+sam_run: pc0 = 14, pc = 27, sp = 48, ir = fffffff9
+Working stack: (7 word(s))
+- link 0
+- float 2.000000
+- int -4
+- int 0
+- int 35
+- int -3
+int
+sam_run: pc0 = 14, pc = 28, sp = 49, ir = 20
+Working stack: (8 word(s))
+- link 0
+- float 2.000000
+- int -4
+- int 0
+- int 35
+- int -3
+- int -1
+get
+sam_run: pc0 = 14, pc = 29, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 2.000000
+- int -4
+- int 0
+- int 35
+- int -3
+- int -3
+int
+sam_run: pc0 = 14, pc = 30, sp = 50, ir = 28
+Working stack: (9 word(s))
+- link 0
+- float 2.000000
+- int -4
+- int 0
+- int 35
+- int -3
+- int -3
+- int -5
+set
+sam_run: pc0 = 14, pc = 31, sp = 48, ir = 50
+Working stack: (7 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- int -3
+while
+sam_run: pc0 = 14, pc = 32, sp = 47, ir = 58
+Working stack: (6 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+loop
+sam_run: pc0 = 14, pc = 14, sp = 47, ir = ffffffe9
+Working stack: (6 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+int
+sam_run: pc0 = 14, pc = 15, sp = 48, ir = 20
+Working stack: (7 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- int -3
+get
+sam_run: pc0 = 14, pc = 16, sp = 48, ir = 7
+Working stack: (7 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- int -3
+link
+sam_run: pc0 = 14, pc = 17, sp = 49, ir = 30
+Working stack: (8 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- int -3
+- link 0
+iget
+sam_run: pc0 = 14, pc = 18, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- float 5.000000
+int
+sam_run: pc0 = 14, pc = 19, sp = 50, ir = 20
+Working stack: (9 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- float 5.000000
+- int -5
+get
+sam_run: pc0 = 14, pc = 20, sp = 51, ir = b0
+Working stack: (10 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- float 5.000000
+- float 2.000000
+add
+sam_run: pc0 = 14, pc = 21, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- float 7.000000
+int
+sam_run: pc0 = 14, pc = 22, sp = 50, ir = 28
+Working stack: (9 word(s))
+- link 0
+- float 2.000000
+- int -3
+- int 0
+- int 35
+- float 7.000000
+- int -5
+set
+sam_run: pc0 = 14, pc = 23, sp = 47, ir = ffffffe9
+Working stack: (6 word(s))
+- link 0
+- float 7.000000
+- int -3
+- int 0
+- int 35
+int
+sam_run: pc0 = 14, pc = 24, sp = 48, ir = 20
+Working stack: (7 word(s))
+- link 0
+- float 7.000000
+- int -3
+- int 0
+- int 35
+- int -3
+get
+sam_run: pc0 = 14, pc = 25, sp = 48, ir = 9
+Working stack: (7 word(s))
+- link 0
+- float 7.000000
+- int -3
+- int 0
+- int 35
+- int -3
+int
+sam_run: pc0 = 14, pc = 26, sp = 49, ir = b0
+Working stack: (8 word(s))
+- link 0
+- float 7.000000
+- int -3
+- int 0
+- int 35
+- int -3
+- int 1
+add
+sam_run: pc0 = 14, pc = 27, sp = 48, ir = fffffff9
+Working stack: (7 word(s))
+- link 0
+- float 7.000000
+- int -3
+- int 0
+- int 35
+- int -2
+int
+sam_run: pc0 = 14, pc = 28, sp = 49, ir = 20
+Working stack: (8 word(s))
+- link 0
+- float 7.000000
+- int -3
+- int 0
+- int 35
+- int -2
+- int -1
+get
+sam_run: pc0 = 14, pc = 29, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 7.000000
+- int -3
+- int 0
+- int 35
+- int -2
+- int -2
+int
+sam_run: pc0 = 14, pc = 30, sp = 50, ir = 28
+Working stack: (9 word(s))
+- link 0
+- float 7.000000
+- int -3
+- int 0
+- int 35
+- int -2
+- int -2
+- int -5
+set
+sam_run: pc0 = 14, pc = 31, sp = 48, ir = 50
+Working stack: (7 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- int -2
+while
+sam_run: pc0 = 14, pc = 32, sp = 47, ir = 58
+Working stack: (6 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+loop
+sam_run: pc0 = 14, pc = 14, sp = 47, ir = ffffffe9
+Working stack: (6 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+int
+sam_run: pc0 = 14, pc = 15, sp = 48, ir = 20
+Working stack: (7 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- int -3
+get
+sam_run: pc0 = 14, pc = 16, sp = 48, ir = 7
+Working stack: (7 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- int -2
+link
+sam_run: pc0 = 14, pc = 17, sp = 49, ir = 30
+Working stack: (8 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- int -2
+- link 0
+iget
+sam_run: pc0 = 14, pc = 18, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- float 10.000000
+int
+sam_run: pc0 = 14, pc = 19, sp = 50, ir = 20
+Working stack: (9 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- float 10.000000
+- int -5
+get
+sam_run: pc0 = 14, pc = 20, sp = 51, ir = b0
+Working stack: (10 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- float 10.000000
+- float 7.000000
+add
+sam_run: pc0 = 14, pc = 21, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- float 17.000000
+int
+sam_run: pc0 = 14, pc = 22, sp = 50, ir = 28
+Working stack: (9 word(s))
+- link 0
+- float 7.000000
+- int -2
+- int 0
+- int 35
+- float 17.000000
+- int -5
+set
+sam_run: pc0 = 14, pc = 23, sp = 47, ir = ffffffe9
+Working stack: (6 word(s))
+- link 0
+- float 17.000000
+- int -2
+- int 0
+- int 35
+int
+sam_run: pc0 = 14, pc = 24, sp = 48, ir = 20
+Working stack: (7 word(s))
+- link 0
+- float 17.000000
+- int -2
+- int 0
+- int 35
+- int -3
+get
+sam_run: pc0 = 14, pc = 25, sp = 48, ir = 9
+Working stack: (7 word(s))
+- link 0
+- float 17.000000
+- int -2
+- int 0
+- int 35
+- int -2
+int
+sam_run: pc0 = 14, pc = 26, sp = 49, ir = b0
+Working stack: (8 word(s))
+- link 0
+- float 17.000000
+- int -2
+- int 0
+- int 35
+- int -2
+- int 1
+add
+sam_run: pc0 = 14, pc = 27, sp = 48, ir = fffffff9
+Working stack: (7 word(s))
+- link 0
+- float 17.000000
+- int -2
+- int 0
+- int 35
+- int -1
+int
+sam_run: pc0 = 14, pc = 28, sp = 49, ir = 20
+Working stack: (8 word(s))
+- link 0
+- float 17.000000
+- int -2
+- int 0
+- int 35
+- int -1
+- int -1
+get
+sam_run: pc0 = 14, pc = 29, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 17.000000
+- int -2
+- int 0
+- int 35
+- int -1
+- int -1
+int
+sam_run: pc0 = 14, pc = 30, sp = 50, ir = 28
+Working stack: (9 word(s))
+- link 0
+- float 17.000000
+- int -2
+- int 0
+- int 35
+- int -1
+- int -1
+- int -5
+set
+sam_run: pc0 = 14, pc = 31, sp = 48, ir = 50
+Working stack: (7 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- int -1
+while
+sam_run: pc0 = 14, pc = 32, sp = 47, ir = 58
+Working stack: (6 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+loop
+sam_run: pc0 = 14, pc = 14, sp = 47, ir = ffffffe9
+Working stack: (6 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+int
+sam_run: pc0 = 14, pc = 15, sp = 48, ir = 20
+Working stack: (7 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- int -3
+get
+sam_run: pc0 = 14, pc = 16, sp = 48, ir = 7
+Working stack: (7 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- int -1
+link
+sam_run: pc0 = 14, pc = 17, sp = 49, ir = 30
+Working stack: (8 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- int -1
+- link 0
+iget
+sam_run: pc0 = 14, pc = 18, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- float 20.000000
+int
+sam_run: pc0 = 14, pc = 19, sp = 50, ir = 20
+Working stack: (9 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- float 20.000000
+- int -5
+get
+sam_run: pc0 = 14, pc = 20, sp = 51, ir = b0
+Working stack: (10 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- float 20.000000
+- float 17.000000
+add
+sam_run: pc0 = 14, pc = 21, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- float 37.000000
+int
+sam_run: pc0 = 14, pc = 22, sp = 50, ir = 28
+Working stack: (9 word(s))
+- link 0
+- float 17.000000
+- int -1
+- int 0
+- int 35
+- float 37.000000
+- int -5
+set
+sam_run: pc0 = 14, pc = 23, sp = 47, ir = ffffffe9
+Working stack: (6 word(s))
+- link 0
+- float 37.000000
+- int -1
+- int 0
+- int 35
+int
+sam_run: pc0 = 14, pc = 24, sp = 48, ir = 20
+Working stack: (7 word(s))
+- link 0
+- float 37.000000
+- int -1
+- int 0
+- int 35
+- int -3
+get
+sam_run: pc0 = 14, pc = 25, sp = 48, ir = 9
+Working stack: (7 word(s))
+- link 0
+- float 37.000000
+- int -1
+- int 0
+- int 35
+- int -1
+int
+sam_run: pc0 = 14, pc = 26, sp = 49, ir = b0
+Working stack: (8 word(s))
+- link 0
+- float 37.000000
+- int -1
+- int 0
+- int 35
+- int -1
+- int 1
+add
+sam_run: pc0 = 14, pc = 27, sp = 48, ir = fffffff9
+Working stack: (7 word(s))
+- link 0
+- float 37.000000
+- int -1
+- int 0
+- int 35
+- int 0
+int
+sam_run: pc0 = 14, pc = 28, sp = 49, ir = 20
+Working stack: (8 word(s))
+- link 0
+- float 37.000000
+- int -1
+- int 0
+- int 35
+- int 0
+- int -1
+get
+sam_run: pc0 = 14, pc = 29, sp = 49, ir = ffffffd9
+Working stack: (8 word(s))
+- link 0
+- float 37.000000
+- int -1
+- int 0
+- int 35
+- int 0
+- int 0
+int
+sam_run: pc0 = 14, pc = 30, sp = 50, ir = 28
+Working stack: (9 word(s))
+- link 0
+- float 37.000000
+- int -1
+- int 0
+- int 35
+- int 0
+- int 0
+- int -5
+set
+sam_run: pc0 = 14, pc = 31, sp = 48, ir = 50
+Working stack: (7 word(s))
+- link 0
+- float 37.000000
+- int 0
+- int 0
+- int 35
+- int 0
+while
+sam_run: pc0 = 0, pc = 35, sp = 45, ir = 18
+Working stack: (4 word(s))
+- link 0
+- float 37.000000
+- int 0
+pop
+sam_run: pc0 = 0, pc = 36, sp = 44, ir = 40800002
+Working stack: (3 word(s))
+- link 0
+- float 37.000000
+float
+sam_run: pc0 = 0, pc = 38, sp = 46, ir = c0
+Working stack: (5 word(s))
+- link 0
+- float 37.000000
+- float 4.000000
+div
+sam_run: pc0 = 0, pc = 39, sp = 44, ir = 1
+Working stack: (3 word(s))
+- link 0
+- float 9.250000
+int
+sam_run: pc0 = 0, pc = 40, sp = 45, ir = f8
+Working stack: (4 word(s))
+- link 0
+- float 9.250000
+- int 0
+halt
+Stack: (46 word(s))
+- 
+  - float 2.000000
+  - float 5.000000
+  - float 10.000000
+  - float 20.000000
+- float 0.000000
+- int -4
+- 
+  - int -3
+  - get
+  - link 0
+  - iget
+  - int -5
+  - get
+  - add
+  - int -5
+  - set
+  - int -3
+  - get
+  - int 1
+  - add
+  - int -1
+  - get
+  - int -5
+  - set
+  - while
+  - loop
+- do
+- pop
+- float 4.000000
+- div
+- int 0
+- halt
+- link 0
+- float 9.250000
+- int 0
+- int 41
+sam_run returns 1

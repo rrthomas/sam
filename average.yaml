@@ -1,0 +1,33 @@
+- data:
+  - float 2.0
+  - float 5.0
+  - float 10.0
+  - float 20.0
+- float 0.0
+- int -4
+- average:
+  - int -3
+  - get
+  - link data
+  - iget
+  - int -5
+  - get
+  - add
+  - int -5
+  - set
+  - int -3
+  - get
+  - int 1
+  - add
+  - int -1
+  - get
+  - int -5
+  - set
+  - while
+  - loop
+- do
+- pop
+- float 4.0
+- div
+- int 0
+- halt

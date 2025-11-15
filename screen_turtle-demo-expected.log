@@ -946,4 +946,116 @@ Working stack: (2 word(s))
 - link 0
 - int 0
 halt
+Stack: (127 word(s))
+- 
+  - float 353.553375
+  - float 353.553375
+  - float 0.785398
+  - int 0
+  - int 1
+  - 
+    - trap 33
+    - trap 36
+    - float 0.000000
+    - int 1
+    - set
+    - float 0.000000
+    - int 3
+    - set
+    - float 0.000000
+    - int 5
+    - set
+    - trap 32
+    - int 7
+    - set
+    - int 0
+    - int 8
+    - set
+  - 
+    - int 0
+    - int 8
+    - set
+  - 
+    - int 1
+    - int 8
+    - set
+    - int 1
+    - get
+    - f2i
+    - int 3
+    - get
+    - f2i
+    - int 7
+    - get
+    - trap 37
+  - 
+    - int 5
+    - get
+    - int -4
+    - get
+    - neg
+    - add
+    - int 5
+    - set
+  - 
+    - int 5
+    - get
+    - cos
+    - int -4
+    - get
+    - mul
+    - int 1
+    - get
+    - add
+    - int 5
+    - get
+    - sin
+    - int -5
+    - get
+    - mul
+    - int 3
+    - get
+    - add
+    - int 8
+    - get
+    - 
+      - int 1
+      - get
+      - f2i
+      - int 3
+      - get
+      - f2i
+      - int -6
+      - get
+      - f2i
+      - int -6
+      - get
+      - f2i
+      - int 7
+      - get
+      - trap 38
+    - 
+    - if
+    - int 3
+    - set
+    - int 1
+    - set
+- link 9
+- do
+- link 36
+- do
+- float -45.000000
+- rad
+- link 50
+- do
+- pop
+- float 500.000000
+- link 60
+- do
+- pop
+- int 0
+- halt
+- link 0
+- int 0
+- int 124
 sam_run returns 1

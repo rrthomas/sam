@@ -1,0 +1,31 @@
+- data:
+  - float 2.0
+  - float 5.0
+  - float 10.0
+  - float 20.0
+- int -4
+- double:
+  - int -3
+  - get
+  - link data
+  - iget
+  - float 2.0
+  - mul
+  - int -4
+  - get
+  - link data
+  - iset
+  - int -3
+  - get
+  - int 1
+  - add
+  - int -1
+  - get
+  - int -5
+  - set
+  - while
+  - loop
+- do
+- pop
+- int 0
+- halt

@@ -47,4 +47,16 @@ sam_run: pc0 = 0, pc = 8, sp = 10, ir = f8
 Working stack: (1 word(s))
 - int -13
 halt
+Stack: (11 word(s))
+- int 21
+- int 2
+- mul
+- int 3
+- neg
+- add
+- int -3
+- div
+- halt
+- int 0
+- int 9
 sam_run returns -103

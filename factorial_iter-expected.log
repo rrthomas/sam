@@ -1033,4 +1033,35 @@ sam_run: pc0 = 0, pc = 32, sp = 34, ir = f8
 Working stack: (1 word(s))
 - int 120
 halt
+Stack: (35 word(s))
+- float 5.000000
+- 
+  - float 1.000000
+  - 
+    - int -6
+    - get
+    - f2i
+    - while
+    - int -3
+    - get
+    - int -7
+    - get
+    - mul
+    - int -4
+    - set
+    - int -6
+    - get
+    - float -1.000000
+    - add
+    - int -7
+    - set
+    - loop
+  - do
+  - int -4
+  - set
+- do
+- f2i
+- halt
+- int 0
+- int 33
 sam_run returns 961

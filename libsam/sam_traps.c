@@ -185,27 +185,15 @@ sam_word_t sam_trap(sam_uword_t function)
         if (sam_sp == 0)
             HALT(SAM_ERROR_STACK_UNDERFLOW);
         sam_uword_t size;
-        HALT_IF_ERROR(sam_stack_item(-1, &sam_sp, &size));
+        HALT_IF_ERROR(sam_stack_item(0, sam_sp, -1, &sam_sp, &size));
         break;
     case TRAP_GET:
         {
             sam_word_t pos;
             POP_INT(pos);
             sam_uword_t addr, size;
-            HALT_IF_ERROR(sam_stack_item(pos, &addr, &size));
-            sam_uword_t opcode;
-            HALT_IF_ERROR(sam_stack_peek(addr, &opcode));
-            opcode &= SAM_OP_MASK;
-            if (opcode == SAM_INSN_STACK)
-                PUSH_LINK(addr);
-            else {
-                sam_uword_t i;
-                for (i = 0; i < size; i++) {
-                    sam_uword_t temp;
-                    HALT_IF_ERROR(sam_stack_peek(addr + i, &temp));
-                    PUSH_WORD(temp);
-                }
-            }
+            HALT_IF_ERROR(sam_stack_item(0, sam_sp, pos, &addr, &size));
+            HALT_IF_ERROR(sam_stack_push(addr, size));
         }
         break;
     case TRAP_SET:
@@ -213,17 +201,35 @@ sam_word_t sam_trap(sam_uword_t function)
             sam_word_t pos;
             POP_INT(pos);
             sam_uword_t addr1, size1, addr2, size2;
-            HALT_IF_ERROR(sam_stack_item(-1, &addr1, &size1));
-            HALT_IF_ERROR(sam_stack_item(pos, &addr2, &size2));
-            sam_stack_set(addr1, size1, addr2, size2);
+            HALT_IF_ERROR(sam_stack_item(0, sam_sp, -1, &addr1, &size1));
+            HALT_IF_ERROR(sam_stack_item(0, sam_sp, pos, &addr2, &size2));
+            HALT_IF_ERROR(sam_stack_set(addr1, size1, addr2, size2));
             sam_sp -= size2;
         }
         break;
     case TRAP_IGET:
-        // TODO: GET an inner item (takes stack index and inner index)
+        {
+            sam_uword_t stack_addr, stack_size;
+            POP_STACK(stack_addr, stack_size);
+            sam_word_t pos;
+            POP_INT(pos);
+            sam_uword_t addr, size;
+            HALT_IF_ERROR(sam_stack_item(stack_addr, stack_size, pos, &addr, &size));
+            HALT_IF_ERROR(sam_stack_push(addr, size));
+        }
         break;
     case TRAP_ISET:
-        // TODO: SET an inner item (takes stack index and inner index)
+        {
+            sam_uword_t stack_addr, stack_size;
+            POP_STACK(stack_addr, stack_size);
+            sam_word_t pos;
+            POP_INT(pos);
+            sam_uword_t addr1, size1, addr2, size2;
+            HALT_IF_ERROR(sam_stack_item(0, sam_sp, -1, &addr1, &size1));
+            HALT_IF_ERROR(sam_stack_item(stack_addr, stack_size, pos, &addr2, &size2));
+            HALT_IF_ERROR(sam_stack_set(addr1, size1, addr2, size2));
+            sam_sp -= size2;
+        }
         break;
     case TRAP_DO:
         {
