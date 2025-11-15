@@ -166,11 +166,9 @@ int sam_find_stack(sam_uword_t link, sam_uword_t *addr)
     sam_uword_t inst = link & SAM_OP_MASK;
     if (inst != SAM_INSN_LINK)
         return SAM_ERROR_WRONG_TYPE;
-    do {
-        *addr = link >> SAM_OP_SHIFT;
-        HALT_IF_ERROR(sam_stack_peek(*addr, &link));
-        inst = link & SAM_OP_MASK;
-    } while (inst == SAM_INSN_LINK);
+    *addr = link >> SAM_OP_SHIFT;
+    HALT_IF_ERROR(sam_stack_peek(*addr, &link));
+    inst = link & SAM_OP_MASK;
     if (inst != SAM_INSN_STACK)
         return SAM_ERROR_WRONG_TYPE;
     (*addr)++;

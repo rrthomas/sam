@@ -100,7 +100,7 @@ The instruction set is listed below, with the instructions grouped according to 
 | `i`    | a signed integer |
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
-| `l`    | a link (pointer to code) |
+| `l`    | a link (pointer to a stack) |
 | `s`    | a scalar (anything other than a stack) |
 | `c`    | a code item (stack or link) |
 | `x`    | an unspecified item |
