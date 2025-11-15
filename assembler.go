@@ -199,6 +199,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		}
 		file := name.String()
 		subProg := readProg(file)
+		// Assemble the included file in a nested stack.
 		ast.Walk(a, subProg)
 		return nil
 	default:
