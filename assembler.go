@@ -210,7 +210,6 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 func Assemble(progFile string) []libsam.Word {
 	prog := readProg(progFile)
 	a := assembler{labels: map[string]int{}}
-	// The top level is assembled without nesting in a STACK pair.
-	a.assembleSequence(prog)
+	ast.Walk(&a, prog)
 	return a.code
 }

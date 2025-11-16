@@ -26,8 +26,6 @@ const sam_word_t SAM_OP_MASK = (1 << SAM_OP_SHIFT) - 1;
 sam_word_t sam_run(void)
 {
     sam_word_t error = SAM_ERROR_OK;
-    
-    sam_pc0 = 0;
 
     for (;;) {
         sam_uword_t ir;

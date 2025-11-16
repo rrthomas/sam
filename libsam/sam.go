@@ -14,7 +14,9 @@ type Uword = C.sam_uword_t
 var OP_SHIFT = C.SAM_OP_SHIFT
 var OP_MASK = C.SAM_OP_MASK
 
-func Run() Word {
+func Run(pc0 Uword, pc Uword) Word {
+	C.sam_pc0 = pc0
+	C.sam_pc = pc
 	return C.sam_run()
 }
 
