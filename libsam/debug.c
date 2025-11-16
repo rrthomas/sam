@@ -7,7 +7,7 @@
 
 #include "sam.h"
 #include "sam_opcodes.h"
-#include "sam_private.h"
+#include "private.h"
 
 bool do_debug = false;
 

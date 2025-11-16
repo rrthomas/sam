@@ -15,7 +15,7 @@
 
 #include "sam.h"
 #include "sam_opcodes.h"
-#include "sam_private.h"
+#include "private.h"
 
 // Instruction constants
 const int SAM_OP_SHIFT = 3;

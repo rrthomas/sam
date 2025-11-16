@@ -13,7 +13,7 @@
 #include "sam.h"
 #include "sam_opcodes.h"
 
-#include "sam_private.h"
+#include "private.h"
 
 
 // VM registers

@@ -16,7 +16,7 @@
 
 #include "sam.h"
 #include "sam_opcodes.h"
-#include "sam_private.h"
+#include "private.h"
 
 // Division macros
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))

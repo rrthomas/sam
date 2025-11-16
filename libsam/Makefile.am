@@ -6,17 +6,20 @@ noinst_LTLIBRARIES = libsam.la
 
 AM_CPPFLAGS = -DSAM_DEBUG
 
+include_HEADERS = \
+	sam.h \
+	sam_registers.h \
+	sam_opcodes.h
+
 libsam_la_CFLAGS = $(SDL2_CFLAGS)
 libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) -lm
 libsam_la_SOURCES = \
-	sam.h \
-	sam_private.h \
-	sam_opcodes.h \
-	sam_registers.h \
-	sam_debug.c \
-	sam_storage.c \
-	sam_run.c \
-	sam_traps.c
+	$(include_HEADERS) \
+	private.h \
+	debug.c \
+	storage.c \
+	run.c \
+	traps.c
 
 TEST_EXTENSIONS = .yaml
 YAML_LOG_COMPILER = $(srcdir)/run-test
