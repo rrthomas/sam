@@ -134,4 +134,3 @@ extern sam_uword_t sam_program_len;
 
 // Traps
 sam_word_t trap(sam_word_t code);
-sam_word_t trap_tildav2(sam_uword_t function);
