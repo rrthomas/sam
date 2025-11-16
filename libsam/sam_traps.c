@@ -102,30 +102,25 @@ uint32_t sam_getpixel(int x, int y)
     /* Here p is the address to the pixel we want to retrieve */
     Uint8 *p = (Uint8 *)srf->pixels + y * srf->pitch * PIXEL_SIZE + x * bpp * PIXEL_SIZE;
 
-    switch (bpp)
-        {
-        case 1:
-            return *p;
-            break;
-
-        case 2:
-            return *(Uint16 *)p;
-            break;
-
-        case 3:
-            if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
-                return p[0] << 16 | p[1] << 8 | p[2];
-            else
-                return p[0] | p[1] << 8 | p[2] << 16;
-            break;
-
-        case 4:
-            return *(Uint32 *)p;
-            break;
-
-        default:
-            return 0;       /* shouldn't happen, but avoids warnings */
-        }
+    switch (bpp) {
+    case 1:
+        return *p;
+        break;
+    case 2:
+        return *(Uint16 *)p;
+        break;
+    case 3:
+        if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+            return p[0] << 16 | p[1] << 8 | p[2];
+        else
+            return p[0] | p[1] << 8 | p[2] << 16;
+        break;
+    case 4:
+        return *(Uint32 *)p;
+        break;
+    default:
+        return 0; /* shouldn't happen, but avoids warnings */
+    }
 }
 
 sam_word_t sam_traps_init(void)
