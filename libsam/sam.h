@@ -13,7 +13,7 @@ typedef float sam_float_t;
 #define SAM_WORD_BYTES 4
 #define SAM_WORD_BIT (SAM_WORD_BYTES * 8)
 #define SAM_WORD_MIN ((sam_word_t)(1UL << (SAM_WORD_BIT - 1)))
-#define SAM_INT_MIN ((sam_uword_t)SAM_WORD_MIN >> SAM_OP_SHIFT)
+#define SAM_INT_MIN ((sam_uword_t)SAM_WORD_MIN >> SAM_OPERAND_SHIFT)
 #define SAM_UWORD_MAX (UINT32_MAX)
 
 // VM registers
@@ -26,16 +26,15 @@ typedef float sam_float_t;
 enum {
     SAM_ERROR_OK = 0,
     SAM_ERROR_HALT = 1,
-    SAM_ERROR_INVALID_OPCODE = -1,
-    SAM_ERROR_INVALID_ADDRESS = -2,
-    SAM_ERROR_STACK_UNDERFLOW = -3,
-    SAM_ERROR_STACK_OVERFLOW = -4,
-    SAM_ERROR_WRONG_TYPE = -5,
-    SAM_ERROR_BAD_BRACKET = -6,
-    SAM_ERROR_UNPAIRED_FLOAT = -7,
-    SAM_ERROR_UNPAIRED_PUSH = -8,
-    SAM_ERROR_INVALID_FUNCTION = -9,
-    SAM_ERROR_TRAP_INIT = -10,
+    SAM_ERROR_INVALID_OPCODE = 2,
+    SAM_ERROR_INVALID_ADDRESS = 3,
+    SAM_ERROR_STACK_UNDERFLOW = 4,
+    SAM_ERROR_STACK_OVERFLOW = 5,
+    SAM_ERROR_WRONG_TYPE = 6,
+    SAM_ERROR_BAD_BRACKET = 7,
+    SAM_ERROR_UNPAIRED_BIATOM = 8,
+    SAM_ERROR_INVALID_FUNCTION = 9,
+    SAM_ERROR_TRAP_INIT = 10,
 };
 
 // Stack access
@@ -60,7 +59,7 @@ int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp);
 #ifdef SAM_DEBUG
 #include <stdbool.h>
 extern bool do_debug;
-char *trap_name(sam_word_t trap_code);
+char *inst_name(sam_word_t inst_opcode);
 void sam_print_stack(void);
 void sam_print_working_stack(void);
 void debug(const char *fmt, ...);

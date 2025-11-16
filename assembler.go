@@ -64,7 +64,16 @@ type assembler struct {
 }
 
 func (a *assembler) assemble(opcode libsam.Word, operand libsam.Word) {
-	a.code = append(a.code, opcode|(operand<<libsam.OP_SHIFT))
+	shift := libsam.OPERAND_SHIFT
+	if opcode == libsam.TAG_LINK {
+		shift = libsam.LINK_SHIFT
+	}
+	a.code = append(a.code, opcode|(operand<<shift))
+}
+
+func (a *assembler) assembleBiatom(opcode libsam.Word, operand libsam.Word) {
+	a.assemble(opcode|libsam.TAG_BIATOM|(libsam.BIATOM_FIRST<<libsam.BIATOM_TAG_SHIFT), operand>>libsam.OPERAND_SHIFT)
+	a.assemble(opcode|libsam.TAG_BIATOM|(libsam.BIATOM_SECOND<<libsam.BIATOM_TAG_SHIFT), operand&^libsam.OPERAND_MASK)
 }
 
 func parseInsn(instStr string) (libsam.Word, bool) {
@@ -91,12 +100,12 @@ func (a *assembler) parseLiteral(argStr string) libsam.Word {
 	panic(fmt.Errorf("bad literal %s", argStr))
 }
 
-var operandInsns = []libsam.Word{
-	libsam.INSN_INT,
-	libsam.INSN_LINK,
-	libsam.INSN_FLOAT,
-	libsam.INSN_TRAP,
-	libsam.INSN_PUSH,
+var operandInsns = []string{
+	"int",
+	"link",
+	"float",
+	"trap",
+	"push",
 }
 
 func (a *assembler) assembleInstruction(tokens []string) {
@@ -105,34 +114,32 @@ func (a *assembler) assembleInstruction(tokens []string) {
 	if !ok {
 		panic(fmt.Errorf("unknown instruction %s", instStr))
 	}
-	if slices.Contains(operandInsns, opcode) {
+	if slices.Contains(operandInsns, strings.ToLower(instStr)) {
 		if len(tokens) != 2 {
 			panic(fmt.Errorf("%s needs an operand", instStr))
 		}
 		operandStr := tokens[1]
 
 		switch opcode {
-		case libsam.INSN_INT, libsam.INSN_LINK:
+		case libsam.TAG_ATOM | (libsam.ATOM_INT << libsam.ATOM_TYPE_SHIFT), libsam.TAG_LINK:
 			operand := a.parseLiteral(operandStr)
 			a.assemble(opcode, operand)
-		case libsam.INSN_FLOAT:
+		case libsam.TAG_ATOM | (libsam.ATOM_INST << libsam.ATOM_TYPE_SHIFT):
+			trap, ok := parseTrap(operandStr)
+			if !ok {
+				panic(fmt.Errorf("unknown trap %s", operandStr))
+			}
+			a.assemble(opcode|trap, 0)
+		case libsam.TAG_BIATOM | (libsam.BIATOM_WORD << libsam.BIATOM_TYPE_SHIFT):
+			operand := a.parseLiteral(operandStr)
+			a.assembleBiatom(libsam.BIATOM_WORD, operand)
+		case libsam.TAG_BIATOM | (libsam.BIATOM_FLOAT << libsam.BIATOM_TYPE_SHIFT):
 			float, err := strconv.ParseFloat(operandStr, 32)
 			if err != nil {
 				panic(fmt.Errorf("bad float %s", operandStr))
 			}
 			operand := libsam.Word(math.Float32bits(float32(float)))
-			a.assemble(libsam.INSN_FLOAT, operand>>libsam.OP_SHIFT)
-			a.assemble(libsam.INSN__FLOAT, operand&libsam.OP_MASK)
-		case libsam.INSN_TRAP:
-			trap, ok := parseTrap(operandStr)
-			if !ok {
-				panic(fmt.Errorf("unknown trap %s", operandStr))
-			}
-			a.assemble(opcode, trap)
-		case libsam.INSN_PUSH:
-			operand := a.parseLiteral(operandStr)
-			a.assemble(libsam.INSN_PUSH, operand>>libsam.OP_SHIFT)
-			a.assemble(libsam.INSN__PUSH, operand&libsam.OP_MASK)
+			a.assembleBiatom(libsam.BIATOM_FLOAT<<libsam.BIATOM_TYPE_SHIFT, operand)
 		}
 	} else {
 		if len(tokens) > 1 {
@@ -157,12 +164,12 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
 		pc0 := len(a.code)
-		a.assemble(libsam.INSN_STACK, 0) // placeholder
+		a.assemble(libsam.TAG_ARRAY|(libsam.ARRAY_STACK<<libsam.ARRAY_TYPE_SHIFT), 0) // placeholder
 		a.assembleSequence(n)
 		pc := len(a.code)
 		len := pc - pc0
-		a.assemble(libsam.INSN_STACK, -libsam.Word(len))
-		a.code[pc0] |= libsam.Word(len << libsam.OP_SHIFT)
+		a.assemble(libsam.TAG_ARRAY|(libsam.ARRAY_STACK<<libsam.ARRAY_TYPE_SHIFT), -libsam.Word(len))
+		a.code[pc0] |= libsam.Word(len << libsam.OPERAND_SHIFT)
 		return nil
 	case ast.StringType:
 		tokens := strings.Fields(n.String())

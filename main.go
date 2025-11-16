@@ -57,7 +57,7 @@ var rootCmd = &cobra.Command{
 
 		if debug {
 			libsam.PrintStack()
-			fmt.Printf("sam_run returns %d\n", res)
+			fmt.Printf("sam_run returns: %s\n", libsam.ErrorMessage(res))
 		}
 
 		if libsam.TrapsWindowUsed() {

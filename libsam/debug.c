@@ -29,76 +29,76 @@ static void xasprintf(char **text, const char *fmt, ...)
     va_end(ap);
 }
 
-char *trap_name(sam_word_t trap_code) {
-    switch (trap_code) {
-        case TRAP_NOP:
+char *inst_name(sam_word_t inst_opcode) {
+    switch (inst_opcode) {
+        case INST_NOP:
             return "nop";
-        case TRAP_I2F:
+        case INST_I2F:
             return "i2f";
-        case TRAP_F2I:
+        case INST_F2I:
             return "f2i";
-        case TRAP_POP:
+        case INST_POP:
             return "pop";
-        case TRAP_GET:
+        case INST_GET:
             return "get";
-        case TRAP_SET:
+        case INST_SET:
             return "set";
-        case TRAP_IGET:
+        case INST_IGET:
             return "iget";
-        case TRAP_ISET:
+        case INST_ISET:
             return "iset";
-        case TRAP_DO:
+        case INST_DO:
             return "do";
-        case TRAP_IF:
+        case INST_IF:
             return "if";
-        case TRAP_WHILE:
+        case INST_WHILE:
             return "while";
-        case TRAP_LOOP:
+        case INST_LOOP:
             return "loop";
-        case TRAP_NOT:
+        case INST_NOT:
             return "not";
-        case TRAP_AND:
+        case INST_AND:
             return "and";
-        case TRAP_OR:
+        case INST_OR:
             return "or";
-        case TRAP_XOR:
+        case INST_XOR:
             return "xor";
-        case TRAP_LSH:
+        case INST_LSH:
             return "lsh";
-        case TRAP_RSH:
+        case INST_RSH:
             return "rsh";
-        case TRAP_ARSH:
+        case INST_ARSH:
             return "arsh";
-        case TRAP_EQ:
+        case INST_EQ:
             return "eq";
-        case TRAP_LT:
+        case INST_LT:
             return "lt";
-        case TRAP_NEG:
+        case INST_NEG:
             return "neg";
-        case TRAP_ADD:
+        case INST_ADD:
             return "add";
-        case TRAP_MUL:
+        case INST_MUL:
             return "mul";
-        case TRAP_DIV:
+        case INST_DIV:
             return "div";
-        case TRAP_REM:
+        case INST_REM:
             return "rem";
-        case TRAP_POW:
+        case INST_POW:
             return "pow";
-        case TRAP_SIN:
+        case INST_SIN:
             return "sin";
-        case TRAP_COS:
+        case INST_COS:
             return "cos";
-        case TRAP_DEG:
+        case INST_DEG:
             return "deg";
-        case TRAP_RAD:
+        case INST_RAD:
             return "rad";
-        case TRAP_HALT:
+        case INST_HALT:
             return "halt";
         default:
         {
             char *text;
-            xasprintf(&text, "trap %d", trap_code);
+            xasprintf(&text, "trap %d", inst_opcode);
             return text;
         }
     }
@@ -109,50 +109,66 @@ static char *disas(sam_uword_t *addr)
     char *text;
     sam_word_t inst;
     assert(sam_stack_peek((*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
-    switch (inst & SAM_OP_MASK) {
-    case SAM_INSN_TRAP:
-        xasprintf(&text, "%s", trap_name(inst >> SAM_OP_SHIFT));
+    switch (inst & SAM_TAG_MASK) {
+    case SAM_TAG_LINK:
+        xasprintf(&text, "link %d", inst >> SAM_LINK_SHIFT);
         break;
-    case SAM_INSN_INT:
-        xasprintf(&text, "int %d", ARSHIFT(inst, SAM_OP_SHIFT));
-        break;
-    case SAM_INSN_FLOAT:
-        {
-            sam_uword_t w2;
-            assert(sam_stack_peek((*addr)++, &w2) == SAM_ERROR_OK);
-            if ((w2 & SAM_OP_MASK) == SAM_INSN__FLOAT) {
-                sam_uword_t f = (inst & ~SAM_OP_MASK) | ((w2 >> SAM_OP_SHIFT) & SAM_OP_MASK);
-                xasprintf(&text, "float %f", *(sam_float_t *)&f);
-                break;
-            }
+    case SAM_TAG_ATOM:
+        switch ((inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {
+        case SAM_ATOM_INST:
+            xasprintf(&text, "%s", inst_name(inst >> SAM_OPERAND_SHIFT));
+            break;
+        case SAM_ATOM_INT:
+            xasprintf(&text, "int %d", ARSHIFT(inst, SAM_OPERAND_SHIFT));
+            break;
+        /* TODO: case SAM_ATOM_CHAR: */
         }
-        // FALLTHROUGH
-    case SAM_INSN__FLOAT:
-        xasprintf(&text, "*** UNPAIRED FLOAT ***");
         break;
-    case SAM_INSN_PUSH:
-        {
-            sam_uword_t w2;
-            assert(sam_stack_peek((*addr)++, &w2) == SAM_ERROR_OK);
-            if ((w2 & SAM_OP_MASK) == SAM_INSN__PUSH) {
-                xasprintf(&text, "push 0x%x", ((inst & ~SAM_OP_MASK) |
-                                               ((w2 >> SAM_OP_SHIFT) & SAM_OP_MASK)));
-                break;
+    case SAM_TAG_BIATOM:
+        sam_word_t biatom_type = (inst & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT;
+        switch ((inst & SAM_BIATOM_TAG_MASK) >> SAM_BIATOM_TAG_SHIFT) {
+        case SAM_BIATOM_FIRST:
+            {
+                sam_uword_t w2;
+                assert(sam_stack_peek((*addr)++, &w2) == SAM_ERROR_OK);
+                sam_word_t second_tag = w2 & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK);
+                sam_word_t expected_second_tag = SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT);
+                sam_word_t second_biatom_type = (w2 & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT;
+                if (second_tag != expected_second_tag || biatom_type != second_biatom_type) {
+                    xasprintf(&text, "*** UNPAIRED %s ***", biatom_type == SAM_BIATOM_WORD ? "PUSH" : "FLOAT");
+                    break;
+                }
+                sam_word_t operand = ((inst & SAM_OPERAND_MASK) | ((w2 >> SAM_OPERAND_SHIFT) & ~SAM_OPERAND_MASK));
+                switch (biatom_type) {
+                case SAM_BIATOM_WORD:
+                    xasprintf(&text, "push 0x%x", operand);
+                    break;
+                case SAM_BIATOM_FLOAT:
+                    xasprintf(&text, "float %f", *(sam_float_t *)&operand);
+                    break;
+                default:
+                    xasprintf(&text, "*** INVALID BIATOM ***");
+                    break;
+                }
             }
+            break;
+        case SAM_BIATOM_SECOND:
+            xasprintf(&text, "*** UNPAIRED %s ***", inst & biatom_type == SAM_BIATOM_WORD ? "PUSH" : "FLOAT");
+            // TODO: Add lookup, so it works for other types.
+            break;
         }
-        // FALLTHROUGH
-    case SAM_INSN__PUSH:
-        xasprintf(&text, "*** UNPAIRED PUSH ***");
         break;
-    case SAM_INSN_STACK:
-        xasprintf(&text, "*** UNEXPECTED %s ***", ARSHIFT(inst, SAM_OP_SHIFT) > 0 ? "BRA" : "KET");
-        break;
-    case SAM_INSN_LINK:
-        xasprintf(&text, "link %d", inst >> SAM_OP_SHIFT);
-        break;
+    case SAM_TAG_ARRAY:
+        switch ((inst & SAM_ARRAY_TYPE_MASK) >> SAM_ARRAY_TYPE_SHIFT) {
+        case SAM_ARRAY_STACK:
+            xasprintf(&text, "*** UNEXPECTED %s ***", ARSHIFT(inst, SAM_OPERAND_SHIFT) > 0 ? "BRA" : "KET");
+            break;
+        // TODO:
+        /* case SAM_ARRAY_RAW: */
+        /*     break; */
+        }
     default:
-        xasprintf(&text, "*** INVALID OPCODE ***");
-        break;
+        abort(); // The cases are exhaustive.
     }
     return text;
 }
@@ -171,13 +187,14 @@ static void print_stack(sam_uword_t from, sam_uword_t to)
     for (i = from; i < to; ) {
         sam_uword_t opcode;
         assert(sam_stack_peek(i, &opcode) == SAM_ERROR_OK);
-        sam_word_t operand = ARSHIFT((sam_word_t)opcode, SAM_OP_SHIFT);
-        opcode &= SAM_OP_MASK;
-        if (opcode == SAM_INSN_STACK && operand > 0) {
+        sam_word_t operand = ARSHIFT((sam_word_t)opcode, SAM_OPERAND_SHIFT);
+        sam_word_t tag = opcode & SAM_TAG_MASK;
+        opcode &= SAM_OPERAND_MASK;
+        if (tag == SAM_TAG_ARRAY && operand > 0) {
             print_disas(level, "");
             level++;
             i++;
-        } else if (opcode == SAM_INSN_STACK && operand < 0) {
+        } else if (tag == SAM_TAG_ARRAY && operand < 0) {
             level--;
             i++;
         } else {

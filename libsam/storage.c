@@ -50,9 +50,9 @@ int sam_stack_push(sam_uword_t addr, sam_uword_t size)
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
     HALT_IF_ERROR(sam_stack_peek(addr, &opcode));
-    opcode &= SAM_OP_MASK;
-    if (opcode == SAM_INSN_STACK)
-      PUSH_LINK(addr);
+    opcode &= SAM_TAG_MASK;
+    if (opcode == SAM_TAG_ARRAY)
+      PUSH_PTR(addr);
     else {
       sam_uword_t i;
       for (i = 0; i < size; i++) {
@@ -96,30 +96,24 @@ static int stack_item_bottom(sam_uword_t s0, sam_uword_t sp,sam_uword_t n, sam_u
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t p = s0 + n, inst;
     HALT_IF_ERROR(sam_stack_peek(p++, &inst));
-    sam_uword_t opcode = inst & SAM_OP_MASK;
-    sam_word_t operand = ARSHIFT(inst, SAM_OP_SHIFT);
+    sam_word_t operand = ARSHIFT(inst, SAM_OPERAND_SHIFT);
     // If instruction is a STACK with positive argument, skip to matching
     // STACK.
-    if (opcode == SAM_INSN_STACK && operand > 0) {
+    if ((inst & SAM_TAG_MASK) == SAM_TAG_ARRAY && operand > 0) {
         p += operand;
         sam_uword_t opcode2;
         HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
-        if ((opcode2 & SAM_OP_MASK) != SAM_INSN_STACK)
+        if ((opcode2 & SAM_TAG_MASK) != SAM_TAG_ARRAY)
             return SAM_ERROR_BAD_BRACKET;
-    } else if (opcode == SAM_INSN_PUSH) {
+    } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_WORD << SAM_BIATOM_TYPE_SHIFT))) {
         sam_uword_t opcode2;
         HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
-        if ((opcode2 & SAM_OP_MASK) != SAM_INSN__PUSH)
-            return SAM_ERROR_UNPAIRED_PUSH;
-    } else if (opcode == SAM_INSN__PUSH)
-        return SAM_ERROR_UNPAIRED_PUSH;
-    else if (opcode == SAM_INSN_FLOAT) {
+        CHECK_BIATOM_SECOND(opcode2, SAM_BIATOM_WORD);
+    } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
         sam_uword_t opcode2;
         HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
-        if ((opcode2 & SAM_OP_MASK) != SAM_INSN__FLOAT)
-            return SAM_ERROR_UNPAIRED_FLOAT;
-    } else if (opcode == SAM_INSN__FLOAT)
-        return SAM_ERROR_UNPAIRED_FLOAT;
+        CHECK_BIATOM_SECOND(opcode2, SAM_BIATOM_FLOAT);
+    }
     *addr = s0 + n;
     *size = p - (s0 + n);
  error:
@@ -129,7 +123,7 @@ static int stack_item_bottom(sam_uword_t s0, sam_uword_t sp,sam_uword_t n, sam_u
 static int stack_item_top(sam_uword_t s0, sam_uword_t sp, sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
 {
     sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t p = s0 + sp, last_opcode = 0;
+    sam_uword_t p = s0 + sp;
     sam_uword_t i, last_sp;
     for (i = 0; i < n; i++) {
         last_sp = p;
@@ -137,31 +131,24 @@ static int stack_item_top(sam_uword_t s0, sam_uword_t sp, sam_uword_t n, sam_uwo
             return SAM_ERROR_STACK_UNDERFLOW;
         sam_uword_t inst;
         HALT_IF_ERROR(sam_stack_peek(--p, &inst));
-        sam_uword_t opcode = inst & SAM_OP_MASK;
-        sam_word_t operand = ARSHIFT(inst, SAM_OP_SHIFT);
+        sam_word_t operand = ARSHIFT(inst, SAM_OPERAND_SHIFT);
         // If instruction is a STACK with negative argument, skip to matching
         // STACK.
-        if (opcode == SAM_INSN_STACK && operand < 0) {
+        if ((inst & SAM_TAG_MASK) == SAM_TAG_ARRAY && operand < 0) {
             p += operand;
             sam_uword_t opcode2;
             HALT_IF_ERROR(sam_stack_peek(p, &opcode2));
-            if ((opcode2 & SAM_OP_MASK) != SAM_INSN_STACK)
+            if ((opcode2 & SAM_TAG_MASK) != SAM_TAG_ARRAY)
                 return SAM_ERROR_BAD_BRACKET;
-        } else if (opcode == SAM_INSN__PUSH) {
+        } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_WORD << SAM_BIATOM_TYPE_SHIFT))) {
             sam_uword_t opcode2;
             HALT_IF_ERROR(sam_stack_peek(--p, &opcode2));
-            if ((opcode2 & SAM_OP_MASK) != SAM_INSN_PUSH)
-                return SAM_ERROR_UNPAIRED_PUSH;
-        } else if (opcode == SAM_INSN_PUSH && last_opcode != SAM_INSN__PUSH)
-            return SAM_ERROR_UNPAIRED_PUSH;
-        else if (opcode == SAM_INSN__FLOAT) {
+            CHECK_BIATOM_FIRST(opcode2, SAM_BIATOM_WORD);
+        } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
             sam_uword_t opcode2;
             HALT_IF_ERROR(sam_stack_peek(--p, &opcode2));
-            if ((opcode2 & SAM_OP_MASK) != SAM_INSN_FLOAT)
-                return SAM_ERROR_UNPAIRED_FLOAT;
-        } else if (opcode == SAM_INSN_FLOAT && last_opcode != SAM_INSN__FLOAT)
-            return SAM_ERROR_UNPAIRED_FLOAT;
-        last_opcode = opcode;
+            CHECK_BIATOM_FIRST(opcode2, SAM_BIATOM_FLOAT);
+        }
     }
     *addr = p;
     *size = last_sp - p;

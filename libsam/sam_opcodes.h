@@ -8,85 +8,114 @@
    THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
    RISK.  */
 
-// Instructions occupy a word, with the opcode in bits 0-3; the rest of word
-// is an immediate operand. The opcodes are SAM_INSN_* below.
-
-// Stack layout:
-//
-// Each stack item is either a VM instruction, or a stack.
-//
-// Stacks are stored as: STACK instruction (operand is positive number of
-// words to final STACK), a number of words, STACK (operand is negative
-// number of words to initial STACK).
-
 #include "sam.h"
 
-extern const int SAM_OP_SHIFT;
-extern const sam_word_t SAM_OP_MASK;
+extern const int SAM_TAG_SHIFT;
+extern const sam_word_t SAM_TAG_MASK;
+extern const int SAM_ATOM_TYPE_SHIFT;
+extern const int SAM_ATOM_TYPE_MASK;
+extern const int SAM_BIATOM_TAG_SHIFT;
+extern const sam_word_t SAM_BIATOM_TAG_MASK;
+extern const int SAM_BIATOM_TYPE_SHIFT;
+extern const sam_word_t SAM_BIATOM_TYPE_MASK;
+extern const int SAM_ARRAY_TYPE_SHIFT;
+extern const sam_word_t SAM_ARRAY_TYPE_MASK;
+extern const int SAM_OPERAND_SHIFT;
+extern const sam_word_t SAM_OPERAND_MASK;
+extern const int SAM_LINK_SHIFT;
+extern const sam_word_t SAM_LINK_MASK;
 
-// Opcodes
-enum SAM_INSN {
-  SAM_INSN_TRAP = 0,
-  SAM_INSN_INT,
-  SAM_INSN_FLOAT,
-  SAM_INSN__FLOAT,
-  SAM_INSN_PUSH,
-  SAM_INSN__PUSH,
-  SAM_INSN_STACK, // Used for BRA and KET.
-  SAM_INSN_LINK,
+// Every word in a stack is tagged.
+
+// Tags (bits 0-1)
+enum SAM_TAG {
+  SAM_TAG_LINK = 0,
+  SAM_TAG_ATOM,
+  SAM_TAG_BIATOM,
+  SAM_TAG_ARRAY, // Used for BRA and KET.
 };
 
-// Traps
-enum SAM_TRAP {
+// Atom types (bits 2-3)
+enum SAM_ATOM_TYPE {
+  SAM_ATOM_INST,
+  SAM_ATOM_INT,
+  SAM_ATOM_CHAR,
+};
+
+// Biatom tags (bit 2)
+enum SAM_BIATOM_TAG {
+  SAM_BIATOM_FIRST,
+  SAM_BIATOM_SECOND,
+};
+
+// Biatom types (bits 3-7)
+enum SAM_BIATOM_TYPE {
+  SAM_BIATOM_WORD,
+  SAM_BIATOM_FLOAT,
+};
+
+// Arrays are stored as: ARRAY instruction (operand is positive number of
+// words to final ARRAY), a number of words, ARRAY (operand is negative
+// number of words to initial ARRAY).
+
+// Array types (bits 2-7)
+enum SAM_ARRAY_TYPE {
+  // Each stack item is either a VM instruction, or a stack.
+  SAM_ARRAY_STACK,
+  SAM_ARRAY_RAW,
+};
+
+// Instructions (bits 4-31)
+enum SAM_INST {
   // Basic instructions.
-  TRAP_NOP,
-  TRAP_I2F,
-  TRAP_F2I,
-  TRAP_POP,
-  TRAP_GET,
-  TRAP_SET,
-  TRAP_IGET,
-  TRAP_ISET,
-  TRAP_DO,
-  TRAP_IF,
-  TRAP_WHILE,
-  TRAP_LOOP,
-  TRAP_NOT,
-  TRAP_AND,
-  TRAP_OR,
-  TRAP_XOR,
-  TRAP_LSH,
-  TRAP_RSH,
-  TRAP_ARSH,
-  TRAP_EQ,
-  TRAP_LT,
-  TRAP_NEG,
-  TRAP_ADD,
-  TRAP_MUL,
-  TRAP_DIV,
-  TRAP_REM,
-  TRAP_POW,
-  TRAP_SIN,
-  TRAP_COS,
-  TRAP_DEG,
-  TRAP_RAD,
-  TRAP_HALT,
+  INST_NOP,
+  INST_I2F,
+  INST_F2I,
+  INST_POP,
+  INST_GET,
+  INST_SET,
+  INST_IGET,
+  INST_ISET,
+  INST_DO,
+  INST_IF,
+  INST_WHILE,
+  INST_LOOP,
+  INST_NOT,
+  INST_AND,
+  INST_OR,
+  INST_XOR,
+  INST_LSH,
+  INST_RSH,
+  INST_ARSH,
+  INST_EQ,
+  INST_LT,
+  INST_NEG,
+  INST_ADD,
+  INST_MUL,
+  INST_DIV,
+  INST_REM,
+  INST_POW,
+  INST_SIN,
+  INST_COS,
+  INST_DEG,
+  INST_RAD,
+  INST_HALT,
 
   // Graphics
   // Origin is 0,0 at top left.
-  TRAP_BLACK,
-  TRAP_WHITE,
-  TRAP_DISPLAY_WIDTH,
-  TRAP_DISPLAY_HEIGHT,
-  TRAP_CLEARSCREEN,
-  TRAP_SETDOT,
-  TRAP_DRAWLINE,
-  TRAP_DRAWRECT,
-  TRAP_DRAWROUNDRECT,
-  TRAP_FILLRECT,
-  TRAP_DRAWCIRCLE,
-  TRAP_FILLCIRCLE,
-  TRAP_DRAWBITMAP,
+  INST_BLACK,
+  INST_WHITE,
+  INST_DISPLAY_WIDTH,
+  INST_DISPLAY_HEIGHT,
+  INST_CLEARSCREEN,
+  INST_SETDOT,
+  INST_DRAWLINE,
+  INST_DRAWRECT,
+  INST_DRAWROUNDRECT,
+  INST_FILLRECT,
+  INST_DRAWCIRCLE,
+  INST_FILLCIRCLE,
+  INST_DRAWBITMAP,
 
   // TODO: Sound
 

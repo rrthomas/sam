@@ -108,841 +108,841 @@ Stack: (126 word(s))
   - pop
   - int 0
   - halt
-sam_run: pc0 = 1, pc = 1, sp = 126, ir = 356
+sam_run: pc0 = 1, pc = 1, sp = 126, ir = 6a03
 Working stack: (0 word(s))
 bra
-sam_run: pc0 = 1, pc = 108, sp = 127, ir = 57
+sam_run: pc0 = 1, pc = 108, sp = 127, ir = 28
 Working stack: (1 word(s))
 - link 1
 link
-sam_run: pc0 = 1, pc = 109, sp = 128, ir = 40
+sam_run: pc0 = 1, pc = 109, sp = 128, ir = 801
 Working stack: (2 word(s))
 - link 1
 - link 10
 do
-sam_run: pc0 = 11, pc = 11, sp = 129, ir = 108
+sam_run: pc0 = 11, pc = 11, sp = 129, ir = 2101
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 trap 33
-sam_run: pc0 = 11, pc = 12, sp = 130, ir = 120
+sam_run: pc0 = 11, pc = 12, sp = 130, ir = 2401
 Working stack: (4 word(s))
 - link 1
-- int 1
-- int 110
-- int 16777215
+- link 1
+- link 110
+- int -1
 trap 36
-sam_run: pc0 = 11, pc = 13, sp = 129, ir = 2
+sam_run: pc0 = 11, pc = 13, sp = 129, ir = a
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 float
-sam_run: pc0 = 11, pc = 15, sp = 131, ir = 11
+sam_run: pc0 = 11, pc = 15, sp = 131, ir = 205
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - float 0.000000
 int
-sam_run: pc0 = 11, pc = 16, sp = 132, ir = 28
+sam_run: pc0 = 11, pc = 16, sp = 132, ir = 501
 Working stack: (6 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - float 0.000000
 - int 2
 set
-sam_run: pc0 = 11, pc = 17, sp = 129, ir = 2
+sam_run: pc0 = 11, pc = 17, sp = 129, ir = a
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 float
-sam_run: pc0 = 11, pc = 19, sp = 131, ir = 21
+sam_run: pc0 = 11, pc = 19, sp = 131, ir = 405
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - float 0.000000
 int
-sam_run: pc0 = 11, pc = 20, sp = 132, ir = 28
+sam_run: pc0 = 11, pc = 20, sp = 132, ir = 501
 Working stack: (6 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - float 0.000000
 - int 4
 set
-sam_run: pc0 = 11, pc = 21, sp = 129, ir = 2
+sam_run: pc0 = 11, pc = 21, sp = 129, ir = a
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 float
-sam_run: pc0 = 11, pc = 23, sp = 131, ir = 31
+sam_run: pc0 = 11, pc = 23, sp = 131, ir = 605
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - float 0.000000
 int
-sam_run: pc0 = 11, pc = 24, sp = 132, ir = 28
+sam_run: pc0 = 11, pc = 24, sp = 132, ir = 501
 Working stack: (6 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - float 0.000000
 - int 6
 set
-sam_run: pc0 = 11, pc = 25, sp = 129, ir = 100
+sam_run: pc0 = 11, pc = 25, sp = 129, ir = 2001
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 trap 32
-sam_run: pc0 = 11, pc = 26, sp = 130, ir = 41
+sam_run: pc0 = 11, pc = 26, sp = 130, ir = 805
 Working stack: (4 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - int 0
 int
-sam_run: pc0 = 11, pc = 27, sp = 131, ir = 28
+sam_run: pc0 = 11, pc = 27, sp = 131, ir = 501
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - int 0
 - int 8
 set
-sam_run: pc0 = 11, pc = 28, sp = 129, ir = 1
+sam_run: pc0 = 11, pc = 28, sp = 129, ir = 5
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 int
-sam_run: pc0 = 11, pc = 29, sp = 130, ir = 49
+sam_run: pc0 = 11, pc = 29, sp = 130, ir = 905
 Working stack: (4 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - int 0
 int
-sam_run: pc0 = 11, pc = 30, sp = 131, ir = 28
+sam_run: pc0 = 11, pc = 30, sp = 131, ir = 501
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 - int 0
 - int 9
 set
-sam_run: pc0 = 11, pc = 31, sp = 129, ir = ffffff5e
+sam_run: pc0 = 11, pc = 31, sp = 129, ir = ffffeb03
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 110
+- link 1
+- link 110
 ket
-sam_run: pc0 = 1, pc = 110, sp = 127, ir = 12f
+sam_run: pc0 = 1, pc = 110, sp = 127, ir = 94
 Working stack: (1 word(s))
 - link 1
 link
-sam_run: pc0 = 1, pc = 111, sp = 128, ir = 40
+sam_run: pc0 = 1, pc = 111, sp = 128, ir = 801
 Working stack: (2 word(s))
 - link 1
 - link 37
 do
-sam_run: pc0 = 38, pc = 38, sp = 129, ir = 9
+sam_run: pc0 = 38, pc = 38, sp = 129, ir = 105
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 int
-sam_run: pc0 = 38, pc = 39, sp = 130, ir = 49
+sam_run: pc0 = 38, pc = 39, sp = 130, ir = 905
 Working stack: (4 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 1
 int
-sam_run: pc0 = 38, pc = 40, sp = 131, ir = 28
+sam_run: pc0 = 38, pc = 40, sp = 131, ir = 501
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 1
 - int 9
 set
-sam_run: pc0 = 38, pc = 41, sp = 129, ir = 11
+sam_run: pc0 = 38, pc = 41, sp = 129, ir = 205
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 int
-sam_run: pc0 = 38, pc = 42, sp = 130, ir = 20
+sam_run: pc0 = 38, pc = 42, sp = 130, ir = 401
 Working stack: (4 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 2
 get
-sam_run: pc0 = 38, pc = 43, sp = 131, ir = 10
+sam_run: pc0 = 38, pc = 43, sp = 131, ir = 201
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - float 0.000000
 f2i
-sam_run: pc0 = 38, pc = 44, sp = 130, ir = 21
+sam_run: pc0 = 38, pc = 44, sp = 130, ir = 405
 Working stack: (4 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 0
 int
-sam_run: pc0 = 38, pc = 45, sp = 131, ir = 20
+sam_run: pc0 = 38, pc = 45, sp = 131, ir = 401
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 0
 - int 4
 get
-sam_run: pc0 = 38, pc = 46, sp = 132, ir = 10
+sam_run: pc0 = 38, pc = 46, sp = 132, ir = 201
 Working stack: (6 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 0
 - float 0.000000
 f2i
-sam_run: pc0 = 38, pc = 47, sp = 131, ir = 41
+sam_run: pc0 = 38, pc = 47, sp = 131, ir = 805
 Working stack: (5 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 0
 - int 0
 int
-sam_run: pc0 = 38, pc = 48, sp = 132, ir = 20
+sam_run: pc0 = 38, pc = 48, sp = 132, ir = 401
 Working stack: (6 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 0
 - int 0
 - int 8
 get
-sam_run: pc0 = 38, pc = 49, sp = 132, ir = 128
+sam_run: pc0 = 38, pc = 49, sp = 132, ir = 2501
 Working stack: (6 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 - int 0
 - int 0
 - int 0
 trap 37
-sam_run: pc0 = 38, pc = 50, sp = 129, ir = ffffff9e
+sam_run: pc0 = 38, pc = 50, sp = 129, ir = fffff303
 Working stack: (3 word(s))
 - link 1
-- int 1
-- int 112
+- link 1
+- link 112
 ket
-sam_run: pc0 = 1, pc = 112, sp = 127, ir = c2340002
+sam_run: pc0 = 1, pc = 112, sp = 127, ir = c234000a
 Working stack: (1 word(s))
 - link 1
 float
-sam_run: pc0 = 1, pc = 114, sp = 129, ir = f0
+sam_run: pc0 = 1, pc = 114, sp = 129, ir = 1e01
 Working stack: (3 word(s))
 - link 1
 - float -45.000000
 rad
-sam_run: pc0 = 1, pc = 115, sp = 129, ir = 19f
+sam_run: pc0 = 1, pc = 115, sp = 129, ir = cc
 Working stack: (3 word(s))
 - link 1
 - float -0.785398
 link
-sam_run: pc0 = 1, pc = 116, sp = 130, ir = 40
+sam_run: pc0 = 1, pc = 116, sp = 130, ir = 801
 Working stack: (4 word(s))
 - link 1
 - float -0.785398
 - link 51
 do
-sam_run: pc0 = 52, pc = 52, sp = 131, ir = 31
+sam_run: pc0 = 52, pc = 52, sp = 131, ir = 605
 Working stack: (5 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 int
-sam_run: pc0 = 52, pc = 53, sp = 132, ir = 20
+sam_run: pc0 = 52, pc = 53, sp = 132, ir = 401
 Working stack: (6 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 - int 6
 get
-sam_run: pc0 = 52, pc = 54, sp = 133, ir = ffffffe1
+sam_run: pc0 = 52, pc = 54, sp = 133, ir = fffffc05
 Working stack: (7 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 - float 0.000000
 int
-sam_run: pc0 = 52, pc = 55, sp = 134, ir = 20
+sam_run: pc0 = 52, pc = 55, sp = 134, ir = 401
 Working stack: (8 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 - float 0.000000
 - int -4
 get
-sam_run: pc0 = 52, pc = 56, sp = 135, ir = a8
+sam_run: pc0 = 52, pc = 56, sp = 135, ir = 1501
 Working stack: (9 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 - float 0.000000
 - float -0.785398
 neg
-sam_run: pc0 = 52, pc = 57, sp = 135, ir = b0
+sam_run: pc0 = 52, pc = 57, sp = 135, ir = 1601
 Working stack: (9 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 - float 0.000000
 - float 0.785398
 add
-sam_run: pc0 = 52, pc = 58, sp = 133, ir = 31
+sam_run: pc0 = 52, pc = 58, sp = 133, ir = 605
 Working stack: (7 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 - float 0.785398
 int
-sam_run: pc0 = 52, pc = 59, sp = 134, ir = 28
+sam_run: pc0 = 52, pc = 59, sp = 134, ir = 501
 Working stack: (8 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 - float 0.785398
 - int 6
 set
-sam_run: pc0 = 52, pc = 60, sp = 131, ir = ffffffbe
+sam_run: pc0 = 52, pc = 60, sp = 131, ir = fffff703
 Working stack: (5 word(s))
 - link 1
 - float -0.785398
-- int 1
-- int 117
+- link 1
+- link 117
 ket
-sam_run: pc0 = 1, pc = 117, sp = 129, ir = 18
+sam_run: pc0 = 1, pc = 117, sp = 129, ir = 301
 Working stack: (3 word(s))
 - link 1
 - float -0.785398
 pop
-sam_run: pc0 = 1, pc = 118, sp = 127, ir = 43fa0002
+sam_run: pc0 = 1, pc = 118, sp = 127, ir = 43fa000a
 Working stack: (1 word(s))
 - link 1
 float
-sam_run: pc0 = 1, pc = 120, sp = 129, ir = 1ef
+sam_run: pc0 = 1, pc = 120, sp = 129, ir = f4
 Working stack: (3 word(s))
 - link 1
 - float 500.000000
 link
-sam_run: pc0 = 1, pc = 121, sp = 130, ir = 40
+sam_run: pc0 = 1, pc = 121, sp = 130, ir = 801
 Working stack: (4 word(s))
 - link 1
 - float 500.000000
 - link 61
 do
-sam_run: pc0 = 62, pc = 62, sp = 131, ir = 31
+sam_run: pc0 = 62, pc = 62, sp = 131, ir = 605
 Working stack: (5 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 int
-sam_run: pc0 = 62, pc = 63, sp = 132, ir = 20
+sam_run: pc0 = 62, pc = 63, sp = 132, ir = 401
 Working stack: (6 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - int 6
 get
-sam_run: pc0 = 62, pc = 64, sp = 133, ir = e0
+sam_run: pc0 = 62, pc = 64, sp = 133, ir = 1c01
 Working stack: (7 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 0.785398
 cos
-sam_run: pc0 = 62, pc = 65, sp = 133, ir = ffffffe1
+sam_run: pc0 = 62, pc = 65, sp = 133, ir = fffffc05
 Working stack: (7 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 0.707107
 int
-sam_run: pc0 = 62, pc = 66, sp = 134, ir = 20
+sam_run: pc0 = 62, pc = 66, sp = 134, ir = 401
 Working stack: (8 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 0.707107
 - int -4
 get
-sam_run: pc0 = 62, pc = 67, sp = 135, ir = b8
+sam_run: pc0 = 62, pc = 67, sp = 135, ir = 1701
 Working stack: (9 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 0.707107
 - float 500.000000
 mul
-sam_run: pc0 = 62, pc = 68, sp = 133, ir = 11
+sam_run: pc0 = 62, pc = 68, sp = 133, ir = 205
 Working stack: (7 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 int
-sam_run: pc0 = 62, pc = 69, sp = 134, ir = 20
+sam_run: pc0 = 62, pc = 69, sp = 134, ir = 401
 Working stack: (8 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - int 2
 get
-sam_run: pc0 = 62, pc = 70, sp = 135, ir = b0
+sam_run: pc0 = 62, pc = 70, sp = 135, ir = 1601
 Working stack: (9 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 0.000000
 add
-sam_run: pc0 = 62, pc = 71, sp = 133, ir = 31
+sam_run: pc0 = 62, pc = 71, sp = 133, ir = 605
 Working stack: (7 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 int
-sam_run: pc0 = 62, pc = 72, sp = 134, ir = 20
+sam_run: pc0 = 62, pc = 72, sp = 134, ir = 401
 Working stack: (8 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - int 6
 get
-sam_run: pc0 = 62, pc = 73, sp = 135, ir = d8
+sam_run: pc0 = 62, pc = 73, sp = 135, ir = 1b01
 Working stack: (9 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 0.785398
 sin
-sam_run: pc0 = 62, pc = 74, sp = 135, ir = ffffffd9
+sam_run: pc0 = 62, pc = 74, sp = 135, ir = fffffb05
 Working stack: (9 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 0.707107
 int
-sam_run: pc0 = 62, pc = 75, sp = 136, ir = 20
+sam_run: pc0 = 62, pc = 75, sp = 136, ir = 401
 Working stack: (10 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 0.707107
 - int -5
 get
-sam_run: pc0 = 62, pc = 76, sp = 137, ir = b8
+sam_run: pc0 = 62, pc = 76, sp = 137, ir = 1701
 Working stack: (11 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 0.707107
 - float 500.000000
 mul
-sam_run: pc0 = 62, pc = 77, sp = 135, ir = 21
+sam_run: pc0 = 62, pc = 77, sp = 135, ir = 405
 Working stack: (9 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 int
-sam_run: pc0 = 62, pc = 78, sp = 136, ir = 20
+sam_run: pc0 = 62, pc = 78, sp = 136, ir = 401
 Working stack: (10 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 - int 4
 get
-sam_run: pc0 = 62, pc = 79, sp = 137, ir = b0
+sam_run: pc0 = 62, pc = 79, sp = 137, ir = 1601
 Working stack: (11 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 - float 0.000000
 add
-sam_run: pc0 = 62, pc = 80, sp = 135, ir = 49
+sam_run: pc0 = 62, pc = 80, sp = 135, ir = 905
 Working stack: (9 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 int
-sam_run: pc0 = 62, pc = 81, sp = 136, ir = 20
+sam_run: pc0 = 62, pc = 81, sp = 136, ir = 401
 Working stack: (10 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 - int 9
 get
-sam_run: pc0 = 62, pc = 82, sp = 136, ir = 86
+sam_run: pc0 = 62, pc = 82, sp = 136, ir = 1003
 Working stack: (10 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 - int 1
 bra
-sam_run: pc0 = 62, pc = 99, sp = 137, ir = e
+sam_run: pc0 = 62, pc = 99, sp = 137, ir = 103
 Working stack: (11 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 - int 1
 - link 82
 bra
-sam_run: pc0 = 62, pc = 101, sp = 138, ir = 48
+sam_run: pc0 = 62, pc = 101, sp = 138, ir = 901
 Working stack: (12 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 - int 1
 - link 82
 - link 99
 if
-sam_run: pc0 = 83, pc = 83, sp = 137, ir = 11
+sam_run: pc0 = 83, pc = 83, sp = 137, ir = 205
 Working stack: (11 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 int
-sam_run: pc0 = 83, pc = 84, sp = 138, ir = 20
+sam_run: pc0 = 83, pc = 84, sp = 138, ir = 401
 Working stack: (12 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 2
 get
-sam_run: pc0 = 83, pc = 85, sp = 139, ir = 10
+sam_run: pc0 = 83, pc = 85, sp = 139, ir = 201
 Working stack: (13 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - float 0.000000
 f2i
-sam_run: pc0 = 83, pc = 86, sp = 138, ir = 21
+sam_run: pc0 = 83, pc = 86, sp = 138, ir = 405
 Working stack: (12 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 int
-sam_run: pc0 = 83, pc = 87, sp = 139, ir = 20
+sam_run: pc0 = 83, pc = 87, sp = 139, ir = 401
 Working stack: (13 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 4
 get
-sam_run: pc0 = 83, pc = 88, sp = 140, ir = 10
+sam_run: pc0 = 83, pc = 88, sp = 140, ir = 201
 Working stack: (14 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - float 0.000000
 f2i
-sam_run: pc0 = 83, pc = 89, sp = 139, ir = ffffffd1
+sam_run: pc0 = 83, pc = 89, sp = 139, ir = fffffa05
 Working stack: (13 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 int
-sam_run: pc0 = 83, pc = 90, sp = 140, ir = 20
+sam_run: pc0 = 83, pc = 90, sp = 140, ir = 401
 Working stack: (14 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 - int -6
 get
-sam_run: pc0 = 83, pc = 91, sp = 141, ir = 10
+sam_run: pc0 = 83, pc = 91, sp = 141, ir = 201
 Working stack: (15 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 - float 353.553375
 f2i
-sam_run: pc0 = 83, pc = 92, sp = 140, ir = ffffffd1
+sam_run: pc0 = 83, pc = 92, sp = 140, ir = fffffa05
 Working stack: (14 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 - int 354
 int
-sam_run: pc0 = 83, pc = 93, sp = 141, ir = 20
+sam_run: pc0 = 83, pc = 93, sp = 141, ir = 401
 Working stack: (15 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 - int 354
 - int -6
 get
-sam_run: pc0 = 83, pc = 94, sp = 142, ir = 10
+sam_run: pc0 = 83, pc = 94, sp = 142, ir = 201
 Working stack: (16 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 - int 354
 - float 353.553375
 f2i
-sam_run: pc0 = 83, pc = 95, sp = 141, ir = 41
+sam_run: pc0 = 83, pc = 95, sp = 141, ir = 805
 Working stack: (15 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 - int 354
 - int 354
 int
-sam_run: pc0 = 83, pc = 96, sp = 142, ir = 20
+sam_run: pc0 = 83, pc = 96, sp = 142, ir = 401
 Working stack: (16 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 - int 354
 - int 354
 - int 8
 get
-sam_run: pc0 = 83, pc = 97, sp = 142, ir = 130
+sam_run: pc0 = 83, pc = 97, sp = 142, ir = 2601
 Working stack: (16 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 - int 0
 - int 0
 - int 354
 - int 354
 - int 0
 trap 38
-sam_run: pc0 = 83, pc = 98, sp = 137, ir = ffffff86
+sam_run: pc0 = 83, pc = 98, sp = 137, ir = fffff003
 Working stack: (11 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
-- int 62
-- int 102
+- link 62
+- link 102
 ket
-sam_run: pc0 = 62, pc = 102, sp = 135, ir = 21
+sam_run: pc0 = 62, pc = 102, sp = 135, ir = 405
 Working stack: (9 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 int
-sam_run: pc0 = 62, pc = 103, sp = 136, ir = 28
+sam_run: pc0 = 62, pc = 103, sp = 136, ir = 501
 Working stack: (10 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - float 353.553375
 - int 4
 set
-sam_run: pc0 = 62, pc = 104, sp = 133, ir = 11
+sam_run: pc0 = 62, pc = 104, sp = 133, ir = 205
 Working stack: (7 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 int
-sam_run: pc0 = 62, pc = 105, sp = 134, ir = 28
+sam_run: pc0 = 62, pc = 105, sp = 134, ir = 501
 Working stack: (8 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 - float 353.553375
 - int 2
 set
-sam_run: pc0 = 62, pc = 106, sp = 131, ir = fffffe9e
+sam_run: pc0 = 62, pc = 106, sp = 131, ir = ffffd303
 Working stack: (5 word(s))
 - link 1
 - float 500.000000
-- int 1
-- int 122
+- link 1
+- link 122
 ket
-sam_run: pc0 = 1, pc = 122, sp = 129, ir = 18
+sam_run: pc0 = 1, pc = 122, sp = 129, ir = 301
 Working stack: (3 word(s))
 - link 1
 - float 500.000000
 pop
-sam_run: pc0 = 1, pc = 123, sp = 127, ir = 1
+sam_run: pc0 = 1, pc = 123, sp = 127, ir = 5
 Working stack: (1 word(s))
 - link 1
 int
-sam_run: pc0 = 1, pc = 124, sp = 128, ir = f8
+sam_run: pc0 = 1, pc = 124, sp = 128, ir = 1f01
 Working stack: (2 word(s))
 - link 1
 - int 0
@@ -1058,6 +1058,6 @@ Stack: (129 word(s))
   - int 0
   - halt
 - link 1
-- int 1
-- int 125
-sam_run returns 1
+- link 1
+- link 125
+sam_run returns: halt with reason 0 (0x0)

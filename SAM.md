@@ -76,8 +76,7 @@ The following table lists the errors and the conditions under which they are rai
 | `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` words, or an attempt was made to access beyond the current top of the stack. |
 | `WRONG_TYPE` | A stack item is not of the type expected. |
 | `BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
-| `UNPAIRED_FLOAT` | A `FLOAT` instruction was not followed by `_FLOAT`. |
-| `UNPAIRED_PUSH` | A `PUSH` instruction was not followed by `_PUSH`. |
+| `UNPAIRED_BIATOM` | A `FLOAT` or `PUSH` instruction was not followed by `_FLOAT` or `_PUSH` respectively. |
 | `INVALID_FUNCTION` | An invalid function number was given to  `TRAP`. |
 
 
@@ -100,6 +99,7 @@ The instruction set is listed below, with the instructions grouped according to 
 | `i`    | a signed integer |
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
+| `p`    | a pointer to a stack item |
 | `l`    | a link (pointer to a stack) |
 | `s`    | a scalar (anything other than a stack) |
 | `x`    | an unspecified item |
@@ -205,9 +205,9 @@ These instructions implement loops, conditions and subroutine calls.
 > Push `PC`–1 on to the stack as an integer, and add `OP`+1 to `PC`.
 
 > `KET`  
-> `i₁` `i₂` →
+> `p₁` `p₂` →
 >
-> Pop `i₂` into `PC` and `i₁` into `PC0`.
+> Pop `p₂` into `PC` and `p₁` into `PC0`.
 
 > `LINK`  
 > → `l`
@@ -215,7 +215,7 @@ These instructions implement loops, conditions and subroutine calls.
 > Push `IR` on to the stack.
 
 > `DO`  
-> `l` → `i₁` `i₂`
+> `l` → `p₁` `p₂`
 >
 > Pop `l`. Push `PC0` then `PC` to the stack as integers, and set both `PC0` and `PC` to the address of the first word of the stack pointed to by `l`.
 

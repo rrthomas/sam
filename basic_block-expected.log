@@ -9,42 +9,42 @@ Stack: (11 word(s))
   - int -3
   - div
   - halt
-sam_run: pc0 = 1, pc = 1, sp = 11, ir = a9
+sam_run: pc0 = 1, pc = 1, sp = 11, ir = 1505
 Working stack: (0 word(s))
 int
-sam_run: pc0 = 1, pc = 2, sp = 12, ir = 11
+sam_run: pc0 = 1, pc = 2, sp = 12, ir = 205
 Working stack: (1 word(s))
 - int 21
 int
-sam_run: pc0 = 1, pc = 3, sp = 13, ir = b8
+sam_run: pc0 = 1, pc = 3, sp = 13, ir = 1701
 Working stack: (2 word(s))
 - int 21
 - int 2
 mul
-sam_run: pc0 = 1, pc = 4, sp = 12, ir = 19
+sam_run: pc0 = 1, pc = 4, sp = 12, ir = 305
 Working stack: (1 word(s))
 - int 42
 int
-sam_run: pc0 = 1, pc = 5, sp = 13, ir = a8
+sam_run: pc0 = 1, pc = 5, sp = 13, ir = 1501
 Working stack: (2 word(s))
 - int 42
 - int 3
 neg
-sam_run: pc0 = 1, pc = 6, sp = 13, ir = b0
+sam_run: pc0 = 1, pc = 6, sp = 13, ir = 1601
 Working stack: (2 word(s))
 - int 42
 - int -3
 add
-sam_run: pc0 = 1, pc = 7, sp = 12, ir = ffffffe9
+sam_run: pc0 = 1, pc = 7, sp = 12, ir = fffffd05
 Working stack: (1 word(s))
 - int 39
 int
-sam_run: pc0 = 1, pc = 8, sp = 13, ir = c0
+sam_run: pc0 = 1, pc = 8, sp = 13, ir = 1801
 Working stack: (2 word(s))
 - int 39
 - int -3
 div
-sam_run: pc0 = 1, pc = 9, sp = 12, ir = f8
+sam_run: pc0 = 1, pc = 9, sp = 12, ir = 1f01
 Working stack: (1 word(s))
 - int -13
 halt
@@ -59,6 +59,6 @@ Stack: (13 word(s))
   - int -3
   - div
   - halt
-- int 1
-- int 10
-sam_run returns -103
+- link 1
+- link 10
+sam_run returns: halt with reason -13 (0xfffffffffffffff3)
