@@ -203,11 +203,11 @@ int sam_push_stack(sam_word_t val)
 
 
 // Initialise VM state.
-int sam_init(sam_word_t *s0, sam_uword_t ssize, sam_uword_t sp)
+int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp)
 {
-    if ((sam_s0 = s0) == NULL)
+    if ((sam_s0 = m0) == NULL)
         return -1;
-    sam_ssize = ssize;
+    sam_ssize = msize;
     sam_program_len = sam_sp = sp;
 
     return 0;
