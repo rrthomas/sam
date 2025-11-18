@@ -34,8 +34,8 @@ func Run(pc0 Uword, pc Uword) Word {
 	return C.sam_run()
 }
 
-func Init(m0 []Word, msize Uword, sp Uword) Word {
-	return C.sam_init(&m0[0], msize, sp)
+func Init(m0 []Word, msize Uword, sp Uword) int {
+	return int(C.sam_init(&m0[0], msize, sp))
 }
 
 func TrapsInit() Word {

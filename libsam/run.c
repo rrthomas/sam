@@ -36,10 +36,10 @@ const int SAM_ARRAY_TYPE_SHIFT = 2;
 const sam_word_t SAM_ARRAY_TYPE_MASK = 0xfc;
 
 const int SAM_OPERAND_SHIFT = 8;
-const sam_word_t SAM_OPERAND_MASK = 0xffffff00;
+const sam_word_t SAM_OPERAND_MASK = ~0xff;
 
 const int SAM_LINK_SHIFT = 2;
-const sam_word_t SAM_LINK_MASK = 0xfffffffc;
+const sam_word_t SAM_LINK_MASK = ~0x3;
 
 // Division macros
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))

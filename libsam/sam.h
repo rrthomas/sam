@@ -3,18 +3,19 @@
 #ifndef SAM_SAM
 #define SAM_SAM
 
+#include <stddef.h>
 #include <stdint.h>
 #include <limits.h>
 
 // Basic types
-typedef int32_t sam_word_t;
-typedef uint32_t sam_uword_t;
+typedef ptrdiff_t sam_word_t;
+typedef size_t sam_uword_t;
 typedef float sam_float_t;
-#define SAM_WORD_BYTES 4
+#define SAM_WORD_BYTES (sizeof(size_t))
 #define SAM_WORD_BIT (SAM_WORD_BYTES * 8)
 #define SAM_WORD_MIN ((sam_word_t)(1UL << (SAM_WORD_BIT - 1)))
 #define SAM_INT_MIN ((sam_uword_t)SAM_WORD_MIN >> SAM_OPERAND_SHIFT)
-#define SAM_UWORD_MAX (UINT32_MAX)
+#define SAM_UWORD_MAX (SIZE_MAX)
 
 // VM registers
 #define R(reg, type)                            \

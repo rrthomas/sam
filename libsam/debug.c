@@ -59,7 +59,7 @@ char *trap_name(sam_word_t trap_opcode) {
             return "DRAWBITMAP";
         default:
             char *text;
-            xasprintf(&text, "%d", trap_opcode);
+            xasprintf(&text, "%zd", trap_opcode);
             return text;
     }
 }
@@ -146,7 +146,7 @@ static char *disas(sam_uword_t *addr)
     assert(sam_stack_peek((*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     switch (inst & SAM_TAG_MASK) {
     case SAM_TAG_LINK:
-        xasprintf(&text, "link %d", inst >> SAM_LINK_SHIFT);
+        xasprintf(&text, "link %zd", inst >> SAM_LINK_SHIFT);
         break;
     case SAM_TAG_ATOM:
         switch ((inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {
@@ -154,7 +154,7 @@ static char *disas(sam_uword_t *addr)
             xasprintf(&text, "%s", inst_name(inst >> SAM_OPERAND_SHIFT));
             break;
         case SAM_ATOM_INT:
-            xasprintf(&text, "int %d", ARSHIFT(inst, SAM_OPERAND_SHIFT));
+            xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_OPERAND_SHIFT));
             break;
         /* TODO: case SAM_ATOM_CHAR: */
         }

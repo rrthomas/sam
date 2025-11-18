@@ -34,7 +34,7 @@ All of the registers are word-sized.
 
 ### The stack
 
-The stack is represented as a series of VM instructions encoded as 4-byte words.
+The stack is represented as a series of VM instructions encoded as 4- or 8-byte words.
 
 The stack is addressed with signed integers.
 

@@ -140,7 +140,7 @@ sam_word_t sam_trap(sam_uword_t function)
         PUSH_INT(0);
         break;
     case INST_WHITE:
-        PUSH_INT(0xffffff);
+        PUSH_INT(-1);
         break;
     case INST_DISPLAY_WIDTH:
         PUSH_INT(SAM_DISPLAY_WIDTH);
