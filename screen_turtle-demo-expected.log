@@ -7,8 +7,8 @@ Stack: (126 word(s))
     - int 0
     - int 0
     - 
-      - trap 33
-      - trap 36
+      - trap WHITE
+      - trap CLEARSCREEN
       - float 0.000000
       - int 2
       - set
@@ -18,7 +18,7 @@ Stack: (126 word(s))
       - float 0.000000
       - int 6
       - set
-      - trap 32
+      - trap BLACK
       - int 8
       - set
       - int 0
@@ -40,7 +40,7 @@ Stack: (126 word(s))
       - f2i
       - int 8
       - get
-      - trap 37
+      - trap SETDOT
     - 
       - int 6
       - get
@@ -86,7 +86,7 @@ Stack: (126 word(s))
         - f2i
         - int 8
         - get
-        - trap 38
+        - trap DRAWLINE
       - 
       - if
       - int 4
@@ -125,14 +125,14 @@ Working stack: (3 word(s))
 - link 1
 - link 1
 - link 110
-trap 33
+trap WHITE
 sam_run: pc0 = 11, pc = 12, sp = 130, ir = 2401
 Working stack: (4 word(s))
 - link 1
 - link 1
 - link 110
 - int -1
-trap 36
+trap CLEARSCREEN
 sam_run: pc0 = 11, pc = 13, sp = 129, ir = a
 Working stack: (3 word(s))
 - link 1
@@ -201,7 +201,7 @@ Working stack: (3 word(s))
 - link 1
 - link 1
 - link 110
-trap 32
+trap BLACK
 sam_run: pc0 = 11, pc = 26, sp = 130, ir = 805
 Working stack: (4 word(s))
 - link 1
@@ -342,7 +342,7 @@ Working stack: (6 word(s))
 - int 0
 - int 0
 - int 0
-trap 37
+trap SETDOT
 sam_run: pc0 = 38, pc = 50, sp = 129, ir = fffff303
 Working stack: (3 word(s))
 - link 1
@@ -878,7 +878,7 @@ Working stack: (16 word(s))
 - int 354
 - int 354
 - int 0
-trap 38
+trap DRAWLINE
 sam_run: pc0 = 83, pc = 98, sp = 137, ir = fffff003
 Working stack: (11 word(s))
 - link 1
@@ -956,8 +956,8 @@ Stack: (129 word(s))
     - int 0
     - int 1
     - 
-      - trap 33
-      - trap 36
+      - trap WHITE
+      - trap CLEARSCREEN
       - float 0.000000
       - int 2
       - set
@@ -967,7 +967,7 @@ Stack: (129 word(s))
       - float 0.000000
       - int 6
       - set
-      - trap 32
+      - trap BLACK
       - int 8
       - set
       - int 0
@@ -989,7 +989,7 @@ Stack: (129 word(s))
       - f2i
       - int 8
       - get
-      - trap 37
+      - trap SETDOT
     - 
       - int 6
       - get
@@ -1035,7 +1035,7 @@ Stack: (129 word(s))
         - f2i
         - int 8
         - get
-        - trap 38
+        - trap DRAWLINE
       - 
       - if
       - int 4

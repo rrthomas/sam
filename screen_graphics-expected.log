@@ -2,51 +2,51 @@ Stack: (51 word(s))
 - 
   - int 50
   - int 100
-  - trap 32
-  - trap 37
+  - trap BLACK
+  - trap SETDOT
   - int 20
   - int 100
-  - trap 32
-  - trap 37
+  - trap BLACK
+  - trap SETDOT
   - int 20
   - int 50
-  - trap 32
-  - trap 37
+  - trap BLACK
+  - trap SETDOT
   - int 10
   - int 10
   - int 110
   - int 50
-  - trap 32
-  - trap 38
+  - trap BLACK
+  - trap DRAWLINE
   - int 40
   - int 120
   - int 60
   - int 80
-  - trap 32
-  - trap 39
+  - trap BLACK
+  - trap DRAWRECT
   - int 60
   - int 140
   - int 20
   - int 40
-  - trap 32
-  - trap 41
+  - trap BLACK
+  - trap FILLRECT
   - int 110
   - int 120
   - int 60
   - int 80
   - int 30
-  - trap 32
-  - trap 40
+  - trap BLACK
+  - trap DRAWROUNDRECT
   - int 210
   - int 160
   - int 40
-  - trap 32
-  - trap 42
+  - trap BLACK
+  - trap DRAWCIRCLE
   - int 290
   - int 160
   - int 40
-  - trap 32
-  - trap 43
+  - trap BLACK
+  - trap FILLCIRCLE
   - int 0
   - halt
 sam_run: pc0 = 1, pc = 1, sp = 51, ir = 3205
@@ -60,13 +60,13 @@ sam_run: pc0 = 1, pc = 3, sp = 53, ir = 2001
 Working stack: (2 word(s))
 - int 50
 - int 100
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 4, sp = 54, ir = 2501
 Working stack: (3 word(s))
 - int 50
 - int 100
 - int 0
-trap 37
+trap SETDOT
 sam_run: pc0 = 1, pc = 5, sp = 51, ir = 1405
 Working stack: (0 word(s))
 int
@@ -78,13 +78,13 @@ sam_run: pc0 = 1, pc = 7, sp = 53, ir = 2001
 Working stack: (2 word(s))
 - int 20
 - int 100
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 8, sp = 54, ir = 2501
 Working stack: (3 word(s))
 - int 20
 - int 100
 - int 0
-trap 37
+trap SETDOT
 sam_run: pc0 = 1, pc = 9, sp = 51, ir = 1405
 Working stack: (0 word(s))
 int
@@ -96,13 +96,13 @@ sam_run: pc0 = 1, pc = 11, sp = 53, ir = 2001
 Working stack: (2 word(s))
 - int 20
 - int 50
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 12, sp = 54, ir = 2501
 Working stack: (3 word(s))
 - int 20
 - int 50
 - int 0
-trap 37
+trap SETDOT
 sam_run: pc0 = 1, pc = 13, sp = 51, ir = a05
 Working stack: (0 word(s))
 int
@@ -127,7 +127,7 @@ Working stack: (4 word(s))
 - int 10
 - int 110
 - int 50
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 18, sp = 56, ir = 2601
 Working stack: (5 word(s))
 - int 10
@@ -135,7 +135,7 @@ Working stack: (5 word(s))
 - int 110
 - int 50
 - int 0
-trap 38
+trap DRAWLINE
 sam_run: pc0 = 1, pc = 19, sp = 51, ir = 2805
 Working stack: (0 word(s))
 int
@@ -160,7 +160,7 @@ Working stack: (4 word(s))
 - int 120
 - int 60
 - int 80
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 24, sp = 56, ir = 2701
 Working stack: (5 word(s))
 - int 40
@@ -168,7 +168,7 @@ Working stack: (5 word(s))
 - int 60
 - int 80
 - int 0
-trap 39
+trap DRAWRECT
 sam_run: pc0 = 1, pc = 25, sp = 51, ir = 3c05
 Working stack: (0 word(s))
 int
@@ -193,7 +193,7 @@ Working stack: (4 word(s))
 - int 140
 - int 20
 - int 40
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 30, sp = 56, ir = 2901
 Working stack: (5 word(s))
 - int 60
@@ -201,7 +201,7 @@ Working stack: (5 word(s))
 - int 20
 - int 40
 - int 0
-trap 41
+trap FILLRECT
 sam_run: pc0 = 1, pc = 31, sp = 51, ir = 6e05
 Working stack: (0 word(s))
 int
@@ -234,7 +234,7 @@ Working stack: (5 word(s))
 - int 60
 - int 80
 - int 30
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 37, sp = 57, ir = 2801
 Working stack: (6 word(s))
 - int 110
@@ -243,7 +243,7 @@ Working stack: (6 word(s))
 - int 80
 - int 30
 - int 0
-trap 40
+trap DRAWROUNDRECT
 sam_run: pc0 = 1, pc = 38, sp = 51, ir = d205
 Working stack: (0 word(s))
 int
@@ -261,14 +261,14 @@ Working stack: (3 word(s))
 - int 210
 - int 160
 - int 40
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 42, sp = 55, ir = 2a01
 Working stack: (4 word(s))
 - int 210
 - int 160
 - int 40
 - int 0
-trap 42
+trap DRAWCIRCLE
 sam_run: pc0 = 1, pc = 43, sp = 51, ir = 12205
 Working stack: (0 word(s))
 int
@@ -286,14 +286,14 @@ Working stack: (3 word(s))
 - int 290
 - int 160
 - int 40
-trap 32
+trap BLACK
 sam_run: pc0 = 1, pc = 47, sp = 55, ir = 2b01
 Working stack: (4 word(s))
 - int 290
 - int 160
 - int 40
 - int 0
-trap 43
+trap FILLCIRCLE
 sam_run: pc0 = 1, pc = 48, sp = 51, ir = 5
 Working stack: (0 word(s))
 int
@@ -305,51 +305,51 @@ Stack: (53 word(s))
 - 
   - int 50
   - int 100
-  - trap 32
-  - trap 37
+  - trap BLACK
+  - trap SETDOT
   - int 20
   - int 100
-  - trap 32
-  - trap 37
+  - trap BLACK
+  - trap SETDOT
   - int 20
   - int 50
-  - trap 32
-  - trap 37
+  - trap BLACK
+  - trap SETDOT
   - int 10
   - int 10
   - int 110
   - int 50
-  - trap 32
-  - trap 38
+  - trap BLACK
+  - trap DRAWLINE
   - int 40
   - int 120
   - int 60
   - int 80
-  - trap 32
-  - trap 39
+  - trap BLACK
+  - trap DRAWRECT
   - int 60
   - int 140
   - int 20
   - int 40
-  - trap 32
-  - trap 41
+  - trap BLACK
+  - trap FILLRECT
   - int 110
   - int 120
   - int 60
   - int 80
   - int 30
-  - trap 32
-  - trap 40
+  - trap BLACK
+  - trap DRAWROUNDRECT
   - int 210
   - int 160
   - int 40
-  - trap 32
-  - trap 42
+  - trap BLACK
+  - trap DRAWCIRCLE
   - int 290
   - int 160
   - int 40
-  - trap 32
-  - trap 43
+  - trap BLACK
+  - trap FILLCIRCLE
   - int 0
   - halt
 - link 1

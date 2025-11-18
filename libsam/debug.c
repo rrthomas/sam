@@ -29,6 +29,41 @@ static void xasprintf(char **text, const char *fmt, ...)
     va_end(ap);
 }
 
+char *trap_name(sam_word_t trap_opcode) {
+    switch (trap_opcode) {
+        case INST_BLACK:
+            return "BLACK";
+        case INST_WHITE:
+            return "WHITE";
+        case INST_DISPLAY_WIDTH:
+            return "DISPLAY_WIDTH";
+        case INST_DISPLAY_HEIGHT:
+            return "DISPLAY_HEIGHT";
+        case INST_CLEARSCREEN:
+            return "CLEARSCREEN";
+        case INST_SETDOT:
+            return "SETDOT";
+        case INST_DRAWLINE:
+            return "DRAWLINE";
+        case INST_DRAWRECT:
+            return "DRAWRECT";
+        case INST_DRAWROUNDRECT:
+            return "DRAWROUNDRECT";
+        case INST_FILLRECT:
+            return "FILLRECT";
+        case INST_DRAWCIRCLE:
+            return "DRAWCIRCLE";
+        case INST_FILLCIRCLE:
+            return "FILLCIRCLE";
+        case INST_DRAWBITMAP:
+            return "DRAWBITMAP";
+        default:
+            char *text;
+            xasprintf(&text, "%d", trap_opcode);
+            return text;
+    }
+}
+
 char *inst_name(sam_word_t inst_opcode) {
     switch (inst_opcode) {
         case INST_NOP:
@@ -98,7 +133,7 @@ char *inst_name(sam_word_t inst_opcode) {
         default:
         {
             char *text;
-            xasprintf(&text, "trap %d", inst_opcode);
+            xasprintf(&text, "trap %s", trap_name(inst_opcode));
             return text;
         }
     }
