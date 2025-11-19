@@ -81,7 +81,7 @@ Working stack: (6 word(s))
 - int -4
 - link 1
 iget
-sam_run: pc0 = 13, pc = 17, sp = 46, ir = 4000000a
+sam_run: pc0 = 13, pc = 17, sp = 46, ir = 40000002
 Working stack: (6 word(s))
 - link 1
 - int -4
@@ -249,7 +249,7 @@ Working stack: (6 word(s))
 - int -3
 - link 1
 iget
-sam_run: pc0 = 13, pc = 17, sp = 46, ir = 4000000a
+sam_run: pc0 = 13, pc = 17, sp = 46, ir = 40000002
 Working stack: (6 word(s))
 - link 1
 - int -3
@@ -417,7 +417,7 @@ Working stack: (6 word(s))
 - int -2
 - link 1
 iget
-sam_run: pc0 = 13, pc = 17, sp = 46, ir = 4000000a
+sam_run: pc0 = 13, pc = 17, sp = 46, ir = 40000002
 Working stack: (6 word(s))
 - link 1
 - int -2
@@ -585,7 +585,7 @@ Working stack: (6 word(s))
 - int -1
 - link 1
 iget
-sam_run: pc0 = 13, pc = 17, sp = 46, ir = 4000000a
+sam_run: pc0 = 13, pc = 17, sp = 46, ir = 40000002
 Working stack: (6 word(s))
 - link 1
 - int -1

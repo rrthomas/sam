@@ -76,7 +76,7 @@ The following table lists the errors and the conditions under which they are rai
 | `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` words, or an attempt was made to access beyond the current top of the stack. |
 | `WRONG_TYPE` | A stack item is not of the type expected. |
 | `BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
-| `UNPAIRED_BIATOM` | A `FLOAT` or `PUSH` instruction was not followed by `_FLOAT` or `_PUSH` respectively. |
+| `UNPAIRED_BIATOM` | A `FLOAT` instruction was not followed by `_FLOAT`. |
 | `INVALID_FUNCTION` | An invalid function number was given to  `TRAP`. |
 
 
@@ -159,15 +159,6 @@ Numeric conversions:
 ### Stack manipulation
 
 These instructions manage the stack.
-
-> `PUSH`  
-> → `x`
->
-> Push the word encoded in the `PUSH` and following `_PUSH` instruction on to the stack, or raise the error `UNPAIRED_PUSH` if the following instruction is not a `_PUSH` instruction. Increment `PC`.
-
-> `_PUSH`
->
-> Raise the error `UNPAIRED_PUSH`. This instruction should never be executed.
 
 > `POP`  
 > `x` →

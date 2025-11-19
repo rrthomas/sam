@@ -50,7 +50,6 @@ enum SAM_BIATOM_TAG {
 
 // Biatom types (bits 3-7)
 enum SAM_BIATOM_TYPE {
-  SAM_BIATOM_WORD,
   SAM_BIATOM_FLOAT,
 };
 

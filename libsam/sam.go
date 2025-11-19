@@ -109,7 +109,6 @@ const (
 )
 
 const (
-	BIATOM_WORD  = C.SAM_BIATOM_WORD
 	BIATOM_FLOAT = C.SAM_BIATOM_FLOAT
 )
 
@@ -153,7 +152,6 @@ var Instructions = map[string]int{
 	"char": C.SAM_TAG_ATOM | (C.SAM_ATOM_CHAR << C.SAM_ATOM_TYPE_SHIFT),
 
 	// Biatom instructions
-	"word":  C.SAM_TAG_BIATOM | (C.SAM_BIATOM_WORD << C.SAM_BIATOM_TYPE_SHIFT),
 	"float": C.SAM_TAG_BIATOM | (C.SAM_BIATOM_FLOAT << C.SAM_BIATOM_TYPE_SHIFT),
 
 	// Niladic instructions

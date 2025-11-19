@@ -476,13 +476,6 @@ sam_word_t sam_run(void)
                     HALT(SAM_ERROR_UNPAIRED_BIATOM);
 
                 switch (biatom_type >> SAM_BIATOM_TYPE_SHIFT) {
-                case SAM_BIATOM_WORD:
-#ifdef SAM_DEBUG
-                    debug("word\n");
-#endif
-                    PUSH_WORD((ir & SAM_OPERAND_MASK) |
-                              ((operand2 >> SAM_OPERAND_SHIFT) & ~SAM_OPERAND_MASK));
-                    break;
                 case SAM_BIATOM_FLOAT:
 #ifdef SAM_DEBUG
                     debug("float\n");

@@ -105,10 +105,6 @@ static int stack_item_bottom(sam_uword_t s0, sam_uword_t sp,sam_uword_t n, sam_u
         HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
         if ((opcode2 & SAM_TAG_MASK) != SAM_TAG_ARRAY)
             return SAM_ERROR_BAD_BRACKET;
-    } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_WORD << SAM_BIATOM_TYPE_SHIFT))) {
-        sam_uword_t opcode2;
-        HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
-        CHECK_BIATOM_SECOND(opcode2, SAM_BIATOM_WORD);
     } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
         sam_uword_t opcode2;
         HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
@@ -140,10 +136,6 @@ static int stack_item_top(sam_uword_t s0, sam_uword_t sp, sam_uword_t n, sam_uwo
             HALT_IF_ERROR(sam_stack_peek(p, &opcode2));
             if ((opcode2 & SAM_TAG_MASK) != SAM_TAG_ARRAY)
                 return SAM_ERROR_BAD_BRACKET;
-        } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_WORD << SAM_BIATOM_TYPE_SHIFT))) {
-            sam_uword_t opcode2;
-            HALT_IF_ERROR(sam_stack_peek(--p, &opcode2));
-            CHECK_BIATOM_FIRST(opcode2, SAM_BIATOM_WORD);
         } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
             sam_uword_t opcode2;
             HALT_IF_ERROR(sam_stack_peek(--p, &opcode2));

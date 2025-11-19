@@ -28,7 +28,7 @@ Stack: (35 word(s))
   - do
   - f2i
   - halt
-sam_run: pc0 = 1, pc = 1, sp = 35, ir = 40a0000a
+sam_run: pc0 = 1, pc = 1, sp = 35, ir = 40a00002
 Working stack: (0 word(s))
 float
 sam_run: pc0 = 1, pc = 3, sp = 37, ir = 1b03
@@ -40,7 +40,7 @@ Working stack: (3 word(s))
 - float 5.000000
 - link 3
 do
-sam_run: pc0 = 4, pc = 4, sp = 39, ir = 3f80000a
+sam_run: pc0 = 4, pc = 4, sp = 39, ir = 3f800002
 Working stack: (4 word(s))
 - float 5.000000
 - link 1
@@ -191,7 +191,7 @@ Working stack: (9 word(s))
 - link 28
 - int -6
 get
-sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf80000a
+sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 5.000000
 - link 1
@@ -372,7 +372,7 @@ Working stack: (9 word(s))
 - link 28
 - int -6
 get
-sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf80000a
+sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 4.000000
 - link 1
@@ -553,7 +553,7 @@ Working stack: (9 word(s))
 - link 28
 - int -6
 get
-sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf80000a
+sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 3.000000
 - link 1
@@ -734,7 +734,7 @@ Working stack: (9 word(s))
 - link 28
 - int -6
 get
-sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf80000a
+sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 2.000000
 - link 1
@@ -915,7 +915,7 @@ Working stack: (9 word(s))
 - link 28
 - int -6
 get
-sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf80000a
+sam_run: pc0 = 7, pc = 20, sp = 45, ir = bf800002
 Working stack: (10 word(s))
 - float 1.000000
 - link 1

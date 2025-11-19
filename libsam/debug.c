@@ -170,14 +170,11 @@ static char *disas(sam_uword_t *addr)
                 sam_word_t expected_second_tag = SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT);
                 sam_word_t second_biatom_type = (w2 & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT;
                 if (second_tag != expected_second_tag || biatom_type != second_biatom_type) {
-                    xasprintf(&text, "*** UNPAIRED %s ***", biatom_type == SAM_BIATOM_WORD ? "PUSH" : "FLOAT");
+                    xasprintf(&text, "*** UNPAIRED %s ***", biatom_type == SAM_BIATOM_FLOAT ? "FLOAT" : "BIATOM");
                     break;
                 }
                 sam_word_t operand = ((inst & SAM_OPERAND_MASK) | ((w2 >> SAM_OPERAND_SHIFT) & ~SAM_OPERAND_MASK));
                 switch (biatom_type) {
-                case SAM_BIATOM_WORD:
-                    xasprintf(&text, "push 0x%x", operand);
-                    break;
                 case SAM_BIATOM_FLOAT:
                     xasprintf(&text, "float %f", *(sam_float_t *)&operand);
                     break;
@@ -188,7 +185,7 @@ static char *disas(sam_uword_t *addr)
             }
             break;
         case SAM_BIATOM_SECOND:
-            xasprintf(&text, "*** UNPAIRED %s ***", inst & biatom_type == SAM_BIATOM_WORD ? "PUSH" : "FLOAT");
+            xasprintf(&text, "*** UNPAIRED %s ***", inst & biatom_type == SAM_BIATOM_FLOAT ? "FLOAT" : "BIATOM");
             // TODO: Add lookup, so it works for other types.
             break;
         }

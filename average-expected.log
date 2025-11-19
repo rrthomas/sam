@@ -36,7 +36,7 @@ Stack: (43 word(s))
 sam_run: pc0 = 1, pc = 1, sp = 43, ir = 903
 Working stack: (0 word(s))
 bra
-sam_run: pc0 = 1, pc = 11, sp = 44, ir = a
+sam_run: pc0 = 1, pc = 11, sp = 44, ir = 2
 Working stack: (1 word(s))
 - link 1
 float
@@ -764,7 +764,7 @@ Working stack: (4 word(s))
 - float 37.000000
 - int 0
 pop
-sam_run: pc0 = 1, pc = 37, sp = 46, ir = 4080000a
+sam_run: pc0 = 1, pc = 37, sp = 46, ir = 40800002
 Working stack: (3 word(s))
 - link 1
 - float 37.000000

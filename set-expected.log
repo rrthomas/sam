@@ -44,10 +44,10 @@ sam_run: pc0 = 1, pc = 5, sp = 29, ir = 301
 Working stack: (1 word(s))
 - int 2
 pop
-sam_run: pc0 = 1, pc = 6, sp = 28, ir = 3f80000a
+sam_run: pc0 = 1, pc = 6, sp = 28, ir = 3f800002
 Working stack: (0 word(s))
 float
-sam_run: pc0 = 1, pc = 8, sp = 30, ir = 4000000a
+sam_run: pc0 = 1, pc = 8, sp = 30, ir = 40000002
 Working stack: (2 word(s))
 - float 1.000000
 float
@@ -69,7 +69,7 @@ pop
 sam_run: pc0 = 1, pc = 13, sp = 28, ir = 105
 Working stack: (0 word(s))
 int
-sam_run: pc0 = 1, pc = 14, sp = 29, ir = 4000000a
+sam_run: pc0 = 1, pc = 14, sp = 29, ir = 40000002
 Working stack: (1 word(s))
 - int 1
 float
@@ -88,7 +88,7 @@ sam_run: pc0 = 1, pc = 18, sp = 30, ir = 301
 Working stack: (2 word(s))
 - float 2.000000
 pop
-sam_run: pc0 = 1, pc = 19, sp = 28, ir = 3f80000a
+sam_run: pc0 = 1, pc = 19, sp = 28, ir = 3f800002
 Working stack: (0 word(s))
 float
 sam_run: pc0 = 1, pc = 21, sp = 30, ir = 205

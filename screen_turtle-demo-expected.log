@@ -133,7 +133,7 @@ Working stack: (4 word(s))
 - link 110
 - int -1
 trap CLEARSCREEN
-sam_run: pc0 = 11, pc = 13, sp = 129, ir = a
+sam_run: pc0 = 11, pc = 13, sp = 129, ir = 2
 Working stack: (3 word(s))
 - link 1
 - link 1
@@ -154,7 +154,7 @@ Working stack: (6 word(s))
 - float 0.000000
 - int 2
 set
-sam_run: pc0 = 11, pc = 17, sp = 129, ir = a
+sam_run: pc0 = 11, pc = 17, sp = 129, ir = 2
 Working stack: (3 word(s))
 - link 1
 - link 1
@@ -175,7 +175,7 @@ Working stack: (6 word(s))
 - float 0.000000
 - int 4
 set
-sam_run: pc0 = 11, pc = 21, sp = 129, ir = a
+sam_run: pc0 = 11, pc = 21, sp = 129, ir = 2
 Working stack: (3 word(s))
 - link 1
 - link 1
@@ -349,7 +349,7 @@ Working stack: (3 word(s))
 - link 1
 - link 112
 ket
-sam_run: pc0 = 1, pc = 112, sp = 127, ir = c234000a
+sam_run: pc0 = 1, pc = 112, sp = 127, ir = c2340002
 Working stack: (1 word(s))
 - link 1
 float
@@ -448,7 +448,7 @@ Working stack: (3 word(s))
 - link 1
 - float -0.785398
 pop
-sam_run: pc0 = 1, pc = 118, sp = 127, ir = 43fa000a
+sam_run: pc0 = 1, pc = 118, sp = 127, ir = 43fa0002
 Working stack: (1 word(s))
 - link 1
 float

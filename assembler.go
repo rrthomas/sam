@@ -130,9 +130,6 @@ func (a *assembler) assembleInstruction(tokens []string) {
 				panic(fmt.Errorf("unknown trap %s", operandStr))
 			}
 			a.assemble(opcode|trap, 0)
-		case libsam.TAG_BIATOM | (libsam.BIATOM_WORD << libsam.BIATOM_TYPE_SHIFT):
-			operand := a.parseLiteral(operandStr)
-			a.assembleBiatom(libsam.BIATOM_WORD, operand)
 		case libsam.TAG_BIATOM | (libsam.BIATOM_FLOAT << libsam.BIATOM_TYPE_SHIFT):
 			float, err := strconv.ParseFloat(operandStr, 32)
 			if err != nil {
