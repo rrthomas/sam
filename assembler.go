@@ -59,8 +59,7 @@ func readProg(progFile string) ast.Node {
 
 // Assemble a program
 type assembler struct {
-	code   []libsam.Word
-	labels map[string]int
+	labels map[string]libsam.Uword
 }
 
 func (a *assembler) assemble(opcode libsam.Word, operand libsam.Word) {
@@ -68,7 +67,7 @@ func (a *assembler) assemble(opcode libsam.Word, operand libsam.Word) {
 	if opcode == libsam.TAG_LINK {
 		shift = libsam.LINK_SHIFT
 	}
-	a.code = append(a.code, opcode|(operand<<shift))
+	libsam.PushStack(opcode | (operand << shift))
 }
 
 func (a *assembler) assembleBiatom(opcode libsam.Word, operand libsam.Word) {
@@ -160,13 +159,17 @@ func (a *assembler) assembleSequence(n ast.Node) {
 func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
-		pc0 := len(a.code)
+		pc0 := libsam.Sp()
 		a.assemble(libsam.TAG_ARRAY|(libsam.ARRAY_STACK<<libsam.ARRAY_TYPE_SHIFT), 0) // placeholder
 		a.assembleSequence(n)
-		pc := len(a.code)
+		pc := libsam.Sp()
 		len := pc - pc0
 		a.assemble(libsam.TAG_ARRAY|(libsam.ARRAY_STACK<<libsam.ARRAY_TYPE_SHIFT), -libsam.Word(len))
-		a.code[pc0] |= libsam.Word(len << libsam.OPERAND_SHIFT)
+		err, bra := libsam.StackPeek(pc0)
+		if err != libsam.ERROR_OK {
+			panic(errors.New("error assembling instruction to stack"))
+		}
+		libsam.StackPoke(pc0, bra|libsam.Uword(len<<libsam.OPERAND_SHIFT))
 		return nil
 	case ast.StringType:
 		tokens := strings.Fields(n.String())
@@ -187,7 +190,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			panic(fmt.Errorf("bad label: string expected"))
 		}
 		label := keyNode.String()
-		a.labels[label] = len(a.code)
+		a.labels[label] = libsam.Sp()
 		subNode := mapNode.Value
 		ast.Walk(a, subNode)
 		return nil
@@ -211,9 +214,8 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	}
 }
 
-func Assemble(progFile string) []libsam.Word {
+func Assemble(progFile string) {
 	prog := readProg(progFile)
-	a := assembler{labels: map[string]int{}}
+	a := assembler{labels: map[string]libsam.Uword{}}
 	ast.Walk(&a, prog)
-	return a.code
 }

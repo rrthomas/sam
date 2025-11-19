@@ -213,12 +213,9 @@ error:
 }
 
 // Initialise VM state.
-int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp)
+int sam_init()
 {
-    if ((sam_s0 = m0) == NULL)
-        return -1;
-    sam_ssize = msize;
-    sam_program_len = sam_sp = sp;
+    sam_program_len = sam_sp;
 
     return 0;
 }

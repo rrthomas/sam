@@ -52,7 +52,7 @@ int sam_push(sam_word_t *ptr, sam_uword_t size);
 
 // Miscellaneous routines
 sam_word_t sam_run(void);
-int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp);
+int sam_init(void);
 
 // Portable left shift (the behaviour of << with overflow (including on any
 // negative number) is undefined)

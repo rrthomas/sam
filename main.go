@@ -42,12 +42,12 @@ var rootCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		libsam.SetDebug(debug)
 		prog_file := args[0]
-		program := Assemble(prog_file)
+		Assemble(prog_file)
 		err := libsam.TrapsInit()
 		if err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
-		res := libsam.Init(program, STACK_WORDS, libsam.Uword(len(program)))
+		res := libsam.Init()
 		if res != libsam.ERROR_OK {
 			libsam.TrapsFinish()
 			os.Exit(int(res))

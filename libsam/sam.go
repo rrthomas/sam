@@ -34,8 +34,8 @@ func Run(pc0 Uword, pc Uword) Word {
 	return C.sam_run()
 }
 
-func Init(m0 []Word, msize Uword, sp Uword) int {
-	return int(C.sam_init(&m0[0], msize, sp))
+func Init() int {
+	return int(C.sam_init())
 }
 
 func TrapsInit() Word {
@@ -62,10 +62,22 @@ func SetDebug(flag bool) {
 	}
 }
 
+func Sp() Uword {
+	return C.sam_sp
+}
+
 func StackPeek(addr Uword) (int, Uword) {
 	var val Uword
 	res := C.sam_stack_peek(addr, &val)
 	return int(res), val
+}
+
+func StackPoke(addr Uword, val Uword) int {
+	return int(C.sam_stack_poke(addr, val))
+}
+
+func PushStack(val Word) int {
+	return int(C.sam_push_stack(val))
 }
 
 func PrintStack() {
