@@ -118,7 +118,7 @@ sam_word_t sam_run(void)
                         POP_INT(pos);
                         sam_uword_t addr, size;
                         HALT_IF_ERROR(sam_stack_item(0, sam_sp, pos, &addr, &size));
-                        HALT_IF_ERROR(sam_stack_push(addr, size));
+                        HALT_IF_ERROR(sam_stack_get(addr, size));
                     }
                     break;
                 case INST_SET:
@@ -140,7 +140,7 @@ sam_word_t sam_run(void)
                         POP_INT(pos);
                         sam_uword_t addr, size;
                         HALT_IF_ERROR(sam_stack_item(stack_addr, stack_size, pos, &addr, &size));
-                        HALT_IF_ERROR(sam_stack_push(addr, size));
+                        HALT_IF_ERROR(sam_stack_get(addr, size));
                     }
                     break;
                 case INST_ISET:
@@ -242,13 +242,13 @@ sam_word_t sam_run(void)
                 case INST_EQ:
                     {
                         sam_word_t x;
-                        POP_ITEM(&x);
+                        POP_WORD(&x);
                         switch (x & SAM_TAG_MASK) {
                         case SAM_TAG_LINK:
                         case SAM_TAG_ATOM:
                             {
                                 sam_word_t y;
-                                POP_ITEM(&y);
+                                POP_WORD(&y);
                                 PUSH_INT(x == y);
                             }
                             break;
@@ -256,8 +256,8 @@ sam_word_t sam_run(void)
                             {
                                 sam_word_t x2, y, y2;
                                 POP_BIATOM(x, x2);
-                                POP_ITEM(&y);
-                                POP_ITEM(&y2);
+                                POP_WORD(&y);
+                                POP_WORD(&y2);
                                 PUSH_INT(x == y && x2 == y2);
                             }
                             break;

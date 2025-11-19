@@ -39,7 +39,7 @@
     if ((var & (mask)) != (insn))               \
         HALT(SAM_ERROR_WRONG_TYPE);
 
-#define POP_ITEM(ptr)                           \
+#define POP_WORD(ptr)                           \
     HALT_IF_ERROR(sam_pop_stack(ptr))
 #define PUSH_WORD(val)                          \
     HALT_IF_ERROR(sam_push_stack(val))
@@ -57,7 +57,7 @@
     } while(0)
 #define POP_BIATOM(first, second_var)           \
     do {                                        \
-        POP_ITEM(&second_var);                  \
+        POP_WORD(&second_var);                  \
         if ((first & SAM_TAG_BIATOM) != SAM_BIATOM_FIRST || \
             (first & SAM_BIATOM_TYPE_MASK) != (second_var & SAM_BIATOM_TYPE_MASK)) \
             HALT(SAM_ERROR_UNPAIRED_BIATOM);    \
@@ -66,7 +66,7 @@
 
 #define _POP_INSN(var, insn, insn_mask, op_mask, rshift, shift)     \
     do {                                        \
-        POP_ITEM((sam_word_t *)&var);           \
+        POP_WORD((sam_word_t *)&var);           \
         _CHECK_TYPE(var, insn_mask, insn); \
         var = rshift(var & op_mask, shift); \
     } while (0)
@@ -108,10 +108,10 @@ int _sam_get_stack(sam_uword_t *addr);
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
         sam_uword_t w2;                                                 \
-        POP_ITEM((sam_word_t *)&w2);                                    \
+        POP_WORD((sam_word_t *)&w2);                                    \
         _CHECK_TYPE(w2, SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK, SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
         sam_uword_t w1;                                                 \
-        POP_ITEM((sam_word_t *)&w1);                                    \
+        POP_WORD((sam_word_t *)&w1);                                    \
         _CHECK_TYPE(w1, SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK, SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
         w1 = ((w1 & SAM_OPERAND_MASK) | ((w2 >> SAM_OPERAND_SHIFT) & ~SAM_OPERAND_MASK)); \
         var = *(sam_float_t *)&w1;                                      \

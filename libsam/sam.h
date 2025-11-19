@@ -41,7 +41,7 @@ enum {
 // Stack access
 int sam_stack_peek(sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_uword_t addr, sam_uword_t val);
-int sam_stack_push(sam_uword_t addr, sam_uword_t size);
+int sam_stack_get(sam_uword_t addr, sam_uword_t size);
 int sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2);
 int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr, sam_uword_t *size);
 int sam_pop_stack(sam_word_t *val_ptr);

@@ -45,7 +45,7 @@ int sam_stack_poke(sam_uword_t addr, sam_uword_t val)
 }
 
 // Push the stack item at `addr` of size `size` to the top of the stack.
-int sam_stack_push(sam_uword_t addr, sam_uword_t size)
+int sam_stack_get(sam_uword_t addr, sam_uword_t size)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
