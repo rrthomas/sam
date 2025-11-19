@@ -8,6 +8,7 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
+#include <stdlib.h>
 #include <string.h>
 
 #include "sam.h"
@@ -173,13 +174,43 @@ int sam_pop_stack(sam_word_t *val_ptr)
 int sam_push_stack(sam_word_t val)
 {
     sam_word_t error = SAM_ERROR_OK;
-    if (sam_sp >= sam_ssize)
-        return SAM_ERROR_STACK_OVERFLOW;
+    if (sam_sp >= sam_ssize) {
+        sam_ssize = sam_sp + 65536;
+        sam_s0 = realloc(sam_s0, sam_ssize);
+        if (sam_s0 == NULL)
+            HALT(SAM_ERROR_NO_MEMORY);
+    }
     HALT_IF_ERROR(sam_stack_poke(sam_sp++, val));
  error:
     return error;
 }
 
+int sam_pop(sam_word_t **ptr, sam_uword_t *size)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t addr;
+    HALT_IF_ERROR(sam_stack_item(0, sam_sp, -1, &addr, size));
+    *ptr = malloc(*size * sizeof(sam_word_t));
+    if (*ptr == NULL)
+        HALT(SAM_ERROR_NO_MEMORY);
+    for (sam_uword_t i = 0; i < *size; i++) {
+        sam_uword_t val;
+        HALT_IF_ERROR(sam_stack_peek(addr + i, &val));
+        (*ptr)[i] = val;
+    }
+    sam_sp -= *size;
+error:
+    return error;
+}
+
+int sam_push(sam_word_t *ptr, sam_uword_t size)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    for (sam_uword_t i = 0; i < size; i++, sam_sp++)
+        HALT_IF_ERROR(sam_stack_poke(sam_sp, ptr[i]));
+error:
+    return error;
+}
 
 // Initialise VM state.
 int sam_init(sam_word_t *m0, sam_uword_t msize, sam_uword_t sp)

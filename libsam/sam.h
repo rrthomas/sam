@@ -36,6 +36,7 @@ enum {
     SAM_ERROR_UNPAIRED_BIATOM = 8,
     SAM_ERROR_INVALID_FUNCTION = 9,
     SAM_ERROR_TRAP_INIT = 10,
+    SAM_ERROR_NO_MEMORY = 11,
 };
 
 // Stack access
@@ -46,6 +47,8 @@ int sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_u
 int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr, sam_uword_t *size);
 int sam_pop_stack(sam_word_t *val_ptr);
 int sam_push_stack(sam_word_t val);
+int sam_pop(sam_word_t **ptr, sam_uword_t *size);
+int sam_push(sam_word_t *ptr, sam_uword_t size);
 
 // Miscellaneous routines
 sam_word_t sam_run(void);
