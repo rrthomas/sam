@@ -42,7 +42,7 @@
 #define POP_WORD(ptr)                           \
     HALT_IF_ERROR(sam_pop_stack(ptr))
 #define PUSH_WORD(val)                          \
-    HALT_IF_ERROR(sam_push_stack(val))
+    HALT_IF_ERROR(sam_push_stack(sam_stack, val))
 #define CHECK_BIATOM_FIRST(first, type)         \
     do {                                        \
         if ((first & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK)) != (SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT)) || \
@@ -90,7 +90,7 @@ int _sam_get_stack(sam_uword_t *addr);
     do {                                              \
         POP_PTR(var);                                 \
         sam_uword_t _stack;                           \
-        HALT_IF_ERROR(sam_stack_peek(var, &_stack));  \
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, var, &_stack));  \
         _CHECK_TYPE(_stack, SAM_TAG_MASK | SAM_ARRAY_TYPE_MASK, SAM_TAG_ARRAY | SAM_ARRAY_STACK); \
         var++;                                        \
     } while(0)
@@ -101,7 +101,7 @@ int _sam_get_stack(sam_uword_t *addr);
     do {                                                  \
         POP_LINK(addr_var);                               \
         sam_uword_t _insn;                                \
-        HALT_IF_ERROR(sam_stack_peek(addr_var - 1, &_insn)); \
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, addr_var - 1, &_insn)); \
         size_var = (ARSHIFT(_insn, SAM_OPERAND_SHIFT)) - 1; \
     } while(0)
 
@@ -137,10 +137,10 @@ int _sam_get_stack(sam_uword_t *addr);
         POP_PTR(sam_pc0);                                               \
         if (sam_pc0 == 0)                                               \
             HALT(SAM_ERROR_STACK_UNDERFLOW);                            \
-        if (sam_pc0 > sam_sp)                                           \
+        if (sam_pc0 > sam_stack->sp)                                    \
             HALT(SAM_ERROR_STACK_OVERFLOW);                             \
         sam_uword_t _stack, _size;                                      \
-        HALT_IF_ERROR(sam_stack_peek(sam_pc0 - 1, &_stack));            \
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc0 - 1, &_stack)); \
         _CHECK_TYPE(_stack, SAM_TAG_MASK | SAM_ARRAY_TYPE_MASK, SAM_TAG_ARRAY | SAM_ARRAY_STACK); \
         _size = (ARSHIFT(_stack, SAM_OPERAND_SHIFT)) - 1;               \
         if (sam_pc > sam_pc0 + _size)                                   \

@@ -23,25 +23,25 @@
     type sam_##reg;
 #include "sam_registers.h"
 #undef R
-static sam_word_t *sam_s0;
+sam_stack_t *sam_stack;
 sam_uword_t sam_program_len;
 
 
 // Stack
 
-int sam_stack_peek(sam_uword_t addr, sam_uword_t *val)
+int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val)
 {
-    if (addr >= sam_sp)
+    if (addr >= s->sp)
         return SAM_ERROR_INVALID_ADDRESS;
-    *val = sam_s0[addr];
+    *val = s->s0[addr];
     return SAM_ERROR_OK;
 }
 
-int sam_stack_poke(sam_uword_t addr, sam_uword_t val)
+int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
 {
-    if (addr >= sam_sp)
+    if (addr >= s->sp)
         return SAM_ERROR_INVALID_ADDRESS;
-    sam_s0[addr] = val;
+    s->s0[addr] = val;
     return SAM_ERROR_OK;
 }
 
@@ -50,7 +50,7 @@ int sam_stack_get(sam_uword_t addr, sam_uword_t size)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
-    HALT_IF_ERROR(sam_stack_peek(addr, &opcode));
+    HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &opcode));
     opcode &= SAM_TAG_MASK;
     if (opcode == SAM_TAG_ARRAY)
       PUSH_PTR(addr);
@@ -58,7 +58,7 @@ int sam_stack_get(sam_uword_t addr, sam_uword_t size)
       sam_uword_t i;
       for (i = 0; i < size; i++) {
         sam_uword_t temp;
-        HALT_IF_ERROR(sam_stack_peek(addr + i, &temp));
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, addr + i, &temp));
         PUSH_WORD(temp);
       }
     }
@@ -70,9 +70,9 @@ error:
 // The blocks may overlap.
 static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
 {
-    if (size > sam_ssize || src > sam_ssize - size || dst > sam_ssize - size)
+    if (size > sam_stack->ssize || src > sam_stack->ssize - size || dst > sam_stack->ssize - size)
         return SAM_ERROR_INVALID_ADDRESS;
-    memmove(&sam_s0[dst], &sam_s0[src], size * sizeof(sam_word_t));
+    memmove(&sam_stack->s0[dst], &sam_stack->s0[src], size * sizeof(sam_word_t));
     return SAM_ERROR_OK;
 }
 
@@ -80,13 +80,13 @@ static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
 // The blocks must not overlap.
 int sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
 {
-    if (size1 > sam_sp || size2 > sam_sp || addr1 > sam_sp - size1 || addr2 > sam_sp - size2)
+    if (size1 > sam_stack->sp || size2 > sam_stack->sp || addr1 > sam_stack->sp - size1 || addr2 > sam_stack->sp - size2)
         return SAM_ERROR_STACK_OVERFLOW;
     if (size1 > size2)
-        move_n(addr1 + size2, addr1 + size1, sam_sp - (addr1 + size1));
+        move_n(addr1 + size2, addr1 + size1, sam_stack->sp - (addr1 + size1));
     move_n(addr2, addr1, size1);
     if (size1 < size2)
-        move_n(addr1 + size1, addr1 + size2, sam_sp - (addr1 + size1));
+        move_n(addr1 + size1, addr1 + size2, sam_stack->sp - (addr1 + size1));
     return SAM_ERROR_OK;
 }
 
@@ -96,19 +96,19 @@ static int stack_item_bottom(sam_uword_t s0, sam_uword_t sp,sam_uword_t n, sam_u
         return SAM_ERROR_STACK_OVERFLOW;
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t p = s0 + n, inst;
-    HALT_IF_ERROR(sam_stack_peek(p++, &inst));
+    HALT_IF_ERROR(sam_stack_peek(sam_stack, p++, &inst));
     sam_word_t operand = ARSHIFT(inst, SAM_OPERAND_SHIFT);
     // If instruction is a STACK with positive argument, skip to matching
     // STACK.
     if ((inst & SAM_TAG_MASK) == SAM_TAG_ARRAY && operand > 0) {
         p += operand;
         sam_uword_t opcode2;
-        HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, p++, &opcode2));
         if ((opcode2 & SAM_TAG_MASK) != SAM_TAG_ARRAY)
             return SAM_ERROR_BAD_BRACKET;
     } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
         sam_uword_t opcode2;
-        HALT_IF_ERROR(sam_stack_peek(p++, &opcode2));
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, p++, &opcode2));
         CHECK_BIATOM_SECOND(opcode2, SAM_BIATOM_FLOAT);
     }
     *addr = s0 + n;
@@ -127,19 +127,19 @@ static int stack_item_top(sam_uword_t s0, sam_uword_t sp, sam_uword_t n, sam_uwo
         if (p == s0)
             return SAM_ERROR_STACK_UNDERFLOW;
         sam_uword_t inst;
-        HALT_IF_ERROR(sam_stack_peek(--p, &inst));
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, --p, &inst));
         sam_word_t operand = ARSHIFT(inst, SAM_OPERAND_SHIFT);
         // If instruction is a STACK with negative argument, skip to matching
         // STACK.
         if ((inst & SAM_TAG_MASK) == SAM_TAG_ARRAY && operand < 0) {
             p += operand;
             sam_uword_t opcode2;
-            HALT_IF_ERROR(sam_stack_peek(p, &opcode2));
+            HALT_IF_ERROR(sam_stack_peek(sam_stack, p, &opcode2));
             if ((opcode2 & SAM_TAG_MASK) != SAM_TAG_ARRAY)
                 return SAM_ERROR_BAD_BRACKET;
         } else if ((inst & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
             sam_uword_t opcode2;
-            HALT_IF_ERROR(sam_stack_peek(--p, &opcode2));
+            HALT_IF_ERROR(sam_stack_peek(sam_stack, --p, &opcode2));
             CHECK_BIATOM_FIRST(opcode2, SAM_BIATOM_FLOAT);
         }
     }
@@ -163,59 +163,67 @@ int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *ad
 int sam_pop_stack(sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;
-    if (sam_sp == 0)
+    if (sam_stack->sp == 0)
         return SAM_ERROR_STACK_UNDERFLOW;
-    HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, (sam_uword_t *)val_ptr));
-    sam_sp--; // Decrement here so argument to sam_stack_peek is valid.
+    HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, (sam_uword_t *)val_ptr));
+    sam_stack->sp--; // Decrement here so argument to sam_stack_peek is valid.
  error:
     return error;
 }
 
-int sam_push_stack(sam_word_t val)
+int sam_push_stack(sam_stack_t *s, sam_word_t val)
 {
     sam_word_t error = SAM_ERROR_OK;
-    if (sam_sp >= sam_ssize) {
-        sam_ssize = sam_sp + 65536;
-        sam_s0 = realloc(sam_s0, sam_ssize);
-        if (sam_s0 == NULL)
+    if (s->sp >= s->ssize) {
+        s->ssize = s->sp + 65536;
+        s->s0 = realloc(s->s0, s->ssize * sizeof(sam_uword_t));
+        if (s->s0 == NULL)
             HALT(SAM_ERROR_NO_MEMORY);
     }
-    HALT_IF_ERROR(sam_stack_poke(sam_sp++, val));
+    HALT_IF_ERROR(sam_stack_poke(s, s->sp++, val));
  error:
     return error;
 }
 
-int sam_pop(sam_word_t **ptr, sam_uword_t *size)
-{
+int sam_push_link(sam_stack_t *s, sam_uword_t addr) {
+    // FIXME: error if address is too large
+    return sam_push_stack(s, SAM_TAG_LINK | addr << SAM_LINK_SHIFT);
+}
+
+int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand) {
+    sam_uword_t atom = SAM_TAG_ATOM | (atom_type << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_OPERAND_SHIFT);
+    return sam_push_stack(s, atom);
+}
+
+int sam_push_float(sam_stack_t *s, sam_float_t n) {
     sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t addr;
-    HALT_IF_ERROR(sam_stack_item(0, sam_sp, -1, &addr, size));
-    *ptr = malloc(*size * sizeof(sam_word_t));
-    if (*ptr == NULL)
-        HALT(SAM_ERROR_NO_MEMORY);
-    for (sam_uword_t i = 0; i < *size; i++) {
-        sam_uword_t val;
-        HALT_IF_ERROR(sam_stack_peek(addr + i, &val));
-        (*ptr)[i] = val;
-    }
-    sam_sp -= *size;
+    sam_uword_t operand = *(sam_word_t *)&n;
+    HALT_IF_ERROR(sam_push_stack(s, SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT) | (operand & SAM_OPERAND_MASK)));
+	HALT_IF_ERROR(sam_push_stack(s, SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT) | ((operand & ~SAM_OPERAND_MASK) << SAM_OPERAND_SHIFT)));
 error:
     return error;
 }
 
-int sam_push(sam_word_t *ptr, sam_uword_t size)
-{
+int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size) {
     sam_word_t error = SAM_ERROR_OK;
-    for (sam_uword_t i = 0; i < size; i++, sam_sp++)
-        HALT_IF_ERROR(sam_stack_poke(sam_sp, ptr[i]));
+    // FIXME: error if array is too large
+    HALT_IF_ERROR(sam_push_stack(s, SAM_TAG_ARRAY | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT) | ((size + 1) << SAM_OPERAND_SHIFT)));
+    for (sam_uword_t i = 0; i < size; i++)
+        HALT_IF_ERROR(sam_push_stack(s, ptr[i]));
+    HALT_IF_ERROR(sam_push_stack(s, SAM_TAG_ARRAY | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT) | (-(size + 1) << SAM_OPERAND_SHIFT)));
 error:
     return error;
+}
+
+sam_stack_t *sam_stack_new(void)
+{
+    return calloc(sizeof(sam_stack_t), 1);
 }
 
 // Initialise VM state.
 int sam_init()
 {
-    sam_program_len = sam_sp;
+    sam_stack = sam_stack_new();
 
-    return 0;
+    return sam_stack != NULL;
 }

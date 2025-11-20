@@ -28,6 +28,50 @@ var LINK_SHIFT = C.SAM_LINK_SHIFT
 var LINK_MASK = C.SAM_LINK_MASK
 var WORD_MASK = Uword(((1 << C.SAM_WORD_BIT) - 1))
 
+type Stack struct {
+	stack *C.sam_stack_t
+}
+
+var SamStack Stack
+
+func NewStack() Stack {
+	return Stack{stack: C.sam_stack_new()}
+}
+
+func (s *Stack) Sp() Uword {
+	return s.stack.sp
+}
+
+func (s *Stack) StackPeek(addr Uword) (int, Uword) {
+	var val Uword
+	res := C.sam_stack_peek(s.stack, addr, &val)
+	return int(res), val
+}
+
+func (s *Stack) StackPoke(addr Uword, val Uword) int {
+	return int(C.sam_stack_poke(s.stack, addr, val))
+}
+
+func (s *Stack) PushStack(val Word) int {
+	return int(C.sam_push_stack(s.stack, val))
+}
+
+func (s *Stack) PushLink(addr Uword) int {
+	return int(C.sam_push_link(s.stack, addr))
+}
+
+func (s *Stack) PushAtom(atomType Uword, operand Uword) int {
+	return int(C.sam_push_atom(s.stack, atomType, operand))
+}
+
+func (s *Stack) PushFloat(f float32) int {
+	return int(C.sam_push_float(s.stack, C.sam_float_t(f)))
+}
+
+func (s *Stack) PushCode(stack Stack) int {
+	return int(C.sam_push_code(s.stack, stack.stack.s0, stack.stack.sp))
+}
+
 func Run(pc0 Uword, pc Uword) Word {
 	C.sam_pc0 = pc0
 	C.sam_pc = pc
@@ -35,7 +79,13 @@ func Run(pc0 Uword, pc Uword) Word {
 }
 
 func Init() int {
-	return int(C.sam_init())
+	res := int(C.sam_init())
+	SamStack = Stack{stack: C.sam_stack}
+	return res
+}
+
+func DebugInit() int {
+	return int(C.sam_debug_init())
 }
 
 func TrapsInit() Word {
@@ -60,24 +110,6 @@ func SetDebug(flag bool) {
 	} else {
 		C.do_debug = false
 	}
-}
-
-func Sp() Uword {
-	return C.sam_sp
-}
-
-func StackPeek(addr Uword) (int, Uword) {
-	var val Uword
-	res := C.sam_stack_peek(addr, &val)
-	return int(res), val
-}
-
-func StackPoke(addr Uword, val Uword) int {
-	return int(C.sam_stack_poke(addr, val))
-}
-
-func PushStack(val Word) int {
-	return int(C.sam_push_stack(val))
 }
 
 func PrintStack() {
@@ -167,55 +199,55 @@ var Instructions = map[string]int{
 	"float": C.SAM_TAG_BIATOM | (C.SAM_BIATOM_FLOAT << C.SAM_BIATOM_TYPE_SHIFT),
 
 	// Niladic instructions
-	"nop":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_NOP << C.SAM_OPERAND_SHIFT),
-	"i2f":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_I2F << C.SAM_OPERAND_SHIFT),
-	"f2i":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_F2I << C.SAM_OPERAND_SHIFT),
-	"pop":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_POP << C.SAM_OPERAND_SHIFT),
-	"get":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_GET << C.SAM_OPERAND_SHIFT),
-	"set":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_SET << C.SAM_OPERAND_SHIFT),
-	"iget":  C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_IGET << C.SAM_OPERAND_SHIFT),
-	"iset":  C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_ISET << C.SAM_OPERAND_SHIFT),
-	"do":    C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DO << C.SAM_OPERAND_SHIFT),
-	"if":    C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_IF << C.SAM_OPERAND_SHIFT),
-	"while": C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_WHILE << C.SAM_OPERAND_SHIFT),
-	"loop":  C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_LOOP << C.SAM_OPERAND_SHIFT),
-	"not":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_NOT << C.SAM_OPERAND_SHIFT),
-	"and":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_AND << C.SAM_OPERAND_SHIFT),
-	"or":    C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_OR << C.SAM_OPERAND_SHIFT),
-	"xor":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_XOR << C.SAM_OPERAND_SHIFT),
-	"lsh":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_LSH << C.SAM_OPERAND_SHIFT),
-	"rsh":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_RSH << C.SAM_OPERAND_SHIFT),
-	"arsh":  C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_ARSH << C.SAM_OPERAND_SHIFT),
-	"eq":    C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_EQ << C.SAM_OPERAND_SHIFT),
-	"lt":    C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_LT << C.SAM_OPERAND_SHIFT),
-	"neg":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_NEG << C.SAM_OPERAND_SHIFT),
-	"add":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_ADD << C.SAM_OPERAND_SHIFT),
-	"mul":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_MUL << C.SAM_OPERAND_SHIFT),
-	"div":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DIV << C.SAM_OPERAND_SHIFT),
-	"rem":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_REM << C.SAM_OPERAND_SHIFT),
-	"pow":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_POW << C.SAM_OPERAND_SHIFT),
-	"sin":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_SIN << C.SAM_OPERAND_SHIFT),
-	"cos":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_COS << C.SAM_OPERAND_SHIFT),
-	"deg":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DEG << C.SAM_OPERAND_SHIFT),
-	"rad":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_RAD << C.SAM_OPERAND_SHIFT),
-	"halt":  C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_HALT << C.SAM_OPERAND_SHIFT),
+	"nop":   C.INST_NOP,
+	"i2f":   C.INST_I2F,
+	"f2i":   C.INST_F2I,
+	"pop":   C.INST_POP,
+	"get":   C.INST_GET,
+	"set":   C.INST_SET,
+	"iget":  C.INST_IGET,
+	"iset":  C.INST_ISET,
+	"do":    C.INST_DO,
+	"if":    C.INST_IF,
+	"while": C.INST_WHILE,
+	"loop":  C.INST_LOOP,
+	"not":   C.INST_NOT,
+	"and":   C.INST_AND,
+	"or":    C.INST_OR,
+	"xor":   C.INST_XOR,
+	"lsh":   C.INST_LSH,
+	"rsh":   C.INST_RSH,
+	"arsh":  C.INST_ARSH,
+	"eq":    C.INST_EQ,
+	"lt":    C.INST_LT,
+	"neg":   C.INST_NEG,
+	"add":   C.INST_ADD,
+	"mul":   C.INST_MUL,
+	"div":   C.INST_DIV,
+	"rem":   C.INST_REM,
+	"pow":   C.INST_POW,
+	"sin":   C.INST_SIN,
+	"cos":   C.INST_COS,
+	"deg":   C.INST_DEG,
+	"rad":   C.INST_RAD,
+	"halt":  C.INST_HALT,
 
 	// Trap
 	"trap": C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT),
 }
 
 var Traps = map[string]int{
-	"BLACK":          C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_BLACK << C.SAM_OPERAND_SHIFT),
-	"WHITE":          C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_WHITE << C.SAM_OPERAND_SHIFT),
-	"DISPLAY_WIDTH":  C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DISPLAY_WIDTH << C.SAM_OPERAND_SHIFT),
-	"DISPLAY_HEIGHT": C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DISPLAY_HEIGHT << C.SAM_OPERAND_SHIFT),
-	"CLEARSCREEN":    C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_CLEARSCREEN << C.SAM_OPERAND_SHIFT),
-	"SETDOT":         C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_SETDOT << C.SAM_OPERAND_SHIFT),
-	"DRAWLINE":       C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DRAWLINE << C.SAM_OPERAND_SHIFT),
-	"DRAWRECT":       C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DRAWRECT << C.SAM_OPERAND_SHIFT),
-	"DRAWROUNDRECT":  C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DRAWROUNDRECT << C.SAM_OPERAND_SHIFT),
-	"FILLRECT":       C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_FILLRECT << C.SAM_OPERAND_SHIFT),
-	"DRAWCIRCLE":     C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DRAWCIRCLE << C.SAM_OPERAND_SHIFT),
-	"FILLCIRCLE":     C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_FILLCIRCLE << C.SAM_OPERAND_SHIFT),
-	"DRAWBITMAP":     C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT) | (C.INST_DRAWBITMAP << C.SAM_OPERAND_SHIFT),
+	"BLACK":          C.INST_BLACK,
+	"WHITE":          C.INST_WHITE,
+	"DISPLAY_WIDTH":  C.INST_DISPLAY_WIDTH,
+	"DISPLAY_HEIGHT": C.INST_DISPLAY_HEIGHT,
+	"CLEARSCREEN":    C.INST_CLEARSCREEN,
+	"SETDOT":         C.INST_SETDOT,
+	"DRAWLINE":       C.INST_DRAWLINE,
+	"DRAWRECT":       C.INST_DRAWRECT,
+	"DRAWROUNDRECT":  C.INST_DRAWROUNDRECT,
+	"FILLRECT":       C.INST_FILLRECT,
+	"DRAWCIRCLE":     C.INST_DRAWCIRCLE,
+	"FILLCIRCLE":     C.INST_FILLCIRCLE,
+	"DRAWBITMAP":     C.INST_DRAWBITMAP,
 }

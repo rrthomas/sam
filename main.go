@@ -37,9 +37,10 @@ var rootCmd = &cobra.Command{
 	Use:     "sam",
 	Version: "0.1",
 	Short:   "SAM, the Super-Awesome Machine",
-	Long:    `A simple virtual machine and run time for playful low-level programming.`,
+	Long:    "A simple virtual machine and run time for playful low-level programming.",
 	Args:    cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
+		libsam.Init()
 		libsam.SetDebug(debug)
 		prog_file := args[0]
 		Assemble(prog_file)
@@ -47,7 +48,7 @@ var rootCmd = &cobra.Command{
 		if err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
-		res := libsam.Init()
+		res := libsam.DebugInit()
 		if res != libsam.ERROR_OK {
 			libsam.TrapsFinish()
 			os.Exit(int(res))

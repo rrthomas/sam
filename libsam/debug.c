@@ -143,7 +143,7 @@ static char *disas(sam_uword_t *addr)
 {
     char *text;
     sam_word_t inst;
-    assert(sam_stack_peek((*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
+    assert(sam_stack_peek(sam_stack, (*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     switch (inst & SAM_TAG_MASK) {
     case SAM_TAG_LINK:
         xasprintf(&text, "link %zd", inst >> SAM_LINK_SHIFT);
@@ -165,7 +165,7 @@ static char *disas(sam_uword_t *addr)
         case SAM_BIATOM_FIRST:
             {
                 sam_uword_t w2;
-                assert(sam_stack_peek((*addr)++, &w2) == SAM_ERROR_OK);
+                assert(sam_stack_peek(sam_stack, (*addr)++, &w2) == SAM_ERROR_OK);
                 sam_word_t second_tag = w2 & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK);
                 sam_word_t expected_second_tag = SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT);
                 sam_word_t second_biatom_type = (w2 & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT;
@@ -218,7 +218,7 @@ static void print_stack(sam_uword_t from, sam_uword_t to)
     sam_uword_t i, level = 0;
     for (i = from; i < to; ) {
         sam_uword_t opcode;
-        assert(sam_stack_peek(i, &opcode) == SAM_ERROR_OK);
+        assert(sam_stack_peek(sam_stack, i, &opcode) == SAM_ERROR_OK);
         sam_word_t operand = ARSHIFT((sam_word_t)opcode, SAM_OPERAND_SHIFT);
         sam_word_t tag = opcode & SAM_TAG_MASK;
         opcode &= SAM_OPERAND_MASK;
@@ -239,14 +239,14 @@ static void print_stack(sam_uword_t from, sam_uword_t to)
 
 void sam_print_stack(void)
 {
-    debug("Stack: (%u word(s))\n", sam_sp);
-    print_stack(0, sam_sp);
+    debug("Stack: (%u word(s))\n", sam_stack->sp);
+    print_stack(0, sam_stack->sp);
 }
 
 void sam_print_working_stack(void)
 {
-    debug("Working stack: (%u word(s))\n", sam_sp - sam_program_len);
-    print_stack(sam_program_len, sam_sp);
+    debug("Working stack: (%u word(s))\n", sam_stack->sp - sam_program_len);
+    print_stack(sam_program_len, sam_stack->sp);
 }
 
 /* Dump screen as a PBM */
@@ -269,6 +269,14 @@ void sam_dump_screen(const char *filename)
         }
         fclose(fp);
     }
+}
+
+// Initialise debug state.
+int sam_debug_init()
+{
+    sam_program_len = sam_stack->sp;
+
+    return 0;
 }
 
 #endif

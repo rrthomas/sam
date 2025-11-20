@@ -20,7 +20,6 @@ import (
 	"errors"
 	"fmt"
 	"io"
-	"math"
 	"os"
 	"slices"
 	"strconv"
@@ -58,21 +57,11 @@ func readProg(progFile string) ast.Node {
 }
 
 // Assemble a program
+var labels map[string]libsam.Uword
+
 type assembler struct {
-	labels map[string]libsam.Uword
-}
-
-func (a *assembler) assemble(opcode libsam.Word, operand libsam.Word) {
-	shift := libsam.OPERAND_SHIFT
-	if opcode == libsam.TAG_LINK {
-		shift = libsam.LINK_SHIFT
-	}
-	libsam.PushStack(opcode | (operand << shift))
-}
-
-func (a *assembler) assembleBiatom(opcode libsam.Word, operand libsam.Word) {
-	a.assemble(opcode|libsam.TAG_BIATOM|(libsam.BIATOM_FIRST<<libsam.BIATOM_TAG_SHIFT), operand>>libsam.OPERAND_SHIFT)
-	a.assemble(opcode|libsam.TAG_BIATOM|(libsam.BIATOM_SECOND<<libsam.BIATOM_TAG_SHIFT), operand&^libsam.OPERAND_MASK)
+	stack libsam.Stack
+	s0    libsam.Uword
 }
 
 func parseInsn(instStr string) (libsam.Word, bool) {
@@ -86,7 +75,7 @@ func parseTrap(trapStr string) (libsam.Word, bool) {
 }
 
 func (a *assembler) parseLiteral(argStr string) libsam.Word {
-	address, ok := a.labels[argStr]
+	address, ok := labels[argStr]
 	if ok {
 		return libsam.Word(address)
 	}
@@ -120,28 +109,30 @@ func (a *assembler) assembleInstruction(tokens []string) {
 		operandStr := tokens[1]
 
 		switch opcode {
-		case libsam.TAG_ATOM | (libsam.ATOM_INT << libsam.ATOM_TYPE_SHIFT), libsam.TAG_LINK:
+		case libsam.TAG_ATOM | (libsam.ATOM_INT << libsam.ATOM_TYPE_SHIFT):
 			operand := a.parseLiteral(operandStr)
-			a.assemble(opcode, operand)
+			a.stack.PushAtom(libsam.ATOM_INT, libsam.Uword(operand))
+		case libsam.TAG_LINK:
+			operand := a.parseLiteral(operandStr)
+			a.stack.PushLink(libsam.Uword(operand))
 		case libsam.TAG_ATOM | (libsam.ATOM_INST << libsam.ATOM_TYPE_SHIFT):
 			trap, ok := parseTrap(operandStr)
 			if !ok {
 				panic(fmt.Errorf("unknown trap %s", operandStr))
 			}
-			a.assemble(opcode|trap, 0)
+			a.stack.PushAtom(libsam.ATOM_INST, libsam.Uword(trap))
 		case libsam.TAG_BIATOM | (libsam.BIATOM_FLOAT << libsam.BIATOM_TYPE_SHIFT):
 			float, err := strconv.ParseFloat(operandStr, 32)
 			if err != nil {
 				panic(fmt.Errorf("bad float %s", operandStr))
 			}
-			operand := libsam.Word(math.Float32bits(float32(float)))
-			a.assembleBiatom(libsam.BIATOM_FLOAT<<libsam.BIATOM_TYPE_SHIFT, operand)
+			a.stack.PushFloat(float32(float))
 		}
 	} else {
 		if len(tokens) > 1 {
 			panic(fmt.Errorf("unexpected operand for %s", instStr))
 		}
-		a.assemble(libsam.Word(opcode), 0)
+		a.stack.PushAtom(libsam.ATOM_INST, libsam.Uword(opcode))
 	}
 }
 
@@ -159,17 +150,9 @@ func (a *assembler) assembleSequence(n ast.Node) {
 func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
-		pc0 := libsam.Sp()
-		a.assemble(libsam.TAG_ARRAY|(libsam.ARRAY_STACK<<libsam.ARRAY_TYPE_SHIFT), 0) // placeholder
-		a.assembleSequence(n)
-		pc := libsam.Sp()
-		len := pc - pc0
-		a.assemble(libsam.TAG_ARRAY|(libsam.ARRAY_STACK<<libsam.ARRAY_TYPE_SHIFT), -libsam.Word(len))
-		err, bra := libsam.StackPeek(pc0)
-		if err != libsam.ERROR_OK {
-			panic(errors.New("error assembling instruction to stack"))
-		}
-		libsam.StackPoke(pc0, bra|libsam.Uword(len<<libsam.OPERAND_SHIFT))
+		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
+		subA.assembleSequence(n)
+		a.stack.PushCode(subA.stack)
 		return nil
 	case ast.StringType:
 		tokens := strings.Fields(n.String())
@@ -190,7 +173,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			panic(fmt.Errorf("bad label: string expected"))
 		}
 		label := keyNode.String()
-		a.labels[label] = libsam.Sp()
+		labels[label] = a.s0 + a.stack.Sp()
 		subNode := mapNode.Value
 		ast.Walk(a, subNode)
 		return nil
@@ -207,7 +190,9 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		file := name.String()
 		subProg := readProg(file)
 		// Assemble the included file in a nested stack.
-		ast.Walk(a, subProg)
+		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
+		subA.assembleSequence(subProg)
+		a.stack.PushCode(subA.stack)
 		return nil
 	default:
 		panic(fmt.Errorf("invalid code %v", n))
@@ -216,6 +201,8 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 
 func Assemble(progFile string) {
 	prog := readProg(progFile)
-	a := assembler{labels: map[string]libsam.Uword{}}
-	ast.Walk(&a, prog)
+	labels = map[string]libsam.Uword{}
+	a := assembler{stack: libsam.NewStack(), s0: 1}
+	a.assembleSequence(prog)
+	libsam.SamStack.PushCode(a.stack)
 }

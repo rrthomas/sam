@@ -68,9 +68,9 @@ sam_word_t sam_run(void)
 
     for (;;) {
         sam_uword_t ir;
-        HALT_IF_ERROR(sam_stack_peek(sam_pc++, &ir));
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc++, &ir));
 #ifdef SAM_DEBUG
-        debug("sam_run: pc0 = %u, pc = %u, sp = %u, ir = %x\n", sam_pc0, sam_pc - 1, sam_sp, ir);
+        debug("sam_run: pc0 = %u, pc = %u, sp = %u, ir = %x\n", sam_pc0, sam_pc - 1, sam_stack->sp, ir);
         sam_print_working_stack();
 #endif
 
@@ -107,17 +107,17 @@ sam_word_t sam_run(void)
                     }
                     break;
                 case INST_POP:
-                    if (sam_sp == 0)
+                    if (sam_stack->sp == 0)
                         HALT(SAM_ERROR_STACK_UNDERFLOW);
                     sam_uword_t size;
-                    HALT_IF_ERROR(sam_stack_item(0, sam_sp, -1, &sam_sp, &size));
+                    HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, -1, &sam_stack->sp, &size));
                     break;
                 case INST_GET:
                     {
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr, size;
-                        HALT_IF_ERROR(sam_stack_item(0, sam_sp, pos, &addr, &size));
+                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &addr, &size));
                         HALT_IF_ERROR(sam_stack_get(addr, size));
                     }
                     break;
@@ -126,10 +126,10 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr1, size1, addr2, size2;
-                        HALT_IF_ERROR(sam_stack_item(0, sam_sp, -1, &addr1, &size1));
-                        HALT_IF_ERROR(sam_stack_item(0, sam_sp, pos, &addr2, &size2));
+                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, -1, &addr1, &size1));
+                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &addr2, &size2));
                         HALT_IF_ERROR(sam_stack_set(addr1, size1, addr2, size2));
-                        sam_sp -= size2;
+                        sam_stack->sp -= size2;
                     }
                     break;
                 case INST_IGET:
@@ -150,10 +150,10 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr1, size1, addr2, size2;
-                        HALT_IF_ERROR(sam_stack_item(0, sam_sp, -1, &addr1, &size1));
+                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, -1, &addr1, &size1));
                         HALT_IF_ERROR(sam_stack_item(stack_addr, stack_size, pos, &addr2, &size2));
                         HALT_IF_ERROR(sam_stack_set(addr1, size1, addr2, size2));
-                        sam_sp -= size2;
+                        sam_stack->sp -= size2;
                     }
                     break;
                 case INST_DO:
@@ -270,7 +270,7 @@ sam_word_t sam_run(void)
                 case INST_LT:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_word_t a, b;
                             POP_INT(a);
@@ -288,7 +288,7 @@ sam_word_t sam_run(void)
                 case INST_NEG:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_uword_t a;
                             POP_UINT(a);
@@ -304,7 +304,7 @@ sam_word_t sam_run(void)
                 case INST_ADD:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_uword_t a, b;
                             POP_UINT(a);
@@ -322,7 +322,7 @@ sam_word_t sam_run(void)
                 case INST_MUL:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_uword_t a, b;
                             POP_UINT(a);
@@ -340,7 +340,7 @@ sam_word_t sam_run(void)
                 case INST_DIV:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_word_t divisor, dividend;
                             POP_INT(divisor);
@@ -362,7 +362,7 @@ sam_word_t sam_run(void)
                 case INST_REM:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_uword_t divisor, dividend;
                             POP_UINT(divisor);
@@ -380,7 +380,7 @@ sam_word_t sam_run(void)
                 case INST_POW:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_uword_t a, b;
                             POP_UINT(a);
@@ -398,7 +398,7 @@ sam_word_t sam_run(void)
                 case INST_SIN:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(sinf(a));
@@ -407,7 +407,7 @@ sam_word_t sam_run(void)
                 case INST_COS:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(cosf(a));
@@ -416,7 +416,7 @@ sam_word_t sam_run(void)
                 case INST_DEG:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(a * (M_1_PI * 180.0));
@@ -425,14 +425,14 @@ sam_word_t sam_run(void)
                 case INST_RAD:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(a * (M_PI / 180.0));
                     }
                     break;
                 case INST_HALT:
-                    if (sam_sp < 1)
+                    if (sam_stack->sp < 1)
                         HALT(SAM_ERROR_STACK_UNDERFLOW);
                     else {
                         sam_uword_t ret;
@@ -470,7 +470,7 @@ sam_word_t sam_run(void)
                 sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OPERAND_SHIFT);
                 sam_uword_t operand2;
                 sam_word_t biatom_type = ir & SAM_BIATOM_TYPE_MASK;
-                HALT_IF_ERROR(sam_stack_peek(sam_pc++, &operand2));
+                HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc++, &operand2));
                 if ((operand2 & (SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) !=
                     ((SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | biatom_type))
                     HALT(SAM_ERROR_UNPAIRED_BIATOM);

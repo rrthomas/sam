@@ -23,6 +23,14 @@ typedef float sam_float_t;
 #include "sam_registers.h"
 #undef R
 
+// Stacks
+typedef struct sam_stack {
+    sam_word_t *s0;
+    sam_uword_t ssize; // Size of stack in words
+    sam_uword_t sp; // Number of words (NOT items!) in stack
+} sam_stack_t;
+extern sam_stack_t *sam_stack;
+
 // Error codes
 enum {
     SAM_ERROR_OK = 0,
@@ -40,15 +48,18 @@ enum {
 };
 
 // Stack access
-int sam_stack_peek(sam_uword_t addr, sam_uword_t *val);
-int sam_stack_poke(sam_uword_t addr, sam_uword_t val);
+sam_stack_t *sam_stack_new(void);
+int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val);
+int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
 int sam_stack_get(sam_uword_t addr, sam_uword_t size);
 int sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2);
 int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr, sam_uword_t *size);
 int sam_pop_stack(sam_word_t *val_ptr);
-int sam_push_stack(sam_word_t val);
-int sam_pop(sam_word_t **ptr, sam_uword_t *size);
-int sam_push(sam_word_t *ptr, sam_uword_t size);
+int sam_push_stack(sam_stack_t *s, sam_word_t val);
+int sam_push_link(sam_stack_t *s, sam_uword_t addr);
+int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand);
+int sam_push_float(sam_stack_t *s, sam_float_t n);
+int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);
 
 // Miscellaneous routines
 sam_word_t sam_run(void);
@@ -67,6 +78,7 @@ char *inst_name(sam_word_t inst_opcode);
 void sam_print_stack(void);
 void sam_print_working_stack(void);
 void debug(const char *fmt, ...);
+int sam_debug_init(void);
 #endif
 
 // Traps
