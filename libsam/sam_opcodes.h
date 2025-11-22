@@ -14,10 +14,6 @@ extern const int SAM_TAG_SHIFT;
 extern const sam_word_t SAM_TAG_MASK;
 extern const int SAM_ATOM_TYPE_SHIFT;
 extern const int SAM_ATOM_TYPE_MASK;
-extern const int SAM_BIATOM_TAG_SHIFT;
-extern const sam_word_t SAM_BIATOM_TAG_MASK;
-extern const int SAM_BIATOM_TYPE_SHIFT;
-extern const sam_word_t SAM_BIATOM_TYPE_MASK;
 extern const int SAM_ARRAY_TYPE_SHIFT;
 extern const sam_word_t SAM_ARRAY_TYPE_MASK;
 extern const int SAM_OPERAND_SHIFT;
@@ -31,8 +27,7 @@ extern const sam_word_t SAM_LINK_MASK;
 enum SAM_TAG {
   SAM_TAG_LINK = 0,
   SAM_TAG_ATOM,
-  SAM_TAG_BIATOM,
-  SAM_TAG_ARRAY, // Used for BRA and KET.
+  SAM_TAG_ARRAY,
 };
 
 // Atom types (bits 2-3)
@@ -40,27 +35,17 @@ enum SAM_ATOM_TYPE {
   SAM_ATOM_INST,
   SAM_ATOM_INT,
   SAM_ATOM_CHAR,
+  SAM_ATOM_FLOAT,
 };
 
-// Biatom tags (bit 2)
-enum SAM_BIATOM_TAG {
-  SAM_BIATOM_FIRST,
-  SAM_BIATOM_SECOND,
-};
+// Arrays are stored as: ARRAY instruction, with a type bit (bit 2) and
+// pointer to sam_stack_t (bits 3-last).
+// FIXME: need a type stored somewhere, presumably in the stack struct.
+// Then we can remove the type bit (below).
 
-// Biatom types (bits 3-7)
-enum SAM_BIATOM_TYPE {
-  SAM_BIATOM_FLOAT,
-};
-
-// Arrays are stored as: ARRAY instruction (operand is positive number of
-// words to final ARRAY), a number of words, ARRAY (operand is negative
-// number of words to initial ARRAY).
-
-// Array types (bits 2-7)
+// Array types (bit 2)
 enum SAM_ARRAY_TYPE {
-  // Each stack item is either a VM instruction, or a stack.
-  SAM_ARRAY_STACK,
+  SAM_ARRAY_STACK, // Each stack item is either a VM instruction, or a stack.
   SAM_ARRAY_RAW,
 };
 

@@ -9,4 +9,4 @@
 // RISK.
 
 R(pc, sam_uword_t) // Address of next instruction to execute
-R(pc0, sam_uword_t) // Start of current routine
+R(pc0, sam_stack_t *) // Current stack

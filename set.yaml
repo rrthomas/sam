@@ -1,21 +1,21 @@
 - int 1
 - int 2
-- int -2
+- int -1
 - set
 - pop
 - float 1.0
 - float 2.0
-- int -2
+- int -1
 - set
 - pop
 - int 1
 - float 2.0
-- int -2
+- int -1
 - set
 - pop
 - float 1.0
 - int 2
-- int -2
+- int -1
 - set
 - pop
 - int 0

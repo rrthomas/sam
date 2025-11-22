@@ -16,10 +16,6 @@ var TAG_SHIFT = C.SAM_TAG_SHIFT
 var TAG_MASK = C.SAM_TAG_MASK
 var ATOM_TYPE_SHIFT = C.SAM_ATOM_TYPE_SHIFT
 var ATOM_TYPE_MASK = C.SAM_ATOM_TYPE_MASK
-var BIATOM_TAG_SHIFT = C.SAM_BIATOM_TAG_SHIFT
-var BIATOM_TAG_MASK = C.SAM_BIATOM_TAG_MASK
-var BIATOM_TYPE_SHIFT = C.SAM_BIATOM_TYPE_SHIFT
-var BIATOM_TYPE_MASK = C.SAM_BIATOM_TYPE_MASK
 var ARRAY_TYPE_SHIFT = C.SAM_ARRAY_TYPE_SHIFT
 var ARRAY_TYPE_MASK = C.SAM_ARRAY_TYPE_MASK
 var OPERAND_SHIFT = C.SAM_OPERAND_SHIFT
@@ -69,11 +65,15 @@ func (s *Stack) PushFloat(f float32) int {
 }
 
 func (s *Stack) PushCode(stack Stack) int {
-	return int(C.sam_push_code(s.stack, stack.stack.s0, stack.stack.sp))
+	return int(C.sam_push_code(s.stack, stack.stack))
 }
 
-func Run(pc0 Uword, pc Uword) Word {
-	C.sam_pc0 = pc0
+func (s *Stack) Print() {
+	C.sam_print_stack(s.stack)
+}
+
+func Run(pc0 Stack, pc Uword) Word {
+	C.sam_pc0 = pc0.stack
 	C.sam_pc = pc
 	return C.sam_run()
 }
@@ -112,10 +112,6 @@ func SetDebug(flag bool) {
 	}
 }
 
-func PrintStack() {
-	C.sam_print_stack()
-}
-
 func DumpScreen(file string) {
 	C.sam_dump_screen(C.CString(file))
 }
@@ -128,32 +124,21 @@ const (
 	ERROR_STACK_UNDERFLOW  = C.SAM_ERROR_STACK_UNDERFLOW
 	ERROR_STACK_OVERFLOW   = C.SAM_ERROR_STACK_OVERFLOW
 	ERROR_WRONG_TYPE       = C.SAM_ERROR_WRONG_TYPE
-	ERROR_BAD_BRACKET      = C.SAM_ERROR_BAD_BRACKET
-	ERROR_UNPAIRED_BIATOM  = C.SAM_ERROR_UNPAIRED_BIATOM
 	ERROR_INVALID_FUNCTION = C.SAM_ERROR_INVALID_FUNCTION
 	ERROR_TRAP_INIT        = C.SAM_ERROR_TRAP_INIT
 )
 
 const (
-	TAG_LINK   = C.SAM_TAG_LINK
-	TAG_ATOM   = C.SAM_TAG_ATOM
-	TAG_BIATOM = C.SAM_TAG_BIATOM
-	TAG_ARRAY  = C.SAM_TAG_ARRAY
+	TAG_LINK  = C.SAM_TAG_LINK
+	TAG_ATOM  = C.SAM_TAG_ATOM
+	TAG_ARRAY = C.SAM_TAG_ARRAY
 )
 
 const (
-	ATOM_INST = C.SAM_ATOM_INST
-	ATOM_INT  = C.SAM_ATOM_INT
-	ATOM_CHAR = C.SAM_ATOM_CHAR
-)
-
-const (
-	BIATOM_FIRST  = C.SAM_BIATOM_FIRST
-	BIATOM_SECOND = C.SAM_BIATOM_SECOND
-)
-
-const (
-	BIATOM_FLOAT = C.SAM_BIATOM_FLOAT
+	ATOM_INST  = C.SAM_ATOM_INST
+	ATOM_INT   = C.SAM_ATOM_INT
+	ATOM_CHAR  = C.SAM_ATOM_CHAR
+	ATOM_FLOAT = C.SAM_ATOM_FLOAT
 )
 
 const (
@@ -169,8 +154,6 @@ var errors = map[int]string{
 	ERROR_STACK_UNDERFLOW:  "ERROR_STACK_UNDERFLOW",
 	ERROR_STACK_OVERFLOW:   "ERROR_STACK_OVERFLOW",
 	ERROR_WRONG_TYPE:       "ERROR_WRONG_TYPE",
-	ERROR_BAD_BRACKET:      "ERROR_BAD_BRACKET",
-	ERROR_UNPAIRED_BIATOM:  "ERROR_UNPAIRED_BIATOM",
 	ERROR_INVALID_FUNCTION: "ERROR_INVALID_FUNCTION",
 	ERROR_TRAP_INIT:        "ERROR_TRAP_INIT",
 }
@@ -192,11 +175,9 @@ var Instructions = map[string]int{
 	"link": C.SAM_TAG_LINK,
 
 	// Atom instructions
-	"int":  C.SAM_TAG_ATOM | (C.SAM_ATOM_INT << C.SAM_ATOM_TYPE_SHIFT),
-	"char": C.SAM_TAG_ATOM | (C.SAM_ATOM_CHAR << C.SAM_ATOM_TYPE_SHIFT),
-
-	// Biatom instructions
-	"float": C.SAM_TAG_BIATOM | (C.SAM_BIATOM_FLOAT << C.SAM_BIATOM_TYPE_SHIFT),
+	"int":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INT << C.SAM_ATOM_TYPE_SHIFT),
+	"char":  C.SAM_TAG_ATOM | (C.SAM_ATOM_CHAR << C.SAM_ATOM_TYPE_SHIFT),
+	"float": C.SAM_TAG_ATOM | (C.SAM_ATOM_FLOAT << C.SAM_ATOM_TYPE_SHIFT),
 
 	// Niladic instructions
 	"nop":   C.INST_NOP,

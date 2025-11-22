@@ -53,11 +53,11 @@ var rootCmd = &cobra.Command{
 			libsam.TrapsFinish()
 			os.Exit(int(res))
 		}
-		libsam.PrintStack()
-		res2 := libsam.Run(1, 1)
+		libsam.SamStack.Print()
+		res2 := libsam.Run(libsam.SamStack, 0)
 
 		if debug {
-			libsam.PrintStack()
+			libsam.SamStack.Print()
 			fmt.Printf("sam_run returns: %s\n", libsam.ErrorMessage(res2))
 		}
 

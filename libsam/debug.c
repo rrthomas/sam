@@ -2,8 +2,10 @@
 
 #include <assert.h>
 #include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "sam.h"
 #include "sam_opcodes.h"
@@ -57,10 +59,11 @@ char *trap_name(sam_word_t trap_opcode) {
             return "FILLCIRCLE";
         case INST_DRAWBITMAP:
             return "DRAWBITMAP";
-        default:
+        default: {
             char *text;
             xasprintf(&text, "%zd", trap_opcode);
             return text;
+        }
     }
 }
 
@@ -139,11 +142,11 @@ char *inst_name(sam_word_t inst_opcode) {
     }
 }
 
-static char *disas(sam_uword_t *addr)
+static char *disas(sam_stack_t *s, sam_uword_t addr)
 {
     char *text;
     sam_word_t inst;
-    assert(sam_stack_peek(sam_stack, (*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
+    assert(sam_stack_peek(s, addr, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     switch (inst & SAM_TAG_MASK) {
     case SAM_TAG_LINK:
         xasprintf(&text, "link %zd", inst >> SAM_LINK_SHIFT);
@@ -156,38 +159,12 @@ static char *disas(sam_uword_t *addr)
         case SAM_ATOM_INT:
             xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_OPERAND_SHIFT));
             break;
-        /* TODO: case SAM_ATOM_CHAR: */
+        case SAM_ATOM_FLOAT: {
+            sam_word_t operand = inst >> SAM_OPERAND_SHIFT;
+            xasprintf(&text, "float %f", *(sam_float_t *)&operand);
+            break;
         }
-        break;
-    case SAM_TAG_BIATOM:
-        sam_word_t biatom_type = (inst & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT;
-        switch ((inst & SAM_BIATOM_TAG_MASK) >> SAM_BIATOM_TAG_SHIFT) {
-        case SAM_BIATOM_FIRST:
-            {
-                sam_uword_t w2;
-                assert(sam_stack_peek(sam_stack, (*addr)++, &w2) == SAM_ERROR_OK);
-                sam_word_t second_tag = w2 & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK);
-                sam_word_t expected_second_tag = SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT);
-                sam_word_t second_biatom_type = (w2 & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT;
-                if (second_tag != expected_second_tag || biatom_type != second_biatom_type) {
-                    xasprintf(&text, "*** UNPAIRED %s ***", biatom_type == SAM_BIATOM_FLOAT ? "FLOAT" : "BIATOM");
-                    break;
-                }
-                sam_word_t operand = ((inst & SAM_OPERAND_MASK) | ((w2 >> SAM_OPERAND_SHIFT) & ~SAM_OPERAND_MASK));
-                switch (biatom_type) {
-                case SAM_BIATOM_FLOAT:
-                    xasprintf(&text, "float %f", *(sam_float_t *)&operand);
-                    break;
-                default:
-                    xasprintf(&text, "*** INVALID BIATOM ***");
-                    break;
-                }
-            }
-            break;
-        case SAM_BIATOM_SECOND:
-            xasprintf(&text, "*** UNPAIRED %s ***", inst & biatom_type == SAM_BIATOM_FLOAT ? "FLOAT" : "BIATOM");
-            // TODO: Add lookup, so it works for other types.
-            break;
+        /* TODO: case SAM_ATOM_CHAR: */
         }
         break;
     case SAM_TAG_ARRAY:
@@ -199,54 +176,90 @@ static char *disas(sam_uword_t *addr)
         /* case SAM_ARRAY_RAW: */
         /*     break; */
         }
+        break;
     default:
-        abort(); // The cases are exhaustive.
+        xasprintf(&text, "*** INVALID TAG ***");
     }
     return text;
 }
 
 static void print_disas(sam_uword_t level, const char *s)
 {
-    sam_uword_t i;
-    for (i = 0; i < level * 2; i++)
+    for (sam_uword_t i = 0; i < level * 2; i++)
         debug(" ");
     debug("- %s\n", s);
 }
 
-static void print_stack(sam_uword_t from, sam_uword_t to)
+typedef struct sam_stack_list {
+    sam_stack_t *stack;
+    struct sam_stack_list *next;
+} sam_stack_list_t;
+
+static sam_stack_list_t *list_append(sam_stack_list_t *l, sam_stack_t *s) {
+    sam_stack_list_t *node = malloc(sizeof(struct sam_stack_list));
+    assert(node != NULL);
+    node->stack = s;
+    node->next = l;
+    return node;
+}
+
+static void free_list(sam_stack_list_t *l) {
+    sam_stack_list_t *next;
+    for (sam_stack_list_t *p = l; p != NULL; p = next) {
+        next = p->next;
+        free(p);
+    }
+}
+
+static bool already_visited(sam_stack_list_t *l, sam_stack_t *s) {
+    for (sam_stack_list_t *p = l; p != NULL; p = p->next) {
+        if (p->stack == s)
+            return true;
+    }
+    return false;
+}
+
+static sam_stack_list_t *print_stack(sam_stack_list_t *l, sam_uword_t level, sam_stack_t *s, sam_uword_t from, sam_uword_t to)
 {
-    sam_uword_t i, level = 0;
-    for (i = from; i < to; ) {
+    for (sam_uword_t i = from; i < to; i++) {
         sam_uword_t opcode;
-        assert(sam_stack_peek(sam_stack, i, &opcode) == SAM_ERROR_OK);
+        assert(sam_stack_peek(s, i, &opcode) == SAM_ERROR_OK);
         sam_word_t operand = ARSHIFT((sam_word_t)opcode, SAM_OPERAND_SHIFT);
         sam_word_t tag = opcode & SAM_TAG_MASK;
-        opcode &= SAM_OPERAND_MASK;
-        if (tag == SAM_TAG_ARRAY && operand > 0) {
-            print_disas(level, "");
-            level++;
-            i++;
-        } else if (tag == SAM_TAG_ARRAY && operand < 0) {
-            level--;
-            i++;
+        if (tag == SAM_TAG_ARRAY) {
+            sam_stack_t *inner_s = (sam_stack_t *)(opcode & ~SAM_TAG_MASK);
+            if (l == NULL || already_visited(l, inner_s)) {
+                char *stack_str;
+                xasprintf(&stack_str, "stack %p", inner_s);
+                print_disas(level, stack_str);
+            } else {
+                char *count_str;
+                xasprintf(&count_str, "stack %p (%u items)", inner_s, inner_s->sp);
+                print_disas(level, count_str);
+                free(count_str);
+                l = list_append(l, inner_s);
+                l = print_stack(l, level + 1, inner_s, 0, inner_s->sp);
+            }
         } else {
-            char *text = disas(&i);
+            char *text = disas(s, i);
             print_disas(level, text);
             free(text);
         }
     }
+    return l;
 }
 
-void sam_print_stack(void)
+void sam_print_stack(sam_stack_t *s)
 {
-    debug("Stack: (%u word(s))\n", sam_stack->sp);
-    print_stack(0, sam_stack->sp);
+    debug("Stack: %p (%u items)\n", sam_stack, sam_stack->sp);
+    sam_stack_list_t *l = list_append(NULL, sam_stack);
+    free_list(print_stack(l, 0, s, 0, s->sp));
 }
 
-void sam_print_working_stack(void)
+void sam_print_working_stack(sam_stack_t *s)
 {
-    debug("Working stack: (%u word(s))\n", sam_stack->sp - sam_program_len);
-    print_stack(sam_program_len, sam_stack->sp);
+    debug("Working stack (%u items):\n", sam_stack->sp - sam_program_len);
+    print_stack(NULL, 0, s, sam_program_len, sam_stack->sp);
 }
 
 /* Dump screen as a PBM */

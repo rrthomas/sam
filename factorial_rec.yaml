@@ -7,16 +7,16 @@
     - get
     - int -1
     - add
-    - link fact
+    - code fact
     - do
     - int -6
     - get
     - mul
-    - int -6
+    - int -5
     - set
   -
     - int 1
-    - int -6
+    - int -5
     - set
   - if
 - do

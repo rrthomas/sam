@@ -17,19 +17,19 @@ typedef float sam_float_t;
 #define SAM_INT_MIN ((sam_uword_t)SAM_WORD_MIN >> SAM_OPERAND_SHIFT)
 #define SAM_UWORD_MAX (SIZE_MAX)
 
+// Stacks
+typedef struct sam_stack {
+    sam_word_t *s0;
+    sam_uword_t size; // Size of stack in words
+    sam_uword_t sp; // Number of items in stack
+} sam_stack_t;
+extern sam_stack_t *sam_stack;
+
 // VM registers
 #define R(reg, type)                            \
     extern type sam_##reg;
 #include "sam_registers.h"
 #undef R
-
-// Stacks
-typedef struct sam_stack {
-    sam_word_t *s0;
-    sam_uword_t ssize; // Size of stack in words
-    sam_uword_t sp; // Number of words (NOT items!) in stack
-} sam_stack_t;
-extern sam_stack_t *sam_stack;
 
 // Error codes
 enum {
@@ -40,8 +40,6 @@ enum {
     SAM_ERROR_STACK_UNDERFLOW = 4,
     SAM_ERROR_STACK_OVERFLOW = 5,
     SAM_ERROR_WRONG_TYPE = 6,
-    SAM_ERROR_BAD_BRACKET = 7,
-    SAM_ERROR_UNPAIRED_BIATOM = 8,
     SAM_ERROR_INVALID_FUNCTION = 9,
     SAM_ERROR_TRAP_INIT = 10,
     SAM_ERROR_NO_MEMORY = 11,
@@ -51,15 +49,14 @@ enum {
 sam_stack_t *sam_stack_new(void);
 int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
-int sam_stack_get(sam_uword_t addr, sam_uword_t size);
-int sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2);
-int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr, sam_uword_t *size);
-int sam_pop_stack(sam_word_t *val_ptr);
+int sam_stack_get(sam_stack_t *s, sam_uword_t addr);
+int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr);
+int sam_pop_stack(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_push_stack(sam_stack_t *s, sam_word_t val);
 int sam_push_link(sam_stack_t *s, sam_uword_t addr);
 int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand);
 int sam_push_float(sam_stack_t *s, sam_float_t n);
-int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);
+int sam_push_code(sam_stack_t *s, sam_stack_t *s2);
 
 // Miscellaneous routines
 sam_word_t sam_run(void);
@@ -71,15 +68,15 @@ int sam_init(void);
     (((n) & (SAM_UWORD_MAX >> (p))) << (p))
 
 // Debug
-#ifdef SAM_DEBUG
+// #ifdef SAM_DEBUG
 #include <stdbool.h>
 extern bool do_debug;
 char *inst_name(sam_word_t inst_opcode);
-void sam_print_stack(void);
-void sam_print_working_stack(void);
+void sam_print_stack(sam_stack_t *s);
+void sam_print_working_stack(sam_stack_t *s);
 void debug(const char *fmt, ...);
 int sam_debug_init(void);
-#endif
+// #endif
 
 // Traps
 #define SAM_DISPLAY_WIDTH 800

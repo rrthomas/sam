@@ -1,64 +1,62 @@
-Stack: (11 word(s))
-- 
-  - int 21
-  - int 2
-  - mul
-  - int 3
-  - neg
-  - add
-  - int -3
-  - div
-  - halt
-sam_run: pc0 = 1, pc = 1, sp = 11, ir = 1505
-Working stack: (0 word(s))
+Stack: XXXXXXXX (9 items)
+- int 21
+- int 2
+- mul
+- int 3
+- neg
+- add
+- int -3
+- div
+- halt
+sam_run: pc0 = XXXXXXXX, pc = 0/9, sp = 9, ir = XXXXXXXX
+Working stack (0 items):
 int
-sam_run: pc0 = 1, pc = 2, sp = 12, ir = 205
-Working stack: (1 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 1/10, sp = 10, ir = XXXXXXXX
+Working stack (1 items):
 - int 21
 int
-sam_run: pc0 = 1, pc = 3, sp = 13, ir = 1701
-Working stack: (2 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 2/11, sp = 11, ir = XXXXXXXX
+Working stack (2 items):
 - int 21
 - int 2
 mul
-sam_run: pc0 = 1, pc = 4, sp = 12, ir = 305
-Working stack: (1 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 3/10, sp = 10, ir = XXXXXXXX
+Working stack (1 items):
 - int 42
 int
-sam_run: pc0 = 1, pc = 5, sp = 13, ir = 1501
-Working stack: (2 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 4/11, sp = 11, ir = XXXXXXXX
+Working stack (2 items):
 - int 42
 - int 3
 neg
-sam_run: pc0 = 1, pc = 6, sp = 13, ir = 1601
-Working stack: (2 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 5/11, sp = 11, ir = XXXXXXXX
+Working stack (2 items):
 - int 42
 - int -3
 add
-sam_run: pc0 = 1, pc = 7, sp = 12, ir = fffffd05
-Working stack: (1 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 6/10, sp = 10, ir = XXXXXXXX
+Working stack (1 items):
 - int 39
 int
-sam_run: pc0 = 1, pc = 8, sp = 13, ir = 1801
-Working stack: (2 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 7/11, sp = 11, ir = XXXXXXXX
+Working stack (2 items):
 - int 39
 - int -3
 div
-sam_run: pc0 = 1, pc = 9, sp = 12, ir = 1f01
-Working stack: (1 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 8/10, sp = 10, ir = XXXXXXXX
+Working stack (1 items):
 - int -13
 halt
-Stack: (13 word(s))
-- 
-  - int 21
-  - int 2
-  - mul
-  - int 3
-  - neg
-  - add
-  - int -3
-  - div
-  - halt
-- link 1
-- link 10
+Stack: XXXXXXXX (11 items)
+- int 21
+- int 2
+- mul
+- int 3
+- neg
+- add
+- int -3
+- div
+- halt
+- stack XXXXXXXX
+- link XXXXXXXX
 sam_run returns: halt with reason -13 (0xfffffffffffffff3)

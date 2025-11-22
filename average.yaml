@@ -8,12 +8,12 @@
 - average:
   - int -3
   - get
-  - link data
+  - code data
   - iget
   - int -5
   - get
   - add
-  - int -5
+  - int -4
   - set
   - int -3
   - get
@@ -21,7 +21,7 @@
   - add
   - int -1
   - get
-  - int -5
+  - int -4
   - set
   - while
   - loop

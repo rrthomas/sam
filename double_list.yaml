@@ -7,13 +7,13 @@
 - double:
   - int -3
   - get
-  - link data
+  - code data
   - iget
   - float 2.0
   - mul
   - int -4
   - get
-  - link data
+  - code data
   - iset
   - int -3
   - get
@@ -21,7 +21,7 @@
   - add
   - int -1
   - get
-  - int -5
+  - int -4
   - set
   - while
   - loop

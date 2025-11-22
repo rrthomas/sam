@@ -57,11 +57,16 @@ func readProg(progFile string) ast.Node {
 }
 
 // Assemble a program
-var labels map[string]libsam.Uword
+type address struct {
+	stack libsam.Stack
+	pos   libsam.Uword
+}
 
+var labels map[string]address
+
+// FIXME: Elide this type.
 type assembler struct {
 	stack libsam.Stack
-	s0    libsam.Uword
 }
 
 func parseInsn(instStr string) (libsam.Word, bool) {
@@ -77,7 +82,10 @@ func parseTrap(trapStr string) (libsam.Word, bool) {
 func (a *assembler) parseLiteral(argStr string) libsam.Word {
 	address, ok := labels[argStr]
 	if ok {
-		return libsam.Word(address)
+		if address.stack != a.stack {
+			panic(fmt.Errorf("cannot use label from another stack as literal: %s", argStr))
+		}
+		return libsam.Word(address.pos)
 	}
 	if opcode, ok := parseInsn(argStr); ok {
 		return libsam.Word(opcode)
@@ -88,47 +96,86 @@ func (a *assembler) parseLiteral(argStr string) libsam.Word {
 	panic(fmt.Errorf("bad literal %s", argStr))
 }
 
+func (a *assembler) parseAddress(argStr string) address {
+	if address, ok := labels[argStr]; ok {
+		return address
+	}
+	panic(fmt.Errorf("bad address %s", argStr))
+}
+
 var operandInsns = []string{
 	"int",
-	"link",
 	"float",
+	"link",
+	"code",
+	"data",
 	"trap",
 	"push",
 }
 
+var pseudoInsns = []string{
+	"code",
+	"data",
+}
+
 func (a *assembler) assembleInstruction(tokens []string) {
 	instStr := tokens[0]
-	opcode, ok := parseInsn(instStr)
+	instName := strings.ToLower(instStr)
+	opcode, ok := parseInsn(instName)
+	pseudoInsn := false
 	if !ok {
-		panic(fmt.Errorf("unknown instruction %s", instStr))
+		if slices.Contains(pseudoInsns, instName) {
+			pseudoInsn = true
+		} else {
+			panic(fmt.Errorf("unknown instruction %s", instStr))
+		}
 	}
-	if slices.Contains(operandInsns, strings.ToLower(instStr)) {
+	if slices.Contains(operandInsns, instName) {
 		if len(tokens) != 2 {
 			panic(fmt.Errorf("%s needs an operand", instStr))
 		}
 		operandStr := tokens[1]
 
-		switch opcode {
-		case libsam.TAG_ATOM | (libsam.ATOM_INT << libsam.ATOM_TYPE_SHIFT):
-			operand := a.parseLiteral(operandStr)
-			a.stack.PushAtom(libsam.ATOM_INT, libsam.Uword(operand))
-		case libsam.TAG_LINK:
-			operand := a.parseLiteral(operandStr)
-			a.stack.PushLink(libsam.Uword(operand))
-		case libsam.TAG_ATOM | (libsam.ATOM_INST << libsam.ATOM_TYPE_SHIFT):
-			trap, ok := parseTrap(operandStr)
-			if !ok {
-				panic(fmt.Errorf("unknown trap %s", operandStr))
+		if pseudoInsn {
+			switch instName {
+			case "code":
+				addr := a.parseAddress(operandStr)
+				ok, insn := addr.stack.StackPeek(addr.pos)
+				if ok != libsam.ERROR_OK {
+					panic(fmt.Errorf("invalid address for label %s: %d", operandStr, addr.pos))
+				}
+				a.stack.PushStack(libsam.Word(insn))
+			case "data":
+				// FIXME
+			default:
+				panic(fmt.Errorf("invalid pseudo-instruction %s", instStr))
 			}
-			a.stack.PushAtom(libsam.ATOM_INST, libsam.Uword(trap))
-		case libsam.TAG_BIATOM | (libsam.BIATOM_FLOAT << libsam.BIATOM_TYPE_SHIFT):
-			float, err := strconv.ParseFloat(operandStr, 32)
-			if err != nil {
-				panic(fmt.Errorf("bad float %s", operandStr))
+		} else {
+			switch opcode {
+			case libsam.TAG_ATOM | (libsam.ATOM_INT << libsam.ATOM_TYPE_SHIFT):
+				operand := a.parseLiteral(operandStr)
+				a.stack.PushAtom(libsam.ATOM_INT, libsam.Uword(operand))
+			case libsam.TAG_LINK:
+				operand := a.parseLiteral(operandStr)
+				a.stack.PushLink(libsam.Uword(operand))
+			case libsam.TAG_ATOM | (libsam.ATOM_INST << libsam.ATOM_TYPE_SHIFT):
+				trap, ok := parseTrap(operandStr)
+				if !ok {
+					panic(fmt.Errorf("unknown trap %s", operandStr))
+				}
+				a.stack.PushAtom(libsam.ATOM_INST, libsam.Uword(trap))
+			case libsam.TAG_ATOM | (libsam.ATOM_FLOAT << libsam.ATOM_TYPE_SHIFT):
+				float, err := strconv.ParseFloat(operandStr, 32)
+				if err != nil {
+					panic(fmt.Errorf("bad float %s", operandStr))
+				}
+				a.stack.PushFloat(float32(float))
 			}
-			a.stack.PushFloat(float32(float))
 		}
 	} else {
+		if pseudoInsn {
+			panic("unexpected pseudo-instruction")
+		}
 		if len(tokens) > 1 {
 			panic(fmt.Errorf("unexpected operand for %s", instStr))
 		}
@@ -150,9 +197,9 @@ func (a *assembler) assembleSequence(n ast.Node) {
 func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
-		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
-		subA.assembleSequence(n)
+		subA := assembler{stack: libsam.NewStack()}
 		a.stack.PushCode(subA.stack)
+		subA.assembleSequence(n)
 		return nil
 	case ast.StringType:
 		tokens := strings.Fields(n.String())
@@ -173,7 +220,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			panic(fmt.Errorf("bad label: string expected"))
 		}
 		label := keyNode.String()
-		labels[label] = a.s0 + a.stack.Sp()
+		labels[label] = address{stack: a.stack, pos: a.stack.Sp()}
 		subNode := mapNode.Value
 		ast.Walk(a, subNode)
 		return nil
@@ -190,9 +237,9 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		file := name.String()
 		subProg := readProg(file)
 		// Assemble the included file in a nested stack.
-		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
-		subA.assembleSequence(subProg)
+		subA := assembler{stack: libsam.NewStack()}
 		a.stack.PushCode(subA.stack)
+		subA.assembleSequence(subProg)
 		return nil
 	default:
 		panic(fmt.Errorf("invalid code %v", n))
@@ -201,8 +248,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 
 func Assemble(progFile string) {
 	prog := readProg(progFile)
-	labels = map[string]libsam.Uword{}
-	a := assembler{stack: libsam.NewStack(), s0: 1}
+	labels = map[string]address{}
+	a := assembler{stack: libsam.SamStack}
 	a.assembleSequence(prog)
-	libsam.SamStack.PushCode(a.stack)
 }
