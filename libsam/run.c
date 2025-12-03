@@ -398,7 +398,6 @@ sam_word_t sam_run(void)
                 case INST_SIN:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(sinf(a));
@@ -407,7 +406,6 @@ sam_word_t sam_run(void)
                 case INST_COS:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(cosf(a));
@@ -416,7 +414,6 @@ sam_word_t sam_run(void)
                 case INST_DEG:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(a * (M_1_PI * 180.0));
@@ -425,7 +422,6 @@ sam_word_t sam_run(void)
                 case INST_RAD:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(a * (M_PI / 180.0));
