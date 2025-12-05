@@ -45,13 +45,13 @@
     HALT_IF_ERROR(sam_push_stack(sam_stack, val))
 #define CHECK_BIATOM_FIRST(first, type)         \
     do {                                        \
-        if ((first & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK)) != (SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT)) || \
+        if ((first & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK)) != (sam_uword_t)(SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT)) || \
             ((first & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT) != type) \
             HALT(SAM_ERROR_UNPAIRED_BIATOM);    \
     } while(0)
 #define CHECK_BIATOM_SECOND(second, type)       \
     do {                                        \
-        if ((second & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK)) != (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT)) || \
+        if ((second & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK)) != (sam_uword_t)(SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT)) || \
             ((second & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT) != type) \
             HALT(SAM_ERROR_UNPAIRED_BIATOM);    \
     } while(0)
@@ -102,7 +102,7 @@ int _sam_get_stack(sam_uword_t *addr);
         POP_LINK(addr_var);                               \
         sam_uword_t _insn;                                \
         HALT_IF_ERROR(sam_stack_peek(sam_stack, addr_var - 1, &_insn)); \
-        size_var = (ARSHIFT(_insn, SAM_OPERAND_SHIFT)) - 1; \
+        size_var = (_insn >> SAM_OPERAND_SHIFT) - 1; \
     } while(0)
 
 #define POP_FLOAT(var)                                                  \
@@ -120,8 +120,8 @@ int _sam_get_stack(sam_uword_t *addr);
 #define PUSH_FLOAT(val)                                                 \
     do {                                                                \
         sam_float_t v = val;                                            \
-        _PUSH_INSN((*(sam_uword_t *)&v >> SAM_OPERAND_SHIFT), SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
-        _PUSH_INSN((*(sam_uword_t *)&v & ~SAM_OPERAND_MASK), SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
+        _PUSH_INSN((*(uint32_t *)&v >> SAM_OPERAND_SHIFT), SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
+        _PUSH_INSN((*(uint32_t *)&v & ~SAM_OPERAND_MASK), SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
     } while (0)
 
 // Execution
@@ -142,7 +142,7 @@ int _sam_get_stack(sam_uword_t *addr);
         sam_uword_t _stack, _size;                                      \
         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc0 - 1, &_stack)); \
         _CHECK_TYPE(_stack, SAM_TAG_MASK | SAM_ARRAY_TYPE_MASK, SAM_TAG_ARRAY | SAM_ARRAY_STACK); \
-        _size = (ARSHIFT(_stack, SAM_OPERAND_SHIFT)) - 1;               \
+        _size = (_stack >> SAM_OPERAND_SHIFT) - 1;                        \
         if (sam_pc > sam_pc0 + _size)                                   \
             HALT(SAM_ERROR_STACK_OVERFLOW);                             \
     } while (0)

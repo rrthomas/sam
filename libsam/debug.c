@@ -57,10 +57,11 @@ char *trap_name(sam_word_t trap_opcode) {
             return "FILLCIRCLE";
         case INST_DRAWBITMAP:
             return "DRAWBITMAP";
-        default:
+        default: {
             char *text;
             xasprintf(&text, "%zd", trap_opcode);
             return text;
+        }
     }
 }
 
@@ -185,7 +186,7 @@ static char *disas(sam_uword_t *addr)
             }
             break;
         case SAM_BIATOM_SECOND:
-            xasprintf(&text, "*** UNPAIRED %s ***", inst & biatom_type == SAM_BIATOM_FLOAT ? "FLOAT" : "BIATOM");
+            xasprintf(&text, "*** UNPAIRED %s ***", (inst & biatom_type) == SAM_BIATOM_FLOAT ? "FLOAT" : "BIATOM");
             // TODO: Add lookup, so it works for other types.
             break;
         }
@@ -199,6 +200,7 @@ static char *disas(sam_uword_t *addr)
         /* case SAM_ARRAY_RAW: */
         /*     break; */
         }
+        break;
     default:
         abort(); // The cases are exhaustive.
     }

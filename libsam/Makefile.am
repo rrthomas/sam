@@ -5,13 +5,14 @@
 noinst_LTLIBRARIES = libsam.la
 
 AM_CPPFLAGS = -DSAM_DEBUG
+AM_CFLAGS = -Wall -Wno-strict-aliasing
 
 include_HEADERS = \
 	sam.h \
 	sam_registers.h \
 	sam_opcodes.h
 
-libsam_la_CFLAGS = $(SDL2_CFLAGS)
+libsam_la_CFLAGS = $(SDL2_CFLAGS) $(AM_CFLAGS)
 libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) -lm
 libsam_la_SOURCES = \
 	$(include_HEADERS) \
