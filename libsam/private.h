@@ -92,11 +92,8 @@ int _sam_get_stack(sam_uword_t *addr);
         uint32_t _f = (uint32_t)_w;                                     \
         var = *(sam_float_t *)&_f;                                      \
     } while (0)
-#define PUSH_FLOAT(val)                                                 \
-    do {                                                                \
-        sam_float_t v = val;                                            \
-        _PUSH_INSN(*(uint32_t *)&v, SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT)); \
-    } while (0)
+#define PUSH_FLOAT(val)                         \
+    sam_push_float(sam_stack, val)
 
 // Execution
 #define DO(addr)                                \
