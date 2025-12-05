@@ -43,7 +43,6 @@ enum SAM_ATOM_TYPE {
 
 // Array types (bits 2-7)
 enum SAM_ARRAY_TYPE {
-  // Each stack item is either a VM instruction, or a stack.
   SAM_ARRAY_STACK,
   SAM_ARRAY_RAW,
 };
