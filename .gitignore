@@ -3,6 +3,8 @@ Makefile.in
 *~
 *.o
 *.lo
+*.sal.log
+*.yaml.log
 stamp-h1
 /sam-*.tar.gz
 /*.trs
@@ -14,17 +16,8 @@ stamp-h1
 /ltmain.sh
 /test-driver
 /test-suite.log
-/average.log
-/basic_block.log
-/double_list.log
-/factorial_iter.log
-/factorial_rec.log
-/set.log
-/screen_graphics.log
 /screen_graphics.pbm
-/screen_levy-c.log
 /screen_levy-c.pbm
-/screen_turtle-demo.log
 /screen_turtle-demo.pbm
 /aclocal.m4
 /autom4te.cache

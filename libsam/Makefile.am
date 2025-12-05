@@ -21,9 +21,6 @@ libsam_la_SOURCES = \
 	run.c \
 	traps.c
 
-TEST_EXTENSIONS = .yaml
-YAML_LOG_COMPILER = $(srcdir)/run-test
-
 EXTRA_DIST = sam.go
 
 CLOC = cloc --force-lang="C",h

@@ -4,8 +4,7 @@
 
 SUBDIRS = libsam
 
-TEST_EXTENSIONS = .yaml
-YAML_LOG_COMPILER = $(srcdir)/run-test
+LOG_COMPILER = $(srcdir)/run-test
 
 EMPTY =
 
@@ -22,6 +21,7 @@ TESTS = \
 	screen_graphics.yaml \
 	screen_turtle-demo.yaml \
 	screen_levy-c.yaml \
+	expr.sal \
 	$(EMPTY)
 
 RESULTS = \
@@ -37,6 +37,7 @@ RESULTS = \
 	screen_levy-c-expected.log \
 	screen_levy-c-expected.pbm \
 	set-expected.log \
+	expr-expected.log \
 	$(EMPTY)
 
 CLOC = cloc --force-lang="C",h
@@ -44,7 +45,7 @@ CLOC = cloc --force-lang="C",h
 loc:
 	$(CLOC) libsam/*.[ch] *.go
 
-EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(RESULTS) \
+EXTRA_DIST = $(LOG_COMPILER) $(TESTS) $(RESULTS) \
 	HACKING.md \
 	SAM.md \
 	turtle.yaml \
@@ -52,6 +53,7 @@ EXTRA_DIST = $(YAML_LOG_COMPILER) $(TESTS) $(RESULTS) \
 	go.sum \
 	main.go \
 	assembler.go \
+	sal.go \
 	$(EMPTY)
 
 clean-local:

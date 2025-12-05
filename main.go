@@ -21,6 +21,7 @@ import (
 
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/rrthomas/sam/libsam"
 	"github.com/spf13/cobra"
@@ -39,11 +40,34 @@ var rootCmd = &cobra.Command{
 	Short:   "SAM, the Super-Awesome Machine",
 	Long:    "A simple virtual machine and run time for playful low-level programming.",
 	Args:    cobra.ExactArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		libsam.Init()
 		libsam.SetDebug(debug)
-		prog_file := args[0]
-		Assemble(prog_file)
+		progFile := args[0]
+
+		var yaml []byte
+		{
+			ext := filepath.Ext(progFile)
+			var err error
+			switch ext {
+			case ".yaml":
+				yaml, err = os.ReadFile(progFile)
+
+			case ".sal":
+				var source []byte
+				source, err = os.ReadFile(progFile)
+				yaml = Sal(string(source), printAst)
+
+			default:
+				return fmt.Errorf("unknown program file type %v", ext)
+			}
+			if err != nil {
+				return fmt.Errorf("error reading SAL program %v", progFile)
+			}
+		}
+
+		// Assemble and run the program
+		Assemble(yaml)
 		err := libsam.TrapsInit()
 		if err != libsam.ERROR_OK {
 			os.Exit(int(err))
@@ -73,13 +97,16 @@ var rootCmd = &cobra.Command{
 
 		libsam.TrapsFinish()
 		os.Exit(int(err))
+
+		return nil
 	},
 }
 
 var (
-	debug   bool
-	wait    bool
-	pbmFile string
+	debug    bool
+	wait     bool
+	printAst bool
+	pbmFile  string
 )
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -92,11 +119,12 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.SetUsageTemplate(`Usage: {{.CommandPath}} [OPTION...] PROGRAM.yaml
+	rootCmd.SetUsageTemplate(`Usage: {{.CommandPath}} [OPTION...] PROGRAM
 	
 {{.Flags.FlagUsages}}`)
 	rootCmd.Flags().BoolVar(&debug, "debug", false, "output debug information to standard error")
 	rootCmd.Flags().BoolVar(&wait, "wait", false, "wait for user to close window on termination")
+	rootCmd.Flags().BoolVar(&printAst, "ast", false, "print SAL abstract syntax tree")
 	rootCmd.Flags().StringVar(&pbmFile, "dump-screen", "", "output screen to PBM file `FILE`")
 	rootCmd.SetVersionTemplate(`{{.DisplayName}} {{.Version}}
 

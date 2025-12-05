@@ -17,6 +17,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 package main
 
 import (
+	"bytes"
 	"errors"
 	"fmt"
 	"io"
@@ -30,16 +31,8 @@ import (
 	"github.com/rrthomas/sam/libsam"
 )
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
-
-// Read the program from a YAML file
-func readProg(progFile string) ast.Node {
-	r, err := os.Open(progFile)
-	check(err)
+// Read the program from a YAML slice
+func readProg(r io.Reader) ast.Node {
 	dec := yaml.NewDecoder(r)
 
 	var doc ast.Node
@@ -188,7 +181,11 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			panic(fmt.Errorf("invalid directive: string argument expected"))
 		}
 		file := name.String()
-		subProg := readProg(file)
+		r, err := os.Open(file)
+		if err != nil {
+			panic(err)
+		}
+		subProg := readProg(r)
 		// Assemble the included file in a nested stack.
 		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
 		subA.assembleSequence(subProg)
@@ -199,8 +196,8 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	}
 }
 
-func Assemble(progFile string) {
-	prog := readProg(progFile)
+func Assemble(source []byte) {
+	prog := readProg(bytes.NewReader(source))
 	labels = map[string]libsam.Uword{}
 	a := assembler{stack: libsam.NewStack(), s0: 1}
 	a.assembleSequence(prog)

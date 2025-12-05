@@ -4,7 +4,7 @@
 set -e
 
 test_file=$1
-name=${1%.yaml}
+name=${1%.*}
 basename=$(basename $name)
 
 graphics_log=""
