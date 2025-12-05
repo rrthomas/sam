@@ -124,29 +124,6 @@ sam_word_t sam_run(void)
                         HALT_IF_ERROR(sam_stack_poke(sam_stack, dest, val));
                     }
                     break;
-                case INST_IGET:
-                    {
-                        sam_uword_t stack_addr, stack_size;
-                        POP_STACK(stack_addr, stack_size);
-                        sam_word_t pos;
-                        POP_INT(pos);
-                        sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(stack_addr, stack_size, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_get(addr));
-                    }
-                    break;
-                case INST_ISET:
-                    {
-                        sam_uword_t stack_addr, stack_size;
-                        POP_STACK(stack_addr, stack_size);
-                        sam_word_t pos, val;
-                        POP_INT(pos);
-                        POP_WORD(&val);
-                        sam_uword_t dest;
-                        HALT_IF_ERROR(sam_stack_item(stack_addr, stack_size, pos, &dest));
-                        HALT_IF_ERROR(sam_stack_poke(sam_stack, dest, val));
-                    }
-                    break;
                 case INST_DO:
                     {
                         sam_uword_t code;

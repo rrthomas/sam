@@ -79,10 +79,6 @@ char *inst_name(sam_word_t inst_opcode) {
             return "get";
         case INST_SET:
             return "set";
-        case INST_IGET:
-            return "iget";
-        case INST_ISET:
-            return "iset";
         case INST_DO:
             return "do";
         case INST_IF:

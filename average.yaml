@@ -4,12 +4,13 @@
   - float 10.0
   - float 20.0
 - float 0.0
-- int -4
+- int 4
 - average:
   - int -2
   - get
-  - ref data
-  - iget
+  - int data
+  - add
+  - get
   - int -4
   - get
   - add
@@ -17,7 +18,7 @@
   - set
   - int -2
   - get
-  - int 1
+  - int -1
   - add
   - int -1
   - get

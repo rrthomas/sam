@@ -129,7 +129,7 @@ const (
 )
 
 const (
-	TAG_REF  = C.SAM_TAG_REF
+	TAG_REF   = C.SAM_TAG_REF
 	TAG_ATOM  = C.SAM_TAG_ATOM
 	TAG_ARRAY = C.SAM_TAG_ARRAY
 )
@@ -185,8 +185,6 @@ var Instructions = map[string]int{
 	"pop":   C.INST_POP,
 	"get":   C.INST_GET,
 	"set":   C.INST_SET,
-	"iget":  C.INST_IGET,
-	"iset":  C.INST_ISET,
 	"do":    C.INST_DO,
 	"if":    C.INST_IF,
 	"while": C.INST_WHILE,

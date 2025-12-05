@@ -168,16 +168,6 @@ These instructions manage the stack.
 >
 > Pop `i` and `x` from the stack. Set the `i`th stack item to `x`.
 
-> `IGET`  
-> `i` `r` → `x`
->
-> Push the `i`th item of the stack pointed to by `r` to the stack.
-
-> `ISET`  
-> `x` `i` `r` →
->
-> Set the `i`th item of the stack pointed to by `r`th to `x`.
-
 
 ### Control structures
 

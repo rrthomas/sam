@@ -3,21 +3,23 @@
   - float 5.0
   - float 10.0
   - float 20.0
-- int -4
+- int 4
 - double:
   - int -2
   - get
-  - ref data
-  - iget
+  - int data
+  - add
+  - get
   - float 2.0
   - mul
   - int -3
   - get
-  - ref data
-  - iset
+  - int data
+  - add
+  - set
   - int -2
   - get
-  - int 1
+  - int -1
   - add
   - int -1
   - get
