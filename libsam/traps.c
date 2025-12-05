@@ -1,4 +1,4 @@
-// The instructions.
+// The traps.
 //
 // (c) Reuben Thomas 1994-2025
 //
