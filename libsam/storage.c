@@ -18,10 +18,7 @@
 
 // VM registers
 
-#define R(reg, type) \
-    type sam_##reg;
-#include "sam_registers.h"
-#undef R
+sam_uword_t sam_pc;
 sam_stack_t *sam_stack;
 sam_uword_t sam_program_len;
 

@@ -27,10 +27,7 @@ typedef float sam_float_t;
 #define SAM_UWORD_MAX (SIZE_MAX)
 
 // VM registers
-#define R(reg, type)                            \
-    extern type sam_##reg;
-#include "sam_registers.h"
-#undef R
+extern sam_uword_t sam_pc;
 
 // Stacks
 typedef struct sam_stack {

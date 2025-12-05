@@ -9,7 +9,6 @@ AM_CFLAGS = -Wall -Wno-strict-aliasing
 
 include_HEADERS = \
 	sam.h \
-	sam_registers.h \
 	sam_opcodes.h
 
 libsam_la_CFLAGS = $(SDL2_CFLAGS) $(AM_CFLAGS)
