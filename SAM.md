@@ -75,7 +75,7 @@ The following table lists the errors and the conditions under which they are rai
 | `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` items, or an attempt was made to access beyond the current top of the stack. |
 | `WRONG_TYPE` | A stack item is not of the type expected. |
 | `BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
-| `INVALID_FUNCTION` | An invalid function number was given to  `TRAP`. |
+| `INVALID_TRAP` | An invalid function number was given to `TRAP`. |
 
 
 ## Instruction set
@@ -350,7 +350,7 @@ These instructions allow access to I/O and other system facilities.
 > `TRAP`  
 > `n` →
 >
-> Execute trap `n`. Further stack items may also be consumed and returned, depending on `n`. If the trap is invalid, raise `INVALID_FUNCTION`.
+> Execute trap `n`. Further stack items may also be consumed and returned, depending on `n`. If the trap is invalid, raise `INVALID_TRAP`.
 
 
 

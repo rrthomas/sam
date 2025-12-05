@@ -251,7 +251,7 @@ sam_word_t sam_trap(sam_uword_t function)
         }
         break;
     default:
-        error = SAM_ERROR_INVALID_FUNCTION;
+        error = SAM_ERROR_INVALID_TRAP;
         break;
     }
 
