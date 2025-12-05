@@ -13,7 +13,7 @@
   - int -4
   - get
   - add
-  - int -4
+  - int -3
   - set
   - int -2
   - get
@@ -21,7 +21,7 @@
   - add
   - int -1
   - get
-  - int -4
+  - int -3
   - set
   - while
   - loop

@@ -11,17 +11,17 @@
     - int -5
     - get
     - mul
-    - int -3
+    - int -2
     - set
     - int -4
     - get
     - float -1.0
     - add
-    - int -5
+    - int -4
     - set
     - loop
   - do
-  - int -3
+  - int -2
   - set
 - do
 - f2i

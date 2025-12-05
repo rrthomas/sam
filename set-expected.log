@@ -2,22 +2,22 @@ Stack: (24 word(s))
 - 
   - int 1
   - int 2
-  - int -2
+  - int -1
   - set
   - pop
   - float 1.000000
   - float 2.000000
-  - int -2
+  - int -1
   - set
   - pop
   - int 1
   - float 2.000000
-  - int -2
+  - int -1
   - set
   - pop
   - float 1.000000
   - int 2
-  - int -2
+  - int -1
   - set
   - pop
   - int 0
@@ -29,7 +29,7 @@ sam_run: pc = 2, sp = 25, ir = 205
 Working stack: (1 word(s))
 - int 1
 int
-sam_run: pc = 3, sp = 26, ir = fffffe05
+sam_run: pc = 3, sp = 26, ir = ffffff05
 Working stack: (2 word(s))
 - int 1
 - int 2
@@ -38,7 +38,7 @@ sam_run: pc = 4, sp = 27, ir = 501
 Working stack: (3 word(s))
 - int 1
 - int 2
-- int -2
+- int -1
 set
 sam_run: pc = 5, sp = 25, ir = 301
 Working stack: (1 word(s))
@@ -51,7 +51,7 @@ sam_run: pc = 7, sp = 25, ir = 9
 Working stack: (1 word(s))
 - float 1.000000
 float
-sam_run: pc = 8, sp = 26, ir = fffffe05
+sam_run: pc = 8, sp = 26, ir = ffffff05
 Working stack: (2 word(s))
 - float 1.000000
 - float 2.000000
@@ -60,7 +60,7 @@ sam_run: pc = 9, sp = 27, ir = 501
 Working stack: (3 word(s))
 - float 1.000000
 - float 2.000000
-- int -2
+- int -1
 set
 sam_run: pc = 10, sp = 25, ir = 301
 Working stack: (1 word(s))
@@ -73,7 +73,7 @@ sam_run: pc = 12, sp = 25, ir = 9
 Working stack: (1 word(s))
 - int 1
 float
-sam_run: pc = 13, sp = 26, ir = fffffe05
+sam_run: pc = 13, sp = 26, ir = ffffff05
 Working stack: (2 word(s))
 - int 1
 - float 2.000000
@@ -82,7 +82,7 @@ sam_run: pc = 14, sp = 27, ir = 501
 Working stack: (3 word(s))
 - int 1
 - float 2.000000
-- int -2
+- int -1
 set
 sam_run: pc = 15, sp = 25, ir = 301
 Working stack: (1 word(s))
@@ -95,7 +95,7 @@ sam_run: pc = 17, sp = 25, ir = 205
 Working stack: (1 word(s))
 - float 1.000000
 int
-sam_run: pc = 18, sp = 26, ir = fffffe05
+sam_run: pc = 18, sp = 26, ir = ffffff05
 Working stack: (2 word(s))
 - float 1.000000
 - int 2
@@ -104,7 +104,7 @@ sam_run: pc = 19, sp = 27, ir = 501
 Working stack: (3 word(s))
 - float 1.000000
 - int 2
-- int -2
+- int -1
 set
 sam_run: pc = 20, sp = 25, ir = 301
 Working stack: (1 word(s))
@@ -121,22 +121,22 @@ Stack: (25 word(s))
 - 
   - int 1
   - int 2
-  - int -2
+  - int -1
   - set
   - pop
   - float 1.000000
   - float 2.000000
-  - int -2
+  - int -1
   - set
   - pop
   - int 1
   - float 2.000000
-  - int -2
+  - int -1
   - set
   - pop
   - float 1.000000
   - int 2
-  - int -2
+  - int -1
   - set
   - pop
   - int 0
