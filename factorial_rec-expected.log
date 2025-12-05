@@ -1413,7 +1413,7 @@ sam_run: pc = 26, sp = 29, ir = 1d01
 Working stack: (1 word(s))
 - int 120
 halt
-Stack: (29 word(s))
+Stack: (28 word(s))
 - 
   - int 5
   - 
@@ -1438,5 +1438,4 @@ Stack: (29 word(s))
     - if
   - do
   - halt
-- ref 27
 sam_run returns: halt with reason 120 (0x78)

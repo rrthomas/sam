@@ -840,7 +840,7 @@ sam_run: pc = 30, sp = 33, ir = 1d01
 Working stack: (1 word(s))
 - int 120
 halt
-Stack: (33 word(s))
+Stack: (32 word(s))
 - 
   - float 5.000000
   - 
@@ -870,5 +870,4 @@ Stack: (33 word(s))
   - do
   - f2i
   - halt
-- ref 31
 sam_run returns: halt with reason 120 (0x78)

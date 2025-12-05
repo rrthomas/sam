@@ -301,7 +301,7 @@ sam_run: pc = 49, sp = 52, ir = 1d01
 Working stack: (1 word(s))
 - int 0
 halt
-Stack: (52 word(s))
+Stack: (51 word(s))
 - 
   - int 50
   - int 100
@@ -352,5 +352,4 @@ Stack: (52 word(s))
   - trap FILLCIRCLE
   - int 0
   - halt
-- ref 50
 sam_run returns: halt with reason 0 (0x0)

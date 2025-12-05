@@ -847,7 +847,7 @@ Working stack: (2 word(s))
 - ref 1
 - int 0
 halt
-Stack: (120 word(s))
+Stack: (119 word(s))
 - 
   - 
     - float 353.553375
@@ -958,5 +958,4 @@ Stack: (120 word(s))
   - int 0
   - halt
 - ref 1
-- ref 117
 sam_run returns: halt with reason 0 (0x0)

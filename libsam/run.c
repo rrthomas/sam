@@ -451,6 +451,5 @@ sam_word_t sam_run(void)
     }
 
 error:
-    DO(sam_pc); // Save pc so we can restart.
     return error;
 }
