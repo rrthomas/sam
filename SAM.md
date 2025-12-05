@@ -21,8 +21,8 @@ The registers are as follows:
 
 | Register  | Function  |
 | --------- | --------- |
-| `SSIZE`   | The `S`tack `SIZE`. The size of the stack in items. |
-| `SP`      | The `S`tack `P`ointer. The number of items in the current stack. |
+| `SSIZE`   | The `S`tack `SIZE`. The number of items the stack can hold. |
+| `SP`      | The `S`tack `P`ointer. The number of items currently on the stack. |
 | `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
 | `OP`      | The `OP`erand is the operand encoded in the current instruction. |
 | `I`       | The opcode of the currently executing `I`nstruction. |
@@ -41,7 +41,7 @@ A positive address `n` refers to the `n`th item, starting from zero at the botto
 
 A negative address –`n` refers to the `n`th stack item, counting from 1 at the top of the stack.
 
-A valid address is one that points to a valid instruction whose opcode’s name does not start with an underscore.
+A valid address is one that points to a valid instruction.
 
 
 ### Operation
@@ -98,7 +98,7 @@ The instruction set is listed below, with the instructions grouped according to 
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
 | `p`    | a pointer to a stack item |
-| `r`    | a reference (pointer to a stack) |
+| `r`    | a reference (pointer to a bracket) |
 | `x`    | an unspecified item |
 
 Each type may be suffixed by a number in stack pictures; if the same combination of type and suffix appears more than once in a stack comment, it refers to identical stack items.
@@ -107,7 +107,7 @@ Integers are stored as the top three bytes of an `INT` instruction, in twos-comp
 
 Floats are 32-bit IEEE floats, stored as the operand of a `FLOAT` instruction.
 
-A stack is encoded as a `BRA` instruction followed by the nested stack items and ending with a `KET` instruction. A reference to a stack is encoded in a `REF` instruction as the address of its `BRA` instruction.
+A bracket is encoded as a `BRA` instruction followed by some items and ending with a `KET` instruction. A reference to a bracket is encoded in a `REF` instruction as the address of its `BRA` instruction.
 
 
 ### Do nothing
@@ -191,7 +191,7 @@ These instructions implement loops, conditions and subroutine calls.
 > `DO`  
 > `r` → `p`
 >
-> Pop `r`. Push `PC` to the stack as a reference, and set `PC` to the address of the first item of the stack pointed to by `r`.
+> Pop `r`. Push `PC` to the stack as a reference, and set `PC` to the address of the first item of the bracket pointed to by `r`.
 
 > `IF`  
 > `i` `r₁` `r₂` →
@@ -205,7 +205,7 @@ These instructions implement loops, conditions and subroutine calls.
 
 > `LOOP`
 >
-> Set `PC` to the first instruction of the current stack.
+> Set `PC` to the first instruction of the current bracket.
 
 
 ### Logic and shifts
