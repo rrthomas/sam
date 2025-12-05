@@ -10,7 +10,16 @@
 // Basic types
 typedef ptrdiff_t sam_word_t;
 typedef size_t sam_uword_t;
+#if SIZEOF_SIZE_T == 4
+#ifdef __STDCPP_FLOAT16_T__
+typedef float16_t sam_float_t;
+#else
+#error No suitable type for sam_float_t
+#endif
+#else
 typedef float sam_float_t;
+#endif
+
 #define SAM_WORD_BYTES (sizeof(size_t))
 #define SAM_WORD_BIT (SAM_WORD_BYTES * 8)
 #define SAM_WORD_MIN ((sam_word_t)(1UL << (SAM_WORD_BIT - 1)))
@@ -41,10 +50,9 @@ enum {
     SAM_ERROR_STACK_OVERFLOW = 5,
     SAM_ERROR_WRONG_TYPE = 6,
     SAM_ERROR_BAD_BRACKET = 7,
-    SAM_ERROR_UNPAIRED_BIATOM = 8,
-    SAM_ERROR_INVALID_FUNCTION = 9,
-    SAM_ERROR_TRAP_INIT = 10,
-    SAM_ERROR_NO_MEMORY = 11,
+    SAM_ERROR_INVALID_FUNCTION = 8,
+    SAM_ERROR_TRAP_INIT = 9,
+    SAM_ERROR_NO_MEMORY = 10,
 };
 
 // Stack access

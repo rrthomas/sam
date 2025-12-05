@@ -76,7 +76,6 @@ The following table lists the errors and the conditions under which they are rai
 | `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` words, or an attempt was made to access beyond the current top of the stack. |
 | `WRONG_TYPE` | A stack item is not of the type expected. |
 | `BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
-| `UNPAIRED_BIATOM` | A `FLOAT` instruction was not followed by `_FLOAT`. |
 | `INVALID_FUNCTION` | An invalid function number was given to  `TRAP`. |
 
 
@@ -108,7 +107,7 @@ Each type may be suffixed by a number in stack pictures; if the same combination
 
 Integers are stored as the top three bytes of an `INT` instruction, in twos-complement form.
 
-Floats are 32-bit IEEE floats, whose top three bytes are stored in the top three bytes of a `FLOAT` instruction and bottom byte is in the second byte of the paired `_FLOAT` instruction.
+Floats are 32-bit IEEE floats, stored as the operand of a `FLOAT` instruction.
 
 A stack is encoded as a `BRA` instruction followed by the nested stack items and ending with a `KET` instruction. A link to a stack is encoded in a `LINK` instruction as the address of its `BRA` instruction.
 
@@ -134,11 +133,7 @@ These instructions encode literal values.
 > `FLOAT`  
 > → `f`
 >
-> Push the float encoded in the `FLOAT` and following `_FLOAT` instruction on to the stack, or raise the error `UNPAIRED_FLOAT` if the following instruction is not a `_FLOAT` instruction. Increment `PC`.
-
-> `_FLOAT`
->
-> Raise the error `UNPAIRED_FLOAT`. This instruction should never be executed.
+> Push the float encoded in the `FLOAT` instruction on to the stack. Increment `PC`.
 
 
 ### Numeric type conversion

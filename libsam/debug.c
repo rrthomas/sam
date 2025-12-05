@@ -157,38 +157,11 @@ static char *disas(sam_uword_t *addr)
         case SAM_ATOM_INT:
             xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_OPERAND_SHIFT));
             break;
-        /* TODO: case SAM_ATOM_CHAR: */
+        case SAM_ATOM_FLOAT: {
+            uint32_t operand = (uint32_t)(inst >> SAM_OPERAND_SHIFT);
+            xasprintf(&text, "float %f", *(sam_float_t *)&operand);
+            break;
         }
-        break;
-    case SAM_TAG_BIATOM:
-        sam_word_t biatom_type = (inst & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT;
-        switch ((inst & SAM_BIATOM_TAG_MASK) >> SAM_BIATOM_TAG_SHIFT) {
-        case SAM_BIATOM_FIRST:
-            {
-                sam_uword_t w2;
-                assert(sam_stack_peek(sam_stack, (*addr)++, &w2) == SAM_ERROR_OK);
-                sam_word_t second_tag = w2 & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK);
-                sam_word_t expected_second_tag = SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT);
-                sam_word_t second_biatom_type = (w2 & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT;
-                if (second_tag != expected_second_tag || biatom_type != second_biatom_type) {
-                    xasprintf(&text, "*** UNPAIRED %s ***", biatom_type == SAM_BIATOM_FLOAT ? "FLOAT" : "BIATOM");
-                    break;
-                }
-                sam_word_t operand = ((inst & SAM_OPERAND_MASK) | ((w2 >> SAM_OPERAND_SHIFT) & ~SAM_OPERAND_MASK));
-                switch (biatom_type) {
-                case SAM_BIATOM_FLOAT:
-                    xasprintf(&text, "float %f", *(sam_float_t *)&operand);
-                    break;
-                default:
-                    xasprintf(&text, "*** INVALID BIATOM ***");
-                    break;
-                }
-            }
-            break;
-        case SAM_BIATOM_SECOND:
-            xasprintf(&text, "*** UNPAIRED %s ***", (inst & biatom_type) == SAM_BIATOM_FLOAT ? "FLOAT" : "BIATOM");
-            // TODO: Add lookup, so it works for other types.
-            break;
         }
         break;
     case SAM_TAG_ARRAY:

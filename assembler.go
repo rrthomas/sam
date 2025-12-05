@@ -121,7 +121,7 @@ func (a *assembler) assembleInstruction(tokens []string) {
 				panic(fmt.Errorf("unknown trap %s", operandStr))
 			}
 			a.stack.PushAtom(libsam.ATOM_INST, libsam.Uword(trap))
-		case libsam.TAG_BIATOM | (libsam.BIATOM_FLOAT << libsam.BIATOM_TYPE_SHIFT):
+		case libsam.TAG_ATOM | (libsam.ATOM_FLOAT << libsam.ATOM_TYPE_SHIFT):
 			float, err := strconv.ParseFloat(operandStr, 32)
 			if err != nil {
 				panic(fmt.Errorf("bad float %s", operandStr))

@@ -43,32 +43,12 @@
     HALT_IF_ERROR(sam_pop_stack(ptr))
 #define PUSH_WORD(val)                          \
     HALT_IF_ERROR(sam_push_stack(sam_stack, val))
-#define CHECK_BIATOM_FIRST(first, type)         \
-    do {                                        \
-        if ((first & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK)) != (sam_uword_t)(SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT)) || \
-            ((first & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT) != type) \
-            HALT(SAM_ERROR_UNPAIRED_BIATOM);    \
-    } while(0)
-#define CHECK_BIATOM_SECOND(second, type)       \
-    do {                                        \
-        if ((second & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK)) != (sam_uword_t)(SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT)) || \
-            ((second & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT) != type) \
-            HALT(SAM_ERROR_UNPAIRED_BIATOM);    \
-    } while(0)
-#define POP_BIATOM(first, second_var)           \
-    do {                                        \
-        POP_WORD(&second_var);                  \
-        if ((first & SAM_TAG_BIATOM) != SAM_BIATOM_FIRST || \
-            (first & SAM_BIATOM_TYPE_MASK) != (second_var & SAM_BIATOM_TYPE_MASK)) \
-            HALT(SAM_ERROR_UNPAIRED_BIATOM);    \
-        CHECK_BIATOM_SECOND(second_var, (second_var & SAM_BIATOM_TYPE_MASK) >> SAM_BIATOM_TYPE_SHIFT); \
-    } while(0)
 
-#define _POP_INSN(var, insn, insn_mask, op_mask, rshift, shift)     \
+#define _POP_INSN(var, insn, insn_mask, op_mask, rshift, shift) \
     do {                                        \
         POP_WORD((sam_word_t *)&var);           \
-        _CHECK_TYPE(var, insn_mask, insn); \
-        var = rshift(var & op_mask, shift); \
+        _CHECK_TYPE(var, insn_mask, insn);      \
+        var = rshift(var & op_mask, shift);     \
     } while (0)
 #define _PUSH_INSN(val, insn)                   \
     PUSH_WORD(LSHIFT((val), SAM_OPERAND_SHIFT) | insn)
@@ -94,7 +74,7 @@ int _sam_get_stack(sam_uword_t *addr);
         _CHECK_TYPE(_stack, SAM_TAG_MASK | SAM_ARRAY_TYPE_MASK, SAM_TAG_ARRAY | SAM_ARRAY_STACK); \
         var++;                                        \
     } while(0)
-#define PUSH_PTR(addr)                                     \
+#define PUSH_PTR(addr)                                \
     PUSH_WORD(LSHIFT((addr), SAM_LINK_SHIFT) | SAM_TAG_LINK)
 
 #define POP_STACK(addr_var, size_var)                     \
@@ -107,21 +87,15 @@ int _sam_get_stack(sam_uword_t *addr);
 
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
-        sam_uword_t w2;                                                 \
-        POP_WORD((sam_word_t *)&w2);                                    \
-        _CHECK_TYPE(w2, SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK, SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
-        sam_uword_t w1;                                                 \
-        POP_WORD((sam_word_t *)&w1);                                    \
-        _CHECK_TYPE(w1, SAM_TAG_MASK | SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK, SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
-        w1 = ((w1 & SAM_OPERAND_MASK) | ((w2 >> SAM_OPERAND_SHIFT) & ~SAM_OPERAND_MASK)); \
-        var = *(sam_float_t *)&w1;                                      \
+        sam_uword_t _w;                                                 \
+        _POP_INSN(_w, SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT), SAM_TAG_MASK | SAM_ATOM_TYPE_MASK, SAM_OPERAND_MASK, LRSHIFT, SAM_OPERAND_SHIFT); \
+        uint32_t _f = (uint32_t)_w;                                     \
+        var = *(sam_float_t *)&_f;                                      \
     } while (0)
-
 #define PUSH_FLOAT(val)                                                 \
     do {                                                                \
         sam_float_t v = val;                                            \
-        _PUSH_INSN((*(uint32_t *)&v >> SAM_OPERAND_SHIFT), SAM_TAG_BIATOM | (SAM_BIATOM_FIRST << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
-        _PUSH_INSN((*(uint32_t *)&v & ~SAM_OPERAND_MASK), SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT)); \
+        _PUSH_INSN(*(uint32_t *)&v, SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT)); \
     } while (0)
 
 // Execution

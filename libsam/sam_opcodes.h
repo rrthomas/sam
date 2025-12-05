@@ -14,10 +14,6 @@ extern const int SAM_TAG_SHIFT;
 extern const sam_word_t SAM_TAG_MASK;
 extern const int SAM_ATOM_TYPE_SHIFT;
 extern const int SAM_ATOM_TYPE_MASK;
-extern const int SAM_BIATOM_TAG_SHIFT;
-extern const sam_word_t SAM_BIATOM_TAG_MASK;
-extern const int SAM_BIATOM_TYPE_SHIFT;
-extern const sam_word_t SAM_BIATOM_TYPE_MASK;
 extern const int SAM_ARRAY_TYPE_SHIFT;
 extern const sam_word_t SAM_ARRAY_TYPE_MASK;
 extern const int SAM_OPERAND_SHIFT;
@@ -31,7 +27,6 @@ extern const sam_word_t SAM_LINK_MASK;
 enum SAM_TAG {
   SAM_TAG_LINK = 0,
   SAM_TAG_ATOM,
-  SAM_TAG_BIATOM,
   SAM_TAG_ARRAY, // Used for BRA and KET.
 };
 
@@ -39,18 +34,7 @@ enum SAM_TAG {
 enum SAM_ATOM_TYPE {
   SAM_ATOM_INST,
   SAM_ATOM_INT,
-  SAM_ATOM_CHAR,
-};
-
-// Biatom tags (bit 2)
-enum SAM_BIATOM_TAG {
-  SAM_BIATOM_FIRST,
-  SAM_BIATOM_SECOND,
-};
-
-// Biatom types (bits 3-7)
-enum SAM_BIATOM_TYPE {
-  SAM_BIATOM_FLOAT,
+  SAM_ATOM_FLOAT,
 };
 
 // Arrays are stored as: ARRAY instruction (operand is positive number of

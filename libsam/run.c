@@ -26,12 +26,6 @@ const sam_word_t SAM_TAG_MASK = 0x3;
 const int SAM_ATOM_TYPE_SHIFT = 2;
 const int SAM_ATOM_TYPE_MASK = 0xc;
 
-const int SAM_BIATOM_TAG_SHIFT = 2;
-const sam_word_t SAM_BIATOM_TAG_MASK = 0x4;
-
-const int SAM_BIATOM_TYPE_SHIFT = 3;
-const sam_word_t SAM_BIATOM_TYPE_MASK = 0xf8;
-
 const int SAM_ARRAY_TYPE_SHIFT = 2;
 const sam_word_t SAM_ARRAY_TYPE_MASK = 0xfc;
 
@@ -241,30 +235,10 @@ sam_word_t sam_run(void)
                     break;
                 case INST_EQ:
                     {
-                        sam_word_t x;
+                        sam_word_t x, y;
                         POP_WORD(&x);
-                        switch (x & SAM_TAG_MASK) {
-                        case SAM_TAG_LINK:
-                        case SAM_TAG_ATOM:
-                            {
-                                sam_word_t y;
-                                POP_WORD(&y);
-                                PUSH_INT(x == y);
-                            }
-                            break;
-                        case SAM_TAG_BIATOM:
-                            {
-                                sam_word_t x2, y, y2;
-                                POP_BIATOM(x, x2);
-                                POP_WORD(&y);
-                                POP_WORD(&y2);
-                                PUSH_INT(x == y && x2 == y2);
-                            }
-                            break;
-                        default:
-                            HALT(SAM_ERROR_WRONG_TYPE);
-                            break;
-                        }
+                        POP_WORD(&y);
+                        PUSH_INT(x == y);
                     }
                     break;
                 case INST_LT:
@@ -276,7 +250,7 @@ sam_word_t sam_run(void)
                             POP_INT(a);
                             POP_INT(b);
                             PUSH_INT(a < b);
-                        } else if (operand & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK) || SAM_BIATOM_TYPE_MASK == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
+                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
                             POP_FLOAT(a);
                             POP_FLOAT(b);
@@ -293,7 +267,7 @@ sam_word_t sam_run(void)
                             sam_uword_t a;
                             POP_UINT(a);
                             PUSH_INT(-a);
-                        } else if (operand & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK) || SAM_BIATOM_TYPE_MASK == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
+                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a;
                             POP_FLOAT(a);
                             PUSH_FLOAT(-a);
@@ -310,7 +284,7 @@ sam_word_t sam_run(void)
                             POP_UINT(a);
                             POP_UINT(b);
                             PUSH_INT((sam_word_t)(b + a));
-                        } else if (operand & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK) || SAM_BIATOM_TYPE_MASK == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
+                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
                             POP_FLOAT(a);
                             POP_FLOAT(b);
@@ -328,7 +302,7 @@ sam_word_t sam_run(void)
                             POP_UINT(a);
                             POP_UINT(b);
                             PUSH_INT((sam_word_t)(a * b));
-                        } else if (operand & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK) || SAM_BIATOM_TYPE_MASK == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
+                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
                             POP_FLOAT(a);
                             POP_FLOAT(b);
@@ -350,7 +324,7 @@ sam_word_t sam_run(void)
                             } else {
                                 PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
                             }
-                        } else if (operand & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK) || SAM_BIATOM_TYPE_MASK == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
+                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t divisor, dividend;
                             POP_FLOAT(divisor);
                             POP_FLOAT(dividend);
@@ -368,7 +342,7 @@ sam_word_t sam_run(void)
                             POP_UINT(divisor);
                             POP_UINT(dividend);
                             PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
-                        } else if (operand & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK) || SAM_BIATOM_TYPE_MASK == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
+                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t divisor, dividend;
                             POP_FLOAT(divisor);
                             POP_FLOAT(dividend);
@@ -386,7 +360,7 @@ sam_word_t sam_run(void)
                             POP_UINT(a);
                             POP_UINT(b);
                             PUSH_INT(powi(a, b));
-                        } else if (operand & (SAM_TAG_MASK | SAM_BIATOM_TAG_MASK) || SAM_BIATOM_TYPE_MASK == (SAM_TAG_BIATOM | (SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | (SAM_BIATOM_FLOAT << SAM_BIATOM_TYPE_SHIFT))) {
+                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
                             POP_FLOAT(a);
                             POP_FLOAT(b);
@@ -397,8 +371,6 @@ sam_word_t sam_run(void)
                     break;
                 case INST_SIN:
                     {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(sinf(a));
@@ -406,8 +378,6 @@ sam_word_t sam_run(void)
                     break;
                 case INST_COS:
                     {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(cosf(a));
@@ -415,8 +385,6 @@ sam_word_t sam_run(void)
                     break;
                 case INST_DEG:
                     {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(a * (M_1_PI * 180.0));
@@ -424,8 +392,6 @@ sam_word_t sam_run(void)
                     break;
                 case INST_RAD:
                     {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         sam_float_t a;
                         POP_FLOAT(a);
                         PUSH_FLOAT(a * (M_PI / 180.0));
@@ -452,44 +418,17 @@ sam_word_t sam_run(void)
 #endif
                 PUSH_WORD(ir);
                 break;
-            case SAM_ATOM_CHAR:
-                // TODO
-                // FALLTHROUGH
+            case SAM_ATOM_FLOAT:
+#ifdef SAM_DEBUG
+                debug("float\n");
+#endif
+                PUSH_WORD(ir);
+                break;
             default:
 #ifdef SAM_DEBUG
                 debug("ERROR_INVALID_OPCODE\n");
 #endif
                 HALT(SAM_ERROR_INVALID_OPCODE);
-                break;
-            }
-            break;
-        case SAM_TAG_BIATOM:
-            switch ((ir & SAM_BIATOM_TAG_MASK) >> SAM_BIATOM_TAG_SHIFT) {
-            case SAM_BIATOM_FIRST:
-            {
-                sam_uword_t operand;
-                sam_word_t biatom_type = ir & SAM_BIATOM_TYPE_MASK;
-                HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc++, &operand));
-                if ((operand & (SAM_BIATOM_TAG_MASK | SAM_BIATOM_TYPE_MASK)) !=
-                    (sam_uword_t)((SAM_BIATOM_SECOND << SAM_BIATOM_TAG_SHIFT) | biatom_type))
-                    HALT(SAM_ERROR_UNPAIRED_BIATOM);
-
-                switch (biatom_type >> SAM_BIATOM_TYPE_SHIFT) {
-                case SAM_BIATOM_FLOAT:
-#ifdef SAM_DEBUG
-                    debug("float\n");
-#endif
-                    PUSH_WORD(ir);
-                    PUSH_WORD(operand);
-                    break;
-                }
-            }
-            break;
-            case SAM_BIATOM_SECOND:
-#ifdef SAM_DEBUG
-                debug("ERROR_UNPAIRED_BIATOM\n");
-#endif
-                HALT(SAM_ERROR_UNPAIRED_BIATOM);
                 break;
             }
             break;
