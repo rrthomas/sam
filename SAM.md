@@ -12,7 +12,7 @@ SAM is self-contained, and performs I/O via the `TRAP` instruction, which provid
 
 ## Architecture
 
-SAM is a stack-based VM. Its memory is a single stack of items, each of which is a VM instruction or a stack. It has no other memory. It has a handful of registers.
+SAM is a stack-based VM. Its memory is a single stack of items, each of which is a word-sized VM instruction. It has no other memory. It has a handful of registers.
 
 
 ### Registers
@@ -21,9 +21,9 @@ The registers are as follows:
 
 | Register  | Function  |
 | --------- | --------- |
-| `SSIZE`   | The `S`tack `SIZE`. The size of the stack in words. |
-| `SP`      | The `S`tack `P`ointer. The number of words in the current stack. |
-| `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction word. |
+| `SSIZE`   | The `S`tack `SIZE`. The size of the stack in items. |
+| `SP`      | The `S`tack `P`ointer. The number of items in the current stack. |
+| `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
 | `OP`      | The `OP`erand is the operand encoded in the current instruction. |
 | `I`       | The opcode of the currently executing `I`nstruction. |
 | `PC`      | The `P`rogram `C`ounter points to the next instruction. |
@@ -37,11 +37,11 @@ The stack is represented as a series of VM instructions encoded as 4- or 8-byte 
 
 The stack is addressed with signed integers.
 
-A positive address `n` refers to the `n`th word, starting from zero at the bottom of the stack.
+A positive address `n` refers to the `n`th item, starting from zero at the bottom of the stack.
 
 A negative address –`n` refers to the `n`th stack item, counting from 1 at the top of the stack.
 
-A valid address is one that points to a valid instruction word whose opcode’s name does not start with an underscore.
+A valid address is one that points to a valid instruction whose opcode’s name does not start with an underscore.
 
 
 ### Operation
@@ -72,7 +72,7 @@ The following table lists the errors and the conditions under which they are rai
 | `INVALID_OPCODE` | An attempt was made to execute an invalid opcode. |
 | `INVALID_ADDRESS` | Invalid address. |
 | `STACK_UNDERFLOW` | The stack has underflowed, that is, an attempt was made to pop when it was empty. |
-| `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` words, or an attempt was made to access beyond the current top of the stack. |
+| `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` items, or an attempt was made to access beyond the current top of the stack. |
 | `WRONG_TYPE` | A stack item is not of the type expected. |
 | `BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
 | `INVALID_FUNCTION` | An invalid function number was given to  `TRAP`. |
@@ -87,7 +87,7 @@ The instruction set is listed below, with the instructions grouped according to 
 >
 > Description.
 
-**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`iₙ₋₁` `iₙ` where the `iₖ` are stack items, each of which occupies a whole number of words, with `iₙ` being on top of the stack. The symbols denoting different types of stack item are shown next.
+**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`iₙ₋₁` `iₙ` where the `iₖ` are stack items, with `iₙ` being on top of the stack. The symbols denoting different types of stack item are shown next.
 
 
 ### Types and their representations
@@ -202,7 +202,7 @@ These instructions implement loops, conditions and subroutine calls.
 > `DO`  
 > `l` → `p`
 >
-> Pop `l`. Push `PC` to the stack as a link, and set `PC` to the address of the first word of the stack pointed to by `l`.
+> Pop `l`. Push `PC` to the stack as a link, and set `PC` to the address of the first item of the stack pointed to by `l`.
 
 > `IF`  
 > `i` `l₁` `l₂` →

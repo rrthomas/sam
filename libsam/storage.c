@@ -9,7 +9,6 @@
 // RISK.
 
 #include <stdlib.h>
-#include <string.h>
 
 #include "sam.h"
 #include "sam_opcodes.h"
@@ -45,111 +44,39 @@ int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
     return SAM_ERROR_OK;
 }
 
-// Push the stack item at `addr` of size `size` to the top of the stack.
-int sam_stack_get(sam_uword_t addr, sam_uword_t size)
+// Push the stack item at `addr` to the top of the stack.
+int sam_stack_get(sam_uword_t addr)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
     HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &opcode));
     opcode &= SAM_TAG_MASK;
     if (opcode == SAM_TAG_ARRAY)
-      PUSH_PTR(addr);
+        PUSH_PTR(addr);
     else {
-      sam_uword_t i;
-      for (i = 0; i < size; i++) {
         sam_uword_t temp;
-        HALT_IF_ERROR(sam_stack_peek(sam_stack, addr + i, &temp));
+        HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &temp));
         PUSH_WORD(temp);
-      }
     }
 error:
-    return error;
-}
-
-// Move `size` words anywhere within allocated stack memory.
-// The blocks may overlap.
-static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
-{
-    if (size > sam_stack->ssize || src > sam_stack->ssize - size || dst > sam_stack->ssize - size)
-        return SAM_ERROR_INVALID_ADDRESS;
-    memmove(&sam_stack->s0[dst], &sam_stack->s0[src], size * sizeof(sam_word_t));
-    return SAM_ERROR_OK;
-}
-
-// Overwrite one block with another of possibly unequal size in the stack.
-// The blocks must not overlap.
-int sam_stack_set(sam_uword_t addr1, sam_uword_t size1, sam_uword_t addr2, sam_uword_t size2)
-{
-    if (size1 > sam_stack->sp || size2 > sam_stack->sp || addr1 > sam_stack->sp - size1 || addr2 > sam_stack->sp - size2)
-        return SAM_ERROR_STACK_OVERFLOW;
-    if (size1 > size2)
-        move_n(addr1 + size2, addr1 + size1, sam_stack->sp - (addr1 + size1));
-    move_n(addr2, addr1, size1);
-    if (size1 < size2)
-        move_n(addr1 + size1, addr1 + size2, sam_stack->sp - (addr1 + size1));
-    return SAM_ERROR_OK;
-}
-
-static int stack_item_bottom(sam_uword_t s0, sam_uword_t sp,sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
-{
-    if (n >= s0 + sp)
-        return SAM_ERROR_STACK_OVERFLOW;
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t p = s0 + n, inst;
-    HALT_IF_ERROR(sam_stack_peek(sam_stack, p++, &inst));
-    sam_word_t operand = ARSHIFT((sam_word_t)inst, SAM_OPERAND_SHIFT);
-    // If instruction is a STACK with positive argument, skip to matching
-    // STACK.
-    if ((inst & SAM_TAG_MASK) == SAM_TAG_ARRAY && operand > 0) {
-        p += operand;
-        sam_uword_t opcode2;
-        HALT_IF_ERROR(sam_stack_peek(sam_stack, p++, &opcode2));
-        if ((opcode2 & SAM_TAG_MASK) != SAM_TAG_ARRAY)
-            return SAM_ERROR_BAD_BRACKET;
-    }
-    *addr = s0 + n;
-    *size = p - (s0 + n);
- error:
-    return error;
-}
-
-static int stack_item_top(sam_uword_t s0, sam_uword_t sp, sam_uword_t n, sam_uword_t *addr, sam_uword_t *size)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t p = s0 + sp;
-    sam_uword_t i, last_sp;
-    for (i = 0; i < n; i++) {
-        last_sp = p;
-        if (p == s0)
-            return SAM_ERROR_STACK_UNDERFLOW;
-        sam_uword_t inst;
-        HALT_IF_ERROR(sam_stack_peek(sam_stack, --p, &inst));
-        sam_word_t operand = ARSHIFT((sam_word_t)inst, SAM_OPERAND_SHIFT);
-        // If instruction is a STACK with negative argument, skip to matching
-        // STACK.
-        if ((inst & SAM_TAG_MASK) == SAM_TAG_ARRAY && operand < 0) {
-            p += operand;
-            sam_uword_t opcode2;
-            HALT_IF_ERROR(sam_stack_peek(sam_stack, p, &opcode2));
-            if ((opcode2 & SAM_TAG_MASK) != SAM_TAG_ARRAY)
-                return SAM_ERROR_BAD_BRACKET;
-        }
-    }
-    *addr = p;
-    *size = last_sp - p;
- error:
     return error;
 }
 
 // s0 and sp give the address of the stack to consider.
 // If n < 0, return offset of stack item n from top; otherwise,
 // check n is the address of a stack item, and return it.
-int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr, sam_uword_t *size)
+int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr)
 {
-    if (n >= 0)
-        return stack_item_bottom(s0, sp, n, addr, size);
-    else
-        return stack_item_top(s0, sp, -n, addr, size);
+    if (n < 0)
+        n = sp + n;
+    if (n >= sp)
+        return SAM_ERROR_STACK_OVERFLOW;
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t p = s0 + n, inst;
+    HALT_IF_ERROR(sam_stack_peek(sam_stack, p, &inst));
+    *addr = p;
+ error:
+    return error;
 }
 
 int sam_pop_stack(sam_word_t *val_ptr)
