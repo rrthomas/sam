@@ -27,7 +27,6 @@ The registers are as follows:
 | `OP`      | The `OP`erand is the operand encoded in the current instruction. |
 | `I`       | The opcode of the currently executing `I`nstruction. |
 | `PC`      | The `P`rogram `C`ounter points to the next instruction. |
-| `PC0`     | Points to the start of the currently executing stack. |
 
 All of the registers are word-sized.
 
@@ -47,7 +46,7 @@ A valid address is one that points to a valid instruction word whose opcode’s 
 
 ### Operation
 
-Before SAM is started, the stack should be given suitable contents, `SSIZE` and `SP` set appropriately, `PC0` to the address of the first word in some stack, and `PC` to the address of some item in the stack pointed to by `PC0`.
+Before SAM is started, the stack should be given suitable contents, `SSIZE` and `SP` set appropriately, and `PC` to the address of some item in the stack.
 
 ```
 begin
@@ -191,9 +190,9 @@ These instructions implement loops, conditions and subroutine calls.
 > Push `PC`–1 on to the stack as an integer, and add `OP`+1 to `PC`.
 
 > `KET`  
-> `p₁` `p₂` →
+> `p` →
 >
-> Pop `p₂` into `PC` and `p₁` into `PC0`.
+> Pop `p` into `PC`.
 
 > `LINK`  
 > → `l`
@@ -201,9 +200,9 @@ These instructions implement loops, conditions and subroutine calls.
 > Push `IR` on to the stack.
 
 > `DO`  
-> `l` → `p₁` `p₂`
+> `l` → `p`
 >
-> Pop `l`. Push `PC0` then `PC` to the stack as integers, and set both `PC0` and `PC` to the address of the first word of the stack pointed to by `l`.
+> Pop `l`. Push `PC` to the stack as a link, and set `PC` to the address of the first word of the stack pointed to by `l`.
 
 > `IF`  
 > `i` `l₁` `l₂` →
@@ -217,7 +216,7 @@ These instructions implement loops, conditions and subroutine calls.
 
 > `LOOP`
 >
-> Set `PC` to `PC0`.
+> Set `PC` to the first instruction of the current stack.
 
 
 ### Logic and shifts

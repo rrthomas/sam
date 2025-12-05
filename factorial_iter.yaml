@@ -2,26 +2,26 @@
 -
   - float 1.0
   -
-    - int -6
+    - int -4
     - get
     - f2i
     - while
-    - int -3
+    - int -2
     - get
-    - int -7
+    - int -5
     - get
     - mul
-    - int -4
+    - int -3
     - set
-    - int -6
+    - int -4
     - get
     - float -1.0
     - add
-    - int -7
+    - int -5
     - set
     - loop
   - do
-  - int -4
+  - int -3
   - set
 - do
 - f2i

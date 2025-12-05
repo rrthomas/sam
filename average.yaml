@@ -6,22 +6,22 @@
 - float 0.0
 - int -4
 - average:
-  - int -3
+  - int -2
   - get
   - link data
   - iget
-  - int -5
+  - int -4
   - get
   - add
-  - int -5
+  - int -4
   - set
-  - int -3
+  - int -2
   - get
   - int 1
   - add
   - int -1
   - get
-  - int -5
+  - int -4
   - set
   - while
   - loop

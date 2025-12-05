@@ -98,25 +98,11 @@ int _sam_get_stack(sam_uword_t *addr);
 // Execution
 #define DO(addr)                                \
     do {                                        \
-        PUSH_PTR(sam_pc0);                      \
         PUSH_PTR(sam_pc);                       \
-        sam_pc0 = sam_pc = addr;                \
+        sam_pc = addr;                          \
     } while (0)
-#define RET                                                             \
-    do {                                                                \
-        POP_PTR(sam_pc);                                                \
-        POP_PTR(sam_pc0);                                               \
-        if (sam_pc0 == 0)                                               \
-            HALT(SAM_ERROR_STACK_UNDERFLOW);                            \
-        if (sam_pc0 > sam_stack->sp)                                    \
-            HALT(SAM_ERROR_STACK_OVERFLOW);                             \
-        sam_uword_t _stack, _size;                                      \
-        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc0 - 1, &_stack)); \
-        _CHECK_TYPE(_stack, SAM_TAG_MASK | SAM_ARRAY_TYPE_MASK, SAM_TAG_ARRAY | SAM_ARRAY_STACK); \
-        _size = (_stack >> SAM_OPERAND_SHIFT) - 1;                        \
-        if (sam_pc > sam_pc0 + _size)                                   \
-            HALT(SAM_ERROR_STACK_OVERFLOW);                             \
-    } while (0)
+#define RET                                     \
+    POP_PTR(sam_pc)
 
 // Program
 #define SAM_STACK_WORDS 4096

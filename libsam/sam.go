@@ -68,8 +68,7 @@ func (s *Stack) PushCode(stack Stack) int {
 	return int(C.sam_push_code(s.stack, stack.stack.s0, stack.stack.sp))
 }
 
-func Run(pc0 Uword, pc Uword) Word {
-	C.sam_pc0 = pc0
+func Run(pc Uword) Word {
 	C.sam_pc = pc
 	return C.sam_run()
 }

@@ -34,7 +34,7 @@
 - float 2.0
 - div
 - levy_c:
-  - int -4
+  - int -3
   - get
   -
     - float -45.0
@@ -42,11 +42,11 @@
     - link turn
     - do
     - pop
-    - int -6
+    - int -4
     - get
     - int -1
     - add
-    - int -6
+    - int -4
     - get
     - float 0.70710678
     - mul
@@ -67,7 +67,7 @@
     - do
     - pop
   -
-    - int -5
+    - int -3
     - get
     - link go
     - do

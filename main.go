@@ -54,7 +54,7 @@ var rootCmd = &cobra.Command{
 			os.Exit(int(res))
 		}
 		libsam.PrintStack()
-		res2 := libsam.Run(1, 1)
+		res2 := libsam.Run(1)
 
 		if debug {
 			libsam.PrintStack()

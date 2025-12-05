@@ -41,7 +41,7 @@
 - turn:
   - int pen_theta
   - get
-  - int -4
+  - int -3
   - get
   - neg
   - add
@@ -51,7 +51,7 @@
   - int pen_theta
   - get
   - cos
-  - int -4
+  - int -3
   - get
   - mul
   - int pen_x
@@ -60,7 +60,7 @@
   - int pen_theta
   - get
   - sin
-  - int -5
+  - int -4
   - get
   - mul
   - int pen_y
@@ -75,10 +75,10 @@
     - int pen_y
     - get
     - f2i
-    - int -6
+    - int -5
     - get
     - f2i
-    - int -6
+    - int -5
     - get
     - f2i
     - int pen_color

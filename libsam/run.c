@@ -64,7 +64,7 @@ sam_word_t sam_run(void)
         sam_uword_t ir;
         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc++, &ir));
 #ifdef SAM_DEBUG
-        debug("sam_run: pc0 = %u, pc = %u, sp = %u, ir = %x\n", sam_pc0, sam_pc - 1, sam_stack->sp, ir);
+        debug("sam_run: pc = %u, sp = %u, ir = %x\n", sam_pc - 1, sam_stack->sp, ir);
         sam_print_working_stack();
 #endif
 
@@ -175,9 +175,19 @@ sam_word_t sam_run(void)
                             RET;
                     }
                     break;
-                case INST_LOOP:
-                    sam_pc = sam_pc0;
+                case INST_LOOP: {
+                    // FIXME: Make this more efficient.
+                    for (sam_word_t depth = 1; depth > 0; sam_pc--) {
+                        sam_uword_t inst;
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc - 1, &inst));
+                        if ((inst & SAM_TAG_MASK) == SAM_TAG_ARRAY) {
+                            sam_word_t offset = ARSHIFT((sam_word_t)inst, SAM_OPERAND_SHIFT);
+                            depth += offset < 0 ? 1 : -1;
+                        }
+                    }
+                    sam_pc++;
                     break;
+                }
                 case INST_NOT:
                     {
                         sam_word_t a;
@@ -467,6 +477,6 @@ sam_word_t sam_run(void)
     }
 
 error:
-    DO(sam_pc); // Save pc, pc0 so we can restart.
+    DO(sam_pc); // Save pc so we can restart.
     return error;
 }
