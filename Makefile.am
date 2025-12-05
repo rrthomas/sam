@@ -43,7 +43,7 @@ RESULTS = \
 CLOC = cloc --force-lang="C",h
 
 loc:
-	$(CLOC) libsam/*.[ch] *.go
+	$(CLOC) libsam/*.[ch] libsam/*.go *.go
 
 EXTRA_DIST = $(LOG_COMPILER) $(TESTS) $(RESULTS) \
 	HACKING.md \

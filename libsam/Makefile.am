@@ -22,8 +22,3 @@ libsam_la_SOURCES = \
 	traps.c
 
 EXTRA_DIST = sam.go
-
-CLOC = cloc --force-lang="C",h
-
-loc:
-	$(CLOC) $(libsam_la_SOURCES)
