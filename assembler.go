@@ -90,7 +90,7 @@ func (a *assembler) parseLiteral(argStr string) libsam.Word {
 
 var operandInsns = []string{
 	"int",
-	"link",
+	"ref",
 	"float",
 	"trap",
 	"push",
@@ -112,7 +112,7 @@ func (a *assembler) assembleInstruction(tokens []string) {
 		case libsam.TAG_ATOM | (libsam.ATOM_INT << libsam.ATOM_TYPE_SHIFT):
 			operand := a.parseLiteral(operandStr)
 			a.stack.PushAtom(libsam.ATOM_INT, libsam.Uword(operand))
-		case libsam.TAG_LINK:
+		case libsam.TAG_REF:
 			operand := a.parseLiteral(operandStr)
 			a.stack.PushLink(libsam.Uword(operand))
 		case libsam.TAG_ATOM | (libsam.ATOM_INST << libsam.ATOM_TYPE_SHIFT):

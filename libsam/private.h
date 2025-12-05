@@ -65,8 +65,8 @@
 int _sam_get_stack(sam_uword_t *addr);
 
 #define POP_PTR(var)                                  \
-    _POP_INSN(var, SAM_TAG_LINK, SAM_TAG_MASK, SAM_LINK_MASK, LRSHIFT, SAM_LINK_SHIFT)
-#define POP_LINK(var)                                 \
+    _POP_INSN(var, SAM_TAG_REF, SAM_TAG_MASK, SAM_REF_MASK, LRSHIFT, SAM_REF_SHIFT)
+#define POP_REF(var)                                  \
     do {                                              \
         POP_PTR(var);                                 \
         sam_uword_t _stack;                           \
@@ -75,11 +75,11 @@ int _sam_get_stack(sam_uword_t *addr);
         var++;                                        \
     } while(0)
 #define PUSH_PTR(addr)                                \
-    PUSH_WORD(LSHIFT((addr), SAM_LINK_SHIFT) | SAM_TAG_LINK)
+    PUSH_WORD(LSHIFT((addr), SAM_REF_SHIFT) | SAM_TAG_REF)
 
 #define POP_STACK(addr_var, size_var)                     \
     do {                                                  \
-        POP_LINK(addr_var);                               \
+        POP_REF(addr_var);                                \
         sam_uword_t _insn;                                \
         HALT_IF_ERROR(sam_stack_peek(sam_stack, addr_var - 1, &_insn)); \
         size_var = (_insn >> SAM_OPERAND_SHIFT) - 1; \

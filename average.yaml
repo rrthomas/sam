@@ -8,7 +8,7 @@
 - average:
   - int -2
   - get
-  - link data
+  - ref data
   - iget
   - int -4
   - get

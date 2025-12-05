@@ -32,8 +32,8 @@ const sam_word_t SAM_ARRAY_TYPE_MASK = 0xfc;
 const int SAM_OPERAND_SHIFT = 8;
 const sam_word_t SAM_OPERAND_MASK = ~0xff;
 
-const int SAM_LINK_SHIFT = 2;
-const sam_word_t SAM_LINK_MASK = ~0x3;
+const int SAM_REF_SHIFT = 2;
+const sam_word_t SAM_REF_MASK = ~0x3;
 
 // Division macros
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))
@@ -69,11 +69,11 @@ sam_word_t sam_run(void)
 #endif
 
         switch (ir & SAM_TAG_MASK) {
-        case SAM_TAG_LINK:
+        case SAM_TAG_REF:
 #ifdef SAM_DEBUG
-            debug("link\n");
+            debug("ref\n");
 #endif
-            PUSH_WORD(ir); // Push the same link on the stack
+            PUSH_WORD(ir); // Push the same ref on the stack
             break;
         case SAM_TAG_ATOM:
             switch ((ir & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {
@@ -150,15 +150,15 @@ sam_word_t sam_run(void)
                 case INST_DO:
                     {
                         sam_uword_t code;
-                        POP_LINK(code);
+                        POP_REF(code);
                         DO(code);
                     }
                     break;
                 case INST_IF:
                     {
                         sam_uword_t then, else_;
-                        POP_LINK(else_);
-                        POP_LINK(then);
+                        POP_REF(else_);
+                        POP_REF(then);
                         sam_word_t flag;
                         POP_INT(flag);
                         DO(flag ? then : else_);

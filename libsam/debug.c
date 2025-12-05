@@ -146,8 +146,8 @@ static char *disas(sam_uword_t *addr)
     sam_word_t inst;
     assert(sam_stack_peek(sam_stack, (*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     switch (inst & SAM_TAG_MASK) {
-    case SAM_TAG_LINK:
-        xasprintf(&text, "link %zd", inst >> SAM_LINK_SHIFT);
+    case SAM_TAG_REF:
+        xasprintf(&text, "ref %zd", inst >> SAM_REF_SHIFT);
         break;
     case SAM_TAG_ATOM:
         switch ((inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {

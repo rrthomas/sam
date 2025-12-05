@@ -9,13 +9,13 @@ Stack: (35 word(s))
   - 
     - int -2
     - get
-    - link 1
+    - ref 1
     - iget
     - float 2.000000
     - mul
     - int -3
     - get
-    - link 1
+    - ref 1
     - iset
     - int -2
     - get
@@ -36,617 +36,617 @@ Working stack: (0 word(s))
 bra
 sam_run: pc = 7, sp = 36, ir = fffffc05
 Working stack: (1 word(s))
-- link 1
+- ref 1
 int
 sam_run: pc = 8, sp = 37, ir = 1502
 Working stack: (2 word(s))
-- link 1
+- ref 1
 - int -4
 bra
 sam_run: pc = 30, sp = 38, ir = 801
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -4
-- link 8
+- ref 8
 do
 sam_run: pc = 9, sp = 38, ir = fffffe05
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 int
 sam_run: pc = 10, sp = 39, ir = 401
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -2
 get
 sam_run: pc = 11, sp = 39, ir = 4
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -4
-link
+ref
 sam_run: pc = 12, sp = 40, ir = 601
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -4
-- link 1
+- ref 1
 iget
 sam_run: pc = 13, sp = 39, ir = 9
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - float 2.000000
 float
 sam_run: pc = 14, sp = 40, ir = 1701
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - float 2.000000
 - float 2.000000
 mul
 sam_run: pc = 15, sp = 39, ir = fffffd05
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - float 4.000000
 int
 sam_run: pc = 16, sp = 40, ir = 401
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - float 4.000000
 - int -3
 get
 sam_run: pc = 17, sp = 40, ir = 4
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - float 4.000000
 - int -4
-link
+ref
 sam_run: pc = 18, sp = 41, ir = 701
 Working stack: (6 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - float 4.000000
 - int -4
-- link 1
+- ref 1
 iset
 sam_run: pc = 19, sp = 38, ir = fffffe05
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 int
 sam_run: pc = 20, sp = 39, ir = 401
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -2
 get
 sam_run: pc = 21, sp = 39, ir = 105
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -4
 int
 sam_run: pc = 22, sp = 40, ir = 1601
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -4
 - int 1
 add
 sam_run: pc = 23, sp = 39, ir = ffffff05
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -3
 int
 sam_run: pc = 24, sp = 40, ir = 401
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -3
 - int -1
 get
 sam_run: pc = 25, sp = 40, ir = fffffd05
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -3
 - int -3
 int
 sam_run: pc = 26, sp = 41, ir = 501
 Working stack: (6 word(s))
-- link 1
+- ref 1
 - int -4
-- link 31
+- ref 31
 - int -3
 - int -3
 - int -3
 set
 sam_run: pc = 27, sp = 39, ir = a01
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -3
 while
 sam_run: pc = 28, sp = 38, ir = b01
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 loop
 sam_run: pc = 9, sp = 38, ir = fffffe05
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 int
 sam_run: pc = 10, sp = 39, ir = 401
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -2
 get
 sam_run: pc = 11, sp = 39, ir = 4
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -3
-link
+ref
 sam_run: pc = 12, sp = 40, ir = 601
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -3
-- link 1
+- ref 1
 iget
 sam_run: pc = 13, sp = 39, ir = 9
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - float 5.000000
 float
 sam_run: pc = 14, sp = 40, ir = 1701
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - float 5.000000
 - float 2.000000
 mul
 sam_run: pc = 15, sp = 39, ir = fffffd05
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - float 10.000000
 int
 sam_run: pc = 16, sp = 40, ir = 401
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - float 10.000000
 - int -3
 get
 sam_run: pc = 17, sp = 40, ir = 4
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - float 10.000000
 - int -3
-link
+ref
 sam_run: pc = 18, sp = 41, ir = 701
 Working stack: (6 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - float 10.000000
 - int -3
-- link 1
+- ref 1
 iset
 sam_run: pc = 19, sp = 38, ir = fffffe05
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 int
 sam_run: pc = 20, sp = 39, ir = 401
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -2
 get
 sam_run: pc = 21, sp = 39, ir = 105
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -3
 int
 sam_run: pc = 22, sp = 40, ir = 1601
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -3
 - int 1
 add
 sam_run: pc = 23, sp = 39, ir = ffffff05
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -2
 int
 sam_run: pc = 24, sp = 40, ir = 401
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -2
 - int -1
 get
 sam_run: pc = 25, sp = 40, ir = fffffd05
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -2
 - int -2
 int
 sam_run: pc = 26, sp = 41, ir = 501
 Working stack: (6 word(s))
-- link 1
+- ref 1
 - int -3
-- link 31
+- ref 31
 - int -2
 - int -2
 - int -3
 set
 sam_run: pc = 27, sp = 39, ir = a01
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -2
 while
 sam_run: pc = 28, sp = 38, ir = b01
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 loop
 sam_run: pc = 9, sp = 38, ir = fffffe05
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 int
 sam_run: pc = 10, sp = 39, ir = 401
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -2
 get
 sam_run: pc = 11, sp = 39, ir = 4
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -2
-link
+ref
 sam_run: pc = 12, sp = 40, ir = 601
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -2
-- link 1
+- ref 1
 iget
 sam_run: pc = 13, sp = 39, ir = 9
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - float 10.000000
 float
 sam_run: pc = 14, sp = 40, ir = 1701
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - float 10.000000
 - float 2.000000
 mul
 sam_run: pc = 15, sp = 39, ir = fffffd05
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - float 20.000000
 int
 sam_run: pc = 16, sp = 40, ir = 401
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - float 20.000000
 - int -3
 get
 sam_run: pc = 17, sp = 40, ir = 4
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - float 20.000000
 - int -2
-link
+ref
 sam_run: pc = 18, sp = 41, ir = 701
 Working stack: (6 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - float 20.000000
 - int -2
-- link 1
+- ref 1
 iset
 sam_run: pc = 19, sp = 38, ir = fffffe05
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 int
 sam_run: pc = 20, sp = 39, ir = 401
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -2
 get
 sam_run: pc = 21, sp = 39, ir = 105
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -2
 int
 sam_run: pc = 22, sp = 40, ir = 1601
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -2
 - int 1
 add
 sam_run: pc = 23, sp = 39, ir = ffffff05
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -1
 int
 sam_run: pc = 24, sp = 40, ir = 401
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -1
 - int -1
 get
 sam_run: pc = 25, sp = 40, ir = fffffd05
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -1
 - int -1
 int
 sam_run: pc = 26, sp = 41, ir = 501
 Working stack: (6 word(s))
-- link 1
+- ref 1
 - int -2
-- link 31
+- ref 31
 - int -1
 - int -1
 - int -3
 set
 sam_run: pc = 27, sp = 39, ir = a01
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int -1
 while
 sam_run: pc = 28, sp = 38, ir = b01
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 loop
 sam_run: pc = 9, sp = 38, ir = fffffe05
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 int
 sam_run: pc = 10, sp = 39, ir = 401
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int -2
 get
 sam_run: pc = 11, sp = 39, ir = 4
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int -1
-link
+ref
 sam_run: pc = 12, sp = 40, ir = 601
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int -1
-- link 1
+- ref 1
 iget
 sam_run: pc = 13, sp = 39, ir = 9
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - float 20.000000
 float
 sam_run: pc = 14, sp = 40, ir = 1701
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - float 20.000000
 - float 2.000000
 mul
 sam_run: pc = 15, sp = 39, ir = fffffd05
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - float 40.000000
 int
 sam_run: pc = 16, sp = 40, ir = 401
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - float 40.000000
 - int -3
 get
 sam_run: pc = 17, sp = 40, ir = 4
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - float 40.000000
 - int -1
-link
+ref
 sam_run: pc = 18, sp = 41, ir = 701
 Working stack: (6 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - float 40.000000
 - int -1
-- link 1
+- ref 1
 iset
 sam_run: pc = 19, sp = 38, ir = fffffe05
 Working stack: (3 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 int
 sam_run: pc = 20, sp = 39, ir = 401
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int -2
 get
 sam_run: pc = 21, sp = 39, ir = 105
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int -1
 int
 sam_run: pc = 22, sp = 40, ir = 1601
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int -1
 - int 1
 add
 sam_run: pc = 23, sp = 39, ir = ffffff05
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int 0
 int
 sam_run: pc = 24, sp = 40, ir = 401
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int 0
 - int -1
 get
 sam_run: pc = 25, sp = 40, ir = fffffd05
 Working stack: (5 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int 0
 - int 0
 int
 sam_run: pc = 26, sp = 41, ir = 501
 Working stack: (6 word(s))
-- link 1
+- ref 1
 - int -1
-- link 31
+- ref 31
 - int 0
 - int 0
 - int -3
 set
 sam_run: pc = 27, sp = 39, ir = a01
 Working stack: (4 word(s))
-- link 1
+- ref 1
 - int 0
-- link 31
+- ref 31
 - int 0
 while
 sam_run: pc = 31, sp = 37, ir = 301
 Working stack: (2 word(s))
-- link 1
+- ref 1
 - int 0
 pop
 sam_run: pc = 32, sp = 36, ir = 5
 Working stack: (1 word(s))
-- link 1
+- ref 1
 int
 sam_run: pc = 33, sp = 37, ir = 1f01
 Working stack: (2 word(s))
-- link 1
+- ref 1
 - int 0
 halt
 Stack: (37 word(s))
@@ -660,13 +660,13 @@ Stack: (37 word(s))
   - 
     - int -2
     - get
-    - link 1
+    - ref 1
     - iget
     - float 2.000000
     - mul
     - int -3
     - get
-    - link 1
+    - ref 1
     - iset
     - int -2
     - get
@@ -682,6 +682,6 @@ Stack: (37 word(s))
   - pop
   - int 0
   - halt
-- link 1
-- link 34
+- ref 1
+- ref 34
 sam_run returns: halt with reason 0 (0x0)

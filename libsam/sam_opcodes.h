@@ -18,14 +18,14 @@ extern const int SAM_ARRAY_TYPE_SHIFT;
 extern const sam_word_t SAM_ARRAY_TYPE_MASK;
 extern const int SAM_OPERAND_SHIFT;
 extern const sam_word_t SAM_OPERAND_MASK;
-extern const int SAM_LINK_SHIFT;
-extern const sam_word_t SAM_LINK_MASK;
+extern const int SAM_REF_SHIFT;
+extern const sam_word_t SAM_REF_MASK;
 
 // Every word in a stack is tagged.
 
 // Tags (bits 0-1)
 enum SAM_TAG {
-  SAM_TAG_LINK = 0,
+  SAM_TAG_REF = 0,
   SAM_TAG_ATOM,
   SAM_TAG_ARRAY, // Used for BRA and KET.
 };

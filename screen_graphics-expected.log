@@ -352,5 +352,5 @@ Stack: (52 word(s))
   - trap FILLCIRCLE
   - int 0
   - halt
-- link 50
+- ref 50
 sam_run returns: halt with reason 0 (0x0)

@@ -101,9 +101,9 @@ int sam_push_stack(sam_stack_t *s, sam_word_t val)
     return error;
 }
 
-int sam_push_link(sam_stack_t *s, sam_uword_t addr) {
+int sam_push_ref(sam_stack_t *s, sam_uword_t addr) {
     // FIXME: error if address is too large
-    return sam_push_stack(s, SAM_TAG_LINK | addr << SAM_LINK_SHIFT);
+    return sam_push_stack(s, SAM_TAG_REF | addr << SAM_REF_SHIFT);
 }
 
 int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand) {

@@ -1,15 +1,15 @@
 - !include turtle.yaml
-- link init
+- ref init
 - do
-- link pendown
+- ref pendown
 - do
 - float -45.0
 - rad
-- link turn
+- ref turn
 - do
 - pop
 - float 500.0
-- link go
+- ref go
 - do
 - pop
 - int 0

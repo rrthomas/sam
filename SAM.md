@@ -98,8 +98,7 @@ The instruction set is listed below, with the instructions grouped according to 
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
 | `p`    | a pointer to a stack item |
-| `l`    | a link (pointer to a stack) |
-| `s`    | a scalar (anything other than a stack) |
+| `r`    | a reference (pointer to a stack) |
 | `x`    | an unspecified item |
 
 Each type may be suffixed by a number in stack pictures; if the same combination of type and suffix appears more than once in a stack comment, it refers to identical stack items.
@@ -108,7 +107,7 @@ Integers are stored as the top three bytes of an `INT` instruction, in twos-comp
 
 Floats are 32-bit IEEE floats, stored as the operand of a `FLOAT` instruction.
 
-A stack is encoded as a `BRA` instruction followed by the nested stack items and ending with a `KET` instruction. A link to a stack is encoded in a `LINK` instruction as the address of its `BRA` instruction.
+A stack is encoded as a `BRA` instruction followed by the nested stack items and ending with a `KET` instruction. A reference to a stack is encoded in a `REF` instruction as the address of its `BRA` instruction.
 
 
 ### Do nothing
@@ -162,7 +161,7 @@ These instructions manage the stack.
 > `GET` `i`  
 > → `x`
 >
-> Pop `i` from the top of the stack. Push the `i`th stack item to the stack. If that item is a stack, push a `LINK` instruction pointing to it.
+> Pop `i` from the top of the stack. Push the `i`th stack item to the stack. If that item is a stack, push a `REF` instruction pointing to it.
 
 > `SET`  
 > `x` `i` →
@@ -170,14 +169,14 @@ These instructions manage the stack.
 > Pop `i` and `x` from the stack. Set the `i`th stack item to `x`.
 
 > `IGET`  
-> `i` `l` → `x`
+> `i` `r` → `x`
 >
-> Push the `i`th item of the stack pointed to by `l` to the stack.
+> Push the `i`th item of the stack pointed to by `r` to the stack.
 
 > `ISET`  
-> `x` `i` `l` →
+> `x` `i` `r` →
 >
-> Set the `i`th item of the stack pointed to by `l`th to `x`.
+> Set the `i`th item of the stack pointed to by `r`th to `x`.
 
 
 ### Control structures
@@ -185,7 +184,7 @@ These instructions manage the stack.
 These instructions implement loops, conditions and subroutine calls.
 
 > `BRA`  
-> → `l`
+> → `r`
 >
 > Push `PC`–1 on to the stack as an integer, and add `OP`+1 to `PC`.
 
@@ -194,20 +193,20 @@ These instructions implement loops, conditions and subroutine calls.
 >
 > Pop `p` into `PC`.
 
-> `LINK`  
-> → `l`
+> `REF`  
+> → `r`
 >
 > Push `IR` on to the stack.
 
 > `DO`  
-> `l` → `p`
+> `r` → `p`
 >
-> Pop `l`. Push `PC` to the stack as a link, and set `PC` to the address of the first item of the stack pointed to by `l`.
+> Pop `r`. Push `PC` to the stack as a reference, and set `PC` to the address of the first item of the stack pointed to by `r`.
 
 > `IF`  
-> `i` `l₁` `l₂` →
+> `i` `r₁` `r₂` →
 >
-> Pop `l₁` and `l₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
+> Pop `r₁` and `r₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
 
 > `WHILE`  
 > `i` →
@@ -268,9 +267,9 @@ Shifts:
 ### Comparison
 
 > `EQ`  
-> `s₁` `s₂` → `i`
+> `x₁` `x₂` → `i`
 >
-> `i` is 1 if `s₁` and `s₂` are equal, and 0 otherwise. Integers, floats and links are compared.
+> `i` is 1 if `x₁` and `x₂` are equal, and 0 otherwise.
 
 > `LT`  
 > `n₁` `n₂` → `i`

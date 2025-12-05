@@ -20,8 +20,8 @@ var ARRAY_TYPE_SHIFT = C.SAM_ARRAY_TYPE_SHIFT
 var ARRAY_TYPE_MASK = C.SAM_ARRAY_TYPE_MASK
 var OPERAND_SHIFT = C.SAM_OPERAND_SHIFT
 var OPERAND_MASK = C.SAM_OPERAND_MASK
-var LINK_SHIFT = C.SAM_LINK_SHIFT
-var LINK_MASK = C.SAM_LINK_MASK
+var REF_SHIFT = C.SAM_REF_SHIFT
+var REF_MASK = C.SAM_REF_MASK
 var WORD_MASK = Uword(((1 << C.SAM_WORD_BIT) - 1))
 
 type Stack struct {
@@ -53,7 +53,7 @@ func (s *Stack) PushStack(val Word) int {
 }
 
 func (s *Stack) PushLink(addr Uword) int {
-	return int(C.sam_push_link(s.stack, addr))
+	return int(C.sam_push_ref(s.stack, addr))
 }
 
 func (s *Stack) PushAtom(atomType Uword, operand Uword) int {
@@ -129,7 +129,7 @@ const (
 )
 
 const (
-	TAG_LINK  = C.SAM_TAG_LINK
+	TAG_REF  = C.SAM_TAG_REF
 	TAG_ATOM  = C.SAM_TAG_ATOM
 	TAG_ARRAY = C.SAM_TAG_ARRAY
 )
@@ -172,7 +172,7 @@ func ErrorMessage(code Word) string {
 
 var Instructions = map[string]int{
 	// Tag instructions
-	"link": C.SAM_TAG_LINK,
+	"ref": C.SAM_TAG_REF,
 
 	// Atom instructions
 	"int":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INT << C.SAM_ATOM_TYPE_SHIFT),

@@ -7,13 +7,13 @@
 - double:
   - int -2
   - get
-  - link data
+  - ref data
   - iget
   - float 2.0
   - mul
   - int -3
   - get
-  - link data
+  - ref data
   - iset
   - int -2
   - get

@@ -7,7 +7,7 @@
     - get
     - int -1
     - add
-    - link fact
+    - ref fact
     - do
     - int -4
     - get

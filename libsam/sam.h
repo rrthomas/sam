@@ -60,7 +60,7 @@ int sam_stack_get(sam_uword_t addr);
 int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr);
 int sam_pop_stack(sam_word_t *val_ptr);
 int sam_push_stack(sam_stack_t *s, sam_word_t val);
-int sam_push_link(sam_stack_t *s, sam_uword_t addr);
+int sam_push_ref(sam_stack_t *s, sam_uword_t addr);
 int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand);
 int sam_push_float(sam_stack_t *s, sam_float_t n);
 int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);

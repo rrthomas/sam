@@ -141,5 +141,5 @@ Stack: (25 word(s))
   - pop
   - int 0
   - halt
-- link 23
+- ref 23
 sam_run returns: halt with reason 0 (0x0)
