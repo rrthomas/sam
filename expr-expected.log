@@ -1,37 +1,52 @@
-Stack: (7 word(s))
+Stack: (9 word(s))
 - 
   - float 2.000000
   - float 4.000000
+  - float 5.000000
+  - mul
   - add
   - int 0
   - halt
-sam_run: pc = 1, sp = 7, ir = 9
+sam_run: pc = 1, sp = 9, ir = 9
 Working stack: (0 word(s))
 float
-sam_run: pc = 2, sp = 8, ir = 80000009
+sam_run: pc = 2, sp = 10, ir = 80000009
 Working stack: (1 word(s))
 - float 2.000000
 float
-sam_run: pc = 3, sp = 9, ir = 1401
+sam_run: pc = 3, sp = 11, ir = a0000009
 Working stack: (2 word(s))
 - float 2.000000
 - float 4.000000
-add
-sam_run: pc = 4, sp = 8, ir = 5
-Working stack: (1 word(s))
-- float 6.000000
-int
-sam_run: pc = 5, sp = 9, ir = 1d01
+float
+sam_run: pc = 4, sp = 12, ir = 1501
+Working stack: (3 word(s))
+- float 2.000000
+- float 4.000000
+- float 5.000000
+mul
+sam_run: pc = 5, sp = 11, ir = 1401
 Working stack: (2 word(s))
-- float 6.000000
+- float 2.000000
+- float 20.000000
+add
+sam_run: pc = 6, sp = 10, ir = 5
+Working stack: (1 word(s))
+- float 22.000000
+int
+sam_run: pc = 7, sp = 11, ir = 1d01
+Working stack: (2 word(s))
+- float 22.000000
 - int 0
 halt
-Stack: (8 word(s))
+Stack: (10 word(s))
 - 
   - float 2.000000
   - float 4.000000
+  - float 5.000000
+  - mul
   - add
   - int 0
   - halt
-- float 6.000000
+- float 22.000000
 sam_run returns: halt with reason 0 (0x0)
