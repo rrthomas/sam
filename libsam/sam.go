@@ -229,3 +229,64 @@ var Traps = map[string]int{
 	"FILLCIRCLE":     C.INST_FILLCIRCLE,
 	"DRAWBITMAP":     C.INST_DRAWBITMAP,
 }
+
+// The net change in `SP` caused by each instruction.
+// If there is more than one possibility, then it's the change when execution
+// continues at the next instruction.
+var StackDifference = map[string]int{
+	// Tag instructions
+	"ref": 1,
+
+	// Atom instructions
+	"int":   1,
+	"float": 1,
+
+	// Niladic instructions
+	"nop":   0,
+	"i2f":   0,
+	"f2i":   0,
+	"pop":   -1,
+	"get":   0,
+	"set":   -2,
+	"do":    -1,
+	"if":    -3,
+	"while": -1,
+	"loop":  0,
+	"not":   0,
+	"and":   -1,
+	"or":    -1,
+	"xor":   -1,
+	"lsh":   -1,
+	"rsh":   -1,
+	"arsh":  -1,
+	"eq":    -1,
+	"lt":    -1,
+	"neg":   0,
+	"add":   -1,
+	"mul":   -1,
+	"div":   -1,
+	"rem":   -1,
+	"pow":   -1,
+	"sin":   0,
+	"cos":   0,
+	"deg":   0,
+	"rad":   0,
+	"halt":  -1,
+	// Trap depends on the trap code.
+}
+
+var TrapStackDifference = map[string]int{
+	"BLACK":          1,
+	"WHITE":          1,
+	"DISPLAY_WIDTH":  1,
+	"DISPLAY_HEIGHT": 1,
+	"CLEARSCREEN":    -1,
+	"SETDOT":         -3,
+	"DRAWLINE":       -5,
+	"DRAWRECT":       -5,
+	"DRAWROUNDRECT":  -6,
+	"FILLRECT":       -5,
+	"DRAWCIRCLE":     -4,
+	"FILLCIRCLE":     -4,
+	"DRAWBITMAP":     -4,
+}

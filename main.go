@@ -56,7 +56,7 @@ var rootCmd = &cobra.Command{
 			case ".sal":
 				var source []byte
 				source, err = os.ReadFile(progFile)
-				yaml = Sal(string(source), printAst)
+				yaml = Sal(string(source), printAst, printAsm)
 
 			default:
 				return fmt.Errorf("unknown program file type %v", ext)
@@ -106,6 +106,7 @@ var (
 	debug    bool
 	wait     bool
 	printAst bool
+	printAsm bool
 	pbmFile  string
 )
 
@@ -125,6 +126,7 @@ func init() {
 	rootCmd.Flags().BoolVar(&debug, "debug", false, "output debug information to standard error")
 	rootCmd.Flags().BoolVar(&wait, "wait", false, "wait for user to close window on termination")
 	rootCmd.Flags().BoolVar(&printAst, "ast", false, "print SAL abstract syntax tree")
+	rootCmd.Flags().BoolVar(&printAsm, "asm", false, "print SAM assembler for SAL program")
 	rootCmd.Flags().StringVar(&pbmFile, "dump-screen", "", "output screen to PBM file `FILE`")
 	rootCmd.SetVersionTemplate(`{{.DisplayName}} {{.Version}}
 

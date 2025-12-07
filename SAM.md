@@ -196,7 +196,7 @@ These instructions implement loops, conditions and subroutine calls.
 > `IF`  
 > `i` `r₁` `r₂` → `p`
 >
-> Pop `r₁` and `r₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
+> Pop `r₁` and `r₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `r₁`, otherwise on `r₂`.
 
 > `WHILE`  
 > `i` →
