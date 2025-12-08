@@ -158,8 +158,8 @@ These instructions manage the stack.
 >
 > If the stack is empty, raise the error `STACK_UNDERFLOW`. Pop `x` from the stack.
 
-> `GET` `i`  
-> → `x`
+> `GET`  
+> `i` → `x`
 >
 > Pop `i` from the top of the stack. Push the `i`th stack item to the stack. If that item is a stack, push a `REF` instruction pointing to it.
 
@@ -194,7 +194,7 @@ These instructions implement loops, conditions and subroutine calls.
 > Pop `r`. Push `PC` to the stack as a reference, and set `PC` to the address of the first item of the bracket pointed to by `r`.
 
 > `IF`  
-> `i` `r₁` `r₂` →
+> `i` `r₁` `r₂` → `p`
 >
 > Pop `r₁` and `r₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `c₁`, otherwise on `c₂`.
 
