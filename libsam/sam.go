@@ -180,8 +180,6 @@ var Instructions = map[string]int{
 
 	// Niladic instructions
 	"nop":   C.INST_NOP,
-	"i2f":   C.INST_I2F,
-	"f2i":   C.INST_F2I,
 	"pop":   C.INST_POP,
 	"get":   C.INST_GET,
 	"set":   C.INST_SET,
@@ -202,14 +200,25 @@ var Instructions = map[string]int{
 	"neg":   C.INST_NEG,
 	"add":   C.INST_ADD,
 	"mul":   C.INST_MUL,
-	"div":   C.INST_DIV,
-	"rem":   C.INST_REM,
-	"pow":   C.INST_POW,
-	"sin":   C.INST_SIN,
-	"cos":   C.INST_COS,
-	"deg":   C.INST_DEG,
-	"rad":   C.INST_RAD,
-	"halt":  C.INST_HALT,
+	"zero":  C.INST_0,
+	"false": C.INST_0,
+	"one":   C.INST_1,
+	"_one":  C.INST_MINUS_1,
+	"true":  C.INST_MINUS_1,
+	"two":   C.INST_2,
+	"_two":  C.INST_MINUS_2,
+
+	"halt": C.INST_HALT,
+
+	"i2f": C.INST_I2F,
+	"f2i": C.INST_F2I,
+	"div": C.INST_DIV,
+	"rem": C.INST_REM,
+	"pow": C.INST_POW,
+	"sin": C.INST_SIN,
+	"cos": C.INST_COS,
+	"deg": C.INST_DEG,
+	"rad": C.INST_RAD,
 
 	// Trap
 	"trap": C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT),
@@ -244,8 +253,6 @@ var StackDifference = map[string]int{
 
 	// Niladic instructions
 	"nop":   0,
-	"i2f":   0,
-	"f2i":   0,
 	"pop":   -1,
 	"get":   0,
 	"set":   -2,
@@ -266,14 +273,25 @@ var StackDifference = map[string]int{
 	"neg":   0,
 	"add":   -1,
 	"mul":   -1,
-	"div":   -1,
-	"rem":   -1,
-	"pow":   -1,
-	"sin":   0,
-	"cos":   0,
-	"deg":   0,
-	"rad":   0,
-	"halt":  -1,
+	"zero":  1,
+	"false": 1,
+	"one":   1,
+	"_one":  1,
+	"true":  1,
+	"two":   1,
+	"_two":  1,
+
+	"halt": -1,
+
+	"i2f": 0,
+	"f2i": 0,
+	"div": -1,
+	"rem": -1,
+	"pow": -1,
+	"sin": 0,
+	"cos": 0,
+	"deg": 0,
+	"rad": 0,
 	// Trap depends on the trap code.
 }
 

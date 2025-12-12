@@ -62,6 +62,9 @@
 #define PUSH_INT(val)                           \
     _PUSH_INSN(val, SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))
 
+#define PUSH_BOOL(val)                          \
+    PUSH_INT(-((val) != 0))
+
 int _sam_get_stack(sam_uword_t *addr);
 
 #define POP_PTR(var)                                  \

@@ -264,12 +264,12 @@ Shifts:
 > `EQ`  
 > `x₁` `x₂` → `i`
 >
-> `i` is 1 if `x₁` and `x₂` are equal, and 0 otherwise.
+> `i` is –1 if `x₁` and `x₂` are equal, and 0 otherwise.
 
 > `LT`  
 > `n₁` `n₂` → `i`
 >
-> `i` is 1 is `n₁` is less than `n₂` and 0 otherwise.
+> `i` is –1 is `n₁` is less than `n₂` and 0 otherwise.
 
 
 

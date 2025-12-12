@@ -69,10 +69,6 @@ char *inst_name(sam_word_t inst_opcode) {
     switch (inst_opcode) {
     case INST_NOP:
         return "nop";
-    case INST_I2F:
-        return "i2f";
-    case INST_F2I:
-        return "f2i";
     case INST_POP:
         return "pop";
     case INST_GET:
@@ -113,6 +109,24 @@ char *inst_name(sam_word_t inst_opcode) {
         return "add";
     case INST_MUL:
         return "mul";
+    case INST_0:
+        return "zero";
+    case INST_1:
+        return "one";
+    case INST_MINUS_1:
+        return "_one";
+    case INST_2:
+        return "two";
+    case INST_MINUS_2:
+        return "_two";
+
+    case INST_HALT:
+        return "halt";
+
+    case INST_I2F:
+        return "i2f";
+    case INST_F2I:
+        return "f2i";
     case INST_DIV:
         return "div";
     case INST_REM:
@@ -127,8 +141,6 @@ char *inst_name(sam_word_t inst_opcode) {
         return "deg";
     case INST_RAD:
         return "rad";
-    case INST_HALT:
-        return "halt";
     default: {
         char *text;
         xasprintf(&text, "trap %s", trap_name(inst_opcode));

@@ -49,10 +49,8 @@ enum SAM_ARRAY_TYPE {
 
 // Instructions (bits 4-31)
 enum SAM_INST {
-  // Basic instructions.
+  // Compact instructions.
   INST_NOP,
-  INST_I2F,
-  INST_F2I,
   INST_POP,
   INST_GET,
   INST_SET,
@@ -73,6 +71,18 @@ enum SAM_INST {
   INST_NEG,
   INST_ADD,
   INST_MUL,
+  INST_0,
+  INST_1,
+  INST_MINUS_1,
+  INST_2,
+  INST_MINUS_2,
+
+  // General-purpose instructions.
+  INST_HALT,
+
+  // Math
+  INST_I2F,
+  INST_F2I,
   INST_DIV,
   INST_REM,
   INST_POW,
@@ -80,7 +90,6 @@ enum SAM_INST {
   INST_COS,
   INST_DEG,
   INST_RAD,
-  INST_HALT,
 
   // Graphics
   // Origin is 0,0 at top left.
@@ -102,3 +111,7 @@ enum SAM_INST {
 
   // TDOO: Input: joystick, buttons
 };
+
+// Useful aliases
+#define INST_TRUE INST_MINUS_1
+#define INST_FALSE INST_0

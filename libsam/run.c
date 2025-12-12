@@ -231,7 +231,7 @@ sam_word_t sam_run(void)
                         sam_word_t x, y;
                         POP_WORD(&x);
                         POP_WORD(&y);
-                        PUSH_INT(x == y);
+                        PUSH_BOOL(x == y);
                     }
                     break;
                 case INST_LT:
@@ -242,12 +242,12 @@ sam_word_t sam_run(void)
                             sam_word_t a, b;
                             POP_INT(a);
                             POP_INT(b);
-                            PUSH_INT(a < b);
+                            PUSH_BOOL(a < b);
                         } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
                             POP_FLOAT(a);
                             POP_FLOAT(b);
-                            PUSH_INT(a < b);
+                            PUSH_BOOL(a < b);
                         } else
                             HALT(SAM_ERROR_WRONG_TYPE);
                     }
@@ -304,6 +304,32 @@ sam_word_t sam_run(void)
                             HALT(SAM_ERROR_WRONG_TYPE);
                     }
                     break;
+                case INST_0:
+                    PUSH_INT(0);
+                    break;
+                case INST_1:
+                    PUSH_INT(1);
+                    break;
+                case INST_MINUS_1:
+                    PUSH_INT(-1);
+                    break;
+                case INST_2:
+                    PUSH_INT(2);
+                    break;
+                case INST_MINUS_2:
+                    PUSH_INT(-2);
+                    break;
+
+                case INST_HALT:
+                    if (sam_stack->sp < 1)
+                        HALT(SAM_ERROR_STACK_UNDERFLOW);
+                    else {
+                        sam_word_t ret;
+                        POP_INT(ret);
+                        HALT(SAM_ERROR_HALT | ret << SAM_OPERAND_SHIFT);
+                    }
+                    break;
+
                 case INST_DIV:
                     {
                         sam_uword_t operand;
@@ -390,15 +416,7 @@ sam_word_t sam_run(void)
                         PUSH_FLOAT(a * (M_PI / 180.0));
                     }
                     break;
-                case INST_HALT:
-                    if (sam_stack->sp < 1)
-                        HALT(SAM_ERROR_STACK_UNDERFLOW);
-                    else {
-                        sam_word_t ret;
-                        POP_INT(ret);
-                        HALT(SAM_ERROR_HALT | ret << SAM_OPERAND_SHIFT);
-                    }
-                    break;
+
                 default:
                     HALT_IF_ERROR(sam_trap((sam_uword_t)operand));
                     break;
