@@ -161,7 +161,7 @@ These instructions manage the stack.
 > `GET`  
 > `i` → `x`
 >
-> Pop `i` from the top of the stack. Push the `i`th stack item to the stack. If that item is a stack, push a `REF` instruction pointing to it.
+> Pop `i` from the top of the stack. Push the `i`th stack item to the stack.
 
 > `SET`  
 > `x` `i` →
@@ -176,7 +176,7 @@ These instructions implement loops, conditions and subroutine calls.
 > `BRA`  
 > → `r`
 >
-> Push `PC`–1 on to the stack as an integer, and add `OP`+1 to `PC`.
+> Push a `REF` instruction pointing to `PC`–1 on to the stack, and add `OP`+1 to `PC`.
 
 > `KET`  
 > `p` →
