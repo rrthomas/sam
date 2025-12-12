@@ -9,6 +9,7 @@
 // RISK.
 
 #include <stdlib.h>
+#include <string.h>
 
 #include "sam.h"
 #include "sam_opcodes.h"
@@ -39,6 +40,32 @@ int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
         return SAM_ERROR_INVALID_ADDRESS;
     s->s0[addr] = val;
     return SAM_ERROR_OK;
+}
+
+// Move `size` words anywhere within allocated stack memory.
+// The blocks may overlap.
+static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
+{
+    if (size > sam_stack->ssize || src > sam_stack->ssize - size || dst > sam_stack->ssize - size)
+        return SAM_ERROR_INVALID_ADDRESS;
+    memmove(&sam_stack->s0[dst], &sam_stack->s0[src], size * sizeof(sam_word_t));
+    return SAM_ERROR_OK;
+}
+
+// Move the stack item at `addr` to the top of the stack.
+int sam_stack_move(sam_uword_t addr) {
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t opcode;
+    HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &opcode));
+    opcode &= SAM_TAG_MASK;
+    if (opcode == SAM_TAG_ARRAY)
+        HALT(SAM_ERROR_MOVE_ARRAY);
+    else {
+        HALT_IF_ERROR(move_n(addr, addr + 1, sam_stack->sp - addr));
+        PUSH_WORD(opcode);
+    }
+error:
+    return error;
 }
 
 // Push the stack item at `addr` to the top of the stack.

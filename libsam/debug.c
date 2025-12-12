@@ -79,6 +79,8 @@ char *inst_name(sam_word_t inst_opcode) {
             return "get";
         case INST_SET:
             return "set";
+        case INST_MOVE:
+            return "move";
         case INST_DO:
             return "do";
         case INST_IF:

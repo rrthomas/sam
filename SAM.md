@@ -168,6 +168,11 @@ These instructions manage the stack.
 >
 > Pop `i` and `x` from the stack. Set the `i`th stack item to `x`.
 
+> `MOVE`  
+> `x₁`…`xₙ` `i` → `x₂`…`xₙ` `x₁`
+>
+> Pop `i` from the top of the stack. Move the `i`th stack item to the top of the stack.
+
 
 ### Control structures
 

@@ -45,7 +45,7 @@ Working stack: (2 word(s))
 - ref 1
 - int 4
 bra
-sam_run: pc = 32, sp = 40, ir = 601
+sam_run: pc = 32, sp = 40, ir = 701
 Working stack: (3 word(s))
 - ref 1
 - int 4
@@ -71,7 +71,7 @@ Working stack: (4 word(s))
 - ref 33
 - int 4
 int
-sam_run: pc = 12, sp = 42, ir = 1401
+sam_run: pc = 12, sp = 42, ir = 1501
 Working stack: (5 word(s))
 - ref 1
 - int 4
@@ -93,7 +93,7 @@ Working stack: (4 word(s))
 - ref 33
 - float 20.000000
 float
-sam_run: pc = 15, sp = 42, ir = 1501
+sam_run: pc = 15, sp = 42, ir = 1601
 Working stack: (5 word(s))
 - ref 1
 - int 4
@@ -124,7 +124,7 @@ Working stack: (5 word(s))
 - float 40.000000
 - int 4
 int
-sam_run: pc = 19, sp = 43, ir = 1401
+sam_run: pc = 19, sp = 43, ir = 1501
 Working stack: (6 word(s))
 - ref 1
 - int 4
@@ -161,7 +161,7 @@ Working stack: (4 word(s))
 - ref 33
 - int 4
 int
-sam_run: pc = 24, sp = 42, ir = 1401
+sam_run: pc = 24, sp = 42, ir = 1501
 Working stack: (5 word(s))
 - ref 1
 - int 4
@@ -201,14 +201,14 @@ Working stack: (6 word(s))
 - int 3
 - int -3
 set
-sam_run: pc = 29, sp = 41, ir = 801
+sam_run: pc = 29, sp = 41, ir = 901
 Working stack: (4 word(s))
 - ref 1
 - int 3
 - ref 33
 - int 3
 while
-sam_run: pc = 30, sp = 40, ir = 901
+sam_run: pc = 30, sp = 40, ir = a01
 Working stack: (3 word(s))
 - ref 1
 - int 3
@@ -234,7 +234,7 @@ Working stack: (4 word(s))
 - ref 33
 - int 3
 int
-sam_run: pc = 12, sp = 42, ir = 1401
+sam_run: pc = 12, sp = 42, ir = 1501
 Working stack: (5 word(s))
 - ref 1
 - int 3
@@ -256,7 +256,7 @@ Working stack: (4 word(s))
 - ref 33
 - float 10.000000
 float
-sam_run: pc = 15, sp = 42, ir = 1501
+sam_run: pc = 15, sp = 42, ir = 1601
 Working stack: (5 word(s))
 - ref 1
 - int 3
@@ -287,7 +287,7 @@ Working stack: (5 word(s))
 - float 20.000000
 - int 3
 int
-sam_run: pc = 19, sp = 43, ir = 1401
+sam_run: pc = 19, sp = 43, ir = 1501
 Working stack: (6 word(s))
 - ref 1
 - int 3
@@ -324,7 +324,7 @@ Working stack: (4 word(s))
 - ref 33
 - int 3
 int
-sam_run: pc = 24, sp = 42, ir = 1401
+sam_run: pc = 24, sp = 42, ir = 1501
 Working stack: (5 word(s))
 - ref 1
 - int 3
@@ -364,14 +364,14 @@ Working stack: (6 word(s))
 - int 2
 - int -3
 set
-sam_run: pc = 29, sp = 41, ir = 801
+sam_run: pc = 29, sp = 41, ir = 901
 Working stack: (4 word(s))
 - ref 1
 - int 2
 - ref 33
 - int 2
 while
-sam_run: pc = 30, sp = 40, ir = 901
+sam_run: pc = 30, sp = 40, ir = a01
 Working stack: (3 word(s))
 - ref 1
 - int 2
@@ -397,7 +397,7 @@ Working stack: (4 word(s))
 - ref 33
 - int 2
 int
-sam_run: pc = 12, sp = 42, ir = 1401
+sam_run: pc = 12, sp = 42, ir = 1501
 Working stack: (5 word(s))
 - ref 1
 - int 2
@@ -419,7 +419,7 @@ Working stack: (4 word(s))
 - ref 33
 - float 5.000000
 float
-sam_run: pc = 15, sp = 42, ir = 1501
+sam_run: pc = 15, sp = 42, ir = 1601
 Working stack: (5 word(s))
 - ref 1
 - int 2
@@ -450,7 +450,7 @@ Working stack: (5 word(s))
 - float 10.000000
 - int 2
 int
-sam_run: pc = 19, sp = 43, ir = 1401
+sam_run: pc = 19, sp = 43, ir = 1501
 Working stack: (6 word(s))
 - ref 1
 - int 2
@@ -487,7 +487,7 @@ Working stack: (4 word(s))
 - ref 33
 - int 2
 int
-sam_run: pc = 24, sp = 42, ir = 1401
+sam_run: pc = 24, sp = 42, ir = 1501
 Working stack: (5 word(s))
 - ref 1
 - int 2
@@ -527,14 +527,14 @@ Working stack: (6 word(s))
 - int 1
 - int -3
 set
-sam_run: pc = 29, sp = 41, ir = 801
+sam_run: pc = 29, sp = 41, ir = 901
 Working stack: (4 word(s))
 - ref 1
 - int 1
 - ref 33
 - int 1
 while
-sam_run: pc = 30, sp = 40, ir = 901
+sam_run: pc = 30, sp = 40, ir = a01
 Working stack: (3 word(s))
 - ref 1
 - int 1
@@ -560,7 +560,7 @@ Working stack: (4 word(s))
 - ref 33
 - int 1
 int
-sam_run: pc = 12, sp = 42, ir = 1401
+sam_run: pc = 12, sp = 42, ir = 1501
 Working stack: (5 word(s))
 - ref 1
 - int 1
@@ -582,7 +582,7 @@ Working stack: (4 word(s))
 - ref 33
 - float 2.000000
 float
-sam_run: pc = 15, sp = 42, ir = 1501
+sam_run: pc = 15, sp = 42, ir = 1601
 Working stack: (5 word(s))
 - ref 1
 - int 1
@@ -613,7 +613,7 @@ Working stack: (5 word(s))
 - float 4.000000
 - int 1
 int
-sam_run: pc = 19, sp = 43, ir = 1401
+sam_run: pc = 19, sp = 43, ir = 1501
 Working stack: (6 word(s))
 - ref 1
 - int 1
@@ -650,7 +650,7 @@ Working stack: (4 word(s))
 - ref 33
 - int 1
 int
-sam_run: pc = 24, sp = 42, ir = 1401
+sam_run: pc = 24, sp = 42, ir = 1501
 Working stack: (5 word(s))
 - ref 1
 - int 1
@@ -690,7 +690,7 @@ Working stack: (6 word(s))
 - int 0
 - int -3
 set
-sam_run: pc = 29, sp = 41, ir = 801
+sam_run: pc = 29, sp = 41, ir = 901
 Working stack: (4 word(s))
 - ref 1
 - int 0
@@ -706,7 +706,7 @@ sam_run: pc = 34, sp = 38, ir = 5
 Working stack: (1 word(s))
 - ref 1
 int
-sam_run: pc = 35, sp = 39, ir = 1d01
+sam_run: pc = 35, sp = 39, ir = 1e01
 Working stack: (2 word(s))
 - ref 1
 - int 0

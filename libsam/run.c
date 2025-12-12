@@ -124,6 +124,15 @@ sam_word_t sam_run(void)
                         HALT_IF_ERROR(sam_stack_poke(sam_stack, dest, val));
                     }
                     break;
+                case INST_MOVE:
+                    {
+                        sam_word_t pos;
+                        POP_INT(pos);
+                        sam_uword_t addr;
+                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_move(addr));
+                    }
+                    break;
                 case INST_DO:
                     {
                         sam_uword_t code;

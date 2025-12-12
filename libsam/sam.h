@@ -50,13 +50,15 @@ enum {
     SAM_ERROR_INVALID_TRAP = 8,
     SAM_ERROR_TRAP_INIT = 9,
     SAM_ERROR_NO_MEMORY = 10,
+    SAM_ERROR_MOVE_ARRAY = 11,
 };
 
 // Stack access
 sam_stack_t *sam_stack_new(void);
 int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
-int sam_stack_get(sam_uword_t addr);
+int sam_stack_get(sam_uword_t addr); // FIXME: add stack parameter
+int sam_stack_move(sam_uword_t addr); // FIXME: add stack parameter
 int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr);
 int sam_pop_stack(sam_word_t *val_ptr);
 int sam_push_stack(sam_stack_t *s, sam_word_t val);

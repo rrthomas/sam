@@ -56,6 +56,7 @@ enum SAM_INST {
   INST_POP,
   INST_GET,
   INST_SET,
+  INST_MOVE,
   INST_DO,
   INST_IF,
   INST_WHILE,

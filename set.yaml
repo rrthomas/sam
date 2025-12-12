@@ -5,6 +5,9 @@
 - pop
 - float 1.0
 - float 2.0
+- float 3.0
+- int -2
+- move
 - int -1
 - set
 - pop
