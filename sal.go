@@ -427,17 +427,17 @@ func (e *CompareExp) Compile(ctx *Context) {
 		e.Right.Compile(ctx)
 		switch e.Op {
 		case "==":
-			ctx.assemble("eq")
+			ctx.assemble("eq", "neg")
 		case "!=":
-			ctx.assemble("eq", "neg", "not", "neg")
+			ctx.assemble("eq", "not", "neg")
 		case "<":
-			ctx.assemble("lt")
+			ctx.assemble("lt", "neg")
 		case "<=":
-			ctx.assemble("-2", "swap", "lt", "neg", "not", "neg")
+			ctx.assemble("_two", "extract", "lt", "not", "neg")
 		case ">":
-			ctx.assemble("-2", "swap", "lt")
+			ctx.assemble("_two", "extract", "lt", "neg")
 		case ">=":
-			ctx.assemble("lt", "neg", "not", "neg")
+			ctx.assemble("lt", "not", "neg")
 		default:
 			panic(fmt.Errorf("unknown SumExp.Op %s", e.Op))
 		}
@@ -505,7 +505,7 @@ func (e *Expression) Compile(ctx *Context) {
 }
 
 func (c *If) Compile(ctx *Context) {
-	ctx.assemble("int 0")
+	ctx.assemble("int 0") // return value
 	c.Cond.Compile(ctx)
 	c.Then.Compile(ctx)
 	if c.Else != nil {
@@ -518,7 +518,7 @@ func (c *If) Compile(ctx *Context) {
 
 func (a *Assignment) Compile(ctx *Context) {
 	a.Expression.Compile(ctx)
-	ctx.assemble("int -1", "get") // Duplicate value of expression
+	ctx.assemble("_one", "get") // Duplicate value of expression
 	ctx.assemble(fmt.Sprintf("int %d", ctx.variableAddr(*a.Variable)+2), "set")
 }
 
@@ -533,7 +533,7 @@ func (s *Statement) Compile(ctx *Context) {
 	} else if s.Return != nil {
 		s.Return.Compile(ctx)
 		ctx.setReturn()
-		ctx.assemble("int 0", "while")
+		ctx.assemble("zero", "while")
 	} else if s.Assignment != nil {
 		s.Assignment.Compile(ctx)
 	} else {
@@ -639,7 +639,7 @@ func Sal(src string, ast bool, asm bool) []byte {
 		}
 	}
 	ctx := Context{labels: make([]Location, 0), asm: make([]any, 0), sp: 0}
-	ctx.assemble("int 0")
+	ctx.assemble("int 0") // return value
 	body.Compile(&ctx)
 	ctx.assemble("do", "halt")
 	yaml, err := yaml.Marshal(ctx.asm)

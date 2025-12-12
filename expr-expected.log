@@ -13,7 +13,7 @@ Stack: (50 word(s))
         - add
         - int -2
         - set
-        - int 0
+        - zero
         - while
         - int -1
         - set
@@ -29,7 +29,7 @@ Stack: (50 word(s))
       - int 5
       - mul
       - add
-      - int -1
+      - _one
       - get
       - int -2
       - set
@@ -253,7 +253,7 @@ Working stack: (11 word(s))
 - int 6
 - int -2
 set
-sam_run: pc = 14, sp = 59, ir = 5
+sam_run: pc = 14, sp = 59, ir = 1501
 Working stack: (9 word(s))
 - int 0
 - ref 48
@@ -264,7 +264,7 @@ Working stack: (9 word(s))
 - int 5
 - int 6
 - ref 25
-int
+zero
 sam_run: pc = 15, sp = 60, ir = 701
 Working stack: (10 word(s))
 - int 0
@@ -347,7 +347,7 @@ Working stack: (9 word(s))
 - int 2
 - int 20
 add
-sam_run: pc = 31, sp = 58, ir = ffffff05
+sam_run: pc = 31, sp = 58, ir = 1701
 Working stack: (8 word(s))
 - int 0
 - ref 48
@@ -357,7 +357,7 @@ Working stack: (8 word(s))
 - ref 7
 - int 5
 - int 22
-int
+_one
 sam_run: pc = 32, sp = 59, ir = 201
 Working stack: (9 word(s))
 - int 0
@@ -490,7 +490,7 @@ Stack: (50 word(s))
         - add
         - int -2
         - set
-        - int 0
+        - zero
         - while
         - int -1
         - set
@@ -506,7 +506,7 @@ Stack: (50 word(s))
       - int 5
       - mul
       - add
-      - int -1
+      - _one
       - get
       - int -2
       - set
