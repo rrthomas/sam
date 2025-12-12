@@ -24,7 +24,6 @@
             HALT(_err);                         \
     } while (0)
 
-
 // Portable arithmetic right shift (the behaviour of >> on signed
 // quantities is implementation-defined in C99)
 #define ARSHIFT(n, p)                                                   \
