@@ -16,7 +16,7 @@ sam_run: pc = 2, sp = 12, ir = 205
 Working stack: (1 word(s))
 - int 21
 int
-sam_run: pc = 3, sp = 13, ir = 1401
+sam_run: pc = 3, sp = 13, ir = 1501
 Working stack: (2 word(s))
 - int 21
 - int 2
@@ -25,12 +25,12 @@ sam_run: pc = 4, sp = 12, ir = 305
 Working stack: (1 word(s))
 - int 42
 int
-sam_run: pc = 5, sp = 13, ir = 1201
+sam_run: pc = 5, sp = 13, ir = 1301
 Working stack: (2 word(s))
 - int 42
 - int 3
 neg
-sam_run: pc = 6, sp = 13, ir = 1301
+sam_run: pc = 6, sp = 13, ir = 1401
 Working stack: (2 word(s))
 - int 42
 - int -3
@@ -39,12 +39,12 @@ sam_run: pc = 7, sp = 12, ir = fffffd05
 Working stack: (1 word(s))
 - int 39
 int
-sam_run: pc = 8, sp = 13, ir = 1d01
+sam_run: pc = 8, sp = 13, ir = 1e01
 Working stack: (2 word(s))
 - int 39
 - int -3
 div
-sam_run: pc = 9, sp = 12, ir = 1a01
+sam_run: pc = 9, sp = 12, ir = 1b01
 Working stack: (1 word(s))
 - int -13
 halt

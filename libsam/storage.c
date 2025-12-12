@@ -53,17 +53,23 @@ static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
 }
 
 // Move the stack item at `addr` to the top of the stack.
-int sam_stack_move(sam_uword_t addr) {
+int sam_stack_extract(sam_uword_t addr) {
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
     HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &opcode));
-    opcode &= SAM_TAG_MASK;
-    if (opcode == SAM_TAG_ARRAY)
-        HALT(SAM_ERROR_MOVE_ARRAY);
-    else {
-        HALT_IF_ERROR(move_n(addr, addr + 1, sam_stack->sp - addr));
-        PUSH_WORD(opcode);
-    }
+    HALT_IF_ERROR(move_n(addr, addr + 1, sam_stack->sp - addr));
+    HALT_IF_ERROR(sam_stack_poke(sam_stack, sam_stack->sp - 1, opcode));
+error:
+    return error;
+}
+
+// Move the top stack item to `addr`.
+int sam_stack_insert(sam_uword_t addr) {
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t opcode;
+    HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &opcode));
+    HALT_IF_ERROR(move_n(addr + 1, addr, sam_stack->sp - addr));
+    HALT_IF_ERROR(sam_stack_poke(sam_stack, addr, opcode));
 error:
     return error;
 }
