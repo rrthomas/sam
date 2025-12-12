@@ -548,10 +548,12 @@ func (b *Body) Compile(ctx *Context) {
 			d.Compile(&innerCtx)
 		}
 	}
-	for i, s := range *b.Statements {
-		s.Compile(&innerCtx)
-		if i < len(*b.Statements)-1 {
-			innerCtx.assemble("pop")
+	if b.Statements != nil {
+		for i, s := range *b.Statements {
+			s.Compile(&innerCtx)
+			if i < len(*b.Statements)-1 {
+				innerCtx.assemble("pop")
+			}
 		}
 	}
 	innerCtx.setReturn()
