@@ -6,6 +6,7 @@
 - rad
 - ref turn
 - do
+- int 1
 - pop
 - trap DISPLAY_HEIGHT
 - i2f
@@ -13,11 +14,13 @@
 - div
 - ref go
 - do
+- int 1
 - pop
 - float 90.0
 - rad
 - ref turn
 - do
+- int 1
 - pop
 - trap DISPLAY_WIDTH
 - i2f
@@ -25,6 +28,7 @@
 - div
 - ref go
 - do
+- int 1
 - pop
 - ref pendown
 - do
@@ -41,6 +45,7 @@
     - rad
     - ref turn
     - do
+    - int 1
     - pop
     - int -4
     - get
@@ -56,25 +61,28 @@
     - rad
     - ref turn
     - do
+    - int 1
     - pop
     - ref levy_c
     - do
-    - pop
+    - int 2
     - pop
     - float -45.0
     - rad
     - ref turn
     - do
+    - int 1
     - pop
   -
     - int -3
     - get
     - ref go
     - do
+    - int 1
     - pop
   - if
 - do
-- pop
+- int 2
 - pop
 - int 0
 - halt

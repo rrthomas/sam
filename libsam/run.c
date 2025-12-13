@@ -101,9 +101,13 @@ sam_word_t sam_run(void)
                     }
                     break;
                 case INST_POP:
-                    if (sam_stack->sp == 0)
-                        HALT(SAM_ERROR_STACK_UNDERFLOW);
-                    HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, -1, &sam_stack->sp));
+                    {
+                        sam_word_t i;
+                        POP_INT(i);
+                        if (i < 0 || i > sam_stack->sp)
+                            HALT(SAM_ERROR_STACK_UNDERFLOW);
+                        sam_stack->sp -= i;
+                    }
                     break;
                 case INST_GET:
                     {

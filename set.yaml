@@ -2,6 +2,7 @@
 - int 2
 - int -1
 - set
+- int 1
 - pop
 - float 1.0
 - float 2.0
@@ -12,16 +13,19 @@
 - insert
 - int -1
 - set
+- int 1
 - pop
 - int 1
 - float 2.0
 - int -1
 - set
+- int 1
 - pop
 - float 1.0
 - int 2
 - int -1
 - set
+- int 1
 - pop
 - int 0
 - halt
