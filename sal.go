@@ -136,8 +136,11 @@ type Statement struct {
 	Pos lexer.Position
 
 	Assignment *Assignment `  @@ ";"`
-	Return     *Expression `| "return" @@ ";"`
 	Expression *Expression `| @@ ";"`
+}
+
+type Terminator struct {
+	Return *Expression `"return" @@ ";"`
 }
 
 type Body struct {
@@ -145,6 +148,7 @@ type Body struct {
 
 	Declarations *[]Declaration `@@*`
 	Statements   *[]Statement   `@@*`
+	Terminator   *Terminator    `@@?`
 }
 
 type Block struct {
@@ -295,6 +299,13 @@ func (s *Statement) String() string {
 	panic("invalid statement")
 }
 
+func (t *Terminator) String() string {
+	if t.Return != nil {
+		return fmt.Sprintf("return %s", t.Return.String())
+	}
+	panic("invalid statement")
+}
+
 func (b *Body) String() string {
 	out := []string{}
 	for _, d := range *b.Declarations {
@@ -322,7 +333,7 @@ func (f *Function) String() string {
 
 // Compilation
 
-func (e *PrimaryExp) Compile(ctx *Context) {
+func (e *PrimaryExp) Compile(ctx *Frame) {
 	if e.Int != nil {
 		ctx.assemble(fmt.Sprintf("int %d", *e.Int))
 	} else if e.Float != nil {
@@ -330,7 +341,10 @@ func (e *PrimaryExp) Compile(ctx *Context) {
 	} else if e.Variable != nil {
 		ctx.assemble(fmt.Sprintf("int %d", ctx.variableAddr(*e.Variable)), "get")
 	} else if e.Block != nil {
-		e.Block.Compile(ctx)
+		ctx.assemble("int 0")
+		blockCtx := e.Block.Compile(ctx)
+		ctx.assemble(blockCtx.asm)
+		ctx.assemble("do")
 	} else if e.Function != nil {
 		e.Function.Compile(ctx)
 	} else if e.Paren != nil {
@@ -340,7 +354,7 @@ func (e *PrimaryExp) Compile(ctx *Context) {
 	}
 }
 
-func (e *UnaryExp) Compile(ctx *Context) {
+func (e *UnaryExp) Compile(ctx *Frame) {
 	if e.UnaryExp != nil {
 		panic("implement compilation of UnaryExp")
 	} else if e.PostfixExp != nil {
@@ -350,23 +364,30 @@ func (e *UnaryExp) Compile(ctx *Context) {
 	}
 }
 
-func (e *CallExp) Compile(ctx *Context) {
+func (e *CallExp) Compile(ctx *Frame) {
 	// Argument lists
 	if e.Calls != nil {
 		for i := len(*e.Calls) - 1; i >= 0; i-- {
 			(*e.Calls)[i].Compile(ctx)
 		}
 	}
+
 	// Initial function
 	e.Function.Compile(ctx)
+
+	// Call the successive functions, adjusting sp after each
 	if e.Calls != nil {
-		for range *e.Calls {
+		for _, args := range *e.Calls {
 			ctx.assemble("do")
+			nargs := len(*args.Arguments)
+			if nargs > 1 {
+				ctx.sp -= libsam.Uword(nargs - 1)
+			}
 		}
 	}
 }
 
-func (a *Args) Compile(ctx *Context) {
+func (a *Args) Compile(ctx *Frame) {
 	// Push arguments
 	for _, a := range *a.Arguments {
 		a.Compile(ctx)
@@ -377,7 +398,7 @@ func (a *Args) Compile(ctx *Context) {
 	}
 }
 
-func (e *ExponentExp) Compile(ctx *Context) {
+func (e *ExponentExp) Compile(ctx *Frame) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -385,7 +406,7 @@ func (e *ExponentExp) Compile(ctx *Context) {
 	}
 }
 
-func (e *ProductExp) Compile(ctx *Context) {
+func (e *ProductExp) Compile(ctx *Frame) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -402,7 +423,7 @@ func (e *ProductExp) Compile(ctx *Context) {
 	}
 }
 
-func (e *SumExp) Compile(ctx *Context) {
+func (e *SumExp) Compile(ctx *Frame) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -417,7 +438,7 @@ func (e *SumExp) Compile(ctx *Context) {
 	}
 }
 
-func (e *CompareExp) Compile(ctx *Context) {
+func (e *CompareExp) Compile(ctx *Frame) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -440,7 +461,7 @@ func (e *CompareExp) Compile(ctx *Context) {
 	}
 }
 
-func (e *BitwiseExp) Compile(ctx *Context) {
+func (e *BitwiseExp) Compile(ctx *Frame) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -463,7 +484,7 @@ func (e *BitwiseExp) Compile(ctx *Context) {
 	}
 }
 
-func (e *LogicNotExp) Compile(ctx *Context) {
+func (e *LogicNotExp) Compile(ctx *Frame) {
 	if e.LogicNotExp != nil {
 		e.LogicNotExp.Compile(ctx)
 		ctx.assemble("neg", "not", "neg")
@@ -475,7 +496,7 @@ func (e *LogicNotExp) Compile(ctx *Context) {
 
 }
 
-func (e *LogicExp) Compile(ctx *Context) {
+func (e *LogicExp) Compile(ctx *Frame) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -490,7 +511,7 @@ func (e *LogicExp) Compile(ctx *Context) {
 	}
 }
 
-func (e *Expression) Compile(ctx *Context) {
+func (e *Expression) Compile(ctx *Frame) {
 	if e.Cond != nil {
 		e.Cond.Compile(ctx)
 	} else if e.LogicExp != nil {
@@ -500,36 +521,32 @@ func (e *Expression) Compile(ctx *Context) {
 	}
 }
 
-func (c *If) Compile(ctx *Context) {
+func (c *If) Compile(ctx *Frame) {
 	ctx.assemble("int 0") // return value
-	c.Cond.Compile(ctx)
-	c.Then.Compile(ctx)
+	thenCtx := c.Then.Compile(ctx)
+	var elseCtx Frame = Frame{}
 	if c.Else != nil {
-		c.Else.Compile(ctx)
-	} else {
-		ctx.assemble([]string{})
+		elseCtx = c.Else.Compile(ctx)
 	}
+	c.Cond.Compile(ctx)
+	ctx.assemble(thenCtx.asm)
+	ctx.assemble(elseCtx.asm)
 	ctx.assemble("if")
 }
 
-func (a *Assignment) Compile(ctx *Context) {
+func (a *Assignment) Compile(ctx *Frame) {
 	a.Expression.Compile(ctx)
-	ctx.assemble("_one", "get") // Duplicate value of expression
-	ctx.assemble(fmt.Sprintf("int %d", ctx.variableAddr(*a.Variable)+2), "set")
+	ctx.assemble("_one", "get", fmt.Sprintf("int %d", ctx.variableAddr(*a.Variable)), "set")
 }
 
-func (d *Declaration) Compile(ctx *Context) {
+func (d *Declaration) Compile(ctx *Frame) {
 	ctx.labels = append(ctx.labels, Location{id: *d.Variable, addr: int(ctx.sp)})
 	d.Value.Compile(ctx)
 }
 
-func (s *Statement) Compile(ctx *Context) {
+func (s *Statement) Compile(ctx *Frame) {
 	if s.Expression != nil {
 		s.Expression.Compile(ctx)
-	} else if s.Return != nil {
-		s.Return.Compile(ctx)
-		ctx.setReturn()
-		ctx.assemble("zero", "while")
 	} else if s.Assignment != nil {
 		s.Assignment.Compile(ctx)
 	} else {
@@ -537,42 +554,61 @@ func (s *Statement) Compile(ctx *Context) {
 	}
 }
 
-func (b *Body) Compile(ctx *Context) {
-	innerCtx := Context{labels: slices.Clone(ctx.labels), asm: make([]any, 0), sp: 1}
+func (t *Terminator) Compile(ctx *Frame) {
+	if t.Return != nil {
+		t.Return.Compile(ctx)
+		ctx.returnFromFrame = true
+	} else {
+		panic("invalid Terminator")
+	}
+}
+
+func (b *Body) Compile(ctx *Frame) {
 	if b.Declarations != nil {
 		for _, d := range *b.Declarations {
-			d.Compile(&innerCtx)
+			d.Compile(ctx)
 		}
 	}
 	if b.Statements != nil {
 		for i, s := range *b.Statements {
-			s.Compile(&innerCtx)
-			if i < len(*b.Statements)-1 {
-				innerCtx.assemble("pop")
+			s.Compile(ctx)
+			if i < len(*b.Statements)-1 || b.Terminator != nil {
+				ctx.assemblePop(1)
 			}
 		}
 	}
-	innerCtx.setReturn()
-	if b.Declarations != nil {
-		for range *b.Declarations {
-			innerCtx.assemble("pop")
-		}
+	if b.Terminator != nil {
+		b.Terminator.Compile(ctx)
 	}
-	ctx.assemble(innerCtx.asm)
 }
 
-func (b *Block) Compile(ctx *Context) {
-	b.Body.Compile(ctx)
+func (b *Block) Compile(ctx *Frame) Frame {
+	baseSp := libsam.Uword(int(ctx.sp) + 1)
+	blockCtx := Frame{
+		labels:          slices.Clone(ctx.labels),
+		asm:             make([]any, 0),
+		sp:              baseSp,
+		nargs:           ctx.nargs,
+		returnFromFrame: ctx.returnFromFrame,
+	}
+	b.Body.Compile(&blockCtx)
+	if blockCtx.returnFromFrame {
+		blockCtx.tearDownFrame()
+	} else {
+		blockCtx.tearDownBlock(blockCtx.sp - baseSp)
+	}
+	return blockCtx
 }
 
-func (f *Function) Compile(ctx *Context) {
+func (f *Function) Compile(ctx *Frame) {
 	// FIXME: captures
-	innerCtx := Context{labels: make([]Location, 0), asm: make([]any, 0), sp: 0}
+	nargs := libsam.Uword(len(*f.Parameters))
+	innerCtx := Frame{labels: make([]Location, 0), asm: make([]any, 0), sp: 0, nargs: nargs}
 	for i, p := range *f.Parameters {
-		innerCtx.labels = append(innerCtx.labels, Location{id: p, addr: i - len(*f.Parameters)})
+		innerCtx.labels = append(innerCtx.labels, Location{id: p, addr: i - int(nargs)})
 	}
-	f.Body.Compile(&innerCtx)
-	ctx.assemble(innerCtx.asm...)
+	innerCtx.returnFromFrame = true
+	ctx.assemble(f.Body.Compile(&innerCtx).asm)
 }
 
 type Location struct {
@@ -580,7 +616,7 @@ type Location struct {
 	addr int // relative to base of stack frame
 }
 
-func (ctx *Context) variableAddr(id string) int {
+func (ctx *Frame) variableAddr(id string) int {
 	for i := len(ctx.labels) - 1; i >= 0; i-- {
 		l := ctx.labels[i]
 		if l.id == id {
@@ -590,35 +626,68 @@ func (ctx *Context) variableAddr(id string) int {
 	panic(fmt.Errorf("no such variable %s", id))
 }
 
-func (ctx *Context) setReturn() {
-	ctx.assemble(fmt.Sprintf("int  %d", -int(ctx.sp)), "set")
+func (ctx *Frame) tearDownBlock(depth libsam.Uword) {
+	// Set result
+	ctx.assemble(fmt.Sprintf("int %d", -int(depth+1)), "set")
+	// Pop remaining stack items in this frame, except for return address
+	if depth > 1 {
+		ctx.assemblePop(depth - 1)
+	}
 }
 
-type Context struct {
-	labels []Location
-	asm    []any
-	sp     uint
+func (ctx *Frame) tearDownFrame() {
+	// Set result
+	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-1+ctx.nargs)), "set")
+	// Pop remaining stack items in this frame, except for return address
+	if ctx.sp > 1 {
+		ctx.assemblePop(ctx.sp - 1)
+	}
+	// If we have some arguments still on the stack, need to get rid of them
+	if ctx.nargs > 1 {
+		// Store the return `pc` over the second argument
+		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)+1), "set")
+		if ctx.nargs > 2 {
+			// Pop arguments 3 onwards, if any
+			ctx.assemblePop(ctx.nargs - 2)
+		}
+	}
 }
 
-func (ctx *Context) assemble(insts ...any) {
+type Frame struct {
+	labels          []Location
+	asm             []any
+	sp              libsam.Uword
+	nargs           libsam.Uword // Number of arguments to this frame
+	returnFromFrame bool         // Whether we return from the frame on block exit
+}
+
+func (ctx *Frame) assemble(insts ...any) {
 	for _, i := range insts {
 		switch inst := i.(type) {
 		case string:
 			instName := strings.Fields(inst)[0]
+			if instName == "pop" {
+				panic("use assemblePop to assemble a pop instruction")
+			}
 			delta, ok := libsam.StackDifference[instName]
 			if !ok {
 				panic(fmt.Errorf("invalid instruction %s", instName))
 			}
 			if delta < 0 {
-				ctx.sp -= uint(-delta)
+				ctx.sp -= libsam.Uword(-delta)
 			} else {
-				ctx.sp += uint(delta)
+				ctx.sp += libsam.Uword(delta)
 			}
 		default: // Assume an array
 			ctx.sp += 1 // A stack pushes a `ref` instruction
 		}
 		ctx.asm = append(ctx.asm, i)
 	}
+}
+
+func (ctx *Frame) assemblePop(items libsam.Uword) {
+	ctx.asm = append(ctx.asm, fmt.Sprintf("int %d", items), "pop")
+	ctx.sp -= items
 }
 
 var parser = participle.MustBuild[Body]()
@@ -634,10 +703,14 @@ func Sal(src string, ast bool, asm bool) []byte {
 			panic("error encoding JSON for AST")
 		}
 	}
-	ctx := Context{labels: make([]Location, 0), asm: make([]any, 0), sp: 0}
+
+	// Wrap the top-level body in a Block and compile it
+	block := Block{Pos: body.Pos, Body: body}
+	ctx := Frame{labels: make([]Location, 0), asm: make([]any, 0), sp: 0, nargs: 0}
 	ctx.assemble("int 0") // return value
-	body.Compile(&ctx)
+	ctx.assemble(block.Compile(&ctx).asm)
 	ctx.assemble("do", "halt")
+
 	yaml, err := yaml.Marshal(ctx.asm)
 	if err != nil {
 		panic("error encoding YAML for compilation output")
