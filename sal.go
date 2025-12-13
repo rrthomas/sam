@@ -360,12 +360,8 @@ func (e *CallExp) Compile(ctx *Context) {
 	// Initial function
 	e.Function.Compile(ctx)
 	if e.Calls != nil {
-		for _, c := range *e.Calls {
+		for range *e.Calls {
 			ctx.assemble("do")
-			// Pop any arguments, but leave return value
-			for i := 0; i < len(*c.Arguments)-1; i++ {
-				ctx.assemble("pop")
-			}
 		}
 	}
 }

@@ -289,193 +289,74 @@ Working stack: (8 word(s))
 - int 5
 - int 6
 pop
-sam_run: pc = 26, sp = 57, ir = 205
-Working stack: (7 word(s))
+sam_run: pc = 26, sp = 51, ir = 205
+Working stack: (1 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 int
-sam_run: pc = 27, sp = 58, ir = 405
-Working stack: (8 word(s))
+sam_run: pc = 27, sp = 52, ir = 405
+Working stack: (2 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 - int 2
 int
-sam_run: pc = 28, sp = 59, ir = 505
-Working stack: (9 word(s))
+sam_run: pc = 28, sp = 53, ir = 505
+Working stack: (3 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 - int 2
 - int 4
 int
-sam_run: pc = 29, sp = 60, ir = 1501
-Working stack: (10 word(s))
+sam_run: pc = 29, sp = 54, ir = 1501
+Working stack: (4 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 - int 2
 - int 4
 - int 5
 mul
-sam_run: pc = 30, sp = 59, ir = 1401
-Working stack: (9 word(s))
+sam_run: pc = 30, sp = 53, ir = 1401
+Working stack: (3 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 - int 2
 - int 20
 add
-sam_run: pc = 31, sp = 58, ir = 1801
-Working stack: (8 word(s))
+sam_run: pc = 31, sp = 52, ir = 1801
+Working stack: (2 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 - int 22
 _one
-sam_run: pc = 32, sp = 59, ir = 201
-Working stack: (9 word(s))
+sam_run: pc = 32, sp = 53, ir = 201
+Working stack: (3 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 - int 22
 - int -1
 get
-sam_run: pc = 33, sp = 59, ir = fffffe05
-Working stack: (9 word(s))
+sam_run: pc = 33, sp = 53, ir = fffffe05
+Working stack: (3 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 - int 22
 - int 22
 int
-sam_run: pc = 34, sp = 60, ir = 301
-Working stack: (10 word(s))
+sam_run: pc = 34, sp = 54, ir = 301
+Working stack: (4 word(s))
 - int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
-- int 5
 - int 22
 - int 22
 - int -2
 set
-sam_run: pc = 35, sp = 58, ir = fffffc05
-Working stack: (8 word(s))
-- int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
+sam_run: pc = 35, sp = 52, ir = fffffc05
+Working stack: (2 word(s))
 - int 22
 - int 22
 int
-sam_run: pc = 36, sp = 59, ir = 301
-Working stack: (9 word(s))
-- int 0
-- ref 48
-- int 2
-- int 0
-- ref 43
-- ref 7
+sam_run: pc = 36, sp = 53, ir = 301
+Working stack: (3 word(s))
 - int 22
 - int 22
 - int -4
 set
-sam_run: pc = 37, sp = 57, ir = 101
-Working stack: (7 word(s))
-- int 0
-- ref 48
-- int 2
-- int 22
-- ref 43
-- ref 7
-- int 22
-pop
-sam_run: pc = 38, sp = 56, ir = 101
-Working stack: (6 word(s))
-- int 0
-- ref 48
-- int 2
-- int 22
-- ref 43
-- ref 7
-pop
-sam_run: pc = 39, sp = 55, ir = ffffdf02
-Working stack: (5 word(s))
-- int 0
-- ref 48
-- int 2
-- int 22
-- ref 43
-ket
-sam_run: pc = 43, sp = 54, ir = fffffd05
-Working stack: (4 word(s))
-- int 0
-- ref 48
-- int 2
-- int 22
-int
-sam_run: pc = 44, sp = 55, ir = 301
-Working stack: (5 word(s))
-- int 0
-- ref 48
-- int 2
-- int 22
-- int -3
-set
-sam_run: pc = 45, sp = 53, ir = 101
-Working stack: (3 word(s))
-- int 22
-- ref 48
-- int 2
-pop
-sam_run: pc = 46, sp = 52, ir = ffffd402
-Working stack: (2 word(s))
-- int 22
-- ref 48
-ket
-sam_run: pc = 48, sp = 51, ir = 1b01
+sam_run: pc = 37, sp = 51, ir = 101
 Working stack: (1 word(s))
 - int 22
-halt
-Stack: (50 word(s))
+pop
+Stack: (28 word(s))
 - 
   - int 0
   - 
@@ -503,22 +384,4 @@ Stack: (50 word(s))
       - pop
       - int 2
       - int 4
-      - int 5
-      - mul
-      - add
-      - _one
-      - get
-      - int -2
-      - set
-      - int -4
-      - set
-      - pop
-      - pop
-    - 
-    - if
-    - int -3
-    - set
-    - pop
-  - do
-  - halt
-sam_run returns: halt with reason 22 (0x16)
+sam_run returns: ERROR_INVALID_ADDRESS

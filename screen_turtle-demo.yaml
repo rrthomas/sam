@@ -7,10 +7,12 @@
 - rad
 - ref turn
 - do
+- int 1
 - pop
 - float 500.0
 - ref go
 - do
+- int 1
 - pop
 - int 0
 - halt

@@ -154,9 +154,9 @@ Numeric conversions:
 These instructions manage the stack.
 
 > `POP`  
-> `x` →
+> `x₁`…`xₙ` `i` →
 >
-> If the stack is empty, raise the error `STACK_UNDERFLOW`. Pop `x` from the stack.
+> Pop `i` from the top of the stack. If `i` is negative, or there are fewer than `i` items on the stack, raise the error `STACK_UNDERFLOW`. Pop `i` items from the stack.
 
 > `GET`  
 > `i` → `x`
