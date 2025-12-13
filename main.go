@@ -55,14 +55,15 @@ var rootCmd = &cobra.Command{
 
 			case ".sal":
 				var source []byte
-				source, err = os.ReadFile(progFile)
-				if err != nil {
-					return fmt.Errorf("error reading SAL program %v", progFile)
+				if source, err = os.ReadFile(progFile); err == nil {
+					yaml = Sal(string(source), printAst, printAsm)
 				}
-				yaml = Sal(string(source), printAst, printAsm)
 
 			default:
 				return fmt.Errorf("unknown program file type %v", ext)
+			}
+			if err != nil {
+				return fmt.Errorf("error reading program %v", progFile)
 			}
 		}
 
