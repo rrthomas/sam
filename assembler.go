@@ -75,7 +75,7 @@ func (a *assembler) parseLiteral(argStr string) libsam.Word {
 	if opcode, ok := parseInsn(argStr); ok {
 		return libsam.Word(opcode)
 	}
-	if number, err := strconv.ParseInt(argStr, 10, 32); err == nil {
+	if number, err := strconv.ParseInt(argStr, 10, libsam.WORD_BIT); err == nil {
 		return libsam.Word(number)
 	}
 	panic(fmt.Errorf("bad literal %s", argStr))
