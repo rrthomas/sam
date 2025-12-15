@@ -194,24 +194,24 @@ sam_word_t sam_run(void)
                 case INST_AND:
                     {
                         sam_word_t a, b;
-                        POP_INT(a);
                         POP_INT(b);
+                        POP_INT(a);
                         PUSH_INT(a & b);
                     }
                     break;
                 case INST_OR:
                     {
                         sam_word_t a, b;
-                        POP_INT(a);
                         POP_INT(b);
+                        POP_INT(a);
                         PUSH_INT(a | b);
                     }
                     break;
                 case INST_XOR:
                     {
                         sam_word_t a, b;
-                        POP_INT(a);
                         POP_INT(b);
+                        POP_INT(a);
                         PUSH_INT(a ^ b);
                     }
                     break;
@@ -242,8 +242,8 @@ sam_word_t sam_run(void)
                 case INST_EQ:
                     {
                         sam_word_t x, y;
-                        POP_WORD(&x);
                         POP_WORD(&y);
+                        POP_WORD(&x);
                         PUSH_BOOL(x == y);
                     }
                     break;
@@ -253,13 +253,13 @@ sam_word_t sam_run(void)
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_word_t a, b;
-                            POP_INT(a);
                             POP_INT(b);
+                            POP_INT(a);
                             PUSH_BOOL(a < b);
                         } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
-                            POP_FLOAT(a);
                             POP_FLOAT(b);
+                            POP_FLOAT(a);
                             PUSH_BOOL(a < b);
                         } else
                             HALT(SAM_ERROR_WRONG_TYPE);
@@ -287,13 +287,13 @@ sam_word_t sam_run(void)
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_uword_t a, b;
-                            POP_UINT(a);
                             POP_UINT(b);
-                            PUSH_INT((sam_word_t)(b + a));
+                            POP_UINT(a);
+                            PUSH_INT((sam_word_t)(a + b));
                         } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
-                            POP_FLOAT(a);
                             POP_FLOAT(b);
+                            POP_FLOAT(a);
                             PUSH_FLOAT(a + b);
                         } else
                             HALT(SAM_ERROR_WRONG_TYPE);
@@ -305,13 +305,13 @@ sam_word_t sam_run(void)
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_uword_t a, b;
-                            POP_UINT(a);
                             POP_UINT(b);
+                            POP_UINT(a);
                             PUSH_INT((sam_word_t)(a * b));
                         } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
-                            POP_FLOAT(a);
                             POP_FLOAT(b);
+                            POP_FLOAT(a);
                             PUSH_FLOAT(a * b);
                         } else
                             HALT(SAM_ERROR_WRONG_TYPE);
@@ -389,13 +389,13 @@ sam_word_t sam_run(void)
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
                         if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_uword_t a, b;
-                            POP_UINT(a);
                             POP_UINT(b);
+                            POP_UINT(a);
                             PUSH_INT(powi(a, b));
                         } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
                             sam_float_t a, b;
-                            POP_FLOAT(a);
                             POP_FLOAT(b);
+                            POP_FLOAT(a);
                             PUSH_FLOAT(powf(a, b));
                         } else
                             HALT(SAM_ERROR_WRONG_TYPE);

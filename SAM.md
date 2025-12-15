@@ -274,7 +274,7 @@ Shifts:
 > `LT`  
 > `n₁` `n₂` → `i`
 >
-> `i` is –1 is `n₁` is less than `n₂` and 0 otherwise.
+> `i` is –1 if `n₁` is less than `n₂` and 0 otherwise.
 
 
 
