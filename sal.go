@@ -124,6 +124,13 @@ type Assignment struct {
 	Expression *Expression `@@`
 }
 
+type Trap struct {
+	Pos lexer.Position
+
+	Function  *string       `"trap" @Ident`
+	Arguments *[]Expression `("," @@)*`
+}
+
 type Declaration struct {
 	Pos lexer.Position
 
@@ -136,6 +143,7 @@ type Statement struct {
 	Pos lexer.Position
 
 	Assignment *Assignment `  @@ ";"`
+	Trap       *Trap       `| @@ ";"`
 	Expression *Expression `| @@ ";"`
 }
 
@@ -185,8 +193,8 @@ func (e *PrimaryExp) String() string {
 
 func (e *CallExp) String() string {
 	out := []string{e.Function.String()}
-	for _, c := range *e.Calls {
-		out = append(out, c.String())
+	for _, a := range *e.Calls {
+		out = append(out, a.String())
 	}
 	return strings.Join(out, "")
 }
@@ -286,6 +294,14 @@ func (a *Assignment) String() string {
 	return fmt.Sprintf("%s = %s", *a.Variable, a.Expression.String())
 }
 
+func (t *Trap) String() string {
+	out := []string{fmt.Sprintf("trap %s", *t.Function)}
+	for _, a := range *t.Arguments {
+		out = append(out, a.String())
+	}
+	return strings.Join(out, ",")
+}
+
 func (d *Declaration) String() string {
 	return fmt.Sprintf("%s: float %s", *d.Variable, d.Value.String())
 }
@@ -295,6 +311,8 @@ func (s *Statement) String() string {
 		return s.Expression.String()
 	} else if s.Assignment != nil {
 		return s.Assignment.String()
+	} else if s.Trap != nil {
+		return s.Trap.String()
 	}
 	panic("invalid statement")
 }
@@ -539,6 +557,32 @@ func (a *Assignment) Compile(ctx *Frame) {
 	ctx.assemble("_one", "get", fmt.Sprintf("int %d", ctx.variableAddr(*a.Variable)), "set")
 }
 
+func (t *Trap) Compile(ctx *Frame) {
+	stackEffect := trapStackEffect(*t.Function)
+	nargs := 0
+	if t.Arguments != nil {
+		nargs = len(*t.Arguments)
+	}
+	if stackEffect.In != libsam.Uword(nargs) {
+		panic(fmt.Errorf("trap %s takes %d argument(s), but %d supplied",
+			*t.Function, stackEffect.In, nargs,
+		))
+	}
+	if stackEffect.Out > 1 {
+		panic("Support for traps returning more than one value is not implemented yet")
+	}
+	if t.Arguments != nil {
+		for _, a := range *t.Arguments {
+			a.Compile(ctx)
+		}
+	}
+	ctx.assembleTrap(*t.Function)
+	// If the trap returns no values, return a dummy value
+	if stackEffect.Out == 0 {
+		ctx.assemble("int 0")
+	}
+}
+
 func (d *Declaration) Compile(ctx *Frame) {
 	ctx.labels = append(ctx.labels, Location{id: *d.Variable, addr: int(ctx.sp)})
 	d.Value.Compile(ctx)
@@ -549,6 +593,8 @@ func (s *Statement) Compile(ctx *Frame) {
 		s.Expression.Compile(ctx)
 	} else if s.Assignment != nil {
 		s.Assignment.Compile(ctx)
+	} else if s.Trap != nil {
+		s.Trap.Compile(ctx)
 	} else {
 		panic("invalid Statement")
 	}
@@ -668,6 +714,8 @@ func (ctx *Frame) assemble(insts ...any) {
 			instName := strings.Fields(inst)[0]
 			if instName == "pop" {
 				panic("use assemblePop to assemble a pop instruction")
+			} else if instName == "trap" {
+				panic("use assembleTrap to assemble a trap instruction")
 			}
 			delta, ok := libsam.StackDifference[instName]
 			if !ok {
@@ -688,6 +736,21 @@ func (ctx *Frame) assemble(insts ...any) {
 func (ctx *Frame) assemblePop(items libsam.Uword) {
 	ctx.asm = append(ctx.asm, fmt.Sprintf("int %d", items), "pop")
 	ctx.sp -= items
+}
+
+func trapStackEffect(function string) libsam.StackEffect {
+	stackEffect, ok := libsam.TrapStackEffect[function]
+	if !ok {
+		panic(fmt.Errorf("unknown trap %s", function))
+	}
+	return stackEffect
+}
+
+func (ctx *Frame) assembleTrap(function string) {
+	ctx.asm = append(ctx.asm, fmt.Sprintf("trap %s", function))
+	stackEffect := trapStackEffect(function)
+	ctx.sp -= stackEffect.In
+	ctx.sp += stackEffect.Out
 }
 
 var parser = participle.MustBuild[Body]()

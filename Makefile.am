@@ -22,6 +22,7 @@ TESTS = \
 	screen_turtle-demo.yaml \
 	screen_levy-c.yaml \
 	expr.sal \
+	graphics.sal \
 	$(EMPTY)
 
 RESULTS = \
@@ -38,6 +39,7 @@ RESULTS = \
 	screen_levy-c-expected.pbm \
 	set-expected.log \
 	expr-expected.log \
+	graphics-expected.log \
 	$(EMPTY)
 
 CLOC = cloc --force-lang="C",h
