@@ -298,18 +298,23 @@ var StackDifference = map[string]int{
 	// Trap depends on the trap code.
 }
 
-var TrapStackDifference = map[string]int{
-	"BLACK":          1,
-	"WHITE":          1,
-	"DISPLAY_WIDTH":  1,
-	"DISPLAY_HEIGHT": 1,
-	"CLEARSCREEN":    -1,
-	"SETDOT":         -3,
-	"DRAWLINE":       -5,
-	"DRAWRECT":       -5,
-	"DRAWROUNDRECT":  -6,
-	"FILLRECT":       -5,
-	"DRAWCIRCLE":     -4,
-	"FILLCIRCLE":     -4,
-	"DRAWBITMAP":     -4,
+type StackEffect struct {
+	In  Uword
+	Out Uword
+}
+
+var TrapStackEffect = map[string]StackEffect{
+	"BLACK":          {0, 1},
+	"WHITE":          {0, 1},
+	"DISPLAY_WIDTH":  {0, 1},
+	"DISPLAY_HEIGHT": {0, 1},
+	"CLEARSCREEN":    {1, 0},
+	"SETDOT":         {3, 0},
+	"DRAWLINE":       {5, 0},
+	"DRAWRECT":       {5, 0},
+	"DRAWROUNDRECT":  {6, 0},
+	"FILLRECT":       {5, 0},
+	"DRAWCIRCLE":     {4, 0},
+	"FILLCIRCLE":     {4, 0},
+	"DRAWBITMAP":     {4, 0},
 }
