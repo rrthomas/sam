@@ -56,8 +56,13 @@ EXTRA_DIST = $(LOG_COMPILER) $(TESTS) $(RESULTS) \
 	main.go \
 	assembler.go \
 	sal.go \
+	lexer.go \
+	lexer_test.go \
 	$(EMPTY)
 
 clean-local:
 	rm -f *-output.log *-output.pbm; \
 	if test "$(srcdir)" != "$(builddir)"; then rm -f $(builddir)/turtle.yaml; fi
+
+check-local:
+	cd $(srcdir) && go test
