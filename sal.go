@@ -8,7 +8,6 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/alecthomas/participle/v2"
 	"github.com/alecthomas/participle/v2/lexer"
 	"github.com/goccy/go-yaml"
 	"github.com/rrthomas/sam/libsam"
@@ -138,7 +137,6 @@ type Declaration struct {
 	Value    *Expression `@@ ";"`
 }
 
-// FIXME: Add optional semi-colon/newline = semicolon
 type Statement struct {
 	Pos lexer.Position
 
@@ -752,8 +750,6 @@ func (ctx *Frame) assembleTrap(function string) {
 	ctx.sp -= stackEffect.In
 	ctx.sp += stackEffect.Out
 }
-
-var parser = participle.MustBuild[Body]()
 
 func Sal(src string, ast bool, asm bool) []byte {
 	body, err := parser.ParseString("", src)

@@ -1,8 +1,8 @@
-trap SETDOT, 50, 100, {trap BLACK;};
-trap SETDOT, 20, 100, {trap BLACK;};
-trap DRAWLINE, 10, 10, 110, 50, {trap BLACK;};
-trap DRAWRECT, 40, 120, 60, 80, {trap BLACK;};
-trap FILLRECT, 60, 140, 20, 40, {trap BLACK;};
-trap DRAWROUNDRECT, 110, 120, 60, 80, 30, {trap BLACK;};
-trap DRAWCIRCLE, 210, 160, 40, {trap BLACK;};
-trap FILLCIRCLE, 290, 160, 40, {trap BLACK;};
+trap SETDOT, 50, 100, {trap BLACK}
+trap SETDOT, 20, 100, {trap BLACK}
+trap DRAWLINE, 10, 10, 110, 50, {trap BLACK}
+trap DRAWRECT, 40, 120, 60, 80, {trap BLACK}
+trap FILLRECT, 60, 140, 20, 40, {trap BLACK}
+trap DRAWROUNDRECT, 110, 120, 60, 80, 30, {trap BLACK}
+trap DRAWCIRCLE, 210, 160, 40, {trap BLACK}
+trap FILLCIRCLE, 290, 160, 40, {trap BLACK}

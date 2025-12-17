@@ -1,40 +1,40 @@
-// This test tests:
-//
-// Different function prologue/epilogue code:
-//
-// - function of 1 parameter (f)
-// - function of 2 parameters (max)
-// - function of 3 parameters (sum3)
-//
-// - `return` from the outermost block of a function (max)
-// - `return` from an inner block of a function (also max)
-// - return a value from a function without `return` (g)
-//
-// - assignment to a variable in the same scope (a)
-// - assignment to a variable in an outer scope (b)
-//
-// - use a plain block as a value (call of max)
+# This test tests:
+#
+# Different function prologue/epilogue code:
+#
+# - function of 1 parameter (f)
+# - function of 2 parameters (max)
+# - function of 3 parameters (sum3)
+#
+# - `return` from the outermost block of a function (max)
+# - `return` from an inner block of a function (also max)
+# - return a value from a function without `return` (g)
+#
+# - assignment to a variable in the same scope (a)
+# - assignment to a variable in an outer scope (b)
+#
+# - use a plain block as a value (call of max)
 
-b: 2;
+b: 2
 if 1 {
     f: fn(a) {
-        return a + 1;
-    };
+        return a + 1
+    }
     g: fn(a) {
-        a + 1;
-    };
+        a + 1
+    }
     max: fn(x, y) {
         if x > y {
-            return x;
-        };
-        return y;
-    };
+            return x
+        }
+        return y
+    }
     sum3: fn(a, b, c) {
-        return a + b + c;
-    };
-    a: 5;
+        return a + b + c
+    }
+    a: 5
 
-    f(a);
-    a = { max(a, 1); };
-    b = 2 + 4 * 5 + sum3(1, 2, 3) + g(1);
-};
+    f(a)
+    a = { max(a, 1) }
+    b = 2 + 4 * 5 + sum3(1, 2, 3) + g(1)
+}
