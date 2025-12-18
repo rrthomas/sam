@@ -735,7 +735,7 @@ Working stack: (2 word(s))
 - ref 1
 - float 37.000000
 float
-sam_run: pc = 35, sp = 42, ir = 1e01
+sam_run: pc = 35, sp = 42, ir = 1601
 Working stack: (3 word(s))
 - ref 1
 - float 37.000000
@@ -746,7 +746,7 @@ Working stack: (2 word(s))
 - ref 1
 - float 9.250000
 int
-sam_run: pc = 37, sp = 42, ir = 1b01
+sam_run: pc = 37, sp = 42, ir = 1f01
 Working stack: (3 word(s))
 - ref 1
 - float 9.250000

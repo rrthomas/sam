@@ -158,7 +158,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 6
 do
-sam_run: pc = 7, sp = 128, ir = 2501
+sam_run: pc = 7, sp = 128, ir = 20001
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -197,7 +197,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 12
 ket
-sam_run: pc = 12, sp = 127, ir = 2a01
+sam_run: pc = 12, sp = 127, ir = 20501
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -258,7 +258,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 19
 do
-sam_run: pc = 20, sp = 128, ir = 2501
+sam_run: pc = 20, sp = 128, ir = 20001
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -297,7 +297,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 25
 ket
-sam_run: pc = 25, sp = 127, ir = 2a01
+sam_run: pc = 25, sp = 127, ir = 20501
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -379,7 +379,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 34
 do
-sam_run: pc = 35, sp = 130, ir = 2501
+sam_run: pc = 35, sp = 130, ir = 20001
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -426,7 +426,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 40
 ket
-sam_run: pc = 40, sp = 129, ir = 2b01
+sam_run: pc = 40, sp = 129, ir = 20601
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -510,7 +510,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 49
 do
-sam_run: pc = 50, sp = 130, ir = 2501
+sam_run: pc = 50, sp = 130, ir = 20001
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -557,7 +557,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 55
 ket
-sam_run: pc = 55, sp = 129, ir = 2c01
+sam_run: pc = 55, sp = 129, ir = 20701
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -641,7 +641,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 64
 do
-sam_run: pc = 65, sp = 130, ir = 2501
+sam_run: pc = 65, sp = 130, ir = 20001
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -688,7 +688,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 70
 ket
-sam_run: pc = 70, sp = 129, ir = 2e01
+sam_run: pc = 70, sp = 129, ir = 20901
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -784,7 +784,7 @@ Working stack: (9 word(s))
 - int 0
 - ref 80
 do
-sam_run: pc = 81, sp = 131, ir = 2501
+sam_run: pc = 81, sp = 131, ir = 20001
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -835,7 +835,7 @@ Working stack: (9 word(s))
 - int 0
 - ref 86
 ket
-sam_run: pc = 86, sp = 130, ir = 2d01
+sam_run: pc = 86, sp = 130, ir = 20801
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -909,7 +909,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 94
 do
-sam_run: pc = 95, sp = 129, ir = 2501
+sam_run: pc = 95, sp = 129, ir = 20001
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -952,7 +952,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 100
 ket
-sam_run: pc = 100, sp = 128, ir = 2f01
+sam_run: pc = 100, sp = 128, ir = 20a01
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -1024,7 +1024,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 108
 do
-sam_run: pc = 109, sp = 129, ir = 2501
+sam_run: pc = 109, sp = 129, ir = 20001
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -1067,7 +1067,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 114
 ket
-sam_run: pc = 114, sp = 128, ir = 3001
+sam_run: pc = 114, sp = 128, ir = 20b01
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -1099,7 +1099,7 @@ Working stack: (2 word(s))
 - int 0
 - ref 120
 ket
-sam_run: pc = 120, sp = 123, ir = 1b01
+sam_run: pc = 120, sp = 123, ir = 1f01
 Working stack: (1 word(s))
 - int 0
 halt

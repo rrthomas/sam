@@ -1,4 +1,12 @@
 // Sam interpreter APIs and primitives.
+//
+// (c) Reuben Thomas 1994-2025
+//
+// The package is distributed under the GNU Public License version 3, or,
+// at your option, any later version.
+//
+// THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
+// RISK.
 
 #ifndef SAM_SAM
 #define SAM_SAM
@@ -71,6 +79,7 @@ int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);
 // Miscellaneous routines
 sam_word_t sam_run(void);
 int sam_init(void);
+sam_word_t sam_trap(sam_uword_t function);
 
 // Portable left shift (the behaviour of << with overflow (including on any
 // negative number) is undefined)
@@ -87,20 +96,5 @@ void sam_print_working_stack(void);
 void debug(const char *fmt, ...);
 int sam_debug_init(void);
 #endif
-
-// Traps
-#define SAM_DISPLAY_WIDTH 800
-#define SAM_DISPLAY_HEIGHT 600
-extern const unsigned sam_update_interval;
-
-sam_word_t sam_traps_init(void);
-void sam_traps_finish(void);
-int sam_traps_process_events(void);
-sam_word_t sam_trap(sam_uword_t function);
-int sam_traps_window_used(void);
-uint32_t sam_getpixel(int x, int y);
-void sam_dump_screen(const char *filename);
-void sam_update_screen(void);
-void sam_traps_wait(void);
 
 #endif

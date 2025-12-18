@@ -4,7 +4,7 @@
 - ref pendown
 - do
 - float -45.0
-- rad
+- trap rad
 - ref turn
 - do
 - int 1

@@ -53,7 +53,7 @@ Stack: (120 word(s))
     - 
       - int 4
       - get
-      - cos
+      - trap COS
       - int -3
       - get
       - mul
@@ -62,7 +62,7 @@ Stack: (120 word(s))
       - add
       - int 4
       - get
-      - sin
+      - trap SIN
       - int -4
       - get
       - mul
@@ -98,7 +98,7 @@ Stack: (120 word(s))
   - ref 31
   - do
   - float -45.000000
-  - rad
+  - trap RAD
   - ref 45
   - do
   - int 1
@@ -122,12 +122,12 @@ Working stack: (2 word(s))
 - ref 1
 - ref 7
 do
-sam_run: pc = 8, sp = 122, ir = 2601
+sam_run: pc = 8, sp = 122, ir = 20101
 Working stack: (2 word(s))
 - ref 1
 - ref 104
 trap WHITE
-sam_run: pc = 9, sp = 123, ir = 2901
+sam_run: pc = 9, sp = 123, ir = 20401
 Working stack: (3 word(s))
 - ref 1
 - ref 104
@@ -187,7 +187,7 @@ Working stack: (4 word(s))
 - float 0.000000
 - int 4
 set
-sam_run: pc = 19, sp = 122, ir = 2501
+sam_run: pc = 19, sp = 122, ir = 20001
 Working stack: (2 word(s))
 - ref 1
 - ref 104
@@ -266,7 +266,7 @@ Working stack: (3 word(s))
 - ref 106
 - int 2
 get
-sam_run: pc = 37, sp = 123, ir = 1d01
+sam_run: pc = 37, sp = 123, ir = 1901
 Working stack: (3 word(s))
 - ref 1
 - ref 106
@@ -285,7 +285,7 @@ Working stack: (4 word(s))
 - int 0
 - int 3
 get
-sam_run: pc = 40, sp = 124, ir = 1d01
+sam_run: pc = 40, sp = 124, ir = 1901
 Working stack: (4 word(s))
 - ref 1
 - ref 106
@@ -307,7 +307,7 @@ Working stack: (5 word(s))
 - int 0
 - int 5
 get
-sam_run: pc = 43, sp = 125, ir = 2a01
+sam_run: pc = 43, sp = 125, ir = 20501
 Working stack: (5 word(s))
 - ref 1
 - ref 106
@@ -324,11 +324,11 @@ sam_run: pc = 106, sp = 121, ir = 34000009
 Working stack: (1 word(s))
 - ref 1
 float
-sam_run: pc = 107, sp = 122, ir = 2401
+sam_run: pc = 107, sp = 122, ir = 10401
 Working stack: (2 word(s))
 - ref 1
 - float -45.000000
-rad
+trap RAD
 sam_run: pc = 108, sp = 122, ir = b4
 Working stack: (2 word(s))
 - ref 1
@@ -444,13 +444,13 @@ Working stack: (4 word(s))
 - ref 115
 - int 4
 get
-sam_run: pc = 58, sp = 124, ir = 2201
+sam_run: pc = 58, sp = 124, ir = 10201
 Working stack: (4 word(s))
 - ref 1
 - float 500.000000
 - ref 115
 - float 0.785398
-cos
+trap COS
 sam_run: pc = 59, sp = 124, ir = fffffd05
 Working stack: (4 word(s))
 - ref 1
@@ -512,14 +512,14 @@ Working stack: (5 word(s))
 - float 353.553375
 - int 4
 get
-sam_run: pc = 67, sp = 125, ir = 2101
+sam_run: pc = 67, sp = 125, ir = 10101
 Working stack: (5 word(s))
 - ref 1
 - float 500.000000
 - ref 115
 - float 353.553375
 - float 0.785398
-sin
+trap SIN
 sam_run: pc = 68, sp = 125, ir = fffffc05
 Working stack: (5 word(s))
 - ref 1
@@ -638,7 +638,7 @@ Working stack: (7 word(s))
 - ref 96
 - int 2
 get
-sam_run: pc = 79, sp = 127, ir = 1d01
+sam_run: pc = 79, sp = 127, ir = 1901
 Working stack: (7 word(s))
 - ref 1
 - float 500.000000
@@ -669,7 +669,7 @@ Working stack: (8 word(s))
 - int 0
 - int 3
 get
-sam_run: pc = 82, sp = 128, ir = 1d01
+sam_run: pc = 82, sp = 128, ir = 1901
 Working stack: (8 word(s))
 - ref 1
 - float 500.000000
@@ -703,7 +703,7 @@ Working stack: (9 word(s))
 - int 0
 - int -5
 get
-sam_run: pc = 85, sp = 129, ir = 1d01
+sam_run: pc = 85, sp = 129, ir = 1901
 Working stack: (9 word(s))
 - ref 1
 - float 500.000000
@@ -740,7 +740,7 @@ Working stack: (10 word(s))
 - int 354
 - int -5
 get
-sam_run: pc = 88, sp = 130, ir = 1d01
+sam_run: pc = 88, sp = 130, ir = 1901
 Working stack: (10 word(s))
 - ref 1
 - float 500.000000
@@ -780,7 +780,7 @@ Working stack: (11 word(s))
 - int 354
 - int 5
 get
-sam_run: pc = 91, sp = 131, ir = 2b01
+sam_run: pc = 91, sp = 131, ir = 20601
 Working stack: (11 word(s))
 - ref 1
 - float 500.000000
@@ -856,7 +856,7 @@ sam_run: pc = 117, sp = 121, ir = 5
 Working stack: (1 word(s))
 - ref 1
 int
-sam_run: pc = 118, sp = 122, ir = 1b01
+sam_run: pc = 118, sp = 122, ir = 1f01
 Working stack: (2 word(s))
 - ref 1
 - int 0
@@ -916,7 +916,7 @@ Stack: (121 word(s))
     - 
       - int 4
       - get
-      - cos
+      - trap COS
       - int -3
       - get
       - mul
@@ -925,7 +925,7 @@ Stack: (121 word(s))
       - add
       - int 4
       - get
-      - sin
+      - trap SIN
       - int -4
       - get
       - mul
@@ -961,7 +961,7 @@ Stack: (121 word(s))
   - ref 31
   - do
   - float -45.000000
-  - rad
+  - trap RAD
   - ref 45
   - do
   - int 1

@@ -3,7 +3,7 @@
 - do
 # Move just down from top left of screen and point towards right
 - float -90.0
-- rad
+- trap rad
 - ref turn
 - do
 - int 1
@@ -17,7 +17,7 @@
 - int 1
 - pop
 - float 90.0
-- rad
+- trap rad
 - ref turn
 - do
 - int 1
@@ -42,7 +42,7 @@
   - get
   -
     - float -45.0
-    - rad
+    - trap rad
     - ref turn
     - do
     - int 1
@@ -58,7 +58,7 @@
     - ref levy_c
     - do
     - float 90.0
-    - rad
+    - trap rad
     - ref turn
     - do
     - int 1
@@ -68,7 +68,7 @@
     - int 2
     - pop
     - float -45.0
-    - rad
+    - trap rad
     - ref turn
     - do
     - int 1

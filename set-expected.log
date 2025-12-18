@@ -190,7 +190,7 @@ sam_run: pc = 30, sp = 34, ir = 5
 Working stack: (1 word(s))
 - float 1.000000
 int
-sam_run: pc = 31, sp = 35, ir = 1b01
+sam_run: pc = 31, sp = 35, ir = 1f01
 Working stack: (2 word(s))
 - float 1.000000
 - int 0

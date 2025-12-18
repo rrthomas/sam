@@ -20,6 +20,7 @@ extern const int SAM_OPERAND_SHIFT;
 extern const sam_word_t SAM_OPERAND_MASK;
 extern const int SAM_REF_SHIFT;
 extern const sam_word_t SAM_REF_MASK;
+extern const sam_word_t SAM_TRAP_BASE_MASK;
 
 // Every word in a stack is tagged.
 
@@ -72,45 +73,16 @@ enum SAM_INST {
   INST_NEG,
   INST_ADD,
   INST_MUL,
+  INST_DIV,
+  INST_REM,
+  INST_I2F,
+  INST_F2I,
   INST_0,
   INST_1,
   INST_MINUS_1,
   INST_2,
   INST_MINUS_2,
-
-  // General-purpose instructions.
   INST_HALT,
-
-  // Math
-  INST_I2F,
-  INST_F2I,
-  INST_DIV,
-  INST_REM,
-  INST_POW,
-  INST_SIN,
-  INST_COS,
-  INST_DEG,
-  INST_RAD,
-
-  // Graphics
-  // Origin is 0,0 at top left.
-  INST_BLACK,
-  INST_WHITE,
-  INST_DISPLAY_WIDTH,
-  INST_DISPLAY_HEIGHT,
-  INST_CLEARSCREEN,
-  INST_SETDOT,
-  INST_DRAWLINE,
-  INST_DRAWRECT,
-  INST_DRAWROUNDRECT,
-  INST_FILLRECT,
-  INST_DRAWCIRCLE,
-  INST_FILLCIRCLE,
-  INST_DRAWBITMAP,
-
-  // TODO: Sound
-
-  // TDOO: Input: joystick, buttons
 };
 
 // Useful aliases

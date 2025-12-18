@@ -1409,7 +1409,7 @@ Working stack: (2 word(s))
 - int 120
 - ref 26
 ket
-sam_run: pc = 26, sp = 29, ir = 1b01
+sam_run: pc = 26, sp = 29, ir = 1f01
 Working stack: (1 word(s))
 - int 120
 halt

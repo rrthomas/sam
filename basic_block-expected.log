@@ -39,12 +39,12 @@ sam_run: pc = 7, sp = 12, ir = fffffd05
 Working stack: (1 word(s))
 - int 39
 int
-sam_run: pc = 8, sp = 13, ir = 1e01
+sam_run: pc = 8, sp = 13, ir = 1601
 Working stack: (2 word(s))
 - int 39
 - int -3
 div
-sam_run: pc = 9, sp = 12, ir = 1b01
+sam_run: pc = 9, sp = 12, ir = 1f01
 Working stack: (1 word(s))
 - int -13
 halt

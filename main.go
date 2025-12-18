@@ -69,13 +69,13 @@ var rootCmd = &cobra.Command{
 
 		// Assemble and run the program
 		Assemble(yaml)
-		err := libsam.TrapsInit()
+		err := libsam.GraphicsInit()
 		if err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
 		res := libsam.DebugInit()
 		if res != libsam.ERROR_OK {
-			libsam.TrapsFinish()
+			libsam.GraphicsFinish()
 			os.Exit(int(res))
 		}
 		libsam.PrintStack()
@@ -86,17 +86,17 @@ var rootCmd = &cobra.Command{
 			fmt.Printf("sam_run returns: %s\n", libsam.ErrorMessage(res2))
 		}
 
-		if libsam.TrapsWindowUsed() {
+		if libsam.GraphicsWindowUsed() {
 			if pbmFile != "" {
 				libsam.DumpScreen(pbmFile)
 			}
 		}
 
-		if wait && libsam.TrapsWindowUsed() {
-			libsam.TrapsWait()
+		if wait && libsam.GraphicsWindowUsed() {
+			libsam.GraphicsWait()
 		}
 
-		libsam.TrapsFinish()
+		libsam.GraphicsFinish()
 		os.Exit(int(err))
 
 		return nil

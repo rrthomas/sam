@@ -713,7 +713,7 @@ sam_run: pc = 35, sp = 39, ir = 5
 Working stack: (1 word(s))
 - ref 1
 int
-sam_run: pc = 36, sp = 40, ir = 1b01
+sam_run: pc = 36, sp = 40, ir = 1f01
 Working stack: (2 word(s))
 - ref 1
 - int 0

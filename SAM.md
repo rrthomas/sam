@@ -309,37 +309,6 @@ The result of dividing by zero is zero. Integer division rounds the quotient tow
 >
 > Divide `n₁` by `n₂`, giving the remainder `n₃`.
 
-> `POW`  
-> `n₁` `n₂` → `n₃`
->
-> Raise `n₁` to the power `n₂`, giving the result `n₃`.
-
-
-
-### Trigonometry
-
-Trigonometric functions:
-
-> `SIN`  
-> `f₁` → `f₂`
->
-> Calculate *sin* `f₁`, giving the result `f₂`.
-
-> `COS`  
-> `f₁` → `f₂`
->
-> Calculate *cos* `f₁`, giving the result `f₂`.
-
-> `DEG`  
-> `f₁` → `f₂`
->
-> Convert `f₁` radians to degrees, giving the result `f₂`.
-
-> `RAD`  
-> `f₁` → `f₂`
->
-> Convert `f₁` degrees to radians, giving the result `f₂`.
-
 
 
 ### Errors

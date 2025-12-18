@@ -18,6 +18,8 @@
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "private.h"
+#include "traps_math.h"
+#include "traps_graphics.h"
 
 // Instruction constants
 const int SAM_TAG_SHIFT = 0;
@@ -35,24 +37,22 @@ const sam_word_t SAM_OPERAND_MASK = ~0xff;
 const int SAM_REF_SHIFT = 2;
 const sam_word_t SAM_REF_MASK = ~0x3;
 
+const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
+
 // Division macros
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))
 #define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
 
-// Adapted from https://stackoverflow.com/questions/101439/the-most-efficient-way-to-implement-an-integer-based-power-function-powint-int
-static sam_uword_t powi(sam_uword_t base, sam_uword_t exp)
-{
-    sam_uword_t result = 1;
-    for (;;) {
-        if (exp & 1)
-            result *= base;
-        exp >>= 1;
-        if (exp == 0)
-            break;
-        base *= base;
+// Trap dispatcher
+sam_word_t sam_trap(sam_uword_t function) {
+    switch (function & SAM_TRAP_BASE_MASK) {
+    case SAM_TRAP_MATH_BASE:
+        return sam_math_trap(function);
+    case SAM_TRAP_GRAPHICS_BASE:
+        return sam_graphics_trap(function);
+    default:
+        return SAM_ERROR_INVALID_TRAP;
     }
-
-    return result;
 }
 
 // Execution function
@@ -383,52 +383,6 @@ sam_word_t sam_run(void)
                             HALT(SAM_ERROR_WRONG_TYPE);
                     }
                     break;
-                case INST_POW:
-                    {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
-                        if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
-                            sam_uword_t a, b;
-                            POP_UINT(b);
-                            POP_UINT(a);
-                            PUSH_INT(powi(a, b));
-                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
-                            sam_float_t a, b;
-                            POP_FLOAT(b);
-                            POP_FLOAT(a);
-                            PUSH_FLOAT(powf(a, b));
-                        } else
-                            HALT(SAM_ERROR_WRONG_TYPE);
-                    }
-                    break;
-                case INST_SIN:
-                    {
-                        sam_float_t a;
-                        POP_FLOAT(a);
-                        PUSH_FLOAT(sinf(a));
-                    }
-                    break;
-                case INST_COS:
-                    {
-                        sam_float_t a;
-                        POP_FLOAT(a);
-                        PUSH_FLOAT(cosf(a));
-                    }
-                    break;
-                case INST_DEG:
-                    {
-                        sam_float_t a;
-                        POP_FLOAT(a);
-                        PUSH_FLOAT(a * (M_1_PI * 180.0));
-                    }
-                    break;
-                case INST_RAD:
-                    {
-                        sam_float_t a;
-                        POP_FLOAT(a);
-                        PUSH_FLOAT(a * (M_PI / 180.0));
-                    }
-                    break;
 
                 default:
                     HALT_IF_ERROR(sam_trap((sam_uword_t)operand));
@@ -487,7 +441,7 @@ sam_word_t sam_run(void)
             abort(); // The cases are exhaustive
         }
 
-        sam_traps_process_events();
+        sam_graphics_process_events();
     }
 
 error:
