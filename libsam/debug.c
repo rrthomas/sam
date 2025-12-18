@@ -1,3 +1,13 @@
+// SAM debug functions.
+//
+// (c) Reuben Thomas 1994-2025
+//
+// The package is distributed under the GNU Public License version 3, or,
+// at your option, any later version.
+//
+// THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
+// RISK.
+
 #ifdef SAM_DEBUG
 
 #include <assert.h>
@@ -8,6 +18,8 @@
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "private.h"
+#include "traps_math.h"
+#include "traps_graphics.h"
 
 bool do_debug = false;
 
@@ -27,42 +39,6 @@ static void xasprintf(char **text, const char *fmt, ...)
     va_start(ap, fmt);
     assert(vasprintf(text, fmt, ap) != -1);
     va_end(ap);
-}
-
-char *trap_name(sam_word_t trap_opcode) {
-    switch (trap_opcode) {
-        case INST_BLACK:
-            return "BLACK";
-        case INST_WHITE:
-            return "WHITE";
-        case INST_DISPLAY_WIDTH:
-            return "DISPLAY_WIDTH";
-        case INST_DISPLAY_HEIGHT:
-            return "DISPLAY_HEIGHT";
-        case INST_CLEARSCREEN:
-            return "CLEARSCREEN";
-        case INST_SETDOT:
-            return "SETDOT";
-        case INST_DRAWLINE:
-            return "DRAWLINE";
-        case INST_DRAWRECT:
-            return "DRAWRECT";
-        case INST_DRAWROUNDRECT:
-            return "DRAWROUNDRECT";
-        case INST_FILLRECT:
-            return "FILLRECT";
-        case INST_DRAWCIRCLE:
-            return "DRAWCIRCLE";
-        case INST_FILLCIRCLE:
-            return "FILLCIRCLE";
-        case INST_DRAWBITMAP:
-            return "DRAWBITMAP";
-        default: {
-            char *text;
-            xasprintf(&text, "%zd", trap_opcode);
-            return text;
-        }
-    }
 }
 
 char *inst_name(sam_word_t inst_opcode) {
@@ -111,6 +87,14 @@ char *inst_name(sam_word_t inst_opcode) {
         return "add";
     case INST_MUL:
         return "mul";
+    case INST_DIV:
+        return "div";
+    case INST_REM:
+        return "rem";
+    case INST_I2F:
+        return "i2f";
+    case INST_F2I:
+        return "f2i";
     case INST_0:
         return "zero";
     case INST_1:
@@ -121,31 +105,26 @@ char *inst_name(sam_word_t inst_opcode) {
         return "two";
     case INST_MINUS_2:
         return "_two";
-
     case INST_HALT:
         return "halt";
 
-    case INST_I2F:
-        return "i2f";
-    case INST_F2I:
-        return "f2i";
-    case INST_DIV:
-        return "div";
-    case INST_REM:
-        return "rem";
-    case INST_POW:
-        return "pow";
-    case INST_SIN:
-        return "sin";
-    case INST_COS:
-        return "cos";
-    case INST_DEG:
-        return "deg";
-    case INST_RAD:
-        return "rad";
     default: {
+        char *name = NULL;
+        switch (inst_opcode & SAM_TRAP_BASE_MASK) {
+        case SAM_TRAP_MATH_BASE:
+            name = sam_math_trap_name(inst_opcode);
+            break;
+        case SAM_TRAP_GRAPHICS_BASE:
+            name = sam_graphics_trap_name(inst_opcode);
+            break;
+        default:
+            break;
+        }
         char *text;
-        xasprintf(&text, "trap %s", trap_name(inst_opcode));
+        if (name == NULL)
+            xasprintf(&text, "trap %zd", inst_opcode);
+        else
+            xasprintf(&text, "trap %s", name);
         return text;
     }
     }

@@ -6,6 +6,8 @@ package libsam
 //#cgo pkg-config: sdl2 SDL2_gfx
 //#include "sam.h"
 //#include "sam_opcodes.h"
+//#include "traps_math.h"
+//#include "traps_graphics.h"
 import "C"
 import "fmt"
 
@@ -84,20 +86,20 @@ func DebugInit() int {
 	return int(C.sam_debug_init())
 }
 
-func TrapsInit() Word {
-	return C.sam_traps_init()
+func GraphicsInit() Word {
+	return C.sam_graphics_init()
 }
 
-func TrapsFinish() {
-	C.sam_traps_finish()
+func GraphicsFinish() {
+	C.sam_graphics_finish()
 }
 
-func TrapsWindowUsed() bool {
-	return C.sam_traps_window_used() != 0
+func GraphicsWindowUsed() bool {
+	return C.sam_graphics_window_used() != 0
 }
 
-func TrapsWait() {
-	C.sam_traps_wait()
+func GraphicsWait() {
+	C.sam_graphics_wait()
 }
 
 func SetDebug(flag bool) {
@@ -202,6 +204,10 @@ var Instructions = map[string]int{
 	"neg":     C.INST_NEG,
 	"add":     C.INST_ADD,
 	"mul":     C.INST_MUL,
+	"div":     C.INST_DIV,
+	"rem":     C.INST_REM,
+	"i2f":     C.INST_I2F,
+	"f2i":     C.INST_F2I,
 	"zero":    C.INST_0,
 	"false":   C.INST_0,
 	"one":     C.INST_1,
@@ -209,37 +215,32 @@ var Instructions = map[string]int{
 	"true":    C.INST_MINUS_1,
 	"two":     C.INST_2,
 	"_two":    C.INST_MINUS_2,
-
-	"halt": C.INST_HALT,
-
-	"i2f": C.INST_I2F,
-	"f2i": C.INST_F2I,
-	"div": C.INST_DIV,
-	"rem": C.INST_REM,
-	"pow": C.INST_POW,
-	"sin": C.INST_SIN,
-	"cos": C.INST_COS,
-	"deg": C.INST_DEG,
-	"rad": C.INST_RAD,
+	"halt":    C.INST_HALT,
 
 	// Trap
 	"trap": C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT),
 }
 
 var Traps = map[string]int{
-	"BLACK":          C.INST_BLACK,
-	"WHITE":          C.INST_WHITE,
-	"DISPLAY_WIDTH":  C.INST_DISPLAY_WIDTH,
-	"DISPLAY_HEIGHT": C.INST_DISPLAY_HEIGHT,
-	"CLEARSCREEN":    C.INST_CLEARSCREEN,
-	"SETDOT":         C.INST_SETDOT,
-	"DRAWLINE":       C.INST_DRAWLINE,
-	"DRAWRECT":       C.INST_DRAWRECT,
-	"DRAWROUNDRECT":  C.INST_DRAWROUNDRECT,
-	"FILLRECT":       C.INST_FILLRECT,
-	"DRAWCIRCLE":     C.INST_DRAWCIRCLE,
-	"FILLCIRCLE":     C.INST_FILLCIRCLE,
-	"DRAWBITMAP":     C.INST_DRAWBITMAP,
+	"POW": C.TRAP_MATH_POW,
+	"SIN": C.TRAP_MATH_SIN,
+	"COS": C.TRAP_MATH_COS,
+	"DEG": C.TRAP_MATH_DEG,
+	"RAD": C.TRAP_MATH_RAD,
+
+	"BLACK":          C.TRAP_GRAPHICS_BLACK,
+	"WHITE":          C.TRAP_GRAPHICS_WHITE,
+	"DISPLAY_WIDTH":  C.TRAP_GRAPHICS_DISPLAY_WIDTH,
+	"DISPLAY_HEIGHT": C.TRAP_GRAPHICS_DISPLAY_HEIGHT,
+	"CLEARSCREEN":    C.TRAP_GRAPHICS_CLEARSCREEN,
+	"SETDOT":         C.TRAP_GRAPHICS_SETDOT,
+	"DRAWLINE":       C.TRAP_GRAPHICS_DRAWLINE,
+	"DRAWRECT":       C.TRAP_GRAPHICS_DRAWRECT,
+	"DRAWROUNDRECT":  C.TRAP_GRAPHICS_DRAWROUNDRECT,
+	"FILLRECT":       C.TRAP_GRAPHICS_FILLRECT,
+	"DRAWCIRCLE":     C.TRAP_GRAPHICS_DRAWCIRCLE,
+	"FILLCIRCLE":     C.TRAP_GRAPHICS_FILLCIRCLE,
+	"DRAWBITMAP":     C.TRAP_GRAPHICS_DRAWBITMAP,
 }
 
 // The net change in `SP` caused by each instruction.

@@ -73,7 +73,7 @@ Working stack: (5 word(s))
 - ref 25
 - int -4
 get
-sam_run: pc = 7, sp = 37, ir = 1d01
+sam_run: pc = 7, sp = 37, ir = 1901
 Working stack: (5 word(s))
 - float 5.000000
 - ref 29
@@ -218,7 +218,7 @@ Working stack: (5 word(s))
 - ref 25
 - int -4
 get
-sam_run: pc = 7, sp = 37, ir = 1d01
+sam_run: pc = 7, sp = 37, ir = 1901
 Working stack: (5 word(s))
 - float 4.000000
 - ref 29
@@ -363,7 +363,7 @@ Working stack: (5 word(s))
 - ref 25
 - int -4
 get
-sam_run: pc = 7, sp = 37, ir = 1d01
+sam_run: pc = 7, sp = 37, ir = 1901
 Working stack: (5 word(s))
 - float 3.000000
 - ref 29
@@ -508,7 +508,7 @@ Working stack: (5 word(s))
 - ref 25
 - int -4
 get
-sam_run: pc = 7, sp = 37, ir = 1d01
+sam_run: pc = 7, sp = 37, ir = 1901
 Working stack: (5 word(s))
 - float 2.000000
 - ref 29
@@ -653,7 +653,7 @@ Working stack: (5 word(s))
 - ref 25
 - int -4
 get
-sam_run: pc = 7, sp = 37, ir = 1d01
+sam_run: pc = 7, sp = 37, ir = 1901
 Working stack: (5 word(s))
 - float 1.000000
 - ref 29
@@ -798,7 +798,7 @@ Working stack: (5 word(s))
 - ref 25
 - int -4
 get
-sam_run: pc = 7, sp = 37, ir = 1d01
+sam_run: pc = 7, sp = 37, ir = 1901
 Working stack: (5 word(s))
 - float 0.000000
 - ref 29
@@ -832,11 +832,11 @@ Working stack: (2 word(s))
 - float 120.000000
 - ref 29
 ket
-sam_run: pc = 29, sp = 33, ir = 1d01
+sam_run: pc = 29, sp = 33, ir = 1901
 Working stack: (1 word(s))
 - float 120.000000
 f2i
-sam_run: pc = 30, sp = 33, ir = 1b01
+sam_run: pc = 30, sp = 33, ir = 1f01
 Working stack: (1 word(s))
 - int 120
 halt

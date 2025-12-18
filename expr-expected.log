@@ -681,7 +681,7 @@ Working stack: (18 word(s))
 - int 5
 - int -4
 get
-sam_run: pc = 29, sp = 152, ir = 1a01
+sam_run: pc = 29, sp = 152, ir = 1e01
 Working stack: (18 word(s))
 - int 0
 - ref 132
@@ -1055,7 +1055,7 @@ Working stack: (12 word(s))
 - int 5
 - ref 91
 ket
-sam_run: pc = 91, sp = 145, ir = 1801
+sam_run: pc = 91, sp = 145, ir = 1c01
 Working stack: (11 word(s))
 - int 0
 - ref 132
@@ -1856,7 +1856,7 @@ Working stack: (12 word(s))
 - int 2
 - int 28
 add
-sam_run: pc = 114, sp = 145, ir = 1801
+sam_run: pc = 114, sp = 145, ir = 1c01
 Working stack: (11 word(s))
 - int 0
 - ref 132
@@ -2013,7 +2013,7 @@ Working stack: (2 word(s))
 - int 30
 - ref 132
 ket
-sam_run: pc = 132, sp = 135, ir = 1b01
+sam_run: pc = 132, sp = 135, ir = 1f01
 Working stack: (1 word(s))
 - int 30
 halt
