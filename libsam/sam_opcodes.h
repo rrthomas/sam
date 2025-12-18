@@ -10,47 +10,56 @@
 
 #include "sam.h"
 
-extern const int SAM_TAG_SHIFT;
-extern const sam_word_t SAM_TAG_MASK;
-extern const int SAM_ATOM_TYPE_SHIFT;
-extern const int SAM_ATOM_TYPE_MASK;
-extern const int SAM_ARRAY_TYPE_SHIFT;
-extern const sam_word_t SAM_ARRAY_TYPE_MASK;
-extern const int SAM_OPERAND_SHIFT;
-extern const sam_word_t SAM_OPERAND_MASK;
+extern const sam_word_t SAM_FLOAT_TAG;
+extern const sam_word_t SAM_FLOAT_TAG_MASK;
+extern const int SAM_FLOAT_SHIFT;
+
+extern const sam_word_t SAM_REF_TAG;
+extern const sam_word_t SAM_REF_TAG_MASK;
 extern const int SAM_REF_SHIFT;
-extern const sam_word_t SAM_REF_MASK;
+
+extern const sam_word_t SAM_INT_TAG;
+extern const sam_word_t SAM_INT_TAG_MASK;
+extern const int SAM_INT_SHIFT;
+
+extern const sam_word_t SAM_ATOM_TAG;
+extern const sam_word_t SAM_ATOM_TAG_MASK;
+extern const sam_word_t SAM_ATOM_TYPE_MASK;
+extern const int SAM_ATOM_TYPE_SHIFT;
+extern const int SAM_ATOM_SHIFT;
+
+extern const sam_word_t SAM_ARRAY_TAG;
+extern const sam_word_t SAM_ARRAY_TAG_MASK;
+extern const sam_word_t SAM_ARRAY_TYPE_MASK;
+extern const int SAM_ARRAY_TYPE_SHIFT;
+extern const int SAM_ARRAY_OFFSET_SHIFT;
+
+extern const sam_word_t SAM_TRAP_TAG;
+extern const sam_word_t SAM_TRAP_TAG_MASK;
+extern const int SAM_TRAP_FUNCTION_SHIFT;
+
+extern const sam_word_t SAM_INSTS_TAG;
+extern const sam_word_t SAM_INSTS_TAG_MASK;
+extern const int SAM_INSTS_SHIFT;
+extern const sam_word_t SAM_INST_MASK;
+extern const int SAM_INST_SHIFT;
+
 extern const sam_word_t SAM_TRAP_BASE_MASK;
 
 // Every word in a stack is tagged.
-
-// Tags (bits 0-1)
-enum SAM_TAG {
-  SAM_TAG_REF = 0,
-  SAM_TAG_ATOM,
-  SAM_TAG_ARRAY, // Used for BRA and KET.
-};
-
-// Atom types (bits 2-3)
-enum SAM_ATOM_TYPE {
-  SAM_ATOM_INST,
-  SAM_ATOM_INT,
-  SAM_ATOM_FLOAT,
-};
 
 // Arrays are stored as: ARRAY instruction (operand is positive number of
 // words to final ARRAY), a number of words, ARRAY (operand is negative
 // number of words to initial ARRAY).
 
-// Array types (bits 2-7)
+// Array types (5 or 10 bits)
 enum SAM_ARRAY_TYPE {
   SAM_ARRAY_STACK,
   SAM_ARRAY_RAW,
 };
 
-// Instructions (bits 4-31)
+// Instructions (5 bits)
 enum SAM_INST {
-  // Compact instructions.
   INST_NOP,
   INST_POP,
   INST_GET,

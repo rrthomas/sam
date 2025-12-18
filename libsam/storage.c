@@ -80,8 +80,8 @@ int sam_stack_get(sam_uword_t addr)
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
     HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &opcode));
-    opcode &= SAM_TAG_MASK;
-    if (opcode == SAM_TAG_ARRAY)
+    opcode &= SAM_ARRAY_TAG_MASK;
+    if (opcode == SAM_ARRAY_TAG)
         PUSH_PTR(addr);
     else {
         sam_uword_t temp;
@@ -136,29 +136,40 @@ int sam_push_stack(sam_stack_t *s, sam_word_t val)
 
 int sam_push_ref(sam_stack_t *s, sam_uword_t addr) {
     // FIXME: error if address is too large
-    return sam_push_stack(s, SAM_TAG_REF | addr << SAM_REF_SHIFT);
+    return sam_push_stack(s, SAM_REF_TAG | (addr << SAM_REF_SHIFT));
 }
 
-int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand) {
-    sam_uword_t atom = SAM_TAG_ATOM | (atom_type << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_OPERAND_SHIFT);
-    return sam_push_stack(s, atom);
+int sam_push_int(sam_stack_t *s, sam_uword_t val) {
+    return sam_push_stack(s, SAM_INT_TAG | (val << SAM_INT_SHIFT));
 }
 
 int sam_push_float(sam_stack_t *s, sam_float_t n) {
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t operand = (sam_word_t)*(uint32_t *)&n;
-    HALT_IF_ERROR(sam_push_stack(s, SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_OPERAND_SHIFT)));
-error:
-    return error;
+    sam_uword_t operand = (sam_word_t)*(uint64_t *)&n;
+    return sam_push_stack(s, SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT));
+}
+
+int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand) {
+    sam_uword_t atom = SAM_ATOM_TAG | (atom_type << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_ATOM_SHIFT);
+    return sam_push_stack(s, atom);
+}
+
+int sam_push_trap(sam_stack_t *s, sam_uword_t function) {
+    // FIXME: error if function code is too large
+    return sam_push_stack(s, SAM_TRAP_TAG | (function << SAM_TRAP_FUNCTION_SHIFT));
+}
+
+int sam_push_insts(sam_stack_t *s, sam_uword_t insts) {
+    // FIXME: error if too many bits
+    return sam_push_stack(s, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
 }
 
 int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size) {
     sam_word_t error = SAM_ERROR_OK;
     // FIXME: error if array is too large
-    HALT_IF_ERROR(sam_push_stack(s, SAM_TAG_ARRAY | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT) | ((size + 1) << SAM_OPERAND_SHIFT)));
+    HALT_IF_ERROR(sam_push_stack(s, SAM_ARRAY_TAG | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT) | ((size + 1) << SAM_ARRAY_OFFSET_SHIFT)));
     for (sam_uword_t i = 0; i < size; i++)
         HALT_IF_ERROR(sam_push_stack(s, ptr[i]));
-    HALT_IF_ERROR(sam_push_stack(s, SAM_TAG_ARRAY | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT) | (-(size + 1) << SAM_OPERAND_SHIFT)));
+    HALT_IF_ERROR(sam_push_stack(s, SAM_ARRAY_TAG | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT) | (-(size + 1) << SAM_ARRAY_OFFSET_SHIFT)));
 error:
     return error;
 }

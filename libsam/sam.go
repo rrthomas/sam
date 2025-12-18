@@ -14,16 +14,32 @@ import "fmt"
 type Word = C.sam_word_t
 type Uword = C.sam_uword_t
 
-var TAG_SHIFT = C.SAM_TAG_SHIFT
-var TAG_MASK = C.SAM_TAG_MASK
-var ATOM_TYPE_SHIFT = C.SAM_ATOM_TYPE_SHIFT
-var ATOM_TYPE_MASK = C.SAM_ATOM_TYPE_MASK
-var ARRAY_TYPE_SHIFT = C.SAM_ARRAY_TYPE_SHIFT
-var ARRAY_TYPE_MASK = C.SAM_ARRAY_TYPE_MASK
-var OPERAND_SHIFT = C.SAM_OPERAND_SHIFT
-var OPERAND_MASK = C.SAM_OPERAND_MASK
+var FLOAT_TAG = C.SAM_FLOAT_TAG
+var FLOAT_TAG_MASK = C.SAM_FLOAT_TAG_MASK
+var FLOAT_SHIFT = C.SAM_FLOAT_SHIFT
+var INT_TAG = C.SAM_INT_TAG
+var INT_TAG_MASK = C.SAM_INT_TAG_MASK
+var INT_SHIFT = C.SAM_INT_SHIFT
+var REF_TAG = C.SAM_REF_TAG
+var REF_TAG_MASK = C.SAM_REF_TAG_MASK
 var REF_SHIFT = C.SAM_REF_SHIFT
-var REF_MASK = C.SAM_REF_MASK
+var ATOM_TAG = C.SAM_ATOM_TAG
+var ATOM_TAG_MASK = C.SAM_ATOM_TAG_MASK
+var ATOM_TYPE_MASK = C.SAM_ATOM_TYPE_MASK
+var ATOM_TYPE_SHIFT = C.SAM_ATOM_TYPE_SHIFT
+var ATOM_SHIFT = C.SAM_ATOM_SHIFT
+var ARRAY_TAG = C.SAM_ARRAY_TAG
+var ARRAY_TAG_MASK = C.SAM_ARRAY_TAG_MASK
+var ARRAY_TYPE_MASK = C.SAM_ARRAY_TYPE_MASK
+var ARRAY_OFFSET_SHIFT = C.SAM_ARRAY_OFFSET_SHIFT
+var TRAP_TAG = C.SAM_TRAP_TAG
+var TRAP_TAG_MASK = C.SAM_TRAP_TAG_MASK
+var TRAP_FUNCTION_SHIFT = C.SAM_TRAP_FUNCTION_SHIFT
+var INSTS_TAG = C.SAM_INSTS_TAG
+var INSTS_TAG_MASK = C.SAM_INSTS_TAG_MASK
+var INSTS_SHIFT = C.SAM_INSTS_SHIFT
+var INST_MASK = C.SAM_INST_MASK
+var INST_SHIFT = C.SAM_INST_SHIFT
 var WORD_BIT = C.SAM_WORD_BIT
 var WORD_MASK = Uword(((1 << C.SAM_WORD_BIT) - 1))
 
@@ -59,16 +75,28 @@ func (s *Stack) PushLink(addr Uword) int {
 	return int(C.sam_push_ref(s.stack, addr))
 }
 
-func (s *Stack) PushAtom(atomType Uword, operand Uword) int {
-	return int(C.sam_push_atom(s.stack, atomType, operand))
+func (s *Stack) PushInt(val Uword) int {
+	return int(C.sam_push_int(s.stack, val))
 }
 
 func (s *Stack) PushFloat(f float32) int {
 	return int(C.sam_push_float(s.stack, C.sam_float_t(f)))
 }
 
+func (s *Stack) PushAtom(atomType Uword, operand Uword) int {
+	return int(C.sam_push_atom(s.stack, atomType, operand))
+}
+
+func (s *Stack) PushTrap(function Uword) int {
+	return int(C.sam_push_trap(s.stack, function))
+}
+
 func (s *Stack) PushCode(stack Stack) int {
 	return int(C.sam_push_code(s.stack, stack.stack.s0, stack.stack.sp))
+}
+
+func (s *Stack) PushInsts(insts Uword) int {
+	return int(C.sam_push_insts(s.stack, insts))
 }
 
 func Run(pc Uword) Word {
@@ -119,28 +147,17 @@ func DumpScreen(file string) {
 }
 
 const (
-	ERROR_OK              = C.SAM_ERROR_OK
-	ERROR_HALT            = C.SAM_ERROR_HALT
-	ERROR_INVALID_OPCODE  = C.SAM_ERROR_INVALID_OPCODE
-	ERROR_INVALID_ADDRESS = C.SAM_ERROR_INVALID_ADDRESS
-	ERROR_STACK_UNDERFLOW = C.SAM_ERROR_STACK_UNDERFLOW
-	ERROR_STACK_OVERFLOW  = C.SAM_ERROR_STACK_OVERFLOW
-	ERROR_WRONG_TYPE      = C.SAM_ERROR_WRONG_TYPE
-	ERROR_BAD_BRACKET     = C.SAM_ERROR_BAD_BRACKET
-	ERROR_INVALID_TRAP    = C.SAM_ERROR_INVALID_TRAP
-	ERROR_TRAP_INIT       = C.SAM_ERROR_TRAP_INIT
-)
-
-const (
-	TAG_REF   = C.SAM_TAG_REF
-	TAG_ATOM  = C.SAM_TAG_ATOM
-	TAG_ARRAY = C.SAM_TAG_ARRAY
-)
-
-const (
-	ATOM_INST  = C.SAM_ATOM_INST
-	ATOM_INT   = C.SAM_ATOM_INT
-	ATOM_FLOAT = C.SAM_ATOM_FLOAT
+	ERROR_OK                 = C.SAM_ERROR_OK
+	ERROR_HALT               = C.SAM_ERROR_HALT
+	ERROR_INVALID_OPCODE     = C.SAM_ERROR_INVALID_OPCODE
+	ERROR_INVALID_ADDRESS    = C.SAM_ERROR_INVALID_ADDRESS
+	ERROR_STACK_UNDERFLOW    = C.SAM_ERROR_STACK_UNDERFLOW
+	ERROR_STACK_OVERFLOW     = C.SAM_ERROR_STACK_OVERFLOW
+	ERROR_WRONG_TYPE         = C.SAM_ERROR_WRONG_TYPE
+	ERROR_BAD_BRACKET        = C.SAM_ERROR_BAD_BRACKET
+	ERROR_INVALID_TRAP       = C.SAM_ERROR_INVALID_TRAP
+	ERROR_TRAP_INIT          = C.SAM_ERROR_TRAP_INIT
+	ERROR_INVALID_ARRAY_TYPE = C.SAM_ERROR_INVALID_ARRAY_TYPE
 )
 
 const (
@@ -149,22 +166,23 @@ const (
 )
 
 var errors = map[int]string{
-	ERROR_OK:              "ERROR_OK",
-	ERROR_HALT:            "ERROR_HALT",
-	ERROR_INVALID_OPCODE:  "ERROR_INVALID_OPCODE",
-	ERROR_INVALID_ADDRESS: "ERROR_INVALID_ADDRESS",
-	ERROR_STACK_UNDERFLOW: "ERROR_STACK_UNDERFLOW",
-	ERROR_STACK_OVERFLOW:  "ERROR_STACK_OVERFLOW",
-	ERROR_WRONG_TYPE:      "ERROR_WRONG_TYPE",
-	ERROR_BAD_BRACKET:     "ERROR_BAD_BRACKET",
-	ERROR_INVALID_TRAP:    "ERROR_INVALID_TRAP",
-	ERROR_TRAP_INIT:       "ERROR_TRAP_INIT",
+	ERROR_OK:                 "ERROR_OK",
+	ERROR_HALT:               "ERROR_HALT",
+	ERROR_INVALID_OPCODE:     "ERROR_INVALID_OPCODE",
+	ERROR_INVALID_ADDRESS:    "ERROR_INVALID_ADDRESS",
+	ERROR_STACK_UNDERFLOW:    "ERROR_STACK_UNDERFLOW",
+	ERROR_STACK_OVERFLOW:     "ERROR_STACK_OVERFLOW",
+	ERROR_WRONG_TYPE:         "ERROR_WRONG_TYPE",
+	ERROR_BAD_BRACKET:        "ERROR_BAD_BRACKET",
+	ERROR_INVALID_TRAP:       "ERROR_INVALID_TRAP",
+	ERROR_TRAP_INIT:          "ERROR_TRAP_INIT",
+	ERROR_INVALID_ARRAY_TYPE: "ERROR_INVALID_ARRAY_TYPE",
 }
 
 func ErrorMessage(code Word) string {
-	baseCode := code & ^OPERAND_MASK
+	baseCode := code & C.SAM_RET_MASK
 	if baseCode >= ERROR_OK && baseCode <= ERROR_TRAP_INIT {
-		reasonCode := code >> OPERAND_SHIFT
+		reasonCode := code >> C.SAM_RET_SHIFT
 		if baseCode == ERROR_HALT {
 			return fmt.Sprintf("halt with reason %d (0x%x)", reasonCode, uint(reasonCode))
 		}
@@ -173,52 +191,53 @@ func ErrorMessage(code Word) string {
 	return fmt.Sprintf("unknown code %d (0x%x)", code, uint(Uword(code)&WORD_MASK))
 }
 
-var Instructions = map[string]int{
-	// Tag instructions
-	"ref": C.SAM_TAG_REF,
+type InstOpcode struct {
+	Tag      Word
+	Opcode   Uword
+	Terminal bool
+}
 
-	// Atom instructions
-	"int":   C.SAM_TAG_ATOM | (C.SAM_ATOM_INT << C.SAM_ATOM_TYPE_SHIFT),
-	"float": C.SAM_TAG_ATOM | (C.SAM_ATOM_FLOAT << C.SAM_ATOM_TYPE_SHIFT),
+var Instructions = map[string]InstOpcode{
+	"ref":   {C.SAM_REF_TAG, 0, true},
+	"int":   {C.SAM_INT_TAG, 0, true},
+	"float": {C.SAM_FLOAT_TAG, 0, true},
+	"trap":  {C.SAM_TRAP_TAG, 0, true},
 
-	// Niladic instructions
-	"nop":     C.INST_NOP,
-	"pop":     C.INST_POP,
-	"get":     C.INST_GET,
-	"set":     C.INST_SET,
-	"extract": C.INST_EXTRACT,
-	"insert":  C.INST_INSERT,
-	"do":      C.INST_DO,
-	"if":      C.INST_IF,
-	"while":   C.INST_WHILE,
-	"loop":    C.INST_LOOP,
-	"not":     C.INST_NOT,
-	"and":     C.INST_AND,
-	"or":      C.INST_OR,
-	"xor":     C.INST_XOR,
-	"lsh":     C.INST_LSH,
-	"rsh":     C.INST_RSH,
-	"arsh":    C.INST_ARSH,
-	"eq":      C.INST_EQ,
-	"lt":      C.INST_LT,
-	"neg":     C.INST_NEG,
-	"add":     C.INST_ADD,
-	"mul":     C.INST_MUL,
-	"div":     C.INST_DIV,
-	"rem":     C.INST_REM,
-	"i2f":     C.INST_I2F,
-	"f2i":     C.INST_F2I,
-	"zero":    C.INST_0,
-	"false":   C.INST_0,
-	"one":     C.INST_1,
-	"_one":    C.INST_MINUS_1,
-	"true":    C.INST_MINUS_1,
-	"two":     C.INST_2,
-	"_two":    C.INST_MINUS_2,
-	"halt":    C.INST_HALT,
-
-	// Trap
-	"trap": C.SAM_TAG_ATOM | (C.SAM_ATOM_INST << C.SAM_ATOM_TYPE_SHIFT),
+	// Instructions
+	"nop":     {C.SAM_INSTS_TAG, C.INST_NOP, false},
+	"pop":     {C.SAM_INSTS_TAG, C.INST_POP, false},
+	"get":     {C.SAM_INSTS_TAG, C.INST_GET, false},
+	"set":     {C.SAM_INSTS_TAG, C.INST_SET, false},
+	"extract": {C.SAM_INSTS_TAG, C.INST_EXTRACT, false},
+	"insert":  {C.SAM_INSTS_TAG, C.INST_INSERT, false},
+	"do":      {C.SAM_INSTS_TAG, C.INST_DO, true},
+	"if":      {C.SAM_INSTS_TAG, C.INST_IF, true},
+	"while":   {C.SAM_INSTS_TAG, C.INST_WHILE, false},
+	"loop":    {C.SAM_INSTS_TAG, C.INST_LOOP, true},
+	"not":     {C.SAM_INSTS_TAG, C.INST_NOT, false},
+	"and":     {C.SAM_INSTS_TAG, C.INST_AND, false},
+	"or":      {C.SAM_INSTS_TAG, C.INST_OR, false},
+	"xor":     {C.SAM_INSTS_TAG, C.INST_XOR, false},
+	"lsh":     {C.SAM_INSTS_TAG, C.INST_LSH, false},
+	"rsh":     {C.SAM_INSTS_TAG, C.INST_RSH, false},
+	"arsh":    {C.SAM_INSTS_TAG, C.INST_ARSH, false},
+	"eq":      {C.SAM_INSTS_TAG, C.INST_EQ, false},
+	"lt":      {C.SAM_INSTS_TAG, C.INST_LT, false},
+	"neg":     {C.SAM_INSTS_TAG, C.INST_NEG, false},
+	"add":     {C.SAM_INSTS_TAG, C.INST_ADD, false},
+	"mul":     {C.SAM_INSTS_TAG, C.INST_MUL, false},
+	"div":     {C.SAM_INSTS_TAG, C.INST_DIV, false},
+	"rem":     {C.SAM_INSTS_TAG, C.INST_REM, false},
+	"i2f":     {C.SAM_INSTS_TAG, C.INST_I2F, false},
+	"f2i":     {C.SAM_INSTS_TAG, C.INST_F2I, false},
+	"zero":    {C.SAM_INSTS_TAG, C.INST_0, false},
+	"false":   {C.SAM_INSTS_TAG, C.INST_0, false},
+	"one":     {C.SAM_INSTS_TAG, C.INST_1, false},
+	"_one":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, false},
+	"true":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, false},
+	"two":     {C.SAM_INSTS_TAG, C.INST_2, false},
+	"_two":    {C.SAM_INSTS_TAG, C.INST_MINUS_2, false},
+	"halt":    {C.SAM_INSTS_TAG, C.INST_HALT, true},
 }
 
 var Traps = map[string]int{

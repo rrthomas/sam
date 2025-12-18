@@ -49,86 +49,86 @@ Stack: (51 word(s))
   - trap FILLCIRCLE
   - int 0
   - halt
-sam_run: pc = 1, sp = 51, ir = 3205
+sam_run: pc = 1, sp = 51, ir = c9
 Working stack: (0 word(s))
 int
-sam_run: pc = 2, sp = 52, ir = 6405
+sam_run: pc = 2, sp = 52, ir = 191
 Working stack: (1 word(s))
 - int 50
 int
-sam_run: pc = 3, sp = 53, ir = 20001
+sam_run: pc = 3, sp = 53, ir = 801f
 Working stack: (2 word(s))
 - int 50
 - int 100
 trap BLACK
-sam_run: pc = 4, sp = 54, ir = 20501
+sam_run: pc = 4, sp = 54, ir = 815f
 Working stack: (3 word(s))
 - int 50
 - int 100
 - int 0
 trap SETDOT
-sam_run: pc = 5, sp = 51, ir = 1405
+sam_run: pc = 5, sp = 51, ir = 51
 Working stack: (0 word(s))
 int
-sam_run: pc = 6, sp = 52, ir = 6405
+sam_run: pc = 6, sp = 52, ir = 191
 Working stack: (1 word(s))
 - int 20
 int
-sam_run: pc = 7, sp = 53, ir = 20001
+sam_run: pc = 7, sp = 53, ir = 801f
 Working stack: (2 word(s))
 - int 20
 - int 100
 trap BLACK
-sam_run: pc = 8, sp = 54, ir = 20501
+sam_run: pc = 8, sp = 54, ir = 815f
 Working stack: (3 word(s))
 - int 20
 - int 100
 - int 0
 trap SETDOT
-sam_run: pc = 9, sp = 51, ir = 1405
+sam_run: pc = 9, sp = 51, ir = 51
 Working stack: (0 word(s))
 int
-sam_run: pc = 10, sp = 52, ir = 3205
+sam_run: pc = 10, sp = 52, ir = c9
 Working stack: (1 word(s))
 - int 20
 int
-sam_run: pc = 11, sp = 53, ir = 20001
+sam_run: pc = 11, sp = 53, ir = 801f
 Working stack: (2 word(s))
 - int 20
 - int 50
 trap BLACK
-sam_run: pc = 12, sp = 54, ir = 20501
+sam_run: pc = 12, sp = 54, ir = 815f
 Working stack: (3 word(s))
 - int 20
 - int 50
 - int 0
 trap SETDOT
-sam_run: pc = 13, sp = 51, ir = a05
+sam_run: pc = 13, sp = 51, ir = 29
 Working stack: (0 word(s))
 int
-sam_run: pc = 14, sp = 52, ir = a05
+sam_run: pc = 14, sp = 52, ir = 29
 Working stack: (1 word(s))
 - int 10
 int
-sam_run: pc = 15, sp = 53, ir = 6e05
+sam_run: pc = 15, sp = 53, ir = 1b9
 Working stack: (2 word(s))
 - int 10
 - int 10
 int
-sam_run: pc = 16, sp = 54, ir = 3205
+sam_run: pc = 16, sp = 54, ir = c9
 Working stack: (3 word(s))
 - int 10
 - int 10
 - int 110
 int
-sam_run: pc = 17, sp = 55, ir = 20001
+sam_run: pc = 17, sp = 55, ir = 801f
 Working stack: (4 word(s))
 - int 10
 - int 10
 - int 110
 - int 50
 trap BLACK
-sam_run: pc = 18, sp = 56, ir = 20601
+sam_run: pc = 18, sp = 56, ir = 819f
 Working stack: (5 word(s))
 - int 10
 - int 10
@@ -136,32 +136,32 @@ Working stack: (5 word(s))
 - int 50
 - int 0
 trap DRAWLINE
-sam_run: pc = 19, sp = 51, ir = 2805
+sam_run: pc = 19, sp = 51, ir = a1
 Working stack: (0 word(s))
 int
-sam_run: pc = 20, sp = 52, ir = 7805
+sam_run: pc = 20, sp = 52, ir = 1e1
 Working stack: (1 word(s))
 - int 40
 int
-sam_run: pc = 21, sp = 53, ir = 3c05
+sam_run: pc = 21, sp = 53, ir = f1
 Working stack: (2 word(s))
 - int 40
 - int 120
 int
-sam_run: pc = 22, sp = 54, ir = 5005
+sam_run: pc = 22, sp = 54, ir = 141
 Working stack: (3 word(s))
 - int 40
 - int 120
 - int 60
 int
-sam_run: pc = 23, sp = 55, ir = 20001
+sam_run: pc = 23, sp = 55, ir = 801f
 Working stack: (4 word(s))
 - int 40
 - int 120
 - int 60
 - int 80
 trap BLACK
-sam_run: pc = 24, sp = 56, ir = 20701
+sam_run: pc = 24, sp = 56, ir = 81df
 Working stack: (5 word(s))
 - int 40
 - int 120
@@ -169,32 +169,32 @@ Working stack: (5 word(s))
 - int 80
 - int 0
 trap DRAWRECT
-sam_run: pc = 25, sp = 51, ir = 3c05
+sam_run: pc = 25, sp = 51, ir = f1
 Working stack: (0 word(s))
 int
-sam_run: pc = 26, sp = 52, ir = 8c05
+sam_run: pc = 26, sp = 52, ir = 231
 Working stack: (1 word(s))
 - int 60
 int
-sam_run: pc = 27, sp = 53, ir = 1405
+sam_run: pc = 27, sp = 53, ir = 51
 Working stack: (2 word(s))
 - int 60
 - int 140
 int
-sam_run: pc = 28, sp = 54, ir = 2805
+sam_run: pc = 28, sp = 54, ir = a1
 Working stack: (3 word(s))
 - int 60
 - int 140
 - int 20
 int
-sam_run: pc = 29, sp = 55, ir = 20001
+sam_run: pc = 29, sp = 55, ir = 801f
 Working stack: (4 word(s))
 - int 60
 - int 140
 - int 20
 - int 40
 trap BLACK
-sam_run: pc = 30, sp = 56, ir = 20901
+sam_run: pc = 30, sp = 56, ir = 825f
 Working stack: (5 word(s))
 - int 60
 - int 140
@@ -202,32 +202,32 @@ Working stack: (5 word(s))
 - int 40
 - int 0
 trap FILLRECT
-sam_run: pc = 31, sp = 51, ir = 6e05
+sam_run: pc = 31, sp = 51, ir = 1b9
 Working stack: (0 word(s))
 int
-sam_run: pc = 32, sp = 52, ir = 7805
+sam_run: pc = 32, sp = 52, ir = 1e1
 Working stack: (1 word(s))
 - int 110
 int
-sam_run: pc = 33, sp = 53, ir = 3c05
+sam_run: pc = 33, sp = 53, ir = f1
 Working stack: (2 word(s))
 - int 110
 - int 120
 int
-sam_run: pc = 34, sp = 54, ir = 5005
+sam_run: pc = 34, sp = 54, ir = 141
 Working stack: (3 word(s))
 - int 110
 - int 120
 - int 60
 int
-sam_run: pc = 35, sp = 55, ir = 1e05
+sam_run: pc = 35, sp = 55, ir = 79
 Working stack: (4 word(s))
 - int 110
 - int 120
 - int 60
 - int 80
 int
-sam_run: pc = 36, sp = 56, ir = 20001
+sam_run: pc = 36, sp = 56, ir = 801f
 Working stack: (5 word(s))
 - int 110
 - int 120
@@ -235,7 +235,7 @@ Working stack: (5 word(s))
 - int 80
 - int 30
 trap BLACK
-sam_run: pc = 37, sp = 57, ir = 20801
+sam_run: pc = 37, sp = 57, ir = 821f
 Working stack: (6 word(s))
 - int 110
 - int 120
@@ -244,60 +244,60 @@ Working stack: (6 word(s))
 - int 30
 - int 0
 trap DRAWROUNDRECT
-sam_run: pc = 38, sp = 51, ir = d205
+sam_run: pc = 38, sp = 51, ir = 349
 Working stack: (0 word(s))
 int
-sam_run: pc = 39, sp = 52, ir = a005
+sam_run: pc = 39, sp = 52, ir = 281
 Working stack: (1 word(s))
 - int 210
 int
-sam_run: pc = 40, sp = 53, ir = 2805
+sam_run: pc = 40, sp = 53, ir = a1
 Working stack: (2 word(s))
 - int 210
 - int 160
 int
-sam_run: pc = 41, sp = 54, ir = 20001
+sam_run: pc = 41, sp = 54, ir = 801f
 Working stack: (3 word(s))
 - int 210
 - int 160
 - int 40
 trap BLACK
-sam_run: pc = 42, sp = 55, ir = 20a01
+sam_run: pc = 42, sp = 55, ir = 829f
 Working stack: (4 word(s))
 - int 210
 - int 160
 - int 40
 - int 0
 trap DRAWCIRCLE
-sam_run: pc = 43, sp = 51, ir = 12205
+sam_run: pc = 43, sp = 51, ir = 489
 Working stack: (0 word(s))
 int
-sam_run: pc = 44, sp = 52, ir = a005
+sam_run: pc = 44, sp = 52, ir = 281
 Working stack: (1 word(s))
 - int 290
 int
-sam_run: pc = 45, sp = 53, ir = 2805
+sam_run: pc = 45, sp = 53, ir = a1
 Working stack: (2 word(s))
 - int 290
 - int 160
 int
-sam_run: pc = 46, sp = 54, ir = 20001
+sam_run: pc = 46, sp = 54, ir = 801f
 Working stack: (3 word(s))
 - int 290
 - int 160
 - int 40
 trap BLACK
-sam_run: pc = 47, sp = 55, ir = 20b01
+sam_run: pc = 47, sp = 55, ir = 82df
 Working stack: (4 word(s))
 - int 290
 - int 160
 - int 40
 - int 0
 trap FILLCIRCLE
-sam_run: pc = 48, sp = 51, ir = 5
+sam_run: pc = 48, sp = 51, ir = 1
 Working stack: (0 word(s))
 int
-sam_run: pc = 49, sp = 52, ir = 1f01
+sam_run: pc = 49, sp = 52, ir = fbf
 Working stack: (1 word(s))
 - int 0
 halt

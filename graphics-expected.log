@@ -111,37 +111,37 @@ Stack: (122 word(s))
     - set
   - do
   - halt
-sam_run: pc = 1, sp = 122, ir = 5
+sam_run: pc = 1, sp = 122, ir = 1
 Working stack: (0 word(s))
 int
-sam_run: pc = 2, sp = 123, ir = 7402
+sam_run: pc = 2, sp = 123, ir = 3a000f
 Working stack: (1 word(s))
 - int 0
 bra
-sam_run: pc = 119, sp = 124, ir = 601
+sam_run: pc = 119, sp = 124, ir = 33f
 Working stack: (2 word(s))
 - int 0
 - ref 2
 do
-sam_run: pc = 3, sp = 124, ir = 3205
+sam_run: pc = 3, sp = 124, ir = c9
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 4, sp = 125, ir = 6405
+sam_run: pc = 4, sp = 125, ir = 191
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 50
 int
-sam_run: pc = 5, sp = 126, ir = 5
+sam_run: pc = 5, sp = 126, ir = 1
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 50
 - int 100
 int
-sam_run: pc = 6, sp = 127, ir = 402
+sam_run: pc = 6, sp = 127, ir = 2000f
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -149,7 +149,7 @@ Working stack: (5 word(s))
 - int 100
 - int 0
 bra
-sam_run: pc = 11, sp = 128, ir = 601
+sam_run: pc = 11, sp = 128, ir = 33f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -158,7 +158,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 6
 do
-sam_run: pc = 7, sp = 128, ir = 20001
+sam_run: pc = 7, sp = 128, ir = 801f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -167,7 +167,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 12
 trap BLACK
-sam_run: pc = 8, sp = 129, ir = fffffe05
+sam_run: pc = 8, sp = 129, ir = fffffff9
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -177,7 +177,7 @@ Working stack: (7 word(s))
 - ref 12
 - int 0
 int
-sam_run: pc = 9, sp = 130, ir = 301
+sam_run: pc = 9, sp = 130, ir = 1bf
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -188,7 +188,7 @@ Working stack: (8 word(s))
 - int 0
 - int -2
 set
-sam_run: pc = 10, sp = 128, ir = fffffc02
+sam_run: pc = 10, sp = 128, ir = fffe000f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -197,7 +197,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 12
 ket
-sam_run: pc = 12, sp = 127, ir = 20501
+sam_run: pc = 12, sp = 127, ir = 815f
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -205,43 +205,43 @@ Working stack: (5 word(s))
 - int 100
 - int 0
 trap SETDOT
-sam_run: pc = 13, sp = 124, ir = 5
+sam_run: pc = 13, sp = 124, ir = 1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 14, sp = 125, ir = 105
+sam_run: pc = 14, sp = 125, ir = 5
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 0
 int
-sam_run: pc = 15, sp = 126, ir = 101
+sam_run: pc = 15, sp = 126, ir = bf
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 0
 - int 1
 pop
-sam_run: pc = 16, sp = 124, ir = 1405
+sam_run: pc = 16, sp = 124, ir = 51
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 17, sp = 125, ir = 6405
+sam_run: pc = 17, sp = 125, ir = 191
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 20
 int
-sam_run: pc = 18, sp = 126, ir = 5
+sam_run: pc = 18, sp = 126, ir = 1
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 20
 - int 100
 int
-sam_run: pc = 19, sp = 127, ir = 402
+sam_run: pc = 19, sp = 127, ir = 2000f
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -249,7 +249,7 @@ Working stack: (5 word(s))
 - int 100
 - int 0
 bra
-sam_run: pc = 24, sp = 128, ir = 601
+sam_run: pc = 24, sp = 128, ir = 33f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -258,7 +258,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 19
 do
-sam_run: pc = 20, sp = 128, ir = 20001
+sam_run: pc = 20, sp = 128, ir = 801f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -267,7 +267,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 25
 trap BLACK
-sam_run: pc = 21, sp = 129, ir = fffffe05
+sam_run: pc = 21, sp = 129, ir = fffffff9
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -277,7 +277,7 @@ Working stack: (7 word(s))
 - ref 25
 - int 0
 int
-sam_run: pc = 22, sp = 130, ir = 301
+sam_run: pc = 22, sp = 130, ir = 1bf
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -288,7 +288,7 @@ Working stack: (8 word(s))
 - int 0
 - int -2
 set
-sam_run: pc = 23, sp = 128, ir = fffffc02
+sam_run: pc = 23, sp = 128, ir = fffe000f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -297,7 +297,7 @@ Working stack: (6 word(s))
 - int 0
 - ref 25
 ket
-sam_run: pc = 25, sp = 127, ir = 20501
+sam_run: pc = 25, sp = 127, ir = 815f
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -305,43 +305,43 @@ Working stack: (5 word(s))
 - int 100
 - int 0
 trap SETDOT
-sam_run: pc = 26, sp = 124, ir = 5
+sam_run: pc = 26, sp = 124, ir = 1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 27, sp = 125, ir = 105
+sam_run: pc = 27, sp = 125, ir = 5
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 0
 int
-sam_run: pc = 28, sp = 126, ir = 101
+sam_run: pc = 28, sp = 126, ir = bf
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 0
 - int 1
 pop
-sam_run: pc = 29, sp = 124, ir = a05
+sam_run: pc = 29, sp = 124, ir = 29
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 30, sp = 125, ir = a05
+sam_run: pc = 30, sp = 125, ir = 29
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 10
 int
-sam_run: pc = 31, sp = 126, ir = 6e05
+sam_run: pc = 31, sp = 126, ir = 1b9
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 10
 - int 10
 int
-sam_run: pc = 32, sp = 127, ir = 3205
+sam_run: pc = 32, sp = 127, ir = c9
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -349,7 +349,7 @@ Working stack: (5 word(s))
 - int 10
 - int 110
 int
-sam_run: pc = 33, sp = 128, ir = 5
+sam_run: pc = 33, sp = 128, ir = 1
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -358,7 +358,7 @@ Working stack: (6 word(s))
 - int 110
 - int 50
 int
-sam_run: pc = 34, sp = 129, ir = 402
+sam_run: pc = 34, sp = 129, ir = 2000f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -368,7 +368,7 @@ Working stack: (7 word(s))
 - int 50
 - int 0
 bra
-sam_run: pc = 39, sp = 130, ir = 601
+sam_run: pc = 39, sp = 130, ir = 33f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -379,7 +379,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 34
 do
-sam_run: pc = 35, sp = 130, ir = 20001
+sam_run: pc = 35, sp = 130, ir = 801f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -390,7 +390,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 40
 trap BLACK
-sam_run: pc = 36, sp = 131, ir = fffffe05
+sam_run: pc = 36, sp = 131, ir = fffffff9
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -402,7 +402,7 @@ Working stack: (9 word(s))
 - ref 40
 - int 0
 int
-sam_run: pc = 37, sp = 132, ir = 301
+sam_run: pc = 37, sp = 132, ir = 1bf
 Working stack: (10 word(s))
 - int 0
 - ref 120
@@ -415,7 +415,7 @@ Working stack: (10 word(s))
 - int 0
 - int -2
 set
-sam_run: pc = 38, sp = 130, ir = fffffc02
+sam_run: pc = 38, sp = 130, ir = fffe000f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -426,7 +426,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 40
 ket
-sam_run: pc = 40, sp = 129, ir = 20601
+sam_run: pc = 40, sp = 129, ir = 819f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -436,43 +436,43 @@ Working stack: (7 word(s))
 - int 50
 - int 0
 trap DRAWLINE
-sam_run: pc = 41, sp = 124, ir = 5
+sam_run: pc = 41, sp = 124, ir = 1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 42, sp = 125, ir = 105
+sam_run: pc = 42, sp = 125, ir = 5
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 0
 int
-sam_run: pc = 43, sp = 126, ir = 101
+sam_run: pc = 43, sp = 126, ir = bf
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 0
 - int 1
 pop
-sam_run: pc = 44, sp = 124, ir = 2805
+sam_run: pc = 44, sp = 124, ir = a1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 45, sp = 125, ir = 7805
+sam_run: pc = 45, sp = 125, ir = 1e1
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 40
 int
-sam_run: pc = 46, sp = 126, ir = 3c05
+sam_run: pc = 46, sp = 126, ir = f1
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 40
 - int 120
 int
-sam_run: pc = 47, sp = 127, ir = 5005
+sam_run: pc = 47, sp = 127, ir = 141
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -480,7 +480,7 @@ Working stack: (5 word(s))
 - int 120
 - int 60
 int
-sam_run: pc = 48, sp = 128, ir = 5
+sam_run: pc = 48, sp = 128, ir = 1
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -489,7 +489,7 @@ Working stack: (6 word(s))
 - int 60
 - int 80
 int
-sam_run: pc = 49, sp = 129, ir = 402
+sam_run: pc = 49, sp = 129, ir = 2000f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -499,7 +499,7 @@ Working stack: (7 word(s))
 - int 80
 - int 0
 bra
-sam_run: pc = 54, sp = 130, ir = 601
+sam_run: pc = 54, sp = 130, ir = 33f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -510,7 +510,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 49
 do
-sam_run: pc = 50, sp = 130, ir = 20001
+sam_run: pc = 50, sp = 130, ir = 801f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -521,7 +521,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 55
 trap BLACK
-sam_run: pc = 51, sp = 131, ir = fffffe05
+sam_run: pc = 51, sp = 131, ir = fffffff9
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -533,7 +533,7 @@ Working stack: (9 word(s))
 - ref 55
 - int 0
 int
-sam_run: pc = 52, sp = 132, ir = 301
+sam_run: pc = 52, sp = 132, ir = 1bf
 Working stack: (10 word(s))
 - int 0
 - ref 120
@@ -546,7 +546,7 @@ Working stack: (10 word(s))
 - int 0
 - int -2
 set
-sam_run: pc = 53, sp = 130, ir = fffffc02
+sam_run: pc = 53, sp = 130, ir = fffe000f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -557,7 +557,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 55
 ket
-sam_run: pc = 55, sp = 129, ir = 20701
+sam_run: pc = 55, sp = 129, ir = 81df
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -567,43 +567,43 @@ Working stack: (7 word(s))
 - int 80
 - int 0
 trap DRAWRECT
-sam_run: pc = 56, sp = 124, ir = 5
+sam_run: pc = 56, sp = 124, ir = 1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 57, sp = 125, ir = 105
+sam_run: pc = 57, sp = 125, ir = 5
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 0
 int
-sam_run: pc = 58, sp = 126, ir = 101
+sam_run: pc = 58, sp = 126, ir = bf
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 0
 - int 1
 pop
-sam_run: pc = 59, sp = 124, ir = 3c05
+sam_run: pc = 59, sp = 124, ir = f1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 60, sp = 125, ir = 8c05
+sam_run: pc = 60, sp = 125, ir = 231
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 60
 int
-sam_run: pc = 61, sp = 126, ir = 1405
+sam_run: pc = 61, sp = 126, ir = 51
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 60
 - int 140
 int
-sam_run: pc = 62, sp = 127, ir = 2805
+sam_run: pc = 62, sp = 127, ir = a1
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -611,7 +611,7 @@ Working stack: (5 word(s))
 - int 140
 - int 20
 int
-sam_run: pc = 63, sp = 128, ir = 5
+sam_run: pc = 63, sp = 128, ir = 1
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -620,7 +620,7 @@ Working stack: (6 word(s))
 - int 20
 - int 40
 int
-sam_run: pc = 64, sp = 129, ir = 402
+sam_run: pc = 64, sp = 129, ir = 2000f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -630,7 +630,7 @@ Working stack: (7 word(s))
 - int 40
 - int 0
 bra
-sam_run: pc = 69, sp = 130, ir = 601
+sam_run: pc = 69, sp = 130, ir = 33f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -641,7 +641,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 64
 do
-sam_run: pc = 65, sp = 130, ir = 20001
+sam_run: pc = 65, sp = 130, ir = 801f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -652,7 +652,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 70
 trap BLACK
-sam_run: pc = 66, sp = 131, ir = fffffe05
+sam_run: pc = 66, sp = 131, ir = fffffff9
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -664,7 +664,7 @@ Working stack: (9 word(s))
 - ref 70
 - int 0
 int
-sam_run: pc = 67, sp = 132, ir = 301
+sam_run: pc = 67, sp = 132, ir = 1bf
 Working stack: (10 word(s))
 - int 0
 - ref 120
@@ -677,7 +677,7 @@ Working stack: (10 word(s))
 - int 0
 - int -2
 set
-sam_run: pc = 68, sp = 130, ir = fffffc02
+sam_run: pc = 68, sp = 130, ir = fffe000f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -688,7 +688,7 @@ Working stack: (8 word(s))
 - int 0
 - ref 70
 ket
-sam_run: pc = 70, sp = 129, ir = 20901
+sam_run: pc = 70, sp = 129, ir = 825f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -698,43 +698,43 @@ Working stack: (7 word(s))
 - int 40
 - int 0
 trap FILLRECT
-sam_run: pc = 71, sp = 124, ir = 5
+sam_run: pc = 71, sp = 124, ir = 1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 72, sp = 125, ir = 105
+sam_run: pc = 72, sp = 125, ir = 5
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 0
 int
-sam_run: pc = 73, sp = 126, ir = 101
+sam_run: pc = 73, sp = 126, ir = bf
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 0
 - int 1
 pop
-sam_run: pc = 74, sp = 124, ir = 6e05
+sam_run: pc = 74, sp = 124, ir = 1b9
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 75, sp = 125, ir = 7805
+sam_run: pc = 75, sp = 125, ir = 1e1
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 110
 int
-sam_run: pc = 76, sp = 126, ir = 3c05
+sam_run: pc = 76, sp = 126, ir = f1
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 110
 - int 120
 int
-sam_run: pc = 77, sp = 127, ir = 5005
+sam_run: pc = 77, sp = 127, ir = 141
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -742,7 +742,7 @@ Working stack: (5 word(s))
 - int 120
 - int 60
 int
-sam_run: pc = 78, sp = 128, ir = 1e05
+sam_run: pc = 78, sp = 128, ir = 79
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -751,7 +751,7 @@ Working stack: (6 word(s))
 - int 60
 - int 80
 int
-sam_run: pc = 79, sp = 129, ir = 5
+sam_run: pc = 79, sp = 129, ir = 1
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -761,7 +761,7 @@ Working stack: (7 word(s))
 - int 80
 - int 30
 int
-sam_run: pc = 80, sp = 130, ir = 402
+sam_run: pc = 80, sp = 130, ir = 2000f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -772,7 +772,7 @@ Working stack: (8 word(s))
 - int 30
 - int 0
 bra
-sam_run: pc = 85, sp = 131, ir = 601
+sam_run: pc = 85, sp = 131, ir = 33f
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -784,7 +784,7 @@ Working stack: (9 word(s))
 - int 0
 - ref 80
 do
-sam_run: pc = 81, sp = 131, ir = 20001
+sam_run: pc = 81, sp = 131, ir = 801f
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -796,7 +796,7 @@ Working stack: (9 word(s))
 - int 0
 - ref 86
 trap BLACK
-sam_run: pc = 82, sp = 132, ir = fffffe05
+sam_run: pc = 82, sp = 132, ir = fffffff9
 Working stack: (10 word(s))
 - int 0
 - ref 120
@@ -809,7 +809,7 @@ Working stack: (10 word(s))
 - ref 86
 - int 0
 int
-sam_run: pc = 83, sp = 133, ir = 301
+sam_run: pc = 83, sp = 133, ir = 1bf
 Working stack: (11 word(s))
 - int 0
 - ref 120
@@ -823,7 +823,7 @@ Working stack: (11 word(s))
 - int 0
 - int -2
 set
-sam_run: pc = 84, sp = 131, ir = fffffc02
+sam_run: pc = 84, sp = 131, ir = fffe000f
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -835,7 +835,7 @@ Working stack: (9 word(s))
 - int 0
 - ref 86
 ket
-sam_run: pc = 86, sp = 130, ir = 20801
+sam_run: pc = 86, sp = 130, ir = 821f
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -846,43 +846,43 @@ Working stack: (8 word(s))
 - int 30
 - int 0
 trap DRAWROUNDRECT
-sam_run: pc = 87, sp = 124, ir = 5
+sam_run: pc = 87, sp = 124, ir = 1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 88, sp = 125, ir = 105
+sam_run: pc = 88, sp = 125, ir = 5
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 0
 int
-sam_run: pc = 89, sp = 126, ir = 101
+sam_run: pc = 89, sp = 126, ir = bf
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 0
 - int 1
 pop
-sam_run: pc = 90, sp = 124, ir = d205
+sam_run: pc = 90, sp = 124, ir = 349
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 91, sp = 125, ir = a005
+sam_run: pc = 91, sp = 125, ir = 281
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 210
 int
-sam_run: pc = 92, sp = 126, ir = 2805
+sam_run: pc = 92, sp = 126, ir = a1
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 210
 - int 160
 int
-sam_run: pc = 93, sp = 127, ir = 5
+sam_run: pc = 93, sp = 127, ir = 1
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -890,7 +890,7 @@ Working stack: (5 word(s))
 - int 160
 - int 40
 int
-sam_run: pc = 94, sp = 128, ir = 402
+sam_run: pc = 94, sp = 128, ir = 2000f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -899,7 +899,7 @@ Working stack: (6 word(s))
 - int 40
 - int 0
 bra
-sam_run: pc = 99, sp = 129, ir = 601
+sam_run: pc = 99, sp = 129, ir = 33f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -909,7 +909,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 94
 do
-sam_run: pc = 95, sp = 129, ir = 20001
+sam_run: pc = 95, sp = 129, ir = 801f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -919,7 +919,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 100
 trap BLACK
-sam_run: pc = 96, sp = 130, ir = fffffe05
+sam_run: pc = 96, sp = 130, ir = fffffff9
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -930,7 +930,7 @@ Working stack: (8 word(s))
 - ref 100
 - int 0
 int
-sam_run: pc = 97, sp = 131, ir = 301
+sam_run: pc = 97, sp = 131, ir = 1bf
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -942,7 +942,7 @@ Working stack: (9 word(s))
 - int 0
 - int -2
 set
-sam_run: pc = 98, sp = 129, ir = fffffc02
+sam_run: pc = 98, sp = 129, ir = fffe000f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -952,7 +952,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 100
 ket
-sam_run: pc = 100, sp = 128, ir = 20a01
+sam_run: pc = 100, sp = 128, ir = 829f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -961,43 +961,43 @@ Working stack: (6 word(s))
 - int 40
 - int 0
 trap DRAWCIRCLE
-sam_run: pc = 101, sp = 124, ir = 5
+sam_run: pc = 101, sp = 124, ir = 1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 102, sp = 125, ir = 105
+sam_run: pc = 102, sp = 125, ir = 5
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 0
 int
-sam_run: pc = 103, sp = 126, ir = 101
+sam_run: pc = 103, sp = 126, ir = bf
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 0
 - int 1
 pop
-sam_run: pc = 104, sp = 124, ir = 12205
+sam_run: pc = 104, sp = 124, ir = 489
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 105, sp = 125, ir = a005
+sam_run: pc = 105, sp = 125, ir = 281
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 290
 int
-sam_run: pc = 106, sp = 126, ir = 2805
+sam_run: pc = 106, sp = 126, ir = a1
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 290
 - int 160
 int
-sam_run: pc = 107, sp = 127, ir = 5
+sam_run: pc = 107, sp = 127, ir = 1
 Working stack: (5 word(s))
 - int 0
 - ref 120
@@ -1005,7 +1005,7 @@ Working stack: (5 word(s))
 - int 160
 - int 40
 int
-sam_run: pc = 108, sp = 128, ir = 402
+sam_run: pc = 108, sp = 128, ir = 2000f
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -1014,7 +1014,7 @@ Working stack: (6 word(s))
 - int 40
 - int 0
 bra
-sam_run: pc = 113, sp = 129, ir = 601
+sam_run: pc = 113, sp = 129, ir = 33f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -1024,7 +1024,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 108
 do
-sam_run: pc = 109, sp = 129, ir = 20001
+sam_run: pc = 109, sp = 129, ir = 801f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -1034,7 +1034,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 114
 trap BLACK
-sam_run: pc = 110, sp = 130, ir = fffffe05
+sam_run: pc = 110, sp = 130, ir = fffffff9
 Working stack: (8 word(s))
 - int 0
 - ref 120
@@ -1045,7 +1045,7 @@ Working stack: (8 word(s))
 - ref 114
 - int 0
 int
-sam_run: pc = 111, sp = 131, ir = 301
+sam_run: pc = 111, sp = 131, ir = 1bf
 Working stack: (9 word(s))
 - int 0
 - ref 120
@@ -1057,7 +1057,7 @@ Working stack: (9 word(s))
 - int 0
 - int -2
 set
-sam_run: pc = 112, sp = 129, ir = fffffc02
+sam_run: pc = 112, sp = 129, ir = fffe000f
 Working stack: (7 word(s))
 - int 0
 - ref 120
@@ -1067,7 +1067,7 @@ Working stack: (7 word(s))
 - int 0
 - ref 114
 ket
-sam_run: pc = 114, sp = 128, ir = 20b01
+sam_run: pc = 114, sp = 128, ir = 82df
 Working stack: (6 word(s))
 - int 0
 - ref 120
@@ -1076,30 +1076,30 @@ Working stack: (6 word(s))
 - int 40
 - int 0
 trap FILLCIRCLE
-sam_run: pc = 115, sp = 124, ir = 5
+sam_run: pc = 115, sp = 124, ir = 1
 Working stack: (2 word(s))
 - int 0
 - ref 120
 int
-sam_run: pc = 116, sp = 125, ir = fffffe05
+sam_run: pc = 116, sp = 125, ir = fffffff9
 Working stack: (3 word(s))
 - int 0
 - ref 120
 - int 0
 int
-sam_run: pc = 117, sp = 126, ir = 301
+sam_run: pc = 117, sp = 126, ir = 1bf
 Working stack: (4 word(s))
 - int 0
 - ref 120
 - int 0
 - int -2
 set
-sam_run: pc = 118, sp = 124, ir = ffff8c02
+sam_run: pc = 118, sp = 124, ir = ffc6000f
 Working stack: (2 word(s))
 - int 0
 - ref 120
 ket
-sam_run: pc = 120, sp = 123, ir = 1f01
+sam_run: pc = 120, sp = 123, ir = fbf
 Working stack: (1 word(s))
 - int 0
 halt

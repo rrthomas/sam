@@ -1,4 +1,6 @@
 /*
+SAM assembler
+
 Copyright © 2025 Reuben Thomas <rrt@sc3d.org>
 
 This program is free software: you can redistribute it and/or modify
@@ -53,13 +55,34 @@ func readProg(r io.Reader) ast.Node {
 var labels map[string]libsam.Uword
 
 type assembler struct {
-	stack libsam.Stack
-	s0    libsam.Uword
+	stack  libsam.Stack
+	s0     libsam.Uword
+	insts  libsam.Uword
+	nInsts uint
 }
 
-func parseInsn(instStr string) (libsam.Word, bool) {
+func (a *assembler) flushInstructions() {
+	if a.nInsts > 0 {
+		a.stack.PushInsts(a.insts)
+	}
+	a.nInsts = 0
+	a.insts = 0
+}
+
+func (a *assembler) addInstruction(opcode libsam.InstOpcode) {
+	if (a.nInsts+1)*uint(libsam.INST_SHIFT)+uint(libsam.INSTS_SHIFT) > uint(libsam.WORD_BIT) {
+		a.flushInstructions()
+	}
+	a.insts |= (opcode.Opcode & libsam.Uword(libsam.INST_MASK)) << (libsam.Uword(a.nInsts) * libsam.Uword(libsam.INST_SHIFT))
+	a.nInsts += 1
+	if opcode.Terminal {
+		a.flushInstructions()
+	}
+}
+
+func parseInsn(instStr string) (libsam.InstOpcode, bool) {
 	opcode, ok := libsam.Instructions[strings.ToLower(instStr)]
-	return libsam.Word(opcode), ok
+	return opcode, ok
 }
 
 func parseTrap(trapStr string) (libsam.Word, bool) {
@@ -72,7 +95,7 @@ func (a *assembler) parseLiteral(argStr string) libsam.Word {
 	if ok {
 		return libsam.Word(address)
 	}
-	if opcode, ok := parseInsn(argStr); ok {
+	if opcode, ok := parseTrap(argStr); ok {
 		return libsam.Word(opcode)
 	}
 	if number, err := strconv.ParseInt(argStr, 10, libsam.WORD_BIT); err == nil {
@@ -96,25 +119,27 @@ func (a *assembler) assembleInstruction(tokens []string) {
 		panic(fmt.Errorf("unknown instruction %s", instStr))
 	}
 	if slices.Contains(operandInsns, strings.ToLower(instStr)) {
+		a.flushInstructions()
+
 		if len(tokens) != 2 {
 			panic(fmt.Errorf("%s needs an operand", instStr))
 		}
 		operandStr := tokens[1]
 
-		switch opcode {
-		case libsam.TAG_ATOM | (libsam.ATOM_INT << libsam.ATOM_TYPE_SHIFT):
+		switch opcode.Tag {
+		case libsam.INT_TAG:
 			operand := a.parseLiteral(operandStr)
-			a.stack.PushAtom(libsam.ATOM_INT, libsam.Uword(operand))
-		case libsam.TAG_REF:
+			a.stack.PushInt(libsam.Uword(operand))
+		case libsam.REF_TAG:
 			operand := a.parseLiteral(operandStr)
 			a.stack.PushLink(libsam.Uword(operand))
-		case libsam.TAG_ATOM | (libsam.ATOM_INST << libsam.ATOM_TYPE_SHIFT):
+		case libsam.TRAP_TAG:
 			trap, ok := parseTrap(operandStr)
 			if !ok {
 				panic(fmt.Errorf("unknown trap %s", operandStr))
 			}
-			a.stack.PushAtom(libsam.ATOM_INST, libsam.Uword(trap))
-		case libsam.TAG_ATOM | (libsam.ATOM_FLOAT << libsam.ATOM_TYPE_SHIFT):
+			a.stack.PushTrap(libsam.Uword(trap))
+		case libsam.FLOAT_TAG:
 			float, err := strconv.ParseFloat(operandStr, 32)
 			if err != nil {
 				panic(fmt.Errorf("bad float %s", operandStr))
@@ -125,7 +150,7 @@ func (a *assembler) assembleInstruction(tokens []string) {
 		if len(tokens) > 1 {
 			panic(fmt.Errorf("unexpected operand for %s", instStr))
 		}
-		a.stack.PushAtom(libsam.ATOM_INST, libsam.Uword(opcode))
+		a.addInstruction(opcode)
 	}
 }
 
@@ -138,11 +163,13 @@ func (a *assembler) assembleSequence(n ast.Node) {
 	for i.Next() {
 		ast.Walk(a, i.Value())
 	}
+	a.flushInstructions()
 }
 
 func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
+		a.flushInstructions()
 		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
 		subA.assembleSequence(n)
 		a.stack.PushCode(subA.stack)
@@ -166,6 +193,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			panic(fmt.Errorf("bad label: string expected"))
 		}
 		label := keyNode.String()
+		a.flushInstructions()
 		labels[label] = a.s0 + a.stack.Sp()
 		subNode := mapNode.Value
 		ast.Walk(a, subNode)
@@ -187,6 +215,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		}
 		subProg := readProg(r)
 		// Assemble the included file in a nested stack.
+		a.flushInstructions()
 		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
 		subA.assembleSequence(subProg)
 		a.stack.PushCode(subA.stack)

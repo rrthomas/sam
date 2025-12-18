@@ -39,12 +39,12 @@ sam_word_t sam_math_trap(sam_uword_t function)
         {
             sam_uword_t operand;
             HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
-            if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
+            if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                 sam_uword_t a, b;
                 POP_UINT(b);
                 POP_UINT(a);
                 PUSH_INT(powi(a, b));
-            } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
+            } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
                 sam_float_t a, b;
                 POP_FLOAT(b);
                 POP_FLOAT(a);

@@ -41,7 +41,7 @@ static void xasprintf(char **text, const char *fmt, ...)
     va_end(ap);
 }
 
-char *inst_name(sam_word_t inst_opcode) {
+char *inst_name(sam_uword_t inst_opcode) {
     switch (inst_opcode) {
     case INST_NOP:
         return "nop";
@@ -107,64 +107,71 @@ char *inst_name(sam_word_t inst_opcode) {
         return "_two";
     case INST_HALT:
         return "halt";
-
-    default: {
-        char *name = NULL;
-        switch (inst_opcode & SAM_TRAP_BASE_MASK) {
-        case SAM_TRAP_MATH_BASE:
-            name = sam_math_trap_name(inst_opcode);
-            break;
-        case SAM_TRAP_GRAPHICS_BASE:
-            name = sam_graphics_trap_name(inst_opcode);
-            break;
-        default:
-            break;
-        }
-        char *text;
-        if (name == NULL)
-            xasprintf(&text, "trap %zd", inst_opcode);
-        else
-            xasprintf(&text, "trap %s", name);
-        return text;
+    default:
+        return "INVALID INSTRUCTION";
     }
+}
+
+char *trap_name(sam_uword_t function)
+{
+    char *name = NULL;
+    switch (function & SAM_TRAP_BASE_MASK) {
+    case SAM_TRAP_MATH_BASE:
+        name = sam_math_trap_name(function);
+        break;
+    case SAM_TRAP_GRAPHICS_BASE:
+        name = sam_graphics_trap_name(function);
+        break;
+    default:
+        break;
+    }
+    if (name != NULL)
+        return name;
+    else {
+        static char buf[21]; // 20 digits in 64-bit SIZE_MAX + NUL
+        sprintf(buf, "%zu", function);
+        return buf;
     }
 }
 
 static char *disas(sam_uword_t *addr)
 {
-    char *text;
+    char *text = NULL;
     sam_word_t inst;
     assert(sam_stack_peek(sam_stack, (*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
-    switch (inst & SAM_TAG_MASK) {
-    case SAM_TAG_REF:
+    if ((inst & SAM_REF_TAG_MASK) == SAM_REF_TAG) {
         xasprintf(&text, "ref %zd", inst >> SAM_REF_SHIFT);
-        break;
-    case SAM_TAG_ATOM:
-        switch ((inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {
-        case SAM_ATOM_INST:
-            xasprintf(&text, "%s", inst_name(inst >> SAM_OPERAND_SHIFT));
-            break;
-        case SAM_ATOM_INT:
-            xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_OPERAND_SHIFT));
-            break;
-        case SAM_ATOM_FLOAT: {
-            uint32_t operand = (uint32_t)(inst >> SAM_OPERAND_SHIFT);
-            xasprintf(&text, "float %f", *(sam_float_t *)&operand);
-            break;
-        }
-        }
-        break;
-    case SAM_TAG_ARRAY:
+    } else if ((inst & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+        xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_INT_SHIFT));
+    } else if ((inst & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
+        uint64_t operand = (uint64_t)(inst >> SAM_FLOAT_SHIFT);
+        xasprintf(&text, "float %f", *(sam_float_t *)&operand);
+    } else if ((inst & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
+        // No atoms yet.
+        switch ((inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {}
+    } else if ((inst & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
         switch ((inst & SAM_ARRAY_TYPE_MASK) >> SAM_ARRAY_TYPE_SHIFT) {
         case SAM_ARRAY_STACK:
-            xasprintf(&text, "*** UNEXPECTED %s ***", ARSHIFT(inst, SAM_OPERAND_SHIFT) > 0 ? "BRA" : "KET");
+            xasprintf(&text, "*** UNEXPECTED %s ***", ARSHIFT(inst, SAM_ARRAY_OFFSET_SHIFT) > 0 ? "BRA" : "KET");
             break;
         // TODO:
         /* case SAM_ARRAY_RAW: */
         /*     break; */
         }
-        break;
-    default:
+    } else if ((inst & SAM_TRAP_TAG_MASK) == SAM_TRAP_TAG) {
+        sam_uword_t function = inst >> SAM_TRAP_FUNCTION_SHIFT;
+        xasprintf(&text, "trap %s", trap_name(function));
+    } else if ((inst & SAM_INSTS_TAG_MASK) == SAM_INSTS_TAG) {
+        sam_uword_t opcodes = (sam_uword_t)inst >> SAM_INSTS_SHIFT;
+        do {
+            sam_word_t opcode = opcodes & SAM_INST_MASK;
+            if (text == NULL)
+                xasprintf(&text, "%s", inst_name(opcode));
+            else
+                xasprintf(&text, "%s %s", text, inst_name(opcode));
+            opcodes >>= SAM_INST_SHIFT;
+        } while (opcodes != 0);
+    } else {
         abort(); // The cases are exhaustive.
     }
     return text;
@@ -184,16 +191,17 @@ static void print_stack(sam_uword_t from, sam_uword_t to)
     for (i = from; i < to; ) {
         sam_uword_t opcode;
         assert(sam_stack_peek(sam_stack, i, &opcode) == SAM_ERROR_OK);
-        sam_word_t operand = ARSHIFT((sam_word_t)opcode, SAM_OPERAND_SHIFT);
-        sam_word_t tag = opcode & SAM_TAG_MASK;
-        opcode &= SAM_OPERAND_MASK;
-        if (tag == SAM_TAG_ARRAY && operand > 0) {
-            print_disas(level, "");
-            level++;
-            i++;
-        } else if (tag == SAM_TAG_ARRAY && operand < 0) {
-            level--;
-            i++;
+        if ((opcode & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
+            sam_word_t offset = ARSHIFT((sam_word_t)opcode, SAM_ARRAY_OFFSET_SHIFT);
+            if (offset > 0) {
+                print_disas(level, "");
+                level++;
+                i++;
+            } else if (offset < 0) {
+                level--;
+                i++;
+            } else
+                print_disas(level, "ARRAY with unexpected zero offset");
         } else {
             char *text = disas(&i);
             print_disas(level, text);
