@@ -43,55 +43,51 @@
 #define PUSH_WORD(val)                          \
     HALT_IF_ERROR(sam_push_stack(sam_stack, val))
 
-#define _POP_INSN(var, insn, insn_mask, op_mask, rshift, shift) \
+#define _POP_INSN(var, insn, insn_mask, rshift, shift) \
     do {                                        \
         POP_WORD((sam_word_t *)&var);           \
         _CHECK_TYPE(var, insn_mask, insn);      \
-        var = rshift(var & op_mask, shift);     \
+        var = rshift(var, shift);               \
     } while (0)
-#define _PUSH_INSN(val, insn)                   \
-    PUSH_WORD(LSHIFT((val), SAM_OPERAND_SHIFT) | insn)
 
 #define _POP_INT(var, rshift)                   \
-    _POP_INSN(var, SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT), SAM_TAG_MASK | SAM_ATOM_TYPE_MASK, SAM_OPERAND_MASK, rshift, SAM_OPERAND_SHIFT)
+    _POP_INSN(var, SAM_INT_TAG, SAM_INT_TAG_MASK, rshift, SAM_INT_SHIFT)
 #define POP_INT(var)                            \
     _POP_INT(var, ARSHIFT)
 #define POP_UINT(var)                           \
     _POP_INT(var, LRSHIFT)
 #define PUSH_INT(val)                           \
-    _PUSH_INSN(val, SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))
+    PUSH_WORD(SAM_INT_TAG | (val << SAM_INT_SHIFT))
 
 #define PUSH_BOOL(val)                          \
     PUSH_INT(-((val) != 0))
 
-int _sam_get_stack(sam_uword_t *addr);
-
 #define POP_PTR(var)                                  \
-    _POP_INSN(var, SAM_TAG_REF, SAM_TAG_MASK, SAM_REF_MASK, LRSHIFT, SAM_REF_SHIFT)
+    _POP_INSN(var, SAM_REF_TAG, SAM_REF_TAG_MASK, LRSHIFT, SAM_REF_SHIFT)
 #define POP_REF(var)                                  \
     do {                                              \
         POP_PTR(var);                                 \
         sam_uword_t _stack;                           \
         HALT_IF_ERROR(sam_stack_peek(sam_stack, var, &_stack));  \
-        _CHECK_TYPE(_stack, SAM_TAG_MASK | SAM_ARRAY_TYPE_MASK, SAM_TAG_ARRAY | SAM_ARRAY_STACK); \
+        _CHECK_TYPE(_stack, SAM_ARRAY_TAG_MASK | SAM_ARRAY_TYPE_MASK, SAM_ARRAY_TAG | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT)); \
         var++;                                        \
     } while(0)
 #define PUSH_PTR(addr)                                \
-    PUSH_WORD(LSHIFT((addr), SAM_REF_SHIFT) | SAM_TAG_REF)
+    PUSH_WORD(LSHIFT((addr), SAM_REF_SHIFT) | SAM_REF_TAG)
 
 #define POP_STACK(addr_var, size_var)                     \
     do {                                                  \
         POP_REF(addr_var);                                \
         sam_uword_t _insn;                                \
         HALT_IF_ERROR(sam_stack_peek(sam_stack, addr_var - 1, &_insn)); \
-        size_var = (_insn >> SAM_OPERAND_SHIFT) - 1; \
+        size_var = (_insn >> SAM_ARRAY_OFFSET_SHIFT) - 1; \
     } while(0)
 
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
         sam_uword_t _w;                                                 \
-        _POP_INSN(_w, SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT), SAM_TAG_MASK | SAM_ATOM_TYPE_MASK, SAM_OPERAND_MASK, LRSHIFT, SAM_OPERAND_SHIFT); \
-        uint32_t _f = (uint32_t)_w;                                     \
+        _POP_INSN(_w, SAM_FLOAT_TAG, SAM_FLOAT_TAG_MASK, LRSHIFT, SAM_FLOAT_SHIFT); \
+        uint64_t _f = (uint64_t)_w;                                     \
         var = *(sam_float_t *)&_f;                                      \
     } while (0)
 #define PUSH_FLOAT(val)                         \

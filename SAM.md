@@ -24,8 +24,6 @@ The registers are as follows:
 | `SSIZE`   | The `S`tack `SIZE`. The number of items the stack can hold. |
 | `SP`      | The `S`tack `P`ointer. The number of items currently on the stack. |
 | `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
-| `OP`      | The `OP`erand is the operand encoded in the current instruction. |
-| `I`       | The opcode of the currently executing `I`nstruction. |
 | `PC`      | The `P`rogram `C`ounter points to the next instruction. |
 
 All of the registers are word-sized.
@@ -39,7 +37,7 @@ The stack is addressed with signed integers.
 
 A positive address `n` refers to the `n`th item, starting from zero at the bottom of the stack.
 
-A negative address –`n` refers to the `n`th stack item, counting from 1 at the top of the stack.
+A negative address –`n` refers to the `n`th item, counting from 1 at the top of the stack.
 
 A valid address is one that points to a valid instruction.
 
@@ -51,10 +49,8 @@ Before SAM is started, the stack should be given suitable contents, `SSIZE` and 
 ```
 begin
   load the stack item at `PC` into `IR`
-  set `I` to the least significant byte of `IR`
-  set `OP` to `IR` arithmetically shifted one byte to the right
   increment `PC` to point to the next stack item
-  execute the instruction whose opcode is in `I`
+  execute the instruction in `IR`
 repeat
 ```
 
@@ -101,13 +97,17 @@ The instruction set is listed below, with the instructions grouped according to 
 | `r`    | a reference (pointer to a bracket) |
 | `x`    | an unspecified item |
 
+See the section “Machine code format” below for more details of binary representation.
+
 Each type may be suffixed by a number in stack pictures; if the same combination of type and suffix appears more than once in a stack comment, it refers to identical stack items.
 
-Integers are stored as the top three bytes of an `INT` instruction, in twos-complement form.
+Integers are represented as twos-complement as part of an `INT` instruction.
 
-Floats are 32-bit IEEE floats, stored as the operand of a `FLOAT` instruction.
+Floats are IEEE floats (64-bit on an 8-byte word VM, or 32-bit on a 4-byte VM) with the bottom bit cleared (this bit denotes the `FLOAT` instruction). No rounding is performed on the result of arithmetic operations.
 
-A bracket is encoded as a `BRA` instruction followed by some items and ending with a `KET` instruction. A reference to a bracket is encoded in a `REF` instruction as the address of its `BRA` instruction.
+A bracket is encoded as a `BRA` instruction followed by some items and ending with a `KET` instruction. The offset to the corresponding bracket is encoded in each instruction: positive in a `BRA` instruction and negative in a `KET`.
+
+References (pointers) are represented as unsigned integers in a `REF` instruction. A reference to a bracket points to its `BRA` instruction.
 
 
 ### Do nothing
@@ -336,6 +336,40 @@ These instructions allow access to I/O and other system facilities.
 ## External interface
 
 SAM’s external interface comes in three parts. The calling interface allows SAM to be controlled by other programs. The `TRAP` instruction allows implementations to provide access to system facilities, code written in other languages, and the speed of machine code in time-critical situations. The assembly format allows compiled code to be saved, reloaded and shared between systems.
+
+
+### Machine code format
+
+The encoding achieves the following aims:
+
++ Allow pointers to address the entire address space
++ As much precision as possible for floats & integers
++ Some expansion ability for new atom & bracket types
++ Compact instruction encoding
+
+#### 64-bit encoding
+
+| Encoding | Meaning| Notes |
+| --- | --- | --- |
+| `x…x 0` | float |IEEE double-precision, low bit of mantissa forced to 0 |
+| `x…x 01` | 62-bit integer |
+| `x…x 011` | pointer |
+| `x…x tttt 0111` | atom | 4-bit type, 7-byte payload |
+| `x…x t…t 01111` | BRA/KET | 10-bit type, 49-bit offset |
+| `x…x 011111`  | Trap | 58-bit function code |
+| `iiiii…iiiii ss 0111111`  | Instructions | 11 5-bit instructions, with 2-bit instruction set |
+
+#### 32-bit encoding
+
+| Suffix | Meaning | Notes |
+| --- | --- | --- |
+| `x…x 0` | Float |IEEE single-precision, low bit of mantissa forced to 0 |
+| `x…x 01` | pointer |
+| `x…x 011` | 29-bit integer |
+| `x…x tttt 0111` | atom  | 4-bit type, 3-byte payload |
+| `x…x ttttt 01111` | BRA/KET | 5-bit type, 22-bit offset |
+| `x…x 011111` | Trap | 26-bit function code |
+| `iiiii…iiiii 0111111` | Instructions | 5 5-bit instructions |
 
 
 ### Assembly format

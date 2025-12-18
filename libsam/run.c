@@ -22,20 +22,51 @@
 #include "traps_graphics.h"
 
 // Instruction constants
-const int SAM_TAG_SHIFT = 0;
-const sam_word_t SAM_TAG_MASK = 0x3;
+const sam_word_t SAM_FLOAT_TAG = 0x0;
+const sam_word_t SAM_FLOAT_TAG_MASK = 0x1;
+const int SAM_FLOAT_SHIFT = 0;
 
-const int SAM_ATOM_TYPE_SHIFT = 2;
-const int SAM_ATOM_TYPE_MASK = 0xc;
-
-const int SAM_ARRAY_TYPE_SHIFT = 2;
-const sam_word_t SAM_ARRAY_TYPE_MASK = 0xfc;
-
-const int SAM_OPERAND_SHIFT = 8;
-const sam_word_t SAM_OPERAND_MASK = ~0xff;
-
+#if SIZE_MAX == 4294967295ULL
+const sam_word_t SAM_REF_TAG = 0x1;
+const sam_word_t SAM_REF_TAG_MASK = 0x3;
 const int SAM_REF_SHIFT = 2;
-const sam_word_t SAM_REF_MASK = ~0x3;
+
+const sam_word_t SAM_INT_TAG = 0x3;
+const sam_word_t SAM_INT_TAG_MASK = 0x7;
+const int SAM_INT_SHIFT = 3;
+#elif SIZE_MAX == 18446744073709551615ULL
+const sam_word_t SAM_INT_TAG = 0x1;
+const sam_word_t SAM_INT_TAG_MASK = 0x3;
+const int SAM_INT_SHIFT = 2;
+
+const sam_word_t SAM_REF_TAG = 0x3;
+const sam_word_t SAM_REF_TAG_MASK = 0x7;
+const int SAM_REF_SHIFT = 3;
+#else
+#error "SAM needs 4- or 8-byte size_t"
+#endif
+
+const sam_word_t SAM_ATOM_TAG = 0x7;
+const sam_word_t SAM_ATOM_TAG_MASK = 0xf;
+const sam_word_t SAM_ATOM_TYPE_MASK = 0x78;
+const int SAM_ATOM_TYPE_SHIFT = 4;
+const int SAM_ATOM_SHIFT = 8;
+
+const sam_word_t SAM_ARRAY_TAG = 0xf;
+const sam_word_t SAM_ARRAY_TAG_MASK = 0x1f;
+const sam_word_t SAM_ARRAY_TYPE_MASK = 0x7fe0;
+const int SAM_ARRAY_TYPE_SHIFT = 5;
+const int SAM_ARRAY_OFFSET_SHIFT = 15;
+
+const sam_word_t SAM_TRAP_TAG = 0x1f;
+const sam_word_t SAM_TRAP_TAG_MASK = 0x3f;
+const int SAM_TRAP_FUNCTION_SHIFT = 6;
+
+const sam_word_t SAM_INSTS_TAG = 0x3f;
+const sam_word_t SAM_INSTS_TAG_MASK = 0x7f;
+const int SAM_INSTS_SHIFT = 7;
+const sam_word_t SAM_INST_MASK = 0x1f;
+const int SAM_INST_SHIFT = 5;
 
 const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 
@@ -68,22 +99,62 @@ sam_word_t sam_run(void)
         sam_print_working_stack();
 #endif
 
-        switch (ir & SAM_TAG_MASK) {
-        case SAM_TAG_REF:
+        if ((ir & SAM_REF_TAG_MASK) == SAM_REF_TAG) {
 #ifdef SAM_DEBUG
             debug("ref\n");
 #endif
             PUSH_WORD(ir); // Push the same ref on the stack
-            break;
-        case SAM_TAG_ATOM:
-            switch ((ir & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {
-            case SAM_ATOM_INST:
-            {
-                sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OPERAND_SHIFT);
+        } else if ((ir & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
 #ifdef SAM_DEBUG
-                debug("%s\n", inst_name(operand));
+            debug("int\n");
 #endif
-                switch (operand) {
+            PUSH_WORD(ir);
+        } else if ((ir & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
+#ifdef SAM_DEBUG
+            debug("float\n");
+#endif
+            PUSH_WORD(ir);
+        } else if ((ir & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
+            // No atoms yet.
+            switch ((ir & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {}
+        } else if ((ir & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
+            unsigned array_type = (ir & SAM_ARRAY_TYPE_MASK) >> SAM_ARRAY_TYPE_SHIFT;
+            sam_word_t offset = ARSHIFT((sam_word_t)ir, SAM_ARRAY_OFFSET_SHIFT);
+            switch (array_type) {
+            case SAM_ARRAY_STACK:
+#ifdef SAM_DEBUG
+                debug("%s\n", offset > 0 ? "bra" : "ket");
+#endif
+                if (offset > 0) {
+                    PUSH_PTR(sam_pc - 1);
+                    sam_pc += offset; // Skip to next instruction
+                } else {
+                    RET;
+                }
+                break;
+            case SAM_ARRAY_RAW:
+                // TODO
+                // FALLTHROUGH
+            default:
+#ifdef SAM_DEBUG
+                debug("ERROR_INVALID_ARRAY_TYPE\n");
+#endif
+                HALT(SAM_ERROR_INVALID_ARRAY_TYPE);
+                break;
+            }
+        } else if ((ir & SAM_TRAP_TAG_MASK) == SAM_TRAP_TAG) {
+            sam_uword_t function = ir >> SAM_TRAP_FUNCTION_SHIFT;
+#ifdef SAM_DEBUG
+            debug("trap %s\n", trap_name(function));
+#endif
+            HALT_IF_ERROR(sam_trap(function));
+        } else if ((ir & SAM_INSTS_TAG_MASK) == SAM_INSTS_TAG) {
+            for (sam_uword_t opcodes = (sam_uword_t)ir >> SAM_INSTS_SHIFT; opcodes != 0; ) {
+                sam_word_t opcode = opcodes & SAM_INST_MASK;
+#ifdef SAM_DEBUG
+                debug("%s\n", inst_name(opcode));
+#endif
+                switch (opcode) {
                 case INST_NOP:
                     break;
                 case INST_I2F:
@@ -151,6 +222,7 @@ sam_word_t sam_run(void)
                         sam_uword_t code;
                         POP_REF(code);
                         DO(code);
+                        opcodes = 0;
                     }
                     break;
                 case INST_IF:
@@ -161,14 +233,17 @@ sam_word_t sam_run(void)
                         sam_word_t flag;
                         POP_INT(flag);
                         DO(flag ? then : else_);
+                        opcodes = 0;
                     }
                     break;
                 case INST_WHILE:
                     {
                         sam_word_t flag;
                         POP_INT(flag);
-                        if (!flag)
+                        if (!flag) {
                             RET;
+                            opcodes = 0;
+                        }
                     }
                     break;
                 case INST_LOOP: {
@@ -176,12 +251,13 @@ sam_word_t sam_run(void)
                     for (sam_word_t depth = 1; depth > 0; sam_pc--) {
                         sam_uword_t inst;
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc - 1, &inst));
-                        if ((inst & SAM_TAG_MASK) == SAM_TAG_ARRAY) {
-                            sam_word_t offset = ARSHIFT((sam_word_t)inst, SAM_OPERAND_SHIFT);
+                        if ((inst & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
+                            sam_word_t offset = ARSHIFT((sam_word_t)inst, SAM_ARRAY_OFFSET_SHIFT);
                             depth += offset < 0 ? 1 : -1;
                         }
                     }
                     sam_pc++;
+                    opcodes = 0;
                     break;
                 }
                 case INST_NOT:
@@ -251,12 +327,12 @@ sam_word_t sam_run(void)
                     {
                         sam_uword_t operand;
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
-                        if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_word_t a, b;
                             POP_INT(b);
                             POP_INT(a);
                             PUSH_BOOL(a < b);
-                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
+                        } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
                             sam_float_t a, b;
                             POP_FLOAT(b);
                             POP_FLOAT(a);
@@ -269,11 +345,11 @@ sam_word_t sam_run(void)
                     {
                         sam_uword_t operand;
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
-                        if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a;
                             POP_UINT(a);
                             PUSH_INT(-a);
-                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
+                        } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
                             sam_float_t a;
                             POP_FLOAT(a);
                             PUSH_FLOAT(-a);
@@ -285,12 +361,12 @@ sam_word_t sam_run(void)
                     {
                         sam_uword_t operand;
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
-                        if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a, b;
                             POP_UINT(b);
                             POP_UINT(a);
                             PUSH_INT((sam_word_t)(a + b));
-                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
+                        } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
                             sam_float_t a, b;
                             POP_FLOAT(b);
                             POP_FLOAT(a);
@@ -303,16 +379,56 @@ sam_word_t sam_run(void)
                     {
                         sam_uword_t operand;
                         HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
-                        if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a, b;
                             POP_UINT(b);
                             POP_UINT(a);
                             PUSH_INT((sam_word_t)(a * b));
-                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
+                        } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
                             sam_float_t a, b;
                             POP_FLOAT(b);
                             POP_FLOAT(a);
                             PUSH_FLOAT(a * b);
+                        } else
+                            HALT(SAM_ERROR_WRONG_TYPE);
+                    }
+                    break;
+                case INST_DIV:
+                    {
+                        sam_uword_t operand;
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                            sam_word_t divisor, dividend;
+                            POP_INT(divisor);
+                            POP_INT(dividend);
+                            if (dividend == SAM_INT_MIN && divisor == -1) {
+                                PUSH_INT(SAM_INT_MIN);
+                            } else {
+                                PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
+                            }
+                        } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
+                            sam_float_t divisor, dividend;
+                            POP_FLOAT(divisor);
+                            POP_FLOAT(dividend);
+                            PUSH_FLOAT(DIV_CATCH_ZERO(dividend, divisor));
+                        } else
+                            HALT(SAM_ERROR_WRONG_TYPE);
+                    }
+                    break;
+                case INST_REM:
+                    {
+                        sam_uword_t operand;
+                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                            sam_uword_t divisor, dividend;
+                            POP_UINT(divisor);
+                            POP_UINT(dividend);
+                            PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
+                        } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
+                            sam_float_t divisor, dividend;
+                            POP_FLOAT(divisor);
+                            POP_FLOAT(dividend);
+                            PUSH_FLOAT(divisor == 0 ? dividend : fmodf(divisor, dividend));
                         } else
                             HALT(SAM_ERROR_WRONG_TYPE);
                     }
@@ -332,113 +448,28 @@ sam_word_t sam_run(void)
                 case INST_MINUS_2:
                     PUSH_INT(-2);
                     break;
-
                 case INST_HALT:
                     if (sam_stack->sp < 1)
                         HALT(SAM_ERROR_STACK_UNDERFLOW);
                     else {
                         sam_word_t ret;
                         POP_INT(ret);
-                        HALT(SAM_ERROR_HALT | ret << SAM_OPERAND_SHIFT);
+                        HALT(SAM_ERROR_HALT | ret << SAM_RET_SHIFT);
                     }
-                    break;
-
-                case INST_DIV:
-                    {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
-                        if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
-                            sam_word_t divisor, dividend;
-                            POP_INT(divisor);
-                            POP_INT(dividend);
-                            if (dividend == SAM_WORD_MIN && divisor == -1) {
-                                PUSH_INT(SAM_INT_MIN);
-                            } else {
-                                PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
-                            }
-                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
-                            sam_float_t divisor, dividend;
-                            POP_FLOAT(divisor);
-                            POP_FLOAT(dividend);
-                            PUSH_FLOAT(DIV_CATCH_ZERO(dividend, divisor));
-                        } else
-                            HALT(SAM_ERROR_WRONG_TYPE);
-                    }
-                    break;
-                case INST_REM:
-                    {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
-                        if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_INT << SAM_ATOM_TYPE_SHIFT))) {
-                            sam_uword_t divisor, dividend;
-                            POP_UINT(divisor);
-                            POP_UINT(dividend);
-                            PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
-                        } else if ((operand & (SAM_TAG_MASK | SAM_ATOM_TYPE_MASK)) == (SAM_TAG_ATOM | (SAM_ATOM_FLOAT << SAM_ATOM_TYPE_SHIFT))) {
-                            sam_float_t divisor, dividend;
-                            POP_FLOAT(divisor);
-                            POP_FLOAT(dividend);
-                            PUSH_FLOAT(divisor == 0 ? dividend : fmodf(divisor, dividend));
-                        } else
-                            HALT(SAM_ERROR_WRONG_TYPE);
-                    }
-                    break;
-
-                default:
-                    HALT_IF_ERROR(sam_trap((sam_uword_t)operand));
                     break;
                 }
-            }
-            break;
-            case SAM_ATOM_INT:
+
+                opcodes >>= SAM_INST_SHIFT;
+
 #ifdef SAM_DEBUG
-                debug("int\n");
-#endif
-                PUSH_WORD(ir);
-                break;
-            case SAM_ATOM_FLOAT:
-#ifdef SAM_DEBUG
-                debug("float\n");
-#endif
-                PUSH_WORD(ir);
-                break;
-            default:
-#ifdef SAM_DEBUG
-                debug("ERROR_INVALID_OPCODE\n");
-#endif
-                HALT(SAM_ERROR_INVALID_OPCODE);
-                break;
-            }
-            break;
-        case SAM_TAG_ARRAY:
-        {
-            sam_word_t operand = ARSHIFT((sam_word_t)ir, SAM_OPERAND_SHIFT);
-            switch ((ir & SAM_ARRAY_TYPE_MASK) >> SAM_ARRAY_TYPE_SHIFT) {
-            case SAM_ARRAY_STACK:
-#ifdef SAM_DEBUG
-                debug("%s\n", operand > 0 ? "bra" : "ket");
-#endif
-                if (operand > 0) {
-                    PUSH_PTR(sam_pc - 1);
-                    sam_pc += operand; // Skip to next instruction
-                } else {
-                    RET;
+                if (opcodes != 0) {
+                    debug("sam_run: pc = %u, sp = %u, ir = %x\n", sam_pc - 1, sam_stack->sp, ir);
+                    sam_print_working_stack();
                 }
-                break;
-            case SAM_ARRAY_RAW:
-                // TODO
-                // FALLTHROUGH
-            default:
-#ifdef SAM_DEBUG
-                debug("ERROR_INVALID_OPCODE\n");
 #endif
-                HALT(SAM_ERROR_INVALID_OPCODE);
-                break;
             }
-        }
-        break;
-        default:
-            abort(); // The cases are exhaustive
+        } else {
+            abort(); // The opcodes are exhaustive
         }
 
         sam_graphics_process_events();

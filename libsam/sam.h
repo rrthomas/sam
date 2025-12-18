@@ -18,21 +18,21 @@
 // Basic types
 typedef ptrdiff_t sam_word_t;
 typedef size_t sam_uword_t;
-#if SIZEOF_SIZE_T == 4
-#ifdef __STDCPP_FLOAT16_T__
-typedef float16_t sam_float_t;
-#else
-#error No suitable type for sam_float_t
-#endif
-#else
+#if SIZE_MAX == 4294967295ULL
 typedef float sam_float_t;
+#elif SIZE_MAX == 18446744073709551615ULL
+typedef double sam_float_t;
+#else
+#error "SAM needs 4- or 8-byte size_t"
 #endif
 
 #define SAM_WORD_BYTES (sizeof(size_t))
 #define SAM_WORD_BIT (SAM_WORD_BYTES * 8)
 #define SAM_WORD_MIN ((sam_word_t)(1UL << (SAM_WORD_BIT - 1)))
-#define SAM_INT_MIN ((sam_uword_t)SAM_WORD_MIN >> SAM_OPERAND_SHIFT)
+#define SAM_INT_MIN ((sam_uword_t)SAM_WORD_MIN >> SAM_INT_SHIFT)
 #define SAM_UWORD_MAX (SIZE_MAX)
+#define SAM_RET_SHIFT 8
+#define SAM_RET_MASK ((1 << SAM_RET_SHIFT) - 1)
 
 // VM registers
 extern sam_uword_t sam_pc;
@@ -59,6 +59,7 @@ enum {
     SAM_ERROR_TRAP_INIT = 9,
     SAM_ERROR_NO_MEMORY = 10,
     SAM_ERROR_MOVE_ARRAY = 11,
+    SAM_ERROR_INVALID_ARRAY_TYPE = 12,
 };
 
 // Stack access
@@ -72,9 +73,12 @@ int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *ad
 int sam_pop_stack(sam_word_t *val_ptr);
 int sam_push_stack(sam_stack_t *s, sam_word_t val);
 int sam_push_ref(sam_stack_t *s, sam_uword_t addr);
-int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand);
+int sam_push_int(sam_stack_t *s, sam_uword_t val);
 int sam_push_float(sam_stack_t *s, sam_float_t n);
+int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand);
+int sam_push_trap(sam_stack_t *s, sam_uword_t function);
 int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);
+int sam_push_insts(sam_stack_t *s, sam_uword_t insts);
 
 // Miscellaneous routines
 sam_word_t sam_run(void);
@@ -90,7 +94,8 @@ sam_word_t sam_trap(sam_uword_t function);
 #ifdef SAM_DEBUG
 #include <stdbool.h>
 extern bool do_debug;
-char *inst_name(sam_word_t inst_opcode);
+char *inst_name(sam_uword_t inst_opcode);
+char *trap_name(sam_uword_t function);
 void sam_print_stack(void);
 void sam_print_working_stack(void);
 void debug(const char *fmt, ...);
