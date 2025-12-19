@@ -144,7 +144,7 @@ static char *disas(sam_uword_t *addr)
     } else if ((inst & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
         xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_INT_SHIFT));
     } else if ((inst & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
-        uint64_t operand = (uint64_t)(inst >> SAM_FLOAT_SHIFT);
+        sam_uword_t operand = inst >> SAM_FLOAT_SHIFT;
         xasprintf(&text, "float %f", *(sam_float_t *)&operand);
     } else if ((inst & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
         // No atoms yet.

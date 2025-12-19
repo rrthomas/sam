@@ -144,7 +144,7 @@ int sam_push_int(sam_stack_t *s, sam_uword_t val) {
 }
 
 int sam_push_float(sam_stack_t *s, sam_float_t n) {
-    sam_uword_t operand = (sam_word_t)*(uint64_t *)&n;
+    sam_uword_t operand = *(sam_uword_t *)&n;
     return sam_push_stack(s, SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT));
 }
 
