@@ -728,9 +728,10 @@ func (ctx *Frame) assemble(insts ...any) {
 		switch inst := i.(type) {
 		case string:
 			instName := strings.Fields(inst)[0]
-			if instName == "pop" {
+			switch instName {
+			case "pop":
 				panic("use assemblePop to assemble a pop instruction")
-			} else if instName == "trap" {
+			case "trap":
 				panic("use assembleTrap to assemble a trap instruction")
 			}
 			delta, ok := libsam.StackDifference[instName]
