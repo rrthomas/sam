@@ -181,7 +181,7 @@ These instructions manage the stack.
 
 ### Control structures
 
-These instructions implement loops, conditions and subroutine calls.
+These instructions implement branches, conditions and subroutine calls.
 
 > `BRA`  
 > → `r`
@@ -213,9 +213,10 @@ These instructions implement loops, conditions and subroutine calls.
 >
 > Pop `i`. If it is zero, perform the action of `KET`.
 
-> `LOOP`
->
-> Set `PC` to the first instruction of the current bracket.
+> `GO`  
+> `i` →
+> 
+> Set `PC` to the address of the `i`th stack item.
 
 
 ### Logic and shifts

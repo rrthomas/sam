@@ -246,20 +246,16 @@ sam_word_t sam_run(void)
                         }
                     }
                     break;
-                case INST_LOOP: {
-                    // FIXME: Make this more efficient.
-                    for (sam_word_t depth = 1; depth > 0; sam_pc--) {
-                        sam_uword_t inst;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc - 1, &inst));
-                        if ((inst & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
-                            sam_word_t offset = ARSHIFT((sam_word_t)inst, SAM_ARRAY_OFFSET_SHIFT);
-                            depth += offset < 0 ? 1 : -1;
-                        }
+                case INST_GO:
+                    {
+                        sam_word_t pos;
+                        POP_INT(pos);
+                        sam_uword_t addr;
+                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &addr));
+                        sam_pc = addr;
+                        opcodes = 0;
                     }
-                    sam_pc++;
-                    opcodes = 0;
                     break;
-                }
                 case INST_NOT:
                     {
                         sam_word_t a;

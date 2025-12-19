@@ -213,7 +213,7 @@ var Instructions = map[string]InstOpcode{
 	"do":      {C.SAM_INSTS_TAG, C.INST_DO, true},
 	"if":      {C.SAM_INSTS_TAG, C.INST_IF, true},
 	"while":   {C.SAM_INSTS_TAG, C.INST_WHILE, false},
-	"loop":    {C.SAM_INSTS_TAG, C.INST_LOOP, true},
+	"go":      {C.SAM_INSTS_TAG, C.INST_GO, true},
 	"not":     {C.SAM_INSTS_TAG, C.INST_NOT, false},
 	"and":     {C.SAM_INSTS_TAG, C.INST_AND, false},
 	"or":      {C.SAM_INSTS_TAG, C.INST_OR, false},
@@ -273,7 +273,7 @@ var StackDifference = map[string]int{
 	"int":   1,
 	"float": 1,
 
-	// Niladic instructions
+	// Instructions without immediate operand
 	"nop":     0,
 	"pop":     -1,
 	"get":     0,
@@ -283,7 +283,7 @@ var StackDifference = map[string]int{
 	"do":      -1,
 	"if":      -3,
 	"while":   -1,
-	"loop":    0,
+	"go":      -1,
 	"not":     0,
 	"and":     -1,
 	"or":      -1,
