@@ -4,8 +4,8 @@
   - float 10.0
   - float 20.0
 - int 4
-- double:
-  - int -2
+-
+  - loop: int -2
   - get
   - int data
   - add
@@ -26,7 +26,8 @@
   - int -3
   - set
   - while
-  - loop
+  - int loop
+  - go
 - do
 - int 1
 - pop

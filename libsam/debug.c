@@ -61,8 +61,8 @@ char *inst_name(sam_uword_t inst_opcode) {
         return "if";
     case INST_WHILE:
         return "while";
-    case INST_LOOP:
-        return "loop";
+    case INST_GO:
+        return "go";
     case INST_NOT:
         return "not";
     case INST_AND:

@@ -2,7 +2,7 @@
 -
   - float 1.0
   -
-    - int -4
+    - loop: int -4
     - get
     - f2i
     - while
@@ -19,7 +19,8 @@
     - add
     - int -4
     - set
-    - loop
+    - int loop
+    - go
   - do
   - int -2
   - set

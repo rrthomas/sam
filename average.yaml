@@ -5,8 +5,8 @@
   - float 20.0
 - float 0.0
 - int 4
-- average:
-  - int -2
+-
+  - loop: int -2
   - get
   - int data
   - add
@@ -25,7 +25,8 @@
   - int -3
   - set
   - while
-  - loop
+  - int loop
+  - go
 - do
 - int 1
 - pop

@@ -69,7 +69,7 @@ enum SAM_INST {
   INST_DO,
   INST_IF,
   INST_WHILE,
-  INST_LOOP,
+  INST_GO,
   INST_NOT,
   INST_AND,
   INST_OR,
