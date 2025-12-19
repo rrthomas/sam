@@ -87,8 +87,7 @@
     do {                                                                \
         sam_uword_t _w;                                                 \
         _POP_INSN(_w, SAM_FLOAT_TAG, SAM_FLOAT_TAG_MASK, LRSHIFT, SAM_FLOAT_SHIFT); \
-        uint64_t _f = (uint64_t)_w;                                     \
-        var = *(sam_float_t *)&_f;                                      \
+        var = *(sam_float_t *)&_w;                                      \
     } while (0)
 #define PUSH_FLOAT(val)                         \
     sam_push_float(sam_stack, val)
