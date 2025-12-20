@@ -57,7 +57,7 @@
 #define POP_UINT(var)                           \
     _POP_INT(var, LRSHIFT)
 #define PUSH_INT(val)                           \
-    PUSH_WORD(SAM_INT_TAG | (val << SAM_INT_SHIFT))
+    PUSH_WORD(SAM_INT_TAG | LSHIFT(val, SAM_INT_SHIFT))
 
 #define PUSH_BOOL(val)                          \
     PUSH_INT(-((val) != 0))
