@@ -7,7 +7,7 @@ The library sources are in the directory libsam. The front-end sources are
 in the top-level directory, and building it statically links the C library
 into it.
 
-The mascot files are in the directory `Dog`.
+The mascot files are in the directory `mascot`.
 
 
 ## Building SAM
