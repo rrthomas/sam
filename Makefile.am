@@ -23,6 +23,8 @@ TESTS = \
 	screen_levy-c.yaml \
 	expr.sal \
 	graphics.sal \
+	factorial_loop.sal \
+	sum_evens.sal \
 	$(EMPTY)
 
 RESULTS = \
@@ -40,6 +42,8 @@ RESULTS = \
 	set-expected.log \
 	expr-expected.log \
 	graphics-expected.log \
+	factorial_loop-expected.log \
+	sum_evens-expected.log \
 	$(EMPTY)
 
 CLOC = cloc --force-lang="C",h

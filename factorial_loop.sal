@@ -1,0 +1,11 @@
+fac: fn(n) {
+     tot: 1
+
+     loop {
+          if n == 0 { break tot }
+          tot = tot * n
+          n = n - 1
+     }
+}
+
+fac(5)

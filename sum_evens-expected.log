@@ -1,0 +1,6067 @@
+Stack: (81 word(s))
+- 
+  - int 0
+  - 
+    - 
+      - int 0
+      - int 0
+      - 
+        - int 0
+        - int -6
+        - get
+        - int 0
+        - _two extract lt not neg
+        - 
+          - int -5
+          - get
+          - int -4
+          - set
+          - int 2
+          - pop zero while
+        - 
+        - if
+        - int 1
+        - pop
+        - int -5
+        - get
+        - int 1
+        - neg add _one get
+        - int -6
+        - set
+        - int 1
+        - pop
+        - int 0
+        - int -6
+        - get
+        - int 2
+        - rem
+        - int 0
+        - eq neg
+        - 
+          - int 2
+          - pop
+          - int 7
+          - go
+        - 
+        - if
+        - int 1
+        - pop
+        - int -3
+        - get
+        - int -6
+        - get
+        - int 1
+        - add add _one get
+        - int -4
+        - set
+        - int 1
+        - pop
+        - int 7
+        - go
+      - do
+      - int -3
+      - set
+      - int 1
+      - pop
+    - int 9
+    - int -2
+    - get do
+    - int -3
+    - set
+    - int 1
+    - pop
+  - do
+  - halt
+sam_run: pc = 1, sp = 81, ir = 1
+Working stack: (0 word(s))
+int
+sam_run: pc = 2, sp = 82, ir = 25800f
+Working stack: (1 word(s))
+- int 0
+bra
+sam_run: pc = 78, sp = 83, ir = 33f
+Working stack: (2 word(s))
+- int 0
+- ref 2
+do
+sam_run: pc = 3, sp = 83, ir = 21000f
+Working stack: (2 word(s))
+- int 0
+- ref 79
+bra
+sam_run: pc = 70, sp = 84, ir = 25
+Working stack: (3 word(s))
+- int 0
+- ref 79
+- ref 3
+int
+sam_run: pc = 71, sp = 85, ir = fffffff9
+Working stack: (4 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+int
+sam_run: pc = 72, sp = 86, ir = 613f
+Working stack: (5 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- int -2
+get
+sam_run: pc = 72, sp = 86, ir = 613f
+Working stack: (5 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 3
+do
+sam_run: pc = 4, sp = 86, ir = 1
+Working stack: (5 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+int
+sam_run: pc = 5, sp = 87, ir = 1
+Working stack: (6 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+int
+sam_run: pc = 6, sp = 88, ir = 1c800f
+Working stack: (7 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+bra
+sam_run: pc = 64, sp = 89, ir = 33f
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 6
+do
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 9
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 9
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 9
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 9
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 9
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 9
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 9
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int 8
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 9
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int 8
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 8
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 8
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int -1
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 1
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+- ref 46
+if
+sam_run: pc = 41, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- ref 49
+int
+sam_run: pc = 42, sp = 92, ir = bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- ref 49
+- int 2
+pop
+sam_run: pc = 43, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+int
+sam_run: pc = 44, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 8
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 8
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 8
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 8
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 7
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 7
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 7
+- int 7
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 8
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 7
+- int 7
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 7
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 7
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 7
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 7
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 1
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 1
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 40
+- ref 46
+if
+sam_run: pc = 47, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- ref 49
+ket
+sam_run: pc = 49, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 50, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 51, sp = 89, ir = fffffff5
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+int
+sam_run: pc = 52, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int -3
+get
+sam_run: pc = 53, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 54, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 55, sp = 91, ir = 5
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 7
+int
+sam_run: pc = 56, sp = 92, ir = b94a3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 7
+- int 1
+add
+sam_run: pc = 56, sp = 91, ir = b94a3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 0
+- int 8
+add
+sam_run: pc = 56, sp = 90, ir = b94a3f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+_one
+sam_run: pc = 56, sp = 91, ir = b94a3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int -1
+get
+sam_run: pc = 57, sp = 91, ir = fffffff1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int 8
+int
+sam_run: pc = 58, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 0
+- int 0
+- ref 65
+- int 8
+- int 8
+- int -4
+set
+sam_run: pc = 59, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 8
+int
+sam_run: pc = 60, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 8
+- int 1
+pop
+sam_run: pc = 61, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 62, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 7
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 7
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 7
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 7
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 7
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 7
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 7
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+- int 6
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 7
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+- int 6
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 6
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 6
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int -1
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 1
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+- ref 46
+if
+sam_run: pc = 41, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- ref 49
+int
+sam_run: pc = 42, sp = 92, ir = bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- ref 49
+- int 2
+pop
+sam_run: pc = 43, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 44, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 6
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 6
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 6
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 6
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 6
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 5
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 5
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 5
+- int 5
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 6
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 5
+- int 5
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 5
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 5
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 5
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 5
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 1
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 1
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 40
+- ref 46
+if
+sam_run: pc = 47, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- ref 49
+ket
+sam_run: pc = 49, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 50, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 51, sp = 89, ir = fffffff5
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+int
+sam_run: pc = 52, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int -3
+get
+sam_run: pc = 53, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 8
+int
+sam_run: pc = 54, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 8
+- int -6
+get
+sam_run: pc = 55, sp = 91, ir = 5
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 8
+- int 5
+int
+sam_run: pc = 56, sp = 92, ir = b94a3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 8
+- int 5
+- int 1
+add
+sam_run: pc = 56, sp = 91, ir = b94a3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 8
+- int 6
+add
+sam_run: pc = 56, sp = 90, ir = b94a3f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 14
+_one
+sam_run: pc = 56, sp = 91, ir = b94a3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 14
+- int -1
+get
+sam_run: pc = 57, sp = 91, ir = fffffff1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 14
+- int 14
+int
+sam_run: pc = 58, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 8
+- int 0
+- ref 65
+- int 14
+- int 14
+- int -4
+set
+sam_run: pc = 59, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 14
+int
+sam_run: pc = 60, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 14
+- int 1
+pop
+sam_run: pc = 61, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 62, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 5
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 5
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 5
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 5
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 5
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 5
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 5
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+- int 4
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 5
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+- int 4
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 4
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 4
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int -1
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 1
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+- ref 46
+if
+sam_run: pc = 41, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- ref 49
+int
+sam_run: pc = 42, sp = 92, ir = bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- ref 49
+- int 2
+pop
+sam_run: pc = 43, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 44, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 4
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 4
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 4
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 4
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 4
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 3
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 3
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 3
+- int 3
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 4
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 3
+- int 3
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 3
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 3
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 3
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 3
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 1
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 1
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 40
+- ref 46
+if
+sam_run: pc = 47, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- ref 49
+ket
+sam_run: pc = 49, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 50, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 51, sp = 89, ir = fffffff5
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+int
+sam_run: pc = 52, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int -3
+get
+sam_run: pc = 53, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 14
+int
+sam_run: pc = 54, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 14
+- int -6
+get
+sam_run: pc = 55, sp = 91, ir = 5
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 14
+- int 3
+int
+sam_run: pc = 56, sp = 92, ir = b94a3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 14
+- int 3
+- int 1
+add
+sam_run: pc = 56, sp = 91, ir = b94a3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 14
+- int 4
+add
+sam_run: pc = 56, sp = 90, ir = b94a3f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 18
+_one
+sam_run: pc = 56, sp = 91, ir = b94a3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 18
+- int -1
+get
+sam_run: pc = 57, sp = 91, ir = fffffff1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 18
+- int 18
+int
+sam_run: pc = 58, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 14
+- int 0
+- ref 65
+- int 18
+- int 18
+- int -4
+set
+sam_run: pc = 59, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 18
+int
+sam_run: pc = 60, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 18
+- int 1
+pop
+sam_run: pc = 61, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 62, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 3
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 3
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 3
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 3
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 3
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 3
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 3
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+- int 2
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 3
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+- int 2
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 2
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 2
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int -1
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+- ref 46
+if
+sam_run: pc = 41, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- ref 49
+int
+sam_run: pc = 42, sp = 92, ir = bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- ref 49
+- int 2
+pop
+sam_run: pc = 43, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 44, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 2
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 2
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 2
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 2
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 2
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 1
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 1
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 1
+- int 1
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 2
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 1
+- int 1
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 1
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 1
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 40
+- ref 46
+if
+sam_run: pc = 47, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- ref 49
+ket
+sam_run: pc = 49, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 50, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 51, sp = 89, ir = fffffff5
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+int
+sam_run: pc = 52, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int -3
+get
+sam_run: pc = 53, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 18
+int
+sam_run: pc = 54, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 18
+- int -6
+get
+sam_run: pc = 55, sp = 91, ir = 5
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 18
+- int 1
+int
+sam_run: pc = 56, sp = 92, ir = b94a3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 18
+- int 1
+- int 1
+add
+sam_run: pc = 56, sp = 91, ir = b94a3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 18
+- int 2
+add
+sam_run: pc = 56, sp = 90, ir = b94a3f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 20
+_one
+sam_run: pc = 56, sp = 91, ir = b94a3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 20
+- int -1
+get
+sam_run: pc = 57, sp = 91, ir = fffffff1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 20
+- int 20
+int
+sam_run: pc = 58, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 18
+- int 0
+- ref 65
+- int 20
+- int 20
+- int -4
+set
+sam_run: pc = 59, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 20
+int
+sam_run: pc = 60, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 20
+- int 1
+pop
+sam_run: pc = 61, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+int
+sam_run: pc = 62, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 1
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int -1
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- ref 12
+- ref 20
+if
+sam_run: pc = 21, sp = 91, ir = ffff800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- ref 23
+ket
+sam_run: pc = 23, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 24, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 25, sp = 89, ir = ffffffed
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+int
+sam_run: pc = 26, sp = 90, ir = 13f
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int -5
+get
+sam_run: pc = 27, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 1
+int
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 1
+- int 1
+neg
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 1
+- int -1
+add
+sam_run: pc = 28, sp = 90, ir = b949bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+_one
+sam_run: pc = 28, sp = 91, ir = b949bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int -1
+get
+sam_run: pc = 29, sp = 91, ir = ffffffe9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+int
+sam_run: pc = 30, sp = 92, ir = 1bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 1
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- int -6
+set
+sam_run: pc = 31, sp = 90, ir = 5
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 32, sp = 91, ir = bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+pop
+sam_run: pc = 33, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+int
+sam_run: pc = 34, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 35, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 36, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+int
+sam_run: pc = 37, sp = 92, ir = bbf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 2
+rem
+sam_run: pc = 38, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+int
+sam_run: pc = 39, sp = 92, ir = 138bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 0
+eq
+sam_run: pc = 39, sp = 91, ir = 138bf
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int -1
+neg
+sam_run: pc = 40, sp = 91, ir = 2800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+bra
+sam_run: pc = 46, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+bra
+sam_run: pc = 48, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 40
+- ref 46
+if
+sam_run: pc = 41, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- ref 49
+int
+sam_run: pc = 42, sp = 92, ir = bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- ref 49
+- int 2
+pop
+sam_run: pc = 43, sp = 89, ir = 1d
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+int
+sam_run: pc = 44, sp = 90, ir = 4bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 7
+go
+sam_run: pc = 7, sp = 89, ir = 1
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+int
+sam_run: pc = 8, sp = 90, ir = ffffffe9
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+int
+sam_run: pc = 9, sp = 91, ir = 13f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int -6
+get
+sam_run: pc = 10, sp = 91, ir = 1
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+int
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 0
+_two
+sam_run: pc = 11, sp = 93, ir = 9aa44f3f
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 0
+- int -2
+extract
+sam_run: pc = 11, sp = 92, ir = 9aa44f3f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+- int 0
+lt
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 0
+not
+sam_run: pc = 11, sp = 91, ir = 9aa44f3f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int -1
+neg
+sam_run: pc = 12, sp = 91, ir = 3800f
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+bra
+sam_run: pc = 20, sp = 92, ir = 800f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 12
+bra
+sam_run: pc = 22, sp = 93, ir = 3bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- int 1
+- ref 12
+- ref 20
+if
+sam_run: pc = 13, sp = 91, ir = ffffffed
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- ref 23
+int
+sam_run: pc = 14, sp = 92, ir = 13f
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- ref 23
+- int -5
+get
+sam_run: pc = 15, sp = 92, ir = fffffff1
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- ref 23
+- int 20
+int
+sam_run: pc = 16, sp = 93, ir = 1bf
+Working stack: (12 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 0
+- ref 65
+- int 0
+- ref 23
+- int 20
+- int -4
+set
+sam_run: pc = 17, sp = 91, ir = 9
+Working stack: (10 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 20
+- ref 65
+- int 0
+- ref 23
+int
+sam_run: pc = 18, sp = 92, ir = 11a0bf
+Working stack: (11 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 20
+- ref 65
+- int 0
+- ref 23
+- int 2
+pop
+sam_run: pc = 18, sp = 89, ir = 11a0bf
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 20
+- ref 65
+zero
+sam_run: pc = 18, sp = 90, ir = 11a0bf
+Working stack: (9 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 20
+- ref 65
+- int 0
+while
+sam_run: pc = 65, sp = 88, ir = fffffff5
+Working stack: (7 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 20
+int
+sam_run: pc = 66, sp = 89, ir = 1bf
+Working stack: (8 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 0
+- ref 73
+- int 20
+- int 20
+- int -3
+set
+sam_run: pc = 67, sp = 87, ir = 5
+Working stack: (6 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 20
+- ref 73
+- int 20
+int
+sam_run: pc = 68, sp = 88, ir = bf
+Working stack: (7 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 20
+- ref 73
+- int 20
+- int 1
+pop
+sam_run: pc = 69, sp = 86, ir = ffdf000f
+Working stack: (5 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 20
+- ref 73
+ket
+sam_run: pc = 73, sp = 85, ir = fffffff5
+Working stack: (4 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 20
+int
+sam_run: pc = 74, sp = 86, ir = 1bf
+Working stack: (5 word(s))
+- int 0
+- ref 79
+- ref 3
+- int 20
+- int -3
+set
+sam_run: pc = 75, sp = 84, ir = 5
+Working stack: (3 word(s))
+- int 20
+- ref 79
+- ref 3
+int
+sam_run: pc = 76, sp = 85, ir = bf
+Working stack: (4 word(s))
+- int 20
+- ref 79
+- ref 3
+- int 1
+pop
+sam_run: pc = 77, sp = 83, ir = ffda800f
+Working stack: (2 word(s))
+- int 20
+- ref 79
+ket
+sam_run: pc = 79, sp = 82, ir = fbf
+Working stack: (1 word(s))
+- int 20
+halt
+Stack: (81 word(s))
+- 
+  - int 0
+  - 
+    - 
+      - int 0
+      - int 0
+      - 
+        - int 0
+        - int -6
+        - get
+        - int 0
+        - _two extract lt not neg
+        - 
+          - int -5
+          - get
+          - int -4
+          - set
+          - int 2
+          - pop zero while
+        - 
+        - if
+        - int 1
+        - pop
+        - int -5
+        - get
+        - int 1
+        - neg add _one get
+        - int -6
+        - set
+        - int 1
+        - pop
+        - int 0
+        - int -6
+        - get
+        - int 2
+        - rem
+        - int 0
+        - eq neg
+        - 
+          - int 2
+          - pop
+          - int 7
+          - go
+        - 
+        - if
+        - int 1
+        - pop
+        - int -3
+        - get
+        - int -6
+        - get
+        - int 1
+        - add add _one get
+        - int -4
+        - set
+        - int 1
+        - pop
+        - int 7
+        - go
+      - do
+      - int -3
+      - set
+      - int 1
+      - pop
+    - int 9
+    - int -2
+    - get do
+    - int -3
+    - set
+    - int 1
+    - pop
+  - do
+  - halt
+sam_run returns: halt with reason 20 (0x14)
