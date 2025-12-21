@@ -122,7 +122,8 @@ type LogicExp struct {
 type Expression struct {
 	Pos lexer.Position
 
-	Cond     *If       `  @@`
+	If       *If       `  @@`
+	Loop     *Block    `| "loop" @@`
 	LogicExp *LogicExp `| @@`
 }
 
@@ -131,7 +132,7 @@ type If struct {
 
 	Cond *Expression `"if" @@`
 	Then *Block      `@@`
-	Else *Block      `@@?`
+	Else *Block      `("else" @@)?`
 }
 
 type Assignment struct {
@@ -164,7 +165,10 @@ type Statement struct {
 }
 
 type Terminator struct {
-	Return *Expression `"return" @@ ";"`
+	Return   *Expression `  "return" @@ ";"`
+	BreakExp *Expression `| "break" @@ ";"`
+	Break    bool        `| @"break" ";"`
+	Continue bool        `| @"continue" ";"`
 }
 
 type Body struct {
@@ -290,8 +294,10 @@ func (e *LogicExp) String() string {
 }
 
 func (e *Expression) String() string {
-	if e.Cond != nil {
-		return e.Cond.String()
+	if e.If != nil {
+		return e.If.String()
+	} else if e.Loop != nil {
+		return e.Loop.String()
 	} else if e.LogicExp != nil {
 		return e.LogicExp.String()
 	}
@@ -336,6 +342,12 @@ func (s *Statement) String() string {
 func (t *Terminator) String() string {
 	if t.Return != nil {
 		return fmt.Sprintf("return %s", t.Return.String())
+	} else if t.BreakExp != nil {
+		return fmt.Sprintf("break %s", t.BreakExp.String())
+	} else if t.Break {
+		return "break"
+	} else if t.Continue {
+		return "continue"
 	}
 	panic("invalid statement")
 }
@@ -375,9 +387,8 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	} else if e.Variable != nil {
 		ctx.assemble(fmt.Sprintf("int %d", ctx.variableAddr(*e.Variable)), "get")
 	} else if e.Block != nil {
-		ctx.assemble("int 0")
-		blockCtx := e.Block.Compile(ctx)
-		ctx.assemble(blockCtx.asm)
+		ctx.assemble("int 0") // value of block
+		ctx.assemble(ctx.assembleBlock(e.Block).asm)
 		ctx.assemble("do")
 	} else if e.Function != nil {
 		e.Function.Compile(ctx)
@@ -415,7 +426,7 @@ func (e *CallExp) Compile(ctx *Frame) {
 			ctx.assemble("do")
 			nargs := len(*args.Arguments)
 			if nargs > 1 {
-				ctx.sp -= libsam.Uword(nargs - 1)
+				ctx.adjustSp(-(nargs - 1))
 			}
 		}
 	}
@@ -546,8 +557,16 @@ func (e *LogicExp) Compile(ctx *Frame) {
 }
 
 func (e *Expression) Compile(ctx *Frame) {
-	if e.Cond != nil {
-		e.Cond.Compile(ctx)
+	if e.If != nil {
+		e.If.Compile(ctx)
+	} else if e.Loop != nil {
+		ctx.assemble("int 0")
+		blockCtx := e.Loop.Compile(ctx, true)
+		blockCtx.assemblePop(blockCtx.sp - blockCtx.baseSp)
+		blockCtx.assemble(fmt.Sprintf("int %d", blockCtx.pc0))
+		blockCtx.assemble("go")
+		ctx.assemble(blockCtx.asm)
+		ctx.assemble("do")
 	} else if e.LogicExp != nil {
 		e.LogicExp.Compile(ctx)
 	} else {
@@ -555,14 +574,14 @@ func (e *Expression) Compile(ctx *Frame) {
 	}
 }
 
-func (c *If) Compile(ctx *Frame) {
+func (i *If) Compile(ctx *Frame) {
 	ctx.assemble("int 0") // return value
-	thenCtx := c.Then.Compile(ctx)
-	var elseCtx Frame = Frame{}
-	if c.Else != nil {
-		elseCtx = c.Else.Compile(ctx)
+	thenCtx := ctx.assembleBlock(i.Then)
+	elseCtx := Frame{}
+	if i.Else != nil {
+		elseCtx = ctx.assembleBlock(i.Else)
 	}
-	c.Cond.Compile(ctx)
+	i.Cond.Compile(ctx)
 	ctx.assemble(thenCtx.asm)
 	ctx.assemble(elseCtx.asm)
 	ctx.assemble("if")
@@ -619,7 +638,29 @@ func (s *Statement) Compile(ctx *Frame) {
 func (t *Terminator) Compile(ctx *Frame) {
 	if t.Return != nil {
 		t.Return.Compile(ctx)
-		ctx.returnFromFrame = true
+		ctx.tearDownFrame()
+	} else if t.BreakExp != nil || t.Break {
+		if ctx.loop == nil {
+			panic("'break' used outside a loop")
+		}
+		// Set return value
+		if t.BreakExp != nil {
+			t.BreakExp.Compile(ctx)
+		} else {
+			ctx.assemble("zero")
+		}
+		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+1)), "set")
+		// Pop items down to loop start
+		ctx.assemblePop(ctx.sp - ctx.loop.baseSp)
+		ctx.assemble("zero", "while")
+	} else if t.Continue {
+		if ctx.loop == nil {
+			panic("'continue' used outside a loop")
+		}
+		// Pop items down to loop start
+		ctx.assemblePop(ctx.sp - ctx.loop.baseSp)
+		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.pc0))
+		ctx.assemble("go")
 	} else {
 		panic("invalid Terminator")
 	}
@@ -644,38 +685,53 @@ func (b *Body) Compile(ctx *Frame) {
 	}
 }
 
-func (b *Block) Compile(ctx *Frame) Frame {
-	baseSp := libsam.Uword(int(ctx.sp) + 1)
+func (b *Block) Compile(ctx *Frame, loop bool) Frame {
+	baseSp := libsam.Word(int(ctx.sp) + 1)
 	blockCtx := Frame{
-		labels:          slices.Clone(ctx.labels),
-		asm:             make([]any, 0),
-		sp:              baseSp,
-		nargs:           ctx.nargs,
-		returnFromFrame: ctx.returnFromFrame,
+		labels: slices.Clone(ctx.labels),
+		asm:    make([]any, 0),
+		pc0:    ctx.pc0 + libsam.Uword(len(ctx.asm)) + 1,
+		baseSp: baseSp,
+		sp:     baseSp,
+		nargs:  ctx.nargs,
+		loop:   ctx.loop,
+	}
+	if loop {
+		blockCtx.loop = &blockCtx
 	}
 	b.Body.Compile(&blockCtx)
-	if blockCtx.returnFromFrame {
-		blockCtx.tearDownFrame()
-	} else {
-		blockCtx.tearDownBlock(blockCtx.sp - baseSp)
-	}
 	return blockCtx
 }
 
 func (f *Function) Compile(ctx *Frame) {
 	// FIXME: captures
 	nargs := libsam.Uword(len(*f.Parameters))
-	innerCtx := Frame{labels: make([]Location, 0), asm: make([]any, 0), sp: 0, nargs: nargs}
+	innerCtx := Frame{
+		labels: make([]Location, 0),
+		asm:    make([]any, 0),
+		pc0:    ctx.pc0 + libsam.Uword(len(ctx.asm)) + 1,
+		baseSp: 0,
+		sp:     0,
+		nargs:  nargs,
+	}
 	for i, p := range *f.Parameters {
 		innerCtx.labels = append(innerCtx.labels, Location{id: p, addr: i - int(nargs)})
 	}
-	innerCtx.returnFromFrame = true
-	ctx.assemble(f.Body.Compile(&innerCtx).asm)
+	blockCtx := f.Body.Compile(&innerCtx, false)
+	if f.Body.Body.Terminator == nil {
+		blockCtx.tearDownFrame()
+	}
+	ctx.assemble(blockCtx.asm)
 }
 
 type Location struct {
 	id   string
 	addr int // relative to base of stack frame
+}
+
+func (ctx *Frame) adjustSp(delta int) {
+	// FIXME: check this doesn't go outside some limit.
+	ctx.sp += libsam.Word(delta)
 }
 
 func (ctx *Frame) variableAddr(id string) int {
@@ -688,7 +744,11 @@ func (ctx *Frame) variableAddr(id string) int {
 	panic(fmt.Errorf("no such variable %s", id))
 }
 
-func (ctx *Frame) tearDownBlock(depth libsam.Uword) {
+func (ctx *Frame) tearDownBlock() {
+	if ctx.sp < ctx.baseSp {
+		panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, ctx.baseSp))
+	}
+	depth := ctx.sp - ctx.baseSp
 	// Set result
 	ctx.assemble(fmt.Sprintf("int %d", -int(depth+1)), "set")
 	// Pop remaining stack items in this frame, except for return address
@@ -699,7 +759,7 @@ func (ctx *Frame) tearDownBlock(depth libsam.Uword) {
 
 func (ctx *Frame) tearDownFrame() {
 	// Set result
-	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-1+ctx.nargs)), "set")
+	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-1+libsam.Word(ctx.nargs))), "set")
 	// Pop remaining stack items in this frame, except for return address
 	if ctx.sp > 1 {
 		ctx.assemblePop(ctx.sp - 1)
@@ -710,17 +770,19 @@ func (ctx *Frame) tearDownFrame() {
 		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)+1), "set")
 		if ctx.nargs > 2 {
 			// Pop arguments 3 onwards, if any
-			ctx.assemblePop(ctx.nargs - 2)
+			ctx.assemblePop(libsam.Word(ctx.nargs) - 2)
 		}
 	}
 }
 
 type Frame struct {
-	labels          []Location
-	asm             []any
-	sp              libsam.Uword
-	nargs           libsam.Uword // Number of arguments to this frame
-	returnFromFrame bool         // Whether we return from the frame on block exit
+	labels []Location
+	asm    []any
+	pc0    libsam.Uword
+	baseSp libsam.Word
+	sp     libsam.Word
+	nargs  libsam.Uword // Number of arguments to this frame
+	loop   *Frame       // Innermost loop, if any
 }
 
 func (ctx *Frame) assemble(insts ...any) {
@@ -738,21 +800,22 @@ func (ctx *Frame) assemble(insts ...any) {
 			if !ok {
 				panic(fmt.Errorf("invalid instruction %s", instName))
 			}
-			if delta < 0 {
-				ctx.sp -= libsam.Uword(-delta)
-			} else {
-				ctx.sp += libsam.Uword(delta)
-			}
+			ctx.adjustSp(delta)
 		default: // Assume an array
-			ctx.sp += 1 // A stack pushes a `ref` instruction
+			ctx.adjustSp(1) // A stack pushes a `ref` instruction
 		}
 		ctx.asm = append(ctx.asm, i)
 	}
 }
 
-func (ctx *Frame) assemblePop(items libsam.Uword) {
-	ctx.asm = append(ctx.asm, fmt.Sprintf("int %d", items), "pop")
-	ctx.sp -= items
+func (ctx *Frame) assemblePop(items libsam.Word) {
+	if items < 0 {
+		panic(fmt.Sprintf("assemblePop cannot pop %d items", items))
+	}
+	if items > 0 {
+		ctx.asm = append(ctx.asm, fmt.Sprintf("int %d", items), "pop")
+		ctx.adjustSp(-int(items))
+	}
 }
 
 func trapStackEffect(function string) libsam.StackEffect {
@@ -766,8 +829,15 @@ func trapStackEffect(function string) libsam.StackEffect {
 func (ctx *Frame) assembleTrap(function string) {
 	ctx.asm = append(ctx.asm, fmt.Sprintf("trap %s", function))
 	stackEffect := trapStackEffect(function)
-	ctx.sp -= stackEffect.In
-	ctx.sp += stackEffect.Out
+	ctx.adjustSp(int(stackEffect.Out) - int(stackEffect.In))
+}
+
+func (ctx *Frame) assembleBlock(b *Block) Frame {
+	blockCtx := b.Compile(ctx, false)
+	if b.Body.Terminator == nil {
+		blockCtx.tearDownBlock()
+	}
+	return blockCtx
 }
 
 func Sal(src string, ast bool, asm bool) []byte {
@@ -784,9 +854,10 @@ func Sal(src string, ast bool, asm bool) []byte {
 
 	// Wrap the top-level body in a Block and compile it
 	block := Block{Pos: body.Pos, Body: body}
-	ctx := Frame{labels: make([]Location, 0), asm: make([]any, 0), sp: 0, nargs: 0}
-	ctx.assemble("int 0") // return value
-	ctx.assemble(block.Compile(&ctx).asm)
+	ctx := Frame{labels: make([]Location, 0), asm: make([]any, 0)}
+	ctx.assemble("int 0") // value of top level
+	blockCtx := ctx.assembleBlock(&block)
+	ctx.assemble(blockCtx.asm)
 	ctx.assemble("do", "halt")
 
 	yaml, err := yaml.Marshal(ctx.asm)

@@ -1,0 +1,12 @@
+sumEvens: fn(n) {
+     tot: 0
+
+     loop {
+          if n <= 0 { break tot }
+          n = n - 1
+          if n % 2 == 0 { continue }
+          tot = tot + n + 1
+     }
+}
+
+sumEvens(9)
