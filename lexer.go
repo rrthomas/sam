@@ -112,6 +112,9 @@ next:
 		if token.Value == "\n" {
 			// Do we need to replace the newline with a semi-colon?
 			switch l.last.Value {
+			case ";":
+				continue next
+
 			case "\\":
 				l.last = token
 				continue next
