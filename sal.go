@@ -505,13 +505,14 @@ func (b *Body) Compile(ctx *Frame) {
 func (b *Block) Compile(ctx *Frame, loop bool) Frame {
 	baseSp := libsam.Word(int(ctx.sp) + 1)
 	blockCtx := Frame{
-		labels: slices.Clone(ctx.labels),
-		asm:    make([]any, 0),
-		pc0:    ctx.pc0 + libsam.Uword(len(ctx.asm)) + 1,
-		baseSp: baseSp,
-		sp:     baseSp,
-		nargs:  ctx.nargs,
-		loop:   ctx.loop,
+		labels:   slices.Clone(ctx.labels),
+		captures: ctx.captures,
+		asm:      make([]any, 0),
+		pc0:      ctx.pc0 + libsam.Uword(len(ctx.asm)) + 1,
+		baseSp:   baseSp,
+		sp:       baseSp,
+		nargs:    ctx.nargs,
+		loop:     ctx.loop,
 	}
 	if loop {
 		blockCtx.loop = &blockCtx
@@ -521,15 +522,15 @@ func (b *Block) Compile(ctx *Frame, loop bool) Frame {
 }
 
 func (f *Function) Compile(ctx *Frame) {
-	// FIXME: captures
 	nargs := libsam.Uword(len(*f.Parameters))
 	innerCtx := Frame{
-		labels: make([]Location, 0),
-		asm:    make([]any, 0),
-		pc0:    ctx.pc0 + libsam.Uword(len(ctx.asm)) + 1,
-		baseSp: 0,
-		sp:     0,
-		nargs:  nargs,
+		labels:   make([]Location, 0),
+		captures: make([]Location, 0),
+		asm:      make([]any, 0),
+		pc0:      ctx.pc0 + libsam.Uword(len(ctx.asm)) + 1,
+		baseSp:   0,
+		sp:       0,
+		nargs:    nargs,
 	}
 	for i, p := range *f.Parameters {
 		innerCtx.labels = append(innerCtx.labels, Location{id: p, addr: i - int(nargs)})
@@ -593,13 +594,14 @@ func (ctx *Frame) tearDownFrame() {
 }
 
 type Frame struct {
-	labels []Location
-	asm    []any
-	pc0    libsam.Uword
-	baseSp libsam.Word
-	sp     libsam.Word
-	nargs  libsam.Uword // Number of arguments to this frame
-	loop   *Frame       // Innermost loop, if any
+	labels   []Location
+	captures []Location
+	asm      []any
+	pc0      libsam.Uword
+	baseSp   libsam.Word
+	sp       libsam.Word
+	nargs    libsam.Uword // Number of arguments to this frame
+	loop     *Frame       // Innermost loop, if any
 }
 
 func (ctx *Frame) assemble(insts ...any) {
@@ -671,7 +673,7 @@ func Sal(src string, ast bool, asm bool) []byte {
 
 	// Wrap the top-level body in a Block and compile it
 	block := Block{Pos: body.Pos, Body: body}
-	ctx := Frame{labels: make([]Location, 0), asm: make([]any, 0)}
+	ctx := Frame{labels: make([]Location, 0), captures: make([]Location, 0), asm: make([]any, 0)}
 	ctx.assemble("int 0") // value of top level
 	blockCtx := ctx.assembleBlock(&block)
 	ctx.assemble(blockCtx.asm)
