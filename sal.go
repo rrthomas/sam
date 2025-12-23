@@ -31,6 +31,8 @@ import (
 	"github.com/rrthomas/sam/libsam"
 )
 
+// Parser
+
 type PrimaryExp struct {
 	Pos lexer.Position
 
