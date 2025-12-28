@@ -71,7 +71,7 @@ func (s *Stack) PushStack(val Word) int {
 	return int(C.sam_push_stack(s.stack, val))
 }
 
-func (s *Stack) PushLink(addr Uword) int {
+func (s *Stack) PushRef(addr Uword) int {
 	return int(C.sam_push_ref(s.stack, addr))
 }
 
