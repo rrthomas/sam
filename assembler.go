@@ -132,7 +132,7 @@ func (a *assembler) assembleInstruction(tokens []string) {
 			a.stack.PushInt(libsam.Uword(operand))
 		case libsam.REF_TAG:
 			operand := a.parseLiteral(operandStr)
-			a.stack.PushLink(libsam.Uword(operand))
+			a.stack.PushRef(libsam.Uword(operand))
 		case libsam.TRAP_TAG:
 			trap, ok := parseTrap(operandStr)
 			if !ok {
