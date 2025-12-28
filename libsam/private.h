@@ -75,14 +75,6 @@
 #define PUSH_PTR(addr)                                \
     PUSH_WORD(LSHIFT((addr), SAM_REF_SHIFT) | SAM_REF_TAG)
 
-#define POP_STACK(addr_var, size_var)                     \
-    do {                                                  \
-        POP_REF(addr_var);                                \
-        sam_uword_t _insn;                                \
-        HALT_IF_ERROR(sam_stack_peek(sam_stack, addr_var - 1, &_insn)); \
-        size_var = (_insn >> SAM_ARRAY_OFFSET_SHIFT) - 1; \
-    } while(0)
-
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
         sam_uword_t _w;                                                 \
