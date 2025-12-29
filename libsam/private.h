@@ -39,7 +39,7 @@
         HALT(SAM_ERROR_WRONG_TYPE);
 
 #define POP_WORD(ptr)                           \
-    HALT_IF_ERROR(sam_pop_stack(ptr))
+    HALT_IF_ERROR(sam_pop_stack(sam_stack, ptr))
 #define PUSH_WORD(val)                          \
     HALT_IF_ERROR(sam_push_stack(sam_stack, val))
 

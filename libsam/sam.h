@@ -66,11 +66,11 @@ enum {
 sam_stack_t *sam_stack_new(void);
 int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
-int sam_stack_get(sam_uword_t addr); // FIXME: add stack parameter
-int sam_stack_extract(sam_uword_t addr); // FIXME: add stack parameter
-int sam_stack_insert(sam_uword_t addr); // FIXME: add stack parameter
-int sam_stack_item(sam_uword_t sp, sam_word_t n, sam_uword_t *addr);
-int sam_pop_stack(sam_word_t *val_ptr);
+int sam_stack_get(sam_stack_t *s, sam_uword_t addr);
+int sam_stack_extract(sam_stack_t *s, sam_uword_t addr);
+int sam_stack_insert(sam_stack_t *s, sam_uword_t addr);
+int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr);
+int sam_pop_stack(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_push_stack(sam_stack_t *s, sam_word_t val);
 int sam_push_ref(sam_stack_t *s, sam_uword_t addr);
 int sam_push_int(sam_stack_t *s, sam_uword_t val);

@@ -185,8 +185,8 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_get(addr));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_get(sam_stack, addr));
                     }
                     break;
                 case INST_SET:
@@ -195,7 +195,7 @@ sam_word_t sam_run(void)
                         POP_INT(pos);
                         sam_uword_t dest;
                         POP_WORD(&val);
-                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &dest));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &dest));
                         HALT_IF_ERROR(sam_stack_poke(sam_stack, dest, val));
                     }
                     break;
@@ -204,8 +204,8 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_extract(addr));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_extract(sam_stack, addr));
                     }
                     break;
                 case INST_INSERT:
@@ -213,8 +213,8 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_insert(addr));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_insert(sam_stack, addr));
                     }
                     break;
                 case INST_DO:
@@ -251,7 +251,7 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &addr));
                         sam_pc = addr;
                         opcodes = 0;
                     }

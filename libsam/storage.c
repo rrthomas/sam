@@ -44,78 +44,78 @@ int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
 
 // Move `size` words anywhere within allocated stack memory.
 // The blocks may overlap.
-static sam_word_t move_n(sam_uword_t dst, sam_uword_t src, sam_uword_t size)
+static sam_word_t move_n(sam_stack_t *s, sam_uword_t dst, sam_uword_t src, sam_uword_t size)
 {
-    if (size > sam_stack->ssize || src > sam_stack->ssize - size || dst > sam_stack->ssize - size)
+    if (size > s->ssize || src > s->ssize - size || dst > s->ssize - size)
         return SAM_ERROR_INVALID_ADDRESS;
-    memmove(&sam_stack->s0[dst], &sam_stack->s0[src], size * sizeof(sam_word_t));
+    memmove(&s->s0[dst], &s->s0[src], size * sizeof(sam_word_t));
     return SAM_ERROR_OK;
 }
 
-// Move the stack item at `addr` to the top of the stack.
-int sam_stack_extract(sam_uword_t addr) {
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t opcode;
-    HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &opcode));
-    HALT_IF_ERROR(move_n(addr, addr + 1, sam_stack->sp - addr));
-    HALT_IF_ERROR(sam_stack_poke(sam_stack, sam_stack->sp - 1, opcode));
-error:
-    return error;
-}
-
-// Move the top stack item to `addr`.
-int sam_stack_insert(sam_uword_t addr) {
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t opcode;
-    HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &opcode));
-    HALT_IF_ERROR(move_n(addr + 1, addr, sam_stack->sp - addr));
-    HALT_IF_ERROR(sam_stack_poke(sam_stack, addr, opcode));
-error:
-    return error;
-}
-
 // Push the stack item at `addr` to the top of the stack.
-int sam_stack_get(sam_uword_t addr)
+int sam_stack_get(sam_stack_t *s, sam_uword_t addr)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
-    HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &opcode));
+    HALT_IF_ERROR(sam_stack_peek(s, addr, &opcode));
     opcode &= SAM_ARRAY_TAG_MASK;
     if (opcode == SAM_ARRAY_TAG)
-        PUSH_PTR(addr);
+        HALT_IF_ERROR(sam_push_stack(s, LSHIFT(addr, SAM_REF_SHIFT) | SAM_REF_TAG));
     else {
         sam_uword_t temp;
-        HALT_IF_ERROR(sam_stack_peek(sam_stack, addr, &temp));
-        PUSH_WORD(temp);
+        HALT_IF_ERROR(sam_stack_peek(s, addr, &temp));
+        HALT_IF_ERROR(sam_push_stack(s, temp));
     }
 error:
     return error;
 }
 
-// s0 and sp give the address of the stack to consider.
+// Move the stack item at `addr` to the top of `s`.
+int sam_stack_extract(sam_stack_t *s, sam_uword_t addr) {
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t opcode;
+    HALT_IF_ERROR(sam_stack_peek(s, addr, &opcode));
+    HALT_IF_ERROR(move_n(s, addr, addr + 1, s->sp - addr));
+    HALT_IF_ERROR(sam_stack_poke(s, s->sp - 1, opcode));
+error:
+    return error;
+}
+
+// Move the top item of `s` to `addr`.
+int sam_stack_insert(sam_stack_t *s, sam_uword_t addr) {
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t opcode;
+    HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &opcode));
+    HALT_IF_ERROR(move_n(s, addr + 1, addr, s->sp - addr));
+    HALT_IF_ERROR(sam_stack_poke(s, addr, opcode));
+error:
+    return error;
+}
+
+// s gives the stack to consider.
 // If n < 0, return offset of stack item n from top; otherwise,
 // check n is the address of a stack item, and return it.
-int sam_stack_item(sam_uword_t sp, sam_word_t n, sam_uword_t *addr)
+int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr)
 {
     if (n < 0)
-        n = sp + n;
-    if (n >= sp)
+        n = s->sp + n;
+    if (n >= s->sp)
         return SAM_ERROR_STACK_OVERFLOW;
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t p = n, inst;
-    HALT_IF_ERROR(sam_stack_peek(sam_stack, p, &inst));
+    HALT_IF_ERROR(sam_stack_peek(s, p, &inst));
     *addr = p;
  error:
     return error;
 }
 
-int sam_pop_stack(sam_word_t *val_ptr)
+int sam_pop_stack(sam_stack_t *s, sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;
-    if (sam_stack->sp == 0)
+    if (s->sp == 0)
         return SAM_ERROR_STACK_UNDERFLOW;
-    HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, (sam_uword_t *)val_ptr));
-    sam_stack->sp--; // Decrement here so argument to sam_stack_peek is valid.
+    HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, (sam_uword_t *)val_ptr));
+    s->sp--; // Decrement here so argument to sam_stack_peek is valid.
  error:
     return error;
 }
