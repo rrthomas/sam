@@ -47,8 +47,6 @@ type Stack struct {
 	stack *C.sam_stack_t
 }
 
-var SamStack Stack
-
 func NewStack() Stack {
 	return Stack{stack: C.sam_stack_new()}
 }
@@ -99,19 +97,21 @@ func (s *Stack) PushInsts(insts Uword) int {
 	return int(C.sam_push_insts(s.stack, insts))
 }
 
-func Run(pc Uword) Word {
+func Run(stack Stack, pc Uword) Word {
 	C.sam_pc = pc
-	return C.sam_run()
+	return C.sam_run(stack.stack)
 }
 
-func Init() int {
-	res := int(C.sam_init())
-	SamStack = Stack{stack: C.sam_stack}
-	return res
+func Init() Stack {
+	stack := NewStack()
+	if stack.stack == nil {
+		panic("sam_stack_new returned NULL")
+	}
+	return stack
 }
 
-func DebugInit() int {
-	return int(C.sam_debug_init())
+func DebugInit(stack Stack) int {
+	return int(C.sam_debug_init(stack.stack))
 }
 
 func GraphicsInit() Word {

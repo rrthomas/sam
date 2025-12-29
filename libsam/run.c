@@ -85,27 +85,27 @@ const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 #define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
 
 // Trap dispatcher
-sam_word_t sam_trap(sam_uword_t function) {
+static sam_word_t sam_trap(sam_stack_t *s, sam_uword_t function) {
     switch (function & SAM_TRAP_BASE_MASK) {
     case SAM_TRAP_MATH_BASE:
-        return sam_math_trap(function);
+        return sam_math_trap(s, function);
     case SAM_TRAP_GRAPHICS_BASE:
-        return sam_graphics_trap(function);
+        return sam_graphics_trap(s, function);
     default:
         return SAM_ERROR_INVALID_TRAP;
     }
 }
 
 // Execution function
-sam_word_t sam_run(void)
+sam_word_t sam_run(sam_stack_t *s)
 {
     sam_word_t error = SAM_ERROR_OK;
 
     for (;;) {
         sam_uword_t ir;
-        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_pc++, &ir));
+        HALT_IF_ERROR(sam_stack_peek(s, sam_pc++, &ir));
 #ifdef SAM_DEBUG
-        debug("sam_run: pc = %u, sp = %u, ir = %x\n", sam_pc - 1, sam_stack->sp, ir);
+        debug("sam_run: pc = %u, sp = %u, ir = %x\n", sam_pc - 1, s->sp, ir);
         sam_print_working_stack();
 #endif
 
@@ -157,7 +157,7 @@ sam_word_t sam_run(void)
 #ifdef SAM_DEBUG
             debug("trap %s\n", trap_name(function));
 #endif
-            HALT_IF_ERROR(sam_trap(function));
+            HALT_IF_ERROR(sam_trap(s, function));
         } else if ((ir & SAM_INSTS_TAG_MASK) == SAM_INSTS_TAG) {
             for (sam_uword_t opcodes = (sam_uword_t)ir >> SAM_INSTS_SHIFT; opcodes != 0; ) {
                 sam_word_t opcode = opcodes & SAM_INST_MASK;
@@ -185,9 +185,9 @@ sam_word_t sam_run(void)
                     {
                         sam_word_t i;
                         POP_INT(i);
-                        if (i < 0 || i > sam_stack->sp)
+                        if (i < 0 || i > s->sp)
                             HALT(SAM_ERROR_STACK_UNDERFLOW);
-                        sam_stack->sp -= i;
+                        s->sp -= i;
                     }
                     break;
                 case INST_GET:
@@ -195,8 +195,8 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_get(sam_stack, addr));
+                        HALT_IF_ERROR(sam_stack_item(s, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_get(s, addr));
                     }
                     break;
                 case INST_SET:
@@ -205,8 +205,8 @@ sam_word_t sam_run(void)
                         POP_INT(pos);
                         sam_uword_t dest;
                         POP_WORD(&val);
-                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &dest));
-                        HALT_IF_ERROR(sam_stack_poke(sam_stack, dest, val));
+                        HALT_IF_ERROR(sam_stack_item(s, pos, &dest));
+                        HALT_IF_ERROR(sam_stack_poke(s, dest, val));
                     }
                     break;
                 case INST_EXTRACT:
@@ -214,8 +214,8 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_extract(sam_stack, addr));
+                        HALT_IF_ERROR(sam_stack_item(s, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_extract(s, addr));
                     }
                     break;
                 case INST_INSERT:
@@ -223,8 +223,8 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_insert(sam_stack, addr));
+                        HALT_IF_ERROR(sam_stack_item(s, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_insert(s, addr));
                     }
                     break;
                 case INST_DO:
@@ -261,7 +261,7 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(sam_stack, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_item(s, pos, &addr));
                         sam_pc = addr;
                         opcodes = 0;
                     }
@@ -332,7 +332,7 @@ sam_word_t sam_run(void)
                 case INST_LT:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_word_t a, b;
                             POP_INT(b);
@@ -350,7 +350,7 @@ sam_word_t sam_run(void)
                 case INST_NEG:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a;
                             POP_UINT(a);
@@ -366,7 +366,7 @@ sam_word_t sam_run(void)
                 case INST_ADD:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a, b;
                             POP_UINT(b);
@@ -384,7 +384,7 @@ sam_word_t sam_run(void)
                 case INST_MUL:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a, b;
                             POP_UINT(b);
@@ -402,7 +402,7 @@ sam_word_t sam_run(void)
                 case INST_DIV:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_word_t divisor, dividend;
                             POP_INT(divisor);
@@ -424,7 +424,7 @@ sam_word_t sam_run(void)
                 case INST_REM:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t divisor, dividend;
                             POP_UINT(divisor);
@@ -455,7 +455,7 @@ sam_word_t sam_run(void)
                     PUSH_INT(-2);
                     break;
                 case INST_HALT:
-                    if (sam_stack->sp < 1)
+                    if (s->sp < 1)
                         HALT(SAM_ERROR_STACK_UNDERFLOW);
                     else {
                         sam_word_t ret;
@@ -469,7 +469,7 @@ sam_word_t sam_run(void)
 
 #ifdef SAM_DEBUG
                 if (opcodes != 0) {
-                    debug("sam_run: pc = %u, sp = %u, ir = %x\n", sam_pc - 1, sam_stack->sp, ir);
+                    debug("sam_run: pc = %u, sp = %u, ir = %x\n", sam_pc - 1, s->sp, ir);
                     sam_print_working_stack();
                 }
 #endif

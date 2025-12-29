@@ -43,7 +43,6 @@ typedef struct sam_stack {
     sam_uword_t ssize; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
 } sam_stack_t;
-extern sam_stack_t *sam_stack;
 
 // Error codes
 enum {
@@ -80,9 +79,8 @@ int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);
 int sam_push_insts(sam_stack_t *s, sam_uword_t insts);
 
 // Miscellaneous routines
-sam_word_t sam_run(void);
+sam_word_t sam_run(sam_stack_t *s);
 int sam_init(void);
-sam_word_t sam_trap(sam_uword_t function);
 
 // Debug
 #ifdef SAM_DEBUG
@@ -93,7 +91,7 @@ char *trap_name(sam_uword_t function);
 void sam_print_stack(void);
 void sam_print_working_stack(void);
 void debug(const char *fmt, ...);
-int sam_debug_init(void);
+int sam_debug_init(sam_stack_t *s);
 #endif
 
 #endif
