@@ -98,8 +98,7 @@ func (s *Stack) PushInsts(insts Uword) int {
 }
 
 func Run(stack Stack, pc Uword) Word {
-	C.sam_pc = pc
-	return C.sam_run(stack.stack)
+	return C.sam_run(stack.stack, pc)
 }
 
 func Init() Stack {

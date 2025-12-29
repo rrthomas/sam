@@ -1,4 +1,4 @@
-// Allocate storage for the registers and memory.
+// Manipulate the stack.
 //
 // (c) Reuben Thomas 1994-2025
 //
@@ -16,13 +16,6 @@
 
 #include "private.h"
 
-
-// VM registers
-
-sam_uword_t sam_pc;
-
-
-// Stack
 
 int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val)
 {
