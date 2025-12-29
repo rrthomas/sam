@@ -21,7 +21,6 @@
 
 sam_uword_t sam_pc;
 sam_stack_t *sam_stack;
-sam_uword_t sam_program_len;
 
 
 // Stack

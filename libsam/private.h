@@ -37,6 +37,3 @@
 // Matching macro for logical shift
 #define LRSHIFT(x, p)                           \
     ((x) >> (p))
-
-// Program
-extern sam_uword_t sam_program_len;
