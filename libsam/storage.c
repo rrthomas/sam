@@ -20,7 +20,6 @@
 // VM registers
 
 sam_uword_t sam_pc;
-sam_stack_t *sam_stack;
 
 
 // Stack
@@ -176,12 +175,4 @@ error:
 sam_stack_t *sam_stack_new(void)
 {
     return calloc(sizeof(sam_stack_t), 1);
-}
-
-// Initialise VM state.
-int sam_init()
-{
-    sam_stack = sam_stack_new();
-
-    return sam_stack != NULL;
 }

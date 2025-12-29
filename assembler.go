@@ -225,10 +225,10 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	}
 }
 
-func Assemble(source []byte) {
+func Assemble(stack libsam.Stack, source []byte) {
 	prog := readProg(bytes.NewReader(source))
 	labels = map[string]libsam.Uword{}
 	a := assembler{stack: libsam.NewStack(), s0: 1}
 	a.assembleSequence(prog)
-	libsam.SamStack.PushCode(a.stack)
+	stack.PushCode(a.stack)
 }

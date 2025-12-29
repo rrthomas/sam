@@ -23,6 +23,7 @@
 
 bool do_debug = false;
 
+static sam_stack_t *root_stack;
 static sam_uword_t program_len;
 
 void debug(const char *fmt, ...)
@@ -140,7 +141,7 @@ static char *disas(sam_uword_t *addr)
 {
     char *text = NULL;
     sam_word_t inst;
-    assert(sam_stack_peek(sam_stack, (*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
+    assert(sam_stack_peek(root_stack, (*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     if ((inst & SAM_REF_TAG_MASK) == SAM_REF_TAG) {
         xasprintf(&text, "ref %zd", inst >> SAM_REF_SHIFT);
     } else if ((inst & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
@@ -192,7 +193,7 @@ static void print_stack(sam_uword_t from, sam_uword_t to)
     sam_uword_t i, level = 0;
     for (i = from; i < to; ) {
         sam_uword_t opcode;
-        assert(sam_stack_peek(sam_stack, i, &opcode) == SAM_ERROR_OK);
+        assert(sam_stack_peek(root_stack, i, &opcode) == SAM_ERROR_OK);
         if ((opcode & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
             sam_word_t offset = ARSHIFT((sam_word_t)opcode, SAM_ARRAY_OFFSET_SHIFT);
             if (offset > 0) {
@@ -214,14 +215,14 @@ static void print_stack(sam_uword_t from, sam_uword_t to)
 
 void sam_print_stack(void)
 {
-    debug("Stack: (%u word(s))\n", sam_stack->sp);
-    print_stack(0, sam_stack->sp);
+    debug("Stack: (%u word(s))\n", root_stack->sp);
+    print_stack(0, root_stack->sp);
 }
 
 void sam_print_working_stack(void)
 {
-    debug("Working stack: (%u word(s))\n", sam_stack->sp - program_len);
-    print_stack(program_len, sam_stack->sp);
+    debug("Working stack: (%u word(s))\n", root_stack->sp - program_len);
+    print_stack(program_len, root_stack->sp);
 }
 
 /* Dump screen as a PBM */
@@ -247,9 +248,10 @@ void sam_dump_screen(const char *filename)
 }
 
 // Initialise debug state.
-int sam_debug_init()
+int sam_debug_init(sam_stack_t *s)
 {
-    program_len = sam_stack->sp;
+    root_stack = s;
+    program_len = s->sp;
 
     return 0;
 }

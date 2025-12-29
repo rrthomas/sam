@@ -32,14 +32,14 @@ static sam_uword_t powi(sam_uword_t base, sam_uword_t exp)
     return result;
 }
 
-sam_word_t sam_math_trap(sam_uword_t function)
+sam_word_t sam_math_trap(sam_stack_t *s, sam_uword_t function)
 {
     int error = SAM_ERROR_OK;
     switch (function) {
     case TRAP_MATH_POW:
         {
             sam_uword_t operand;
-            HALT_IF_ERROR(sam_stack_peek(sam_stack, sam_stack->sp - 1, &operand));
+            HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &operand));
             if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                 sam_uword_t a, b;
                 POP_UINT(b);
