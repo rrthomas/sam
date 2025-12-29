@@ -16,6 +16,7 @@
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "private.h"
+#include "run.h"
 #include "traps_graphics.h"
 
 const unsigned sam_update_interval = 10; // milliseconds between screen updates

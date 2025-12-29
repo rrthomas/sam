@@ -18,6 +18,7 @@
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "private.h"
+#include "run.h"
 #include "traps_math.h"
 #include "traps_graphics.h"
 
@@ -69,6 +70,15 @@ const sam_word_t SAM_INST_MASK = 0x1f;
 const int SAM_INST_SHIFT = 5;
 
 const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
+
+// Execution macros
+#define DO(addr)                                \
+    do {                                        \
+        PUSH_PTR(sam_pc);                       \
+        sam_pc = addr;                          \
+    } while (0)
+#define RET                                     \
+    POP_PTR(sam_pc)
 
 // Division macros
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))

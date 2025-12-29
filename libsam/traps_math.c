@@ -13,6 +13,7 @@
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "private.h"
+#include "run.h"
 #include "traps_math.h"
 
 // Adapted from https://stackoverflow.com/questions/101439/the-most-efficient-way-to-implement-an-integer-based-power-function-powint-int
