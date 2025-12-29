@@ -85,11 +85,6 @@ sam_word_t sam_run(void);
 int sam_init(void);
 sam_word_t sam_trap(sam_uword_t function);
 
-// Portable left shift (the behaviour of << with overflow (including on any
-// negative number) is undefined)
-#define LSHIFT(n, p)                            \
-    (((n) & (SAM_UWORD_MAX >> (p))) << (p))
-
 // Debug
 #ifdef SAM_DEBUG
 #include <stdbool.h>
