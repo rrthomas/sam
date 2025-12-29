@@ -20,7 +20,7 @@ libsam_la_SOURCES = \
 	private.h \
 	run.h \
 	debug.c \
-	storage.c \
+	stack.c \
 	run.c \
 	traps_math.h \
 	traps_math.c \

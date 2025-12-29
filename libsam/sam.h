@@ -34,9 +34,6 @@ typedef double sam_float_t;
 #define SAM_RET_SHIFT 8
 #define SAM_RET_MASK ((1 << SAM_RET_SHIFT) - 1)
 
-// VM registers
-extern sam_uword_t sam_pc;
-
 // Stacks
 typedef struct sam_stack {
     sam_word_t *s0;
@@ -79,8 +76,7 @@ int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);
 int sam_push_insts(sam_stack_t *s, sam_uword_t insts);
 
 // Miscellaneous routines
-sam_word_t sam_run(sam_stack_t *s);
-int sam_init(void);
+sam_word_t sam_run(sam_stack_t *s, sam_uword_t pc);
 
 // Debug
 #ifdef SAM_DEBUG
