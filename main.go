@@ -79,7 +79,10 @@ var rootCmd = &cobra.Command{
 			os.Exit(int(res))
 		}
 		libsam.PrintStack()
-		res2 := libsam.Run(stack, 1)
+		frame := libsam.NewFrame()
+		frame.Stack = stack
+		frame.Pc = 1
+		res2 := libsam.Run(frame)
 
 		if debug {
 			libsam.PrintStack()

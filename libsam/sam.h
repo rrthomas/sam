@@ -41,6 +41,13 @@ typedef struct sam_stack {
     sam_uword_t sp; // Number of words in stack
 } sam_stack_t;
 
+// Frames
+typedef struct sam_frame {
+    struct sam_frame *parent;
+    sam_stack_t *stack;
+    sam_uword_t pc;
+} sam_frame_t;
+
 // Error codes
 enum {
     SAM_ERROR_OK = 0,
@@ -75,8 +82,11 @@ int sam_push_trap(sam_stack_t *s, sam_uword_t function);
 int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);
 int sam_push_insts(sam_stack_t *s, sam_uword_t insts);
 
+// Frames
+sam_frame_t *sam_frame_new(void);
+
 // Miscellaneous routines
-sam_word_t sam_run(sam_stack_t *s, sam_uword_t pc);
+sam_word_t sam_run(sam_frame_t *f);
 
 // Debug
 #ifdef SAM_DEBUG

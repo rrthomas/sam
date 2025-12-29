@@ -11,7 +11,7 @@
 #ifndef SAM_TRAP_MATH
 #define SAM_TRAP_MATH
 
-sam_word_t sam_math_trap(sam_stack_t *s, sam_uword_t function);
+sam_word_t sam_math_trap(sam_frame_t *f, sam_uword_t function);
 char *sam_math_trap_name(sam_word_t function);
 
 #define SAM_TRAP_MATH_BASE 0x100

@@ -47,8 +47,18 @@ type Stack struct {
 	stack *C.sam_stack_t
 }
 
+type Frame struct {
+	frame *C.sam_frame_t
+	Pc    Uword
+	Stack Stack
+}
+
 func NewStack() Stack {
 	return Stack{stack: C.sam_stack_new()}
+}
+
+func NewFrame() Frame {
+	return Frame{frame: C.sam_frame_new()}
 }
 
 func (s *Stack) Sp() Uword {
@@ -97,8 +107,12 @@ func (s *Stack) PushInsts(insts Uword) int {
 	return int(C.sam_push_insts(s.stack, insts))
 }
 
-func Run(stack Stack, pc Uword) Word {
-	return C.sam_run(stack.stack, pc)
+func Run(frame Frame) Word {
+	frame.frame.pc = frame.Pc
+	frame.frame.stack = frame.Stack.stack
+	res := C.sam_run(frame.frame)
+	frame.Pc = frame.frame.pc
+	return res
 }
 
 func Init() Stack {

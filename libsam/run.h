@@ -13,9 +13,9 @@
         HALT(SAM_ERROR_WRONG_TYPE);
 
 #define POP_WORD(ptr)                           \
-    HALT_IF_ERROR(sam_pop_stack(s, ptr))
+    HALT_IF_ERROR(sam_pop_stack(f->stack, ptr))
 #define PUSH_WORD(val)                          \
-    HALT_IF_ERROR(sam_push_stack(s, val))
+    HALT_IF_ERROR(sam_push_stack(f->stack, val))
 
 #define _POP_INSN(var, insn, insn_mask, rshift, shift) \
     do {                                        \
@@ -42,7 +42,7 @@
     do {                                              \
         POP_PTR(var);                                 \
         sam_uword_t _stack;                           \
-        HALT_IF_ERROR(sam_stack_peek(s, var, &_stack)); \
+        HALT_IF_ERROR(sam_stack_peek(f->stack, var, &_stack)); \
         _CHECK_TYPE(_stack, SAM_ARRAY_TAG_MASK | SAM_ARRAY_TYPE_MASK, SAM_ARRAY_TAG | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT)); \
         var++;                                        \
     } while(0)
@@ -56,4 +56,4 @@
         var = *(sam_float_t *)&_w;                                      \
     } while (0)
 #define PUSH_FLOAT(val)                         \
-    sam_push_float(s, val)
+    sam_push_float(f->stack, val)
