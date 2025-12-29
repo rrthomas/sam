@@ -41,7 +41,7 @@ extern sam_uword_t sam_pc;
 typedef struct sam_stack {
     sam_word_t *s0;
     sam_uword_t ssize; // Size of stack in words
-    sam_uword_t sp; // Number of words (NOT items!) in stack
+    sam_uword_t sp; // Number of words in stack
 } sam_stack_t;
 extern sam_stack_t *sam_stack;
 
