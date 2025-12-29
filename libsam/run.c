@@ -185,7 +185,7 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &addr));
                         HALT_IF_ERROR(sam_stack_get(addr));
                     }
                     break;
@@ -195,7 +195,7 @@ sam_word_t sam_run(void)
                         POP_INT(pos);
                         sam_uword_t dest;
                         POP_WORD(&val);
-                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &dest));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &dest));
                         HALT_IF_ERROR(sam_stack_poke(sam_stack, dest, val));
                     }
                     break;
@@ -204,7 +204,7 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &addr));
                         HALT_IF_ERROR(sam_stack_extract(addr));
                     }
                     break;
@@ -213,7 +213,7 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &addr));
                         HALT_IF_ERROR(sam_stack_insert(addr));
                     }
                     break;
@@ -251,7 +251,7 @@ sam_word_t sam_run(void)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(0, sam_stack->sp, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_item(sam_stack->sp, pos, &addr));
                         sam_pc = addr;
                         opcodes = 0;
                     }
