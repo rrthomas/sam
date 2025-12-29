@@ -23,6 +23,8 @@
 
 bool do_debug = false;
 
+static sam_uword_t program_len;
+
 void debug(const char *fmt, ...)
 {
     if (do_debug) {
@@ -218,8 +220,8 @@ void sam_print_stack(void)
 
 void sam_print_working_stack(void)
 {
-    debug("Working stack: (%u word(s))\n", sam_stack->sp - sam_program_len);
-    print_stack(sam_program_len, sam_stack->sp);
+    debug("Working stack: (%u word(s))\n", sam_stack->sp - program_len);
+    print_stack(program_len, sam_stack->sp);
 }
 
 /* Dump screen as a PBM */
@@ -247,7 +249,7 @@ void sam_dump_screen(const char *filename)
 // Initialise debug state.
 int sam_debug_init()
 {
-    sam_program_len = sam_stack->sp;
+    program_len = sam_stack->sp;
 
     return 0;
 }
