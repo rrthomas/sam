@@ -95,14 +95,14 @@ error:
 // s0 and sp give the address of the stack to consider.
 // If n < 0, return offset of stack item n from top; otherwise,
 // check n is the address of a stack item, and return it.
-int sam_stack_item(sam_uword_t s0, sam_uword_t sp, sam_word_t n, sam_uword_t *addr)
+int sam_stack_item(sam_uword_t sp, sam_word_t n, sam_uword_t *addr)
 {
     if (n < 0)
         n = sp + n;
     if (n >= sp)
         return SAM_ERROR_STACK_OVERFLOW;
     sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t p = s0 + n, inst;
+    sam_uword_t p = n, inst;
     HALT_IF_ERROR(sam_stack_peek(sam_stack, p, &inst));
     *addr = p;
  error:
