@@ -115,7 +115,7 @@ int sam_push_stack(sam_stack_t *s, sam_word_t val)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp >= s->ssize) {
-        s->ssize = s->sp + 65536;
+        s->ssize *= 2;
         s->s0 = realloc(s->s0, s->ssize * sizeof(sam_uword_t));
         if (s->s0 == NULL)
             HALT(SAM_ERROR_NO_MEMORY);
@@ -167,5 +167,12 @@ error:
 
 sam_stack_t *sam_stack_new(void)
 {
-    return calloc(sizeof(sam_stack_t), 1);
+    sam_stack_t *s = calloc(sizeof(sam_stack_t), 1);
+    if (s != NULL) {
+        s->ssize = 1;
+        s->s0 = calloc(sizeof(sam_word_t), s->ssize);
+        if (s->s0 == NULL)
+            return NULL;
+    }
+    return s;
 }
