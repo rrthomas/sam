@@ -24,6 +24,11 @@
             HALT(_err);                         \
     } while (0)
 
+// Portable left shift (the behaviour of << with overflow (including on any
+// negative number) is undefined)
+#define LSHIFT(n, p)                            \
+    (((n) & (SAM_UWORD_MAX >> (p))) << (p))
+
 // Portable arithmetic right shift (the behaviour of >> on signed
 // quantities is implementation-defined in C99)
 #define ARSHIFT(n, p)                                                   \
