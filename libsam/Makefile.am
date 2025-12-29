@@ -18,6 +18,7 @@ libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) -lm
 libsam_la_SOURCES = \
 	$(include_HEADERS) \
 	private.h \
+	run.h \
 	debug.c \
 	storage.c \
 	run.c \
