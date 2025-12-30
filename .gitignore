@@ -8,6 +8,7 @@ Makefile.in
 stamp-h1
 /sam-*.tar.gz
 /*.trs
+/*-fixed.log
 /*-output.log
 /*-output.pbm
 /ar-lib

@@ -4,7 +4,7 @@
   -
     - loop: int -4
     - get
-    - f2i
+    - trap F2I
     - while
     - int -2
     - get
@@ -19,11 +19,11 @@
     - add
     - int -4
     - set
-    - int loop
+    - ref loop
     - go
   - do
   - int -2
   - set
 - do
-- f2i
+- trap F2I
 - halt

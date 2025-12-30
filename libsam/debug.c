@@ -1,6 +1,6 @@
 // SAM debug functions.
 //
-// (c) Reuben Thomas 1994-2025
+// (c) Reuben Thomas 1994-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -58,14 +58,18 @@ char *inst_name(sam_uword_t inst_opcode) {
         return "extract";
     case INST_INSERT:
         return "insert";
+    case INST_IGET:
+        return "iget";
+    case INST_ISET:
+        return "iset";
+    case INST_GO:
+        return "go";
     case INST_DO:
         return "do";
     case INST_IF:
         return "if";
     case INST_WHILE:
         return "while";
-    case INST_GO:
-        return "go";
     case INST_NOT:
         return "not";
     case INST_AND:
@@ -94,10 +98,6 @@ char *inst_name(sam_uword_t inst_opcode) {
         return "div";
     case INST_REM:
         return "rem";
-    case INST_I2F:
-        return "i2f";
-    case INST_F2I:
-        return "f2i";
     case INST_0:
         return "zero";
     case INST_1:
@@ -137,11 +137,11 @@ char *trap_name(sam_uword_t function)
     }
 }
 
-static char *disas(sam_uword_t *addr)
+static char *disas(sam_stack_t *s, sam_uword_t addr)
 {
     char *text = NULL;
     sam_word_t inst;
-    assert(sam_stack_peek(root_stack, (*addr)++, (sam_uword_t *)&inst) == SAM_ERROR_OK);
+    assert(sam_stack_peek(s, addr, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     if ((inst & SAM_REF_TAG_MASK) == SAM_REF_TAG) {
         xasprintf(&text, "ref %zd", inst >> SAM_REF_SHIFT);
     } else if ((inst & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
@@ -153,14 +153,7 @@ static char *disas(sam_uword_t *addr)
         // No atoms yet.
         switch ((inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {}
     } else if ((inst & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
-        switch ((inst & SAM_ARRAY_TYPE_MASK) >> SAM_ARRAY_TYPE_SHIFT) {
-        case SAM_ARRAY_STACK:
-            xasprintf(&text, "*** UNEXPECTED %s ***", ARSHIFT(inst, SAM_ARRAY_OFFSET_SHIFT) > 0 ? "BRA" : "KET");
-            break;
-        // TODO:
-        /* case SAM_ARRAY_RAW: */
-        /*     break; */
-        }
+        xasprintf(&text, "*** UNEXPECTED STACK ***");
     } else if ((inst & SAM_TRAP_TAG_MASK) == SAM_TRAP_TAG) {
         sam_uword_t function = inst >> SAM_TRAP_FUNCTION_SHIFT;
         xasprintf(&text, "trap %s", trap_name(function));
@@ -188,41 +181,82 @@ static void print_disas(sam_uword_t level, const char *s)
     debug("- %s\n", s);
 }
 
-static void print_stack(sam_uword_t from, sam_uword_t to)
+typedef struct sam_stack_list {
+    sam_stack_t *stack;
+    struct sam_stack_list *next;
+} sam_stack_list_t;
+
+static sam_stack_list_t *list_append(sam_stack_list_t *l, sam_stack_t *s) {
+    sam_stack_list_t *node = malloc(sizeof(struct sam_stack_list));
+    assert(node != NULL);
+    node->stack = s;
+    node->next = l;
+    return node;
+}
+
+static void free_list(sam_stack_list_t *l) {
+    sam_stack_list_t *next;
+    for (sam_stack_list_t *p = l; p != NULL; p = next) {
+        next = p->next;
+        free(p);
+    }
+}
+
+static bool already_visited(sam_stack_list_t *l, sam_stack_t *s) {
+    for (sam_stack_list_t *p = l; p != NULL; p = p->next) {
+        if (p->stack == s)
+            return true;
+    }
+    return false;
+}
+
+static sam_stack_list_t *print_stack(sam_stack_list_t *l, sam_uword_t level, sam_stack_t *s, sam_uword_t from, sam_uword_t to)
 {
-    sam_uword_t i, level = 0;
-    for (i = from; i < to; ) {
+    for (sam_uword_t i = from; i < to; i++) {
         sam_uword_t opcode;
-        assert(sam_stack_peek(root_stack, i, &opcode) == SAM_ERROR_OK);
-        if ((opcode & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
-            sam_word_t offset = ARSHIFT((sam_word_t)opcode, SAM_ARRAY_OFFSET_SHIFT);
-            if (offset > 0) {
-                print_disas(level, "");
-                level++;
-                i++;
-            } else if (offset < 0) {
-                level--;
-                i++;
-            } else
-                print_disas(level, "ARRAY with unexpected zero offset");
+        assert(sam_stack_peek(s, i, &opcode) == SAM_ERROR_OK);
+        if ((opcode & SAM_REF_TAG_MASK) == SAM_REF_TAG) {
+            sam_uword_t *addr = (sam_uword_t *)(opcode & ~SAM_REF_TAG_MASK);
+            sam_uword_t inner_op = *addr;
+            if ((inner_op & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
+                sam_stack_t *inner_s = (sam_stack_t *)addr;
+                if (l == NULL || already_visited(l, inner_s)) {
+                    char *stack_str;
+                    xasprintf(&stack_str, "stack %p", inner_s);
+                    print_disas(level, stack_str);
+                } else {
+                    char *count_str;
+                    xasprintf(&count_str, "stack %p (%u items)", inner_s, inner_s->sp);
+                    print_disas(level, count_str);
+                    free(count_str);
+                    l = list_append(l, inner_s);
+                    l = print_stack(l, level + 1, inner_s, 0, inner_s->sp);
+                }
+            } else {
+                char *ref_str;
+                xasprintf(&ref_str, "ref %p", opcode & ~SAM_REF_TAG);
+                print_disas(level, ref_str);
+            }
         } else {
-            char *text = disas(&i);
+            char *text = disas(s, i);
             print_disas(level, text);
             free(text);
         }
     }
+    return l;
 }
 
-void sam_print_stack(void)
+void sam_print_stack(sam_stack_t *s)
 {
-    debug("Stack: (%u word(s))\n", root_stack->sp);
-    print_stack(0, root_stack->sp);
+    debug("Stack: %p (%u item(s))\n", s, s->sp);
+    sam_stack_list_t *l = list_append(NULL, s);
+    free_list(print_stack(l, 0, s, 0, s->sp));
 }
 
-void sam_print_working_stack(void)
+void sam_print_working_stack(sam_stack_t *s)
 {
-    debug("Working stack: (%u word(s))\n", root_stack->sp - program_len);
-    print_stack(program_len, root_stack->sp);
+    debug("Working stack: (%u word(s))\n", s->sp - program_len);
+    print_stack(NULL, 0, s, program_len, s->sp);
 }
 
 /* Dump screen as a PBM */

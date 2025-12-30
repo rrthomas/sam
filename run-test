@@ -13,7 +13,8 @@ if [[ "${basename#screen_}" != "$basename" ]]; then
 fi
 
 go run $srcdir --debug $graphics_log "$test_file" > "$basename-output.log" 2>&1
-diff -u "$name-expected.log" "$basename-output.log"
+sed -e 's/sam_run: pc0 = [0-9a-fx]\+/sam_run: pc0 = XXXXXXXX/g' -e 's/, ir = [0-9a-fx]\+/, ir = XXXXXXXX/g' -e 's/- ref [0-9a-fx]\+/- ref XXXXXXXX/g' -e 's/- stack [0-9a-fx]\+/- stack XXXXXXXX/g' -e 's/^Stack: [0-9a-fx]\+/Stack: XXXXXXXX/g' < "$basename-output.log" > "$basename-fixed.log"
+diff -u "$name-expected.log" "$basename-fixed.log"
 if [[ "$graphics_log" != "" ]]; then
     diff -u "$name-expected.pbm" "$basename-output.pbm"
 fi

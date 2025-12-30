@@ -1,6 +1,6 @@
 - int 5
-- fact:
-  - int -2
+-
+  - fact: int -2
   - get
   -
     - int -3

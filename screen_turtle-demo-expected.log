@@ -1,953 +1,1173 @@
-Stack: (108 word(s))
-- 
-  - 
-    - float 0.000000
-    - float 0.000000
-    - float 0.000000
-    - int 0
-    - int 0
-    - 
-      - trap WHITE
-      - trap CLEARSCREEN
-      - float 0.000000
-      - int 2
-      - set
-      - float 0.000000
-      - int 3
-      - set
-      - float 0.000000
-      - int 4
-      - set
-      - trap BLACK
-      - int 5
-      - set
-      - int 0
-      - int 6
-      - set
-    - 
-      - int 0
-      - int 6
-      - set
-    - 
-      - int 1
-      - int 6
-      - set
-      - int 2
-      - get f2i
-      - int 3
-      - get f2i
-      - int 5
-      - get
-      - trap SETDOT
-    - 
-      - int 4
-      - get
-      - int -3
-      - get neg add
-      - int 4
-      - set
-    - 
-      - int 4
-      - get
-      - trap COS
-      - int -3
-      - get mul
-      - int 2
-      - get add
-      - int 4
-      - get
-      - trap SIN
-      - int -4
-      - get mul
-      - int 3
-      - get add
-      - int 6
-      - get
-      - 
-        - int 2
-        - get f2i
-        - int 3
-        - get f2i
-        - int -5
-        - get f2i
-        - int -5
-        - get f2i
-        - int 5
-        - get
-        - trap DRAWLINE
-      - 
-      - if
-      - int 3
-      - set
-      - int 2
-      - set
-  - ref 7
-  - do
-  - ref 31
-  - do
-  - float -45.000000
-  - trap RAD
-  - ref 43
-  - do
-  - int 1
-  - pop
-  - float 500.000000
-  - ref 51
-  - do
-  - int 1
-  - pop
+Stack: XXXXXXXX (18 item(s))
+- stack XXXXXXXX (10 items)
+  - float 0.000000
+  - float 0.000000
+  - float 0.000000
   - int 0
-  - halt
-sam_run: pc = 1, sp = 108, ir = 2c000f
+  - int 0
+  - stack XXXXXXXX (22 items)
+    - trap WHITE
+    - trap CLEARSCREEN
+    - float 0.000000
+    - int 0
+    - stack XXXXXXXX
+    - iset
+    - float 0.000000
+    - int 1
+    - stack XXXXXXXX
+    - iset
+    - float 0.000000
+    - int 2
+    - stack XXXXXXXX
+    - iset
+    - trap BLACK
+    - int 3
+    - stack XXXXXXXX
+    - iset
+    - int 0
+    - int 4
+    - stack XXXXXXXX
+    - iset
+  - stack XXXXXXXX (4 items)
+    - int 0
+    - int 4
+    - stack XXXXXXXX
+    - iset
+  - stack XXXXXXXX (16 items)
+    - int 1
+    - int 4
+    - stack XXXXXXXX
+    - iset
+    - int 0
+    - stack XXXXXXXX
+    - iget
+    - trap F2I
+    - int 1
+    - stack XXXXXXXX
+    - iget
+    - trap F2I
+    - int 3
+    - stack XXXXXXXX
+    - iget
+    - trap SETDOT
+  - stack XXXXXXXX (8 items)
+    - int 2
+    - stack XXXXXXXX
+    - iget
+    - int -3
+    - get neg add
+    - int 2
+    - stack XXXXXXXX
+    - iset
+  - stack XXXXXXXX (30 items)
+    - int 2
+    - stack XXXXXXXX
+    - iget
+    - trap COS
+    - int -3
+    - get mul
+    - int 0
+    - stack XXXXXXXX
+    - iget add
+    - int 2
+    - stack XXXXXXXX
+    - iget
+    - trap SIN
+    - int -4
+    - get mul
+    - int 1
+    - stack XXXXXXXX
+    - iget add
+    - int 4
+    - stack XXXXXXXX
+    - iget
+    - stack XXXXXXXX (18 items)
+      - int 0
+      - stack XXXXXXXX
+      - iget
+      - trap F2I
+      - int 1
+      - stack XXXXXXXX
+      - iget
+      - trap F2I
+      - int -5
+      - get
+      - trap F2I
+      - int -5
+      - get
+      - trap F2I
+      - int 3
+      - stack XXXXXXXX
+      - iget
+      - trap DRAWLINE
+    - stack XXXXXXXX (0 items)
+    - if
+    - int 1
+    - stack XXXXXXXX
+    - iset
+    - int 0
+    - stack XXXXXXXX
+    - iset
+- stack XXXXXXXX
+- do
+- stack XXXXXXXX
+- do
+- float -45.000000
+- trap RAD
+- stack XXXXXXXX
+- do
+- int 1
+- pop
+- float 500.000000
+- stack XXXXXXXX
+- do
+- int 1
+- pop
+- int 0
+- halt
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 18, ir = XXXXXXXX
 Working stack: (0 word(s))
-bra
-sam_run: pc = 90, sp = 109, ir = 3b
-Working stack: (1 word(s))
-- ref 1
 ref
-sam_run: pc = 91, sp = 110, ir = 33f
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 19, ir = XXXXXXXX
+Working stack: (1 word(s))
+- stack XXXXXXXX
+ref
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
-- ref 7
+- stack XXXXXXXX
+- stack XXXXXXXX
 do
-sam_run: pc = 8, sp = 110, ir = 805f
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
-- ref 92
+- stack XXXXXXXX
+- ref XXXXXXXX
 trap WHITE
-sam_run: pc = 9, sp = 111, ir = 811f
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
-- ref 92
+- stack XXXXXXXX
+- ref XXXXXXXX
 - int -1
 trap CLEARSCREEN
-sam_run: pc = 10, sp = 110, ir = 0
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
-- ref 92
+- stack XXXXXXXX
+- ref XXXXXXXX
 float
-sam_run: pc = 11, sp = 111, ir = 9
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
-- ref 92
+- stack XXXXXXXX
+- ref XXXXXXXX
 - float 0.000000
 int
-sam_run: pc = 12, sp = 112, ir = 1bf
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
-- ref 92
+- stack XXXXXXXX
+- ref XXXXXXXX
 - float 0.000000
-- int 2
-set
-sam_run: pc = 13, sp = 110, ir = 0
-Working stack: (2 word(s))
-- ref 1
-- ref 92
-float
-sam_run: pc = 14, sp = 111, ir = d
-Working stack: (3 word(s))
-- ref 1
-- ref 92
-- float 0.000000
-int
-sam_run: pc = 15, sp = 112, ir = 1bf
-Working stack: (4 word(s))
-- ref 1
-- ref 92
-- float 0.000000
-- int 3
-set
-sam_run: pc = 16, sp = 110, ir = 0
-Working stack: (2 word(s))
-- ref 1
-- ref 92
-float
-sam_run: pc = 17, sp = 111, ir = 11
-Working stack: (3 word(s))
-- ref 1
-- ref 92
-- float 0.000000
-int
-sam_run: pc = 18, sp = 112, ir = 1bf
-Working stack: (4 word(s))
-- ref 1
-- ref 92
-- float 0.000000
-- int 4
-set
-sam_run: pc = 19, sp = 110, ir = 801f
-Working stack: (2 word(s))
-- ref 1
-- ref 92
-trap BLACK
-sam_run: pc = 20, sp = 111, ir = 15
-Working stack: (3 word(s))
-- ref 1
-- ref 92
 - int 0
-int
-sam_run: pc = 21, sp = 112, ir = 1bf
-Working stack: (4 word(s))
-- ref 1
-- ref 92
-- int 0
-- int 5
-set
-sam_run: pc = 22, sp = 110, ir = 1
-Working stack: (2 word(s))
-- ref 1
-- ref 92
-int
-sam_run: pc = 23, sp = 111, ir = 19
-Working stack: (3 word(s))
-- ref 1
-- ref 92
-- int 0
-int
-sam_run: pc = 24, sp = 112, ir = 1bf
-Working stack: (4 word(s))
-- ref 1
-- ref 92
-- int 0
-- int 6
-set
-sam_run: pc = 25, sp = 110, ir = fff7000f
-Working stack: (2 word(s))
-- ref 1
-- ref 92
-ket
-sam_run: pc = 92, sp = 109, ir = fb
-Working stack: (1 word(s))
-- ref 1
 ref
-sam_run: pc = 93, sp = 110, ir = 33f
-Working stack: (2 word(s))
-- ref 1
-- ref 31
-do
-sam_run: pc = 32, sp = 110, ir = 5
-Working stack: (2 word(s))
-- ref 1
-- ref 94
-int
-sam_run: pc = 33, sp = 111, ir = 19
-Working stack: (3 word(s))
-- ref 1
-- ref 94
-- int 1
-int
-sam_run: pc = 34, sp = 112, ir = 1bf
-Working stack: (4 word(s))
-- ref 1
-- ref 94
-- int 1
-- int 6
-set
-sam_run: pc = 35, sp = 110, ir = 9
-Working stack: (2 word(s))
-- ref 1
-- ref 94
-int
-sam_run: pc = 36, sp = 111, ir = 1913f
-Working stack: (3 word(s))
-- ref 1
-- ref 94
-- int 2
-get
-sam_run: pc = 36, sp = 111, ir = 1913f
-Working stack: (3 word(s))
-- ref 1
-- ref 94
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
 - float 0.000000
-f2i
-sam_run: pc = 37, sp = 111, ir = d
+- int 0
+- stack XXXXXXXX
+iset
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 20, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+float
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
-- ref 94
+- stack XXXXXXXX
+- ref XXXXXXXX
+- float 0.000000
+int
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 22, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- float 0.000000
+- int 1
+ref
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- float 0.000000
+- int 1
+- stack XXXXXXXX
+iset
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 20, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+float
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 21, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- float 0.000000
+int
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 22, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- float 0.000000
+- int 2
+ref
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- float 0.000000
+- int 2
+- stack XXXXXXXX
+iset
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 20, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+trap BLACK
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 21, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
 - int 0
 int
-sam_run: pc = 38, sp = 112, ir = 1913f
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
-- ref 94
+- stack XXXXXXXX
+- ref XXXXXXXX
 - int 0
 - int 3
-get
-sam_run: pc = 38, sp = 112, ir = 1913f
+ref
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+- int 3
+- stack XXXXXXXX
+iset
+sam_run: pc0 = XXXXXXXX, pc = 18, sp = 20, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+int
+sam_run: pc0 = XXXXXXXX, pc = 19, sp = 21, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+int
+sam_run: pc0 = XXXXXXXX, pc = 20, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
-- ref 94
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+- int 4
+ref
+sam_run: pc0 = XXXXXXXX, pc = 21, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+- int 4
+- stack XXXXXXXX
+iset
+ket
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 19, ir = XXXXXXXX
+Working stack: (1 word(s))
+- stack XXXXXXXX
+ref
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 20, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+do
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 20, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+int
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 21, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 1
+int
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 22, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 1
+- int 4
+ref
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 1
+- int 4
+- stack XXXXXXXX
+iset
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 20, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+int
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 21, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+ref
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 22, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 21, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- float 0.000000
+trap F2I
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 21, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+int
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 22, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+- int 1
+ref
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+- int 1
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 22, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
 - int 0
 - float 0.000000
-f2i
-sam_run: pc = 39, sp = 112, ir = 15
+trap F2I
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
-- ref 94
+- stack XXXXXXXX
+- ref XXXXXXXX
 - int 0
 - int 0
 int
-sam_run: pc = 40, sp = 113, ir = 13f
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
-- ref 94
+- stack XXXXXXXX
+- ref XXXXXXXX
 - int 0
 - int 0
-- int 5
-get
-sam_run: pc = 41, sp = 113, ir = 815f
+- int 3
+ref
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 24, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- ref XXXXXXXX
+- int 0
+- int 0
+- int 3
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
-- ref 94
+- stack XXXXXXXX
+- ref XXXXXXXX
 - int 0
 - int 0
 - int 0
 trap SETDOT
-sam_run: pc = 42, sp = 110, ir = fffa800f
-Working stack: (2 word(s))
-- ref 1
-- ref 94
 ket
-sam_run: pc = 94, sp = 109, ir = 0
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 19, ir = XXXXXXXX
 Working stack: (1 word(s))
-- ref 1
+- stack XXXXXXXX
 float
-sam_run: pc = 95, sp = 110, ir = 411f
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -45.000000
 trap RAD
-sam_run: pc = 96, sp = 110, ir = 15b
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
 ref
-sam_run: pc = 97, sp = 111, ir = 33f
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 43
+- stack XXXXXXXX
 do
-sam_run: pc = 44, sp = 111, ir = 11
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
+- ref XXXXXXXX
 int
-sam_run: pc = 45, sp = 112, ir = 13f
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
-- int 4
-get
-sam_run: pc = 46, sp = 112, ir = fffffff5
+- ref XXXXXXXX
+- int 2
+ref
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- float -0.785398
+- ref XXXXXXXX
+- int 2
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
+- ref XXXXXXXX
 - float 0.000000
 int
-sam_run: pc = 47, sp = 113, ir = 29313f
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
+- ref XXXXXXXX
 - float 0.000000
 - int -3
 get
-sam_run: pc = 47, sp = 113, ir = 29313f
+sam_run: pc = 4, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
+- ref XXXXXXXX
 - float 0.000000
 - float -0.785398
 neg
-sam_run: pc = 47, sp = 113, ir = 29313f
+sam_run: pc = 4, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
+- ref XXXXXXXX
 - float 0.000000
 - float 0.785398
 add
-sam_run: pc = 48, sp = 112, ir = 11
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
+- ref XXXXXXXX
 - float 0.785398
 int
-sam_run: pc = 49, sp = 113, ir = 1bf
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
+- ref XXXXXXXX
 - float 0.785398
-- int 4
-set
-sam_run: pc = 50, sp = 111, ir = fffc800f
-Working stack: (3 word(s))
-- ref 1
+- int 2
+ref
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 24, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
 - float -0.785398
-- ref 98
+- ref XXXXXXXX
+- float 0.785398
+- int 2
+- stack XXXXXXXX
+iset
 ket
-sam_run: pc = 98, sp = 110, ir = 5
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
 int
-sam_run: pc = 99, sp = 111, ir = bf
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
+- stack XXXXXXXX
 - float -0.785398
 - int 1
 pop
-sam_run: pc = 100, sp = 109, ir = 0
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 19, ir = XXXXXXXX
 Working stack: (1 word(s))
-- ref 1
+- stack XXXXXXXX
 float
-sam_run: pc = 101, sp = 110, ir = 19b
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
 ref
-sam_run: pc = 102, sp = 111, ir = 33f
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 51
+- stack XXXXXXXX
 do
-sam_run: pc = 52, sp = 111, ir = 11
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 int
-sam_run: pc = 53, sp = 112, ir = 13f
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
-- int 4
-get
-sam_run: pc = 54, sp = 112, ir = 409f
+- ref XXXXXXXX
+- int 2
+ref
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- int 2
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 0.785398
 trap COS
-sam_run: pc = 55, sp = 112, ir = fffffff5
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 0.707107
 int
-sam_run: pc = 56, sp = 113, ir = 1513f
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 0.707107
 - int -3
 get
-sam_run: pc = 56, sp = 113, ir = 1513f
+sam_run: pc = 5, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 0.707107
 - float 500.000000
 mul
-sam_run: pc = 57, sp = 112, ir = 9
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 int
-sam_run: pc = 58, sp = 113, ir = 1413f
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
-- int 2
-get
-sam_run: pc = 58, sp = 113, ir = 1413f
-Working stack: (5 word(s))
-- ref 1
+- int 0
+ref
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 24, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
+- float 353.553385
+- int 0
+- stack XXXXXXXX
+iget
+sam_run: pc = 8, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
 - float 353.553385
 - float 0.000000
 add
-sam_run: pc = 59, sp = 112, ir = 11
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 int
-sam_run: pc = 60, sp = 113, ir = 13f
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
-- int 4
-get
-sam_run: pc = 61, sp = 113, ir = 405f
-Working stack: (5 word(s))
-- ref 1
+- int 2
+ref
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 24, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
+- float 353.553385
+- int 2
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 23, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
 - float 353.553385
 - float 0.785398
 trap SIN
-sam_run: pc = 62, sp = 113, ir = fffffff1
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 0.707107
 int
-sam_run: pc = 63, sp = 114, ir = 1513f
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 24, ir = XXXXXXXX
 Working stack: (6 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 0.707107
 - int -4
 get
-sam_run: pc = 63, sp = 114, ir = 1513f
+sam_run: pc = 14, sp = 24, ir = XXXXXXXX
 Working stack: (6 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 0.707107
 - float 500.000000
 mul
-sam_run: pc = 64, sp = 113, ir = d
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
 int
-sam_run: pc = 65, sp = 114, ir = 1413f
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 24, ir = XXXXXXXX
 Working stack: (6 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
-- int 3
-get
-sam_run: pc = 65, sp = 114, ir = 1413f
-Working stack: (6 word(s))
-- ref 1
+- int 1
+ref
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 25, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- int 1
+- stack XXXXXXXX
+iget
+sam_run: pc = 17, sp = 24, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
 - float 0.000000
 add
-sam_run: pc = 66, sp = 113, ir = 19
+sam_run: pc0 = XXXXXXXX, pc = 18, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
 int
-sam_run: pc = 67, sp = 114, ir = 13f
+sam_run: pc0 = XXXXXXXX, pc = 19, sp = 24, ir = XXXXXXXX
 Working stack: (6 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
-- int 6
-get
-sam_run: pc = 68, sp = 114, ir = 6000f
-Working stack: (6 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- int 1
-bra
-sam_run: pc = 81, sp = 115, ir = 800f
+- int 4
+ref
+sam_run: pc0 = XXXXXXXX, pc = 20, sp = 25, ir = XXXXXXXX
 Working stack: (7 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- int 4
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 21, sp = 24, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
 - int 1
-- ref 68
-bra
-sam_run: pc = 83, sp = 116, ir = 3bf
+ref
+sam_run: pc0 = XXXXXXXX, pc = 22, sp = 25, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- int 1
+- stack XXXXXXXX
+ref
+sam_run: pc0 = XXXXXXXX, pc = 23, sp = 26, ir = XXXXXXXX
 Working stack: (8 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
 - int 1
-- ref 68
-- ref 81
+- stack XXXXXXXX
+- stack XXXXXXXX
 if
-sam_run: pc = 69, sp = 114, ir = 9
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 24, ir = XXXXXXXX
 Working stack: (6 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
-- ref 84
+- ref XXXXXXXX
 int
-sam_run: pc = 70, sp = 115, ir = 1913f
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 25, ir = XXXXXXXX
 Working stack: (7 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
-- ref 84
-- int 2
-get
-sam_run: pc = 70, sp = 115, ir = 1913f
-Working stack: (7 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
-- float 0.000000
-f2i
-sam_run: pc = 71, sp = 115, ir = d
-Working stack: (7 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
+- ref XXXXXXXX
 - int 0
-int
-sam_run: pc = 72, sp = 116, ir = 1913f
+ref
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 26, ir = XXXXXXXX
 Working stack: (8 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
-- ref 84
+- ref XXXXXXXX
 - int 0
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 25, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- float 0.000000
+trap F2I
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 25, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+int
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 26, ir = XXXXXXXX
+Working stack: (8 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 1
+ref
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 27, ir = XXXXXXXX
+Working stack: (9 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 1
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 26, ir = XXXXXXXX
+Working stack: (8 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- float 0.000000
+trap F2I
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 26, ir = XXXXXXXX
+Working stack: (8 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 0
+int
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 27, ir = XXXXXXXX
+Working stack: (9 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 0
+- int -5
+get
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 27, ir = XXXXXXXX
+Working stack: (9 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 0
+- float 353.553385
+trap F2I
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 27, ir = XXXXXXXX
+Working stack: (9 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 0
+- int 354
+int
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 28, ir = XXXXXXXX
+Working stack: (10 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 0
+- int 354
+- int -5
+get
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 28, ir = XXXXXXXX
+Working stack: (10 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 0
+- int 354
+- float 353.553385
+trap F2I
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 28, ir = XXXXXXXX
+Working stack: (10 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 0
+- int 354
+- int 354
+int
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 29, ir = XXXXXXXX
+Working stack: (11 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- ref XXXXXXXX
+- int 0
+- int 0
+- int 354
+- int 354
 - int 3
-get
-sam_run: pc = 72, sp = 116, ir = 1913f
-Working stack: (8 word(s))
-- ref 1
+ref
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 30, ir = XXXXXXXX
+Working stack: (12 word(s))
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
-- ref 84
-- int 0
-- float 0.000000
-f2i
-sam_run: pc = 73, sp = 116, ir = ffffffed
-Working stack: (8 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
-- int 0
-- int 0
-int
-sam_run: pc = 74, sp = 117, ir = 1913f
-Working stack: (9 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
-- int 0
-- int 0
-- int -5
-get
-sam_run: pc = 74, sp = 117, ir = 1913f
-Working stack: (9 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
-- int 0
-- int 0
-- float 353.553385
-f2i
-sam_run: pc = 75, sp = 117, ir = ffffffed
-Working stack: (9 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
-- int 0
-- int 0
-- int 354
-int
-sam_run: pc = 76, sp = 118, ir = 1913f
-Working stack: (10 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
-- int 0
-- int 0
-- int 354
-- int -5
-get
-sam_run: pc = 76, sp = 118, ir = 1913f
-Working stack: (10 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
-- int 0
-- int 0
-- int 354
-- float 353.553385
-f2i
-sam_run: pc = 77, sp = 118, ir = 15
-Working stack: (10 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
+- ref XXXXXXXX
 - int 0
 - int 0
 - int 354
 - int 354
-int
-sam_run: pc = 78, sp = 119, ir = 13f
+- int 3
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 29, ir = XXXXXXXX
 Working stack: (11 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
-- ref 84
-- int 0
-- int 0
-- int 354
-- int 354
-- int 5
-get
-sam_run: pc = 79, sp = 119, ir = 819f
-Working stack: (11 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
+- ref XXXXXXXX
 - int 0
 - int 0
 - int 354
 - int 354
 - int 0
 trap DRAWLINE
-sam_run: pc = 80, sp = 114, ir = fffa000f
-Working stack: (6 word(s))
-- ref 1
-- float 500.000000
-- ref 103
-- float 353.553385
-- float 353.553385
-- ref 84
 ket
-sam_run: pc = 84, sp = 113, ir = d
+sam_run: pc0 = XXXXXXXX, pc = 24, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
 int
-sam_run: pc = 85, sp = 114, ir = 1bf
+sam_run: pc0 = XXXXXXXX, pc = 25, sp = 24, ir = XXXXXXXX
 Working stack: (6 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 - float 353.553385
-- int 3
-set
-sam_run: pc = 86, sp = 112, ir = 9
+- int 1
+ref
+sam_run: pc0 = XXXXXXXX, pc = 26, sp = 25, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- ref XXXXXXXX
+- float 353.553385
+- float 353.553385
+- int 1
+- stack XXXXXXXX
+iset
+sam_run: pc0 = XXXXXXXX, pc = 27, sp = 22, ir = XXXXXXXX
 Working stack: (4 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
 int
-sam_run: pc = 87, sp = 113, ir = 1bf
+sam_run: pc0 = XXXXXXXX, pc = 28, sp = 23, ir = XXXXXXXX
 Working stack: (5 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
 - float 353.553385
-- int 2
-set
-sam_run: pc = 88, sp = 111, ir = ffed800f
-Working stack: (3 word(s))
-- ref 1
+- int 0
+ref
+sam_run: pc0 = XXXXXXXX, pc = 29, sp = 24, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
 - float 500.000000
-- ref 103
+- ref XXXXXXXX
+- float 353.553385
+- int 0
+- stack XXXXXXXX
+iset
 ket
-sam_run: pc = 103, sp = 110, ir = 5
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
 int
-sam_run: pc = 104, sp = 111, ir = bf
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 21, ir = XXXXXXXX
 Working stack: (3 word(s))
-- ref 1
+- stack XXXXXXXX
 - float 500.000000
 - int 1
 pop
-sam_run: pc = 105, sp = 109, ir = 1
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 19, ir = XXXXXXXX
 Working stack: (1 word(s))
-- ref 1
+- stack XXXXXXXX
 int
-sam_run: pc = 106, sp = 110, ir = fbf
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 20, ir = XXXXXXXX
 Working stack: (2 word(s))
-- ref 1
+- stack XXXXXXXX
 - int 0
 halt
-Stack: (109 word(s))
-- 
-  - 
-    - float 353.553385
-    - float 353.553385
-    - float 0.785398
-    - int 0
-    - int 1
-    - 
-      - trap WHITE
-      - trap CLEARSCREEN
-      - float 0.000000
-      - int 2
-      - set
-      - float 0.000000
-      - int 3
-      - set
-      - float 0.000000
-      - int 4
-      - set
-      - trap BLACK
-      - int 5
-      - set
-      - int 0
-      - int 6
-      - set
-    - 
-      - int 0
-      - int 6
-      - set
-    - 
-      - int 1
-      - int 6
-      - set
-      - int 2
-      - get f2i
-      - int 3
-      - get f2i
-      - int 5
-      - get
-      - trap SETDOT
-    - 
-      - int 4
-      - get
-      - int -3
-      - get neg add
-      - int 4
-      - set
-    - 
-      - int 4
-      - get
-      - trap COS
-      - int -3
-      - get mul
-      - int 2
-      - get add
-      - int 4
-      - get
-      - trap SIN
-      - int -4
-      - get mul
-      - int 3
-      - get add
-      - int 6
-      - get
-      - 
-        - int 2
-        - get f2i
-        - int 3
-        - get f2i
-        - int -5
-        - get f2i
-        - int -5
-        - get f2i
-        - int 5
-        - get
-        - trap DRAWLINE
-      - 
-      - if
-      - int 3
-      - set
-      - int 2
-      - set
-  - ref 7
-  - do
-  - ref 31
-  - do
-  - float -45.000000
-  - trap RAD
-  - ref 43
-  - do
-  - int 1
-  - pop
-  - float 500.000000
-  - ref 51
-  - do
-  - int 1
-  - pop
+Stack: XXXXXXXX (19 item(s))
+- stack XXXXXXXX (10 items)
+  - float 353.553385
+  - float 353.553385
+  - float 0.785398
   - int 0
-  - halt
-- ref 1
+  - int 1
+  - stack XXXXXXXX (22 items)
+    - trap WHITE
+    - trap CLEARSCREEN
+    - float 0.000000
+    - int 0
+    - stack XXXXXXXX
+    - iset
+    - float 0.000000
+    - int 1
+    - stack XXXXXXXX
+    - iset
+    - float 0.000000
+    - int 2
+    - stack XXXXXXXX
+    - iset
+    - trap BLACK
+    - int 3
+    - stack XXXXXXXX
+    - iset
+    - int 0
+    - int 4
+    - stack XXXXXXXX
+    - iset
+  - stack XXXXXXXX (4 items)
+    - int 0
+    - int 4
+    - stack XXXXXXXX
+    - iset
+  - stack XXXXXXXX (16 items)
+    - int 1
+    - int 4
+    - stack XXXXXXXX
+    - iset
+    - int 0
+    - stack XXXXXXXX
+    - iget
+    - trap F2I
+    - int 1
+    - stack XXXXXXXX
+    - iget
+    - trap F2I
+    - int 3
+    - stack XXXXXXXX
+    - iget
+    - trap SETDOT
+  - stack XXXXXXXX (8 items)
+    - int 2
+    - stack XXXXXXXX
+    - iget
+    - int -3
+    - get neg add
+    - int 2
+    - stack XXXXXXXX
+    - iset
+  - stack XXXXXXXX (30 items)
+    - int 2
+    - stack XXXXXXXX
+    - iget
+    - trap COS
+    - int -3
+    - get mul
+    - int 0
+    - stack XXXXXXXX
+    - iget add
+    - int 2
+    - stack XXXXXXXX
+    - iget
+    - trap SIN
+    - int -4
+    - get mul
+    - int 1
+    - stack XXXXXXXX
+    - iget add
+    - int 4
+    - stack XXXXXXXX
+    - iget
+    - stack XXXXXXXX (18 items)
+      - int 0
+      - stack XXXXXXXX
+      - iget
+      - trap F2I
+      - int 1
+      - stack XXXXXXXX
+      - iget
+      - trap F2I
+      - int -5
+      - get
+      - trap F2I
+      - int -5
+      - get
+      - trap F2I
+      - int 3
+      - stack XXXXXXXX
+      - iget
+      - trap DRAWLINE
+    - stack XXXXXXXX (0 items)
+    - if
+    - int 1
+    - stack XXXXXXXX
+    - iset
+    - int 0
+    - stack XXXXXXXX
+    - iset
+- stack XXXXXXXX
+- do
+- stack XXXXXXXX
+- do
+- float -45.000000
+- trap RAD
+- stack XXXXXXXX
+- do
+- int 1
+- pop
+- float 500.000000
+- stack XXXXXXXX
+- do
+- int 1
+- pop
+- int 0
+- halt
+- stack XXXXXXXX
 sam_run returns: halt with reason 0 (0x0)

@@ -1,7 +1,7 @@
 /*
 SAM assembler
 
-Copyright © 2025 Reuben Thomas <rrt@sc3d.org>
+Copyright © 2025-2026 Reuben Thomas <rrt@sc3d.org>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -52,11 +52,15 @@ func readProg(r io.Reader) ast.Node {
 }
 
 // Assemble a program
-var labels map[string]libsam.Uword
+var labels map[string]address
+
+type address struct {
+	stack libsam.Stack
+	item  libsam.Uword
+}
 
 type assembler struct {
 	stack  libsam.Stack
-	s0     libsam.Uword
 	insts  libsam.Uword
 	nInsts uint
 }
@@ -93,7 +97,10 @@ func parseTrap(trapStr string) (libsam.Word, bool) {
 func (a *assembler) parseLiteral(argStr string) libsam.Word {
 	address, ok := labels[argStr]
 	if ok {
-		return libsam.Word(address)
+		if address.stack != a.stack {
+			panic(fmt.Sprintf("local reference to label ‘%s’ in another stack", argStr))
+		}
+		return libsam.Word(address.item)
 	}
 	if opcode, ok := parseTrap(argStr); ok {
 		return libsam.Word(opcode)
@@ -104,6 +111,22 @@ func (a *assembler) parseLiteral(argStr string) libsam.Word {
 	panic(fmt.Errorf("bad literal %s", argStr))
 }
 
+func (a *assembler) parseLabel(argStr string) address {
+	address, ok := labels[argStr]
+	if ok {
+		return address
+	}
+	panic(fmt.Errorf("no such label ‘%s’", argStr))
+}
+
+func (a *assembler) parseStack(argStr string) libsam.Stack {
+	address := a.parseLabel(argStr)
+	if address.item != 0 {
+		panic(fmt.Errorf("expected stack but found other label ‘%s’", argStr))
+	}
+	return address.stack
+}
+
 var operandInsns = []string{
 	"int",
 	"ref",
@@ -112,7 +135,7 @@ var operandInsns = []string{
 	"push",
 }
 
-func (a *assembler) assembleInstruction(tokens []string) {
+func (a *assembler) assembleInstruction(tokens ...string) {
 	instStr := tokens[0]
 	opcode, ok := parseInsn(instStr)
 	if !ok {
@@ -128,11 +151,9 @@ func (a *assembler) assembleInstruction(tokens []string) {
 
 		switch opcode.Tag {
 		case libsam.INT_TAG:
-			operand := a.parseLiteral(operandStr)
-			a.stack.PushInt(libsam.Uword(operand))
+			a.stack.PushInt(libsam.Uword(a.parseLiteral(operandStr)))
 		case libsam.REF_TAG:
-			operand := a.parseLiteral(operandStr)
-			a.stack.PushRef(libsam.Uword(operand))
+			a.stack.PushArray(a.parseStack(operandStr))
 		case libsam.TRAP_TAG:
 			trap, ok := parseTrap(operandStr)
 			if !ok {
@@ -170,16 +191,16 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
 		a.flushInstructions()
-		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
+		subA := assembler{stack: libsam.NewStack(libsam.ARRAY_STACK)}
 		subA.assembleSequence(n)
-		a.stack.PushCode(subA.stack)
+		a.stack.PushArray(subA.stack)
 		return nil
 	case ast.StringType:
 		tokens := strings.Fields(n.String())
 		if len(tokens) < 1 {
 			panic(errors.New("empty instruction"))
 		}
-		a.assembleInstruction(tokens)
+		a.assembleInstruction(tokens...)
 		return nil
 	case ast.MappingType:
 		mapn := n.(*ast.MappingNode)
@@ -194,31 +215,41 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		}
 		label := keyNode.String()
 		a.flushInstructions()
-		labels[label] = a.s0 + a.stack.Sp()
+		labels[label] = address{stack: a.stack, item: a.stack.Sp()}
 		subNode := mapNode.Value
 		ast.Walk(a, subNode)
 		return nil
 	case ast.TagType:
 		tag := n.(*ast.TagNode)
-		tagName := tag.GetToken().Value
-		if tagName != "!include" {
+		switch tagName := tag.GetToken().Value; tagName {
+		case "!include":
+			val := tag.Value
+			if val.Type() != ast.StringType {
+				panic(fmt.Errorf("invalid !include: string argument expected"))
+			}
+			file := val.String()
+			r, err := os.Open(file)
+			if err != nil {
+				panic(err)
+			}
+			subProg := readProg(r)
+			// Assemble the included file in a nested stack.
+			a.flushInstructions()
+			subA := assembler{stack: libsam.NewStack(libsam.ARRAY_STACK)}
+			subA.assembleSequence(subProg)
+			a.stack.PushArray(subA.stack)
+		case "!iref":
+			val := tag.Value
+			if val.Type() != ast.StringType {
+				panic(fmt.Errorf("invalid !iref: label argument expected"))
+			}
+			label := val.String()
+			address := a.parseLabel(label)
+			a.assembleInstruction("int", fmt.Sprintf("%d", address.item))
+			a.stack.PushArray(address.stack)
+		default:
 			panic(fmt.Errorf("invalid directive %s", tagName))
 		}
-		name := tag.Value
-		if name.Type() != ast.StringType {
-			panic(fmt.Errorf("invalid directive: string argument expected"))
-		}
-		file := name.String()
-		r, err := os.Open(file)
-		if err != nil {
-			panic(err)
-		}
-		subProg := readProg(r)
-		// Assemble the included file in a nested stack.
-		a.flushInstructions()
-		subA := assembler{stack: libsam.NewStack(), s0: a.s0 + a.stack.Sp() + 1}
-		subA.assembleSequence(subProg)
-		a.stack.PushCode(subA.stack)
 		return nil
 	default:
 		panic(fmt.Errorf("invalid code %v", n))
@@ -227,8 +258,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 
 func Assemble(stack libsam.Stack, source []byte) {
 	prog := readProg(bytes.NewReader(source))
-	labels = map[string]libsam.Uword{}
-	a := assembler{stack: libsam.NewStack(), s0: 1}
+	labels = map[string]address{}
+	a := assembler{stack: stack}
 	a.assembleSequence(prog)
-	stack.PushCode(a.stack)
 }

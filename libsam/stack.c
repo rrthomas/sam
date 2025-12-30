@@ -43,24 +43,6 @@ static sam_word_t move_n(sam_stack_t *s, sam_uword_t dst, sam_uword_t src, sam_u
     return SAM_ERROR_OK;
 }
 
-// Push the stack item at `addr` to the top of the stack.
-int sam_stack_get(sam_stack_t *s, sam_uword_t addr)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    sam_uword_t opcode;
-    HALT_IF_ERROR(sam_stack_peek(s, addr, &opcode));
-    opcode &= SAM_ARRAY_TAG_MASK;
-    if (opcode == SAM_ARRAY_TAG)
-        HALT_IF_ERROR(sam_push_stack(s, LSHIFT(addr, SAM_REF_SHIFT) | SAM_REF_TAG));
-    else {
-        sam_uword_t temp;
-        HALT_IF_ERROR(sam_stack_peek(s, addr, &temp));
-        HALT_IF_ERROR(sam_push_stack(s, temp));
-    }
-error:
-    return error;
-}
-
 // Move the stack item at `addr` to the top of `s`.
 int sam_stack_extract(sam_stack_t *s, sam_uword_t addr) {
     sam_word_t error = SAM_ERROR_OK;
@@ -125,9 +107,8 @@ int sam_push_stack(sam_stack_t *s, sam_word_t val)
     return error;
 }
 
-int sam_push_ref(sam_stack_t *s, sam_uword_t addr) {
-    // FIXME: error if address is too large
-    return sam_push_stack(s, SAM_REF_TAG | (addr << SAM_REF_SHIFT));
+int sam_push_ref(sam_stack_t *s, void *ptr) {
+    return sam_push_stack(s, SAM_REF_TAG | ((sam_uword_t)ptr));
 }
 
 int sam_push_int(sam_stack_t *s, sam_uword_t val) {
@@ -154,25 +135,18 @@ int sam_push_insts(sam_stack_t *s, sam_uword_t insts) {
     return sam_push_stack(s, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
 }
 
-int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size) {
-    sam_word_t error = SAM_ERROR_OK;
-    // FIXME: error if array is too large
-    HALT_IF_ERROR(sam_push_stack(s, SAM_ARRAY_TAG | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT) | ((size + 1) << SAM_ARRAY_OFFSET_SHIFT)));
-    for (sam_uword_t i = 0; i < size; i++)
-        HALT_IF_ERROR(sam_push_stack(s, ptr[i]));
-    HALT_IF_ERROR(sam_push_stack(s, SAM_ARRAY_TAG | (SAM_ARRAY_STACK << SAM_ARRAY_TYPE_SHIFT) | (-(size + 1) << SAM_ARRAY_OFFSET_SHIFT)));
-error:
-    return error;
-}
-
-sam_stack_t *sam_stack_new(void)
+int sam_stack_new(unsigned type, sam_stack_t **new_stack)
 {
+    if ((type & (SAM_ARRAY_TYPE_MASK >> SAM_ARRAY_TYPE_SHIFT)) != type)
+        return SAM_ERROR_INVALID_ARRAY_TYPE;
     sam_stack_t *s = calloc(sizeof(sam_stack_t), 1);
     if (s != NULL) {
+        s->opcode = (type << SAM_ARRAY_TYPE_SHIFT) | SAM_ARRAY_TAG;
         s->ssize = 1;
         s->s0 = calloc(sizeof(sam_word_t), s->ssize);
         if (s->s0 == NULL)
-            return NULL;
+            return SAM_ERROR_NO_MEMORY;
     }
-    return s;
+    *new_stack = s;
+    return SAM_ERROR_OK;
 }

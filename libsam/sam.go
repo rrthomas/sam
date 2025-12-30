@@ -10,6 +10,7 @@ package libsam
 //#include "traps_graphics.h"
 import "C"
 import "fmt"
+import "unsafe"
 
 type Word = C.sam_word_t
 type Uword = C.sam_uword_t
@@ -53,8 +54,10 @@ type Frame struct {
 	Stack Stack
 }
 
-func NewStack() Stack {
-	return Stack{stack: C.sam_stack_new()}
+func NewStack(ty uint) Stack {
+	stack := Stack{}
+	C.sam_stack_new(C.uint(ty), &stack.stack)
+	return stack
 }
 
 func NewFrame() Frame {
@@ -79,8 +82,8 @@ func (s *Stack) PushStack(val Word) int {
 	return int(C.sam_push_stack(s.stack, val))
 }
 
-func (s *Stack) PushRef(addr Uword) int {
-	return int(C.sam_push_ref(s.stack, addr))
+func (s *Stack) PushArray(stack Stack) int {
+	return int(C.sam_push_ref(s.stack, unsafe.Pointer(stack.stack)))
 }
 
 func (s *Stack) PushInt(val Uword) int {
@@ -99,10 +102,6 @@ func (s *Stack) PushTrap(function Uword) int {
 	return int(C.sam_push_trap(s.stack, function))
 }
 
-func (s *Stack) PushCode(stack Stack) int {
-	return int(C.sam_push_code(s.stack, stack.stack.s0, stack.stack.sp))
-}
-
 func (s *Stack) PushInsts(insts Uword) int {
 	return int(C.sam_push_insts(s.stack, insts))
 }
@@ -110,13 +109,14 @@ func (s *Stack) PushInsts(insts Uword) int {
 func Run(frame Frame) Word {
 	frame.frame.pc = frame.Pc
 	frame.frame.stack = frame.Stack.stack
+	frame.frame.code = frame.Stack.stack
 	res := C.sam_run(frame.frame)
 	frame.Pc = frame.frame.pc
 	return res
 }
 
 func Init() Stack {
-	stack := NewStack()
+	stack := NewStack(ARRAY_STACK)
 	if stack.stack == nil {
 		panic("sam_stack_new returned NULL")
 	}
@@ -151,8 +151,8 @@ func SetDebug(flag bool) {
 	}
 }
 
-func PrintStack() {
-	C.sam_print_stack()
+func (stack *Stack) PrintStack() {
+	C.sam_print_stack(stack.stack)
 }
 
 func DumpScreen(file string) {
@@ -167,7 +167,6 @@ const (
 	ERROR_STACK_UNDERFLOW    = C.SAM_ERROR_STACK_UNDERFLOW
 	ERROR_STACK_OVERFLOW     = C.SAM_ERROR_STACK_OVERFLOW
 	ERROR_WRONG_TYPE         = C.SAM_ERROR_WRONG_TYPE
-	ERROR_BAD_BRACKET        = C.SAM_ERROR_BAD_BRACKET
 	ERROR_INVALID_TRAP       = C.SAM_ERROR_INVALID_TRAP
 	ERROR_TRAP_INIT          = C.SAM_ERROR_TRAP_INIT
 	ERROR_NO_MEMORY          = C.SAM_ERROR_NO_MEMORY
@@ -187,7 +186,6 @@ var errors = map[int]string{
 	ERROR_STACK_UNDERFLOW:    "ERROR_STACK_UNDERFLOW",
 	ERROR_STACK_OVERFLOW:     "ERROR_STACK_OVERFLOW",
 	ERROR_WRONG_TYPE:         "ERROR_WRONG_TYPE",
-	ERROR_BAD_BRACKET:        "ERROR_BAD_BRACKET",
 	ERROR_INVALID_TRAP:       "ERROR_INVALID_TRAP",
 	ERROR_TRAP_INIT:          "ERROR_TRAP_INIT",
 	ERROR_NO_MEMORY:          "ERROR_NO_MEMORY",
@@ -225,10 +223,12 @@ var Instructions = map[string]InstOpcode{
 	"set":     {C.SAM_INSTS_TAG, C.INST_SET, false},
 	"extract": {C.SAM_INSTS_TAG, C.INST_EXTRACT, false},
 	"insert":  {C.SAM_INSTS_TAG, C.INST_INSERT, false},
+	"iget":    {C.SAM_INSTS_TAG, C.INST_IGET, false},
+	"iset":    {C.SAM_INSTS_TAG, C.INST_ISET, false},
+	"go":      {C.SAM_INSTS_TAG, C.INST_GO, true},
 	"do":      {C.SAM_INSTS_TAG, C.INST_DO, true},
 	"if":      {C.SAM_INSTS_TAG, C.INST_IF, true},
 	"while":   {C.SAM_INSTS_TAG, C.INST_WHILE, false},
-	"go":      {C.SAM_INSTS_TAG, C.INST_GO, true},
 	"not":     {C.SAM_INSTS_TAG, C.INST_NOT, false},
 	"and":     {C.SAM_INSTS_TAG, C.INST_AND, false},
 	"or":      {C.SAM_INSTS_TAG, C.INST_OR, false},
@@ -243,8 +243,6 @@ var Instructions = map[string]InstOpcode{
 	"mul":     {C.SAM_INSTS_TAG, C.INST_MUL, false},
 	"div":     {C.SAM_INSTS_TAG, C.INST_DIV, false},
 	"rem":     {C.SAM_INSTS_TAG, C.INST_REM, false},
-	"i2f":     {C.SAM_INSTS_TAG, C.INST_I2F, false},
-	"f2i":     {C.SAM_INSTS_TAG, C.INST_F2I, false},
 	"zero":    {C.SAM_INSTS_TAG, C.INST_0, false},
 	"false":   {C.SAM_INSTS_TAG, C.INST_0, false},
 	"one":     {C.SAM_INSTS_TAG, C.INST_1, false},
@@ -256,6 +254,8 @@ var Instructions = map[string]InstOpcode{
 }
 
 var Traps = map[string]int{
+	"I2F": C.TRAP_MATH_I2F,
+	"F2I": C.TRAP_MATH_F2I,
 	"POW": C.TRAP_MATH_POW,
 	"SIN": C.TRAP_MATH_SIN,
 	"COS": C.TRAP_MATH_COS,

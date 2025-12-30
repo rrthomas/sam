@@ -1,6 +1,6 @@
 // SAM's math traps.
 //
-// (c) Reuben Thomas 2020-2025
+// (c) Reuben Thomas 2020-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -17,7 +17,9 @@ char *sam_math_trap_name(sam_word_t function);
 #define SAM_TRAP_MATH_BASE 0x100
 
 enum SAM_TRAP_MATH {
-    TRAP_MATH_POW = SAM_TRAP_MATH_BASE,
+    TRAP_MATH_I2F  = SAM_TRAP_MATH_BASE,
+    TRAP_MATH_F2I,
+    TRAP_MATH_POW,
     TRAP_MATH_SIN,
     TRAP_MATH_COS,
     TRAP_MATH_DEG,

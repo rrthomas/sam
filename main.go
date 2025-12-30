@@ -78,14 +78,13 @@ var rootCmd = &cobra.Command{
 			libsam.GraphicsFinish()
 			os.Exit(int(res))
 		}
-		libsam.PrintStack()
+		stack.PrintStack()
 		frame := libsam.NewFrame()
 		frame.Stack = stack
-		frame.Pc = 1
 		res2 := libsam.Run(frame)
 
 		if debug {
-			libsam.PrintStack()
+			stack.PrintStack()
 			fmt.Printf("sam_run returns: %s\n", libsam.ErrorMessage(res2))
 		}
 

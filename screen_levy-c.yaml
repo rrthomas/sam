@@ -9,7 +9,7 @@
 - int 1
 - pop
 - trap DISPLAY_HEIGHT
-- i2f
+- trap I2F
 - float 4.0
 - div
 - ref go
@@ -23,7 +23,7 @@
 - int 1
 - pop
 - trap DISPLAY_WIDTH
-- i2f
+- trap I2F
 - float 4.0
 - div
 - ref go
@@ -34,11 +34,11 @@
 - do
 - int 8
 - trap DISPLAY_WIDTH
-- i2f
+- trap I2F
 - float 2.0
 - div
-- levy_c:
-  - int -3
+-
+  - levy_c: int -3
   - get
   -
     - float -45.0
