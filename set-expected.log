@@ -1,232 +1,230 @@
-Stack: (33 word(s))
-- 
-  - int 1
-  - int 2
-  - int -1
-  - set
-  - int 1
-  - pop
-  - float 1.000000
-  - float 2.000000
-  - float 3.000000
-  - int -2
-  - extract
-  - int -2
-  - insert
-  - int -1
-  - set
-  - int 1
-  - pop
-  - int 1
-  - float 2.000000
-  - int -1
-  - set
-  - int 1
-  - pop
-  - float 1.000000
-  - int 2
-  - int -1
-  - set
-  - int 1
-  - pop
-  - int 0
-  - halt
-sam_run: pc = 1, sp = 33, ir = 5
+Stack: XXXXXXXX (31 item(s))
+- int 1
+- int 2
+- int -1
+- set
+- int 1
+- pop
+- float 1.000000
+- float 2.000000
+- float 3.000000
+- int -2
+- extract
+- int -2
+- insert
+- int -1
+- set
+- int 1
+- pop
+- int 1
+- float 2.000000
+- int -1
+- set
+- int 1
+- pop
+- float 1.000000
+- int 2
+- int -1
+- set
+- int 1
+- pop
+- int 0
+- halt
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 31, ir = XXXXXXXX
 Working stack: (0 word(s))
 int
-sam_run: pc = 2, sp = 34, ir = 9
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 32, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 1
 int
-sam_run: pc = 3, sp = 35, ir = fffffffd
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 1
 - int 2
 int
-sam_run: pc = 4, sp = 36, ir = 1bf
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - int 1
 - int 2
 - int -1
 set
-sam_run: pc = 5, sp = 34, ir = 5
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 32, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 2
 int
-sam_run: pc = 6, sp = 35, ir = bf
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 2
 - int 1
 pop
-sam_run: pc = 7, sp = 33, ir = 0
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 31, ir = XXXXXXXX
 Working stack: (0 word(s))
 float
-sam_run: pc = 8, sp = 34, ir = 0
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 32, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 1.000000
 float
-sam_run: pc = 9, sp = 35, ir = 0
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - float 2.000000
 float
-sam_run: pc = 10, sp = 36, ir = fffffff9
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
 int
-sam_run: pc = 11, sp = 37, ir = 23f
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 35, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
 - int -2
 extract
-sam_run: pc = 12, sp = 36, ir = fffffff9
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 3.000000
 - float 2.000000
 int
-sam_run: pc = 13, sp = 37, ir = 2bf
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 35, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - float 3.000000
 - float 2.000000
 - int -2
 insert
-sam_run: pc = 14, sp = 36, ir = fffffffd
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
 int
-sam_run: pc = 15, sp = 37, ir = 1bf
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 35, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
 - int -1
 set
-sam_run: pc = 16, sp = 35, ir = 5
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - float 3.000000
 int
-sam_run: pc = 17, sp = 36, ir = bf
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 3.000000
 - int 1
 pop
-sam_run: pc = 18, sp = 34, ir = 5
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 32, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 1.000000
 int
-sam_run: pc = 19, sp = 35, ir = 0
+sam_run: pc0 = XXXXXXXX, pc = 18, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - int 1
 float
-sam_run: pc = 20, sp = 36, ir = fffffffd
+sam_run: pc0 = XXXXXXXX, pc = 19, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - int 1
 - float 2.000000
 int
-sam_run: pc = 21, sp = 37, ir = 1bf
+sam_run: pc0 = XXXXXXXX, pc = 20, sp = 35, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - int 1
 - float 2.000000
 - int -1
 set
-sam_run: pc = 22, sp = 35, ir = 5
+sam_run: pc0 = XXXXXXXX, pc = 21, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - float 2.000000
 int
-sam_run: pc = 23, sp = 36, ir = bf
+sam_run: pc0 = XXXXXXXX, pc = 22, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 2.000000
 - int 1
 pop
-sam_run: pc = 24, sp = 34, ir = 0
+sam_run: pc0 = XXXXXXXX, pc = 23, sp = 32, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 1.000000
 float
-sam_run: pc = 25, sp = 35, ir = 9
+sam_run: pc0 = XXXXXXXX, pc = 24, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - float 1.000000
 int
-sam_run: pc = 26, sp = 36, ir = fffffffd
+sam_run: pc0 = XXXXXXXX, pc = 25, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 1.000000
 - int 2
 int
-sam_run: pc = 27, sp = 37, ir = 1bf
+sam_run: pc0 = XXXXXXXX, pc = 26, sp = 35, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - float 1.000000
 - int 2
 - int -1
 set
-sam_run: pc = 28, sp = 35, ir = 5
+sam_run: pc0 = XXXXXXXX, pc = 27, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - int 2
 int
-sam_run: pc = 29, sp = 36, ir = bf
+sam_run: pc0 = XXXXXXXX, pc = 28, sp = 34, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - int 2
 - int 1
 pop
-sam_run: pc = 30, sp = 34, ir = 1
+sam_run: pc0 = XXXXXXXX, pc = 29, sp = 32, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 1.000000
 int
-sam_run: pc = 31, sp = 35, ir = fbf
+sam_run: pc0 = XXXXXXXX, pc = 30, sp = 33, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - int 0
 halt
-Stack: (34 word(s))
-- 
-  - int 1
-  - int 2
-  - int -1
-  - set
-  - int 1
-  - pop
-  - float 1.000000
-  - float 2.000000
-  - float 3.000000
-  - int -2
-  - extract
-  - int -2
-  - insert
-  - int -1
-  - set
-  - int 1
-  - pop
-  - int 1
-  - float 2.000000
-  - int -1
-  - set
-  - int 1
-  - pop
-  - float 1.000000
-  - int 2
-  - int -1
-  - set
-  - int 1
-  - pop
-  - int 0
-  - halt
+Stack: XXXXXXXX (32 item(s))
+- int 1
+- int 2
+- int -1
+- set
+- int 1
+- pop
+- float 1.000000
+- float 2.000000
+- float 3.000000
+- int -2
+- extract
+- int -2
+- insert
+- int -1
+- set
+- int 1
+- pop
+- int 1
+- float 2.000000
+- int -1
+- set
+- int 1
+- pop
+- float 1.000000
+- int 2
+- int -1
+- set
+- int 1
+- pop
+- int 0
+- halt
 - float 1.000000
 sam_run returns: halt with reason 0 (0x0)

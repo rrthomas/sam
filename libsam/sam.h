@@ -36,14 +36,18 @@ typedef double sam_float_t;
 
 // Stacks
 typedef struct sam_stack {
+    sam_uword_t opcode;
     sam_word_t *s0;
     sam_uword_t ssize; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
 } sam_stack_t;
 
 // Frames
+// FIXME: separate out sam_state_t which has a pointer to top frame and
+// pointer to current root (i.e. code context).
 typedef struct sam_frame {
     struct sam_frame *parent;
+    sam_stack_t *code;
     sam_stack_t *stack;
     sam_uword_t pc;
 } sam_frame_t;
@@ -57,29 +61,26 @@ enum {
     SAM_ERROR_STACK_UNDERFLOW = 4,
     SAM_ERROR_STACK_OVERFLOW = 5,
     SAM_ERROR_WRONG_TYPE = 6,
-    SAM_ERROR_BAD_BRACKET = 7,
-    SAM_ERROR_INVALID_TRAP = 8,
-    SAM_ERROR_TRAP_INIT = 9,
-    SAM_ERROR_NO_MEMORY = 10,
-    SAM_ERROR_INVALID_ARRAY_TYPE = 11,
+    SAM_ERROR_INVALID_TRAP = 7,
+    SAM_ERROR_TRAP_INIT = 8,
+    SAM_ERROR_NO_MEMORY = 9,
+    SAM_ERROR_INVALID_ARRAY_TYPE = 10,
 };
 
 // Stack access
-sam_stack_t *sam_stack_new(void);
+int sam_stack_new(unsigned type, sam_stack_t **new_stack);
 int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
-int sam_stack_get(sam_stack_t *s, sam_uword_t addr);
 int sam_stack_extract(sam_stack_t *s, sam_uword_t addr);
 int sam_stack_insert(sam_stack_t *s, sam_uword_t addr);
 int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr);
 int sam_pop_stack(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_push_stack(sam_stack_t *s, sam_word_t val);
-int sam_push_ref(sam_stack_t *s, sam_uword_t addr);
+int sam_push_ref(sam_stack_t *s, void *ptr);
 int sam_push_int(sam_stack_t *s, sam_uword_t val);
 int sam_push_float(sam_stack_t *s, sam_float_t n);
 int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand);
 int sam_push_trap(sam_stack_t *s, sam_uword_t function);
-int sam_push_code(sam_stack_t *s, sam_word_t *ptr, sam_uword_t size);
 int sam_push_insts(sam_stack_t *s, sam_uword_t insts);
 
 // Frames
@@ -94,8 +95,8 @@ sam_word_t sam_run(sam_frame_t *f);
 extern bool do_debug;
 char *inst_name(sam_uword_t inst_opcode);
 char *trap_name(sam_uword_t function);
-void sam_print_stack(void);
-void sam_print_working_stack(void);
+void sam_print_stack(sam_stack_t *s);
+void sam_print_working_stack(sam_stack_t *s);
 void debug(const char *fmt, ...);
 int sam_debug_init(sam_stack_t *s);
 #endif

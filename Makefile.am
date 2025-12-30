@@ -65,7 +65,7 @@ EXTRA_DIST = $(LOG_COMPILER) $(TESTS) $(RESULTS) \
 	$(EMPTY)
 
 clean-local:
-	rm -f *-output.log *-output.pbm; \
+	rm -f *-fixed.log *-output.log *-output.pbm; \
 	if test "$(srcdir)" != "$(builddir)"; then rm -f $(builddir)/turtle.yaml; fi
 
 check-local:

@@ -1,16 +1,15 @@
-- data:
-  - float 2.0
+-
+  - data: float 2.0
   - float 5.0
   - float 10.0
   - float 20.0
 - float 0.0
-- int 4
+- int -4
 -
   - loop: int -2
   - get
-  - int data
-  - add
-  - get
+  - ref data
+  - iget
   - int -4
   - get
   - add
@@ -18,14 +17,14 @@
   - set
   - int -2
   - get
-  - int -1
+  - int 1
   - add
   - int -1
   - get
   - int -3
   - set
   - while
-  - int loop
+  - ref loop
   - go
 - do
 - int 1

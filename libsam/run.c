@@ -1,6 +1,6 @@
 // The interpreter main loop.
 //
-// (c) Reuben Thomas 1994-2025
+// (c) Reuben Thomas 1994-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -72,10 +72,30 @@ const int SAM_INST_SHIFT = 5;
 const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 
 // Execution macros
+#define GO(addr)                                \
+    do {                                        \
+        sam_frame_t *inner_f = sam_frame_new(); \
+        if (inner_f == NULL)                    \
+            HALT(SAM_ERROR_NO_MEMORY);          \
+        inner_f->code = (sam_stack_t *)addr;    \
+        inner_f->stack = f->stack;              \
+        inner_f->pc = 0;                        \
+        f = inner_f;                            \
+    } while (0)
+
 #define DO(addr)                                \
     do {                                        \
-        PUSH_PTR(f->pc);                        \
-        f->pc = addr;                           \
+        PUSH_PTR(f);                            \
+        GO(addr);                               \
+    } while (0)
+
+
+// FIXME: reference-count frames
+#define RET                                     \
+    do {                                        \
+        sam_frame_t *old_f = f;                 \
+        POP_PTR(f);                             \
+        free(old_f);                            \
     } while (0)
 
 // Division macros
@@ -100,11 +120,18 @@ sam_word_t sam_run(sam_frame_t *f)
     sam_word_t error = SAM_ERROR_OK;
 
     for (;;) {
-        sam_uword_t ir;
-        HALT_IF_ERROR(sam_stack_peek(f->stack, f->pc++, &ir));
+        while (f->pc == f->code->sp) {
 #ifdef SAM_DEBUG
-        debug("sam_run: pc = %u, sp = %u, ir = %x\n", f->pc - 1, f->stack->sp, ir);
-        sam_print_working_stack();
+            debug("ket\n");
+#endif
+            RET;
+        }
+
+        sam_uword_t ir;
+        HALT_IF_ERROR(sam_stack_peek(f->code, f->pc++, &ir));
+#ifdef SAM_DEBUG
+        debug("sam_run: pc0 = %p, pc = %u, sp = %u, ir = %x\n", f->code, f->pc - 1, f->stack->sp, ir);
+        sam_print_working_stack(f->stack);
 #endif
 
         if ((ir & SAM_REF_TAG_MASK) == SAM_REF_TAG) {
@@ -126,30 +153,10 @@ sam_word_t sam_run(sam_frame_t *f)
             // No atoms yet.
             switch ((ir & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {}
         } else if ((ir & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
-            unsigned array_type = (ir & SAM_ARRAY_TYPE_MASK) >> SAM_ARRAY_TYPE_SHIFT;
-            sam_word_t offset = ARSHIFT((sam_word_t)ir, SAM_ARRAY_OFFSET_SHIFT);
-            switch (array_type) {
-            case SAM_ARRAY_STACK:
 #ifdef SAM_DEBUG
-                debug("%s\n", offset > 0 ? "bra" : "ket");
+            debug("*** UNEXPECTED STACK ***\n");
 #endif
-                if (offset > 0) {
-                    PUSH_PTR(f->pc - 1);
-                    f->pc += offset; // Skip to next instruction
-                } else {
-                    POP_PTR(f->pc);
-                }
-                break;
-            case SAM_ARRAY_RAW:
-                // TODO
-                // FALLTHROUGH
-            default:
-#ifdef SAM_DEBUG
-                debug("ERROR_INVALID_ARRAY_TYPE\n");
-#endif
-                HALT(SAM_ERROR_INVALID_ARRAY_TYPE);
-                break;
-            }
+            HALT(SAM_ERROR_INVALID_OPCODE);
         } else if ((ir & SAM_TRAP_TAG_MASK) == SAM_TRAP_TAG) {
             sam_uword_t function = ir >> SAM_TRAP_FUNCTION_SHIFT;
 #ifdef SAM_DEBUG
@@ -165,20 +172,6 @@ sam_word_t sam_run(sam_frame_t *f)
                 switch (opcode) {
                 case INST_NOP:
                     break;
-                case INST_I2F:
-                    {
-                        sam_word_t i;
-                        POP_INT(i);
-                        PUSH_FLOAT((sam_float_t)i);
-                    }
-                    break;
-                case INST_F2I:
-                    {
-                        sam_float_t fl;
-                        POP_FLOAT(fl);
-                        PUSH_INT((sam_word_t)rint(fl));
-                    }
-                    break;
                 case INST_POP:
                     {
                         sam_word_t i;
@@ -192,9 +185,10 @@ sam_word_t sam_run(sam_frame_t *f)
                     {
                         sam_word_t pos;
                         POP_INT(pos);
-                        sam_uword_t addr;
+                        sam_uword_t addr, item;
                         HALT_IF_ERROR(sam_stack_item(f->stack, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_get(f->stack, addr));
+                        HALT_IF_ERROR(sam_stack_peek(f->stack, addr, &item));
+                        HALT_IF_ERROR(sam_push_stack(f->stack, item));
                     }
                     break;
                 case INST_SET:
@@ -225,25 +219,55 @@ sam_word_t sam_run(sam_frame_t *f)
                         HALT_IF_ERROR(sam_stack_insert(f->stack, addr));
                     }
                     break;
+                case INST_IGET:
+                    {
+                        sam_stack_t *stack;
+                        POP_PTR(stack);
+                        sam_word_t pos;
+                        POP_INT(pos);
+                        sam_uword_t addr, item;
+                        HALT_IF_ERROR(sam_stack_item(stack, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_peek(stack, addr, &item));
+                        HALT_IF_ERROR(sam_push_stack(f->stack, item));
+                    }
+                    break;
+                case INST_ISET:
+                    {
+                        sam_stack_t *stack;
+                        POP_PTR(stack);
+                        sam_word_t pos, val;
+                        POP_INT(pos);
+                        POP_WORD(&val);
+                        sam_uword_t dest;
+                        HALT_IF_ERROR(sam_stack_item(stack, pos, &dest));
+                        HALT_IF_ERROR(sam_stack_poke(stack, dest, val));
+                    }
+                    break;
+                case INST_GO:
+                    {
+                        sam_stack_t *code;
+                        POP_PTR(code);
+                        GO(code);
+                        opcodes = 0;
+                    }
+                    break;
                 case INST_DO:
                     {
-                        sam_uword_t code;
-                        POP_REF(code);
-                        PUSH_PTR(f->pc);
-                        f->pc = code;
+                        sam_stack_t *code;
+                        POP_PTR(code);
+                        DO(code);
                         opcodes = 0;
                     }
                     break;
                 case INST_IF:
                     {
-                        sam_uword_t then, else_;
-                        POP_REF(else_);
-                        POP_REF(then);
+                        sam_stack_t *then, *else_;
+                        POP_PTR(else_);
+                        POP_PTR(then);
                         sam_word_t flag;
                         POP_INT(flag);
-                        sam_uword_t addr = flag ? then : else_;
-                        PUSH_PTR(f->pc);
-                        f->pc = addr;
+                        sam_stack_t *addr = flag ? then : else_;
+                        DO(addr);
                         opcodes = 0;
                     }
                     break;
@@ -252,19 +276,9 @@ sam_word_t sam_run(sam_frame_t *f)
                         sam_word_t flag;
                         POP_INT(flag);
                         if (!flag) {
-                            POP_PTR(f->pc);
+                            RET;
                             opcodes = 0;
                         }
-                    }
-                    break;
-                case INST_GO:
-                    {
-                        sam_word_t pos;
-                        POP_INT(pos);
-                        sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(f->stack, pos, &addr));
-                        f->pc = addr;
-                        opcodes = 0;
                     }
                     break;
                 case INST_NOT:
@@ -471,7 +485,7 @@ sam_word_t sam_run(sam_frame_t *f)
 #ifdef SAM_DEBUG
                 if (opcodes != 0) {
                     debug("sam_run: pc = %u, sp = %u, ir = %x\n", f->pc - 1, f->stack->sp, ir);
-                    sam_print_working_stack();
+                    sam_print_working_stack(f->stack);
                 }
 #endif
             }

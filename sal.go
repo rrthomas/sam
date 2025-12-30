@@ -380,8 +380,12 @@ func (e *Expression) Compile(ctx *Frame) {
 		ctx.assemble("int 0")
 		blockCtx := e.Loop.Compile(ctx, true)
 		blockCtx.assemblePop(blockCtx.sp - blockCtx.baseSp)
-		blockCtx.assemble(fmt.Sprintf("int %d", blockCtx.pc0))
+		blockCtx.assemble(fmt.Sprintf("ref %s", blockCtx.label))
 		blockCtx.assemble("go")
+		// Add loop label to start of block
+		if len(blockCtx.asm) > 0 {
+			blockCtx.asm[0] = map[string]any{blockCtx.label: blockCtx.asm[0]}
+		}
 		ctx.assemble(blockCtx.asm)
 		ctx.assemble("do")
 	} else if e.LogicExp != nil {
@@ -476,7 +480,7 @@ func (t *Terminator) Compile(ctx *Frame) {
 		}
 		// Pop items down to loop start
 		ctx.assemblePop(ctx.sp - ctx.loop.baseSp)
-		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.pc0))
+		ctx.assemble(fmt.Sprintf("ref %s", ctx.loop.label))
 		ctx.assemble("go")
 	} else {
 		panic("invalid Terminator")
@@ -505,9 +509,9 @@ func (b *Body) Compile(ctx *Frame) {
 func (b *Block) Compile(ctx *Frame, loop bool) Frame {
 	baseSp := libsam.Word(int(ctx.sp) + 1)
 	blockCtx := Frame{
+		label:  newLabel(),
 		labels: slices.Clone(ctx.labels),
 		asm:    make([]any, 0),
-		pc0:    ctx.pc0 + libsam.Uword(len(ctx.asm)) + 1,
 		baseSp: baseSp,
 		sp:     baseSp,
 		nargs:  ctx.nargs,
@@ -526,7 +530,6 @@ func (f *Function) Compile(ctx *Frame) {
 	innerCtx := Frame{
 		labels: make([]Location, 0),
 		asm:    make([]any, 0),
-		pc0:    ctx.pc0 + libsam.Uword(len(ctx.asm)) + 1,
 		baseSp: 0,
 		sp:     0,
 		nargs:  nargs,
@@ -592,10 +595,18 @@ func (ctx *Frame) tearDownFrame() {
 	}
 }
 
+var nextLabel uint = 0
+
+func newLabel() string {
+	nextLabel += 1
+	return fmt.Sprintf("$%d", nextLabel)
+}
+
+// FIXME: Separate Block (no args) from Frame
 type Frame struct {
+	label  string
 	labels []Location
 	asm    []any
-	pc0    libsam.Uword
 	baseSp libsam.Word
 	sp     libsam.Word
 	nargs  libsam.Uword // Number of arguments to this frame
@@ -618,7 +629,7 @@ func (ctx *Frame) assemble(insts ...any) {
 				panic(fmt.Errorf("invalid instruction %s", instName))
 			}
 			ctx.adjustSp(delta)
-		default: // Assume an array
+		default: // Assume a block (array or map)
 			ctx.adjustSp(1) // A stack pushes a `ref` instruction
 		}
 		ctx.asm = append(ctx.asm, i)

@@ -1,6 +1,6 @@
 // SAM's math traps.
 //
-// (c) Reuben Thomas 2020-2025
+// (c) Reuben Thomas 2020-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -36,6 +36,20 @@ sam_word_t sam_math_trap(sam_frame_t *f, sam_uword_t function)
 {
     int error = SAM_ERROR_OK;
     switch (function) {
+    case TRAP_MATH_I2F:
+        {
+            sam_word_t i;
+            POP_INT(i);
+            PUSH_FLOAT((sam_float_t)i);
+        }
+        break;
+    case TRAP_MATH_F2I:
+        {
+            sam_float_t fl;
+            POP_FLOAT(fl);
+            PUSH_INT((sam_word_t)rint(fl));
+        }
+        break;
     case TRAP_MATH_POW:
         {
             sam_uword_t operand;
@@ -89,6 +103,10 @@ sam_word_t sam_math_trap(sam_frame_t *f, sam_uword_t function)
 
 char *sam_math_trap_name(sam_word_t function) {
     switch (function) {
+    case TRAP_MATH_I2F:
+        return "I2F";
+    case TRAP_MATH_F2I:
+        return "F2I";
     case TRAP_MATH_POW:
         return "POW";
     case TRAP_MATH_SIN:

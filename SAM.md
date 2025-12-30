@@ -70,7 +70,6 @@ The following table lists the errors and the conditions under which they are rai
 | `STACK_UNDERFLOW` | The stack has underflowed, that is, an attempt was made to pop when it was empty. |
 | `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` items, or an attempt was made to access beyond the current top of the stack. |
 | `WRONG_TYPE` | A stack item is not of the type expected. |
-| `BAD_BRACKET` | No matching `KET` found for a `BRA`, or vice versa. |
 | `INVALID_TRAP` | An invalid function number was given to `TRAP`. |
 
 
@@ -105,9 +104,9 @@ Integers are represented as twos-complement as part of an `INT` instruction.
 
 Floats are IEEE floats (64-bit on an 8-byte word VM, or 32-bit on a 4-byte VM) with the bottom bit cleared (this bit denotes the `FLOAT` instruction). No rounding is performed on the result of arithmetic operations.
 
-A bracket is encoded as a `BRA` instruction followed by some items and ending with a `KET` instruction. The offset to the corresponding bracket is encoded in each instruction: positive in a `BRA` instruction and negative in a `KET`.
+References (pointers) are represented as unsigned integers in a `REF` instruction.
 
-References (pointers) are represented as unsigned integers in a `REF` instruction. A reference to a bracket points to its `BRA` instruction.
+A bracket is encoded as a `REF` instruction pointing to a list of instructions, ending with a `KET` instruction.
 
 
 ### Do nothing
@@ -178,15 +177,20 @@ These instructions manage the stack.
 >
 > Pop `i` from the top of the stack. Move the top stack item to position `i`.
 
+> `IGET`  
+> `i` `r` → `x`
+>
+> Push the `i`th item of the stack pointed to by `r` to the stack.
+
+> `ISET`  
+> `x` `i` `r` →
+>
+> Set the `i`th item of the stack pointed to by `r`th to `x`.
+
 
 ### Control structures
 
 These instructions implement branches, conditions and subroutine calls.
-
-> `BRA`  
-> → `r`
->
-> Push a `REF` instruction pointing to `PC`–1 on to the stack, and add `OP`+1 to `PC`.
 
 > `KET`  
 > `p` →
@@ -197,6 +201,11 @@ These instructions implement branches, conditions and subroutine calls.
 > → `r`
 >
 > Push `IR` on to the stack.
+
+> `GO`  
+> `r` →
+> 
+> Pop `r`. Set `PC` to the address of the first item of the bracket pointed to by `r`.
 
 > `DO`  
 > `r` → `p`
@@ -212,11 +221,6 @@ These instructions implement branches, conditions and subroutine calls.
 > `i` →
 >
 > Pop `i`. If it is zero, perform the action of `KET`.
-
-> `GO`  
-> `i` →
-> 
-> Set `PC` to the address of the `i`th stack item.
 
 
 ### Logic and shifts
@@ -356,7 +360,6 @@ The encoding achieves the following aims:
 | `x…x 01` | 62-bit integer |
 | `x…x 011` | pointer |
 | `x…x tttt 0111` | atom | 4-bit type, 7-byte payload |
-| `x…x t…t 01111` | BRA/KET | 10-bit type, 49-bit offset |
 | `x…x 011111`  | Trap | 58-bit function code |
 | `iiiii…iiiii ss 0111111`  | Instructions | 11 5-bit instructions, with 2-bit instruction set |
 
@@ -368,7 +371,6 @@ The encoding achieves the following aims:
 | `x…x 01` | pointer |
 | `x…x 011` | 29-bit integer |
 | `x…x tttt 0111` | atom  | 4-bit type, 3-byte payload |
-| `x…x ttttt 01111` | BRA/KET | 5-bit type, 22-bit offset |
 | `x…x 011111` | Trap | 26-bit function code |
 | `iiiii…iiiii 0111111` | Instructions | 5 5-bit instructions |
 
