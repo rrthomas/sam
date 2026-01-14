@@ -1,6 +1,6 @@
 // Activation frames.
 //
-// (c) Reuben Thomas 1994-2025
+// (c) Reuben Thomas 2025
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.

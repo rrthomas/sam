@@ -115,8 +115,9 @@ static sam_word_t sam_trap(sam_frame_t *f, sam_uword_t function) {
 }
 
 // Execution function
-sam_word_t sam_run(sam_frame_t *f)
+sam_word_t sam_run(sam_state_t *state)
 {
+    sam_frame_t *f = state->root_frame;
     sam_word_t error = SAM_ERROR_OK;
 
     for (;;) {

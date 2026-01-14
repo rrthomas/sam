@@ -42,14 +42,16 @@ typedef struct sam_stack {
 } sam_stack_t;
 
 // Frames
-// FIXME: separate out sam_state_t which has a pointer to top frame and
-// pointer to current root (i.e. code context).
 typedef struct sam_frame {
-    struct sam_frame *parent;
     sam_stack_t *code;
     sam_stack_t *stack;
     sam_uword_t pc;
 } sam_frame_t;
+
+// Top-level state
+typedef struct sam_state {
+    sam_frame_t *root_frame;
+} sam_state_t;
 
 // Error codes
 enum {
@@ -85,8 +87,11 @@ int sam_push_insts(sam_stack_t *s, sam_uword_t insts);
 // Frames
 sam_frame_t *sam_frame_new(void);
 
+// Top-level states
+sam_state_t *sam_state_new(void);
+
 // Miscellaneous routines
-sam_word_t sam_run(sam_frame_t *f);
+sam_word_t sam_run(sam_state_t *state);
 
 // Debug
 #ifdef SAM_DEBUG
