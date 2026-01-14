@@ -379,7 +379,9 @@ func (e *Expression) Compile(ctx *Frame) {
 	} else if e.Loop != nil {
 		ctx.assemble("int 0")
 		blockCtx := e.Loop.Compile(ctx, true)
-		blockCtx.assemblePop(blockCtx.sp - blockCtx.baseSp)
+		for range blockCtx.sp - blockCtx.baseSp {
+			blockCtx.assemble("pop")
+		}
 		blockCtx.assemble(fmt.Sprintf("stack %s", blockCtx.label))
 		blockCtx.assemble("go")
 		// Add loop label to start of block
@@ -472,14 +474,18 @@ func (t *Terminator) Compile(ctx *Frame) {
 		}
 		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+1)), "set")
 		// Pop items down to loop start
-		ctx.assemblePop(ctx.sp - ctx.loop.baseSp)
+		for range ctx.sp - ctx.loop.baseSp {
+			ctx.assemble("pop")
+		}
 		ctx.assemble("zero", "while")
 	} else if t.Continue {
 		if ctx.loop == nil {
 			panic("'continue' used outside a loop")
 		}
 		// Pop items down to loop start
-		ctx.assemblePop(ctx.sp - ctx.loop.baseSp)
+		for range ctx.sp - ctx.loop.baseSp {
+			ctx.assemble("pop")
+		}
 		ctx.assemble(fmt.Sprintf("stack %s", ctx.loop.label))
 		ctx.assemble("go")
 	} else {
@@ -497,7 +503,7 @@ func (b *Body) Compile(ctx *Frame) {
 		for i, s := range *b.Statements {
 			s.Compile(ctx)
 			if i < len(*b.Statements)-1 || b.Terminator != nil {
-				ctx.assemblePop(1)
+				ctx.assemble("pop")
 			}
 		}
 	}
@@ -573,7 +579,9 @@ func (ctx *Frame) tearDownBlock() {
 	ctx.assemble(fmt.Sprintf("int %d", -int(depth+1)), "set")
 	// Pop remaining stack items in this frame, except for return address
 	if depth > 1 {
-		ctx.assemblePop(depth - 1)
+		for range depth - 1 {
+			ctx.assemble("pop")
+		}
 	}
 }
 
@@ -582,7 +590,9 @@ func (ctx *Frame) tearDownFrame() {
 	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-1+libsam.Word(ctx.nargs))), "set")
 	// Pop remaining stack items in this frame, except for return address
 	if ctx.sp > 1 {
-		ctx.assemblePop(ctx.sp - 1)
+		for range ctx.sp - 1 {
+			ctx.assemble("pop")
+		}
 	}
 	// If we have some arguments still on the stack, need to get rid of them
 	if ctx.nargs > 1 {
@@ -590,7 +600,9 @@ func (ctx *Frame) tearDownFrame() {
 		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)+1), "set")
 		if ctx.nargs > 2 {
 			// Pop arguments 3 onwards, if any
-			ctx.assemblePop(libsam.Word(ctx.nargs) - 2)
+			for range ctx.nargs - 2 {
+				ctx.assemble("pop")
+			}
 		}
 	}
 }
@@ -618,10 +630,7 @@ func (ctx *Frame) assemble(insts ...any) {
 		switch inst := i.(type) {
 		case string:
 			instName := strings.Fields(inst)[0]
-			switch instName {
-			case "pop":
-				panic("use assemblePop to assemble a pop instruction")
-			case "trap":
+			if instName == "trap" {
 				panic("use assembleTrap to assemble a trap instruction")
 			}
 			delta, ok := libsam.StackDifference[instName]
@@ -633,16 +642,6 @@ func (ctx *Frame) assemble(insts ...any) {
 			ctx.adjustSp(1) // A stack pushes a `ref` instruction
 		}
 		ctx.asm = append(ctx.asm, i)
-	}
-}
-
-func (ctx *Frame) assemblePop(items libsam.Word) {
-	if items < 0 {
-		panic(fmt.Sprintf("assemblePop cannot pop %d items", items))
-	}
-	if items > 0 {
-		ctx.asm = append(ctx.asm, fmt.Sprintf("int %d", items), "pop")
-		ctx.adjustSp(-int(items))
 	}
 }
 

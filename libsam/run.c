@@ -168,13 +168,9 @@ sam_word_t sam_run(sam_frame_t *f)
                 case INST_NOP:
                     break;
                 case INST_POP:
-                    {
-                        sam_word_t i;
-                        POP_INT(i);
-                        if (i < 0 || i > f->stack->sp)
-                            HALT(SAM_ERROR_STACK_UNDERFLOW);
-                        f->stack->sp -= i;
-                    }
+                    if (f->stack->sp < 1)
+                        HALT(SAM_ERROR_STACK_UNDERFLOW);
+                    f->stack->sp -= 1;
                     break;
                 case INST_GET:
                     {

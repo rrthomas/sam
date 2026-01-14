@@ -6,7 +6,6 @@
 - trap rad
 - stack turn
 - do
-- int 1
 - pop
 - trap DISPLAY_HEIGHT
 - trap I2F
@@ -14,13 +13,11 @@
 - div
 - stack go
 - do
-- int 1
 - pop
 - float 90.0
 - trap rad
 - stack turn
 - do
-- int 1
 - pop
 - trap DISPLAY_WIDTH
 - trap I2F
@@ -28,7 +25,6 @@
 - div
 - stack go
 - do
-- int 1
 - pop
 - stack pendown
 - do
@@ -45,7 +41,6 @@
     - trap rad
     - stack turn
     - do
-    - int 1
     - pop
     - int -4
     - get
@@ -61,28 +56,25 @@
     - trap rad
     - stack turn
     - do
-    - int 1
     - pop
     - stack levy_c
     - do
-    - int 2
+    - pop
     - pop
     - float -45.0
     - trap rad
     - stack turn
     - do
-    - int 1
     - pop
   -
     - int -3
     - get
     - stack go
     - do
-    - int 1
     - pop
   - if
 - do
-- int 2
+- pop
 - pop
 - int 0
 - halt
