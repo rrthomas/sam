@@ -9,8 +9,10 @@ package libsam
 //#include "traps_math.h"
 //#include "traps_graphics.h"
 import "C"
-import "fmt"
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 type Word = C.sam_word_t
 type Uword = C.sam_uword_t
@@ -21,24 +23,22 @@ var FLOAT_SHIFT = C.SAM_FLOAT_SHIFT
 var INT_TAG = C.SAM_INT_TAG
 var INT_TAG_MASK = C.SAM_INT_TAG_MASK
 var INT_SHIFT = C.SAM_INT_SHIFT
-var REF_TAG = C.SAM_REF_TAG
-var REF_TAG_MASK = C.SAM_REF_TAG_MASK
-var REF_SHIFT = C.SAM_REF_SHIFT
+var STACK_TAG = C.SAM_STACK_TAG
+var STACK_TAG_MASK = C.SAM_STACK_TAG_MASK
+var STACK_SHIFT = C.SAM_STACK_SHIFT
 var ATOM_TAG = C.SAM_ATOM_TAG
 var ATOM_TAG_MASK = C.SAM_ATOM_TAG_MASK
 var ATOM_TYPE_MASK = C.SAM_ATOM_TYPE_MASK
 var ATOM_TYPE_SHIFT = C.SAM_ATOM_TYPE_SHIFT
 var ATOM_SHIFT = C.SAM_ATOM_SHIFT
-var ARRAY_TAG = C.SAM_ARRAY_TAG
-var ARRAY_TAG_MASK = C.SAM_ARRAY_TAG_MASK
-var ARRAY_TYPE_MASK = C.SAM_ARRAY_TYPE_MASK
-var ARRAY_OFFSET_SHIFT = C.SAM_ARRAY_OFFSET_SHIFT
 var TRAP_TAG = C.SAM_TRAP_TAG
 var TRAP_TAG_MASK = C.SAM_TRAP_TAG_MASK
 var TRAP_FUNCTION_SHIFT = C.SAM_TRAP_FUNCTION_SHIFT
 var INSTS_TAG = C.SAM_INSTS_TAG
 var INSTS_TAG_MASK = C.SAM_INSTS_TAG_MASK
 var INSTS_SHIFT = C.SAM_INSTS_SHIFT
+var INST_SET_MASK = C.SAM_INST_SET_MASK
+var INST_SET_SHIFT = C.SAM_INST_SET_SHIFT
 var INST_MASK = C.SAM_INST_MASK
 var INST_SHIFT = C.SAM_INST_SHIFT
 var WORD_BIT = C.SAM_WORD_BIT
@@ -211,7 +211,7 @@ type InstOpcode struct {
 }
 
 var Instructions = map[string]InstOpcode{
-	"ref":   {C.SAM_REF_TAG, 0, true},
+	"stack": {C.SAM_STACK_TAG, 0, true},
 	"int":   {C.SAM_INT_TAG, 0, true},
 	"float": {C.SAM_FLOAT_TAG, 0, true},
 	"trap":  {C.SAM_TRAP_TAG, 0, true},
@@ -282,7 +282,7 @@ var Traps = map[string]int{
 // continues at the next instruction.
 var StackDifference = map[string]int{
 	// Tag instructions
-	"ref": 1,
+	"stack": 1,
 
 	// Atom instructions
 	"int":   1,

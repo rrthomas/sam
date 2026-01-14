@@ -7,13 +7,13 @@
 -
   - loop: int -2
   - get
-  - ref data
+  - stack data
   - iget
   - float 2.0
   - mul
   - int -3
   - get
-  - ref data
+  - stack data
   - iset
   - int -2
   - get
@@ -24,7 +24,7 @@
   - int -3
   - set
   - while
-  - ref loop
+  - stack loop
   - go
 - do
 - int 1

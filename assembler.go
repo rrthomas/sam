@@ -95,13 +95,6 @@ func parseTrap(trapStr string) (libsam.Word, bool) {
 }
 
 func (a *assembler) parseLiteral(argStr string) libsam.Word {
-	address, ok := labels[argStr]
-	if ok {
-		if address.stack != a.stack {
-			panic(fmt.Sprintf("local reference to label ‘%s’ in another stack", argStr))
-		}
-		return libsam.Word(address.item)
-	}
 	if opcode, ok := parseTrap(argStr); ok {
 		return libsam.Word(opcode)
 	}
@@ -129,10 +122,10 @@ func (a *assembler) parseStack(argStr string) libsam.Stack {
 
 var operandInsns = []string{
 	"int",
-	"ref",
 	"float",
 	"trap",
 	"push",
+	"stack",
 }
 
 func (a *assembler) assembleInstruction(tokens ...string) {
@@ -152,7 +145,7 @@ func (a *assembler) assembleInstruction(tokens ...string) {
 		switch opcode.Tag {
 		case libsam.INT_TAG:
 			a.stack.PushInt(libsam.Uword(a.parseLiteral(operandStr)))
-		case libsam.REF_TAG:
+		case libsam.STACK_TAG:
 			a.stack.PushArray(a.parseStack(operandStr))
 		case libsam.TRAP_TAG:
 			trap, ok := parseTrap(operandStr)
@@ -238,10 +231,10 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			subA := assembler{stack: libsam.NewStack(libsam.ARRAY_STACK)}
 			subA.assembleSequence(subProg)
 			a.stack.PushArray(subA.stack)
-		case "!iref":
+		case "!istack":
 			val := tag.Value
 			if val.Type() != ast.StringType {
-				panic(fmt.Errorf("invalid !iref: label argument expected"))
+				panic(fmt.Errorf("invalid !istack: label argument expected"))
 			}
 			label := val.String()
 			address := a.parseLabel(label)

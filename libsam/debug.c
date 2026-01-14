@@ -142,8 +142,8 @@ static char *disas(sam_stack_t *s, sam_uword_t addr)
     char *text = NULL;
     sam_word_t inst;
     assert(sam_stack_peek(s, addr, (sam_uword_t *)&inst) == SAM_ERROR_OK);
-    if ((inst & SAM_REF_TAG_MASK) == SAM_REF_TAG) {
-        xasprintf(&text, "ref %zd", inst >> SAM_REF_SHIFT);
+    if ((inst & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
+        xasprintf(&text, "ref %zd", inst >> SAM_STACK_SHIFT);
     } else if ((inst & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
         xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_INT_SHIFT));
     } else if ((inst & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
@@ -152,8 +152,6 @@ static char *disas(sam_stack_t *s, sam_uword_t addr)
     } else if ((inst & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
         // No atoms yet.
         switch ((inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {}
-    } else if ((inst & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
-        xasprintf(&text, "*** UNEXPECTED STACK ***");
     } else if ((inst & SAM_TRAP_TAG_MASK) == SAM_TRAP_TAG) {
         sam_uword_t function = inst >> SAM_TRAP_FUNCTION_SHIFT;
         xasprintf(&text, "trap %s", trap_name(function));
@@ -215,27 +213,20 @@ static sam_stack_list_t *print_stack(sam_stack_list_t *l, sam_uword_t level, sam
     for (sam_uword_t i = from; i < to; i++) {
         sam_uword_t opcode;
         assert(sam_stack_peek(s, i, &opcode) == SAM_ERROR_OK);
-        if ((opcode & SAM_REF_TAG_MASK) == SAM_REF_TAG) {
-            sam_uword_t *addr = (sam_uword_t *)(opcode & ~SAM_REF_TAG_MASK);
-            sam_uword_t inner_op = *addr;
-            if ((inner_op & SAM_ARRAY_TAG_MASK) == SAM_ARRAY_TAG) {
-                sam_stack_t *inner_s = (sam_stack_t *)addr;
-                if (l == NULL || already_visited(l, inner_s)) {
-                    char *stack_str;
-                    xasprintf(&stack_str, "stack %p", inner_s);
-                    print_disas(level, stack_str);
-                } else {
-                    char *count_str;
-                    xasprintf(&count_str, "stack %p (%u items)", inner_s, inner_s->sp);
-                    print_disas(level, count_str);
-                    free(count_str);
-                    l = list_append(l, inner_s);
-                    l = print_stack(l, level + 1, inner_s, 0, inner_s->sp);
-                }
+        if ((opcode & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
+            sam_uword_t *addr = (sam_uword_t *)(opcode & ~SAM_STACK_TAG_MASK);
+            sam_stack_t *inner_s = (sam_stack_t *)addr;
+            if (l == NULL || already_visited(l, inner_s)) {
+                char *stack_str;
+                xasprintf(&stack_str, "stack %p", inner_s);
+                print_disas(level, stack_str);
             } else {
-                char *ref_str;
-                xasprintf(&ref_str, "ref %p", opcode & ~SAM_REF_TAG);
-                print_disas(level, ref_str);
+                char *count_str;
+                xasprintf(&count_str, "stack %p (%u items)", inner_s, inner_s->sp);
+                print_disas(level, count_str);
+                free(count_str);
+                l = list_append(l, inner_s);
+                l = print_stack(l, level + 1, inner_s, 0, inner_s->sp);
             }
         } else {
             char *text = disas(s, i);

@@ -86,25 +86,25 @@ do
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 6, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 7, ir = XXXXXXXX
 Working stack: (3 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 8, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
 int
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 9, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
 - int -2
@@ -112,7 +112,7 @@ get
 sam_run: pc = 3, sp = 9, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
 - stack XXXXXXXX
@@ -120,37 +120,37 @@ do
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 9, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 10, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 11, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -158,62 +158,62 @@ do
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 9
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 9
 - int 0
@@ -221,13 +221,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 9
 - int 0
@@ -236,13 +236,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 9
@@ -250,52 +250,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -303,13 +303,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -319,137 +319,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 9
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 9
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 9
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 8
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 9
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 8
 - int -6
@@ -457,87 +457,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 8
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 8
 - int 2
@@ -545,26 +545,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 0
@@ -572,39 +572,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -612,13 +612,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -627,112 +627,112 @@ if
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 pop
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 8
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 8
 - int 0
@@ -740,13 +740,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 8
 - int 0
@@ -755,13 +755,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 8
@@ -769,52 +769,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -822,13 +822,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -838,137 +838,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 - int 7
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 8
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 - int 7
 - int -6
@@ -976,87 +976,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 7
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 7
 - int 2
@@ -1064,26 +1064,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - int 0
@@ -1091,39 +1091,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -1131,13 +1131,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -1147,99 +1147,99 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 28, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 29, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 30, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 31, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 32, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 33, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 34, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 7
 int
 sam_run: pc0 = XXXXXXXX, pc = 35, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 7
 - int 1
@@ -1247,64 +1247,64 @@ add
 sam_run: pc = 35, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 8
 add
 sam_run: pc = 35, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 _one
 sam_run: pc = 35, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 36, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 8
 int
 sam_run: pc0 = XXXXXXXX, pc = 37, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 8
 - int -4
@@ -1312,110 +1312,110 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 38, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 int
 sam_run: pc0 = XXXXXXXX, pc = 39, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 40, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 41, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 7
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 7
 - int 0
@@ -1423,13 +1423,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 7
 - int 0
@@ -1438,13 +1438,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 7
@@ -1452,52 +1452,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -1505,13 +1505,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -1521,137 +1521,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 7
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 - int 6
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 7
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 - int 6
 - int -6
@@ -1659,87 +1659,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 6
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 6
 - int 2
@@ -1747,26 +1747,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 0
@@ -1774,39 +1774,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -1814,13 +1814,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -1829,112 +1829,112 @@ if
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 pop
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 6
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 6
 - int 0
@@ -1942,13 +1942,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 6
 - int 0
@@ -1957,13 +1957,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 6
@@ -1971,52 +1971,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -2024,13 +2024,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -2040,137 +2040,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 6
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 6
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 - int 5
 - int -6
@@ -2178,87 +2178,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 5
 - int 2
@@ -2266,26 +2266,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - int 0
@@ -2293,39 +2293,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -2333,13 +2333,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -2349,99 +2349,99 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 28, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 29, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 30, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 31, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 32, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 int
 sam_run: pc0 = XXXXXXXX, pc = 33, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 34, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 35, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 5
 - int 1
@@ -2449,64 +2449,64 @@ add
 sam_run: pc = 35, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 6
 add
 sam_run: pc = 35, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 _one
 sam_run: pc = 35, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 36, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 14
 int
 sam_run: pc0 = XXXXXXXX, pc = 37, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 8
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 14
 - int -4
@@ -2514,110 +2514,110 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 38, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 int
 sam_run: pc0 = XXXXXXXX, pc = 39, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 40, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 41, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 5
 - int 0
@@ -2625,13 +2625,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 5
 - int 0
@@ -2640,13 +2640,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 5
@@ -2654,52 +2654,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -2707,13 +2707,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -2723,137 +2723,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 5
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 - int 4
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 5
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 - int 4
 - int -6
@@ -2861,87 +2861,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 4
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 4
 - int 2
@@ -2949,26 +2949,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 0
@@ -2976,39 +2976,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -3016,13 +3016,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -3031,112 +3031,112 @@ if
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 pop
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 4
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 4
 - int 0
@@ -3144,13 +3144,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 4
 - int 0
@@ -3159,13 +3159,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 4
@@ -3173,52 +3173,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -3226,13 +3226,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -3242,137 +3242,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 4
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 - int 3
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 - int 3
 - int -6
@@ -3380,87 +3380,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 3
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 3
 - int 2
@@ -3468,26 +3468,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - int 0
@@ -3495,39 +3495,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -3535,13 +3535,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -3551,99 +3551,99 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 28, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 29, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 30, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 31, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 32, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 int
 sam_run: pc0 = XXXXXXXX, pc = 33, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 34, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 3
 int
 sam_run: pc0 = XXXXXXXX, pc = 35, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 3
 - int 1
@@ -3651,64 +3651,64 @@ add
 sam_run: pc = 35, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 4
 add
 sam_run: pc = 35, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 _one
 sam_run: pc = 35, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 36, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 18
 int
 sam_run: pc0 = XXXXXXXX, pc = 37, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 14
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 18
 - int -4
@@ -3716,110 +3716,110 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 38, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 int
 sam_run: pc0 = XXXXXXXX, pc = 39, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 40, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 41, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 3
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 3
 - int 0
@@ -3827,13 +3827,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 3
 - int 0
@@ -3842,13 +3842,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 3
@@ -3856,52 +3856,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -3909,13 +3909,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -3925,137 +3925,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 3
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 - int 2
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 - int 2
 - int -6
@@ -4063,87 +4063,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 2
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 2
 - int 2
@@ -4151,26 +4151,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 0
@@ -4178,39 +4178,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -4218,13 +4218,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -4233,112 +4233,112 @@ if
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 pop
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 2
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 2
 - int 0
@@ -4346,13 +4346,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 2
 - int 0
@@ -4361,13 +4361,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 2
@@ -4375,52 +4375,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -4428,13 +4428,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -4444,137 +4444,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 - int 1
 - int -6
@@ -4582,87 +4582,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - int 2
@@ -4670,26 +4670,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - int 0
@@ -4697,39 +4697,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -4737,13 +4737,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -4753,99 +4753,99 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 28, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 29, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 30, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 31, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 32, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 int
 sam_run: pc0 = XXXXXXXX, pc = 33, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 34, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 35, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 1
 - int 1
@@ -4853,64 +4853,64 @@ add
 sam_run: pc = 35, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 2
 add
 sam_run: pc = 35, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 _one
 sam_run: pc = 35, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 36, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 20
 int
 sam_run: pc0 = XXXXXXXX, pc = 37, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 18
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 20
 - int -4
@@ -4918,110 +4918,110 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 38, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 int
 sam_run: pc0 = XXXXXXXX, pc = 39, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 40, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 41, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - int 0
@@ -5029,13 +5029,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - int 0
@@ -5044,13 +5044,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 1
@@ -5058,52 +5058,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -5111,13 +5111,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - stack XXXXXXXX
@@ -5127,137 +5127,137 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 - int 1
 neg
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 1
 - int -1
 add
 sam_run: pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 _one
 sam_run: pc = 13, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int -6
@@ -5265,87 +5265,87 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 pop
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 22, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 2
@@ -5353,26 +5353,26 @@ rem
 sam_run: pc0 = XXXXXXXX, pc = 23, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 0
@@ -5380,39 +5380,39 @@ eq
 sam_run: pc = 24, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 neg
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 ref
 sam_run: pc0 = XXXXXXXX, pc = 26, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -5420,13 +5420,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 27, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -5435,112 +5435,112 @@ if
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 pop
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -6
 get
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 0
@@ -5548,13 +5548,13 @@ _two
 sam_run: pc = 4, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 0
@@ -5563,13 +5563,13 @@ extract
 sam_run: pc = 4, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int 0
@@ -5577,52 +5577,52 @@ lt
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 not
 sam_run: pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 neg
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 ref
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -5630,13 +5630,13 @@ ref
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 1
 - stack XXXXXXXX
@@ -5645,126 +5645,126 @@ if
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 int
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 14, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 20
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 15, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 20
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 2
 pop
 sam_run: pc = 5, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 20
-- ref XXXXXXXX
+- stack XXXXXXXX
 zero
 sam_run: pc = 5, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 20
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 while
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 11, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 20
 int
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 20
 - int -3
@@ -5772,19 +5772,19 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 10, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 20
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 11, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 20
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 20
 - int 1
 pop
@@ -5792,14 +5792,14 @@ ket
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 8, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 20
 int
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 9, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 20
 - int -3
@@ -5807,13 +5807,13 @@ set
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 7, ir = XXXXXXXX
 Working stack: (3 word(s))
 - int 20
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 8, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 20
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 - int 1
 pop

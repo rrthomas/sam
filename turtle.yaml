@@ -7,72 +7,72 @@
   - init: trap WHITE
   - trap CLEARSCREEN
   - float 0.0
-  - !iref pen_x
+  - !istack pen_x
   - iset
   - float 0.0
-  - !iref pen_y
+  - !istack pen_y
   - iset
   - float 0.0
-  - !iref pen_theta
+  - !istack pen_theta
   - iset
   - trap BLACK
-  - !iref pen_color
+  - !istack pen_color
   - iset
   - int 0
-  - !iref pen_drawing
+  - !istack pen_drawing
   - iset
 -
   - penup: int 0
-  - !iref pen_drawing
+  - !istack pen_drawing
   - iset
 -
   - pendown: int 1
-  - !iref pen_drawing
+  - !istack pen_drawing
   - iset
-  - !iref pen_x
+  - !istack pen_x
   - iget
   - trap F2I
-  - !iref pen_y
+  - !istack pen_y
   - iget
   - trap F2I
-  - !iref pen_color
+  - !istack pen_color
   - iget
   - trap SETDOT
 -
-  - turn: !iref pen_theta
+  - turn: !istack pen_theta
   - iget
   - int -3
   - get
   - neg
   - add
-  - !iref pen_theta
+  - !istack pen_theta
   - iset
 -
-  - go: !iref pen_theta
+  - go: !istack pen_theta
   - iget
   - trap cos
   - int -3
   - get
   - mul
-  - !iref pen_x
+  - !istack pen_x
   - iget
   - add
-  - !iref pen_theta
+  - !istack pen_theta
   - iget
   - trap sin
   - int -4
   - get
   - mul
-  - !iref pen_y
+  - !istack pen_y
   - iget
   - add
-  - !iref pen_drawing
+  - !istack pen_drawing
   - iget
   -
-    - !iref pen_x
+    - !istack pen_x
     - iget
     - trap F2I
-    - !iref pen_y
+    - !istack pen_y
     - iget
     - trap F2I
     - int -5
@@ -81,12 +81,12 @@
     - int -5
     - get
     - trap F2I
-    - !iref pen_color
+    - !istack pen_color
     - iget
     - trap DRAWLINE
   - []
   - if
-  - !iref pen_y
+  - !istack pen_y
   - iset
-  - !iref pen_x
+  - !istack pen_x
   - iset

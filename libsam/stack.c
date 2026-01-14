@@ -108,7 +108,7 @@ int sam_push_stack(sam_stack_t *s, sam_word_t val)
 }
 
 int sam_push_ref(sam_stack_t *s, void *ptr) {
-    return sam_push_stack(s, SAM_REF_TAG | ((sam_uword_t)ptr));
+    return sam_push_stack(s, SAM_STACK_TAG | ((sam_uword_t)ptr));
 }
 
 int sam_push_int(sam_stack_t *s, sam_uword_t val) {
@@ -137,11 +137,9 @@ int sam_push_insts(sam_stack_t *s, sam_uword_t insts) {
 
 int sam_stack_new(unsigned type, sam_stack_t **new_stack)
 {
-    if ((type & (SAM_ARRAY_TYPE_MASK >> SAM_ARRAY_TYPE_SHIFT)) != type)
-        return SAM_ERROR_INVALID_ARRAY_TYPE;
+    // FIXME: validate type
     sam_stack_t *s = calloc(sizeof(sam_stack_t), 1);
     if (s != NULL) {
-        s->opcode = (type << SAM_ARRAY_TYPE_SHIFT) | SAM_ARRAY_TAG;
         s->ssize = 1;
         s->s0 = calloc(sizeof(sam_word_t), s->ssize);
         if (s->s0 == NULL)

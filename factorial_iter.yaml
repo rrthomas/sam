@@ -19,7 +19,7 @@
     - add
     - int -4
     - set
-    - ref loop
+    - stack loop
     - go
   - do
   - int -2

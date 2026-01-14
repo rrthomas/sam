@@ -14,9 +14,9 @@ extern const sam_word_t SAM_FLOAT_TAG;
 extern const sam_word_t SAM_FLOAT_TAG_MASK;
 extern const int SAM_FLOAT_SHIFT;
 
-extern const sam_word_t SAM_REF_TAG;
-extern const sam_word_t SAM_REF_TAG_MASK;
-extern const int SAM_REF_SHIFT;
+extern const sam_word_t SAM_STACK_TAG;
+extern const sam_word_t SAM_STACK_TAG_MASK;
+extern const int SAM_STACK_SHIFT;
 
 extern const sam_word_t SAM_INT_TAG;
 extern const sam_word_t SAM_INT_TAG_MASK;
@@ -28,18 +28,14 @@ extern const sam_word_t SAM_ATOM_TYPE_MASK;
 extern const int SAM_ATOM_TYPE_SHIFT;
 extern const int SAM_ATOM_SHIFT;
 
-extern const sam_word_t SAM_ARRAY_TAG;
-extern const sam_word_t SAM_ARRAY_TAG_MASK;
-extern const sam_word_t SAM_ARRAY_TYPE_MASK;
-extern const int SAM_ARRAY_TYPE_SHIFT;
-extern const int SAM_ARRAY_OFFSET_SHIFT;
-
 extern const sam_word_t SAM_TRAP_TAG;
 extern const sam_word_t SAM_TRAP_TAG_MASK;
 extern const int SAM_TRAP_FUNCTION_SHIFT;
 
 extern const sam_word_t SAM_INSTS_TAG;
 extern const sam_word_t SAM_INSTS_TAG_MASK;
+extern const sam_word_t SAM_INST_SET_MASK;
+extern const int SAM_INST_SET_SHIFT;
 extern const int SAM_INSTS_SHIFT;
 extern const sam_word_t SAM_INST_MASK;
 extern const int SAM_INST_SHIFT;

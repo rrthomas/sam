@@ -380,7 +380,7 @@ func (e *Expression) Compile(ctx *Frame) {
 		ctx.assemble("int 0")
 		blockCtx := e.Loop.Compile(ctx, true)
 		blockCtx.assemblePop(blockCtx.sp - blockCtx.baseSp)
-		blockCtx.assemble(fmt.Sprintf("ref %s", blockCtx.label))
+		blockCtx.assemble(fmt.Sprintf("stack %s", blockCtx.label))
 		blockCtx.assemble("go")
 		// Add loop label to start of block
 		if len(blockCtx.asm) > 0 {
@@ -480,7 +480,7 @@ func (t *Terminator) Compile(ctx *Frame) {
 		}
 		// Pop items down to loop start
 		ctx.assemblePop(ctx.sp - ctx.loop.baseSp)
-		ctx.assemble(fmt.Sprintf("ref %s", ctx.loop.label))
+		ctx.assemble(fmt.Sprintf("stack %s", ctx.loop.label))
 		ctx.assemble("go")
 	} else {
 		panic("invalid Terminator")

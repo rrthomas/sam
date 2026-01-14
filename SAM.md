@@ -104,9 +104,7 @@ Integers are represented as twos-complement as part of an `INT` instruction.
 
 Floats are IEEE floats (64-bit on an 8-byte word VM, or 32-bit on a 4-byte VM) with the bottom bit cleared (this bit denotes the `FLOAT` instruction). No rounding is performed on the result of arithmetic operations.
 
-References (pointers) are represented as unsigned integers in a `REF` instruction.
-
-A bracket is encoded as a `REF` instruction pointing to a list of instructions, ending with a `KET` instruction.
+A bracket is encoded as a `STACK` instruction pointing to a list of instructions, ending with a `KET` instruction.
 
 
 ### Do nothing
@@ -197,7 +195,7 @@ These instructions implement branches, conditions and subroutine calls.
 >
 > Pop `p` into `PC`.
 
-> `REF`  
+> `STACK`  
 > → `r`
 >
 > Push `IR` on to the stack.
@@ -360,8 +358,8 @@ The encoding achieves the following aims:
 | `x…x 01` | 62-bit integer |
 | `x…x 011` | pointer |
 | `x…x tttt 0111` | atom | 4-bit type, 7-byte payload |
-| `x…x 011111`  | Trap | 58-bit function code |
-| `iiiii…iiiii ss 0111111`  | Instructions | 11 5-bit instructions, with 2-bit instruction set |
+| `x…x 01111`  | Trap | 59-bit function code |
+| `iiiii…iiiii sss 011111`  | Instructions | 11 5-bit instructions, with 3-bit instruction set |
 
 #### 32-bit encoding
 
@@ -371,8 +369,8 @@ The encoding achieves the following aims:
 | `x…x 01` | pointer |
 | `x…x 011` | 29-bit integer |
 | `x…x tttt 0111` | atom  | 4-bit type, 3-byte payload |
-| `x…x 011111` | Trap | 26-bit function code |
-| `iiiii…iiiii 0111111` | Instructions | 5 5-bit instructions |
+| `x…x 01111` | Trap | 27-bit function code |
+| `iiiii…iiiii s 011111` | Instructions | 5 5-bit instructions, with 1-bit instruction set |
 
 
 ### Assembly format

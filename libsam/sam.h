@@ -36,7 +36,6 @@ typedef double sam_float_t;
 
 // Stacks
 typedef struct sam_stack {
-    sam_uword_t opcode;
     sam_word_t *s0;
     sam_uword_t ssize; // Size of stack in words
     sam_uword_t sp; // Number of words in stack

@@ -53,27 +53,27 @@ sam_run: pc0 = XXXXXXXX, pc = 0, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -4
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -4
 - stack XXXXXXXX
 iget
@@ -81,14 +81,14 @@ sam_run: pc0 = XXXXXXXX, pc = 4, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 2.000000
 float
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 2.000000
 - float 2.000000
 mul
@@ -96,14 +96,14 @@ sam_run: pc0 = XXXXXXXX, pc = 6, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 4.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 4.000000
 - int -3
 get
@@ -111,7 +111,7 @@ sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 4.000000
 - int -4
 ref
@@ -119,7 +119,7 @@ sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 4.000000
 - int -4
 - stack XXXXXXXX
@@ -128,27 +128,27 @@ sam_run: pc0 = XXXXXXXX, pc = 10, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -4
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -4
 - int 1
 add
@@ -156,14 +156,14 @@ sam_run: pc0 = XXXXXXXX, pc = 14, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 - int -1
 get
@@ -171,7 +171,7 @@ sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 - int -3
 int
@@ -179,7 +179,7 @@ sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -4
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 - int -3
 - int -3
@@ -188,47 +188,47 @@ sam_run: pc = 17, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 while
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
 iget
@@ -236,14 +236,14 @@ sam_run: pc0 = XXXXXXXX, pc = 4, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 5.000000
 float
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 5.000000
 - float 2.000000
 mul
@@ -251,14 +251,14 @@ sam_run: pc0 = XXXXXXXX, pc = 6, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 10.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 10.000000
 - int -3
 get
@@ -266,7 +266,7 @@ sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 10.000000
 - int -3
 ref
@@ -274,7 +274,7 @@ sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 10.000000
 - int -3
 - stack XXXXXXXX
@@ -283,27 +283,27 @@ sam_run: pc0 = XXXXXXXX, pc = 10, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -3
 - int 1
 add
@@ -311,14 +311,14 @@ sam_run: pc0 = XXXXXXXX, pc = 14, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 - int -1
 get
@@ -326,7 +326,7 @@ sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 - int -2
 int
@@ -334,7 +334,7 @@ sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -3
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 - int -2
 - int -3
@@ -343,47 +343,47 @@ sam_run: pc = 17, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 while
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 - stack XXXXXXXX
 iget
@@ -391,14 +391,14 @@ sam_run: pc0 = XXXXXXXX, pc = 4, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 10.000000
 float
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 10.000000
 - float 2.000000
 mul
@@ -406,14 +406,14 @@ sam_run: pc0 = XXXXXXXX, pc = 6, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 20.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 20.000000
 - int -3
 get
@@ -421,7 +421,7 @@ sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 20.000000
 - int -2
 ref
@@ -429,7 +429,7 @@ sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 20.000000
 - int -2
 - stack XXXXXXXX
@@ -438,27 +438,27 @@ sam_run: pc0 = XXXXXXXX, pc = 10, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 - int 1
 add
@@ -466,14 +466,14 @@ sam_run: pc0 = XXXXXXXX, pc = 14, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 - int -1
 get
@@ -481,7 +481,7 @@ sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 - int -1
 int
@@ -489,7 +489,7 @@ sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -2
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 - int -1
 - int -3
@@ -498,47 +498,47 @@ sam_run: pc = 17, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 while
 sam_run: pc0 = XXXXXXXX, pc = 18, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 ref
 sam_run: pc0 = XXXXXXXX, pc = 19, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - stack XXXXXXXX
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 ref
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 - stack XXXXXXXX
 iget
@@ -546,14 +546,14 @@ sam_run: pc0 = XXXXXXXX, pc = 4, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 20.000000
 float
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 20.000000
 - float 2.000000
 mul
@@ -561,14 +561,14 @@ sam_run: pc0 = XXXXXXXX, pc = 6, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 40.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 40.000000
 - int -3
 get
@@ -576,7 +576,7 @@ sam_run: pc0 = XXXXXXXX, pc = 8, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 40.000000
 - int -1
 ref
@@ -584,7 +584,7 @@ sam_run: pc0 = XXXXXXXX, pc = 9, sp = 14, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - float 40.000000
 - int -1
 - stack XXXXXXXX
@@ -593,27 +593,27 @@ sam_run: pc0 = XXXXXXXX, pc = 10, sp = 11, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -2
 get
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int -1
 - int 1
 add
@@ -621,14 +621,14 @@ sam_run: pc0 = XXXXXXXX, pc = 14, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int -1
 get
@@ -636,7 +636,7 @@ sam_run: pc0 = XXXXXXXX, pc = 16, sp = 13, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 int
@@ -644,7 +644,7 @@ sam_run: pc0 = XXXXXXXX, pc = 17, sp = 14, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -1
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 - int 0
 - int -3
@@ -653,7 +653,7 @@ sam_run: pc = 17, sp = 12, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int 0
-- ref XXXXXXXX
+- stack XXXXXXXX
 - int 0
 while
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 10, ir = XXXXXXXX

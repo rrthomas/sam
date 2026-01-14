@@ -8,7 +8,7 @@
 -
   - loop: int -2
   - get
-  - ref data
+  - stack data
   - iget
   - int -4
   - get
@@ -24,7 +24,7 @@
   - int -3
   - set
   - while
-  - ref loop
+  - stack loop
   - go
 - do
 - int 1
