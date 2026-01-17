@@ -8,6 +8,7 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
+#include <assert.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -29,6 +30,17 @@ int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
 {
     if (addr >= s->sp)
         return SAM_ERROR_INVALID_ADDRESS;
+    sam_word_t old_val = s->s0[addr];
+    if ((old_val & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
+        sam_stack_t *inner_s = (sam_stack_t *)(old_val & ~SAM_STACK_TAG_MASK);
+        if (inner_s->type == SAM_ARRAY_STACK)
+            sam_stack_unref(inner_s);
+    }
+    if ((val & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
+        sam_stack_t *inner_s = (sam_stack_t *)(val & ~SAM_STACK_TAG_MASK);
+        if (inner_s->type == SAM_ARRAY_STACK)
+            sam_stack_ref(inner_s);
+    }
     s->s0[addr] = val;
     return SAM_ERROR_OK;
 }
@@ -90,7 +102,8 @@ int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
     if (s->sp == 0)
         return SAM_ERROR_STACK_UNDERFLOW;
     HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, (sam_uword_t *)val_ptr));
-    s->sp--; // Decrement here so argument to sam_stack_peek is valid.
+    HALT_IF_ERROR(sam_stack_poke(s, s->sp - 1, SAM_INSTS_TAG));
+    s->sp--;
  error:
     return error;
 }
@@ -145,10 +158,39 @@ int sam_push_insts(sam_stack_t *s, sam_uword_t insts)
     return sam_stack_push(s, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
 }
 
-int sam_stack_new(unsigned type, sam_stack_t **new_stack)
+void sam_stack_ref(sam_stack_t *s) {
+    s->nrefs++;
+}
+
+void sam_stack_unref(sam_stack_t *s) {
+    assert(s->nrefs > 0);
+    if (--s->nrefs == 0) {
+        sam_stack_free(s);
+    }
+}
+
+int sam_stack_free(sam_stack_t *s) {
+    sam_word_t error = SAM_ERROR_OK;
+
+    // Unref the contents of the stack.
+    for (sam_uword_t p = 0; p < s->sp; p++) {
+        sam_word_t val;
+        HALT_IF_ERROR(sam_stack_pop(s, &val));
+    }
+
+    // Free the stack's storage.
+    free(s->s0);
+    free(s);
+
+error:
+    return error;
+}
+
+int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack)
 {
     // FIXME: validate type
     sam_stack_t *s = calloc(sizeof(sam_stack_t), 1);
+    s->type = type;
     if (s != NULL) {
         s->ssize = 1;
         s->s0 = calloc(sizeof(sam_word_t), s->ssize);

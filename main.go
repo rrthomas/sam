@@ -41,7 +41,8 @@ var rootCmd = &cobra.Command{
 	Long:    "A simple virtual machine and run time for playful low-level programming.",
 	Args:    cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		stack := libsam.Init()
+		state := libsam.NewState()
+		stack := state.Stack()
 		libsam.SetDebug(debug)
 		progFile := args[0]
 
@@ -68,7 +69,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		// Assemble and run the program
-		Assemble(stack, yaml)
+		Assemble(state, yaml)
 		err := libsam.GraphicsInit()
 		if err != libsam.ERROR_OK {
 			os.Exit(int(err))
@@ -79,7 +80,6 @@ var rootCmd = &cobra.Command{
 			os.Exit(int(res))
 		}
 		stack.PrintStack()
-		state := libsam.NewState(stack)
 		res2 := libsam.Run(state)
 
 		if debug {

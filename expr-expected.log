@@ -100,7 +100,7 @@ int
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 5, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 0
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 6, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 0
@@ -131,7 +131,7 @@ Working stack: (5 word(s))
 - int 2
 - int 0
 - int 1
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 10, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 0
@@ -140,7 +140,7 @@ Working stack: (6 word(s))
 - int 0
 - int 1
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 11, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 0
@@ -158,7 +158,7 @@ Working stack: (5 word(s))
 - int 2
 - int 0
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 10, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 0
@@ -167,7 +167,7 @@ Working stack: (6 word(s))
 - int 0
 - stack XXXXXXXX
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 11, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 0
@@ -177,7 +177,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 12, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
@@ -188,7 +188,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 13, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
@@ -410,7 +410,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX
 - int 5
 - int 0
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 16, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -727,7 +727,7 @@ Working stack: (17 word(s))
 - stack XXXXXXXX
 - int 0
 - int 1
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 22, ir = XXXXXXXX
 Working stack: (18 word(s))
 - int 0
@@ -748,7 +748,7 @@ Working stack: (18 word(s))
 - int 0
 - int 1
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 23, ir = XXXXXXXX
 Working stack: (19 word(s))
 - int 0

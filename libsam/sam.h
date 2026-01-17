@@ -35,10 +35,14 @@ typedef double sam_float_t;
 #define SAM_RET_MASK ((1 << SAM_RET_SHIFT) - 1)
 
 // Stacks
+struct sam_state;
 typedef struct sam_stack {
+    sam_uword_t type;
     sam_word_t *s0;
     sam_uword_t ssize; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
+    sam_uword_t nrefs; // Number of references to the stack
+    struct sam_state *state; // State that owns the stack
 } sam_stack_t;
 
 // Frames
@@ -69,7 +73,10 @@ enum {
 };
 
 // Stack access
-int sam_stack_new(unsigned type, sam_stack_t **new_stack);
+int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack);
+int sam_stack_free(sam_stack_t *s);
+void sam_stack_ref(sam_stack_t *s);
+void sam_stack_unref(sam_stack_t *s);
 int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
 int sam_stack_extract(sam_stack_t *s, sam_uword_t addr);

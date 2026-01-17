@@ -138,7 +138,7 @@ sam_word_t sam_run(sam_state_t *state)
 
         if ((ir & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
 #ifdef SAM_DEBUG
-            debug("ref\n");
+            debug("stack\n");
 #endif
             PUSH_WORD(ir); // Push the same ref on the stack
         } else if ((ir & SAM_INT_TAG_MASK) == SAM_INT_TAG) {

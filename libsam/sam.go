@@ -56,16 +56,18 @@ func (state *State) Stack() Stack {
 	return Stack{state.state.stack}
 }
 
-func NewStack(ty uint) Stack {
+func NewStack(state State, ty uint) Stack {
 	stack := Stack{}
-	C.sam_stack_new(C.uint(ty), &stack.stack)
+	C.sam_stack_new(state.state, C.uint(ty), &stack.stack)
 	return stack
 }
 
-func NewState(stack Stack) State {
+func NewState() State {
 	state := C.sam_state_new()
-	state.stack = stack.stack
-	state.root_frame.code = stack.stack
+	var stack *C.sam_stack_t
+	C.sam_stack_new(state, ARRAY_STACK, &stack)
+	state.stack = stack
+	state.root_frame.code = stack
 	return State{state: state}
 }
 
@@ -114,14 +116,6 @@ func (s *Stack) PushInsts(insts Uword) int {
 func Run(state State) Word {
 	res := C.sam_run(state.state)
 	return res
-}
-
-func Init() Stack {
-	stack := NewStack(ARRAY_STACK)
-	if stack.stack == nil {
-		panic("sam_stack_new returned NULL")
-	}
-	return stack
 }
 
 func DebugInit(stack Stack) int {

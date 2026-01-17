@@ -33,7 +33,7 @@ float
 sam_run: pc0 = XXXXXXXX, pc = 1, sp = 6, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 5.000000
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 7, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 5.000000
@@ -49,7 +49,7 @@ Working stack: (3 word(s))
 - float 5.000000
 - stack XXXXXXXX
 - float 1.000000
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 9, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 5.000000
@@ -201,7 +201,7 @@ Working stack: (4 word(s))
 - stack XXXXXXXX
 - float 5.000000
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 10, ir = XXXXXXXX
 Working stack: (5 word(s))
 - float 4.000000
@@ -354,7 +354,7 @@ Working stack: (4 word(s))
 - stack XXXXXXXX
 - float 20.000000
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 10, ir = XXXXXXXX
 Working stack: (5 word(s))
 - float 3.000000
@@ -507,7 +507,7 @@ Working stack: (4 word(s))
 - stack XXXXXXXX
 - float 60.000000
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 10, ir = XXXXXXXX
 Working stack: (5 word(s))
 - float 2.000000
@@ -660,7 +660,7 @@ Working stack: (4 word(s))
 - stack XXXXXXXX
 - float 120.000000
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 10, ir = XXXXXXXX
 Working stack: (5 word(s))
 - float 1.000000
@@ -813,7 +813,7 @@ Working stack: (4 word(s))
 - stack XXXXXXXX
 - float 120.000000
 - stack XXXXXXXX
-ref
+stack
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 10, ir = XXXXXXXX
 Working stack: (5 word(s))
 - float 0.000000
