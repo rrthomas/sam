@@ -82,7 +82,7 @@ int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr)
     return error;
 }
 
-int sam_pop_stack(sam_stack_t *s, sam_word_t *val_ptr)
+int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp == 0)
@@ -93,7 +93,7 @@ int sam_pop_stack(sam_stack_t *s, sam_word_t *val_ptr)
     return error;
 }
 
-int sam_push_stack(sam_stack_t *s, sam_word_t val)
+int sam_stack_push(sam_stack_t *s, sam_word_t val)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp >= s->ssize) {
@@ -108,31 +108,31 @@ int sam_push_stack(sam_stack_t *s, sam_word_t val)
 }
 
 int sam_push_ref(sam_stack_t *s, void *ptr) {
-    return sam_push_stack(s, SAM_STACK_TAG | ((sam_uword_t)ptr));
+    return sam_stack_push(s, SAM_STACK_TAG | ((sam_uword_t)ptr));
 }
 
 int sam_push_int(sam_stack_t *s, sam_uword_t val) {
-    return sam_push_stack(s, SAM_INT_TAG | (val << SAM_INT_SHIFT));
+    return sam_stack_push(s, SAM_INT_TAG | (val << SAM_INT_SHIFT));
 }
 
 int sam_push_float(sam_stack_t *s, sam_float_t n) {
     sam_uword_t operand = *(sam_uword_t *)&n;
-    return sam_push_stack(s, SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT));
+    return sam_stack_push(s, SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT));
 }
 
 int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand) {
     sam_uword_t atom = SAM_ATOM_TAG | (atom_type << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_ATOM_SHIFT);
-    return sam_push_stack(s, atom);
+    return sam_stack_push(s, atom);
 }
 
 int sam_push_trap(sam_stack_t *s, sam_uword_t function) {
     // FIXME: error if function code is too large
-    return sam_push_stack(s, SAM_TRAP_TAG | (function << SAM_TRAP_FUNCTION_SHIFT));
+    return sam_stack_push(s, SAM_TRAP_TAG | (function << SAM_TRAP_FUNCTION_SHIFT));
 }
 
 int sam_push_insts(sam_stack_t *s, sam_uword_t insts) {
     // FIXME: error if too many bits
-    return sam_push_stack(s, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
+    return sam_stack_push(s, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
 }
 
 int sam_stack_new(unsigned type, sam_stack_t **new_stack)

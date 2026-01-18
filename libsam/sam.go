@@ -80,7 +80,7 @@ func (s *Stack) StackPoke(addr Uword, val Uword) int {
 }
 
 func (s *Stack) PushStack(val Word) int {
-	return int(C.sam_push_stack(s.stack, val))
+	return int(C.sam_stack_push(s.stack, val))
 }
 
 func (s *Stack) PushArray(stack Stack) int {

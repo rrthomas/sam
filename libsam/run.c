@@ -180,7 +180,7 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_uword_t addr, item;
                         HALT_IF_ERROR(sam_stack_item(f->stack, pos, &addr));
                         HALT_IF_ERROR(sam_stack_peek(f->stack, addr, &item));
-                        HALT_IF_ERROR(sam_push_stack(f->stack, item));
+                        HALT_IF_ERROR(sam_stack_push(f->stack, item));
                     }
                     break;
                 case INST_SET:
@@ -220,7 +220,7 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_uword_t addr, item;
                         HALT_IF_ERROR(sam_stack_item(stack, pos, &addr));
                         HALT_IF_ERROR(sam_stack_peek(stack, addr, &item));
-                        HALT_IF_ERROR(sam_push_stack(f->stack, item));
+                        HALT_IF_ERROR(sam_stack_push(f->stack, item));
                     }
                     break;
                 case INST_ISET:
