@@ -36,13 +36,13 @@
 #define PUSH_BOOL(val)                          \
     PUSH_INT(-((val) != 0))
 
-#define POP_PTR(var)                                                    \
+#define POP_REF(var)                                                    \
     do {                                                                \
         sam_uword_t _ptr;                                               \
         _POP_INSN(_ptr, SAM_STACK_TAG, SAM_STACK_TAG_MASK, LRSHIFT, SAM_STACK_SHIFT); \
         var = (void *)(_ptr << SAM_STACK_SHIFT);                          \
     } while (0)
-#define PUSH_PTR(addr)                                \
+#define PUSH_REF(addr)                                \
     PUSH_WORD(((sam_uword_t)addr) | SAM_STACK_TAG)
 
 #define POP_FLOAT(var)                                                  \

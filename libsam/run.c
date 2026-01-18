@@ -85,7 +85,7 @@ const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 
 #define DO(addr)                                \
     do {                                        \
-        PUSH_PTR(f);                            \
+        PUSH_REF(f);                            \
         GO(addr);                               \
     } while (0)
 
@@ -94,7 +94,7 @@ const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 #define RET                                     \
     do {                                        \
         sam_frame_t *old_f = f;                 \
-        POP_PTR(f);                             \
+        POP_REF(f);                             \
         free(old_f);                            \
     } while (0)
 
@@ -215,7 +215,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_IGET:
                     {
                         sam_stack_t *stack;
-                        POP_PTR(stack);
+                        POP_REF(stack);
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr, item;
@@ -227,7 +227,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_ISET:
                     {
                         sam_stack_t *stack;
-                        POP_PTR(stack);
+                        POP_REF(stack);
                         sam_word_t pos, val;
                         POP_INT(pos);
                         POP_WORD(&val);
@@ -239,7 +239,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_GO:
                     {
                         sam_stack_t *code;
-                        POP_PTR(code);
+                        POP_REF(code);
                         GO(code);
                         opcodes = 0;
                     }
@@ -247,7 +247,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_DO:
                     {
                         sam_stack_t *code;
-                        POP_PTR(code);
+                        POP_REF(code);
                         DO(code);
                         opcodes = 0;
                     }
@@ -255,8 +255,8 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_IF:
                     {
                         sam_stack_t *then, *else_;
-                        POP_PTR(else_);
-                        POP_PTR(then);
+                        POP_REF(else_);
+                        POP_REF(then);
                         sam_word_t flag;
                         POP_INT(flag);
                         sam_stack_t *addr = flag ? then : else_;
