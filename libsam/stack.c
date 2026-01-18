@@ -44,7 +44,8 @@ static sam_word_t move_n(sam_stack_t *s, sam_uword_t dst, sam_uword_t src, sam_u
 }
 
 // Move the stack item at `addr` to the top of `s`.
-int sam_stack_extract(sam_stack_t *s, sam_uword_t addr) {
+int sam_stack_extract(sam_stack_t *s, sam_uword_t addr)
+{
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
     HALT_IF_ERROR(sam_stack_peek(s, addr, &opcode));
@@ -55,7 +56,8 @@ error:
 }
 
 // Move the top item of `s` to `addr`.
-int sam_stack_insert(sam_stack_t *s, sam_uword_t addr) {
+int sam_stack_insert(sam_stack_t *s, sam_uword_t addr)
+{
     sam_word_t error = SAM_ERROR_OK;
     sam_uword_t opcode;
     HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &opcode));
@@ -107,30 +109,36 @@ int sam_stack_push(sam_stack_t *s, sam_word_t val)
     return error;
 }
 
-int sam_push_ref(sam_stack_t *s, void *ptr) {
+int sam_push_ref(sam_stack_t *s, void *ptr)
+{
     return sam_stack_push(s, SAM_STACK_TAG | ((sam_uword_t)ptr));
 }
 
-int sam_push_int(sam_stack_t *s, sam_uword_t val) {
+int sam_push_int(sam_stack_t *s, sam_uword_t val)
+{
     return sam_stack_push(s, SAM_INT_TAG | (val << SAM_INT_SHIFT));
 }
 
-int sam_push_float(sam_stack_t *s, sam_float_t n) {
+int sam_push_float(sam_stack_t *s, sam_float_t n)
+{
     sam_uword_t operand = *(sam_uword_t *)&n;
     return sam_stack_push(s, SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT));
 }
 
-int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand) {
+int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand)
+{
     sam_uword_t atom = SAM_ATOM_TAG | (atom_type << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_ATOM_SHIFT);
     return sam_stack_push(s, atom);
 }
 
-int sam_push_trap(sam_stack_t *s, sam_uword_t function) {
+int sam_push_trap(sam_stack_t *s, sam_uword_t function)
+{
     // FIXME: error if function code is too large
     return sam_stack_push(s, SAM_TRAP_TAG | (function << SAM_TRAP_FUNCTION_SHIFT));
 }
 
-int sam_push_insts(sam_stack_t *s, sam_uword_t insts) {
+int sam_push_insts(sam_stack_t *s, sam_uword_t insts)
+{
     // FIXME: error if too many bits
     return sam_stack_push(s, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
 }

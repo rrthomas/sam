@@ -103,7 +103,8 @@ const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 #define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
 
 // Trap dispatcher
-static sam_word_t sam_trap(sam_frame_t *f, sam_uword_t function) {
+static sam_word_t sam_trap(sam_frame_t *f, sam_uword_t function)
+{
     switch (function & SAM_TRAP_BASE_MASK) {
     case SAM_TRAP_MATH_BASE:
         return sam_math_trap(f, function);

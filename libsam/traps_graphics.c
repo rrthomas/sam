@@ -261,13 +261,15 @@ sam_word_t sam_graphics_trap(sam_frame_t *f, sam_uword_t function)
     return error;
 }
 
-void sam_graphics_wait(void) {
+void sam_graphics_wait(void)
+{
     while (sam_graphics_process_events() == 0) {
         SDL_Delay(sam_update_interval);
     }
 }
 
-char *sam_graphics_trap_name(sam_word_t function) {
+char *sam_graphics_trap_name(sam_word_t function)
+{
     switch (function) {
     case TRAP_GRAPHICS_BLACK:
         return "BLACK";

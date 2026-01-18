@@ -44,7 +44,8 @@ static void xasprintf(char **text, const char *fmt, ...)
     va_end(ap);
 }
 
-char *inst_name(sam_uword_t inst_opcode) {
+char *inst_name(sam_uword_t inst_opcode)
+{
     switch (inst_opcode) {
     case INST_NOP:
         return "nop";
@@ -184,7 +185,8 @@ typedef struct sam_stack_list {
     struct sam_stack_list *next;
 } sam_stack_list_t;
 
-static sam_stack_list_t *list_append(sam_stack_list_t *l, sam_stack_t *s) {
+static sam_stack_list_t *list_append(sam_stack_list_t *l, sam_stack_t *s)
+{
     sam_stack_list_t *node = malloc(sizeof(struct sam_stack_list));
     assert(node != NULL);
     node->stack = s;
@@ -192,7 +194,8 @@ static sam_stack_list_t *list_append(sam_stack_list_t *l, sam_stack_t *s) {
     return node;
 }
 
-static void free_list(sam_stack_list_t *l) {
+static void free_list(sam_stack_list_t *l)
+{
     sam_stack_list_t *next;
     for (sam_stack_list_t *p = l; p != NULL; p = next) {
         next = p->next;
@@ -200,7 +203,8 @@ static void free_list(sam_stack_list_t *l) {
     }
 }
 
-static bool already_visited(sam_stack_list_t *l, sam_stack_t *s) {
+static bool already_visited(sam_stack_list_t *l, sam_stack_t *s)
+{
     for (sam_stack_list_t *p = l; p != NULL; p = p->next) {
         if (p->stack == s)
             return true;

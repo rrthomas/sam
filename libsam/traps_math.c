@@ -101,7 +101,8 @@ sam_word_t sam_math_trap(sam_frame_t *f, sam_uword_t function)
     return error;
 }
 
-char *sam_math_trap_name(sam_word_t function) {
+char *sam_math_trap_name(sam_word_t function)
+{
     switch (function) {
     case TRAP_MATH_I2F:
         return "I2F";
