@@ -143,9 +143,7 @@ static char *disas(sam_stack_t *s, sam_uword_t addr)
     char *text = NULL;
     sam_word_t inst;
     assert(sam_stack_peek(s, addr, (sam_uword_t *)&inst) == SAM_ERROR_OK);
-    if ((inst & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
-        xasprintf(&text, "ref %zd", inst >> SAM_STACK_SHIFT);
-    } else if ((inst & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+    if ((inst & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
         xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_INT_SHIFT));
     } else if ((inst & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
         sam_uword_t operand = inst >> SAM_FLOAT_SHIFT;
