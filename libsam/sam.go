@@ -52,6 +52,10 @@ type State struct {
 	state *C.sam_state_t
 }
 
+func (state *State) Stack() Stack {
+	return Stack{state.state.stack}
+}
+
 func NewStack(ty uint) Stack {
 	stack := Stack{}
 	C.sam_stack_new(C.uint(ty), &stack.stack)
@@ -60,7 +64,7 @@ func NewStack(ty uint) Stack {
 
 func NewState(stack Stack) State {
 	state := C.sam_state_new()
-	state.root_frame.stack = stack.stack
+	state.stack = stack.stack
 	state.root_frame.code = stack.stack
 	return State{state: state}
 }

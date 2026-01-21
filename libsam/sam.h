@@ -44,13 +44,13 @@ typedef struct sam_stack {
 // Frames
 typedef struct sam_frame {
     sam_stack_t *code;
-    sam_stack_t *stack;
     sam_uword_t pc;
 } sam_frame_t;
 
 // Top-level state
 typedef struct sam_state {
     sam_frame_t *root_frame;
+    sam_stack_t *stack;
 } sam_state_t;
 
 // Error codes
