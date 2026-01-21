@@ -99,10 +99,12 @@ int sam_stack_push(sam_stack_t *s, sam_word_t val)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp >= s->ssize) {
-        s->ssize *= 2;
-        s->s0 = realloc(s->s0, s->ssize * sizeof(sam_uword_t));
+        sam_uword_t new_size = s->ssize * 2;
+        s->s0 = realloc(s->s0, new_size * sizeof(sam_uword_t));
         if (s->s0 == NULL)
             HALT(SAM_ERROR_NO_MEMORY);
+        memset(s->s0 + s->ssize, 0, s->ssize * sizeof(sam_uword_t));
+        s->ssize = new_size;
     }
     HALT_IF_ERROR(sam_stack_poke(s, s->sp++, val));
  error:
