@@ -109,7 +109,7 @@ char *trap_name(sam_uword_t function);
 void sam_print_stack(sam_stack_t *s);
 void sam_print_working_stack(sam_stack_t *s);
 void debug(const char *fmt, ...);
-int sam_debug_init(sam_stack_t *s);
+int sam_debug_init(sam_state_t *state);
 #endif
 
 #endif

@@ -42,7 +42,6 @@ var rootCmd = &cobra.Command{
 	Args:    cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		state := libsam.NewState()
-		stack := state.Stack()
 		libsam.SetDebug(debug)
 		progFile := args[0]
 
@@ -74,15 +73,17 @@ var rootCmd = &cobra.Command{
 		if err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
-		res := libsam.DebugInit(stack)
+		res := libsam.DebugInit(state)
 		if res != libsam.ERROR_OK {
 			libsam.GraphicsFinish()
 			os.Exit(int(res))
 		}
-		stack.PrintStack()
+		code := state.Code()
+		code.PrintStack()
 		res2 := libsam.Run(state)
 
 		if debug {
+			stack := state.Stack()
 			stack.PrintStack()
 			fmt.Printf("sam_run returns: %s\n", libsam.ErrorMessage(res2))
 		}

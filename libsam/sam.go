@@ -56,6 +56,10 @@ func (state *State) Stack() Stack {
 	return Stack{state.state.stack}
 }
 
+func (state *State) Code() Stack {
+	return Stack{state.state.root_frame.code}
+}
+
 func NewStack(state State, ty uint) Stack {
 	stack := Stack{}
 	C.sam_stack_new(state.state, C.uint(ty), &stack.stack)
@@ -67,6 +71,7 @@ func NewState() State {
 	var stack *C.sam_stack_t
 	C.sam_stack_new(state, ARRAY_STACK, &stack)
 	state.stack = stack
+	C.sam_stack_new(state, ARRAY_STACK, &stack)
 	state.root_frame.code = stack
 	return State{state: state}
 }
@@ -118,8 +123,8 @@ func Run(state State) Word {
 	return res
 }
 
-func DebugInit(stack Stack) int {
-	return int(C.sam_debug_init(stack.stack))
+func DebugInit(state State) int {
+	return int(C.sam_debug_init(state.state))
 }
 
 func GraphicsInit() Word {

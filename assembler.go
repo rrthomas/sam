@@ -253,6 +253,6 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 func Assemble(state libsam.State, source []byte) {
 	prog := readProg(bytes.NewReader(source))
 	labels = map[string]address{}
-	a := assembler{state: state, stack: state.Stack()}
+	a := assembler{state: state, stack: state.Code()}
 	a.assembleSequence(prog)
 }
