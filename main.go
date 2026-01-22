@@ -1,5 +1,5 @@
 /*
-Copyright © 2025 Reuben Thomas <rrt@sc3d.org>
+Copyright © 2025-2026 Reuben Thomas <rrt@sc3d.org>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -133,7 +133,7 @@ func init() {
 	rootCmd.Flags().StringVar(&pbmFile, "dump-screen", "", "output screen to PBM file `FILE`")
 	rootCmd.SetVersionTemplate(`{{.DisplayName}} {{.Version}}
 
-Copyright (C) 2025 Reuben Thomas <rrt@sc3d.org>
+Copyright (C) 2025-2026 Reuben Thomas <rrt@sc3d.org>
 
 Licence GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.

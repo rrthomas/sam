@@ -6,22 +6,22 @@
 - float 0.0
 - int -4
 -
-  - loop: int -2
+  - loop: int -3
   - get
   - stack data
   - iget
-  - int -4
+  - int -5
   - get
   - add
-  - int -3
+  - int -4
   - set
-  - int -2
+  - int -3
   - get
   - int 1
   - add
   - int -1
   - get
-  - int -3
+  - int -4
   - set
   - while
   - stack loop

@@ -1,6 +1,6 @@
 // Sam interpreter APIs and primitives.
 //
-// (c) Reuben Thomas 1994-2025
+// (c) Reuben Thomas 1994-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -42,18 +42,11 @@ typedef struct sam_stack {
     sam_uword_t ssize; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
     sam_uword_t nrefs; // Number of references to the stack
-    struct sam_state *state; // State that owns the stack
 } sam_stack_t;
-
-// Frames
-typedef struct sam_frame {
-    sam_stack_t *code;
-    sam_uword_t pc;
-} sam_frame_t;
 
 // Top-level state
 typedef struct sam_state {
-    sam_frame_t *root_frame;
+    sam_stack_t *root_code;
     sam_stack_t *stack;
 } sam_state_t;
 
@@ -90,9 +83,6 @@ int sam_push_float(sam_stack_t *s, sam_float_t n);
 int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand);
 int sam_push_trap(sam_stack_t *s, sam_uword_t function);
 int sam_push_insts(sam_stack_t *s, sam_uword_t insts);
-
-// Frames
-sam_frame_t *sam_frame_new(void);
 
 // Top-level states
 sam_state_t *sam_state_new(void);

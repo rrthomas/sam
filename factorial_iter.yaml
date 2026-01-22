@@ -2,27 +2,27 @@
 -
   - float 1.0
   -
-    - loop: int -4
+    - loop: int -6
     - get
     - trap F2I
     - while
-    - int -2
+    - int -3
     - get
-    - int -5
+    - int -7
     - get
     - mul
-    - int -2
+    - int -3
     - set
-    - int -4
+    - int -6
     - get
     - float -1.0
     - add
-    - int -4
+    - int -6
     - set
     - stack loop
     - go
   - do
-  - int -2
+  - int -3
   - set
 - do
 - trap F2I

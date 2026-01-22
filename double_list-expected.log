@@ -6,23 +6,23 @@ Stack: XXXXXXXX (7 item(s))
   - float 20.000000
 - int -4
 - stack XXXXXXXX (20 items)
-  - int -2
+  - int -3
   - get
   - stack XXXXXXXX
   - iget
   - float 2.000000
   - mul
-  - int -3
+  - int -4
   - get
   - stack XXXXXXXX
   - iset
-  - int -2
+  - int -3
   - get
   - int 1
   - add
   - int -1
   - get
-  - int -3
+  - int -4
   - set while
   - stack XXXXXXXX
   - go
@@ -48,611 +48,693 @@ Working stack: (3 word(s))
 - int -4
 - stack XXXXXXXX
 do
-sam_run: pc0 = XXXXXXXX, pc = 0, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
 - stack XXXXXXXX
+- int 4
 int
-sam_run: pc0 = XXXXXXXX, pc = 1, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- int -2
-get
-sam_run: pc0 = XXXXXXXX, pc = 2, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- int -4
-stack
-sam_run: pc0 = XXXXXXXX, pc = 3, sp = 5, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
 - stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-iget
-sam_run: pc0 = XXXXXXXX, pc = 4, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- float 2.000000
-float
-sam_run: pc0 = XXXXXXXX, pc = 5, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- float 2.000000
-- float 2.000000
-mul
-sam_run: pc0 = XXXXXXXX, pc = 6, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- float 4.000000
-int
-sam_run: pc0 = XXXXXXXX, pc = 7, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- float 4.000000
+- int 4
 - int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 8, sp = 5, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
 - stack XXXXXXXX
-- float 4.000000
+- int 4
 - int -4
 stack
-sam_run: pc0 = XXXXXXXX, pc = 9, sp = 6, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -4
 - stack XXXXXXXX
+- int 4
+- int -4
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
+- float 2.000000
+float
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
+- float 2.000000
+- float 2.000000
+mul
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
+- float 4.000000
+int
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
+- float 4.000000
+- int -4
+get
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
+- float 4.000000
+- int -4
+stack
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
 - float 4.000000
 - int -4
 - stack XXXXXXXX
 iset
-sam_run: pc0 = XXXXXXXX, pc = 10, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-int
-sam_run: pc0 = XXXXXXXX, pc = 11, sp = 4, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -4
 - stack XXXXXXXX
-- int -2
+- int 4
+int
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
+- int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 12, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- int -4
-int
-sam_run: pc0 = XXXXXXXX, pc = 13, sp = 5, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -4
 - stack XXXXXXXX
+- int 4
 - int -4
-- int 1
-add
-sam_run: pc0 = XXXXXXXX, pc = 14, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- int -3
 int
-sam_run: pc0 = XXXXXXXX, pc = 15, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- int -3
-- int -1
-get
-sam_run: pc0 = XXXXXXXX, pc = 16, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -4
-- stack XXXXXXXX
-- int -3
-- int -3
-int
-sam_run: pc0 = XXXXXXXX, pc = 17, sp = 6, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -4
 - stack XXXXXXXX
+- int 4
+- int -4
+- int 1
+add
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
 - int -3
-- int -3
-- int -3
-set
-sam_run: pc = 17, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-- int -3
-while
-sam_run: pc0 = XXXXXXXX, pc = 18, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-stack
-sam_run: pc0 = XXXXXXXX, pc = 19, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-- stack XXXXXXXX
-go
-sam_run: pc0 = XXXXXXXX, pc = 0, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 1, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
 - int -3
-- stack XXXXXXXX
-- int -2
+- int -1
 get
-sam_run: pc0 = XXXXXXXX, pc = 2, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - stack XXXXXXXX
-- int -3
+- int -4
 - stack XXXXXXXX
+- int 4
 - int -3
-stack
-sam_run: pc0 = XXXXXXXX, pc = 3, sp = 5, ir = XXXXXXXX
+- int -3
+int
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- int -4
+- stack XXXXXXXX
+- int 4
+- int -3
+- int -3
+- int -4
+set
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
+- int 4
 - int -3
-- stack XXXXXXXX
-iget
-sam_run: pc0 = XXXXXXXX, pc = 4, sp = 4, ir = XXXXXXXX
+while
+sam_run: pc0 = XXXXXXXX, pc = 18, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
+- int 4
+stack
+sam_run: pc0 = XXXXXXXX, pc = 19, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
+- stack XXXXXXXX
+go
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
+int
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
+- int -3
+get
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
+- int -3
+stack
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
+- int -3
+- stack XXXXXXXX
+iget
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
 - float 5.000000
 float
-sam_run: pc0 = XXXXXXXX, pc = 5, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
+- int 4
 - float 5.000000
 - float 2.000000
 mul
-sam_run: pc0 = XXXXXXXX, pc = 6, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
+- int 4
 - float 10.000000
 int
-sam_run: pc0 = XXXXXXXX, pc = 7, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-- float 10.000000
-- int -3
-get
-sam_run: pc0 = XXXXXXXX, pc = 8, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-- float 10.000000
-- int -3
-stack
-sam_run: pc0 = XXXXXXXX, pc = 9, sp = 6, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
+- int 4
+- float 10.000000
+- int -4
+get
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
+- float 10.000000
+- int -3
+stack
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
 - float 10.000000
 - int -3
 - stack XXXXXXXX
 iset
-sam_run: pc0 = XXXXXXXX, pc = 10, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-int
-sam_run: pc0 = XXXXXXXX, pc = 11, sp = 4, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
-- int -2
+- int 4
+int
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
+- int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 12, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-- int -3
-int
-sam_run: pc0 = XXXXXXXX, pc = 13, sp = 5, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
+- int 4
 - int -3
-- int 1
-add
-sam_run: pc0 = XXXXXXXX, pc = 14, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-- int -2
 int
-sam_run: pc0 = XXXXXXXX, pc = 15, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-- int -2
-- int -1
-get
-sam_run: pc0 = XXXXXXXX, pc = 16, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -3
-- stack XXXXXXXX
-- int -2
-- int -2
-int
-sam_run: pc0 = XXXXXXXX, pc = 17, sp = 6, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -3
 - stack XXXXXXXX
-- int -2
-- int -2
+- int 4
 - int -3
-set
-sam_run: pc = 17, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+- int 1
+add
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
 - stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
 - int -2
-- stack XXXXXXXX
-- int -2
-while
-sam_run: pc0 = XXXXXXXX, pc = 18, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-stack
-sam_run: pc0 = XXXXXXXX, pc = 19, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- stack XXXXXXXX
-go
-sam_run: pc0 = XXXXXXXX, pc = 0, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 1, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - stack XXXXXXXX
-- int -2
+- int -3
 - stack XXXXXXXX
+- int 4
 - int -2
+- int -1
 get
-sam_run: pc0 = XXXXXXXX, pc = 2, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - stack XXXXXXXX
-- int -2
+- int -3
 - stack XXXXXXXX
+- int 4
 - int -2
-stack
-sam_run: pc0 = XXXXXXXX, pc = 3, sp = 5, ir = XXXXXXXX
+- int -2
+int
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- int -3
+- stack XXXXXXXX
+- int 4
+- int -2
+- int -2
+- int -4
+set
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
 - stack XXXXXXXX
+- int 4
+- int -2
+while
+sam_run: pc0 = XXXXXXXX, pc = 18, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+stack
+sam_run: pc0 = XXXXXXXX, pc = 19, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+- stack XXXXXXXX
+go
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+int
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+- int -3
+get
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+- int -2
+stack
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
 - int -2
 - stack XXXXXXXX
 iget
-sam_run: pc0 = XXXXXXXX, pc = 4, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
 - stack XXXXXXXX
+- int 4
 - float 10.000000
 float
-sam_run: pc0 = XXXXXXXX, pc = 5, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- float 10.000000
-- float 2.000000
-mul
-sam_run: pc0 = XXXXXXXX, pc = 6, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- float 20.000000
-int
-sam_run: pc0 = XXXXXXXX, pc = 7, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- float 20.000000
-- int -3
-get
-sam_run: pc0 = XXXXXXXX, pc = 8, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- float 20.000000
-- int -2
-stack
-sam_run: pc0 = XXXXXXXX, pc = 9, sp = 6, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -2
 - stack XXXXXXXX
+- int 4
+- float 10.000000
+- float 2.000000
+mul
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+- float 20.000000
+int
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+- float 20.000000
+- int -4
+get
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+- float 20.000000
+- int -2
+stack
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
 - float 20.000000
 - int -2
 - stack XXXXXXXX
 iset
-sam_run: pc0 = XXXXXXXX, pc = 10, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-int
-sam_run: pc0 = XXXXXXXX, pc = 11, sp = 4, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -2
 - stack XXXXXXXX
+- int 4
+int
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
 - int -2
+- stack XXXXXXXX
+- int 4
+- int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 12, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- int -2
-int
-sam_run: pc0 = XXXXXXXX, pc = 13, sp = 5, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
 - stack XXXXXXXX
+- int 4
 - int -2
-- int 1
-add
-sam_run: pc0 = XXXXXXXX, pc = 14, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- int -1
 int
-sam_run: pc0 = XXXXXXXX, pc = 15, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- int -1
-- int -1
-get
-sam_run: pc0 = XXXXXXXX, pc = 16, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -2
-- stack XXXXXXXX
-- int -1
-- int -1
-int
-sam_run: pc0 = XXXXXXXX, pc = 17, sp = 6, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -2
 - stack XXXXXXXX
-- int -1
-- int -1
-- int -3
-set
-sam_run: pc = 17, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- int -1
-while
-sam_run: pc0 = XXXXXXXX, pc = 18, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-stack
-sam_run: pc0 = XXXXXXXX, pc = 19, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- stack XXXXXXXX
-go
-sam_run: pc0 = XXXXXXXX, pc = 0, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-int
-sam_run: pc0 = XXXXXXXX, pc = 1, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -1
+- int 4
+- int -2
+- int 1
+add
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -2
+- stack XXXXXXXX
+- int 4
+- int -1
+int
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+- int -1
+- int -1
 get
-sam_run: pc0 = XXXXXXXX, pc = 2, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - stack XXXXXXXX
-- int -1
+- int -2
 - stack XXXXXXXX
+- int 4
 - int -1
-stack
-sam_run: pc0 = XXXXXXXX, pc = 3, sp = 5, ir = XXXXXXXX
+- int -1
+int
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- int -2
+- stack XXXXXXXX
+- int 4
+- int -1
+- int -1
+- int -4
+set
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
 - stack XXXXXXXX
+- int 4
+- int -1
+while
+sam_run: pc0 = XXXXXXXX, pc = 18, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+stack
+sam_run: pc0 = XXXXXXXX, pc = 19, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- stack XXXXXXXX
+go
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+int
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- int -3
+get
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- int -1
+stack
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
 - int -1
 - stack XXXXXXXX
 iget
-sam_run: pc0 = XXXXXXXX, pc = 4, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
 - stack XXXXXXXX
+- int 4
 - float 20.000000
 float
-sam_run: pc0 = XXXXXXXX, pc = 5, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- float 20.000000
-- float 2.000000
-mul
-sam_run: pc0 = XXXXXXXX, pc = 6, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- float 40.000000
-int
-sam_run: pc0 = XXXXXXXX, pc = 7, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- float 40.000000
-- int -3
-get
-sam_run: pc0 = XXXXXXXX, pc = 8, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- float 40.000000
-- int -1
-stack
-sam_run: pc0 = XXXXXXXX, pc = 9, sp = 6, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -1
 - stack XXXXXXXX
+- int 4
+- float 20.000000
+- float 2.000000
+mul
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- float 40.000000
+int
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- float 40.000000
+- int -4
+get
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- float 40.000000
+- int -1
+stack
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
 - float 40.000000
 - int -1
 - stack XXXXXXXX
 iset
-sam_run: pc0 = XXXXXXXX, pc = 10, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-int
-sam_run: pc0 = XXXXXXXX, pc = 11, sp = 4, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - int -1
 - stack XXXXXXXX
-- int -2
+- int 4
+int
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 12, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- int -1
-int
-sam_run: pc0 = XXXXXXXX, pc = 13, sp = 5, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX
 - int -1
 - stack XXXXXXXX
+- int 4
 - int -1
-- int 1
-add
-sam_run: pc0 = XXXXXXXX, pc = 14, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- int 0
 int
-sam_run: pc0 = XXXXXXXX, pc = 15, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- int 0
-- int -1
-get
-sam_run: pc0 = XXXXXXXX, pc = 16, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- stack XXXXXXXX
-- int -1
-- stack XXXXXXXX
-- int 0
-- int 0
-int
-sam_run: pc0 = XXXXXXXX, pc = 17, sp = 6, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
 - int -1
 - stack XXXXXXXX
+- int 4
+- int -1
+- int 1
+add
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- int 0
+int
+sam_run: pc0 = XXXXXXXX, pc = 15, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- int 0
+- int -1
+get
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
 - int 0
 - int 0
-- int -3
+int
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+- int 4
+- int 0
+- int 0
+- int -4
 set
-sam_run: pc = 17, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
+sam_run: pc0 = XXXXXXXX, pc = 17, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
 - stack XXXXXXXX
 - int 0
 - stack XXXXXXXX
+- int 4
 - int 0
 while
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 2, ir = XXXXXXXX

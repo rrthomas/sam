@@ -1,6 +1,6 @@
 # libsam Makefile.am
 #
-# © 2020-2025 Reuben Thomas <rrt@sc3d.org>
+# © 2020-2026 Reuben Thomas <rrt@sc3d.org>
 
 EMPTY =
 
@@ -21,7 +21,6 @@ libsam_la_SOURCES = \
 	run.h \
 	debug.c \
 	stack.c \
-	frame.c \
 	run.c \
 	state.c \
 	traps_math.h \

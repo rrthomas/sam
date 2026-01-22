@@ -92,7 +92,6 @@ The instruction set is listed below, with the instructions grouped according to 
 | `i`    | a signed integer |
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
-| `p`    | a pointer to a stack item |
 | `r`    | a reference (pointer to a bracket) |
 | `x`    | an unspecified item |
 
@@ -191,9 +190,9 @@ These instructions manage the stack.
 These instructions implement branches, conditions and subroutine calls.
 
 > `KET`  
-> `p` →
+> `r` `i` →
 >
-> Pop `p` into `PC`.
+> Pop `i` into `PC` and `r` into `PC0`.
 
 > `STACK`  
 > → `r`
@@ -206,9 +205,9 @@ These instructions implement branches, conditions and subroutine calls.
 > Pop `r`. Set `PC` to the address of the first item of the bracket pointed to by `r`.
 
 > `DO`  
-> `r` → `p`
+> `r₁` → `r₂` `i`
 >
-> Pop `r`. Push `PC` to the stack as a reference, and set `PC` to the address of the first item of the bracket pointed to by `r`.
+> Pop `r₁`. Push `PC0` to the stack as a reference and `PC` as an integer, and set `PC` to the address of the first item of the bracket pointed to by `r₁`.
 
 > `IF`  
 > `i` `r₁` `r₂` → `p`

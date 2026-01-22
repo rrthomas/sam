@@ -1,6 +1,6 @@
 // Manipulate the stack.
 //
-// (c) Reuben Thomas 1994-2025
+// (c) Reuben Thomas 1994-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -164,16 +164,15 @@ void sam_stack_ref(sam_stack_t *s) {
 
 void sam_stack_unref(sam_stack_t *s) {
     assert(s->nrefs > 0);
-    if (--s->nrefs == 0) {
-        sam_stack_free(s);
-    }
+    if (--s->nrefs == 0)
+        sam_stack_free(s); // FIXME: check return value
 }
 
 int sam_stack_free(sam_stack_t *s) {
     sam_word_t error = SAM_ERROR_OK;
 
     // Unref the contents of the stack.
-    for (sam_uword_t p = 0; p < s->sp; p++) {
+    while (s->sp > 0) {
         sam_word_t val;
         HALT_IF_ERROR(sam_stack_pop(s, &val));
     }

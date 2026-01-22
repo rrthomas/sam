@@ -40,7 +40,7 @@ Working stack: (3 word(s))
 - int 2
 - int -1
 set
-sam_run: pc = 3, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 2
 pop
@@ -95,7 +95,7 @@ Working stack: (4 word(s))
 - float 3.000000
 - int -1
 set
-sam_run: pc = 12, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - float 3.000000
@@ -122,7 +122,7 @@ Working stack: (4 word(s))
 - float 2.000000
 - int -1
 set
-sam_run: pc = 16, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 16, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - float 2.000000
@@ -149,7 +149,7 @@ Working stack: (4 word(s))
 - int 2
 - int -1
 set
-sam_run: pc = 20, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 20, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - int 2

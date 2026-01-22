@@ -57,7 +57,7 @@ func (state *State) Stack() Stack {
 }
 
 func (state *State) Code() Stack {
-	return Stack{state.state.root_frame.code}
+	return Stack{state.state.root_code}
 }
 
 func NewStack(state State, ty uint) Stack {
@@ -72,7 +72,8 @@ func NewState() State {
 	C.sam_stack_new(state, ARRAY_STACK, &stack)
 	state.stack = stack
 	C.sam_stack_new(state, ARRAY_STACK, &stack)
-	state.root_frame.code = stack
+	C.sam_stack_ref(stack)
+	state.root_code = stack
 	return State{state: state}
 }
 

@@ -1,6 +1,6 @@
 // Handy stack access macros for implementing the interpreter and traps.
 //
-// (c) Reuben Thomas 1994-2025
+// (c) Reuben Thomas 1994-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.

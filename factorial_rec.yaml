@@ -1,22 +1,22 @@
 - int 5
 -
-  - fact: int -2
+  - fact: int -3
   - get
   -
-    - int -3
+    - int -5
     - get
     - int -1
     - add
     - stack fact
     - do
-    - int -4
+    - int -6
     - get
     - mul
-    - int -3
+    - int -5
     - set
   -
     - int 1
-    - int -3
+    - int -5
     - set
   - if
 - do

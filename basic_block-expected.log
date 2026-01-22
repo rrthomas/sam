@@ -27,7 +27,7 @@ Working stack: (2 word(s))
 - int 42
 - int 3
 neg
-sam_run: pc = 4, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 42
 - int -3
@@ -41,7 +41,7 @@ Working stack: (2 word(s))
 - int 39
 - int -3
 div
-sam_run: pc = 6, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int -13
 halt

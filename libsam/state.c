@@ -14,13 +14,5 @@
 
 sam_state_t *sam_state_new(void)
 {
-    sam_state_t *state = calloc(sizeof(sam_state_t), 1);
-    if (state == NULL)
-        return NULL;
-    state->root_frame = sam_frame_new();
-    if (state->root_frame == NULL) {
-        free(state);
-        return NULL;
-    }
-    return state;
+    return calloc(sizeof(sam_state_t), 1);
 }

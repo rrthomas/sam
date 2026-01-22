@@ -41,7 +41,7 @@
 -
   - turn: !istack pen_theta
   - iget
-  - int -3
+  - int -4
   - get
   - neg
   - add
@@ -51,7 +51,7 @@
   - go: !istack pen_theta
   - iget
   - trap cos
-  - int -3
+  - int -4
   - get
   - mul
   - !istack pen_x
@@ -60,7 +60,7 @@
   - !istack pen_theta
   - iget
   - trap sin
-  - int -4
+  - int -5
   - get
   - mul
   - !istack pen_y
@@ -75,10 +75,10 @@
     - !istack pen_y
     - iget
     - trap F2I
-    - int -5
+    - int -6
     - get
     - trap F2I
-    - int -5
+    - int -6
     - get
     - trap F2I
     - !istack pen_color

@@ -2,7 +2,7 @@
 /*
 SAL compiler
 
-Copyright © 2025 Reuben Thomas <rrt@sc3d.org>
+Copyright © 2025-2026 Reuben Thomas <rrt@sc3d.org>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -473,7 +473,7 @@ func (t *Terminator) Compile(ctx *Frame) {
 		} else {
 			ctx.assemble("zero")
 		}
-		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+1)), "set")
+		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+2)), "set")
 		// Pop items down to loop start
 		for range ctx.sp - ctx.loop.baseSp {
 			ctx.assemble("pop")
@@ -514,7 +514,7 @@ func (b *Body) Compile(ctx *Frame) {
 }
 
 func (b *Block) Compile(ctx *Frame, loop bool) Frame {
-	baseSp := libsam.Word(int(ctx.sp) + 1)
+	baseSp := libsam.Word(int(ctx.sp) + 2)
 	blockCtx := Frame{
 		label:  newLabel(),
 		labels: slices.Clone(ctx.labels),
@@ -577,7 +577,7 @@ func (ctx *Frame) tearDownBlock() {
 	}
 	depth := ctx.sp - ctx.baseSp
 	// Set result
-	ctx.assemble(fmt.Sprintf("int %d", -int(depth+1)), "set")
+	ctx.assemble(fmt.Sprintf("int %d", -int(depth+2)), "set")
 	// Pop remaining stack items in this frame, except for return address
 	if depth > 1 {
 		for range depth - 1 {
@@ -590,20 +590,23 @@ func (ctx *Frame) tearDownFrame() {
 	// Set result
 	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-1+libsam.Word(ctx.nargs))), "set")
 	// Pop remaining stack items in this frame, except for return address
-	if ctx.sp > 1 {
-		for range ctx.sp - 1 {
+	if ctx.sp > 2 {
+		for range ctx.sp - 2 {
 			ctx.assemble("pop")
 		}
 	}
 	// If we have some arguments still on the stack, need to get rid of them
-	if ctx.nargs > 1 {
-		// Store the return `pc` over the second argument
+	if ctx.nargs == 2 {
+		// Extract one remaining argument
+		ctx.assemble("int -3", "extract", "pop")
+	} else if ctx.nargs > 2 {
+		// Store the return `pc` over the third argument
 		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)+1), "set")
-		if ctx.nargs > 2 {
-			// Pop arguments 3 onwards, if any
-			for range ctx.nargs - 2 {
-				ctx.assemble("pop")
-			}
+		// Store the return `pc0` over the second argument
+		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)+1), "set")
+		// Pop arguments 4 onwards, if any
+		for range ctx.nargs - 3 {
+			ctx.assemble("pop")
 		}
 	}
 }

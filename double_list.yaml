@@ -5,23 +5,23 @@
   - float 20.0
 - int -4
 -
-  - loop: int -2
+  - loop: int -3
   - get
   - stack data
   - iget
   - float 2.0
   - mul
-  - int -3
+  - int -4
   - get
   - stack data
   - iset
-  - int -2
+  - int -3
   - get
   - int 1
   - add
   - int -1
   - get
-  - int -3
+  - int -4
   - set
   - while
   - stack loop
