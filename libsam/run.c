@@ -122,6 +122,7 @@ sam_word_t sam_run(sam_state_t *state)
 #ifdef SAM_DEBUG
             debug("sam_run: pc0 = %p, pc = %u, sp = %u\n", pc0, pc - 1, s->sp);
             debug("ket\n");
+            sam_print_working_stack(s);
 #endif
             RET;
         }

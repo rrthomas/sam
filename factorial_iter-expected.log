@@ -1071,6 +1071,10 @@ Working stack: (5 word(s))
 set
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 3
 ket
+Working stack: (3 word(s))
+- float 120.000000
+- stack XXXXXXXX
+- int 3
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 120.000000

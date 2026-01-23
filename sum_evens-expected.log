@@ -353,6 +353,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 9
+- stack XXXXXXXX
+- int 4
+- int 0
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -976,6 +991,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 8
+- stack XXXXXXXX
+- int 4
+- int 0
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -1326,6 +1356,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 7
+- stack XXXXXXXX
+- int 4
+- int 0
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 25
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -1756,6 +1801,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 7
+- stack XXXXXXXX
+- int 4
+- int 8
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -2379,6 +2439,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 6
+- stack XXXXXXXX
+- int 4
+- int 8
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -2729,6 +2804,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 5
+- stack XXXXXXXX
+- int 4
+- int 8
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 25
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -3159,6 +3249,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 5
+- stack XXXXXXXX
+- int 4
+- int 14
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -3782,6 +3887,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 4
+- stack XXXXXXXX
+- int 4
+- int 14
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -4132,6 +4252,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 4
+- int 14
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 25
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -4562,6 +4697,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 4
+- int 18
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -5185,6 +5335,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 2
+- stack XXXXXXXX
+- int 4
+- int 18
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -5535,6 +5700,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 1
+- stack XXXXXXXX
+- int 4
+- int 18
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 25
 sam_run: pc0 = XXXXXXXX, pc = 25, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -5965,6 +6145,21 @@ Working stack: (15 word(s))
 if
 sam_run: pc0 = XXXXXXXX, pc = 4294967295, sp = 14
 ket
+Working stack: (14 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 1
+- stack XXXXXXXX
+- int 4
+- int 20
+- int 0
+- stack XXXXXXXX
+- int 4
+- int 0
+- stack XXXXXXXX
+- int 8
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 0
@@ -6773,6 +6968,14 @@ Working stack: (8 word(s))
 pop
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 7
 ket
+Working stack: (7 word(s))
+- int 0
+- stack XXXXXXXX
+- int 3
+- stack XXXXXXXX
+- int 20
+- stack XXXXXXXX
+- int 4
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
@@ -6799,6 +7002,10 @@ Working stack: (4 word(s))
 pop
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 3
 ket
+Working stack: (3 word(s))
+- int 20
+- stack XXXXXXXX
+- int 3
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 20

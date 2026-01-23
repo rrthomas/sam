@@ -300,6 +300,10 @@ Working stack: (6 word(s))
 iset
 sam_run: pc0 = XXXXXXXX, pc = 21, sp = 3
 ket
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+- int 3
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX
@@ -437,6 +441,10 @@ Working stack: (6 word(s))
 trap SETDOT
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 3
 ket
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+- int 5
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX
@@ -545,6 +553,11 @@ Working stack: (7 word(s))
 iset
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 4
 ket
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- float -0.785398
+- stack XXXXXXXX
+- int 9
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX
@@ -1078,6 +1091,15 @@ Working stack: (13 word(s))
 trap DRAWLINE
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 8
 ket
+Working stack: (8 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- stack XXXXXXXX
+- int 13
+- float 353.553385
+- float 353.553385
+- stack XXXXXXXX
+- int 24
 sam_run: pc0 = XXXXXXXX, pc = 24, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX
@@ -1137,6 +1159,11 @@ Working stack: (7 word(s))
 iset
 sam_run: pc0 = XXXXXXXX, pc = 29, sp = 4
 ket
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- float 500.000000
+- stack XXXXXXXX
+- int 13
 sam_run: pc0 = XXXXXXXX, pc = 13, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX
