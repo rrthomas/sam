@@ -575,14 +575,11 @@ func (ctx *Frame) tearDownBlock() {
 	if ctx.sp < ctx.baseSp {
 		panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, ctx.baseSp))
 	}
-	depth := ctx.sp - ctx.baseSp
 	// Set result
-	ctx.assemble(fmt.Sprintf("int %d", -int(depth+2)), "set")
+	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-ctx.baseSp+2)), "set")
 	// Pop remaining stack items in this frame, except for return address
-	if depth > 1 {
-		for range depth - 1 {
-			ctx.assemble("pop")
-		}
+	for range ctx.sp - ctx.baseSp {
+		ctx.assemble("pop")
 	}
 }
 
