@@ -8,7 +8,7 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
-#define _CHECK_TYPE(var, mask, insn)            \
+#define CHECK_TYPE(var, mask, insn)             \
     if ((var & (mask)) != (insn))               \
         HALT(SAM_ERROR_WRONG_TYPE);
 
@@ -20,7 +20,7 @@
 #define _POP_INSN(var, insn, insn_mask, rshift, shift) \
     do {                                        \
         POP_WORD((sam_word_t *)&var);           \
-        _CHECK_TYPE(var, insn_mask, insn);      \
+        CHECK_TYPE(var, insn_mask, insn);       \
         var = rshift(var, shift);               \
     } while (0)
 
@@ -40,7 +40,7 @@
     do {                                                                \
         sam_uword_t _ptr;                                               \
         _POP_INSN(_ptr, SAM_STACK_TAG, SAM_STACK_TAG_MASK, LRSHIFT, SAM_STACK_SHIFT); \
-        var = (void *)(_ptr << SAM_STACK_SHIFT);                          \
+        var = (void *)(_ptr << SAM_STACK_SHIFT);                        \
     } while (0)
 #define PUSH_REF(addr)                                \
     PUSH_WORD(((sam_uword_t)addr) | SAM_STACK_TAG)

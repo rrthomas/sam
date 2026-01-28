@@ -23,6 +23,8 @@ libsam_la_SOURCES = \
 	stack.c \
 	run.c \
 	state.c \
+	traps_basic.h \
+	traps_basic.c \
 	traps_math.h \
 	traps_math.c \
 	traps_graphics.h \

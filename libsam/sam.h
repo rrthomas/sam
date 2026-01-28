@@ -67,6 +67,7 @@ enum {
 
 // Stack access
 int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack);
+int sam_stack_copy(sam_state_t *state, sam_stack_t *s, sam_stack_t **new_stack);
 int sam_stack_free(sam_stack_t *s);
 void sam_stack_ref(sam_stack_t *s);
 void sam_stack_unref(sam_stack_t *s);
