@@ -199,3 +199,19 @@ int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack)
     *new_stack = s;
     return SAM_ERROR_OK;
 }
+
+int sam_stack_copy(sam_state_t *state, sam_stack_t *s, sam_stack_t **new_stack)
+{
+    int error = SAM_ERROR_OK;
+    HALT_IF_ERROR(sam_stack_new(state, s->type, new_stack));
+    
+   // Copy the contents of the stack.
+    for (sam_uword_t pos = 0; pos < s->sp; pos++) {
+        sam_uword_t val;
+        HALT_IF_ERROR(sam_stack_peek(s, pos, &val));
+        HALT_IF_ERROR(sam_stack_push(*new_stack, val));
+    }
+
+ error:
+    return error;
+}

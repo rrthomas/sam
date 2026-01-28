@@ -1,0 +1,18 @@
+# Copy a stack's only reference
+- trap new
+- trap copy
+# Push an item to the new stack then copy the stack
+- int 13
+- int -2
+- get
+- ipush
+- int -1
+- get
+- trap copy
+# Pop an item from one of the copies
+- int -1
+- get
+- ipop
+# Exit 
+- int 0
+- halt

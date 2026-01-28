@@ -22,8 +22,10 @@ The registers are as follows:
 | Register  | Function  |
 | --------- | --------- |
 | `SSIZE`   | The `S`tack `SIZE`. The number of items the stack can hold. |
+| `S`      | The current `S`tack. |
 | `SP`      | The `S`tack `P`ointer. The number of items currently on the stack. |
 | `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
+| `PC0`     | The current stack from which code is being executed. |
 | `PC`      | The `P`rogram `C`ounter points to the next instruction. |
 
 All of the registers are word-sized.
@@ -103,7 +105,7 @@ Integers are represented as twos-complement as part of an `INT` instruction.
 
 Floats are IEEE floats (64-bit on an 8-byte word VM, or 32-bit on a 4-byte VM) with the bottom bit cleared (this bit denotes the `FLOAT` instruction). No rounding is performed on the result of arithmetic operations.
 
-A bracket is encoded as a `STACK` instruction pointing to a list of instructions, ending with a `KET` instruction.
+A bracket is encoded as a `STACK` instruction pointing to a list of instructions, ending with a `RET` instruction.
 
 
 ### Do nothing
@@ -147,7 +149,12 @@ Numeric conversions:
 
 ### Stack manipulation
 
-These instructions manage the stack.
+These instructions manage stacks.
+
+> `NEW`
+> → `r`
+>
+> Create an empty stack and push a reference to it to the current stack.
 
 > `POP`  
 > `x` →
@@ -182,14 +189,29 @@ These instructions manage the stack.
 > `ISET`  
 > `x` `i` `r` →
 >
-> Set the `i`th item of the stack pointed to by `r`th to `x`.
+> Set the `i`th item of the stack pointed to by `r` to `x`.
+
+> `IPOP`  
+> `r` →
+>
+> Pop an item from the stack pointed to by `r`.
+
+> `IPUSH`  
+> `x` `r` →
+>
+> Push `x` the stack pointed to by `r`.
 
 
 ### Control structures
 
 These instructions implement branches, conditions and subroutine calls.
 
-> `KET`  
+> `CALL`  
+> `x₁`…`xₙ` `i₁` `r₁` `r₂` `i₂` →
+>
+> Pop `i₁`, `r₁`, `r₂` and `i₂`. Pop `i₁` stack items, and push them to the stack given by `r₁`, in order from `x₁` to `xₙ`. Set `S0` to `r₁`. Push `PC0` and `PC` to the stack, and set `PC0` to `r₂` and `PC` to `i₂`.
+
+> `RET`  
 > `r` `i` →
 >
 > Pop `i` into `PC` and `r` into `PC0`.
@@ -207,7 +229,7 @@ These instructions implement branches, conditions and subroutine calls.
 > `DO`  
 > `r₁` → `r₂` `i`
 >
-> Pop `r₁`. Push `PC0` to the stack as a reference and `PC` as an integer, and set `PC` to the address of the first item of the bracket pointed to by `r₁`.
+> Pop `r₁`. Push `PC0` to the stack as a reference and `PC` as an integer, and set `PC0` to `r₁` and `PC` to 0.
 
 > `IF`  
 > `i` `r₁` `r₂` → `p`
@@ -217,7 +239,7 @@ These instructions implement branches, conditions and subroutine calls.
 > `WHILE`  
 > `i` →
 >
-> Pop `i`. If it is zero, perform the action of `KET`.
+> Pop `i`. If it is zero, perform the action of `RET`.
 
 
 ### Logic and shifts

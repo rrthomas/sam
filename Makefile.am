@@ -21,6 +21,7 @@ TESTS = \
 	screen_graphics.yaml \
 	screen_turtle-demo.yaml \
 	screen_levy-c.yaml \
+	stack.yaml \
 	expr.sal \
 	graphics.sal \
 	factorial_loop.sal \
@@ -39,6 +40,7 @@ RESULTS = \
 	screen_turtle-demo-expected.pbm \
 	screen_levy-c-expected.log \
 	screen_levy-c-expected.pbm \
+	stack-expected.log \
 	set-expected.log \
 	expr-expected.log \
 	graphics-expected.log \

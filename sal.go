@@ -336,11 +336,11 @@ func (e *BitwiseExp) Compile(ctx *Frame) {
 		case "|":
 			ctx.assemble("or")
 		case "<<":
-			ctx.assemble("lsh")
+			ctx.assembleTrap("LSH")
 		case ">>":
-			ctx.assemble("rsh")
+			ctx.assembleTrap("RSH")
 		case ">>>":
-			ctx.assemble("arsh")
+			ctx.assembleTrap("ARSH")
 		default:
 			panic(fmt.Errorf("unknown SumExp.Op %s", e.Op))
 		}

@@ -1,0 +1,88 @@
+Stack: XXXXXXXX (12 item(s))
+- trap NEW
+- trap COPY
+- int 13
+- int -2
+- get ipush
+- int -1
+- get
+- trap COPY
+- int -1
+- get ipop
+- int 0
+- halt
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 0, ir = XXXXXXXX
+Working stack: (0 word(s))
+trap NEW
+sam_run: pc0 = XXXXXXXX, pc = 1, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- stack XXXXXXXX
+trap COPY
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- stack XXXXXXXX
+int
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- int 13
+int
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- int 13
+- int -2
+get
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- int 13
+- stack XXXXXXXX
+ipush
+sam_run: pc0 = XXXXXXXX, pc = 5, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- stack XXXXXXXX
+int
+sam_run: pc0 = XXXXXXXX, pc = 6, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- int -1
+get
+sam_run: pc0 = XXXXXXXX, pc = 7, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+trap COPY
+sam_run: pc0 = XXXXXXXX, pc = 8, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+int
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+- int -1
+get
+sam_run: pc0 = XXXXXXXX, pc = 9, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+- stack XXXXXXXX
+ipop
+sam_run: pc0 = XXXXXXXX, pc = 10, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+int
+sam_run: pc0 = XXXXXXXX, pc = 11, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+- int 0
+halt
+Stack: XXXXXXXX (2 item(s))
+- stack XXXXXXXX (1 items)
+  - int 13
+- stack XXXXXXXX (0 items)
+sam_run returns: halt with reason 0 (0x0)

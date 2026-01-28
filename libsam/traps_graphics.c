@@ -134,9 +134,11 @@ void sam_graphics_finish(void)
     SDL_Quit();
 }
 
-sam_word_t sam_graphics_trap(sam_stack_t *s, sam_uword_t function)
+sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
 {
+    sam_stack_t *s = state->stack;
     int error = SAM_ERROR_OK;
+
     switch (function) {
     case TRAP_GRAPHICS_BLACK:
         PUSH_INT(0);

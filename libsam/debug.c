@@ -18,6 +18,7 @@
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "private.h"
+#include "traps_basic.h"
 #include "traps_math.h"
 #include "traps_graphics.h"
 
@@ -60,10 +61,16 @@ char *inst_name(sam_uword_t inst_opcode)
         return "iget";
     case INST_ISET:
         return "iset";
+    case INST_IPOP:
+        return "ipop";
+    case INST_IPUSH:
+        return "ipush";
     case INST_GO:
         return "go";
     case INST_DO:
         return "do";
+    case INST_CALL:
+        return "call";
     case INST_IF:
         return "if";
     case INST_WHILE:
@@ -76,12 +83,6 @@ char *inst_name(sam_uword_t inst_opcode)
         return "or";
     case INST_XOR:
         return "xor";
-    case INST_LSH:
-        return "lsh";
-    case INST_RSH:
-        return "rsh";
-    case INST_ARSH:
-        return "arsh";
     case INST_EQ:
         return "eq";
     case INST_LT:
@@ -117,6 +118,9 @@ char *trap_name(sam_uword_t function)
 {
     char *name = NULL;
     switch (function & SAM_TRAP_BASE_MASK) {
+    case SAM_TRAP_BASIC_BASE:
+        name = sam_basic_trap_name(function);
+        break;
     case SAM_TRAP_MATH_BASE:
         name = sam_math_trap_name(function);
         break;
