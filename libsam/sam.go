@@ -6,6 +6,7 @@ package libsam
 //#cgo pkg-config: sdl2 SDL2_gfx
 //#include "sam.h"
 //#include "sam_opcodes.h"
+//#include "traps_basic.h"
 //#include "traps_math.h"
 //#include "traps_graphics.h"
 import "C"
@@ -226,17 +227,17 @@ var Instructions = map[string]InstOpcode{
 	"insert":  {C.SAM_INSTS_TAG, C.INST_INSERT, false},
 	"iget":    {C.SAM_INSTS_TAG, C.INST_IGET, false},
 	"iset":    {C.SAM_INSTS_TAG, C.INST_ISET, false},
+	"ipop":    {C.SAM_INSTS_TAG, C.INST_IPOP, false},
+	"ipush":   {C.SAM_INSTS_TAG, C.INST_IPUSH, false},
 	"go":      {C.SAM_INSTS_TAG, C.INST_GO, true},
 	"do":      {C.SAM_INSTS_TAG, C.INST_DO, true},
+	"call":    {C.SAM_INSTS_TAG, C.INST_CALL, true},
 	"if":      {C.SAM_INSTS_TAG, C.INST_IF, true},
 	"while":   {C.SAM_INSTS_TAG, C.INST_WHILE, false},
 	"not":     {C.SAM_INSTS_TAG, C.INST_NOT, false},
 	"and":     {C.SAM_INSTS_TAG, C.INST_AND, false},
 	"or":      {C.SAM_INSTS_TAG, C.INST_OR, false},
 	"xor":     {C.SAM_INSTS_TAG, C.INST_XOR, false},
-	"lsh":     {C.SAM_INSTS_TAG, C.INST_LSH, false},
-	"rsh":     {C.SAM_INSTS_TAG, C.INST_RSH, false},
-	"arsh":    {C.SAM_INSTS_TAG, C.INST_ARSH, false},
 	"eq":      {C.SAM_INSTS_TAG, C.INST_EQ, false},
 	"lt":      {C.SAM_INSTS_TAG, C.INST_LT, false},
 	"neg":     {C.SAM_INSTS_TAG, C.INST_NEG, false},
@@ -255,6 +256,12 @@ var Instructions = map[string]InstOpcode{
 }
 
 var Traps = map[string]int{
+	"NEW":  C.TRAP_BASIC_NEW,
+	"COPY": C.TRAP_BASIC_COPY,
+	"LSH":  C.TRAP_BASIC_LSH,
+	"RSH":  C.TRAP_BASIC_RSH,
+	"ARSH": C.TRAP_BASIC_ARSH,
+
 	"I2F": C.TRAP_MATH_I2F,
 	"F2I": C.TRAP_MATH_F2I,
 	"POW": C.TRAP_MATH_POW,
@@ -284,8 +291,6 @@ var Traps = map[string]int{
 var StackDifference = map[string]int{
 	// Tag instructions
 	"stack": 1,
-
-	// Atom instructions
 	"int":   1,
 	"float": 1,
 
@@ -296,22 +301,26 @@ var StackDifference = map[string]int{
 	"set":     -2,
 	"extract": -1,
 	"insert":  -1,
+	"iget":    -1,
+	"iset":    -3,
+	"ipop":    -1,
+	"ipush":   -2,
+	"go":      -1,
 	"do":      -1,
+	"call":    -2,
 	"if":      -3,
 	"while":   -1,
-	"go":      -1,
 	"not":     0,
 	"and":     -1,
 	"or":      -1,
 	"xor":     -1,
-	"lsh":     -1,
-	"rsh":     -1,
-	"arsh":    -1,
 	"eq":      -1,
 	"lt":      -1,
 	"neg":     0,
 	"add":     -1,
 	"mul":     -1,
+	"div":     -1,
+	"rem":     -1,
 	"zero":    1,
 	"false":   1,
 	"one":     1,
@@ -319,19 +328,9 @@ var StackDifference = map[string]int{
 	"true":    1,
 	"two":     1,
 	"_two":    1,
+	"halt":    -1,
 
-	"halt": -1,
-
-	"i2f": 0,
-	"f2i": 0,
-	"div": -1,
-	"rem": -1,
-	"pow": -1,
-	"sin": 0,
-	"cos": 0,
-	"deg": 0,
-	"rad": 0,
-	// Trap depends on the trap code.
+	// Traps depend on the trap code.
 }
 
 type StackEffect struct {
@@ -340,6 +339,25 @@ type StackEffect struct {
 }
 
 var TrapStackEffect = map[string]StackEffect{
+	// Basic traps
+	"NEW":  {0, 1},
+	"COPY": {1, 1},
+	"LSH":  {2, 1},
+	"RSH":  {2, 1},
+	"ARSH": {2, 1},
+
+	// Math traps
+	"I2F": {1, 1},
+	"F2I": {1, 1},
+	"DIV": {2, 1},
+	"REM": {2, 1},
+	"POW": {2, 1},
+	"SIN": {1, 1},
+	"COS": {1, 1},
+	"DEG": {1, 1},
+	"RAD": {1, 1},
+
+	// Graphics traps
 	"BLACK":          {0, 1},
 	"WHITE":          {0, 1},
 	"DISPLAY_WIDTH":  {0, 1},

@@ -19,6 +19,7 @@
 #include "sam_opcodes.h"
 #include "private.h"
 #include "run.h"
+#include "traps_basic.h"
 #include "traps_math.h"
 #include "traps_graphics.h"
 
@@ -97,13 +98,15 @@ const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 #define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
 
 // Trap dispatcher
-static sam_word_t sam_trap(sam_stack_t *s, sam_uword_t function)
+static sam_word_t sam_trap(sam_state_t *state, sam_uword_t function)
 {
     switch (function & SAM_TRAP_BASE_MASK) {
+    case SAM_TRAP_BASIC_BASE:
+        return sam_basic_trap(state, function);
     case SAM_TRAP_MATH_BASE:
-        return sam_math_trap(s, function);
+        return sam_math_trap(state, function);
     case SAM_TRAP_GRAPHICS_BASE:
-        return sam_graphics_trap(s, function);
+        return sam_graphics_trap(state, function);
     default:
         return SAM_ERROR_INVALID_TRAP;
     }
@@ -157,7 +160,7 @@ sam_word_t sam_run(sam_state_t *state)
 #ifdef SAM_DEBUG
             debug("trap %s\n", trap_name(function));
 #endif
-            HALT_IF_ERROR(sam_trap(s, function));
+            HALT_IF_ERROR(sam_trap(state, function));
         } else if ((ir & SAM_INSTS_TAG_MASK) == SAM_INSTS_TAG) {
             for (sam_uword_t opcodes = (sam_uword_t)ir >> SAM_INSTS_SHIFT; opcodes != 0; ) {
                 sam_word_t opcode = opcodes & SAM_INST_MASK;
@@ -234,6 +237,24 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT_IF_ERROR(sam_stack_poke(stack, dest, val));
                     }
                     break;
+                case INST_IPOP:
+                    {
+                        sam_stack_t *stack;
+                        POP_REF(stack);
+                        if (stack->sp < 1)
+                            HALT(SAM_ERROR_STACK_UNDERFLOW);
+                        stack->sp -= 1;
+                    }
+                    break;
+                case INST_IPUSH:
+                    {
+                        sam_stack_t *stack;
+                        POP_REF(stack);
+                        sam_word_t val;
+                        POP_WORD(&val);
+                        HALT_IF_ERROR(sam_stack_push(stack, val));
+                    }
+                    break;
                 case INST_GO:
                     {
                         sam_stack_t *code;
@@ -243,6 +264,14 @@ sam_word_t sam_run(sam_state_t *state)
                     }
                     break;
                 case INST_DO:
+                    {
+                        sam_stack_t *code;
+                        POP_REF(code);
+                        DO(code);
+                        opcodes = 0;
+                    }
+                    break;
+                case INST_CALL:
                     {
                         sam_stack_t *code;
                         POP_REF(code);
@@ -301,30 +330,6 @@ sam_word_t sam_run(sam_state_t *state)
                         POP_INT(b);
                         POP_INT(a);
                         PUSH_INT(a ^ b);
-                    }
-                    break;
-                case INST_LSH:
-                    {
-                        sam_word_t shift, value;
-                        POP_INT(shift);
-                        POP_INT(value);
-                        PUSH_INT(shift < (sam_word_t)SAM_WORD_BIT ? LSHIFT(value, shift) : 0);
-                    }
-                    break;
-                case INST_RSH:
-                    {
-                        sam_word_t shift, value;
-                        POP_INT(shift);
-                        POP_INT(value);
-                        PUSH_INT(shift < (sam_word_t)SAM_WORD_BIT ? (sam_word_t)((sam_uword_t)value >> shift) : 0);
-                    }
-                    break;
-                case INST_ARSH:
-                    {
-                        sam_word_t shift, value;
-                        POP_INT(shift);
-                        POP_INT(value);
-                        PUSH_INT(ARSHIFT(value, shift));
                     }
                     break;
                 case INST_EQ:

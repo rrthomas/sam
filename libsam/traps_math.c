@@ -32,9 +32,11 @@ static sam_uword_t powi(sam_uword_t base, sam_uword_t exp)
     return result;
 }
 
-sam_word_t sam_math_trap(sam_stack_t *s, sam_uword_t function)
+sam_word_t sam_math_trap(sam_state_t *state, sam_uword_t function)
 {
+    sam_stack_t *s = state->stack;
     int error = SAM_ERROR_OK;
+
     switch (function) {
     case TRAP_MATH_I2F:
         {
