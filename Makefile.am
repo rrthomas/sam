@@ -25,6 +25,7 @@ TESTS = \
 	stack.yaml \
 	expr.sal \
 	graphics.sal \
+	factorial_fn.sal \
 	factorial_loop.sal \
 	sum_evens.sal \
 	$(EMPTY)
@@ -46,6 +47,7 @@ RESULTS = \
 	set-expected.log \
 	expr-expected.log \
 	graphics-expected.log \
+	factorial_fn-expected.log \
 	factorial_loop-expected.log \
 	sum_evens-expected.log \
 	$(EMPTY)
