@@ -1,6 +1,6 @@
 - int 1
 - int 2
-- int -1
+- int -2
 - set
 - pop
 - float 1.0
@@ -10,17 +10,17 @@
 - extract
 - int -2
 - insert
-- int -1
+- int -2
 - set
 - pop
 - int 1
 - float 2.0
-- int -1
+- int -2
 - set
 - pop
 - float 1.0
 - int 2
-- int -1
+- int -2
 - set
 - pop
 - int 0

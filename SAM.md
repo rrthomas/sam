@@ -169,7 +169,7 @@ These instructions manage stacks.
 > `SET`  
 > `x` `i` →
 >
-> Pop `i` and `x` from the stack. Set the `i`th stack item to `x`.
+> Pop `i` from the stack. Set the `i`th stack item to `x`. Pop `x` from the stack.
 
 > `EXTRACT`  
 > `x₁`…`xₙ` `i` → `x₂`…`xₙ` `x₁`

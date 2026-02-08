@@ -12,11 +12,11 @@ Stack: XXXXXXXX (4 item(s))
     - do
     - int -6
     - get mul
-    - int -5
+    - int -6
     - set
   - stack XXXXXXXX (3 items)
     - int 1
-    - int -5
+    - int -6
     - set
   - if
 - do
@@ -1305,7 +1305,7 @@ Working stack: (32 word(s))
 - stack XXXXXXXX
 - int 5
 - int 1
-- int -5
+- int -6
 set
 sam_run: pc0 = XXXXXXXX, pc = 2, sp = 30
 ket
@@ -1517,7 +1517,7 @@ Working stack: (27 word(s))
 - stack XXXXXXXX
 - int 5
 - int 1
-- int -5
+- int -6
 set
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 25
 ket
@@ -1694,7 +1694,7 @@ Working stack: (22 word(s))
 - stack XXXXXXXX
 - int 5
 - int 2
-- int -5
+- int -6
 set
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 20
 ket
@@ -1836,7 +1836,7 @@ Working stack: (17 word(s))
 - stack XXXXXXXX
 - int 5
 - int 6
-- int -5
+- int -6
 set
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 15
 ket
@@ -1943,7 +1943,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX
 - int 5
 - int 24
-- int -5
+- int -6
 set
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 10
 ket
@@ -2015,7 +2015,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX
 - int 5
 - int 120
-- int -5
+- int -6
 set
 sam_run: pc0 = XXXXXXXX, pc = 9, sp = 5
 ket

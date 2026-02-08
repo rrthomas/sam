@@ -11,18 +11,18 @@ Stack: XXXXXXXX (5 item(s))
     - get
     - int -7
     - get mul
-    - int -3
+    - int -4
     - set
     - int -6
     - get
     - float -1.000000
     - add
-    - int -6
+    - int -7
     - set
     - stack XXXXXXXX
     - go
   - do
-  - int -3
+  - int -4
   - set
 - do
 - trap F2I
@@ -169,7 +169,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 5.000000
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -230,7 +230,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 4.000000
-- int -6
+- int -7
 set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -360,7 +360,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 20.000000
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -421,7 +421,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 3.000000
-- int -6
+- int -7
 set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -551,7 +551,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 60.000000
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -612,7 +612,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 2.000000
-- int -6
+- int -7
 set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -742,7 +742,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 120.000000
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -803,7 +803,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 1.000000
-- int -6
+- int -7
 set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -933,7 +933,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 120.000000
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -994,7 +994,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX
 - int 3
 - float 0.000000
-- int -6
+- int -7
 set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -1067,7 +1067,7 @@ Working stack: (5 word(s))
 - stack XXXXXXXX
 - int 3
 - float 120.000000
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 4, sp = 3
 ket

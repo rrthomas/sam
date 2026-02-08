@@ -10,14 +10,14 @@ Stack: XXXXXXXX (4 item(s))
       - get
       - int 1
       - add
-      - int -3
+      - int -4
       - set
     - stack XXXXXXXX (6 items)
       - int -3
       - get
       - int 1
       - add
-      - int -3
+      - int -4
       - set
     - stack XXXXXXXX (15 items)
       - int 0
@@ -28,7 +28,7 @@ Stack: XXXXXXXX (4 item(s))
       - stack XXXXXXXX (6 items)
         - int -7
         - get
-        - int -7
+        - int -8
         - set pop pop pop
         - int -3
         - extract pop
@@ -37,7 +37,7 @@ Stack: XXXXXXXX (4 item(s))
       - pop
       - int -3
       - get
-      - int -4
+      - int -5
       - set
       - int -3
       - extract pop
@@ -48,11 +48,11 @@ Stack: XXXXXXXX (4 item(s))
       - get
       - int -5
       - get add add
-      - int -5
+      - int -6
       - set
-      - int -2
+      - int -3
       - set
-      - int -2
+      - int -3
       - set
     - int 5
     - int -1
@@ -67,11 +67,11 @@ Stack: XXXXXXXX (4 item(s))
       - int 1
       - int -8
       - get do
-      - int -3
+      - int -4
       - set
     - do
     - _one get
-    - int -2
+    - int -3
     - set pop
     - int 2
     - int 4
@@ -86,13 +86,13 @@ Stack: XXXXXXXX (4 item(s))
     - int -8
     - get do
     - add add add _one get
-    - int -10
+    - int -11
     - set
-    - int -8
+    - int -9
     - set pop pop pop pop pop
   - stack XXXXXXXX (0 items)
   - if
-  - int -4
+  - int -5
   - set pop
 - do
 - halt
@@ -413,7 +413,7 @@ Working stack: (17 word(s))
 - stack XXXXXXXX
 - int 9
 - int 6
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 15
 ket
@@ -1010,7 +1010,7 @@ Working stack: (24 word(s))
 - stack XXXXXXXX
 - int 8
 - int 5
-- int -7
+- int -8
 set
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 22, ir = XXXXXXXX
 Working stack: (22 word(s))
@@ -1209,7 +1209,7 @@ Working stack: (17 word(s))
 - stack XXXXXXXX
 - int 13
 - int 5
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 6, sp = 15
 ket
@@ -1295,7 +1295,7 @@ Working stack: (15 word(s))
 - int 5
 - int 5
 - int 5
-- int -2
+- int -3
 set
 sam_run: pc0 = XXXXXXXX, pc = 15, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
@@ -1730,7 +1730,7 @@ Working stack: (21 word(s))
 - stack XXXXXXXX
 - int 25
 - int 6
-- int -5
+- int -6
 set
 sam_run: pc0 = XXXXXXXX, pc = 8, sp = 19, ir = XXXXXXXX
 Working stack: (19 word(s))
@@ -1775,7 +1775,7 @@ Working stack: (20 word(s))
 - int 3
 - stack XXXXXXXX
 - int 25
-- int -2
+- int -3
 set
 sam_run: pc0 = XXXXXXXX, pc = 10, sp = 18, ir = XXXXXXXX
 Working stack: (18 word(s))
@@ -1818,7 +1818,7 @@ Working stack: (19 word(s))
 - int 2
 - int 25
 - stack XXXXXXXX
-- int -2
+- int -3
 set
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 17
 ket
@@ -2048,7 +2048,7 @@ Working stack: (20 word(s))
 - stack XXXXXXXX
 - int 28
 - int 2
-- int -3
+- int -4
 set
 sam_run: pc0 = XXXXXXXX, pc = 5, sp = 18
 ket
@@ -2191,7 +2191,7 @@ Working stack: (15 word(s))
 - int 5
 - int 30
 - int 30
-- int -10
+- int -11
 set
 sam_run: pc0 = XXXXXXXX, pc = 31, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
@@ -2224,7 +2224,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX
 - int 5
 - int 30
-- int -8
+- int -9
 set
 sam_run: pc0 = XXXXXXXX, pc = 32, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
@@ -2316,7 +2316,7 @@ Working stack: (6 word(s))
 - int 3
 - int 30
 - int 30
-- int -4
+- int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 7, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
