@@ -203,7 +203,8 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	} else if e.Float != nil {
 		ctx.assemble(fmt.Sprintf("float %g", *e.Float))
 	} else if e.Variable != nil {
-		ctx.assemble(fmt.Sprintf("int %d", ctx.variableAddr(*e.Variable)), "get")
+		ctx.compileVar(*e.Variable)
+		ctx.assemble("get")
 	} else if e.Block != nil {
 		ctx.assemble("int 0") // value of block
 		ctx.assemble(ctx.assembleBlock(e.Block).asm)
@@ -413,7 +414,9 @@ func (i *If) Compile(ctx *Frame) {
 
 func (a *Assignment) Compile(ctx *Frame) {
 	a.Expression.Compile(ctx)
-	ctx.assemble("_one", "get", fmt.Sprintf("int %d", ctx.variableAddr(*a.Variable)), "set")
+	ctx.assemble("_one", "get")
+	ctx.compileVar(*a.Variable)
+	ctx.assemble("set")
 }
 
 func (t *Trap) Compile(ctx *Frame) {
@@ -473,7 +476,7 @@ func (t *Terminator) Compile(ctx *Frame) {
 		} else {
 			ctx.assemble("zero")
 		}
-		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+2)), "set")
+		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+3)), "set")
 		// Pop items down to loop start
 		for range ctx.sp - ctx.loop.baseSp {
 			ctx.assemble("pop")
@@ -561,11 +564,12 @@ func (ctx *Frame) adjustSp(delta int) {
 	ctx.sp += libsam.Word(delta)
 }
 
-func (ctx *Frame) variableAddr(id string) int {
+func (ctx *Frame) compileVar(id string) {
 	for i := len(ctx.labels) - 1; i >= 0; i-- {
 		l := ctx.labels[i]
 		if l.id == id {
-			return int(l.addr) - int(ctx.sp)
+			ctx.assemble(fmt.Sprintf("int %d", int(l.addr)-int(ctx.sp)))
+			return
 		}
 	}
 	panic(fmt.Errorf("no such variable %s", id))
@@ -576,7 +580,7 @@ func (ctx *Frame) tearDownBlock() {
 		panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, ctx.baseSp))
 	}
 	// Set result
-	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-ctx.baseSp+2)), "set")
+	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-ctx.baseSp+3)), "set")
 	// Pop remaining stack items in this frame, except for return address
 	for range ctx.sp - ctx.baseSp {
 		ctx.assemble("pop")
@@ -585,7 +589,7 @@ func (ctx *Frame) tearDownBlock() {
 
 func (ctx *Frame) tearDownFrame() {
 	// Set result
-	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-1+libsam.Word(ctx.nargs))), "set")
+	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp+libsam.Word(ctx.nargs))), "set")
 	// Pop remaining stack items in this frame, except for return address
 	if ctx.sp > 2 {
 		for range ctx.sp - 2 {
@@ -598,9 +602,9 @@ func (ctx *Frame) tearDownFrame() {
 		ctx.assemble("int -3", "extract", "pop")
 	} else if ctx.nargs > 2 {
 		// Store the return `pc` over the third argument
-		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)+1), "set")
+		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)), "set")
 		// Store the return `pc0` over the second argument
-		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)+1), "set")
+		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)), "set")
 		// Pop arguments 4 onwards, if any
 		for range ctx.nargs - 3 {
 			ctx.assemble("pop")

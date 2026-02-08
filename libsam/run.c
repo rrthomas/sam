@@ -190,8 +190,8 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_word_t pos, val;
                         POP_INT(pos);
                         sam_uword_t dest;
-                        POP_WORD(&val);
                         HALT_IF_ERROR(sam_stack_item(s, pos, &dest));
+                        POP_WORD(&val);
                         HALT_IF_ERROR(sam_stack_poke(s, dest, val));
                     }
                     break;

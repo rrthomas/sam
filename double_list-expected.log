@@ -22,7 +22,7 @@ Stack: XXXXXXXX (7 item(s))
   - add
   - int -1
   - get
-  - int -4
+  - int -5
   - set while
   - stack XXXXXXXX
   - go
@@ -199,7 +199,7 @@ Working stack: (7 word(s))
 - int 4
 - int -3
 - int -3
-- int -4
+- int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -375,7 +375,7 @@ Working stack: (7 word(s))
 - int 4
 - int -2
 - int -2
-- int -4
+- int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -551,7 +551,7 @@ Working stack: (7 word(s))
 - int 4
 - int -1
 - int -1
-- int -4
+- int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -727,7 +727,7 @@ Working stack: (7 word(s))
 - int 4
 - int 0
 - int 0
-- int -4
+- int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 17, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
