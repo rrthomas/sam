@@ -12,11 +12,11 @@
     - int -6
     - get
     - mul
-    - int -5
+    - int -6
     - set
   -
     - int 1
-    - int -5
+    - int -6
     - set
   - if
 - do

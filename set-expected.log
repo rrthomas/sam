@@ -1,7 +1,7 @@
 Stack: XXXXXXXX (23 item(s))
 - int 1
 - int 2
-- int -1
+- int -2
 - set pop
 - float 1.000000
 - float 2.000000
@@ -10,15 +10,15 @@ Stack: XXXXXXXX (23 item(s))
 - extract
 - int -2
 - insert
-- int -1
+- int -2
 - set pop
 - int 1
 - float 2.000000
-- int -1
+- int -2
 - set pop
 - float 1.000000
 - int 2
-- int -1
+- int -2
 - set pop
 - int 0
 - halt
@@ -38,7 +38,7 @@ sam_run: pc0 = XXXXXXXX, pc = 3, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - int 1
 - int 2
-- int -1
+- int -2
 set
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
@@ -93,7 +93,7 @@ Working stack: (4 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
-- int -1
+- int -2
 set
 sam_run: pc0 = XXXXXXXX, pc = 12, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
@@ -120,7 +120,7 @@ Working stack: (4 word(s))
 - float 1.000000
 - int 1
 - float 2.000000
-- int -1
+- int -2
 set
 sam_run: pc0 = XXXXXXXX, pc = 16, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
@@ -147,7 +147,7 @@ Working stack: (4 word(s))
 - float 1.000000
 - float 1.000000
 - int 2
-- int -1
+- int -2
 set
 sam_run: pc0 = XXXXXXXX, pc = 20, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))

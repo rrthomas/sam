@@ -11,18 +11,18 @@
     - int -7
     - get
     - mul
-    - int -3
+    - int -4
     - set
     - int -6
     - get
     - float -1.0
     - add
-    - int -6
+    - int -7
     - set
     - stack loop
     - go
   - do
-  - int -3
+  - int -4
   - set
 - do
 - trap F2I
