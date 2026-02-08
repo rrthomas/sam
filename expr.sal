@@ -17,11 +17,11 @@
 
 b: 2
 if 1 {
-    f: fn(a) {
-        return a + 1
+    f: fn(u) {
+        return u + 1
     }
-    g: fn(a) {
-        a + 1
+    g: fn(v) {
+        v + 1
     }
     max: fn(x, y) {
         if x > y {
@@ -29,8 +29,8 @@ if 1 {
         }
         return y
     }
-    sum3: fn(a, b, c) {
-        return a + b + c
+    sum3: fn(p, q, r) {
+        return p + q + r
     }
     a: 5
 
