@@ -203,8 +203,7 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	} else if e.Float != nil {
 		ctx.assemble(fmt.Sprintf("float %g", *e.Float))
 	} else if e.Variable != nil {
-		ctx.compileVar(*e.Variable)
-		ctx.assemble("get")
+		ctx.compileGetVar(*e.Variable)
 	} else if e.Block != nil {
 		ctx.assemble("int 0") // value of block
 		ctx.assemble(ctx.assembleBlock(e.Block).asm)
@@ -415,8 +414,7 @@ func (i *If) Compile(ctx *Frame) {
 func (a *Assignment) Compile(ctx *Frame) {
 	a.Expression.Compile(ctx)
 	ctx.assemble("_one", "get")
-	ctx.compileVar(*a.Variable)
-	ctx.assemble("set")
+	ctx.compileSetVar(*a.Variable)
 }
 
 func (t *Trap) Compile(ctx *Frame) {
@@ -446,7 +444,7 @@ func (t *Trap) Compile(ctx *Frame) {
 }
 
 func (d *Declaration) Compile(ctx *Frame) {
-	ctx.labels = append(ctx.labels, Location{id: *d.Variable, addr: int(ctx.sp)})
+	ctx.locals = append(ctx.locals, Local{id: *d.Variable, pos: int(ctx.sp)})
 	d.Value.Compile(ctx)
 }
 
@@ -519,13 +517,14 @@ func (b *Body) Compile(ctx *Frame) {
 func (b *Block) Compile(ctx *Frame, loop bool) Frame {
 	baseSp := libsam.Word(int(ctx.sp) + 2)
 	blockCtx := Frame{
-		label:  newLabel(),
-		labels: slices.Clone(ctx.labels),
-		asm:    make([]any, 0),
-		baseSp: baseSp,
-		sp:     baseSp,
-		nargs:  ctx.nargs,
-		loop:   ctx.loop,
+		label:    newLabel(),
+		locals:   slices.Clone(ctx.locals),
+		captures: slices.Clone(ctx.captures),
+		asm:      make([]any, 0),
+		baseSp:   baseSp,
+		sp:       baseSp,
+		nargs:    ctx.nargs,
+		loop:     ctx.loop,
 	}
 	if loop {
 		blockCtx.loop = &blockCtx
@@ -535,28 +534,37 @@ func (b *Block) Compile(ctx *Frame, loop bool) Frame {
 }
 
 func (f *Function) Compile(ctx *Frame) {
-	// FIXME: captures
 	nargs := libsam.Uword(len(*f.Parameters))
 	innerCtx := Frame{
-		labels: make([]Location, 0),
-		asm:    make([]any, 0),
-		baseSp: 0,
-		sp:     0,
-		nargs:  nargs,
+		locals:   make([]Local, 0),
+		captures: make([]Capture, 0),
+		asm:      make([]any, 0),
+		baseSp:   0,
+		sp:       0,
+		nargs:    nargs,
 	}
 	for i, p := range *f.Parameters {
-		innerCtx.labels = append(innerCtx.labels, Location{id: p, addr: i - int(nargs)})
+		innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i - int(nargs)})
 	}
+	ctx.assemble("new") // closure array
+	ctx.assemble("new") // captures array
 	blockCtx := f.Body.Compile(&innerCtx, false)
+	ctx.assemble("_two", "get", "ipush") // append captures to closure
 	if f.Body.Body.Terminator == nil {
 		blockCtx.tearDownFrame()
 	}
 	ctx.assemble(blockCtx.asm)
+	ctx.assemble("_two", "get", "ipush") // append code to closure
+	ctx.assemble("quote", "go", "_two", "get", "ipush") // append tail call to closure
 }
 
-type Location struct {
-	id   string
-	addr int // relative to base of stack frame
+type Local struct {
+	id  string
+	pos int // relative to base of stack frame
+}
+
+type Capture struct {
+	id string
 }
 
 func (ctx *Frame) adjustSp(delta int) {
@@ -564,15 +572,83 @@ func (ctx *Frame) adjustSp(delta int) {
 	ctx.sp += libsam.Word(delta)
 }
 
-func (ctx *Frame) compileVar(id string) {
-	for i := len(ctx.labels) - 1; i >= 0; i-- {
-		l := ctx.labels[i]
+func (ctx *Frame) findLocal(id string) *Local {
+	for i := len(ctx.locals) - 1; i >= 0; i-- {
+		l := ctx.locals[i]
 		if l.id == id {
-			ctx.assemble(fmt.Sprintf("int %d", int(l.addr)-int(ctx.sp)))
-			return
+			return &l
 		}
 	}
-	panic(fmt.Errorf("no such variable %s", id))
+	return nil
+}
+
+func (ctx *Frame) findCapture(id string) *uint {
+	for i := len(ctx.captures) - 1; i >= 0; i-- {
+		c := ctx.captures[i]
+		if c.id == id {
+			index := uint(i)
+			return &index
+		}
+	}
+	if parent := ctx.parent; parent != nil {
+		newCaptureIndex := uint(len(ctx.captures))
+		ctx.captures = append(ctx.captures, Capture{id: id})
+		if l := parent.findLocal(id); l != nil {
+			// Append address of local to captures array
+			parent.assemble("s0", "_two", "get", "ipush")
+			parent.compileLocalAddr(*l)
+			parent.assemble("_two", "get", "ipush")
+		} else if i := parent.findCapture(id); i != nil {
+			// Append address of capture to captures array
+			parent.compileCaptureAddr(*i)
+			parent.assemble("_two", "extract")
+			parent.assemble("int -3", "get", "ipush")
+			parent.assemble("_two", "get", "ipush")
+		}
+		return &newCaptureIndex
+	}
+	return nil
+}
+
+func (ctx *Frame) compileLocalAddr(l Local) {
+	ctx.assemble(fmt.Sprintf("int %d", int(l.pos)-int(ctx.sp)))
+}
+
+func (ctx *Frame) compileCaptureAddr(i uint) {
+	ctx.assemble(
+		fmt.Sprintf("int %d", -int(ctx.sp)),
+		"get",
+		"_one", "get",
+		fmt.Sprintf("int %d", i * 2),
+		"iget",
+		"_two", "extract",
+		fmt.Sprintf("int %d", i * 2 + 1),
+		"iget",
+	)
+}
+
+func (ctx *Frame) compileGetVar(id string) {
+	if l := ctx.findLocal(id); l != nil {
+		ctx.compileLocalAddr(*l)
+		ctx.assemble("get")
+	} else if c:= ctx.findCapture(id); c != nil {
+		ctx.compileCaptureAddr(*c)
+		ctx.assemble("iget")
+	} else {
+		panic(fmt.Errorf("no such variable %s", id))
+	}
+}
+
+func (ctx *Frame) compileSetVar(id string) {
+	if l := ctx.findLocal(id); l != nil {
+		ctx.compileLocalAddr(*l)
+		ctx.assemble("set")
+	} else if c:= ctx.findCapture(id); c != nil {
+		ctx.compileCaptureAddr(*c)
+		ctx.assemble("iset")
+	} else {
+		panic(fmt.Errorf("no such variable %s", id))
+	}
 }
 
 func (ctx *Frame) tearDownBlock() {
@@ -591,10 +667,8 @@ func (ctx *Frame) tearDownFrame() {
 	// Set result
 	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp+libsam.Word(ctx.nargs))), "set")
 	// Pop remaining stack items in this frame, except for return address
-	if ctx.sp > 2 {
-		for range ctx.sp - 2 {
-			ctx.assemble("pop")
-		}
+	for range ctx.sp - 2 {
+		ctx.assemble("pop")
 	}
 	// If we have some arguments still on the stack, need to get rid of them
 	if ctx.nargs == 2 {
@@ -621,13 +695,15 @@ func newLabel() string {
 
 // FIXME: Separate Block (no args) from Frame
 type Frame struct {
-	label  string
-	labels []Location
-	asm    []any
-	baseSp libsam.Word
-	sp     libsam.Word
-	nargs  libsam.Uword // Number of arguments to this frame
-	loop   *Frame       // Innermost loop, if any
+	parent   *Frame       // lexically enclosing scope
+	label    string
+	locals   []Local
+	captures []Capture
+	asm      []any
+	baseSp   libsam.Word
+	sp       libsam.Word
+	nargs    libsam.Uword // Number of arguments to this frame
+	loop     *Frame       // Innermost loop, if any
 }
 
 func (ctx *Frame) assemble(insts ...any) {
@@ -686,7 +762,7 @@ func Sal(src string, ast bool, asm bool) []byte {
 
 	// Wrap the top-level body in a Block and compile it
 	block := Block{Pos: body.Pos, Body: body}
-	ctx := Frame{labels: make([]Location, 0), asm: make([]any, 0)}
+	ctx := Frame{locals: make([]Local, 0), captures: make([]Capture, 0), asm: make([]any, 0)}
 	ctx.assemble("int 0") // value of top level
 	blockCtx := ctx.assembleBlock(&block)
 	ctx.assemble(blockCtx.asm)
