@@ -1,0 +1,6 @@
+# Assemble a GO instruction
+- trap quote
+- !single go
+# Exit 
+- int 0
+- halt

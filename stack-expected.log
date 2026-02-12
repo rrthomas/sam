@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (12 item(s))
+Stack: XXXXXXXX (15 item(s))
 - trap NEW
 - trap COPY
 - int 13
@@ -9,6 +9,9 @@ Stack: XXXXXXXX (12 item(s))
 - trap COPY
 - int -1
 - get ipop
+- int -1
+- trap S0
+- ipop
 - int 0
 - halt
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 0, ir = XXXXXXXX
@@ -76,6 +79,24 @@ Working stack: (2 word(s))
 - stack XXXXXXXX
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+- int -1
+trap S0
+sam_run: pc0 = XXXXXXXX, pc = 12, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+- int -1
+- stack XXXXXXXX
+ipop
+sam_run: pc0 = XXXXXXXX, pc = 13, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- stack XXXXXXXX
+- stack XXXXXXXX
+int
+sam_run: pc0 = XXXXXXXX, pc = 14, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX

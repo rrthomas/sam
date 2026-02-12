@@ -75,22 +75,22 @@ const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 // Execution macros
 #define GO(addr)                                \
     do {                                        \
-        pc0 = (sam_stack_t *)addr;              \
-        pc = 0;                                 \
+        state->pc0 = (sam_stack_t *)addr;       \
+        state->pc = 0;                          \
     } while (0)
 
 #define DO(addr)                                \
     do {                                        \
-        PUSH_REF(pc0);                          \
-        PUSH_INT(pc);                           \
+        PUSH_REF(state->pc0);                   \
+        PUSH_INT(state->pc);                    \
         GO(addr);                               \
     } while (0)
 
 
 #define RET                                     \
     do {                                        \
-        POP_INT(pc);                            \
-        POP_REF(pc0);                           \
+        POP_INT(state->pc);                     \
+        POP_REF(state->pc0);                    \
     } while (0)
 
 // Division macros
@@ -115,15 +115,13 @@ static sam_word_t sam_trap(sam_state_t *state, sam_uword_t function)
 // Execution function
 sam_word_t sam_run(sam_state_t *state)
 {
-    sam_stack_t *pc0 = state->root_code;
-    sam_uword_t pc = 0;
     sam_stack_t *s = state->stack;
     sam_word_t error = SAM_ERROR_OK;
 
     for (;;) {
-        while (pc == pc0->sp) {
+        while (state->pc == state->pc0->sp) {
 #ifdef SAM_DEBUG
-            debug("sam_run: pc0 = %p, pc = %u, sp = %u\n", pc0, pc - 1, s->sp);
+            debug("sam_run: pc0 = %p, pc = %u, sp = %u\n", state->pc0, state->pc - 1, s->sp);
             debug("ket\n");
             sam_print_working_stack(s);
 #endif
@@ -131,9 +129,9 @@ sam_word_t sam_run(sam_state_t *state)
         }
 
         sam_uword_t ir;
-        HALT_IF_ERROR(sam_stack_peek(pc0, pc++, &ir));
+        HALT_IF_ERROR(sam_stack_peek(state->pc0, state->pc++, &ir));
 #ifdef SAM_DEBUG
-        debug("sam_run: pc0 = %p, pc = %u, sp = %u, ir = %x\n", pc0, pc - 1, s->sp, ir);
+        debug("sam_run: pc0 = %p, pc = %u, sp = %u, ir = %x\n", state->pc0, state->pc - 1, s->sp, ir);
         sam_print_working_stack(s);
 #endif
 
@@ -480,7 +478,7 @@ sam_word_t sam_run(sam_state_t *state)
 
 #ifdef SAM_DEBUG
                 if (opcodes != 0) {
-                    debug("sam_run: pc0 = %p, pc = %u, sp = %u, ir = %x\n", pc0, pc - 1, s->sp, ir);
+                    debug("sam_run: pc0 = %p, pc = %u, sp = %u, ir = %x\n", state->pc0, state->pc - 1, s->sp, ir);
                     sam_print_working_stack(s);
                 }
 #endif
