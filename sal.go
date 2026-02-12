@@ -336,11 +336,11 @@ func (e *BitwiseExp) Compile(ctx *Frame) {
 		case "|":
 			ctx.assemble("or")
 		case "<<":
-			ctx.assemble("lsh")
+			ctx.assembleTrap("LSH")
 		case ">>":
-			ctx.assemble("rsh")
+			ctx.assembleTrap("RSH")
 		case ">>>":
-			ctx.assemble("arsh")
+			ctx.assembleTrap("ARSH")
 		default:
 			panic(fmt.Errorf("unknown SumExp.Op %s", e.Op))
 		}
@@ -384,7 +384,7 @@ func (e *Expression) Compile(ctx *Frame) {
 			blockCtx.assemble("pop")
 		}
 		blockCtx.assemble(fmt.Sprintf("stack %s", blockCtx.label))
-		blockCtx.assemble("go")
+		blockCtx.assembleTrap("GO") // FIXME: prevent this being combined with following instructions
 		// Add loop label to start of block
 		if len(blockCtx.asm) > 0 {
 			blockCtx.asm[0] = map[string]any{blockCtx.label: blockCtx.asm[0]}
@@ -546,8 +546,8 @@ func (f *Function) Compile(ctx *Frame) {
 	for i, p := range *f.Parameters {
 		innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i - int(nargs)})
 	}
-	ctx.assemble("new") // closure array
-	ctx.assemble("new") // captures array
+	ctx.assembleTrap("NEW") // closure array
+	ctx.assembleTrap("NEW") // captures array
 	blockCtx := f.Body.Compile(&innerCtx, false)
 	ctx.assemble("_two", "get", "ipush") // append captures to closure
 	if f.Body.Body.Terminator == nil {
@@ -555,7 +555,9 @@ func (f *Function) Compile(ctx *Frame) {
 	}
 	ctx.assemble(blockCtx.asm)
 	ctx.assemble("_two", "get", "ipush") // append code to closure
-	ctx.assemble("quote", "go", "_two", "get", "ipush") // append tail call to closure
+	ctx.assembleTrap("QUOTE")
+	ctx.assemble("go")
+	ctx.assemble("_two", "get", "ipush") // append tail call to closure
 }
 
 type Local struct {

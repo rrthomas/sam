@@ -256,11 +256,12 @@ var Instructions = map[string]InstOpcode{
 }
 
 var Traps = map[string]int{
-	"NEW":  C.TRAP_BASIC_NEW,
-	"COPY": C.TRAP_BASIC_COPY,
-	"LSH":  C.TRAP_BASIC_LSH,
-	"RSH":  C.TRAP_BASIC_RSH,
-	"ARSH": C.TRAP_BASIC_ARSH,
+	"QUOTE": C.TRAP_BASIC_QUOTE,
+	"NEW":   C.TRAP_BASIC_NEW,
+	"COPY":  C.TRAP_BASIC_COPY,
+	"LSH":   C.TRAP_BASIC_LSH,
+	"RSH":   C.TRAP_BASIC_RSH,
+	"ARSH":  C.TRAP_BASIC_ARSH,
 
 	"I2F": C.TRAP_MATH_I2F,
 	"F2I": C.TRAP_MATH_F2I,
