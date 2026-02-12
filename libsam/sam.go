@@ -71,10 +71,12 @@ func NewState() State {
 	state := C.sam_state_new()
 	var stack *C.sam_stack_t
 	C.sam_stack_new(state, ARRAY_STACK, &stack)
+	C.sam_stack_ref(stack)
 	state.stack = stack
 	C.sam_stack_new(state, ARRAY_STACK, &stack)
 	C.sam_stack_ref(stack)
 	state.root_code = stack
+	state.pc0 = stack
 	return State{state: state}
 }
 
@@ -256,11 +258,13 @@ var Instructions = map[string]InstOpcode{
 }
 
 var Traps = map[string]int{
-	"NEW":  C.TRAP_BASIC_NEW,
-	"COPY": C.TRAP_BASIC_COPY,
-	"LSH":  C.TRAP_BASIC_LSH,
-	"RSH":  C.TRAP_BASIC_RSH,
-	"ARSH": C.TRAP_BASIC_ARSH,
+	"S0":    C.TRAP_BASIC_S0,
+	"QUOTE": C.TRAP_BASIC_QUOTE,
+	"NEW":   C.TRAP_BASIC_NEW,
+	"COPY":  C.TRAP_BASIC_COPY,
+	"LSH":   C.TRAP_BASIC_LSH,
+	"RSH":   C.TRAP_BASIC_RSH,
+	"ARSH":  C.TRAP_BASIC_ARSH,
 
 	"I2F": C.TRAP_MATH_I2F,
 	"F2I": C.TRAP_MATH_F2I,
@@ -340,11 +344,13 @@ type StackEffect struct {
 
 var TrapStackEffect = map[string]StackEffect{
 	// Basic traps
-	"NEW":  {0, 1},
-	"COPY": {1, 1},
-	"LSH":  {2, 1},
-	"RSH":  {2, 1},
-	"ARSH": {2, 1},
+	"S0":    {0, 1},
+	"QUOTE": {0, 1},
+	"NEW":   {0, 1},
+	"COPY":  {1, 1},
+	"LSH":   {2, 1},
+	"RSH":   {2, 1},
+	"ARSH":  {2, 1},
 
 	// Math traps
 	"I2F": {1, 1},

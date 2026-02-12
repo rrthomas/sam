@@ -1,0 +1,20 @@
+Stack: XXXXXXXX (4 item(s))
+- trap QUOTE
+- go
+- int 0
+- halt
+sam_run: pc0 = XXXXXXXX, pc = 0, sp = 0, ir = XXXXXXXX
+Working stack: (0 word(s))
+trap QUOTE
+sam_run: pc0 = XXXXXXXX, pc = 2, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- go
+int
+sam_run: pc0 = XXXXXXXX, pc = 3, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- go
+- int 0
+halt
+Stack: XXXXXXXX (1 item(s))
+- go
+sam_run returns: halt with reason 0 (0x0)

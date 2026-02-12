@@ -20,6 +20,16 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     int error = SAM_ERROR_OK;
     
     switch (function) {
+    case TRAP_BASIC_S0:
+        HALT_IF_ERROR(sam_push_ref(s, s));
+        break;
+    case TRAP_BASIC_QUOTE:
+        {
+            sam_uword_t ir;
+            HALT_IF_ERROR(sam_stack_peek(state->pc0, state->pc++, &ir));
+            PUSH_WORD(ir);
+        }
+        break;
     case TRAP_BASIC_NEW:
         {
             sam_stack_t *stack;
@@ -74,6 +84,10 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
 char *sam_basic_trap_name(sam_word_t function)
 {
     switch (function) {
+    case TRAP_BASIC_S0:
+        return "S0";
+    case TRAP_BASIC_QUOTE:
+        return "QUOTE";
     case TRAP_BASIC_NEW:
         return "NEW";
     case TRAP_BASIC_COPY:

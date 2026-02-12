@@ -48,6 +48,8 @@ typedef struct sam_stack {
 typedef struct sam_state {
     sam_stack_t *root_code;
     sam_stack_t *stack;
+    sam_stack_t *pc0;
+    sam_uword_t pc;
 } sam_state_t;
 
 // Error codes

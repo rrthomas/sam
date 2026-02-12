@@ -17,6 +17,7 @@ TESTS = \
 	double_list.yaml \
 	factorial_iter.yaml \
 	factorial_rec.yaml \
+	quote.yaml \
 	set.yaml \
 	screen_graphics.yaml \
 	screen_turtle-demo.yaml \
@@ -34,6 +35,7 @@ RESULTS = \
 	double_list-expected.log \
 	factorial_iter-expected.log \
 	factorial_rec-expected.log \
+	quote-expected.log \
 	screen_graphics-expected.log \
 	screen_graphics-expected.pbm \
 	screen_turtle-demo-expected.log \

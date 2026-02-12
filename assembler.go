@@ -241,6 +241,15 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			address := a.parseLabel(label)
 			a.assembleInstruction("int", fmt.Sprintf("%d", address.item))
 			a.stack.PushArray(address.stack)
+		case "!single":
+			val := tag.Value
+			if val.Type() != ast.StringType {
+				panic(fmt.Errorf("invalid !single: instruction expected"))
+			}
+			instName := val.String()
+			a.flushInstructions()
+			a.assembleInstruction(instName)
+			a.flushInstructions()
 		default:
 			panic(fmt.Errorf("invalid directive %s", tagName))
 		}

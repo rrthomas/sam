@@ -22,7 +22,7 @@ The registers are as follows:
 | Register  | Function  |
 | --------- | --------- |
 | `SSIZE`   | The `S`tack `SIZE`. The number of items the stack can hold. |
-| `S`      | The current `S`tack. |
+| `S0`      | The current `S`tack. |
 | `SP`      | The `S`tack `P`ointer. The number of items currently on the stack. |
 | `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
 | `PC0`     | The current stack from which code is being executed. |
@@ -151,7 +151,12 @@ Numeric conversions:
 
 These instructions manage stacks.
 
-> `NEW`
+> `S0`  
+> → `r`
+>
+> Push a reference to `S0` to the current stack.
+
+> `NEW`  
 > → `r`
 >
 > Create an empty stack and push a reference to it to the current stack.
@@ -199,7 +204,12 @@ These instructions manage stacks.
 > `IPUSH`  
 > `x` `r` →
 >
-> Push `x` the stack pointed to by `r`.
+> Push `x` to the stack pointed to by `r`.
+
+> `QUOTE`  
+> → `x`
+>
+> Push the word at `PC` to the current stack and increment `PC` to point to the next stack item.
 
 
 ### Control structures
