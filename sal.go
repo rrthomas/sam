@@ -337,11 +337,11 @@ func (e *BitwiseExp) Compile(ctx *Frame) {
 		case "|":
 			ctx.assemble("or")
 		case "<<":
-			ctx.assembleTrap("LSH")
+			ctx.assembleTrap("lsh")
 		case ">>":
-			ctx.assembleTrap("RSH")
+			ctx.assembleTrap("rsh")
 		case ">>>":
-			ctx.assembleTrap("ARSH")
+			ctx.assembleTrap("arsh")
 		default:
 			panic(fmt.Errorf("unknown SumExp.Op %s", e.Op))
 		}
@@ -651,7 +651,7 @@ func (ctx *Frame) assemble(insts ...any) {
 }
 
 func trapStackEffect(function string) libsam.StackEffect {
-	stackEffect, ok := libsam.TrapStackEffect[function]
+	stackEffect, ok := libsam.TrapStackEffect[strings.ToUpper(function)]
 	if !ok {
 		panic(fmt.Errorf("unknown trap %s", function))
 	}
