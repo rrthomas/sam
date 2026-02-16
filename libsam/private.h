@@ -1,6 +1,6 @@
 // Private implementation-specific APIs that are shared between modules.
 //
-// (c) Reuben Thomas 1994-2025
+// (c) Reuben Thomas 1994-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -23,6 +23,9 @@
         if (_err != SAM_ERROR_OK)               \
             HALT(_err);                         \
     } while (0)
+
+#define WIPE_STACK_SLOT(offset)                 \
+    HALT_IF_ERROR(sam_stack_poke(s, s->sp + offset, SAM_INSTS_TAG));
 
 // Portable left shift (the behaviour of << with overflow (including on any
 // negative number) is undefined)

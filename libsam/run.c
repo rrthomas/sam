@@ -189,8 +189,9 @@ sam_word_t sam_run(sam_state_t *state)
                         POP_INT(pos);
                         sam_uword_t dest;
                         HALT_IF_ERROR(sam_stack_item(s, pos, &dest));
-                        POP_WORD(&val);
+                        POP_WORD_UNSAFE(&val);
                         HALT_IF_ERROR(sam_stack_poke(s, dest, val));
+                        WIPE_STACK_SLOT(0)
                     }
                     break;
                 case INST_EXTRACT:
@@ -214,43 +215,49 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_IGET:
                     {
                         sam_stack_t *stack;
-                        POP_REF(stack);
+                        POP_REF_UNSAFE(stack);
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr, item;
                         HALT_IF_ERROR(sam_stack_item(stack, pos, &addr));
                         HALT_IF_ERROR(sam_stack_peek(stack, addr, &item));
                         HALT_IF_ERROR(sam_stack_push(s, item));
+                        WIPE_STACK_SLOT(0);
                     }
                     break;
                 case INST_ISET:
                     {
                         sam_stack_t *stack;
-                        POP_REF(stack);
+                        POP_REF_UNSAFE(stack);
                         sam_word_t pos, val;
                         POP_INT(pos);
-                        POP_WORD(&val);
+                        POP_WORD_UNSAFE(&val);
                         sam_uword_t dest;
                         HALT_IF_ERROR(sam_stack_item(stack, pos, &dest));
                         HALT_IF_ERROR(sam_stack_poke(stack, dest, val));
+                        WIPE_STACK_SLOT(0);
+                        WIPE_STACK_SLOT(2);
                     }
                     break;
                 case INST_IPOP:
                     {
                         sam_stack_t *stack;
-                        POP_REF(stack);
+                        POP_REF_UNSAFE(stack);
                         if (stack->sp < 1)
                             HALT(SAM_ERROR_STACK_UNDERFLOW);
                         stack->sp -= 1;
+                        WIPE_STACK_SLOT(0);
                     }
                     break;
                 case INST_IPUSH:
                     {
                         sam_stack_t *stack;
-                        POP_REF(stack);
+                        POP_REF_UNSAFE(stack);
                         sam_word_t val;
-                        POP_WORD(&val);
+                        POP_WORD_UNSAFE(&val);
                         HALT_IF_ERROR(sam_stack_push(stack, val));
+                        WIPE_STACK_SLOT(0);
+                        WIPE_STACK_SLOT(1);
                     }
                     break;
                 case INST_GO:
