@@ -24,6 +24,9 @@
             HALT(_err);                         \
     } while (0)
 
+#define WIPE_STACK_SLOT(offset)                 \
+    HALT_IF_ERROR(sam_stack_poke(s, s->sp + offset, SAM_INSTS_TAG));
+
 // Portable left shift (the behaviour of << with overflow (including on any
 // negative number) is undefined)
 #define LSHIFT(n, p)                            \
