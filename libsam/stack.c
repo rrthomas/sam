@@ -187,14 +187,15 @@ error:
 
 int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack)
 {
-    // FIXME: validate type
     sam_stack_t *s = calloc(sizeof(sam_stack_t), 1);
-    s->type = type;
-    if (s != NULL) {
+    if (s != NULL) {        
+        s->type = type; // FIXME: validate type
         s->ssize = 1;
         s->s0 = calloc(sizeof(sam_word_t), s->ssize);
-        if (s->s0 == NULL)
+        if (s->s0 == NULL) {
+            free(s);
             return SAM_ERROR_NO_MEMORY;
+        }
     }
     *new_stack = s;
     return SAM_ERROR_OK;
