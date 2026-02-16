@@ -39,14 +39,10 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     break;
     case TRAP_BASIC_COPY:
         {
-            // Peek, don't pop stack reference, so we don't cause it to be freed.
-            sam_uword_t item;
-            HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &item));
+            sam_word_t item;
+            HALT_IF_ERROR(sam_stack_pop_unsafe(s, &item));
             CHECK_TYPE(item, SAM_STACK_TAG_MASK, SAM_STACK_TAG);
             sam_stack_t *stack = (sam_stack_t *)(item & ~SAM_STACK_TAG_MASK);
-            s->sp--; // Pop stack without unreferencing it yet.
-            // This also ensures we get the correct stack contents if we're
-            // copying the active stack.
             sam_stack_t *new_stack;
             HALT_IF_ERROR(sam_stack_copy(state, stack, &new_stack));
             PUSH_REF(new_stack); // Now the copied stack will be unreferenced.

@@ -28,7 +28,7 @@ int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val)
 
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
 {
-    if (addr >= s->sp)
+    if (addr >= s->ssize)
         return SAM_ERROR_INVALID_ADDRESS;
     sam_word_t old_val = s->s0[addr];
     if ((old_val & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
@@ -96,14 +96,22 @@ int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr)
     return error;
 }
 
-int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
+int sam_stack_pop_unsafe(sam_stack_t *s, sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp == 0)
         return SAM_ERROR_STACK_UNDERFLOW;
     HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, (sam_uword_t *)val_ptr));
-    HALT_IF_ERROR(sam_stack_poke(s, s->sp - 1, SAM_INSTS_TAG));
     s->sp--;
+ error:
+    return error;
+}
+
+int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    HALT_IF_ERROR(sam_stack_pop_unsafe(s, val_ptr));
+    WIPE_STACK_SLOT(0);
  error:
     return error;
 }

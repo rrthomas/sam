@@ -60,11 +60,12 @@ enum {
     SAM_ERROR_INVALID_ADDRESS = 3,
     SAM_ERROR_STACK_UNDERFLOW = 4,
     SAM_ERROR_STACK_OVERFLOW = 5,
-    SAM_ERROR_WRONG_TYPE = 6,
-    SAM_ERROR_INVALID_TRAP = 7,
-    SAM_ERROR_TRAP_INIT = 8,
-    SAM_ERROR_NO_MEMORY = 9,
-    SAM_ERROR_INVALID_ARRAY_TYPE = 10,
+    SAM_ERROR_ORPHAN_STACK = 6,
+    SAM_ERROR_WRONG_TYPE = 7,
+    SAM_ERROR_INVALID_TRAP = 8,
+    SAM_ERROR_TRAP_INIT = 9,
+    SAM_ERROR_NO_MEMORY = 10,
+    SAM_ERROR_INVALID_ARRAY_TYPE = 11,
 };
 
 // Stack access
@@ -78,6 +79,7 @@ int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
 int sam_stack_extract(sam_stack_t *s, sam_uword_t addr);
 int sam_stack_insert(sam_stack_t *s, sam_uword_t addr);
 int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr);
+int sam_stack_pop_unsafe(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_stack_push(sam_stack_t *s, sam_word_t val);
 int sam_push_ref(sam_stack_t *s, void *ptr);
