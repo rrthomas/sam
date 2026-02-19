@@ -22,5 +22,5 @@ AC_SUBST([SIZEOF_SIZE_T])
 PKG_CHECK_MODULES(SDL2, [sdl2 SDL2_gfx])
 
 # Generate output
-AC_CONFIG_FILES([Makefile libsam/Makefile])
+AC_CONFIG_FILES([Makefile libsam/Makefile test/Makefile])
 AC_OUTPUT
