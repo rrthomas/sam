@@ -4,7 +4,7 @@
 
 SAM is a Simple Abstract Machine intended as a teaching tool and toy. It comes with a programming language, SAL (SAM’s Awesome Language).
 
-Sam is a Stack–Array Machine. It has no memory or registers; instead it has
+SAM is a Stack–Array Machine. It has no memory or registers; instead it has
 a nested stack of stacks. Each stack is an array of items that can be
 executed.
 
@@ -14,7 +14,7 @@ Electromagnetic Field 2014. It now runs on most personal computers.
 
 SAM was invented as a tenth birthday present for my nephew, Sam. It was
 named after my first computer, a Sinclair ZX81, “Super Advanced Micro”.
-Sam’s logo is a simpatico astute mongrel called Sam mashed up with a sweet acute leonine called Sal.
+SAM’s logo is a simpatico astute mongrel called Sam mashed up with a sweet acute leonine called Sal.
 
 
 ## The idea
