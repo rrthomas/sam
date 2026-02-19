@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies (macOS)
         if: ${{ matrix.os == 'macos-latest' }}
         run: |
-          brew install coreutils automake pkg-config go sdl2_gfx texlive
+          brew install coreutils automake pkg-config go sdl2_gfx
           # Prepend optional brew binary directories to PATH
           echo "$(brew --prefix)/opt/m4/bin:${PATH}" >> $GITHUB_PATH
       - name: configure
