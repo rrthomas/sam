@@ -141,7 +141,7 @@ type If struct {
 type Assignment struct {
 	Pos lexer.Position
 
-	Variable   *string     `@Ident "="`
+	Variable   *string     `@Ident ":="`
 	Expression *Expression `@@`
 }
 
@@ -155,7 +155,7 @@ type Trap struct {
 type Declaration struct {
 	Pos lexer.Position
 
-	Variable *string     `@Ident ":"`
+	Variable *string     `"let" @Ident "="`
 	Value    *Expression `@@ ";"`
 }
 

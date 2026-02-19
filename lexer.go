@@ -1,7 +1,7 @@
 /*
 SAL lexer
 
-Copyright © 2025 Reuben Thomas <rrt@sc3d.org>
+Copyright © 2025-2026 Reuben Thomas <rrt@sc3d.org>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ import (
 var (
 	lex = lexer.MustStateful(lexer.Rules{
 		"Root": {
-			{Name: "comment", Pattern: `#.*`, Action: nil},
+			{Name: "comment", Pattern: `//.*`, Action: nil},
 			{Name: "backslash", Pattern: `\\`, Action: nil},
 			{Name: "whitespace", Pattern: `[\r\t ]+`, Action: nil},
 
@@ -40,7 +40,7 @@ var (
 			{Name: "LiteralString", Pattern: `` + "`.*?`|'.*?'" + ``, Action: nil},
 			{Name: "Newline", Pattern: `\n`, Action: nil},
 			{Name: "Operator", Pattern: `->|%=|>=|<=|&&|\|\||==|!=`, Action: nil},
-			{Name: "Assignment", Pattern: `(\^=|\+=|-=|\*=|/=|\|=|&=|%=|=)`, Action: nil},
+			{Name: "Assignment", Pattern: `=|:=`, Action: nil},
 			{Name: "SingleOperator", Pattern: `[-+*/<>%^!|&]`, Action: nil},
 			{Name: "Punct", Pattern: `[]` + "`" + `~[()@#${}:;?.,]`, Action: nil},
 		},

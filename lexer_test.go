@@ -1,7 +1,7 @@
 /*
 Tests for SAL lexer
 
-Copyright © 2025 Reuben Thomas <rrt@sc3d.org>
+Copyright © 2025-2026 Reuben Thomas <rrt@sc3d.org>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,14 +27,14 @@ import (
 
 func TestLexer(t *testing.T) {
 	tokens, err := parser.Lex("", strings.NewReader(`
-	# Comment
+	// Comment
 	fn foo() {
 		if true {
 			print("hello")
 		}
-		a = 1 + \
+		a := 1 + \
 			 2
-		b = `+"`literal string`"+`
+		b := `+"`literal string`"+`
 	}
 	`))
 	assert.NoError(t, err)
@@ -46,8 +46,8 @@ func TestLexer(t *testing.T) {
 		actual = append(actual, token.Value)
 	}
 	expected := []string{
-		"fn", "foo", "(", ")", "{", "if", "true", "{", "print", "(", "\"", "hello", "\"", ")", ";", "}", ";", "a", "=",
-		"1", "+", "2", ";", "b", "=", "literal string", ";", "}", ";", "",
+		"fn", "foo", "(", ")", "{", "if", "true", "{", "print", "(", "\"", "hello", "\"", ")", ";", "}", ";", "a", ":=",
+		"1", "+", "2", ";", "b", ":=", "literal string", ";", "}", ";", "",
 	}
 	assert.Equal(t, expected, actual)
 }

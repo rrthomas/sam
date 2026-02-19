@@ -1,10 +1,10 @@
-fac: fn(n) {
-     tot: 1
+let fac = fn(n) {
+     let tot = 1
 
      loop {
           if n == 0 { break tot }
-          tot = tot * n
-          n = n - 1
+          tot := tot * n
+          n := n - 1
      }
 }
 
