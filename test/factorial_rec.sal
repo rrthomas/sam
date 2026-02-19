@@ -1,7 +1,5 @@
-fac: fn(n) {
+let fac = fn(n) {
      if n == 0 { 1 } else { n * fac(n - 1) }
-     # if n == 0 { return 1 }
-     # fac(n - 1)
 }
 
 fac(5)
