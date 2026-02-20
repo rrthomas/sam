@@ -4,6 +4,7 @@ package libsam
 //#cgo LDFLAGS: -lm
 //#cgo CFLAGS: -DSAM_DEBUG
 //#cgo pkg-config: sdl2 SDL2_gfx
+//#include <stdlib.h>
 //#include "sam.h"
 //#include "sam_opcodes.h"
 //#include "traps_basic.h"
@@ -50,7 +51,8 @@ type Stack struct {
 }
 
 type State struct {
-	state *C.sam_state_t
+	state  *C.sam_state_t
+	result Word
 }
 
 func (state *State) Stack() Stack {
@@ -122,8 +124,17 @@ func (s *Stack) PushInsts(insts Uword) int {
 	return int(C.sam_push_insts(s.stack, insts))
 }
 
-func Run(state State) Word {
+func Run(state *State) Word {
 	res := C.sam_run(state.state)
+	if res == ERROR_OK {
+		stack := state.Stack().stack
+		var val Uword
+		res := C.sam_stack_peek(stack, stack.sp-1, &val)
+		state.result = Word(val)
+		if res != ERROR_OK {
+			panic("Run: error while getting HALT result")
+		}
+	}
 	return res
 }
 
@@ -165,7 +176,6 @@ func DumpScreen(file string) {
 
 const (
 	ERROR_OK                 = C.SAM_ERROR_OK
-	ERROR_HALT               = C.SAM_ERROR_HALT
 	ERROR_INVALID_OPCODE     = C.SAM_ERROR_INVALID_OPCODE
 	ERROR_INVALID_ADDRESS    = C.SAM_ERROR_INVALID_ADDRESS
 	ERROR_STACK_UNDERFLOW    = C.SAM_ERROR_STACK_UNDERFLOW
@@ -185,7 +195,6 @@ const (
 
 var errors = map[int]string{
 	ERROR_OK:                 "ERROR_OK",
-	ERROR_HALT:               "ERROR_HALT",
 	ERROR_INVALID_OPCODE:     "ERROR_INVALID_OPCODE",
 	ERROR_INVALID_ADDRESS:    "ERROR_INVALID_ADDRESS",
 	ERROR_STACK_UNDERFLOW:    "ERROR_STACK_UNDERFLOW",
@@ -197,16 +206,16 @@ var errors = map[int]string{
 	ERROR_INVALID_ARRAY_TYPE: "ERROR_INVALID_ARRAY_TYPE",
 }
 
-func ErrorMessage(code Word) string {
-	baseCode := code & C.SAM_RET_MASK
-	if baseCode >= ERROR_OK && baseCode <= ERROR_TRAP_INIT {
-		reasonCode := code >> C.SAM_RET_SHIFT
-		if baseCode == ERROR_HALT {
-			return fmt.Sprintf("halt with reason %d (0x%x)", reasonCode, uint(reasonCode))
-		}
-		return fmt.Sprintf(errors[int(baseCode)])
+func (state *State) ErrorMessage(code Word) string {
+	if code == ERROR_OK {
+		res := C.disas(state.result)
+		msg := fmt.Sprintf("halt with result %s", C.GoString(res))
+		C.free(unsafe.Pointer(res))
+		return msg
+	} else if code >= ERROR_OK && code <= ERROR_INVALID_ARRAY_TYPE {
+		return fmt.Sprintf(errors[int(code)])
 	}
-	return fmt.Sprintf("unknown code %d (0x%x)", code, uint(Uword(code)&WORD_MASK))
+	return fmt.Sprintf("unknown error code %d (0x%x)", code, uint(Uword(code)&WORD_MASK))
 }
 
 type InstOpcode struct {

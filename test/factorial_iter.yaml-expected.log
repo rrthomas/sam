@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (5 item(s))
+Stack: XXXXXXXX (4 item(s))
 - float 5.000000
 - stack XXXXXXXX (5 items)
   - float 1.000000
@@ -25,7 +25,6 @@ Stack: XXXXXXXX (5 item(s))
   - int -4
   - set
 - do
-- trap F2I
 - halt
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
@@ -1078,10 +1077,7 @@ Working stack: (3 word(s))
 sam_run: pc0 = XXXXXXXX, pc = 3, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 120.000000
-trap F2I
-sam_run: pc0 = XXXXXXXX, pc = 4, sp = 1, ir = XXXXXXXX
-Working stack: (1 word(s))
-- int 120
 halt
-Stack: XXXXXXXX (0 item(s))
-sam_run returns: halt with reason 120 (0x78)
+Stack: XXXXXXXX (1 item(s))
+- float 120.000000
+sam_run returns: halt with result float 120.000000
