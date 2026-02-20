@@ -1288,4 +1288,4 @@ Stack: XXXXXXXX (1 item(s))
     - int 0
     - stack XXXXXXXX
     - iset
-sam_run returns: halt with reason 0 (0x0)
+sam_run returns: halt with result int 0

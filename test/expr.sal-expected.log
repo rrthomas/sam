@@ -3413,4 +3413,4 @@ Working stack: (1 word(s))
 - int 30
 halt
 Stack: XXXXXXXX (0 item(s))
-sam_run returns: halt with reason 30 (0x1e)
+sam_run returns: halt with result int 30

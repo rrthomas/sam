@@ -106,4 +106,4 @@ Stack: XXXXXXXX (2 item(s))
 - stack XXXXXXXX (1 items)
   - int 13
 - stack XXXXXXXX (0 items)
-sam_run returns: halt with reason 0 (0x0)
+sam_run returns: halt with result int 0

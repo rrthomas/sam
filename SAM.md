@@ -58,15 +58,13 @@ repeat
 
 ## Termination and errors
 
-When SAM encounters a `HALT` instruction, it pops an integer from the top of the stack and returns it as its reason code. If an error occurs while popping the integer, that error code is returned instead.
-
-Error codes are signed numbers. Negative codes are reserved for SAM; positive error codes may be used by user code.
+On error, SAM will return an error code to its environment.
 
 The following table lists the errors and the conditions under which they are raised. Some further specific error conditions are documented with the instructions that raise them.
 
 | Code  | Meaning  |
 | ----- | -------- |
-| `OK` | No error. |
+| `OK` | No error (returned by `HALT`). |
 | `INVALID_OPCODE` | An attempt was made to execute an invalid opcode. |
 | `INVALID_ADDRESS` | Invalid address. |
 | `STACK_UNDERFLOW` | The stack has underflowed, that is, an attempt was made to pop when it was empty. |
@@ -350,9 +348,9 @@ The result of dividing by zero is zero. Integer division rounds the quotient tow
 These instructions give access to SAM’s error mechanisms.
 
 > `HALT`  
-> `n` →
+> →
 >
-> Stop SAM, returning reason code `n` to the calling program.
+> Stop SAM with error code `OK`.
 
 
 

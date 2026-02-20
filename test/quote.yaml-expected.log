@@ -17,4 +17,4 @@ Working stack: (2 word(s))
 halt
 Stack: XXXXXXXX (1 item(s))
 - go
-sam_run returns: halt with reason 0 (0x0)
+sam_run returns: halt with result int 0

@@ -46,4 +46,4 @@ Working stack: (1 word(s))
 - int -13
 halt
 Stack: XXXXXXXX (0 item(s))
-sam_run returns: halt with reason -13 (0xfffffffffffffff3)
+sam_run returns: halt with result int -13
