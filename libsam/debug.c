@@ -139,11 +139,9 @@ char *trap_name(sam_uword_t function)
     }
 }
 
-static char *disas(sam_stack_t *s, sam_uword_t addr)
+char *disas(sam_word_t inst)
 {
     char *text = NULL;
-    sam_word_t inst;
-    assert(sam_stack_peek(s, addr, (sam_uword_t *)&inst) == SAM_ERROR_OK);
     if ((inst & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
         xasprintf(&text, "int %zd", ARSHIFT(inst, SAM_INT_SHIFT));
     } else if ((inst & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
@@ -232,7 +230,9 @@ static sam_stack_list_t *print_stack(sam_stack_list_t *l, sam_uword_t level, sam
                 l = print_stack(l, level + 1, inner_s, 0, inner_s->sp);
             }
         } else {
-            char *text = disas(s, i);
+            sam_word_t inst;
+            assert(sam_stack_peek(s, i, (sam_uword_t *)&inst) == SAM_ERROR_OK);
+            char *text = disas(inst);
             print_disas(level, text);
             free(text);
         }

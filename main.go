@@ -80,12 +80,12 @@ var rootCmd = &cobra.Command{
 		}
 		code := state.Code()
 		code.PrintStack()
-		res2 := libsam.Run(state)
+		res2 := libsam.Run(&state)
 
 		if debug {
 			stack := state.Stack()
 			stack.PrintStack()
-			fmt.Printf("sam_run returns: %s\n", libsam.ErrorMessage(res2))
+			fmt.Printf("sam_run returns: %s\n", state.ErrorMessage(res2))
 		}
 
 		if libsam.GraphicsWindowUsed() {

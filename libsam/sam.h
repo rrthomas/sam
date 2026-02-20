@@ -55,17 +55,16 @@ typedef struct sam_state {
 // Error codes
 enum {
     SAM_ERROR_OK = 0,
-    SAM_ERROR_HALT = 1,
-    SAM_ERROR_INVALID_OPCODE = 2,
-    SAM_ERROR_INVALID_ADDRESS = 3,
-    SAM_ERROR_STACK_UNDERFLOW = 4,
-    SAM_ERROR_STACK_OVERFLOW = 5,
-    SAM_ERROR_ORPHAN_STACK = 6,
-    SAM_ERROR_WRONG_TYPE = 7,
-    SAM_ERROR_INVALID_TRAP = 8,
-    SAM_ERROR_TRAP_INIT = 9,
-    SAM_ERROR_NO_MEMORY = 10,
-    SAM_ERROR_INVALID_ARRAY_TYPE = 11,
+    SAM_ERROR_INVALID_OPCODE = 1,
+    SAM_ERROR_INVALID_ADDRESS = 2,
+    SAM_ERROR_STACK_UNDERFLOW = 3,
+    SAM_ERROR_STACK_OVERFLOW = 4,
+    SAM_ERROR_ORPHAN_STACK = 5,
+    SAM_ERROR_WRONG_TYPE = 6,
+    SAM_ERROR_INVALID_TRAP = 7,
+    SAM_ERROR_TRAP_INIT = 8,
+    SAM_ERROR_NO_MEMORY = 9,
+    SAM_ERROR_INVALID_ARRAY_TYPE = 10,
 };
 
 // Stack access
@@ -101,6 +100,7 @@ sam_word_t sam_run(sam_state_t *state);
 extern bool do_debug;
 char *inst_name(sam_uword_t inst_opcode);
 char *trap_name(sam_uword_t function);
+char *disas(sam_word_t inst);
 void sam_print_stack(sam_stack_t *s);
 void sam_print_working_stack(sam_stack_t *s);
 void debug(const char *fmt, ...);

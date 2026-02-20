@@ -471,13 +471,7 @@ sam_word_t sam_run(sam_state_t *state)
                     PUSH_INT(-2);
                     break;
                 case INST_HALT:
-                    if (s->sp < 1)
-                        HALT(SAM_ERROR_STACK_UNDERFLOW);
-                    else {
-                        sam_word_t ret;
-                        POP_INT(ret);
-                        HALT(SAM_ERROR_HALT | ret << SAM_RET_SHIFT);
-                    }
+                    HALT(SAM_ERROR_OK);
                     break;
                 }
 

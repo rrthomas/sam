@@ -25,5 +25,4 @@
   - int -4
   - set
 - do
-- trap F2I
 - halt

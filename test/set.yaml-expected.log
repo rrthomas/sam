@@ -163,6 +163,7 @@ Working stack: (2 word(s))
 - float 1.000000
 - int 0
 halt
-Stack: XXXXXXXX (1 item(s))
+Stack: XXXXXXXX (2 item(s))
 - float 1.000000
-sam_run returns: halt with reason 0 (0x0)
+- int 0
+sam_run returns: halt with result int 0

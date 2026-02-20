@@ -1178,7 +1178,7 @@ Working stack: (2 word(s))
 - stack XXXXXXXX
 - int 0
 halt
-Stack: XXXXXXXX (1 item(s))
+Stack: XXXXXXXX (2 item(s))
 - stack XXXXXXXX (10 items)
   - float 353.553385
   - float 353.553385
@@ -1288,4 +1288,5 @@ Stack: XXXXXXXX (1 item(s))
     - int 0
     - stack XXXXXXXX
     - iset
-sam_run returns: halt with reason 0 (0x0)
+- int 0
+sam_run returns: halt with result int 0
