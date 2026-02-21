@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (7 item(s))
+Stack: XXXXXXXX (5 item(s))
 - stack XXXXXXXX (4 items)
   - float 2.000000
   - float 5.000000
@@ -27,9 +27,7 @@ Stack: XXXXXXXX (7 item(s))
   - stack XXXXXXXX
   - go
 - do
-- pop
-- int 0
-- halt
+- pop halt
 sam_run: pc0 = XXXXXXXX, pc = 0, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 stack
@@ -742,20 +740,18 @@ Working stack: (2 word(s))
 - stack XXXXXXXX
 - int 0
 pop
-sam_run: pc0 = XXXXXXXX, pc = 5, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 4, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX
-int
-sam_run: pc0 = XXXXXXXX, pc = 6, sp = 2, ir = XXXXXXXX
-Working stack: (2 word(s))
-- stack XXXXXXXX
-- int 0
 halt
-Stack: XXXXXXXX (2 item(s))
+Stack: XXXXXXXX (1 item(s))
 - stack XXXXXXXX (4 items)
   - float 4.000000
   - float 10.000000
   - float 20.000000
   - float 40.000000
-- int 0
-sam_run returns: halt with result int 0
+sam_run returns: half with result stack XXXXXXXX:
+- float 4.000000
+- float 10.000000
+- float 20.000000
+- float 40.000000

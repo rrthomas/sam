@@ -12,6 +12,7 @@
 
 #include <assert.h>
 #include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -40,6 +41,15 @@ static void xasprintf(char **text, const char *fmt, ...)
     va_start(ap, fmt);
     assert(vasprintf(text, fmt, ap) != -1);
     va_end(ap);
+}
+
+static void xstrcat(char **s, char *t)
+{
+    char *res;
+    xasprintf(&res, "%s%s", *s, t);
+    free(*s);
+    free(t);
+    *s = res;
 }
 
 char *inst_name(sam_uword_t inst_opcode)
@@ -139,6 +149,89 @@ char *trap_name(sam_uword_t function)
     }
 }
 
+typedef struct sam_stack_list {
+    sam_stack_t *stack;
+    struct sam_stack_list *next;
+} sam_stack_list_t;
+
+static sam_stack_list_t *list_append(sam_stack_list_t *l, sam_stack_t *s)
+{
+    sam_stack_list_t *node = malloc(sizeof(struct sam_stack_list));
+    assert(node != NULL);
+    node->stack = s;
+    node->next = l;
+    return node;
+}
+
+static void free_list(sam_stack_list_t *l)
+{
+    sam_stack_list_t *next;
+    for (sam_stack_list_t *p = l; p != NULL; p = next) {
+        next = p->next;
+        free(p);
+    }
+}
+
+static char *indent(sam_uword_t level, char *s)
+{
+    char *res, *new_s;
+    xasprintf(&res, "");
+    for (sam_uword_t i = 0; i < level; i++) {
+        xasprintf(&new_s, "%s%s", res, "  ");
+        free(res);
+        res = new_s;
+    }
+    xasprintf(&new_s, "%s- %s\n", res, s);
+    free(res);
+    return new_s;
+}
+
+static bool already_visited(sam_stack_list_t *l, sam_stack_t *s)
+{
+    for (sam_stack_list_t *p = l; p != NULL; p = p->next) {
+        if (p->stack == s)
+            return true;
+    }
+    return false;
+}
+
+static sam_stack_list_t *disas_stack(sam_stack_list_t *l, sam_uword_t level, sam_stack_t *s, sam_uword_t from, sam_uword_t to, char **text)
+{
+    xasprintf(text, "");
+    for (sam_uword_t i = from; i < to; i++) {
+        sam_uword_t opcode;
+        assert(sam_stack_peek(s, i, &opcode) == SAM_ERROR_OK);
+        if ((opcode & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
+            sam_uword_t *addr = (sam_uword_t *)(opcode & ~SAM_STACK_TAG_MASK);
+            sam_stack_t *inner_s = (sam_stack_t *)addr;
+            if (l == NULL || already_visited(l, inner_s)) {
+                char *stack_str;
+                xasprintf(&stack_str, "stack %p", inner_s);
+                char *line = indent(level, stack_str);
+                xstrcat(text, line);
+            } else {
+                char *count_str;
+                xasprintf(&count_str, "stack %p (%u items)", inner_s, inner_s->sp);
+                char *line = indent(level, count_str);
+                xstrcat(text, line);
+                free(count_str);
+                l = list_append(l, inner_s);
+                char *stack_str;
+                l = disas_stack(l, level + 1, inner_s, 0, inner_s->sp, &stack_str);
+                xstrcat(text, stack_str);
+            }
+        } else {
+            sam_word_t inst;
+            assert(sam_stack_peek(s, i, (sam_uword_t *)&inst) == SAM_ERROR_OK);
+            char *inst_str = disas(inst);
+            char *line = indent(level, inst_str);
+            free(inst_str);
+            xstrcat(text, line);
+        }
+    }
+    return l;
+}
+
 char *disas(sam_word_t inst)
 {
     char *text = NULL;
@@ -163,94 +256,34 @@ char *disas(sam_word_t inst)
                 xasprintf(&text, "%s %s", text, inst_name(opcode));
             opcodes >>= SAM_INST_SHIFT;
         } while (opcodes != 0);
+    } else if ((inst & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
+        sam_stack_t *s = (sam_stack_t *)(inst & ~SAM_STACK_TAG_MASK);
+        sam_stack_list_t *l = list_append(NULL, s);
+        free(disas_stack(l, 0, s, 0, s->sp, &text));
     } else {
         abort(); // The cases are exhaustive.
     }
     return text;
 }
 
-static void print_disas(sam_uword_t level, const char *s)
-{
-    sam_uword_t i;
-    for (i = 0; i < level * 2; i++)
-        debug(" ");
-    debug("- %s\n", s);
-}
-
-typedef struct sam_stack_list {
-    sam_stack_t *stack;
-    struct sam_stack_list *next;
-} sam_stack_list_t;
-
-static sam_stack_list_t *list_append(sam_stack_list_t *l, sam_stack_t *s)
-{
-    sam_stack_list_t *node = malloc(sizeof(struct sam_stack_list));
-    assert(node != NULL);
-    node->stack = s;
-    node->next = l;
-    return node;
-}
-
-static void free_list(sam_stack_list_t *l)
-{
-    sam_stack_list_t *next;
-    for (sam_stack_list_t *p = l; p != NULL; p = next) {
-        next = p->next;
-        free(p);
-    }
-}
-
-static bool already_visited(sam_stack_list_t *l, sam_stack_t *s)
-{
-    for (sam_stack_list_t *p = l; p != NULL; p = p->next) {
-        if (p->stack == s)
-            return true;
-    }
-    return false;
-}
-
-static sam_stack_list_t *print_stack(sam_stack_list_t *l, sam_uword_t level, sam_stack_t *s, sam_uword_t from, sam_uword_t to)
-{
-    for (sam_uword_t i = from; i < to; i++) {
-        sam_uword_t opcode;
-        assert(sam_stack_peek(s, i, &opcode) == SAM_ERROR_OK);
-        if ((opcode & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
-            sam_uword_t *addr = (sam_uword_t *)(opcode & ~SAM_STACK_TAG_MASK);
-            sam_stack_t *inner_s = (sam_stack_t *)addr;
-            if (l == NULL || already_visited(l, inner_s)) {
-                char *stack_str;
-                xasprintf(&stack_str, "stack %p", inner_s);
-                print_disas(level, stack_str);
-            } else {
-                char *count_str;
-                xasprintf(&count_str, "stack %p (%u items)", inner_s, inner_s->sp);
-                print_disas(level, count_str);
-                free(count_str);
-                l = list_append(l, inner_s);
-                l = print_stack(l, level + 1, inner_s, 0, inner_s->sp);
-            }
-        } else {
-            sam_word_t inst;
-            assert(sam_stack_peek(s, i, (sam_uword_t *)&inst) == SAM_ERROR_OK);
-            char *text = disas(inst);
-            print_disas(level, text);
-            free(text);
-        }
-    }
-    return l;
-}
-
 void sam_print_stack(sam_stack_t *s)
 {
     debug("Stack: %p (%u item(s))\n", s, s->sp);
     sam_stack_list_t *l = list_append(NULL, s);
-    free_list(print_stack(l, 0, s, 0, s->sp));
+    char *text;
+    l = disas_stack(l, 0, s, 0, s->sp, &text);
+    debug("%s", text);
+    free(text);
+    free_list(l);
 }
 
 void sam_print_working_stack(sam_stack_t *s)
 {
     debug("Working stack: (%u word(s))\n", s->sp);
-    print_stack(NULL, 0, s, 0, s->sp);
+    char *text;
+    disas_stack(NULL, 0, s, 0, s->sp, &text);
+    debug("%s", text);
+    free(text);
 }
 
 /* Dump screen as a PBM */

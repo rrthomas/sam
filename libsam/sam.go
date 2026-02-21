@@ -209,7 +209,17 @@ var errors = map[int]string{
 func (state *State) ErrorMessage(code Word) string {
 	if code == ERROR_OK {
 		res := C.disas(state.result)
-		msg := fmt.Sprintf("halt with result %s", C.GoString(res))
+		goRes := C.GoString(res)
+		msg := "halt with result"
+		if (state.result & C.SAM_STACK_TAG_MASK) == C.SAM_STACK_TAG {
+			stack := state.result & ^C.SAM_STACK_TAG_MASK
+			if len(goRes) == 0 {
+				goRes = "(empty stack)\n"
+			}
+			msg += fmt.Sprintf(" stack %#x:\n", stack) + goRes[0:max(len(goRes)-1, 0)]
+		} else {
+			msg += " " + goRes
+		}
 		C.free(unsafe.Pointer(res))
 		return msg
 	} else if code >= ERROR_OK && code <= ERROR_INVALID_ARRAY_TYPE {
