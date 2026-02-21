@@ -39,7 +39,7 @@ type PrimaryExp struct {
 	Int   *int64   `  @Int`
 	Float *float64 `| @Float`
 	// String
-	// List
+	List *[]Expression `| "[" (@@ ("," @@)* ","? )? "]"`
 	// Map
 	Block    *Block      `| @@`
 	Function *Function   `| @@`
@@ -202,6 +202,12 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 		ctx.assemble(fmt.Sprintf("int %d", *e.Int))
 	} else if e.Float != nil {
 		ctx.assemble(fmt.Sprintf("float %g", *e.Float))
+	} else if e.List != nil {
+		ctx.assembleTrap("new")
+		for _, e := range *e.List {
+			e.Compile(ctx)
+			ctx.assemble("int -2", "get", "ipush")
+		}
 	} else if e.Variable != nil {
 		ctx.compileGetVar(*e.Variable)
 	} else if e.Block != nil {
