@@ -1,0 +1,19 @@
+let newAccums = fn() {
+  let tot = 0
+  let l = [
+    fn(x) {
+      tot := tot + x
+    },
+    fn(x) {
+      tot := tot + x
+    },
+  ]
+  tot := 2
+  l
+}
+let accums = newAccums()
+let accums2 = newAccums()
+[
+  [accums[0](1), accums[0](1), accums2[0](1)],
+  [accums[1](1), accums[1](1), accums2[1](1)],
+]

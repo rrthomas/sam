@@ -1,0 +1,16 @@
+let f = fn(initial) {
+  let state = 0
+  let ret = fn(y) {
+    if (y != 0) { state := y }
+    return state
+  }
+  state := initial
+  return ret
+}
+
+let foo = f(42)
+let result1 = foo(0)
+let result2 = 0
+foo(41)
+result2 := foo(0)
+[result1, result2]

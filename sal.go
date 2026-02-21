@@ -39,7 +39,7 @@ type PrimaryExp struct {
 	Int   *int64   `  @Int`
 	Float *float64 `| @Float`
 	// String
-	// List
+	List *[]Expression `| "[" [ @@ ("," @@)* ","? ] "]"`
 	// Map
 	Block    *Block      `| @@`
 	Function *Function   `| @@`
@@ -47,24 +47,31 @@ type PrimaryExp struct {
 	Paren    *Expression `| "(" @@ ")"`
 }
 
+type IndexedExp struct {
+	Pos lexer.Position
+
+	Object *PrimaryExp `@@`
+	Index  *Expression `[ "[" @@ "]" ]`
+}
+
 type CallExp struct {
 	Pos lexer.Position
 
-	Function *PrimaryExp `@@`
+	Function *IndexedExp `@@`
 	Calls    *[]Args     `@@*`
 }
 
 type Args struct {
 	Pos lexer.Position
 
-	Arguments *[]Expression `"(" (@@ ("," @@)* ","? )? ")"`
+	Arguments *[]Expression `"(" [@@ ("," @@)* ","? ] ")"`
 }
 
 type UnaryExp struct {
 	Pos lexer.Position
 
-	Op         string    `  ( "~" | "+" | "-"`
-	UnaryExp   *UnaryExp `  @@ )`
+	Op         string    `  @("#" | "~" | "+" | "-")`
+	UnaryExp   *UnaryExp `  @@`
 	PostfixExp *CallExp  `| @@`
 }
 
@@ -125,9 +132,9 @@ type LogicExp struct {
 type Expression struct {
 	Pos lexer.Position
 
-	If       *If       `  @@`
-	Loop     *Block    `| "loop" @@`
-	LogicExp *LogicExp `| @@`
+	If         *If       `  @@`
+	Loop       *Block    `| "loop" @@`
+	Expression *LogicExp `| @@`
 }
 
 type If struct {
@@ -135,14 +142,7 @@ type If struct {
 
 	Cond *Expression `"if" @@`
 	Then *Block      `@@`
-	Else *Block      `("else" @@)?`
-}
-
-type Assignment struct {
-	Pos lexer.Position
-
-	Variable   *string     `@Ident ":="`
-	Expression *Expression `@@`
+	Else *Block      `[ "else" @@ ]`
 }
 
 type Trap struct {
@@ -159,12 +159,18 @@ type Declaration struct {
 	Value    *Expression `@@ ";"`
 }
 
+type Assignment struct {
+	Pos lexer.Position
+
+	Lvalue     *Expression `@@ [ ":="`
+	Expression *Expression `@@ ]`
+}
+
 type Statement struct {
 	Pos lexer.Position
 
 	Assignment *Assignment `  @@ ";"`
 	Trap       *Trap       `| @@ ";"`
-	Expression *Expression `| @@ ";"`
 }
 
 type Terminator struct {
@@ -191,7 +197,7 @@ type Block struct {
 type Function struct {
 	Pos lexer.Position
 
-	Parameters *[]string `"fn" "(" (@Ident ("," @Ident)* ","? )? ")"`
+	Parameters *[]string `"fn" "(" [ @Ident ("," @Ident)* ","? ] ")"`
 	Body       *Block    `@@`
 }
 
@@ -202,6 +208,12 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 		ctx.assemble(fmt.Sprintf("int %d", *e.Int))
 	} else if e.Float != nil {
 		ctx.assemble(fmt.Sprintf("float %g", *e.Float))
+	} else if e.List != nil {
+		ctx.assembleTrap("new")
+		for _, e := range *e.List {
+			e.Compile(ctx)
+			ctx.assemble("int -2", "get", "ipush")
+		}
 	} else if e.Variable != nil {
 		ctx.compileGetVar(*e.Variable)
 	} else if e.Block != nil {
@@ -217,9 +229,29 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	}
 }
 
+func (e *IndexedExp) Compile(ctx *Frame) {
+	if e.Index != nil {
+		e.Index.Compile(ctx)
+	}
+	e.Object.Compile(ctx)
+	if e.Index != nil {
+		ctx.assemble("iget")
+	}
+}
+
 func (e *UnaryExp) Compile(ctx *Frame) {
 	if e.UnaryExp != nil {
-		panic("implement compilation of UnaryExp")
+		e.UnaryExp.Compile(ctx)
+		switch e.Op {
+		case "#":
+			ctx.assembleTrap("size")
+		case "~":
+			ctx.assemble("not")
+		case "+":
+			break // no-op
+		case "-":
+			ctx.assemble("neg")
+		}
 	} else if e.PostfixExp != nil {
 		e.PostfixExp.Compile(ctx)
 	} else {
@@ -388,8 +420,8 @@ func (e *Expression) Compile(ctx *Frame) {
 		}
 		ctx.assemble(blockCtx.asm)
 		ctx.assemble("do")
-	} else if e.LogicExp != nil {
-		e.LogicExp.Compile(ctx)
+	} else if e.Expression != nil {
+		e.Expression.Compile(ctx)
 	} else {
 		panic("invalid Expression")
 	}
@@ -408,10 +440,15 @@ func (i *If) Compile(ctx *Frame) {
 	ctx.assemble("if")
 }
 
+// Assignment, or an rvalue that is syntactically an lvalue
 func (a *Assignment) Compile(ctx *Frame) {
-	a.Expression.Compile(ctx)
-	ctx.assemble("_one", "get")
-	ctx.compileSetVar(*a.Variable)
+	if a.Expression != nil {
+		a.Expression.Compile(ctx)
+		ctx.assemble("_one", "get")
+		ctx.compileAssignLvalue(a.Lvalue)
+	} else {
+		a.Lvalue.Compile(ctx)
+	}
 }
 
 func (t *Trap) Compile(ctx *Frame) {
@@ -446,9 +483,7 @@ func (d *Declaration) Compile(ctx *Frame) {
 }
 
 func (s *Statement) Compile(ctx *Frame) {
-	if s.Expression != nil {
-		s.Expression.Compile(ctx)
-	} else if s.Assignment != nil {
+	if s.Assignment != nil {
 		s.Assignment.Compile(ctx)
 	} else if s.Trap != nil {
 		s.Trap.Compile(ctx)
@@ -653,6 +688,64 @@ func (ctx *Frame) compileSetVar(id string) {
 		ctx.assemble("iset")
 	} else {
 		panic(fmt.Errorf("no such variable %s", id))
+	}
+}
+
+type Lvalue struct {
+	Variable   *string
+	IndexedExp *IndexedExp
+}
+
+func expToLvalue(e *Expression) Lvalue {
+	if e.Expression != nil {
+		e := e.Expression
+		if e.Right == nil {
+			e := e.Left
+			if e.LogicNotExp == nil {
+				e := e.BitwiseExp
+				if e.Right == nil {
+					e := e.Left
+					if e.Right == nil {
+						e := e.Left
+						if e.Right == nil {
+							e := e.Left
+							if e.Right == nil {
+								e := e.Left
+								if e.Right == nil {
+									e := e.Left
+									if e.PostfixExp != nil {
+										e := e.PostfixExp
+										if e.Calls == nil {
+											e := e.Function
+											if e.Index != nil {
+												return Lvalue{IndexedExp: e}
+											} else {
+												e := e.Object
+												if e.Variable != nil {
+													return Lvalue{Variable: e.Variable}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	panic("invalid lvalue")
+}
+
+func (ctx *Frame) compileAssignLvalue(e *Expression) {
+	lv := expToLvalue(e)
+	if lv.IndexedExp == nil {
+		ctx.compileSetVar(*lv.Variable)
+	} else {
+		lv.IndexedExp.Index.Compile(ctx)
+		lv.IndexedExp.Object.Compile(ctx)
+		ctx.assemble("iset")
 	}
 }
 
