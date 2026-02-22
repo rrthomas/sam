@@ -14,89 +14,89 @@ Stack: XXXXXXXX (15 item(s))
 - ipop
 - int 0
 - halt
-sam_run: pc0 = XXXXXXXX, pc = 0, sp = 0, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 0, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 trap NEW
-sam_run: pc0 = XXXXXXXX, pc = 1, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX
 trap COPY
-sam_run: pc0 = XXXXXXXX, pc = 2, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 3, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX
 - int 13
 int
-sam_run: pc0 = XXXXXXXX, pc = 4, sp = 3, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int 13
 - int -2
 get
-sam_run: pc0 = XXXXXXXX, pc = 4, sp = 3, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - int 13
 - stack XXXXXXXX
 ipush
-sam_run: pc0 = XXXXXXXX, pc = 5, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 6, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX
 - int -1
 get
-sam_run: pc0 = XXXXXXXX, pc = 7, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 trap COPY
-sam_run: pc0 = XXXXXXXX, pc = 8, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 9, sp = 3, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - int -1
 get
-sam_run: pc0 = XXXXXXXX, pc = 9, sp = 3, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
 ipop
-sam_run: pc0 = XXXXXXXX, pc = 10, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 11, sp = 3, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - int -1
 trap S0
-sam_run: pc0 = XXXXXXXX, pc = 12, sp = 4, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - int -1
 - stack XXXXXXXX
 ipop
-sam_run: pc0 = XXXXXXXX, pc = 13, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 14, sp = 3, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX

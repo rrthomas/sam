@@ -191,7 +191,7 @@ type Block struct {
 type Function struct {
 	Pos lexer.Position
 
-	Parameters *[]string `"fn" "(" @Ident ("," @Ident)* ","? ")"`
+	Parameters *[]string `"fn" "(" (@Ident ("," @Ident)* ","? )? ")"`
 	Body       *Block    `@@`
 }
 
@@ -241,10 +241,11 @@ func (e *CallExp) Compile(ctx *Frame) {
 	// Call the successive functions, adjusting sp after each
 	if e.Calls != nil {
 		for _, args := range *e.Calls {
-			ctx.assemble("do")
-			nargs := len(*args.Arguments)
-			if nargs > 1 {
-				ctx.adjustSp(-(nargs - 1))
+			ctx.assemble("zero")
+			ctx.assembleTrap("new")
+			ctx.assemble("call")
+			if args.Arguments != nil {
+				ctx.adjustSp(-(len(*args.Arguments)))
 			}
 		}
 	}
@@ -252,13 +253,15 @@ func (e *CallExp) Compile(ctx *Frame) {
 
 func (a *Args) Compile(ctx *Frame) {
 	// Push arguments
+	if a.Arguments == nil {
+		ctx.assemble("zero")
+		return
+	}
 	for _, a := range *a.Arguments {
 		a.Compile(ctx)
 	}
-	// If there are no arguments, leave space for return value.
-	if len(*a.Arguments) == 0 {
-		ctx.assemble("int 0")
-	}
+	// Push number of arguments
+	ctx.assemble(fmt.Sprintf("int %d", len(*a.Arguments)))
 }
 
 func (e *ExponentExp) Compile(ctx *Frame) {
@@ -463,7 +466,7 @@ func (s *Statement) Compile(ctx *Frame) {
 func (t *Terminator) Compile(ctx *Frame) {
 	if t.Return != nil {
 		t.Return.Compile(ctx)
-		ctx.tearDownFrame()
+		ctx.assembleReturn()
 	} else if t.BreakExp != nil || t.Break {
 		if ctx.loop == nil {
 			panic("'break' used outside a loop")
@@ -535,26 +538,31 @@ func (b *Block) Compile(ctx *Frame, loop bool) Frame {
 }
 
 func (f *Function) Compile(ctx *Frame) {
-	nargs := libsam.Uword(len(*f.Parameters))
+	nargs := libsam.Uword(0)
+	if f.Parameters != nil {
+		nargs = libsam.Uword(len(*f.Parameters))
+	}
 	captures := make([]Capture, 0)
 	innerCtx := Frame{
 		parent:   ctx,
 		locals:   make([]Local, 0),
 		captures: &captures,
 		asm:      make([]any, 0),
-		baseSp:   1, // captures array is on the stack
-		sp:       1,
+		baseSp:   0,
+		sp:       libsam.Word(nargs) + 2, // exclude PC & PC0 from count
 		nargs:    nargs,
 	}
-	for i, p := range *f.Parameters {
-		innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i - int(nargs)})
+	if f.Parameters != nil {
+		for i, p := range *f.Parameters {
+			innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i})
+		}
 	}
 	ctx.assembleTrap("new") // closure array
 	ctx.assembleTrap("new") // captures array
 	blockCtx := f.Body.Compile(&innerCtx, false)
 	ctx.assemble("_two", "get", "ipush") // append captures to closure
 	if f.Body.Body.Terminator == nil {
-		blockCtx.tearDownFrame()
+		blockCtx.assembleReturn()
 	}
 	ctx.assemble(blockCtx.asm)
 	ctx.assemble("_two", "get", "ipush") // append code to closure
@@ -615,13 +623,12 @@ func (ctx *Frame) findCapture(id string) *uint {
 }
 
 func (ctx *Frame) compileLocalAddr(l Local) {
-	ctx.assemble(fmt.Sprintf("int %d", int(l.pos)-int(ctx.sp)))
+	ctx.assemble(fmt.Sprintf("int %d", int(l.pos)))
 }
 
 func (ctx *Frame) compileCaptureAddr(i uint) {
 	ctx.assemble(
-		fmt.Sprintf("int %d", -int(ctx.sp)+2),
-		"get",
+		"int 4", "get",
 		fmt.Sprintf("int %d", i*2+1),
 		"_two", "get",
 		"iget",
@@ -667,27 +674,16 @@ func (ctx *Frame) tearDownBlock() {
 	}
 }
 
-func (ctx *Frame) tearDownFrame() {
-	// Set result
-	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp+libsam.Word(ctx.nargs))), "set")
-	// Pop remaining stack items in this frame, except for return address
-	for range ctx.sp - 2 {
-		ctx.assemble("pop")
-	}
-	// If we have some arguments still on the stack, need to get rid of them
-	if ctx.nargs == 2 {
-		// Extract one remaining argument
-		ctx.assemble("int -3", "extract", "pop")
-	} else if ctx.nargs > 2 {
-		// Store the return `pc` over the third argument
-		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)), "set")
-		// Store the return `pc0` over the second argument
-		ctx.assemble(fmt.Sprintf("int %d", -int(ctx.nargs)), "set")
-		// Pop arguments 4 onwards, if any
-		for range ctx.nargs - 3 {
-			ctx.assemble("pop")
-		}
-	}
+// We do not destroy any information in the frame when returning in case the
+// frame lives on to be used for captures.
+func (ctx *Frame) assembleReturn() {
+	// Get return information
+	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs), "get")
+	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs+1), "get")
+	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs+2), "get")
+	// Extract return value
+	ctx.assemble("int -4", "extract")
+	ctx.assembleTrap("ret")
 }
 
 var nextLabel uint = 0

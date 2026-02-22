@@ -3,14 +3,14 @@ Stack: XXXXXXXX (4 item(s))
 - go
 - int 0
 - halt
-sam_run: pc0 = XXXXXXXX, pc = 0, sp = 0, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 0, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 trap QUOTE
-sam_run: pc0 = XXXXXXXX, pc = 2, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - go
 int
-sam_run: pc0 = XXXXXXXX, pc = 3, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - go
 - int 0

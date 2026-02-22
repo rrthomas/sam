@@ -72,27 +72,6 @@ const int SAM_INST_SHIFT = 5;
 
 const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
 
-// Execution macros
-#define GO(addr)                                \
-    do {                                        \
-        state->pc0 = (sam_stack_t *)addr;       \
-        state->pc = 0;                          \
-    } while (0)
-
-#define DO(addr)                                \
-    do {                                        \
-        PUSH_REF(state->pc0);                   \
-        PUSH_INT(state->pc);                    \
-        GO(addr);                               \
-    } while (0)
-
-
-#define RET                                     \
-    do {                                        \
-        POP_INT(state->pc);                     \
-        POP_REF(state->pc0);                    \
-    } while (0)
-
 // Division macros
 #define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))
 #define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
@@ -115,23 +94,23 @@ static sam_word_t sam_trap(sam_state_t *state, sam_uword_t function)
 // Execution function
 sam_word_t sam_run(sam_state_t *state)
 {
-    sam_stack_t *s = state->stack;
+#define s state->stack
     sam_word_t error = SAM_ERROR_OK;
 
     for (;;) {
         while (state->pc == state->pc0->sp) {
 #ifdef SAM_DEBUG
-            debug("sam_run: pc0 = %p, pc = %u, sp = %u\n", state->pc0, state->pc - 1, s->sp);
-            debug("ket\n");
+            debug("sam_run: pc0 = %p, pc = %u, s0 = %p, sp = %u\n", state->pc0, state->pc - 1, s, s->sp);
+            debug("done\n");
             sam_print_working_stack(s);
 #endif
-            RET;
+            DONE;
         }
 
         sam_uword_t ir;
         HALT_IF_ERROR(sam_stack_peek(state->pc0, state->pc++, &ir));
 #ifdef SAM_DEBUG
-        debug("sam_run: pc0 = %p, pc = %u, sp = %u, ir = %x\n", state->pc0, state->pc - 1, s->sp, ir);
+        debug("sam_run: pc0 = %p, pc = %u, s0 = %p, sp = %u, ir = %x\n", state->pc0, state->pc - 1, s, s->sp, ir);
         sam_print_working_stack(s);
 #endif
 
@@ -278,8 +257,22 @@ sam_word_t sam_run(sam_state_t *state)
                     break;
                 case INST_CALL:
                     {
-                        sam_stack_t *code;
+                        sam_stack_t *code, *frame;
+                        POP_REF_UNSAFE(frame);
+                        sam_uword_t addr, nargs;
+                        POP_INT(addr);
                         POP_REF(code);
+                        POP_INT(nargs);
+                        for (sam_uword_t i = nargs; i > 0; i--) {
+                            sam_uword_t val;
+                            HALT_IF_ERROR(sam_stack_peek(s, s->sp - i, &val));
+                            HALT_IF_ERROR(sam_stack_push(frame, val));
+                        }
+                        sam_word_t val;
+                        for (sam_uword_t i = 0; i < nargs; i++)
+                            POP_WORD(&val);
+                        HALT_IF_ERROR(sam_push_ref(frame, s));
+                        state->stack = frame;
                         DO(code);
                         opcodes = 0;
                     }
@@ -301,7 +294,7 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_word_t flag;
                         POP_INT(flag);
                         if (!flag) {
-                            RET;
+                            DONE;
                             opcodes = 0;
                         }
                     }
@@ -479,7 +472,7 @@ sam_word_t sam_run(sam_state_t *state)
 
 #ifdef SAM_DEBUG
                 if (opcodes != 0) {
-                    debug("sam_run: pc0 = %p, pc = %u, sp = %u, ir = %x\n", state->pc0, state->pc - 1, s->sp, ir);
+                    debug("sam_run: pc0 = %p, pc = %u, s0 = %p, sp = %u, ir = %x\n", state->pc0, state->pc - 1, s, s->sp, ir);
                     sam_print_working_stack(s);
                 }
 #endif
