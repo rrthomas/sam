@@ -16,7 +16,7 @@
 
 sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
 {
-    sam_stack_t *s = state->stack;
+#define s state->stack
     int error = SAM_ERROR_OK;
     
     switch (function) {
@@ -36,7 +36,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             HALT_IF_ERROR(sam_stack_new(state, SAM_ARRAY_STACK, &stack));
             HALT_IF_ERROR(sam_push_ref(s, stack));
         }
-    break;
+        break;
     case TRAP_BASIC_COPY:
         {
             sam_word_t item;
@@ -47,7 +47,20 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             HALT_IF_ERROR(sam_stack_copy(state, stack, &new_stack));
             PUSH_REF(new_stack); // Now the copied stack will be unreferenced.
         }
-    break;
+        break;
+    case TRAP_BASIC_RET:
+        {
+            sam_word_t item;
+            HALT_IF_ERROR(sam_stack_pop_unsafe(s, &item));
+            sam_stack_t *frame, *old_stack = s;
+            DONE;
+            POP_REF_UNSAFE(frame);
+            state->stack = frame;
+            PUSH_WORD(item);
+            // Wipe the stack slot for the return value.
+            HALT_IF_ERROR(sam_stack_poke(old_stack, old_stack->sp, SAM_INSTS_TAG));
+        }
+        break;
     case TRAP_BASIC_LSH:
         {
             sam_word_t shift, value;
@@ -88,6 +101,8 @@ char *sam_basic_trap_name(sam_word_t function)
         return "NEW";
     case TRAP_BASIC_COPY:
         return "COPY";
+    case TRAP_BASIC_RET:
+        return "RET";
     case TRAP_BASIC_LSH:
         return "LSH";
     case TRAP_BASIC_RSH:

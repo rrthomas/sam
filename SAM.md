@@ -103,7 +103,7 @@ Integers are represented as twos-complement as part of an `INT` instruction.
 
 Floats are IEEE floats (64-bit on an 8-byte word VM, or 32-bit on a 4-byte VM) with the bottom bit cleared (this bit denotes the `FLOAT` instruction). No rounding is performed on the result of arithmetic operations.
 
-A bracket is encoded as a `STACK` instruction pointing to a list of instructions, ending with a `RET` instruction.
+A bracket is encoded as a `STACK` instruction pointing to a list of instructions, ending with a `DONE` instruction.
 
 
 ### Do nothing
@@ -214,16 +214,6 @@ These instructions manage stacks.
 
 These instructions implement branches, conditions and subroutine calls.
 
-> `CALL`  
-> `x₁`…`xₙ` `i₁` `r₁` `r₂` `i₂` →
->
-> Pop `i₁`, `r₁`, `r₂` and `i₂`. Pop `i₁` stack items, and push them to the stack given by `r₁`, in order from `x₁` to `xₙ`. Set `S0` to `r₁`. Push `PC0` and `PC` to the stack, and set `PC0` to `r₂` and `PC` to `i₂`.
-
-> `RET`  
-> `r` `i` →
->
-> Pop `i` into `PC` and `r` into `PC0`.
-
 > `STACK`  
 > → `r`
 >
@@ -238,6 +228,21 @@ These instructions implement branches, conditions and subroutine calls.
 > `r₁` → `r₂` `i`
 >
 > Pop `r₁`. Push `PC0` to the stack as a reference and `PC` as an integer, and set `PC0` to `r₁` and `PC` to 0.
+
+> `DONE`  
+> `r` `i` →
+>
+> Pop `i` into `PC` and `r` into `PC0`.
+
+> `CALL`  
+> `x₁`…`xₙ` `i₁` `r₁` `i₂` `r₂` →
+>
+> Pop `i₁`, `r₁`, `i₂` and `r₂`. Pop `i₁` stack items, and push them to the stack given by `r₂`, in order from `x₁` to `xₙ`. Push `PC0`, `PC` and `S0` to the stack given by `r₂`. Set `S0` to `r₂`, `PC0` to `r₁` and `PC` to `i₂`.
+
+> `RET`  
+> `r₁` `r₂` `i` `x` →
+>
+> Pop `x`, `i`, `r₂` and `r₁`. Set `PC0` to `r₂`, `PC` to `i`, and `S0` to `r₁`. Push `x` to the stack.
 
 > `IF`  
 > `i` `r₁` `r₂` → `p`
