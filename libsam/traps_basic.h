@@ -20,6 +20,7 @@ char *sam_basic_trap_name(sam_word_t function);
 
 enum SAM_TRAP_BASIC {
     TRAP_BASIC_S0 = SAM_TRAP_BASIC_BASE,
+    TRAP_BASIC_SIZE,
     TRAP_BASIC_QUOTE,
     TRAP_BASIC_NEW,
     TRAP_BASIC_COPY,

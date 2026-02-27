@@ -279,6 +279,7 @@ var Instructions = map[string]InstOpcode{
 
 var Traps = map[string]int{
 	"S0":    C.TRAP_BASIC_S0,
+	"SIZE":  C.TRAP_BASIC_SIZE,
 	"QUOTE": C.TRAP_BASIC_QUOTE,
 	"NEW":   C.TRAP_BASIC_NEW,
 	"COPY":  C.TRAP_BASIC_COPY,
@@ -366,6 +367,7 @@ type StackEffect struct {
 var TrapStackEffect = map[string]StackEffect{
 	// Basic traps
 	"S0":    {0, 1},
+	"SIZE":  {1, 1},
 	"QUOTE": {0, 1},
 	"NEW":   {0, 1},
 	"COPY":  {1, 1},
