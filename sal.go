@@ -103,7 +103,7 @@ type BitwiseExp struct {
 	Pos lexer.Position
 
 	Left  *CompareExp `@@`
-	Op    string      `[ @("&" | "^" | "|" | "<<" | ">>" | ">>>")`
+	Op    string      `[ @("&" | "^" | "|")`
 	Right *BitwiseExp `@@ ]`
 }
 
@@ -338,12 +338,6 @@ func (e *BitwiseExp) Compile(ctx *Frame) {
 			ctx.assemble("xor")
 		case "|":
 			ctx.assemble("or")
-		case "<<":
-			ctx.assembleTrap("lsh")
-		case ">>":
-			ctx.assembleTrap("rsh")
-		case ">>>":
-			ctx.assembleTrap("arsh")
 		default:
 			panic(fmt.Errorf("unknown SumExp.Op %s", e.Op))
 		}
