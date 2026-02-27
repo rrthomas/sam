@@ -21,7 +21,6 @@ The registers are as follows:
 
 | Register  | Function  |
 | --------- | --------- |
-| `SSIZE`   | The `S`tack `SIZE`. The number of items the stack can hold. |
 | `S0`      | The current `S`tack. |
 | `SP`      | The `S`tack `P`ointer. The number of items currently on the stack. |
 | `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
@@ -46,7 +45,7 @@ A valid address is one that points to a valid instruction.
 
 ### Operation
 
-Before SAM is started, the stack should be given suitable contents, `SSIZE` and `SP` set appropriately, and `PC` to the address of some item in the stack.
+Before SAM is started, the stack should be given suitable contents, `SP` set appropriately, and `PC` to the address of some item in the stack.
 
 ```
 begin
@@ -68,7 +67,7 @@ The following table lists the errors and the conditions under which they are rai
 | `INVALID_OPCODE` | An attempt was made to execute an invalid opcode. |
 | `INVALID_ADDRESS` | Invalid address. |
 | `STACK_UNDERFLOW` | The stack has underflowed, that is, an attempt was made to pop when it was empty. |
-| `STACK_OVERFLOW` | The stack has overflowed, that is, an attempt was made to push to it when it already contained `SSIZE` items, or an attempt was made to access beyond the current top of the stack. |
+| `STACK_OVERFLOW` | An attempt was made to access beyond the current top of the given stack. |
 | `WRONG_TYPE` | A stack item is not of the type expected. |
 | `INVALID_TRAP` | An invalid function number was given to `TRAP`. |
 
