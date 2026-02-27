@@ -81,6 +81,7 @@ int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr);
 int sam_stack_pop_unsafe(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_stack_push(sam_stack_t *s, sam_word_t val);
+int sam_stack_prepend(sam_stack_t *s, sam_word_t val);
 int sam_push_ref(sam_stack_t *s, void *ptr);
 int sam_push_int(sam_stack_t *s, sam_uword_t val);
 int sam_push_float(sam_stack_t *s, sam_float_t n);

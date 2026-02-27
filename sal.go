@@ -212,7 +212,7 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 		ctx.assembleTrap("new")
 		for _, e := range *e.List {
 			e.Compile(ctx)
-			ctx.assemble("int -2", "get", "ipush")
+			ctx.assemble("int -2", "get", "append")
 		}
 	} else if e.Variable != nil {
 		ctx.compileGetVar(*e.Variable)
@@ -589,14 +589,14 @@ func (f *Function) Compile(ctx *Frame) {
 	ctx.assembleTrap("new") // closure array
 	ctx.assembleTrap("new") // captures array
 	blockCtx := f.Body.Compile(&innerCtx, false)
-	ctx.assemble("_two", "get", "ipush") // append captures to closure
+	ctx.assemble("_two", "get", "append") // append captures to closure
 	if f.Body.Body.Terminator == nil {
 		blockCtx.assembleReturn()
 	}
 	ctx.assemble(blockCtx.asm)
-	ctx.assemble("_two", "get", "ipush") // append code to closure
+	ctx.assemble("_two", "get", "append") // append code to closure
 	ctx.assembleQuote("go")
-	ctx.assemble("_two", "get", "ipush") // append tail call to closure
+	ctx.assemble("_two", "get", "append") // append tail call to closure
 }
 
 type Local struct {
@@ -637,14 +637,14 @@ func (ctx *Frame) findCapture(id string) *uint {
 		if l := parent.findLocal(id); l != nil {
 			// Append address of local to captures array
 			parent.assembleTrap("s0")
-			parent.assemble("_two", "get", "ipush")
+			parent.assemble("_two", "get", "append")
 			parent.assemble(fmt.Sprintf("int %d", int(l.pos)))
-			parent.assemble("_two", "get", "ipush")
+			parent.assemble("_two", "get", "append")
 		} else if i := parent.findCapture(id); i != nil {
 			// Append address of capture to captures array
 			parent.compileCaptureAddr(*i)
-			parent.assemble("int -3", "get", "ipush")
-			parent.assemble("_two", "get", "ipush")
+			parent.assemble("int -3", "get", "append")
+			parent.assemble("_two", "get", "append")
 		}
 		return &newCaptureIndex
 	}

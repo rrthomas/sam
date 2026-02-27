@@ -73,8 +73,8 @@ char *inst_name(sam_uword_t inst_opcode)
         return "iset";
     case INST_IPOP:
         return "ipop";
-    case INST_IPUSH:
-        return "ipush";
+    case INST_APPEND:
+        return "append";
     case INST_GO:
         return "go";
     case INST_DO:

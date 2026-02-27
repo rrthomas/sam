@@ -203,10 +203,15 @@ These instructions manage stacks.
 >
 > Pop an item from the stack pointed to by `r`.
 
-> `IPUSH`  
+> `APPEND`  
 > `x` `r` →
 >
 > Push `x` to the stack pointed to by `r`.
+
+> `PREPEND`  
+> `x` `r` →
+>
+> Prepend `x` to the array pointed to by `r`.
 
 > `QUOTE`  
 > → `x`
