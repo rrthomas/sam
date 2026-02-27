@@ -17,8 +17,11 @@
 - int -1
 - get
 - ipop
-# Pop an item from the current stack using ipop
-- int -1
+# Shift an item from the same copy
+- int -2
+- get
+- trap ishift
+# Pop an item from the current stack using ipop (no effect!)
 - trap s0
 - ipop
 # Exit 

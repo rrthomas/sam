@@ -199,9 +199,14 @@ These instructions manage stacks.
 > Set the `i`th item of the stack pointed to by `r` to `x`.
 
 > `IPOP`  
-> `r` →
+> `r` → `x`
 >
-> Pop an item from the stack pointed to by `r`.
+> Pop `x` from the stack pointed to by `r`.
+
+> `ISHIFT`
+> `r` → `x`
+>
+> Remove the first element from the stack pointed to by `r` and push it to the current stack.
 
 > `APPEND`  
 > `x` `r` →

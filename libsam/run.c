@@ -224,8 +224,9 @@ sam_word_t sam_run(sam_state_t *state)
                         POP_REF_UNSAFE(stack);
                         if (stack->sp < 1)
                             HALT(SAM_ERROR_STACK_UNDERFLOW);
-                        stack->sp -= 1;
-                        WIPE_STACK_SLOT(0);
+                        sam_word_t val;
+                        HALT_IF_ERROR(sam_stack_pop(stack, &val));
+                        PUSH_WORD(val);
                     }
                     break;
                 case INST_APPEND:
