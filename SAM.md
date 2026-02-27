@@ -153,6 +153,11 @@ These instructions manage stacks.
 >
 > Push a reference to `S0` to the current stack.
 
+> `SIZE`  
+> `r` -> `i`
+>
+> Pop `r`, and push the number of items in that stack to the current stack.
+
 > `NEW`  
 > → `r`
 >
