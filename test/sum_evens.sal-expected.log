@@ -3,7 +3,7 @@ Stack: XXXXXXXX (4 item(s))
 - stack XXXXXXXX (16 items)
   - trap NEW
   - trap NEW
-  - _two get ipush
+  - _two get append
   - stack XXXXXXXX (13 items)
     - int 0
     - int 0
@@ -61,10 +61,10 @@ Stack: XXXXXXXX (4 item(s))
     - int -4
     - extract
     - trap RET
-  - _two get ipush
+  - _two get append
   - trap QUOTE
   - go
-  - _two get ipush
+  - _two get append
   - int 9
   - int 1
   - int 3
@@ -125,7 +125,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 0
@@ -158,7 +158,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 0
@@ -191,7 +191,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX
 - go
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 0

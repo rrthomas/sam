@@ -7,7 +7,7 @@ Stack: XXXXXXXX (4 item(s))
   - stack XXXXXXXX (70 items)
     - trap NEW
     - trap NEW
-    - _two get ipush
+    - _two get append
     - stack XXXXXXXX (13 items)
       - int 0
       - get
@@ -22,13 +22,13 @@ Stack: XXXXXXXX (4 item(s))
       - int -4
       - extract
       - trap RET
-    - _two get ipush
+    - _two get append
     - trap QUOTE
     - go
-    - _two get ipush
+    - _two get append
     - trap NEW
     - trap NEW
-    - _two get ipush
+    - _two get append
     - stack XXXXXXXX (13 items)
       - int 0
       - get
@@ -43,13 +43,13 @@ Stack: XXXXXXXX (4 item(s))
       - int -4
       - extract
       - trap RET
-    - _two get ipush
+    - _two get append
     - trap QUOTE
     - go
-    - _two get ipush
+    - _two get append
     - trap NEW
     - trap NEW
-    - _two get ipush
+    - _two get append
     - stack XXXXXXXX (20 items)
       - int 0
       - int 0
@@ -82,13 +82,13 @@ Stack: XXXXXXXX (4 item(s))
       - int -4
       - extract
       - trap RET
-    - _two get ipush
+    - _two get append
     - trap QUOTE
     - go
-    - _two get ipush
+    - _two get append
     - trap NEW
     - trap NEW
-    - _two get ipush
+    - _two get append
     - stack XXXXXXXX (15 items)
       - int 0
       - get
@@ -105,10 +105,10 @@ Stack: XXXXXXXX (4 item(s))
       - int -4
       - extract
       - trap RET
-    - _two get ipush
+    - _two get append
     - trap QUOTE
     - go
-    - _two get ipush
+    - _two get append
     - int 5
     - int 11
     - get
@@ -284,7 +284,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
@@ -333,7 +333,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
@@ -382,7 +382,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX
 - go
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 0
@@ -446,7 +446,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
@@ -499,7 +499,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
@@ -552,7 +552,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX
 - go
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
@@ -621,7 +621,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
@@ -678,7 +678,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
@@ -735,7 +735,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX
 - go
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
@@ -809,7 +809,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
@@ -870,7 +870,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX
 - stack XXXXXXXX
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
@@ -931,7 +931,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX
 - go
 - stack XXXXXXXX
-ipush
+append
 sam_run: pc0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0

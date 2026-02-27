@@ -37,6 +37,17 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             PUSH_WORD(ir);
         }
         break;
+    case TRAP_BASIC_PREPEND:
+        {
+            sam_stack_t *stack;
+            POP_REF_UNSAFE(stack);
+            sam_word_t val;
+            POP_WORD_UNSAFE(&val);
+            HALT_IF_ERROR(sam_stack_prepend(stack, val));
+            WIPE_STACK_SLOT(0);
+            WIPE_STACK_SLOT(1);
+        }
+        break;
     case TRAP_BASIC_NEW:
         {
             sam_stack_t *stack;
@@ -106,6 +117,8 @@ char *sam_basic_trap_name(sam_word_t function)
         return "SIZE";
     case TRAP_BASIC_QUOTE:
         return "QUOTE";
+    case TRAP_BASIC_PREPEND:
+        return "PREPEND";
     case TRAP_BASIC_NEW:
         return "NEW";
     case TRAP_BASIC_COPY:

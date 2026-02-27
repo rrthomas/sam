@@ -228,7 +228,7 @@ sam_word_t sam_run(sam_state_t *state)
                         WIPE_STACK_SLOT(0);
                     }
                     break;
-                case INST_IPUSH:
+                case INST_APPEND:
                     {
                         sam_stack_t *stack;
                         POP_REF_UNSAFE(stack);

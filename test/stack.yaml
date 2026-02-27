@@ -1,11 +1,15 @@
 # Copy a stack's only reference
 - trap new
 - trap copy
-# Push an item to the new stack then copy the stack
+# Append an item, then prepend an item to the new stack, then copy the stack
 - int 13
 - int -2
 - get
-- ipush
+- append
+- int 42
+- int -2
+- get
+- trap prepend
 - int -1
 - get
 - trap copy

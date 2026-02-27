@@ -116,7 +116,7 @@ int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
     return error;
 }
 
-int sam_stack_push(sam_stack_t *s, sam_word_t val)
+static int stack_maybe_grow(sam_stack_t *s)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp >= s->ssize) {
@@ -127,7 +127,25 @@ int sam_stack_push(sam_stack_t *s, sam_word_t val)
         memset(s->s0 + s->ssize, 0, s->ssize * sizeof(sam_uword_t));
         s->ssize = new_size;
     }
+error:
+    return error;
+}
+
+int sam_stack_push(sam_stack_t *s, sam_word_t val)
+{
+    sam_word_t error = stack_maybe_grow(s);
     HALT_IF_ERROR(sam_stack_poke(s, s->sp++, val));
+ error:
+    return error;
+}
+
+int sam_stack_prepend(sam_stack_t *s, sam_word_t val)
+{
+    sam_uword_t old_size = s->ssize;
+    sam_word_t error = stack_maybe_grow(s);
+    memmove(s->s0 + 1, s->s0, old_size * sizeof(sam_uword_t));
+    HALT_IF_ERROR(sam_stack_poke(s, 0, val));
+    s->sp++;
  error:
     return error;
 }
