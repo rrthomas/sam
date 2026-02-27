@@ -26,16 +26,20 @@ int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val)
     return SAM_ERROR_OK;
 }
 
+void sam_stack_maybe_unref(sam_word_t val) {
+    if ((val & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
+        sam_stack_t *s = (sam_stack_t *)(val & ~SAM_STACK_TAG_MASK);
+        if (s->type == SAM_ARRAY_STACK)
+            sam_stack_unref(s);
+    }
+}
+
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
 {
     if (addr >= s->ssize)
         return SAM_ERROR_INVALID_ADDRESS;
     sam_word_t old_val = s->s0[addr];
-    if ((old_val & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
-        sam_stack_t *inner_s = (sam_stack_t *)(old_val & ~SAM_STACK_TAG_MASK);
-        if (inner_s->type == SAM_ARRAY_STACK)
-            sam_stack_unref(inner_s);
-    }
+    sam_stack_maybe_unref(old_val);
     if ((val & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
         sam_stack_t *inner_s = (sam_stack_t *)(val & ~SAM_STACK_TAG_MASK);
         if (inner_s->type == SAM_ARRAY_STACK)
@@ -116,6 +120,27 @@ int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
     return error;
 }
 
+int sam_stack_shift_unsafe(sam_stack_t *s, sam_word_t *val_ptr)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    if (s->sp == 0)
+        return SAM_ERROR_STACK_UNDERFLOW;
+    HALT_IF_ERROR(sam_stack_peek(s, 0, (sam_uword_t *)val_ptr));
+    memmove(s->s0, s->s0 + 1, s->sp * sizeof(sam_uword_t));
+    s->sp--;
+ error:
+    return error;
+}
+
+int sam_stack_shift(sam_stack_t *s, sam_word_t *val_ptr)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    HALT_IF_ERROR(sam_stack_shift_unsafe(s, val_ptr));
+    sam_stack_maybe_unref(*val_ptr);
+ error:
+    return error;
+}
+
 static int stack_maybe_grow(sam_stack_t *s)
 {
     sam_word_t error = SAM_ERROR_OK;
@@ -141,9 +166,8 @@ int sam_stack_push(sam_stack_t *s, sam_word_t val)
 
 int sam_stack_prepend(sam_stack_t *s, sam_word_t val)
 {
-    sam_uword_t old_size = s->ssize;
     sam_word_t error = stack_maybe_grow(s);
-    memmove(s->s0 + 1, s->s0, old_size * sizeof(sam_uword_t));
+    memmove(s->s0 + 1, s->s0, s->sp * sizeof(sam_uword_t));
     HALT_IF_ERROR(sam_stack_poke(s, 0, val));
     s->sp++;
  error:
