@@ -372,7 +372,7 @@ var TrapStackEffect = map[string]StackEffect{
 	"SIZE":    {1, 1},
 	"QUOTE":   {0, 1},
 	"PREPEND": {2, 0},
-	"ISHIFT":  {2, 0},
+	"ISHIFT":  {1, 1},
 	"NEW":     {0, 1},
 	"COPY":    {1, 1},
 	"RET":     {4, 0},

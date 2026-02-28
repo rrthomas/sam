@@ -70,9 +70,10 @@ type Args struct {
 type UnaryExp struct {
 	Pos lexer.Position
 
-	Op         string    `  @("#" | "~" | "+" | "-")`
-	UnaryExp   *UnaryExp `  @@`
-	PostfixExp *CallExp  `| @@`
+	PreOp          string    `  @("~" | "+" | "-" | "#" | "<<<")`
+	PrefixUnaryExp *UnaryExp `  @@`
+	PostfixExp     *CallExp  `| @@`
+	PostOp         *string   `  [ @">>>" ]`
 }
 
 type ExponentExp struct {
@@ -248,22 +249,34 @@ func (e *IndexedExp) Compile(ctx *Frame) {
 }
 
 func (e *UnaryExp) Compile(ctx *Frame) {
-	if e.UnaryExp != nil {
-		e.UnaryExp.Compile(ctx)
-		switch e.Op {
-		case "#":
-			ctx.assembleTrap("size")
+	if e.PrefixUnaryExp != nil {
+		e.PrefixUnaryExp.Compile(ctx)
+		switch e.PreOp {
 		case "~":
 			ctx.assemble("not")
 		case "+":
 			break // no-op
 		case "-":
 			ctx.assemble("neg")
+		case "#":
+			ctx.assembleTrap("size")
+		case "<<<":
+			ctx.assembleTrap("ishift")
 		default:
-			panic(fmt.Errorf("unknown UnaryExp.Op %s", e.Op))
+			panic(fmt.Errorf("unknown UnaryExp.PreOp %s", e.PreOp))
 		}
 	} else if e.PostfixExp != nil {
 		e.PostfixExp.Compile(ctx)
+
+		// Deal with PostOp, if any
+		if e.PostOp != nil {
+			switch *e.PostOp {
+			case ">>>":
+				ctx.assemble("ipop")
+			default:
+				panic(fmt.Errorf("unknown UnaryExp.PostOp %s", *e.PostOp))
+			}
+		}
 	} else {
 		panic("invalid UnaryExp")
 	}
