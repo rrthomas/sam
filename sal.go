@@ -114,11 +114,19 @@ type BitwiseExp struct {
 	Right *BitwiseExp `@@ ]`
 }
 
+type PushExp struct {
+	Pos lexer.Position
+
+	Left  *BitwiseExp `@@`
+	Op    string      `[ @("<<" | ">>")`
+	Right *PushExp    `@@ ]`
+}
+
 type LogicNotExp struct {
 	Pos lexer.Position
 
 	LogicNotExp *LogicNotExp `  ( "not" @@ )`
-	BitwiseExp  *BitwiseExp  `| @@`
+	PushExp     *PushExp     `| @@`
 }
 
 type LogicExp struct {
@@ -251,6 +259,8 @@ func (e *UnaryExp) Compile(ctx *Frame) {
 			break // no-op
 		case "-":
 			ctx.assemble("neg")
+		default:
+			panic(fmt.Errorf("unknown UnaryExp.Op %s", e.Op))
 		}
 	} else if e.PostfixExp != nil {
 		e.PostfixExp.Compile(ctx)
@@ -376,12 +386,32 @@ func (e *BitwiseExp) Compile(ctx *Frame) {
 	}
 }
 
+func (e *PushExp) Compile(ctx *Frame) {
+	if e.Right != nil {
+		switch e.Op {
+		case "<<": // List append: l << i
+			e.Left.Compile(ctx)
+			e.Right.Compile(ctx)
+			ctx.assemble("_two", "get", "append")
+		case ">>": // List prepend: i >> l
+			e.Right.Compile(ctx)
+			e.Left.Compile(ctx)
+			ctx.assemble("_two", "get")
+			ctx.assembleTrap("prepend")
+		default:
+			panic(fmt.Errorf("unknown PushExp.Op %s", e.Op))
+		}
+	} else {
+		e.Left.Compile(ctx)
+	}
+}
+
 func (e *LogicNotExp) Compile(ctx *Frame) {
 	if e.LogicNotExp != nil {
 		e.LogicNotExp.Compile(ctx)
 		ctx.assemble("neg", "not", "neg")
-	} else if e.BitwiseExp != nil {
-		e.BitwiseExp.Compile(ctx)
+	} else if e.PushExp != nil {
+		e.PushExp.Compile(ctx)
 	} else {
 		panic("invalid LogicNotExp")
 	}
@@ -702,7 +732,7 @@ func expToLvalue(e *Expression) Lvalue {
 		if e.Right == nil {
 			e := e.Left
 			if e.LogicNotExp == nil {
-				e := e.BitwiseExp
+				e := e.PushExp
 				if e.Right == nil {
 					e := e.Left
 					if e.Right == nil {
@@ -713,18 +743,22 @@ func expToLvalue(e *Expression) Lvalue {
 								e := e.Left
 								if e.Right == nil {
 									e := e.Left
-									if e.PostfixExp != nil {
-										e := e.PostfixExp
-										if e.Calls == nil {
-											e := e.Function
-											if e.Index != nil {
-												return Lvalue{IndexedExp: e}
-											} else {
-												e := e.Object
-												if e.Variable != nil {
-													return Lvalue{Variable: e.Variable}
+									if e.Right == nil {
+										e := e.Left
+										if e.PostfixExp != nil {
+											e := e.PostfixExp
+											if e.Calls == nil {
+												e := e.Function
+												if e.Index != nil {
+													return Lvalue{IndexedExp: e}
+												} else {
+													e := e.Object
+													if e.Variable != nil {
+														return Lvalue{Variable: e.Variable}
+													}
 												}
 											}
+
 										}
 									}
 								}
