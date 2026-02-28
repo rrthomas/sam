@@ -6,4 +6,7 @@ let double = fn(l) {
     i := i + 1
   }
 }
-double(0 >> [1, 2, 3] << 4)
+let res = double(0 >> [1, 2, 3] << 4)
+let a = <<< res
+let b = res >>> + 1
+[a, b]
