@@ -1,5 +1,5 @@
 Stack: XXXXXXXX (4 item(s))
-- int 0
+- null
 - stack XXXXXXXX (19 items)
   - trap NEW
   - trap NEW
@@ -8,7 +8,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 3
   - _two get append _two get append
   - stack XXXXXXXX (17 items)
-    - int 0
+    - null
     - int 0
     - get
     - int 0
@@ -63,32 +63,32 @@ Stack: XXXXXXXX (4 item(s))
 - halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
-int
+null
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
-- int 0
+- null
 blob
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- int 0
+- null
 - stack XXXXXXXX (19 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 trap NEW
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
 trap NEW
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -96,7 +96,7 @@ Working stack: (5 word(s))
 trap S0
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -105,7 +105,7 @@ Working stack: (6 word(s))
 _two
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -115,7 +115,7 @@ Working stack: (7 word(s))
 get
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -125,7 +125,7 @@ Working stack: (7 word(s))
 append
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -133,7 +133,7 @@ Working stack: (5 word(s))
 int
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -142,7 +142,7 @@ Working stack: (6 word(s))
 _two
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -152,7 +152,7 @@ Working stack: (7 word(s))
 get
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -162,7 +162,7 @@ Working stack: (7 word(s))
 append
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -170,7 +170,7 @@ Working stack: (5 word(s))
 _two
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -179,7 +179,7 @@ Working stack: (6 word(s))
 get
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (0 items)
@@ -188,14 +188,14 @@ Working stack: (6 word(s))
 append
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (1 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (1 items)
@@ -203,7 +203,7 @@ Working stack: (5 word(s))
 _two
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (1 items)
@@ -212,7 +212,7 @@ Working stack: (6 word(s))
 get
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (1 items)
@@ -221,14 +221,14 @@ Working stack: (6 word(s))
 append
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (2 items)
 trap QUOTE
 sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (2 items)
@@ -236,7 +236,7 @@ Working stack: (5 word(s))
 _two
 sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (2 items)
@@ -245,7 +245,7 @@ Working stack: (6 word(s))
 get
 sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (2 items)
@@ -254,14 +254,14 @@ Working stack: (6 word(s))
 append
 sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
 int
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
@@ -269,7 +269,7 @@ Working stack: (5 word(s))
 int
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
@@ -278,7 +278,7 @@ Working stack: (6 word(s))
 int
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
@@ -288,7 +288,7 @@ Working stack: (7 word(s))
 get
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
@@ -298,7 +298,7 @@ Working stack: (7 word(s))
 zero
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
@@ -309,7 +309,7 @@ Working stack: (8 word(s))
 trap NEW
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
@@ -350,7 +350,7 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-int
+null
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 5
@@ -358,7 +358,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -367,7 +367,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 get
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -377,7 +377,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -387,7 +387,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 5
 - int 0
 eq
@@ -398,7 +398,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -408,7 +408,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -418,7 +418,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 blob
@@ -429,7 +429,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 - stack XXXXXXXX (19 items)
@@ -441,7 +441,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 int
@@ -452,7 +452,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 0
@@ -464,7 +464,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -476,7 +476,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -489,7 +489,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -502,7 +502,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -516,7 +516,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -530,7 +530,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -543,7 +543,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -557,7 +557,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -572,7 +572,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -587,7 +587,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -603,7 +603,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -620,7 +620,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -637,7 +637,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -653,7 +653,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -670,7 +670,7 @@ Working stack: (15 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -688,7 +688,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -705,7 +705,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -721,7 +721,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -736,7 +736,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -752,7 +752,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -793,7 +793,7 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-int
+null
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 4
@@ -801,7 +801,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -810,7 +810,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 get
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -820,7 +820,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 4
 int
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -830,7 +830,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 4
 - int 0
 eq
@@ -841,7 +841,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -851,7 +851,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -861,7 +861,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 blob
@@ -872,7 +872,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 - stack XXXXXXXX (19 items)
@@ -884,7 +884,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 int
@@ -895,7 +895,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 0
@@ -907,7 +907,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -919,7 +919,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -932,7 +932,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -945,7 +945,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -959,7 +959,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -973,7 +973,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -986,7 +986,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1000,7 +1000,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1015,7 +1015,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1030,7 +1030,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1046,7 +1046,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1063,7 +1063,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1080,7 +1080,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1096,7 +1096,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1113,7 +1113,7 @@ Working stack: (15 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1131,7 +1131,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1148,7 +1148,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1164,7 +1164,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1179,7 +1179,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1195,7 +1195,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -1236,7 +1236,7 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-int
+null
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 3
@@ -1244,7 +1244,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1253,7 +1253,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 get
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -1263,7 +1263,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -1273,7 +1273,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 3
 - int 0
 eq
@@ -1284,7 +1284,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -1294,7 +1294,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -1304,7 +1304,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 blob
@@ -1315,7 +1315,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 - stack XXXXXXXX (19 items)
@@ -1327,7 +1327,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 int
@@ -1338,7 +1338,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 0
@@ -1350,7 +1350,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1362,7 +1362,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1375,7 +1375,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1388,7 +1388,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1402,7 +1402,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1416,7 +1416,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1429,7 +1429,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1443,7 +1443,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1458,7 +1458,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1473,7 +1473,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1489,7 +1489,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1506,7 +1506,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1523,7 +1523,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1539,7 +1539,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1556,7 +1556,7 @@ Working stack: (15 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1574,7 +1574,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1591,7 +1591,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1607,7 +1607,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1622,7 +1622,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1638,7 +1638,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -1679,7 +1679,7 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-int
+null
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 2
@@ -1687,7 +1687,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1696,7 +1696,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 get
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -1706,7 +1706,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 2
 int
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -1716,7 +1716,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 2
 - int 0
 eq
@@ -1727,7 +1727,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -1737,7 +1737,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -1747,7 +1747,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 blob
@@ -1758,7 +1758,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 - stack XXXXXXXX (19 items)
@@ -1770,7 +1770,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 int
@@ -1781,7 +1781,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 0
@@ -1793,7 +1793,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1805,7 +1805,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1818,7 +1818,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1831,7 +1831,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1845,7 +1845,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1859,7 +1859,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1872,7 +1872,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1886,7 +1886,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1901,7 +1901,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1916,7 +1916,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1932,7 +1932,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1949,7 +1949,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1966,7 +1966,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1982,7 +1982,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -1999,7 +1999,7 @@ Working stack: (15 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -2017,7 +2017,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -2034,7 +2034,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -2050,7 +2050,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -2065,7 +2065,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -2081,7 +2081,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -2122,7 +2122,7 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-int
+null
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 1
@@ -2130,7 +2130,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -2139,7 +2139,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 get
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -2149,7 +2149,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 1
 int
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -2159,7 +2159,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 1
 - int 0
 eq
@@ -2170,7 +2170,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -2180,7 +2180,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -2190,7 +2190,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 blob
@@ -2201,7 +2201,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - stack XXXXXXXX (3 items)
 - stack XXXXXXXX (19 items)
@@ -2213,7 +2213,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 int
@@ -2224,7 +2224,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 0
@@ -2236,7 +2236,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2248,7 +2248,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2261,7 +2261,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2274,7 +2274,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2288,7 +2288,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2302,7 +2302,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2315,7 +2315,7 @@ Working stack: (11 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2329,7 +2329,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2344,7 +2344,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2359,7 +2359,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2375,7 +2375,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2392,7 +2392,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2409,7 +2409,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2425,7 +2425,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2442,7 +2442,7 @@ Working stack: (15 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2460,7 +2460,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2477,7 +2477,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2493,7 +2493,7 @@ Working stack: (12 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2508,7 +2508,7 @@ Working stack: (13 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2524,7 +2524,7 @@ Working stack: (14 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2565,7 +2565,7 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-int
+null
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 0
@@ -2573,7 +2573,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -2582,7 +2582,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 get
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -2592,7 +2592,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 int
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -2602,7 +2602,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 0
 - int 0
 eq
@@ -2613,7 +2613,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int -1
 neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -2623,7 +2623,7 @@ Working stack: (7 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 1
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -2633,7 +2633,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 1
 - stack XXXXXXXX (3 items)
 blob
@@ -2644,7 +2644,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - int 1
 - stack XXXXXXXX (3 items)
 - stack XXXXXXXX (19 items)
@@ -2656,7 +2656,7 @@ Working stack: (8 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 int
@@ -2667,7 +2667,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2679,7 +2679,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2802,7 +2802,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2815,7 +2815,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2827,7 +2827,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 1
@@ -2950,7 +2950,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -2963,7 +2963,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -2975,7 +2975,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 2
@@ -3098,7 +3098,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 3
@@ -3111,7 +3111,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 6
@@ -3123,7 +3123,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 6
@@ -3246,7 +3246,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 4
@@ -3259,7 +3259,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 24
@@ -3271,7 +3271,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 16
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 24
@@ -3394,7 +3394,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 5
@@ -3407,7 +3407,7 @@ Working stack: (9 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 120
@@ -3419,7 +3419,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (19 items)
 - int 17
 - stack XXXXXXXX (2 items)
-- int 0
+- null
 - stack XXXXXXXX (17 items)
 - int 8
 - int 120
@@ -3537,7 +3537,7 @@ Working stack: (9 word(s))
 trap RET
 sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
@@ -3545,7 +3545,7 @@ Working stack: (5 word(s))
 int
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- int 0
+- null
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
