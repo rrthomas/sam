@@ -93,6 +93,7 @@ int sam_push_float(sam_blob_t *s, sam_float_t n);
 int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);
 int sam_push_trap(sam_blob_t *s, sam_uword_t function);
 int sam_push_insts(sam_blob_t *s, sam_uword_t insts);
+int sam_stack_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
 
 // Maps
 int sam_map_new(sam_blob_t **new_map);
@@ -102,7 +103,8 @@ int sam_map_set(sam_blob_t *blob, sam_word_t key, sam_word_t val);
 int sam_map_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
 
 // Iterators
-int sam_iter_next(sam_iter_t *i, sam_word_t *key, sam_word_t *val);
+int sam_iter_next(sam_iter_t *i, sam_word_t *val);
+int sam_int_iter_new(sam_uword_t n, sam_blob_t **new_iter);
 
 // Top-level states
 sam_state_t *sam_state_new(void);

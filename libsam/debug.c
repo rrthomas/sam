@@ -225,9 +225,10 @@ static sam_blob_list_t *disas_map(sam_blob_list_t *l, sam_uword_t level, sam_blo
     XEXTRACT_BLOB(iter_blob, SAM_BLOB_ITER, sam_iter_t, i);
     for (;;) {
         sam_word_t key, val;
-        assert(i->next(i, &key, &val) == SAM_ERROR_OK);
+        assert(i->next(i, &key) == SAM_ERROR_OK);
         if (key == SAM_VALUE_NULL)
             break;
+        assert(sam_map_get(blob, key, &val) == SAM_ERROR_OK);
         l = disas_word(l, level, key, text);
         l = disas_word(l, level + 1, val, text);
     }

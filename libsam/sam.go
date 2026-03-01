@@ -395,7 +395,7 @@ var TrapStackEffect = map[string]StackEffect{
 	"RSH":     {2, 1},
 	"ARSH":    {2, 1},
 	"ITER":    {1, 1},
-	"NEXT":    {1, 2},
+	"NEXT":    {1, 1},
 	"NEW_MAP": {0, 1},
 	"DEBUG":   {1, 0},
 

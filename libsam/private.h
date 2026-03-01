@@ -24,7 +24,8 @@ typedef struct sam_stack {
 
 typedef struct sam_iter {
     sam_word_t tag;
-    int (*next)(sam_iter_t *i, sam_word_t *key, sam_word_t *val);
+    sam_blob_t *blob;
+    int (*next)(sam_iter_t *i, sam_word_t *val);
     union {
         sam_word_t word_state;
         void *ptr_state;

@@ -149,9 +149,12 @@ type LogicExp struct {
 type Expression struct {
 	Pos lexer.Position
 
-	If         *If       `  @@`
-	Loop       *Block    `| "loop" @@`
-	Expression *LogicExp `| @@`
+	If         *If         `  @@`
+	Loop       *Block      `| "loop" @@`
+	ForVar     string      `| "for" @Ident "in"`
+	Iter       *Expression `  @@`
+	For        *Block      `  @@`
+	Expression *LogicExp   `| @@`
 }
 
 type If struct {
@@ -256,8 +259,8 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	} else if e.Variable != nil {
 		ctx.compileGetVar(*e.Variable)
 	} else if e.Block != nil {
-		ctx.assemble("int 0") // value of block
-		ctx.assemble(ctx.assembleBlock(e.Block).asm)
+		ctx.assemble("null") // value of block
+		ctx.assemble(ctx.assembleBlock(e.Block, false).asm)
 		ctx.assemble("do")
 	} else if e.Function != nil {
 		e.Function.Compile(ctx)
@@ -480,19 +483,31 @@ func (e *Expression) Compile(ctx *Frame) {
 	if e.If != nil {
 		e.If.Compile(ctx)
 	} else if e.Loop != nil {
-		ctx.assemble("int 0")
+		ctx.assemble("null")
 		blockCtx := e.Loop.Compile(ctx, true)
-		for range blockCtx.sp - blockCtx.baseSp {
-			blockCtx.assemble("drop")
-		}
-		blockCtx.assemble(fmt.Sprintf("blob %s", blockCtx.label))
-		blockCtx.assembleSingle("go")
-		// Add loop label to start of block
-		if len(blockCtx.asm) > 0 {
-			blockCtx.asm[0] = map[string]any{blockCtx.label: blockCtx.asm[0]}
-		}
-		ctx.assemble(blockCtx.asm)
-		ctx.assemble("do")
+		ctx.assembleLoop(&blockCtx)
+	} else if e.ForVar != "" {
+		// Initialize iterator
+		ctx.locals = append(ctx.locals, Local{id: "$iter", pos: int(ctx.sp)})
+		e.Iter.Compile(ctx)
+		ctx.assembleTrap("iter")
+		// Loop body
+		ctx.assemble("null")
+		blockCtx := ctx.newBlock(true)
+		// Call iterator and test for termination
+		blockCtx.locals = append(blockCtx.locals, Local{id: e.ForVar, pos: int(blockCtx.sp)})
+		blockCtx.compileGetVar("$iter")
+		blockCtx.assembleTrap("next")
+		blockCtx.assemble("null") // return value
+		thenCtx := blockCtx.newBlock(false)
+		thenCtx.assembleBreak()
+		elseCtx := blockCtx.assembleBlock(e.For, false)
+		blockCtx.assemble("_two", "get", "null", "eq")
+		blockCtx.assemble(thenCtx.asm)
+		blockCtx.assemble(elseCtx.asm)
+		blockCtx.assemble("if")
+		// Complete the loop body and add to the current context
+		ctx.assembleLoop(&blockCtx)
 	} else if e.Expression != nil {
 		e.Expression.Compile(ctx)
 	} else {
@@ -501,11 +516,11 @@ func (e *Expression) Compile(ctx *Frame) {
 }
 
 func (i *If) Compile(ctx *Frame) {
-	ctx.assemble("int 0") // return value
-	thenCtx := ctx.assembleBlock(i.Then)
+	ctx.assemble("null") // return value
+	thenCtx := ctx.assembleBlock(i.Then, false)
 	elseCtx := Frame{}
 	if i.Else != nil {
-		elseCtx = ctx.assembleBlock(i.Else)
+		elseCtx = ctx.assembleBlock(i.Else, false)
 	}
 	i.Cond.Compile(ctx)
 	ctx.assemble(thenCtx.asm)
@@ -546,7 +561,7 @@ func (t *Trap) Compile(ctx *Frame) {
 	ctx.assembleTrap(*t.Function)
 	// If the trap returns no values, return a dummy value
 	if stackEffect.Out == 0 {
-		ctx.assemble("int 0")
+		ctx.assemble("null")
 	}
 }
 
@@ -577,14 +592,10 @@ func (t *Terminator) Compile(ctx *Frame) {
 		if t.BreakExp != nil {
 			t.BreakExp.Compile(ctx)
 		} else {
-			ctx.assemble("zero")
+			ctx.assemble("null")
 		}
 		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+3)), "set")
-		// Drop items down to loop start
-		for range ctx.sp - ctx.loop.baseSp {
-			ctx.assemble("drop")
-		}
-		ctx.assemble("zero", "while")
+		ctx.assembleBreak()
 	} else if t.Continue {
 		if ctx.loop == nil {
 			panic("'continue' used outside a loop")
@@ -620,21 +631,7 @@ func (b *Body) Compile(ctx *Frame) {
 }
 
 func (b *Block) Compile(ctx *Frame, loop bool) Frame {
-	baseSp := libsam.Word(int(ctx.sp) + 2)
-	blockCtx := Frame{
-		parent:   ctx.parent,
-		label:    newLabel(),
-		locals:   slices.Clone(ctx.locals),
-		captures: ctx.captures,
-		asm:      make([]any, 0),
-		baseSp:   baseSp,
-		sp:       baseSp,
-		nargs:    ctx.nargs,
-		loop:     ctx.loop,
-	}
-	if loop {
-		blockCtx.loop = &blockCtx
-	}
+	blockCtx := ctx.newBlock(loop)
 	b.Body.Compile(&blockCtx)
 	return blockCtx
 }
@@ -932,12 +929,53 @@ func (ctx *Frame) assembleTrap(function string) {
 	ctx.adjustSp(int(stackEffect.Out) - int(stackEffect.In))
 }
 
-func (ctx *Frame) assembleBlock(b *Block) Frame {
-	blockCtx := b.Compile(ctx, false)
+func (ctx *Frame) assembleBreak() {
+	// Drop items down to loop start
+	for range ctx.sp - ctx.loop.baseSp {
+		ctx.assemble("drop")
+	}
+	ctx.assemble("zero", "while")
+}
+
+func (ctx *Frame) newBlock(loop bool) Frame {
+	baseSp := libsam.Word(int(ctx.sp) + 2)
+	blockCtx := Frame{
+		parent:   ctx.parent,
+		label:    newLabel(),
+		locals:   slices.Clone(ctx.locals),
+		captures: ctx.captures,
+		asm:      make([]any, 0),
+		baseSp:   baseSp,
+		sp:       baseSp,
+		nargs:    ctx.nargs,
+		loop:     ctx.loop,
+	}
+	if loop {
+		blockCtx.loop = &blockCtx
+	}
+	return blockCtx
+}
+
+func (ctx *Frame) assembleBlock(b *Block, loop bool) Frame {
+	blockCtx := b.Compile(ctx, loop)
 	if b.Body.Terminator == nil {
 		blockCtx.tearDownBlock()
 	}
 	return blockCtx
+}
+
+func (ctx *Frame) assembleLoop(bodyCtx *Frame) {
+	for range bodyCtx.sp - bodyCtx.baseSp {
+		bodyCtx.assemble("drop")
+	}
+	bodyCtx.assemble(fmt.Sprintf("blob %s", bodyCtx.label))
+	bodyCtx.assembleSingle("go")
+	// Add loop label to start of block
+	if len(bodyCtx.asm) > 0 {
+		bodyCtx.asm[0] = map[string]any{bodyCtx.label: bodyCtx.asm[0]}
+	}
+	ctx.assemble(bodyCtx.asm)
+	ctx.assemble("do")
 }
 
 func Sal(src string, ast bool, asm bool) []byte {
@@ -956,8 +994,8 @@ func Sal(src string, ast bool, asm bool) []byte {
 	block := Block{Pos: body.Pos, Body: body}
 	captures := make([]Capture, 0)
 	ctx := Frame{locals: make([]Local, 0), captures: &captures, asm: make([]any, 0)}
-	ctx.assemble("int 0") // value of top level
-	blockCtx := ctx.assembleBlock(&block)
+	ctx.assemble("null") // value of top level
+	blockCtx := ctx.assembleBlock(&block, false)
 	ctx.assemble(blockCtx.asm)
 	ctx.assemble("do", "halt")
 

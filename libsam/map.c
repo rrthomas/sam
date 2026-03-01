@@ -25,19 +25,6 @@ typedef _sam_map sam_map_t;
 typedef _sam_map_itr sam_map_iter_t;
 
 
-static int sam_map_iter_next(sam_iter_t *i, sam_word_t *key, sam_word_t *val)
-{
-    _sam_map_itr *itr = (_sam_map_itr *)i->iter.ptr_state;
-    if (vt_is_end(*itr)) {
-        *key = *val = (SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG;
-    } else {
-        *key = itr->data->key;
-        *val = itr->data->val;
-        *itr = vt_next(*itr);
-    }
-    return SAM_ERROR_OK;
-}
-
 int sam_map_new(sam_blob_t **new_map)
 {
     sam_word_t error = SAM_ERROR_OK;
@@ -56,18 +43,12 @@ int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map)
 {
     int error = SAM_ERROR_OK;
     HALT_IF_ERROR(sam_map_new(new_map));
+    sam_map_t *m;
+    EXTRACT_BLOB(map, SAM_BLOB_MAP, sam_map_t, m);
 
     // Copy the contents of the map.
-    sam_blob_t *iter_blob;
-    HALT_IF_ERROR(sam_map_iter_new(map, &iter_blob));
-    sam_iter_t *i;
-    EXTRACT_BLOB(iter_blob, SAM_BLOB_ITER, sam_iter_t, i);
-    for (;;) {
-        sam_word_t key, val;
-        HALT_IF_ERROR(sam_map_iter_next(i, &key, &val));
-        if (val == ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG))
-            break;
-        HALT_IF_ERROR(sam_map_set(*new_map, key, val));
+    for (_sam_map_itr itr = vt_first(m); !vt_is_end(itr); itr = vt_next(itr)) {
+        HALT_IF_ERROR(sam_map_set(*new_map, itr.data->key, itr.data->val));
     }
 
  error:
@@ -109,17 +90,16 @@ error:
 int sam_map_iter_new(sam_blob_t *blob, sam_blob_t **new_iter)
 {
     sam_word_t error = SAM_ERROR_OK;
+
+    // Enumerate map's keys into a stack
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
-    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_ITER, sizeof(sam_iter_t), new_iter));
-    sam_iter_t *i;
-    EXTRACT_BLOB(*new_iter, SAM_BLOB_ITER, sam_iter_t, i);
-    i->tag = SAM_BLOB_TAG | (SAM_BLOB_MAP << SAM_BLOB_SHIFT);
-    i->next = sam_map_iter_next;
-    i->iter.ptr_state = malloc(sizeof(_sam_map_itr));
-    if (i->iter.ptr_state == NULL)
-        HALT(SAM_ERROR_NO_MEMORY);
-    *(_sam_map_itr *)(i->iter.ptr_state) = vt_first(m);
+    sam_blob_t *keys;
+    HALT_IF_ERROR(sam_stack_new(&keys));
+    for (_sam_map_itr itr = vt_first(m); !vt_is_end(itr); itr = vt_next(itr))
+        sam_stack_push(keys, itr.data->key);
+
+    HALT_IF_ERROR(sam_stack_iter_new(keys, new_iter));
 
 error:
     return error;

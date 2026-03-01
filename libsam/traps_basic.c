@@ -31,7 +31,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
 #define s ((sam_stack_t *)state->s0->data)
     sam_word_t error = SAM_ERROR_OK;
     CHECK_BLOB(state->s0, SAM_BLOB_STACK);
-    
+
     switch (function) {
     case TRAP_BASIC_S0:
         HALT_IF_ERROR(sam_push_ref(state->s0, state->s0));
@@ -142,14 +142,24 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             POP_WORD(&opcode);
 
             if ((opcode & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
-                HALT(SAM_ERROR_WRONG_TYPE);
-                // FIXME
+                {
+                    sam_uword_t n = opcode >> SAM_INT_SHIFT;
+                    sam_blob_t *iter;
+                    HALT_IF_ERROR(sam_int_iter_new(n, &iter));
+                    PUSH_REF(iter);
+                }
+                break;
             } else if ((opcode & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
                 sam_word_t atom_type = (opcode & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT;
                 switch (atom_type) {
                 case SAM_ATOM_NULL:
-                    HALT(SAM_ERROR_WRONG_TYPE);
-                    // FIXME: create empty iterator
+                    {
+                        sam_blob_t *blob, *iter;
+                        HALT_IF_ERROR(sam_stack_new(&blob));
+                        // Iterator over empty list
+                        HALT_IF_ERROR(sam_stack_iter_new(blob, &iter));
+                        PUSH_REF(iter);
+                    }
                     break;
                 default:
                     HALT(SAM_ERROR_INVALID_ATOM_TYPE);
@@ -159,8 +169,11 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 sam_blob_t *blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
                 switch (blob->type) {
                     case SAM_BLOB_STACK:
-                        HALT(SAM_ERROR_WRONG_TYPE);
-                        // FIXME
+                        {
+                            sam_blob_t *iter;
+                            HALT_IF_ERROR(sam_stack_iter_new(blob, &iter));
+                            PUSH_REF(iter);
+                        }
                         break;
                     case SAM_BLOB_MAP:
                         {
@@ -181,11 +194,10 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         {
             sam_blob_t *blob;
             POP_REF(blob);
-            sam_word_t key, val;
+            sam_word_t val;
             sam_iter_t *iter;
             EXTRACT_BLOB(blob, SAM_BLOB_ITER, sam_iter_t, iter);
-            iter->next(iter, &key, &val);
-            PUSH_WORD(key);
+            iter->next(iter, &val);
             PUSH_WORD(val);
         }
         break;

@@ -35,7 +35,6 @@
   - loop: int -3
   - get
   - trap next
-  - drop
   - null
   - eq
   - not

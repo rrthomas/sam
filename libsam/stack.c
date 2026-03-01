@@ -242,3 +242,35 @@ int sam_push_insts(sam_blob_t *blob, sam_uword_t insts)
     // FIXME: error if too many bits
     return sam_stack_push(blob, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
 }
+
+static int iter_next(sam_iter_t *i, sam_word_t *val)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    sam_uword_t pos = (sam_uword_t)i->iter.word_state;
+    sam_stack_t *s;
+    EXTRACT_BLOB(i->blob, SAM_BLOB_STACK, sam_stack_t, s);
+    if (pos == s->sp) {
+        *val = SAM_VALUE_NULL;
+    } else {
+        *val = s->data[pos];
+        i->iter.word_state++;
+    }
+
+error:
+    return error;
+}
+
+int sam_stack_iter_new(sam_blob_t *blob, sam_blob_t **new_iter)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_ITER, sizeof(sam_iter_t), new_iter));
+    sam_iter_t *i;
+    EXTRACT_BLOB(*new_iter, SAM_BLOB_ITER, sam_iter_t, i);
+    i->tag = SAM_BLOB_TAG | (SAM_BLOB_MAP << SAM_BLOB_SHIFT);
+    i->blob = blob;
+    i->next = iter_next;
+    i->iter.word_state = 0;
+
+error:
+    return error;
+}
