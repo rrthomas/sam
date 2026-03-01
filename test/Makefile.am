@@ -23,11 +23,11 @@ TESTS = \
 	stack.yaml \
 	double_list.sal \
 	expr.sal \
-	graphics.sal \
 	factorial_iter.sal \
 	factorial_rec.sal \
 	mutated_capture.sal \
 	repeated_closure.sal \
+	screen_graphics.sal \
 	sum_evens.sal \
 	two_double_closures.sal \
 	two_closures.sal \
@@ -50,11 +50,12 @@ RESULTS = \
 	set.yaml-expected.log \
 	double_list.sal-expected.log \
 	expr.sal-expected.log \
-	graphics.sal-expected.log \
 	factorial_iter.sal-expected.log \
 	factorial_rec.sal-expected.log \
 	mutated_capture.sal-expected.log \
 	repeated_closure.sal-expected.log \
+	screen_graphics.sal-expected.log \
+	screen_graphics.sal-expected.pbm \
 	sum_evens.sal-expected.log \
 	two_double_closures.sal-expected.log \
 	two_closures.sal-expected.log \
