@@ -130,8 +130,17 @@ sam_word_t sam_run(sam_state_t *state)
 #endif
             PUSH_WORD(ir);
         } else if ((ir & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
-            // No atoms yet.
-            switch ((ir & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {}
+            sam_word_t atom_type = (ir & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT;
+            switch (atom_type) {
+            case SAM_ATOM_NULL:
+#ifdef SAM_DEBUG
+                debug("null\n");
+#endif
+                PUSH_WORD(ir);
+                break;
+            default:
+                HALT(SAM_ERROR_INVALID_ATOM_TYPE);
+            }
         } else if ((ir & SAM_TRAP_TAG_MASK) == SAM_TRAP_TAG) {
             sam_uword_t function = ir >> SAM_TRAP_FUNCTION_SHIFT;
 #ifdef SAM_DEBUG

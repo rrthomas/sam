@@ -165,7 +165,20 @@ func (a *assembler) assembleInstruction(tokens ...string) {
 		if len(tokens) > 1 {
 			panic(fmt.Errorf("unexpected operand for %s", instStr))
 		}
-		a.addInstruction(opcode)
+
+		switch opcode.Tag {
+		case libsam.ATOM_TAG:
+			switch opcode.Opcode {
+			case libsam.ATOM_NULL:
+				a.stack.PushAtom(libsam.ATOM_NULL, 0)
+			default:
+				panic(fmt.Errorf("invalid atom type %d", opcode.Opcode))
+			}
+		case libsam.INSTS_TAG:
+			a.addInstruction(opcode)
+		default:
+			panic(fmt.Errorf("unknown tag %d", opcode.Tag))
+		}
 	}
 }
 
@@ -195,6 +208,9 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			panic(errors.New("empty instruction"))
 		}
 		a.assembleInstruction(tokens...)
+		return nil
+	case ast.NullType: // Special case for "null"
+		a.assembleInstruction("null")
 		return nil
 	case ast.MappingType:
 		mapn := n.(*ast.MappingNode)

@@ -189,6 +189,10 @@ const (
 )
 
 const (
+	ATOM_NULL = C.SAM_ATOM_NULL
+)
+
+const (
 	ARRAY_STACK = C.SAM_ARRAY_STACK
 	ARRAY_RAW   = C.SAM_ARRAY_RAW
 )
@@ -239,6 +243,9 @@ var Instructions = map[string]InstOpcode{
 	"int":   {C.SAM_INT_TAG, 0, true},
 	"float": {C.SAM_FLOAT_TAG, 0, true},
 	"trap":  {C.SAM_TRAP_TAG, 0, true},
+
+	// Atoms
+	"null": {C.SAM_ATOM_TAG, C.SAM_ATOM_NULL, true},
 
 	// Instructions
 	"nop":     {C.SAM_INSTS_TAG, C.INST_NOP, false},

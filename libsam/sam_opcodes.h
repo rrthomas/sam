@@ -1,6 +1,6 @@
 /* Sam instruction set description.
 
-   (c) Reuben Thomas 1994-2025
+   (c) Reuben Thomas 1994-2026
 
    The package is distributed under the GNU Public License version 3, or,
    at your option, any later version.
@@ -43,6 +43,11 @@ extern const int SAM_INST_SHIFT;
 extern const sam_word_t SAM_TRAP_BASE_MASK;
 
 // Every word in a stack is tagged.
+
+// Atom types (4 bits)
+enum SAM_ATOM_TYPE {
+  SAM_ATOM_NULL,
+};
 
 // Arrays are stored as: ARRAY instruction (operand is positive number of
 // words to final ARRAY), a number of words, ARRAY (operand is negative

@@ -1,4 +1,6 @@
-Stack: XXXXXXXX (7 item(s))
+Stack: XXXXXXXX (9 item(s))
+- null
+- pop
 - int 21
 - int 2
 - mul
@@ -8,40 +10,47 @@ Stack: XXXXXXXX (7 item(s))
 - div halt
 sam_run: pc0 = XXXXXXXX, pc = 0, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
-int
+null
 sam_run: pc0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- null
+pop
+sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
+Working stack: (0 word(s))
+int
+sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 21
 int
-sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 21
 - int 2
 mul
-sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 42
 int
-sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 42
 - int 3
 neg
-sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 42
 - int -3
 add
-sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 39
 int
-sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 39
 - int -3
 div
-sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int -13
 halt

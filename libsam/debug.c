@@ -241,8 +241,15 @@ char *disas(sam_word_t inst)
         sam_uword_t operand = inst >> SAM_FLOAT_SHIFT;
         xasprintf(&text, "float %f", *(sam_float_t *)&operand);
     } else if ((inst & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
-        // No atoms yet.
-        switch ((inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT) {}
+        sam_word_t atom_type = (inst & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT;
+        switch (atom_type) {
+        case SAM_ATOM_NULL:
+            xasprintf(&text, "null");
+            break;
+        default:
+            xasprintf(&text, "invalid atom type %d", atom_type);
+            break;
+        }
     } else if ((inst & SAM_TRAP_TAG_MASK) == SAM_TRAP_TAG) {
         sam_uword_t function = inst >> SAM_TRAP_FUNCTION_SHIFT;
         xasprintf(&text, "trap %s", trap_name(function));
