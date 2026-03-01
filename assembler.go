@@ -155,11 +155,11 @@ func (a *assembler) assembleInstruction(tokens ...string) {
 			}
 			a.stack.PushTrap(libsam.Uword(trap))
 		case libsam.FLOAT_TAG:
-			float, err := strconv.ParseFloat(operandStr, 32)
+			float, err := strconv.ParseFloat(operandStr, 64)
 			if err != nil {
 				panic(fmt.Errorf("bad float %s", operandStr))
 			}
-			a.stack.PushFloat(float32(float))
+			a.stack.PushFloat(float64(float))
 		}
 	} else {
 		if len(tokens) > 1 {

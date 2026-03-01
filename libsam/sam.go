@@ -108,7 +108,7 @@ func (s *Stack) PushInt(val Uword) int {
 	return int(C.sam_push_int(s.stack, val))
 }
 
-func (s *Stack) PushFloat(f float32) int {
+func (s *Stack) PushFloat(f float64) int {
 	return int(C.sam_push_float(s.stack, C.sam_float_t(f)))
 }
 
