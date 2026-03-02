@@ -1,4 +1,4 @@
-// Manipulate the stack.
+// SAM stacks.
 //
 // (c) Reuben Thomas 1994-2026
 //
