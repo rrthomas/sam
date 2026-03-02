@@ -23,7 +23,13 @@
 #include "traps_math.h"
 #include "traps_graphics.h"
 
-bool do_debug = false;
+#define XEXTRACT_BLOB(blob, type_code, blob_type, var)  \
+    do {                                                \
+        assert(blob->type == type_code);                \
+        var = (blob_type *)(&(blob->data));             \
+    } while (0)
+
+    bool do_debug = false;
 
 void debug(const char *fmt, ...)
 {
@@ -195,15 +201,16 @@ static bool already_visited(sam_stack_list_t *l, sam_stack_t *s)
     return false;
 }
 
-static sam_stack_list_t *disas_stack(sam_stack_list_t *l, sam_uword_t level, sam_stack_t *s, sam_uword_t from, sam_uword_t to, char **text)
+static sam_stack_list_t *disas_stack(sam_stack_list_t *l, sam_uword_t level, sam_blob_t *blob, sam_uword_t from, sam_uword_t to, char **text)
 {
     xasprintf(text, "");
     for (sam_uword_t i = from; i < to; i++) {
         sam_uword_t opcode;
-        assert(sam_stack_peek(s, i, &opcode) == SAM_ERROR_OK);
-        if ((opcode & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
-            sam_uword_t *addr = (sam_uword_t *)(opcode & ~SAM_STACK_TAG_MASK);
-            sam_stack_t *inner_s = (sam_stack_t *)addr;
+        assert(sam_stack_peek(blob, i, &opcode) == SAM_ERROR_OK);
+        if ((opcode & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
+            sam_blob_t *inner_blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
+            sam_stack_t *inner_s;
+            XEXTRACT_BLOB(inner_blob, SAM_BLOB_STACK, sam_stack_t, inner_s);
             if (l == NULL || already_visited(l, inner_s)) {
                 char *stack_str;
                 xasprintf(&stack_str, "stack %p (%u items)", inner_s, inner_s->sp);
@@ -217,12 +224,12 @@ static sam_stack_list_t *disas_stack(sam_stack_list_t *l, sam_uword_t level, sam
                 free(count_str);
                 l = list_append(l, inner_s);
                 char *stack_str;
-                l = disas_stack(l, level + 1, inner_s, 0, inner_s->sp, &stack_str);
+                l = disas_stack(l, level + 1, inner_blob, 0, inner_s->sp, &stack_str);
                 xstrcat(text, stack_str);
             }
         } else {
             sam_word_t inst;
-            assert(sam_stack_peek(s, i, (sam_uword_t *)&inst) == SAM_ERROR_OK);
+            assert(sam_stack_peek(blob, i, (sam_uword_t *)&inst) == SAM_ERROR_OK);
             char *inst_str = disas(inst);
             char *line = indent(level, inst_str);
             free(inst_str);
@@ -263,32 +270,38 @@ char *disas(sam_word_t inst)
                 xasprintf(&text, "%s %s", text, inst_name(opcode));
             opcodes >>= SAM_INST_SHIFT;
         } while (opcodes != 0);
-    } else if ((inst & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
-        sam_stack_t *s = (sam_stack_t *)(inst & ~SAM_STACK_TAG_MASK);
+    } else if ((inst & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
+        sam_blob_t *blob = (sam_blob_t *)(inst & ~SAM_BLOB_TAG_MASK);
+        sam_stack_t *s;
+        XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
         sam_stack_list_t *l = list_append(NULL, s);
-        free(disas_stack(l, 0, s, 0, s->sp, &text));
+        free(disas_stack(l, 0, blob, 0, s->sp, &text));
     } else {
         abort(); // The cases are exhaustive.
     }
     return text;
 }
 
-void sam_print_stack(sam_stack_t *s)
+void sam_print_stack(sam_blob_t *blob)
 {
-    debug("Stack: %p (%u item(s))\n", s, s->sp);
+    sam_stack_t *s;
+    XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
+    debug("Stack: %p (%u item(s))\n", blob, s->sp);
     sam_stack_list_t *l = list_append(NULL, s);
     char *text;
-    l = disas_stack(l, 0, s, 0, s->sp, &text);
+    l = disas_stack(l, 0, blob, 0, s->sp, &text);
     debug("%s", text);
     free(text);
     free_list(l);
 }
 
-void sam_print_working_stack(sam_stack_t *s)
+void sam_print_working_stack(sam_blob_t *blob)
 {
+    sam_stack_t *s;
+    XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     debug("Working stack: (%u word(s))\n", s->sp);
     char *text;
-    disas_stack(NULL, 0, s, 0, s->sp, &text);
+    disas_stack(NULL, 0, blob, 0, s->sp, &text);
     debug("%s", text);
     free(text);
 }

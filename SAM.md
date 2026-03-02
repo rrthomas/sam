@@ -12,7 +12,7 @@ SAM is self-contained, and performs I/O via the `TRAP` instruction, which provid
 
 ## Architecture
 
-SAM is a stack-based VM. Its memory is a single stack of items, each of which is a word-sized VM instruction. It has no other memory. It has a handful of registers.
+SAM is a stack-based VM. Its memory is a single stack of items, each of which is a word-sized VM instruction, or a reference to a stack or other blob. It has no other memory. It has a handful of registers.
 
 
 ### Registers
@@ -66,9 +66,9 @@ The following table lists the errors and the conditions under which they are rai
 | `OK` | No error (returned by `HALT`). |
 | `INVALID_OPCODE` | An attempt was made to execute an invalid opcode. |
 | `INVALID_ADDRESS` | Invalid address. |
-| `STACK_UNDERFLOW` | The stack has underflowed, that is, an attempt was made to pop when it was empty. |
-| `STACK_OVERFLOW` | An attempt was made to access beyond the current top of the given stack. |
-| `WRONG_TYPE` | A stack item is not of the type expected. |
+| `STACK_UNDERFLOW` | An attempt was made to access beyond the bottom of the given stack. |
+| `STACK_OVERFLOW` | An attempt was made to access beyond the top of the given stack. |
+| `WRONG_TYPE` | A stack item’s type is incorrect for the current operation. |
 | `INVALID_TRAP` | An invalid function number was given to `TRAP`. |
 
 
@@ -91,7 +91,9 @@ The instruction set is listed below, with the instructions grouped according to 
 | `i`    | a signed integer |
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
-| `r`    | a reference (pointer to a bracket) |
+| `a`    | an atom |
+| `r`    | a reference (pointer to a blob) |
+| `s`    | a reference to a stack |
 | `x`    | an unspecified item |
 
 See the section “Machine code format” below for more details of binary representation.
@@ -101,8 +103,6 @@ Each type may be suffixed by a number in stack pictures; if the same combination
 Integers are represented as twos-complement as part of an `INT` instruction.
 
 Floats are IEEE floats (64-bit on an 8-byte word VM, or 32-bit on a 4-byte VM) with the bottom bit cleared (this bit denotes the `FLOAT` instruction). No rounding is performed on the result of arithmetic operations.
-
-A bracket is encoded as a `STACK` instruction pointing to a list of instructions, ending with a `DONE` instruction.
 
 
 ### Do nothing
@@ -121,7 +121,7 @@ These instructions encode literal values.
 > `INT`  
 > → `i`
 >
-> Push `OP` on to the stack.
+> Push the integer encoded in the `INT` instruction on to the stack. Increment `PC`.
 
 > `FLOAT`  
 > → `f`
@@ -149,17 +149,17 @@ Numeric conversions:
 These instructions manage stacks.
 
 > `S0`  
-> → `r`
+> → `s`
 >
 > Push a reference to `S0` to the current stack.
 
 > `SIZE`  
-> `r` -> `i`
+> `s` -> `i`
 >
-> Pop `r`, and push the number of items in that stack to the current stack.
+> Pop `s`, and push the number of items in that stack to the current stack.
 
 > `NEW`  
-> → `r`
+> → `s`
 >
 > Create an empty stack and push a reference to it to the current stack.
 
@@ -189,34 +189,34 @@ These instructions manage stacks.
 > Pop `i` from the top of the stack. Move the top stack item to position `i`.
 
 > `IGET`  
-> `i` `r` → `x`
+> `i` `s` → `x`
 >
-> Push the `i`th item of the stack pointed to by `r` to the stack.
+> Push the `i`th item of the stack pointed to by `s` to the stack.
 
 > `ISET`  
-> `x` `i` `r` →
+> `x` `i` `s` →
 >
-> Set the `i`th item of the stack pointed to by `r` to `x`.
+> Set the `i`th item of the stack pointed to by `s` to `x`.
 
 > `IPOP`  
-> `r` → `x`
+> `s` → `x`
 >
-> Pop `x` from the stack pointed to by `r`.
+> Pop `x` from the stack pointed to by `s`.
 
 > `ISHIFT`
-> `r` → `x`
+> `s` → `x`
 >
-> Remove the first element from the stack pointed to by `r` and push it to the current stack.
+> Remove the first element from the stack pointed to by `s` and push it to the current stack.
 
 > `APPEND`  
-> `x` `r` →
+> `x` `s` →
 >
-> Push `x` to the stack pointed to by `r`.
+> Push `x` to the stack pointed to by `s`.
 
 > `PREPEND`  
-> `x` `r` →
+> `x` `s` →
 >
-> Prepend `x` to the array pointed to by `r`.
+> Prepend `x` to the array pointed to by `s`.
 
 > `QUOTE`  
 > → `x`
@@ -228,40 +228,40 @@ These instructions manage stacks.
 
 These instructions implement branches, conditions and subroutine calls.
 
-> `STACK`  
+> `BLOB`  
 > → `r`
 >
 > Push `IR` on to the stack.
 
 > `GO`  
-> `r` →
+> `s` →
 > 
-> Pop `r`. Set `PC` to the address of the first item of the bracket pointed to by `r`.
+> Pop `s`. Set `PC` to the address of the first item of the stack pointed to by `s`.
 
 > `DO`  
-> `r₁` → `r₂` `i`
+> `s₁` → `s₂` `i`
 >
-> Pop `r₁`. Push `PC0` to the stack as a reference and `PC` as an integer, and set `PC0` to `r₁` and `PC` to 0.
+> Pop `s₁`. Push `PC0` to the stack as a reference and `PC` as an integer, and set `PC0` to `s₁` and `PC` to 0.
 
 > `DONE`  
-> `r` `i` →
+> `s` `i` →
 >
-> Pop `i` into `PC` and `r` into `PC0`.
+> Pop `i` into `PC` and `s` into `PC0`.
 
 > `CALL`  
-> `x₁`…`xₙ` `i₁` `r₁` `i₂` `r₂` →
+> `x₁`…`xₙ` `i₁` `s₁` `i₂` `s₂` →
 >
-> Pop `i₁`, `r₁`, `i₂` and `r₂`. Pop `i₁` stack items, and push them to the stack given by `r₂`, in order from `x₁` to `xₙ`. Push `PC0`, `PC` and `S0` to the stack given by `r₂`. Set `S0` to `r₂`, `PC0` to `r₁` and `PC` to `i₂`.
+> Pop `i₁`, `s₁`, `i₂` and `s₂`. Pop `i₁` stack items, and push them to the stack given by `s₂`, in order from `x₁` to `xₙ`. Push `PC0`, `PC` and `S0` to the stack given by `s₂`. Set `S0` to `s₂`, `PC0` to `s₁` and `PC` to `i₂`.
 
 > `RET`  
-> `r₁` `r₂` `i` `x` →
+> `s₁` `s₂` `i` `x` →
 >
-> Pop `x`, `i`, `r₂` and `r₁`. Set `PC0` to `r₂`, `PC` to `i`, and `S0` to `r₁`. Push `x` to the stack.
+> Pop `x`, `i`, `s₂` and `s₁`. Set `PC0` to `s₂`, `PC` to `i`, and `S0` to `s₁`. Push `x` to the stack.
 
 > `IF`  
-> `i` `r₁` `r₂` → `p`
+> `i` `s₁` `s₂` → `p`
 >
-> Pop `r₁` and `r₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `r₁`, otherwise on `r₂`.
+> Pop `s₁` and `s₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `s₁`, otherwise on `s₂`.
 
 > `WHILE`  
 > `i` →
@@ -395,7 +395,7 @@ The encoding achieves the following aims:
 
 + Allow pointers to address the entire address space
 + As much precision as possible for floats & integers
-+ Some expansion ability for new atom & bracket types
++ Some expansion ability for new atom & blob types
 + Compact instruction encoding
 
 #### 64-bit encoding

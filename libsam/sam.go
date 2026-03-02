@@ -25,9 +25,9 @@ var FLOAT_SHIFT = C.SAM_FLOAT_SHIFT
 var INT_TAG = C.SAM_INT_TAG
 var INT_TAG_MASK = C.SAM_INT_TAG_MASK
 var INT_SHIFT = C.SAM_INT_SHIFT
-var STACK_TAG = C.SAM_STACK_TAG
-var STACK_TAG_MASK = C.SAM_STACK_TAG_MASK
-var STACK_SHIFT = C.SAM_STACK_SHIFT
+var BLOB_TAG = C.SAM_BLOB_TAG
+var BLOB_TAG_MASK = C.SAM_BLOB_TAG_MASK
+var BLOB_SHIFT = C.SAM_BLOB_SHIFT
 var ATOM_TAG = C.SAM_ATOM_TAG
 var ATOM_TAG_MASK = C.SAM_ATOM_TAG_MASK
 var ATOM_TYPE_MASK = C.SAM_ATOM_TYPE_MASK
@@ -47,7 +47,7 @@ var WORD_BIT = C.SAM_WORD_BIT
 var WORD_MASK = Uword(((1 << C.SAM_WORD_BIT) - 1))
 
 type Stack struct {
-	stack *C.sam_stack_t
+	stack *C.sam_blob_t
 }
 
 type State struct {
@@ -63,25 +63,27 @@ func (state *State) Code() Stack {
 	return Stack{state.state.root_code}
 }
 
-func NewStack(state State, ty uint) Stack {
+func NewStack(state State) Stack {
 	stack := Stack{}
-	C.sam_stack_new(state.state, C.uint(ty), &stack.stack)
+	C.sam_stack_new(state.state, &stack.stack)
 	return stack
 }
 
 func NewState() State {
 	state := C.sam_state_new()
-	var stack *C.sam_stack_t
-	C.sam_stack_new(state, ARRAY_STACK, &stack)
+	var stack *C.sam_blob_t
+	C.sam_stack_new(state, &stack)
 	state.stack = stack
-	C.sam_stack_new(state, ARRAY_STACK, &stack)
+	C.sam_stack_new(state, &stack)
 	state.root_code = stack
 	state.pc0 = stack
 	return State{state: state}
 }
 
 func (s *Stack) Sp() Uword {
-	return s.stack.sp
+	var stack *C.sam_stack_t
+	C.sam_stack_from_blob(s.stack, &stack)
+	return stack.sp
 }
 
 func (s *Stack) StackPeek(addr Uword) (int, Uword) {
@@ -125,9 +127,11 @@ func (s *Stack) PushInsts(insts Uword) int {
 func Run(state *State) Word {
 	res := C.sam_run(state.state)
 	if res == ERROR_OK {
-		stack := state.Stack().stack
+		blob := state.Stack().stack
+		var stack *C.sam_stack_t
+		C.sam_stack_from_blob(blob, &stack)
 		var val Uword
-		res := C.sam_stack_peek(stack, stack.sp-1, &val)
+		res := C.sam_stack_peek(blob, stack.sp-1, &val)
 		state.result = Word(val)
 		if res != ERROR_OK {
 			panic("Run: error while getting HALT result")
@@ -173,16 +177,16 @@ func DumpScreen(file string) {
 }
 
 const (
-	ERROR_OK                 = C.SAM_ERROR_OK
-	ERROR_INVALID_OPCODE     = C.SAM_ERROR_INVALID_OPCODE
-	ERROR_INVALID_ADDRESS    = C.SAM_ERROR_INVALID_ADDRESS
-	ERROR_STACK_UNDERFLOW    = C.SAM_ERROR_STACK_UNDERFLOW
-	ERROR_STACK_OVERFLOW     = C.SAM_ERROR_STACK_OVERFLOW
-	ERROR_WRONG_TYPE         = C.SAM_ERROR_WRONG_TYPE
-	ERROR_INVALID_TRAP       = C.SAM_ERROR_INVALID_TRAP
-	ERROR_TRAP_INIT          = C.SAM_ERROR_TRAP_INIT
-	ERROR_NO_MEMORY          = C.SAM_ERROR_NO_MEMORY
-	ERROR_INVALID_ARRAY_TYPE = C.SAM_ERROR_INVALID_ARRAY_TYPE
+	ERROR_OK                = C.SAM_ERROR_OK
+	ERROR_INVALID_OPCODE    = C.SAM_ERROR_INVALID_OPCODE
+	ERROR_INVALID_ADDRESS   = C.SAM_ERROR_INVALID_ADDRESS
+	ERROR_STACK_UNDERFLOW   = C.SAM_ERROR_STACK_UNDERFLOW
+	ERROR_STACK_OVERFLOW    = C.SAM_ERROR_STACK_OVERFLOW
+	ERROR_WRONG_TYPE        = C.SAM_ERROR_WRONG_TYPE
+	ERROR_INVALID_TRAP      = C.SAM_ERROR_INVALID_TRAP
+	ERROR_TRAP_INIT         = C.SAM_ERROR_TRAP_INIT
+	ERROR_NO_MEMORY         = C.SAM_ERROR_NO_MEMORY
+	ERROR_INVALID_BLOB_TYPE = C.SAM_ERROR_INVALID_BLOB_TYPE
 )
 
 const (
@@ -190,21 +194,21 @@ const (
 )
 
 const (
-	ARRAY_STACK = C.SAM_ARRAY_STACK
-	ARRAY_RAW   = C.SAM_ARRAY_RAW
+	BLOB_STACK = C.SAM_BLOB_STACK
+	BLOB_RAW   = C.SAM_BLOB_RAW
 )
 
 var errors = map[int]string{
-	ERROR_OK:                 "ERROR_OK",
-	ERROR_INVALID_OPCODE:     "ERROR_INVALID_OPCODE",
-	ERROR_INVALID_ADDRESS:    "ERROR_INVALID_ADDRESS",
-	ERROR_STACK_UNDERFLOW:    "ERROR_STACK_UNDERFLOW",
-	ERROR_STACK_OVERFLOW:     "ERROR_STACK_OVERFLOW",
-	ERROR_WRONG_TYPE:         "ERROR_WRONG_TYPE",
-	ERROR_INVALID_TRAP:       "ERROR_INVALID_TRAP",
-	ERROR_TRAP_INIT:          "ERROR_TRAP_INIT",
-	ERROR_NO_MEMORY:          "ERROR_NO_MEMORY",
-	ERROR_INVALID_ARRAY_TYPE: "ERROR_INVALID_ARRAY_TYPE",
+	ERROR_OK:                "ERROR_OK",
+	ERROR_INVALID_OPCODE:    "ERROR_INVALID_OPCODE",
+	ERROR_INVALID_ADDRESS:   "ERROR_INVALID_ADDRESS",
+	ERROR_STACK_UNDERFLOW:   "ERROR_STACK_UNDERFLOW",
+	ERROR_STACK_OVERFLOW:    "ERROR_STACK_OVERFLOW",
+	ERROR_WRONG_TYPE:        "ERROR_WRONG_TYPE",
+	ERROR_INVALID_TRAP:      "ERROR_INVALID_TRAP",
+	ERROR_TRAP_INIT:         "ERROR_TRAP_INIT",
+	ERROR_NO_MEMORY:         "ERROR_NO_MEMORY",
+	ERROR_INVALID_BLOB_TYPE: "ERROR_INVALID_BLOB_TYPE",
 }
 
 func (state *State) ErrorMessage(code Word) string {
@@ -212,8 +216,8 @@ func (state *State) ErrorMessage(code Word) string {
 		res := C.disas(state.result)
 		goRes := C.GoString(res)
 		msg := "halt with result"
-		if (state.result & C.SAM_STACK_TAG_MASK) == C.SAM_STACK_TAG {
-			stack := state.result & ^C.SAM_STACK_TAG_MASK
+		if (state.result & C.SAM_BLOB_TAG_MASK) == C.SAM_BLOB_TAG {
+			stack := state.result & ^C.SAM_BLOB_TAG_MASK
 			if len(goRes) == 0 {
 				goRes = "(empty stack)\n"
 			}
@@ -223,7 +227,7 @@ func (state *State) ErrorMessage(code Word) string {
 		}
 		C.free(unsafe.Pointer(res))
 		return msg
-	} else if code >= ERROR_OK && code <= ERROR_INVALID_ARRAY_TYPE {
+	} else if code >= ERROR_OK && code <= ERROR_INVALID_BLOB_TYPE {
 		return fmt.Sprintf(errors[int(code)])
 	}
 	return fmt.Sprintf("unknown error code %d (0x%x)", code, uint(Uword(code)&WORD_MASK))
@@ -236,7 +240,7 @@ type InstOpcode struct {
 }
 
 var Instructions = map[string]InstOpcode{
-	"stack": {C.SAM_STACK_TAG, 0, true},
+	"blob":  {C.SAM_BLOB_TAG, 0, true},
 	"int":   {C.SAM_INT_TAG, 0, true},
 	"float": {C.SAM_FLOAT_TAG, 0, true},
 	"trap":  {C.SAM_TRAP_TAG, 0, true},
@@ -322,7 +326,8 @@ var Traps = map[string]int{
 // continues at the next instruction.
 var StackDifference = map[string]int{
 	// Tag instructions
-	"stack": 1,
+	"blob":  1,
+	"atom":  1,
 	"int":   1,
 	"float": 1,
 

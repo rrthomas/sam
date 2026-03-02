@@ -14,9 +14,9 @@ extern const sam_word_t SAM_FLOAT_TAG;
 extern const sam_word_t SAM_FLOAT_TAG_MASK;
 extern const int SAM_FLOAT_SHIFT;
 
-extern const sam_word_t SAM_STACK_TAG;
-extern const sam_word_t SAM_STACK_TAG_MASK;
-extern const int SAM_STACK_SHIFT;
+extern const sam_word_t SAM_BLOB_TAG;
+extern const sam_word_t SAM_BLOB_TAG_MASK;
+extern const int SAM_BLOB_SHIFT;
 
 extern const sam_word_t SAM_INT_TAG;
 extern const sam_word_t SAM_INT_TAG_MASK;
@@ -49,14 +49,13 @@ enum SAM_ATOM_TYPE {
   SAM_ATOM_NULL,
 };
 
-// Arrays are stored as: ARRAY instruction (operand is positive number of
-// words to final ARRAY), a number of words, ARRAY (operand is negative
-// number of words to initial ARRAY).
-
-// Array types (5 or 10 bits)
-enum SAM_ARRAY_TYPE {
-  SAM_ARRAY_STACK,
-  SAM_ARRAY_RAW,
+// Blob types (5 or 10 bits)
+enum SAM_BLOB_TYPE {
+  SAM_BLOB_RAW,
+  SAM_BLOB_STACK,
+  SAM_BLOB_MAP,
+  
+  SAM_BLOB_TYPES,
 };
 
 // Instructions (5 bits)

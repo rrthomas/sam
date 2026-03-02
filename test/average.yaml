@@ -8,7 +8,7 @@
 -
   - loop: int -3
   - get
-  - stack data
+  - blob data
   - iget
   - int -5
   - get
@@ -24,7 +24,7 @@
   - int -5
   - set
   - while
-  - stack loop
+  - blob loop
   - go
 - do
 - pop

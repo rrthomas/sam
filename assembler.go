@@ -126,7 +126,7 @@ var operandInsns = []string{
 	"float",
 	"trap",
 	"push",
-	"stack",
+	"blob",
 }
 
 func (a *assembler) assembleInstruction(tokens ...string) {
@@ -146,7 +146,7 @@ func (a *assembler) assembleInstruction(tokens ...string) {
 		switch opcode.Tag {
 		case libsam.INT_TAG:
 			a.stack.PushInt(libsam.Uword(a.parseLiteral(operandStr)))
-		case libsam.STACK_TAG:
+		case libsam.BLOB_TAG:
 			a.stack.PushArray(a.parseStack(operandStr))
 		case libsam.TRAP_TAG:
 			trap, ok := parseTrap(operandStr)
@@ -198,7 +198,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
 		a.flushInstructions()
-		subA := assembler{state: a.state, stack: libsam.NewStack(a.state, libsam.ARRAY_STACK)}
+		subA := assembler{state: a.state, stack: libsam.NewStack(a.state)}
 		subA.assembleSequence(n)
 		a.stack.PushArray(subA.stack)
 		return nil
@@ -245,7 +245,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			subProg := readProg(r)
 			// Assemble the included file in a nested stack.
 			a.flushInstructions()
-			subA := assembler{state: a.state, stack: libsam.NewStack(a.state, libsam.ARRAY_STACK)}
+			subA := assembler{state: a.state, stack: libsam.NewStack(a.state)}
 			subA.assembleSequence(subProg)
 			a.stack.PushArray(subA.stack)
 		case "!istack":

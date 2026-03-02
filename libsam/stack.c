@@ -18,20 +18,37 @@
 #include "private.h"
 
 
-int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val)
+int sam_stack_from_blob(sam_blob_t *blob, sam_stack_t **s)
 {
+    sam_word_t error = SAM_ERROR_OK;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, *s);
+error:
+    return error;
+}
+
+int sam_stack_peek(sam_blob_t *blob, sam_uword_t addr, sam_uword_t *val)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     if (addr >= s->sp)
         return SAM_ERROR_INVALID_ADDRESS;
     *val = s->s0[addr];
-    return SAM_ERROR_OK;
+
+error:
+    return error;
 }
 
-int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
+int sam_stack_poke(sam_blob_t *blob, sam_uword_t addr, sam_uword_t val)
 {
+    sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     if (addr >= s->ssize)
         return SAM_ERROR_INVALID_ADDRESS;
     s->s0[addr] = val;
-    return SAM_ERROR_OK;
+error:
+    return error;
 }
 
 // Move `size` words anywhere within allocated stack memory.
@@ -45,25 +62,29 @@ static sam_word_t move_n(sam_stack_t *s, sam_uword_t dst, sam_uword_t src, sam_u
 }
 
 // Move the stack item at `addr` to the top of `s`.
-int sam_stack_extract(sam_stack_t *s, sam_uword_t addr)
+int sam_stack_extract(sam_blob_t *blob, sam_uword_t addr)
 {
     sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     sam_uword_t opcode;
-    HALT_IF_ERROR(sam_stack_peek(s, addr, &opcode));
+    HALT_IF_ERROR(sam_stack_peek(blob, addr, &opcode));
     HALT_IF_ERROR(move_n(s, addr, addr + 1, s->sp - addr));
-    HALT_IF_ERROR(sam_stack_poke(s, s->sp - 1, opcode));
+    HALT_IF_ERROR(sam_stack_poke(blob, s->sp - 1, opcode));
 error:
     return error;
 }
 
 // Move the top item of `s` to `addr`.
-int sam_stack_insert(sam_stack_t *s, sam_uword_t addr)
+int sam_stack_insert(sam_blob_t *blob, sam_uword_t addr)
 {
     sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     sam_uword_t opcode;
-    HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, &opcode));
+    HALT_IF_ERROR(sam_stack_peek(blob, s->sp - 1, &opcode));
     HALT_IF_ERROR(move_n(s, addr + 1, addr, s->sp - addr));
-    HALT_IF_ERROR(sam_stack_poke(s, addr, opcode));
+    HALT_IF_ERROR(sam_stack_poke(blob, addr, opcode));
 error:
     return error;
 }
@@ -71,37 +92,43 @@ error:
 // s gives the stack to consider.
 // If n < 0, return offset of stack item n from top; otherwise,
 // check n is the address of a stack item, and return it.
-int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr)
+int sam_stack_item(sam_blob_t *blob, sam_word_t n, sam_uword_t *addr)
 {
+    sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     if (n < 0)
         n = s->sp + n;
     if (n >= s->sp)
         return SAM_ERROR_STACK_OVERFLOW;
-    sam_word_t error = SAM_ERROR_OK;
     sam_uword_t p = n, inst;
-    HALT_IF_ERROR(sam_stack_peek(s, p, &inst));
+    HALT_IF_ERROR(sam_stack_peek(blob, p, &inst));
     *addr = p;
  error:
     return error;
 }
 
-int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
+int sam_stack_pop(sam_blob_t *blob, sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     if (s->sp == 0)
         return SAM_ERROR_STACK_UNDERFLOW;
-    HALT_IF_ERROR(sam_stack_peek(s, s->sp - 1, (sam_uword_t *)val_ptr));
+    HALT_IF_ERROR(sam_stack_peek(blob, s->sp - 1, (sam_uword_t *)val_ptr));
     s->sp--;
  error:
     return error;
 }
 
-int sam_stack_shift(sam_stack_t *s, sam_word_t *val_ptr)
+int sam_stack_shift(sam_blob_t *blob, sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     if (s->sp == 0)
         return SAM_ERROR_STACK_UNDERFLOW;
-    HALT_IF_ERROR(sam_stack_peek(s, 0, (sam_uword_t *)val_ptr));
+    HALT_IF_ERROR(sam_stack_peek(blob, 0, (sam_uword_t *)val_ptr));
     memmove(s->s0, s->s0 + 1, s->sp * sizeof(sam_uword_t));
     s->sp--;
  error:
@@ -123,83 +150,107 @@ error:
     return error;
 }
 
-int sam_stack_push(sam_stack_t *s, sam_word_t val)
+int sam_stack_push(sam_blob_t *blob, sam_word_t val)
 {
-    sam_word_t error = stack_maybe_grow(s);
-    HALT_IF_ERROR(sam_stack_poke(s, s->sp++, val));
+    sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
+    HALT_IF_ERROR(stack_maybe_grow(s));
+    HALT_IF_ERROR(sam_stack_poke(blob, s->sp++, val));
  error:
     return error;
 }
 
-int sam_stack_prepend(sam_stack_t *s, sam_word_t val)
+int sam_stack_prepend(sam_blob_t *blob, sam_word_t val)
 {
-    sam_word_t error = stack_maybe_grow(s);
+    sam_word_t error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
+    HALT_IF_ERROR(stack_maybe_grow(s));
     memmove(s->s0 + 1, s->s0, s->sp * sizeof(sam_uword_t));
-    HALT_IF_ERROR(sam_stack_poke(s, 0, val));
+    HALT_IF_ERROR(sam_stack_poke(blob, 0, val));
     s->sp++;
  error:
     return error;
 }
 
-int sam_push_ref(sam_stack_t *s, void *ptr)
+int sam_push_ref(sam_blob_t *blob, void *ptr)
 {
-    return sam_stack_push(s, SAM_STACK_TAG | ((sam_uword_t)ptr));
+    return sam_stack_push(blob, SAM_BLOB_TAG | ((sam_uword_t)ptr));
 }
 
-int sam_push_int(sam_stack_t *s, sam_uword_t val)
+int sam_push_int(sam_blob_t *blob, sam_uword_t val)
 {
-    return sam_stack_push(s, SAM_INT_TAG | (val << SAM_INT_SHIFT));
+    return sam_stack_push(blob, SAM_INT_TAG | (val << SAM_INT_SHIFT));
 }
 
-int sam_push_float(sam_stack_t *s, sam_float_t n)
+int sam_push_float(sam_blob_t *blob, sam_float_t n)
 {
     sam_uword_t operand = *(sam_uword_t *)&n;
-    return sam_stack_push(s, SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT));
+    return sam_stack_push(blob, SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT));
 }
 
-int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand)
+int sam_push_atom(sam_blob_t *blob, sam_uword_t atom_type, sam_uword_t operand)
 {
     sam_uword_t atom = SAM_ATOM_TAG | (atom_type << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_ATOM_SHIFT);
-    return sam_stack_push(s, atom);
+    return sam_stack_push(blob, atom);
 }
 
-int sam_push_trap(sam_stack_t *s, sam_uword_t function)
+int sam_push_trap(sam_blob_t *blob, sam_uword_t function)
 {
     // FIXME: error if function code is too large
-    return sam_stack_push(s, SAM_TRAP_TAG | (function << SAM_TRAP_FUNCTION_SHIFT));
+    return sam_stack_push(blob, SAM_TRAP_TAG | (function << SAM_TRAP_FUNCTION_SHIFT));
 }
 
-int sam_push_insts(sam_stack_t *s, sam_uword_t insts)
+int sam_push_insts(sam_blob_t *blob, sam_uword_t insts)
 {
     // FIXME: error if too many bits
-    return sam_stack_push(s, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
+    return sam_stack_push(blob, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
 }
 
-int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack)
+int sam_blob_new(sam_state_t *state, unsigned type, sam_blob_t **new_blob)
 {
-    sam_stack_t *s = calloc(sizeof(sam_stack_t), 1);
-    if (s != NULL) {        
-        s->type = type; // FIXME: validate type
-        s->ssize = 1;
-        s->s0 = calloc(sizeof(sam_word_t), s->ssize);
-        if (s->s0 == NULL) {
-            free(s);
-            return SAM_ERROR_NO_MEMORY;
-        }
-    }
-    *new_stack = s;
-    return SAM_ERROR_OK;
+    sam_word_t error = SAM_ERROR_OK;
+    if (type > SAM_BLOB_TYPES)
+        HALT(SAM_ERROR_INVALID_BLOB_TYPE);
+    sam_blob_t *blob = calloc(1, sizeof(sam_blob_t) + sizeof(sam_stack_t));
+    if (blob == NULL)
+        HALT(SAM_ERROR_NO_MEMORY);
+    blob->type = type;
+    *new_blob = blob;
+error:
+    return error;
 }
 
-int sam_stack_copy(sam_state_t *state, sam_stack_t *s, sam_stack_t **new_stack)
+int sam_stack_new(sam_state_t *state, sam_blob_t **new_stack)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    sam_blob_t *blob;
+    HALT_IF_ERROR(sam_blob_new(state, SAM_BLOB_STACK, &blob));
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
+    s->ssize = 1;
+    s->s0 = calloc(s->ssize, sizeof(sam_word_t));
+    if (s->s0 == NULL) {
+        free(blob);
+        HALT(SAM_ERROR_NO_MEMORY);
+    }
+    *new_stack = blob;
+error:
+    return error;
+}
+
+int sam_stack_copy(sam_state_t *state, sam_blob_t *stack, sam_blob_t **new_stack)
 {
     int error = SAM_ERROR_OK;
-    HALT_IF_ERROR(sam_stack_new(state, s->type, new_stack));
+    sam_stack_t *s;
+    EXTRACT_BLOB(stack, SAM_BLOB_STACK, sam_stack_t, s);
+    HALT_IF_ERROR(sam_stack_new(state, new_stack));
     
-   // Copy the contents of the stack.
+    // Copy the contents of the stack.
     for (sam_uword_t pos = 0; pos < s->sp; pos++) {
         sam_uword_t val;
-        HALT_IF_ERROR(sam_stack_peek(s, pos, &val));
+        HALT_IF_ERROR(sam_stack_peek(stack, pos, &val));
         HALT_IF_ERROR(sam_stack_push(*new_stack, val));
     }
 

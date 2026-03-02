@@ -455,7 +455,7 @@ func (e *Expression) Compile(ctx *Frame) {
 		for range blockCtx.sp - blockCtx.baseSp {
 			blockCtx.assemble("pop")
 		}
-		blockCtx.assemble(fmt.Sprintf("stack %s", blockCtx.label))
+		blockCtx.assemble(fmt.Sprintf("blob %s", blockCtx.label))
 		blockCtx.assembleSingle("go")
 		// Add loop label to start of block
 		if len(blockCtx.asm) > 0 {
@@ -563,7 +563,7 @@ func (t *Terminator) Compile(ctx *Frame) {
 		for range ctx.sp - ctx.loop.baseSp {
 			ctx.assemble("pop")
 		}
-		ctx.assemble(fmt.Sprintf("stack %s", ctx.loop.label))
+		ctx.assemble(fmt.Sprintf("blob %s", ctx.loop.label))
 		ctx.assemble("go")
 	} else {
 		panic("invalid Terminator")

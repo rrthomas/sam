@@ -1,7 +1,7 @@
-# Copy a stack's only reference
+# Copy a blob's only reference
 - trap new
 - trap copy
-# Append an item, then prepend an item to the new stack, then copy the stack
+# Append an item, then prepend an item to the new blob, then copy the blob
 - int 13
 - int -2
 - get
@@ -21,7 +21,7 @@
 - int -2
 - get
 - trap ishift
-# Pop an item from the current stack using ipop (no effect!)
+# Pop an item from the current blob using ipop (no effect!)
 - trap s0
 - ipop
 # Exit 

@@ -16,17 +16,20 @@
 
 sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s state->stack
-    int error = SAM_ERROR_OK;
+#define s ((sam_stack_t *)state->stack->data)
+    sam_word_t error = SAM_ERROR_OK;
+    CHECK_BLOB(state->stack, SAM_BLOB_STACK);
     
     switch (function) {
     case TRAP_BASIC_S0:
-        HALT_IF_ERROR(sam_push_ref(s, s));
+        HALT_IF_ERROR(sam_push_ref(state->stack, state->stack));
         break;
     case TRAP_BASIC_SIZE:
         {
+            sam_blob_t *blob;
+            POP_REF(blob);
             sam_stack_t *stack;
-            POP_REF(stack);
+            EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, stack);
             PUSH_INT(stack->sp);
         }
         break;
@@ -39,7 +42,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         break;
     case TRAP_BASIC_PREPEND:
         {
-            sam_stack_t *stack;
+            sam_blob_t *stack;
             POP_REF(stack);
             sam_word_t val;
             POP_WORD(&val);
@@ -48,29 +51,29 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         break;
     case TRAP_BASIC_ISHIFT:
         {
+            sam_blob_t *blob;
+            POP_REF(blob);
             sam_stack_t *stack;
-            POP_REF(stack);
+            EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, stack);
             if (stack->sp < 1)
                 HALT(SAM_ERROR_STACK_UNDERFLOW);
             sam_word_t val;
-            HALT_IF_ERROR(sam_stack_shift(stack, &val));
+            HALT_IF_ERROR(sam_stack_shift(blob, &val));
             PUSH_WORD(val);
         }
         break;
     case TRAP_BASIC_NEW:
         {
-            sam_stack_t *stack;
-            HALT_IF_ERROR(sam_stack_new(state, SAM_ARRAY_STACK, &stack));
-            HALT_IF_ERROR(sam_push_ref(s, stack));
+            sam_blob_t *stack;
+            HALT_IF_ERROR(sam_stack_new(state, &stack));
+            HALT_IF_ERROR(sam_push_ref(state->stack, stack));
         }
         break;
     case TRAP_BASIC_COPY:
         {
-            sam_word_t item;
-            HALT_IF_ERROR(sam_stack_pop(s, &item));
-            CHECK_TYPE(item, SAM_STACK_TAG_MASK, SAM_STACK_TAG);
-            sam_stack_t *stack = (sam_stack_t *)(item & ~SAM_STACK_TAG_MASK);
-            sam_stack_t *new_stack;
+            sam_blob_t *stack;
+            POP_REF(stack);
+            sam_blob_t *new_stack;
             HALT_IF_ERROR(sam_stack_copy(state, stack, &new_stack));
             PUSH_REF(new_stack);
         }
@@ -78,14 +81,16 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_RET:
         {
             sam_word_t item;
-            HALT_IF_ERROR(sam_stack_pop(s, &item));
-            sam_stack_t *frame, *old_stack = s;
+            HALT_IF_ERROR(sam_stack_pop(state->stack, &item));
+            sam_blob_t *frame, *old_stack_blob = state->stack;
+            sam_stack_t *old_stack;
+            EXTRACT_BLOB(old_stack_blob, SAM_BLOB_STACK, sam_stack_t, old_stack);
             DONE;
             POP_REF(frame);
             state->stack = frame;
             PUSH_WORD(item);
             // Wipe the stack slot for the return value.
-            HALT_IF_ERROR(sam_stack_poke(old_stack, old_stack->sp, SAM_INSTS_TAG));
+            HALT_IF_ERROR(sam_stack_poke(old_stack_blob, old_stack->sp, SAM_INSTS_TAG));
         }
         break;
     case TRAP_BASIC_LSH:

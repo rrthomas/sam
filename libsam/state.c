@@ -14,5 +14,5 @@
 
 sam_state_t *sam_state_new(void)
 {
-    return calloc(sizeof(sam_state_t), 1);
+    return calloc(1, sizeof(sam_state_t));
 }

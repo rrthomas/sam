@@ -7,13 +7,13 @@
 -
   - loop: int -3
   - get
-  - stack data
+  - blob data
   - iget
   - float 2.0
   - mul
   - int -4
   - get
-  - stack data
+  - blob data
   - iset
   - int -3
   - get
@@ -24,7 +24,7 @@
   - int -5
   - set
   - while
-  - stack loop
+  - blob loop
   - go
 - do
 - pop

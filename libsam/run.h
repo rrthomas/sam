@@ -13,9 +13,9 @@
         HALT(SAM_ERROR_WRONG_TYPE);
 
 #define POP_WORD(ptr)                           \
-    HALT_IF_ERROR(sam_stack_pop(s, ptr))
+    HALT_IF_ERROR(sam_stack_pop(state->stack, ptr))
 #define PUSH_WORD(val)                          \
-    HALT_IF_ERROR(sam_stack_push(s, val))
+    HALT_IF_ERROR(sam_stack_push(state->stack, val))
 
 #define _POP_INSN(var, pop, insn, insn_mask, rshift, shift)     \
     do {                                        \
@@ -39,12 +39,12 @@
 #define POP_REF(var)                                                    \
     do {                                                                \
         sam_uword_t _ptr;                                               \
-        _POP_INSN(_ptr, POP_WORD, SAM_STACK_TAG, SAM_STACK_TAG_MASK, LRSHIFT, SAM_STACK_SHIFT); \
-        var = (void *)(_ptr << SAM_STACK_SHIFT);                        \
+        _POP_INSN(_ptr, POP_WORD, SAM_BLOB_TAG, SAM_BLOB_TAG_MASK, LRSHIFT, SAM_BLOB_SHIFT); \
+        var = (void *)(_ptr << SAM_BLOB_SHIFT);                         \
     } while (0)
 
 #define PUSH_REF(addr)                                \
-    PUSH_WORD(((sam_uword_t)addr) | SAM_STACK_TAG)
+    PUSH_WORD(((sam_uword_t)addr) | SAM_BLOB_TAG)
 
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
@@ -53,12 +53,12 @@
         var = *(sam_float_t *)&_w;                                      \
     } while (0)
 #define PUSH_FLOAT(val)                         \
-    sam_push_float(s, val)
+    sam_push_float(state->stack, val)
 
 // Execution macros
 #define GO(addr)                                \
     do {                                        \
-        state->pc0 = (sam_stack_t *)addr;       \
+        state->pc0 = (sam_blob_t *)addr;        \
         state->pc = 0;                          \
     } while (0)
 

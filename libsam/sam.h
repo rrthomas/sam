@@ -34,10 +34,14 @@ typedef double sam_float_t;
 #define SAM_RET_SHIFT 8
 #define SAM_RET_MASK ((1 << SAM_RET_SHIFT) - 1)
 
-// Stacks
-struct sam_state;
-typedef struct sam_stack {
+// Blobs
+typedef struct sam_blob {
     sam_uword_t type;
+    _Alignas(max_align_t) sam_word_t data[];
+} sam_blob_t;
+
+// Stacks (SAM_BLOB_STACK)
+typedef struct sam_stack {
     sam_word_t *s0;
     sam_uword_t ssize; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
@@ -45,14 +49,14 @@ typedef struct sam_stack {
 
 // Top-level state
 typedef struct sam_state {
-    sam_stack_t *root_code;
-    sam_stack_t *stack;
-    sam_stack_t *pc0;
+    sam_blob_t *root_code;
+    sam_blob_t *stack;
+    sam_blob_t *pc0;
     sam_uword_t pc;
 } sam_state_t;
 
 // Error codes
-enum {
+enum SAM_ERROR {
     SAM_ERROR_OK,
     SAM_ERROR_INVALID_OPCODE,
     SAM_ERROR_INVALID_ADDRESS,
@@ -63,27 +67,31 @@ enum {
     SAM_ERROR_TRAP_INIT,
     SAM_ERROR_NO_MEMORY,
     SAM_ERROR_INVALID_ATOM_TYPE,
-    SAM_ERROR_INVALID_ARRAY_TYPE,
+    SAM_ERROR_INVALID_BLOB_TYPE,
 };
 
+// Blobs
+int sam_blob_new(sam_state_t *state, unsigned type, sam_blob_t **new_blob);
+
 // Stack access
-int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack);
-int sam_stack_copy(sam_state_t *state, sam_stack_t *s, sam_stack_t **new_stack);
-int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val);
-int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
-int sam_stack_extract(sam_stack_t *s, sam_uword_t addr);
-int sam_stack_insert(sam_stack_t *s, sam_uword_t addr);
-int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr);
-int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr);
-int sam_stack_shift(sam_stack_t *s, sam_word_t *val_ptr);
-int sam_stack_push(sam_stack_t *s, sam_word_t val);
-int sam_stack_prepend(sam_stack_t *s, sam_word_t val);
-int sam_push_ref(sam_stack_t *s, void *ptr);
-int sam_push_int(sam_stack_t *s, sam_uword_t val);
-int sam_push_float(sam_stack_t *s, sam_float_t n);
-int sam_push_atom(sam_stack_t *s, sam_uword_t atom_type, sam_uword_t operand);
-int sam_push_trap(sam_stack_t *s, sam_uword_t function);
-int sam_push_insts(sam_stack_t *s, sam_uword_t insts);
+int sam_stack_from_blob(sam_blob_t *blob, sam_stack_t **s);
+int sam_stack_new(sam_state_t *state, sam_blob_t **new_stack);
+int sam_stack_copy(sam_state_t *state, sam_blob_t *stack, sam_blob_t **new_stack);
+int sam_stack_peek(sam_blob_t *s, sam_uword_t addr, sam_uword_t *val);
+int sam_stack_poke(sam_blob_t *s, sam_uword_t addr, sam_uword_t val);
+int sam_stack_extract(sam_blob_t *s, sam_uword_t addr);
+int sam_stack_insert(sam_blob_t *s, sam_uword_t addr);
+int sam_stack_item(sam_blob_t *s, sam_word_t n, sam_uword_t *addr);
+int sam_stack_pop(sam_blob_t *s, sam_word_t *val_ptr);
+int sam_stack_shift(sam_blob_t *s, sam_word_t *val_ptr);
+int sam_stack_push(sam_blob_t *s, sam_word_t val);
+int sam_stack_prepend(sam_blob_t *s, sam_word_t val);
+int sam_push_ref(sam_blob_t *s, void *ptr);
+int sam_push_int(sam_blob_t *s, sam_uword_t val);
+int sam_push_float(sam_blob_t *s, sam_float_t n);
+int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);
+int sam_push_trap(sam_blob_t *s, sam_uword_t function);
+int sam_push_insts(sam_blob_t *s, sam_uword_t insts);
 
 // Top-level states
 sam_state_t *sam_state_new(void);
@@ -98,8 +106,8 @@ extern bool do_debug;
 char *inst_name(sam_uword_t inst_opcode);
 char *trap_name(sam_uword_t function);
 char *disas(sam_word_t inst);
-void sam_print_stack(sam_stack_t *s);
-void sam_print_working_stack(sam_stack_t *s);
+void sam_print_stack(sam_blob_t *blob);
+void sam_print_working_stack(sam_blob_t *blob);
 void debug(const char *fmt, ...);
 int sam_debug_init(sam_state_t *state);
 #endif

@@ -24,6 +24,18 @@
             HALT(_err);                         \
     } while (0)
 
+#define CHECK_BLOB(blob, type_code)                     \
+    do {                                                \
+        if ((blob)->type != type_code)                  \
+            HALT(SAM_ERROR_WRONG_TYPE);                 \
+    } while (0)
+
+#define EXTRACT_BLOB(blob, type_code, blob_type, var)   \
+    do {                                                \
+        CHECK_BLOB((blob), type_code);                  \
+        var = (blob_type *)(&((blob)->data));           \
+    } while (0)
+
 // Portable left shift (the behaviour of << with overflow (including on any
 // negative number) is undefined)
 #define LSHIFT(n, p)                            \
