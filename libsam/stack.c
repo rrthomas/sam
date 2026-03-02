@@ -26,25 +26,10 @@ int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val)
     return SAM_ERROR_OK;
 }
 
-void sam_stack_maybe_unref(sam_word_t val) {
-    if ((val & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
-        sam_stack_t *s = (sam_stack_t *)(val & ~SAM_STACK_TAG_MASK);
-        if (s->type == SAM_ARRAY_STACK)
-            sam_stack_unref(s);
-    }
-}
-
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val)
 {
     if (addr >= s->ssize)
         return SAM_ERROR_INVALID_ADDRESS;
-    sam_word_t old_val = s->s0[addr];
-    sam_stack_maybe_unref(old_val);
-    if ((val & SAM_STACK_TAG_MASK) == SAM_STACK_TAG) {
-        sam_stack_t *inner_s = (sam_stack_t *)(val & ~SAM_STACK_TAG_MASK);
-        if (inner_s->type == SAM_ARRAY_STACK)
-            sam_stack_ref(inner_s);
-    }
     s->s0[addr] = val;
     return SAM_ERROR_OK;
 }
@@ -100,7 +85,7 @@ int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr)
     return error;
 }
 
-int sam_stack_pop_unsafe(sam_stack_t *s, sam_word_t *val_ptr)
+int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp == 0)
@@ -111,16 +96,7 @@ int sam_stack_pop_unsafe(sam_stack_t *s, sam_word_t *val_ptr)
     return error;
 }
 
-int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    HALT_IF_ERROR(sam_stack_pop_unsafe(s, val_ptr));
-    WIPE_STACK_SLOT(0);
- error:
-    return error;
-}
-
-int sam_stack_shift_unsafe(sam_stack_t *s, sam_word_t *val_ptr)
+int sam_stack_shift(sam_stack_t *s, sam_word_t *val_ptr)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp == 0)
@@ -128,15 +104,6 @@ int sam_stack_shift_unsafe(sam_stack_t *s, sam_word_t *val_ptr)
     HALT_IF_ERROR(sam_stack_peek(s, 0, (sam_uword_t *)val_ptr));
     memmove(s->s0, s->s0 + 1, s->sp * sizeof(sam_uword_t));
     s->sp--;
- error:
-    return error;
-}
-
-int sam_stack_shift(sam_stack_t *s, sam_word_t *val_ptr)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    HALT_IF_ERROR(sam_stack_shift_unsafe(s, val_ptr));
-    sam_stack_maybe_unref(*val_ptr);
  error:
     return error;
 }
@@ -206,33 +173,6 @@ int sam_push_insts(sam_stack_t *s, sam_uword_t insts)
 {
     // FIXME: error if too many bits
     return sam_stack_push(s, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
-}
-
-void sam_stack_ref(sam_stack_t *s) {
-    s->nrefs++;
-}
-
-void sam_stack_unref(sam_stack_t *s) {
-    assert(s->nrefs > 0);
-    if (--s->nrefs == 0)
-        sam_stack_free(s); // FIXME: check return value
-}
-
-int sam_stack_free(sam_stack_t *s) {
-    sam_word_t error = SAM_ERROR_OK;
-
-    // Unref the contents of the stack.
-    while (s->sp > 0) {
-        sam_word_t val;
-        HALT_IF_ERROR(sam_stack_pop(s, &val));
-    }
-
-    // Free the stack's storage.
-    free(s->s0);
-    free(s);
-
-error:
-    return error;
 }
 
 int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack)

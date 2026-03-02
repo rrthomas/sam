@@ -73,10 +73,8 @@ func NewState() State {
 	state := C.sam_state_new()
 	var stack *C.sam_stack_t
 	C.sam_stack_new(state, ARRAY_STACK, &stack)
-	C.sam_stack_ref(stack)
 	state.stack = stack
 	C.sam_stack_new(state, ARRAY_STACK, &stack)
-	C.sam_stack_ref(stack)
 	state.root_code = stack
 	state.pc0 = stack
 	return State{state: state}
@@ -180,7 +178,6 @@ const (
 	ERROR_INVALID_ADDRESS    = C.SAM_ERROR_INVALID_ADDRESS
 	ERROR_STACK_UNDERFLOW    = C.SAM_ERROR_STACK_UNDERFLOW
 	ERROR_STACK_OVERFLOW     = C.SAM_ERROR_STACK_OVERFLOW
-	ERROR_ORPHAN_STACK       = C.SAM_ERROR_ORPHAN_STACK
 	ERROR_WRONG_TYPE         = C.SAM_ERROR_WRONG_TYPE
 	ERROR_INVALID_TRAP       = C.SAM_ERROR_INVALID_TRAP
 	ERROR_TRAP_INIT          = C.SAM_ERROR_TRAP_INIT

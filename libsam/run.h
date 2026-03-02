@@ -12,8 +12,6 @@
     if ((var & (mask)) != (insn))               \
         HALT(SAM_ERROR_WRONG_TYPE);
 
-#define POP_WORD_UNSAFE(ptr)                    \
-    HALT_IF_ERROR(sam_stack_pop_unsafe(s, ptr))
 #define POP_WORD(ptr)                           \
     HALT_IF_ERROR(sam_stack_pop(s, ptr))
 #define PUSH_WORD(val)                          \
@@ -38,18 +36,11 @@
 #define PUSH_BOOL(val)                          \
     PUSH_INT(-((val) != 0))
 
-#define POP_REF_UNSAFE(var)                                             \
+#define POP_REF(var)                                                    \
     do {                                                                \
         sam_uword_t _ptr;                                               \
-        _POP_INSN(_ptr, POP_WORD_UNSAFE, SAM_STACK_TAG, SAM_STACK_TAG_MASK, LRSHIFT, SAM_STACK_SHIFT); \
+        _POP_INSN(_ptr, POP_WORD, SAM_STACK_TAG, SAM_STACK_TAG_MASK, LRSHIFT, SAM_STACK_SHIFT); \
         var = (void *)(_ptr << SAM_STACK_SHIFT);                        \
-    } while (0)
-#define POP_REF(var)                                  \
-    do {                                              \
-        POP_REF_UNSAFE(var);                          \
-        if (var->nrefs <= 1)                          \
-            HALT(SAM_ERROR_ORPHAN_STACK);             \
-        WIPE_STACK_SLOT(0);                           \
     } while (0)
 
 #define PUSH_REF(addr)                                \

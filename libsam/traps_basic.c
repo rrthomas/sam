@@ -40,24 +40,21 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_PREPEND:
         {
             sam_stack_t *stack;
-            POP_REF_UNSAFE(stack);
+            POP_REF(stack);
             sam_word_t val;
-            POP_WORD_UNSAFE(&val);
+            POP_WORD(&val);
             HALT_IF_ERROR(sam_stack_prepend(stack, val));
-            WIPE_STACK_SLOT(0);
-            WIPE_STACK_SLOT(1);
         }
         break;
     case TRAP_BASIC_ISHIFT:
         {
             sam_stack_t *stack;
-            POP_REF_UNSAFE(stack);
+            POP_REF(stack);
             if (stack->sp < 1)
                 HALT(SAM_ERROR_STACK_UNDERFLOW);
             sam_word_t val;
-            HALT_IF_ERROR(sam_stack_shift_unsafe(stack, &val));
+            HALT_IF_ERROR(sam_stack_shift(stack, &val));
             PUSH_WORD(val);
-            sam_stack_maybe_unref(val);
         }
         break;
     case TRAP_BASIC_NEW:
@@ -70,21 +67,21 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_COPY:
         {
             sam_word_t item;
-            HALT_IF_ERROR(sam_stack_pop_unsafe(s, &item));
+            HALT_IF_ERROR(sam_stack_pop(s, &item));
             CHECK_TYPE(item, SAM_STACK_TAG_MASK, SAM_STACK_TAG);
             sam_stack_t *stack = (sam_stack_t *)(item & ~SAM_STACK_TAG_MASK);
             sam_stack_t *new_stack;
             HALT_IF_ERROR(sam_stack_copy(state, stack, &new_stack));
-            PUSH_REF(new_stack); // Now the copied stack will be unreferenced.
+            PUSH_REF(new_stack);
         }
         break;
     case TRAP_BASIC_RET:
         {
             sam_word_t item;
-            HALT_IF_ERROR(sam_stack_pop_unsafe(s, &item));
+            HALT_IF_ERROR(sam_stack_pop(s, &item));
             sam_stack_t *frame, *old_stack = s;
             DONE;
-            POP_REF_UNSAFE(frame);
+            POP_REF(frame);
             state->stack = frame;
             PUSH_WORD(item);
             // Wipe the stack slot for the return value.

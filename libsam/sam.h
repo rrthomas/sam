@@ -41,7 +41,6 @@ typedef struct sam_stack {
     sam_word_t *s0;
     sam_uword_t ssize; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
-    sam_uword_t nrefs; // Number of references to the stack
 } sam_stack_t;
 
 // Top-level state
@@ -59,7 +58,6 @@ enum {
     SAM_ERROR_INVALID_ADDRESS,
     SAM_ERROR_STACK_UNDERFLOW,
     SAM_ERROR_STACK_OVERFLOW,
-    SAM_ERROR_ORPHAN_STACK,
     SAM_ERROR_WRONG_TYPE,
     SAM_ERROR_INVALID_TRAP,
     SAM_ERROR_TRAP_INIT,
@@ -71,18 +69,12 @@ enum {
 // Stack access
 int sam_stack_new(sam_state_t *state, unsigned type, sam_stack_t **new_stack);
 int sam_stack_copy(sam_state_t *state, sam_stack_t *s, sam_stack_t **new_stack);
-int sam_stack_free(sam_stack_t *s);
-void sam_stack_ref(sam_stack_t *s);
-void sam_stack_unref(sam_stack_t *s);
-void sam_stack_maybe_unref(sam_word_t val);
 int sam_stack_peek(sam_stack_t *s, sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_stack_t *s, sam_uword_t addr, sam_uword_t val);
 int sam_stack_extract(sam_stack_t *s, sam_uword_t addr);
 int sam_stack_insert(sam_stack_t *s, sam_uword_t addr);
 int sam_stack_item(sam_stack_t *s, sam_word_t n, sam_uword_t *addr);
-int sam_stack_pop_unsafe(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_stack_pop(sam_stack_t *s, sam_word_t *val_ptr);
-int sam_stack_shift_unsafe(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_stack_shift(sam_stack_t *s, sam_word_t *val_ptr);
 int sam_stack_push(sam_stack_t *s, sam_word_t val);
 int sam_stack_prepend(sam_stack_t *s, sam_word_t val);
