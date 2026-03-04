@@ -334,6 +334,9 @@ var StackDifference = map[string]int{
 	"int":   1,
 	"float": 1,
 
+	// Atoms
+	"null": 1,
+
 	// Instructions without immediate operand
 	"nop":     0,
 	"pop":     -1,

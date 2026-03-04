@@ -26,6 +26,7 @@ TESTS = \
 	expr.sal \
 	factorial_iter.sal \
 	factorial_rec.sal \
+	map.sal \
 	mutated_capture.sal \
 	repeated_closure.sal \
 	screen_graphics.sal \
@@ -54,6 +55,7 @@ RESULTS = \
 	expr.sal-expected.log \
 	factorial_iter.sal-expected.log \
 	factorial_rec.sal-expected.log \
+	map.sal-expected.log \
 	mutated_capture.sal-expected.log \
 	repeated_closure.sal-expected.log \
 	screen_graphics.sal-expected.log \

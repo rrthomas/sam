@@ -311,7 +311,14 @@ char *disas(sam_word_t inst)
     } else if ((inst & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
         sam_blob_t *blob = (sam_blob_t *)(inst & ~SAM_BLOB_TAG_MASK);
         sam_blob_list_t *l = list_append(NULL, blob);
-        free(disas_stack(l, 0, blob, &text));
+        switch (blob->type) {
+            case SAM_BLOB_STACK:
+                free(disas_stack(l, 0, blob, &text));
+                break;
+            case SAM_BLOB_MAP:
+                free(disas_map(l, 0, blob, &text));
+                break;
+        }
     } else {
         abort(); // The cases are exhaustive.
     }

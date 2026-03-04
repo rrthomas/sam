@@ -168,6 +168,8 @@ func (a *assembler) assembleInstruction(tokens ...string) {
 
 		switch opcode.Tag {
 		case libsam.ATOM_TAG:
+			a.flushInstructions()
+
 			switch opcode.Opcode {
 			case libsam.ATOM_NULL:
 				a.stack.PushAtom(libsam.ATOM_NULL, 0)

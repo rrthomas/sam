@@ -33,18 +33,26 @@ import (
 
 // Parser
 
+type Pair struct {
+	Pos lexer.Position
+
+	Key   *Expression `@@ [":"`
+	Value *Expression `@@ ]`
+}
+
 type PrimaryExp struct {
 	Pos lexer.Position
 
-	Int   *int64   `  @Int`
+	Null  bool     `  @"null"`
+	Int   *int64   `| @Int`
 	Float *float64 `| @Float`
 	// String
-	List *[]Expression `| "[" [ @@ ("," @@)* ","? ] "]"`
-	// Map
-	Block    *Block      `| @@`
-	Function *Function   `| @@`
-	Variable *string     `| @Ident`
-	Paren    *Expression `| "(" @@ ")"`
+	EmptyMap  bool        `| @"[" ":" "]"`
+	Container *[]Pair     `| "[" [ @@ ("," @@)* ","? ] "]"`
+	Block     *Block      `| @@`
+	Function  *Function   `| @@`
+	Variable  *string     `| @Ident`
+	Paren     *Expression `| "(" @@ ")"`
 }
 
 type IndexedExp struct {
@@ -213,16 +221,38 @@ type Function struct {
 // Compilation
 
 func (e *PrimaryExp) Compile(ctx *Frame) {
-	if e.Int != nil {
+	if e.Null {
+		ctx.assemble("null")
+	} else if e.Int != nil {
 		ctx.assemble(fmt.Sprintf("int %d", *e.Int))
 	} else if e.Float != nil {
 		ctx.assemble(fmt.Sprintf("float %g", *e.Float))
-	} else if e.List != nil {
-		ctx.assembleTrap("new")
-		for _, e := range *e.List {
-			e.Compile(ctx)
-			ctx.assemble("int -2", "get", "append")
+	} else if e.Container != nil {
+		// Check we have a list or map, not a combination
+		isMap := false
+		for _, e := range *e.Container {
+			if e.Value != nil {
+				isMap = true
+			} else if isMap == true {
+				panic("bad list or map literal")
+			}
 		}
+		if !isMap {
+			ctx.assembleTrap("new")
+			for _, e := range *e.Container {
+				e.Key.Compile(ctx)
+				ctx.assemble("int -2", "get", "append")
+			}
+		} else {
+			ctx.assembleTrap("new_map")
+			for _, e := range *e.Container {
+				e.Value.Compile(ctx)
+				e.Key.Compile(ctx)
+				ctx.assemble("int -3", "get", "iset")
+			}
+		}
+	} else if e.EmptyMap {
+		ctx.assembleTrap("new_map")
 	} else if e.Variable != nil {
 		ctx.compileGetVar(*e.Variable)
 	} else if e.Block != nil {
@@ -865,7 +895,11 @@ func (ctx *Frame) assembleInst(inst string) {
 		panic(fmt.Errorf("invalid instruction %s", instName))
 	}
 	ctx.adjustSp(delta)
-	ctx.asm = append(ctx.asm, inst)
+	if instName == "null" {
+		ctx.asm = append(ctx.asm, nil)
+	} else {
+		ctx.asm = append(ctx.asm, inst)
+	}
 }
 
 func (ctx *Frame) assembleSingle(inst string) {
