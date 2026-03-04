@@ -54,6 +54,8 @@ sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int -13
 halt
+
+
+sam_run returns: halt with result int -13
 Stack: XXXXXXXX (1 item(s))
 - int -13
-sam_run returns: halt with result int -13

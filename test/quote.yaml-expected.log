@@ -15,7 +15,9 @@ Working stack: (2 word(s))
 - go
 - int 0
 halt
+
+
+sam_run returns: halt with result int 0
 Stack: XXXXXXXX (2 item(s))
 - go
 - int 0
-sam_run returns: halt with result int 0

@@ -206,7 +206,7 @@ static sam_stack_list_t *disas_stack(sam_stack_list_t *l, sam_uword_t level, sam
             sam_stack_t *inner_s = (sam_stack_t *)addr;
             if (l == NULL || already_visited(l, inner_s)) {
                 char *stack_str;
-                xasprintf(&stack_str, "stack %p", inner_s);
+                xasprintf(&stack_str, "stack %p (%u items)", inner_s, inner_s->sp);
                 char *line = indent(level, stack_str);
                 xstrcat(text, line);
             } else {

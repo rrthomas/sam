@@ -9,7 +9,7 @@ Stack: XXXXXXXX (8 item(s))
 - stack XXXXXXXX (18 items)
   - int -3
   - get
-  - stack XXXXXXXX
+  - stack XXXXXXXX (4 items)
   - iget
   - int -5
   - get add
@@ -23,7 +23,7 @@ Stack: XXXXXXXX (8 item(s))
   - get
   - int -5
   - set while
-  - stack XXXXXXXX
+  - stack XXXXXXXX (18 items)
   - go
 - do
 - pop
@@ -34,181 +34,181 @@ Working stack: (0 word(s))
 stack
 sam_run: pc0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 float
 sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
 stack
 sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (18 items)
 do
 sam_run: pc0 = XXXXXXXX, pc = 0, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -4
 stack
 sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 iget
 sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 2.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 2.000000
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 2.000000
 - float 0.000000
 add
 sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 2.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 0.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 2.000000
 - int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -4
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -4
 - int 1
 add
 sam_run: pc0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 - int -3
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -4
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 - int -3
@@ -216,185 +216,185 @@ Working stack: (8 word(s))
 set
 sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 while
 sam_run: pc0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 stack
 sam_run: pc0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
-- stack XXXXXXXX
+- stack XXXXXXXX (18 items)
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 stack
 sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 iget
 sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 5.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 5.000000
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 5.000000
 - float 2.000000
 add
 sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 7.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 2.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 7.000000
 - int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 - int 1
 add
 sam_run: pc0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
 - int -2
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -3
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
 - int -2
@@ -402,185 +402,185 @@ Working stack: (8 word(s))
 set
 sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
 while
 sam_run: pc0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 stack
 sam_run: pc0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
-- stack XXXXXXXX
+- stack XXXXXXXX (18 items)
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
 stack
 sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 iget
 sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 10.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 10.000000
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 10.000000
 - float 7.000000
 add
 sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 17.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 7.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 17.000000
 - int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -2
 - int 1
 add
 sam_run: pc0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
 - int -1
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -2
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
 - int -1
@@ -588,185 +588,185 @@ Working stack: (8 word(s))
 set
 sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
 while
 sam_run: pc0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 stack
 sam_run: pc0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
-- stack XXXXXXXX
+- stack XXXXXXXX (18 items)
 go
 sam_run: pc0 = XXXXXXXX, pc = 0, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
 stack
 sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 iget
 sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 20.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 20.000000
 - int -5
 get
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 20.000000
 - float 17.000000
 add
 sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 37.000000
 int
 sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 17.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - float 37.000000
 - int -5
 set
 sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 int
 sam_run: pc0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -3
 get
 sam_run: pc0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
 int
 sam_run: pc0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int -1
 - int 1
 add
 sam_run: pc0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int 0
 - int -1
 get
 sam_run: pc0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int 0
 - int 0
 int
 sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int -1
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int 0
 - int 0
@@ -774,35 +774,38 @@ Working stack: (8 word(s))
 set
 sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int 0
-- stack XXXXXXXX
+- stack XXXXXXXX (8 items)
 - int 5
 - int 0
 while
 sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - int 0
 pop
 sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 float
 sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 37.000000
 - float 4.000000
 div
 sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- stack XXXXXXXX
+- stack XXXXXXXX (4 items)
 - float 9.250000
 halt
+
+
+sam_run returns: halt with result float 9.250000
 Stack: XXXXXXXX (2 item(s))
 - stack XXXXXXXX (4 items)
   - float 2.000000
@@ -810,4 +813,3 @@ Stack: XXXXXXXX (2 item(s))
   - float 10.000000
   - float 20.000000
 - float 9.250000
-sam_run returns: halt with result float 9.250000
