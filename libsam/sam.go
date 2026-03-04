@@ -297,6 +297,9 @@ var Traps = map[string]int{
 	"LSH":     C.TRAP_BASIC_LSH,
 	"RSH":     C.TRAP_BASIC_RSH,
 	"ARSH":    C.TRAP_BASIC_ARSH,
+	"ITER":    C.TRAP_BASIC_ITER,
+	"NEXT":    C.TRAP_BASIC_NEXT,
+	"NEW_MAP": C.TRAP_BASIC_NEW_MAP,
 
 	"I2F": C.TRAP_MATH_I2F,
 	"F2I": C.TRAP_MATH_F2I,
@@ -388,6 +391,9 @@ var TrapStackEffect = map[string]StackEffect{
 	"LSH":     {2, 1},
 	"RSH":     {2, 1},
 	"ARSH":    {2, 1},
+	"ITER":    {1, 1},
+	"NEXT":    {1, 2},
+	"NEW_MAP": {0, 1},
 
 	// Math traps
 	"I2F": {1, 1},

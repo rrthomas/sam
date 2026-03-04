@@ -1,0 +1,32 @@
+# Copy a blob's only reference
+- trap new_map
+- trap copy
+# Insert two items, then copy the blob
+- int 13
+- float 1.0
+- int -3
+- get
+- iset
+- int 42
+- float 2.0
+- int -3
+- get
+- iset
+- int -1
+- get
+- trap copy
+# Remove an item from one of the copies
+- null
+- float 1.0
+- int -3
+- get
+- iset
+# Replace an item in the same copy
+- int 28
+- float 2.0
+- int -3
+- get
+- iset
+# Exit 
+- int 0
+- halt

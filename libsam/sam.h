@@ -35,17 +35,23 @@ typedef double sam_float_t;
 #define SAM_RET_MASK ((1 << SAM_RET_SHIFT) - 1)
 
 // Blobs
-typedef struct sam_blob {
+typedef struct {
     sam_uword_t type;
     _Alignas(max_align_t) sam_word_t data[];
 } sam_blob_t;
 
 // Stacks (SAM_BLOB_STACK)
-typedef struct sam_stack {
+typedef struct {
     sam_word_t *s0;
     sam_uword_t ssize; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
 } sam_stack_t;
+
+// Maps (SAM_BLOB_MAP)
+typedef struct sam_map_struct *sam_map_t;
+
+// Map iterators
+typedef struct sam_map_iter_struct *sam_map_iter_t;
 
 // Top-level state
 typedef struct sam_state {
@@ -92,6 +98,14 @@ int sam_push_float(sam_blob_t *s, sam_float_t n);
 int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);
 int sam_push_trap(sam_blob_t *s, sam_uword_t function);
 int sam_push_insts(sam_blob_t *s, sam_uword_t insts);
+
+// Maps
+int sam_map_new(sam_state_t *state, sam_blob_t **new_map);
+int sam_map_copy(sam_state_t *state, sam_blob_t *map, sam_blob_t **new_map);
+int sam_map_get(sam_blob_t *blob, sam_word_t key, sam_word_t *val);
+int sam_map_set(sam_blob_t *blob, sam_word_t key, sam_word_t val);
+int sam_map_iter_new(sam_blob_t *blob, sam_map_iter_t *i);
+int sam_map_iter_next(sam_map_iter_t i, sam_word_t *key, sam_word_t *val);
 
 // Top-level states
 sam_state_t *sam_state_new(void);

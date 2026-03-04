@@ -15,6 +15,7 @@ TESTS = \
 	double_list.yaml \
 	factorial_iter.yaml \
 	factorial_rec.yaml \
+	map.yaml \
 	quote.yaml \
 	set.yaml \
 	screen_graphics.yaml \
@@ -39,6 +40,7 @@ RESULTS = \
 	double_list.yaml-expected.log \
 	factorial_iter.yaml-expected.log \
 	factorial_rec.yaml-expected.log \
+	map.yaml-expected.log \
 	quote.yaml-expected.log \
 	screen_graphics.yaml-expected.log \
 	screen_graphics.yaml-expected.pbm \

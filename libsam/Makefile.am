@@ -20,6 +20,7 @@ libsam_la_SOURCES = \
 	private.h \
 	run.h \
 	debug.c \
+	map.c \
 	stack.c \
 	run.c \
 	state.c \
@@ -31,4 +32,7 @@ libsam_la_SOURCES = \
 	traps_graphics.c \
 	$(EMPTY)
 
-EXTRA_DIST = sam.go
+EXTRA_DIST = \
+	sam.go \
+	verstable.h \
+	$(EMPTY)

@@ -39,7 +39,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             HALT_IF_ERROR(sam_stack_peek(state->pc0, state->pc++, &ir));
             PUSH_WORD(ir);
         }
-        break;
+    break;
     case TRAP_BASIC_PREPEND:
         {
             sam_blob_t *stack;
@@ -71,11 +71,18 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         break;
     case TRAP_BASIC_COPY:
         {
-            sam_blob_t *stack;
-            POP_REF(stack);
-            sam_blob_t *new_stack;
-            HALT_IF_ERROR(sam_stack_copy(state, stack, &new_stack));
-            PUSH_REF(new_stack);
+            sam_blob_t *blob;
+            POP_REF(blob);
+            sam_blob_t *new_blob;
+            switch (blob->type) {
+                case SAM_BLOB_STACK:
+                    HALT_IF_ERROR(sam_stack_copy(state, blob, &new_blob));
+                    break;
+                case SAM_BLOB_MAP:
+                    HALT_IF_ERROR(sam_map_copy(state, blob, &new_blob));
+                    break;
+            }
+            PUSH_REF(new_blob);
         }
         break;
     case TRAP_BASIC_RET:
@@ -117,8 +124,19 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             PUSH_INT(ARSHIFT(value, shift));
         }
         break;
+    case TRAP_BASIC_ITER:
+        break;
+    case TRAP_BASIC_NEXT:
+        break;
+    case TRAP_BASIC_NEW_MAP:
+        {
+            sam_blob_t *map;
+            HALT_IF_ERROR(sam_map_new(state, &map));
+            HALT_IF_ERROR(sam_push_ref(state->stack, map));
+        }
+        break;
     }
- error:
+error:
     return error;
 }
 
@@ -147,6 +165,12 @@ char *sam_basic_trap_name(sam_word_t function)
         return "RSH";
     case TRAP_BASIC_ARSH:
         return "ARSH";
+    case TRAP_BASIC_NEW_MAP:
+        return "NEW_MAP";
+    case TRAP_BASIC_ITER:
+        return "ITER";
+    case TRAP_BASIC_NEXT:
+        return "NEXT";
     default:
         return NULL;
     }

@@ -29,7 +29,7 @@
         var = (blob_type *)(&(blob->data));             \
     } while (0)
 
-    bool do_debug = false;
+bool do_debug = false;
 
 void debug(const char *fmt, ...)
 {
@@ -155,24 +155,24 @@ char *trap_name(sam_uword_t function)
     }
 }
 
-typedef struct sam_stack_list {
-    sam_stack_t *stack;
-    struct sam_stack_list *next;
-} sam_stack_list_t;
+typedef struct sam_blob_list {
+    sam_blob_t *blob;
+    struct sam_blob_list *next;
+} sam_blob_list_t;
 
-static sam_stack_list_t *list_append(sam_stack_list_t *l, sam_stack_t *s)
+static sam_blob_list_t *list_append(sam_blob_list_t *l, sam_blob_t *blob)
 {
-    sam_stack_list_t *node = malloc(sizeof(struct sam_stack_list));
+    sam_blob_list_t *node = malloc(sizeof(struct sam_blob_list));
     assert(node != NULL);
-    node->stack = s;
+    node->blob = blob;
     node->next = l;
     return node;
 }
 
-static void free_list(sam_stack_list_t *l)
+static void free_list(sam_blob_list_t *l)
 {
-    sam_stack_list_t *next;
-    for (sam_stack_list_t *p = l; p != NULL; p = next) {
+    sam_blob_list_t *next;
+    for (sam_blob_list_t *p = l; p != NULL; p = next) {
         next = p->next;
         free(p);
     }
@@ -192,49 +192,87 @@ static char *indent(sam_uword_t level, char *s)
     return new_s;
 }
 
-static bool already_visited(sam_stack_list_t *l, sam_stack_t *s)
+static bool already_visited(sam_blob_list_t *l, sam_blob_t *blob)
 {
-    for (sam_stack_list_t *p = l; p != NULL; p = p->next) {
-        if (p->stack == s)
+    for (sam_blob_list_t *p = l; p != NULL; p = p->next) {
+        if (p->blob == blob)
             return true;
     }
     return false;
 }
 
-static sam_stack_list_t *disas_stack(sam_stack_list_t *l, sam_uword_t level, sam_blob_t *blob, sam_uword_t from, sam_uword_t to, char **text)
+static sam_blob_list_t *disas_word(sam_blob_list_t *l, sam_uword_t level, sam_word_t opcode, char **text);
+
+static sam_blob_list_t *disas_stack(sam_blob_list_t *l, sam_uword_t level, sam_blob_t *blob, char **text)
 {
     xasprintf(text, "");
-    for (sam_uword_t i = from; i < to; i++) {
+    sam_stack_t *s;
+    XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
+    for (sam_uword_t i = 0; i < s->sp; i++) {
         sam_uword_t opcode;
         assert(sam_stack_peek(blob, i, &opcode) == SAM_ERROR_OK);
-        if ((opcode & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
-            sam_blob_t *inner_blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
-            sam_stack_t *inner_s;
-            XEXTRACT_BLOB(inner_blob, SAM_BLOB_STACK, sam_stack_t, inner_s);
-            if (l == NULL || already_visited(l, inner_s)) {
-                char *stack_str;
-                xasprintf(&stack_str, "stack %p (%u items)", inner_s, inner_s->sp);
-                char *line = indent(level, stack_str);
-                xstrcat(text, line);
-            } else {
-                char *count_str;
-                xasprintf(&count_str, "stack %p (%u items)", inner_s, inner_s->sp);
-                char *line = indent(level, count_str);
-                xstrcat(text, line);
-                free(count_str);
-                l = list_append(l, inner_s);
-                char *stack_str;
-                l = disas_stack(l, level + 1, inner_blob, 0, inner_s->sp, &stack_str);
-                xstrcat(text, stack_str);
-            }
-        } else {
-            sam_word_t inst;
-            assert(sam_stack_peek(blob, i, (sam_uword_t *)&inst) == SAM_ERROR_OK);
-            char *inst_str = disas(inst);
-            char *line = indent(level, inst_str);
-            free(inst_str);
-            xstrcat(text, line);
+        l = disas_word(l, level, opcode, text);
+    }
+    return l;
+}
+
+static sam_blob_list_t *disas_map(sam_blob_list_t *l, sam_uword_t level, sam_blob_t *blob, char **text)
+{
+    xasprintf(text, "");
+    sam_map_iter_t i;
+    assert(sam_map_iter_new(blob, &i) == SAM_ERROR_OK);
+    for (;;) {
+        sam_word_t key, val;
+        assert(sam_map_iter_next(i, &key, &val) == SAM_ERROR_OK);
+        if (val == ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG))
+            break;
+        l = disas_word(l, level, key, text);
+        l = disas_word(l, level + 1, val, text);
+    }
+    return l;
+}
+
+static sam_blob_list_t *disas_word(sam_blob_list_t *l, sam_uword_t level, sam_word_t opcode, char **text)
+{
+    if ((opcode & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
+        sam_blob_t *inner_blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
+        char *blob_str;
+        switch (inner_blob->type) {
+            case SAM_BLOB_STACK:
+                {
+                    sam_stack_t *inner_s;
+                    XEXTRACT_BLOB(inner_blob, SAM_BLOB_STACK, sam_stack_t, inner_s);
+                    xasprintf(&blob_str, "stack %p (%u items)", inner_s, inner_s->sp);
+                }
+                break;
+            case SAM_BLOB_MAP:
+                {
+                    sam_map_t *inner_m;
+                    XEXTRACT_BLOB(inner_blob, SAM_BLOB_MAP, sam_map_t, inner_m);
+                    xasprintf(&blob_str, "map %p", inner_m);
+                }
+                break;
         }
+        char *line = indent(level, blob_str);
+        xstrcat(text, line);
+        if (l != NULL && !already_visited(l, inner_blob)) {
+            l = list_append(l, inner_blob);
+            char *blob_str;
+            switch (inner_blob->type) {
+                case SAM_BLOB_STACK:
+                    l = disas_stack(l, level + 1, inner_blob, &blob_str);
+                    break;
+                case SAM_BLOB_MAP:
+                    l = disas_map(l, level + 1, inner_blob, &blob_str);
+                    break;
+            }
+            xstrcat(text, blob_str);
+        }
+    } else {
+        char *inst_str = disas(opcode);
+        char *line = indent(level, inst_str);
+        free(inst_str);
+        xstrcat(text, line);
     }
     return l;
 }
@@ -272,10 +310,8 @@ char *disas(sam_word_t inst)
         } while (opcodes != 0);
     } else if ((inst & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
         sam_blob_t *blob = (sam_blob_t *)(inst & ~SAM_BLOB_TAG_MASK);
-        sam_stack_t *s;
-        XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
-        sam_stack_list_t *l = list_append(NULL, s);
-        free(disas_stack(l, 0, blob, 0, s->sp, &text));
+        sam_blob_list_t *l = list_append(NULL, blob);
+        free(disas_stack(l, 0, blob, &text));
     } else {
         abort(); // The cases are exhaustive.
     }
@@ -287,9 +323,9 @@ void sam_print_stack(sam_blob_t *blob)
     sam_stack_t *s;
     XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     debug("Stack: %p (%u item(s))\n", blob, s->sp);
-    sam_stack_list_t *l = list_append(NULL, s);
+    sam_blob_list_t *l = list_append(NULL, blob);
     char *text;
-    l = disas_stack(l, 0, blob, 0, s->sp, &text);
+    l = disas_stack(l, 0, blob, &text);
     debug("%s", text);
     free(text);
     free_list(l);
@@ -301,7 +337,7 @@ void sam_print_working_stack(sam_blob_t *blob)
     XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     debug("Working stack: (%u word(s))\n", s->sp);
     char *text;
-    disas_stack(NULL, 0, blob, 0, s->sp, &text);
+    disas_stack(NULL, 0, blob, &text);
     debug("%s", text);
     free(text);
 }
