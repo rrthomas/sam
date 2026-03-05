@@ -371,10 +371,4 @@ void sam_dump_screen(const char *filename)
     }
 }
 
-// Initialise debug state.
-int sam_debug_init(sam_state_t *state)
-{
-    return 0;
-}
-
 #endif

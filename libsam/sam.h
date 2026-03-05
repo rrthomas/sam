@@ -123,7 +123,6 @@ char *disas(sam_word_t inst);
 void sam_print_stack(sam_blob_t *blob);
 void sam_print_working_stack(sam_blob_t *blob);
 void debug(const char *fmt, ...);
-int sam_debug_init(sam_state_t *state);
 #endif
 
 #endif

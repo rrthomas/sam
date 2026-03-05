@@ -73,11 +73,6 @@ var rootCmd = &cobra.Command{
 		if err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
-		res := libsam.DebugInit(state)
-		if res != libsam.ERROR_OK {
-			libsam.GraphicsFinish()
-			os.Exit(int(res))
-		}
 		code := state.Code()
 		code.PrintStack()
 		res2 := libsam.Run(&state)

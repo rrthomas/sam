@@ -140,10 +140,6 @@ func Run(state *State) Word {
 	return res
 }
 
-func DebugInit(state State) int {
-	return int(C.sam_debug_init(state.state))
-}
-
 func GraphicsInit() Word {
 	return C.sam_graphics_init()
 }
