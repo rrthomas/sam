@@ -208,7 +208,7 @@ int sam_push_insts(sam_blob_t *blob, sam_uword_t insts)
     return sam_stack_push(blob, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
 }
 
-int sam_blob_new(sam_state_t *state, unsigned type, sam_blob_t **new_blob)
+int sam_blob_new(unsigned type, sam_blob_t **new_blob)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (type > SAM_BLOB_TYPES)
@@ -222,11 +222,11 @@ error:
     return error;
 }
 
-int sam_stack_new(sam_state_t *state, sam_blob_t **new_stack)
+int sam_stack_new(sam_blob_t **new_stack)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_blob_t *blob;
-    HALT_IF_ERROR(sam_blob_new(state, SAM_BLOB_STACK, &blob));
+    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_STACK, &blob));
     sam_stack_t *s;
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     s->ssize = 1;
@@ -240,12 +240,12 @@ error:
     return error;
 }
 
-int sam_stack_copy(sam_state_t *state, sam_blob_t *stack, sam_blob_t **new_stack)
+int sam_stack_copy(sam_blob_t *stack, sam_blob_t **new_stack)
 {
     int error = SAM_ERROR_OK;
     sam_stack_t *s;
     EXTRACT_BLOB(stack, SAM_BLOB_STACK, sam_stack_t, s);
-    HALT_IF_ERROR(sam_stack_new(state, new_stack));
+    HALT_IF_ERROR(sam_stack_new(new_stack));
     
     // Copy the contents of the stack.
     for (sam_uword_t pos = 0; pos < s->sp; pos++) {

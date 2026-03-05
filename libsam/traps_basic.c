@@ -65,7 +65,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_NEW:
         {
             sam_blob_t *stack;
-            HALT_IF_ERROR(sam_stack_new(state, &stack));
+            HALT_IF_ERROR(sam_stack_new(&stack));
             HALT_IF_ERROR(sam_push_ref(state->stack, stack));
         }
         break;
@@ -76,10 +76,10 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             sam_blob_t *new_blob;
             switch (blob->type) {
                 case SAM_BLOB_STACK:
-                    HALT_IF_ERROR(sam_stack_copy(state, blob, &new_blob));
+                    HALT_IF_ERROR(sam_stack_copy(blob, &new_blob));
                     break;
                 case SAM_BLOB_MAP:
-                    HALT_IF_ERROR(sam_map_copy(state, blob, &new_blob));
+                    HALT_IF_ERROR(sam_map_copy(blob, &new_blob));
                     break;
             }
             PUSH_REF(new_blob);
@@ -131,7 +131,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_NEW_MAP:
         {
             sam_blob_t *map;
-            HALT_IF_ERROR(sam_map_new(state, &map));
+            HALT_IF_ERROR(sam_map_new(&map));
             HALT_IF_ERROR(sam_push_ref(state->stack, map));
         }
         break;

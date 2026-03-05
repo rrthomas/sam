@@ -77,12 +77,12 @@ enum SAM_ERROR {
 };
 
 // Blobs
-int sam_blob_new(sam_state_t *state, unsigned type, sam_blob_t **new_blob);
+int sam_blob_new(unsigned type, sam_blob_t **new_blob);
 
 // Stack access
 int sam_stack_from_blob(sam_blob_t *blob, sam_stack_t **s);
-int sam_stack_new(sam_state_t *state, sam_blob_t **new_stack);
-int sam_stack_copy(sam_state_t *state, sam_blob_t *stack, sam_blob_t **new_stack);
+int sam_stack_new(sam_blob_t **new_stack);
+int sam_stack_copy(sam_blob_t *stack, sam_blob_t **new_stack);
 int sam_stack_peek(sam_blob_t *s, sam_uword_t addr, sam_uword_t *val);
 int sam_stack_poke(sam_blob_t *s, sam_uword_t addr, sam_uword_t val);
 int sam_stack_extract(sam_blob_t *s, sam_uword_t addr);
@@ -100,8 +100,8 @@ int sam_push_trap(sam_blob_t *s, sam_uword_t function);
 int sam_push_insts(sam_blob_t *s, sam_uword_t insts);
 
 // Maps
-int sam_map_new(sam_state_t *state, sam_blob_t **new_map);
-int sam_map_copy(sam_state_t *state, sam_blob_t *map, sam_blob_t **new_map);
+int sam_map_new(sam_blob_t **new_map);
+int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map);
 int sam_map_get(sam_blob_t *blob, sam_word_t key, sam_word_t *val);
 int sam_map_set(sam_blob_t *blob, sam_word_t key, sam_word_t val);
 int sam_map_iter_new(sam_blob_t *blob, sam_map_iter_t *i);

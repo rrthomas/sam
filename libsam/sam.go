@@ -63,18 +63,18 @@ func (state *State) Code() Stack {
 	return Stack{state.state.root_code}
 }
 
-func NewStack(state State) Stack {
+func NewStack() Stack {
 	stack := Stack{}
-	C.sam_stack_new(state.state, &stack.stack)
+	C.sam_stack_new(&stack.stack)
 	return stack
 }
 
 func NewState() State {
 	state := C.sam_state_new()
 	var stack *C.sam_blob_t
-	C.sam_stack_new(state, &stack)
+	C.sam_stack_new(&stack)
 	state.stack = stack
-	C.sam_stack_new(state, &stack)
+	C.sam_stack_new(&stack)
 	state.root_code = stack
 	state.pc0 = stack
 	return State{state: state}

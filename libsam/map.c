@@ -27,11 +27,11 @@ typedef struct sam_map_iter_struct {
 #include "private.h"
 
 
-int sam_map_new(sam_state_t *state, sam_blob_t **new_map)
+int sam_map_new(sam_blob_t **new_map)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_blob_t *blob;
-    HALT_IF_ERROR(sam_blob_new(state, SAM_BLOB_MAP, &blob));
+    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_MAP, &blob));
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
     *m = malloc(sizeof(struct sam_map_struct));
@@ -99,10 +99,10 @@ int sam_map_iter_next(sam_map_iter_t i, sam_word_t *key, sam_word_t *val)
     return SAM_ERROR_OK;
 }
 
-int sam_map_copy(sam_state_t *state, sam_blob_t *map, sam_blob_t **new_map)
+int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map)
 {
     int error = SAM_ERROR_OK;
-    HALT_IF_ERROR(sam_map_new(state, new_map));
+    HALT_IF_ERROR(sam_map_new(new_map));
 
     // Copy the contents of the map.
     sam_map_iter_t i;

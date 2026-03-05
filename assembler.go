@@ -200,7 +200,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
 		a.flushInstructions()
-		subA := assembler{state: a.state, stack: libsam.NewStack(a.state)}
+		subA := assembler{state: a.state, stack: libsam.NewStack()}
 		subA.assembleSequence(n)
 		a.stack.PushArray(subA.stack)
 		return nil
@@ -247,7 +247,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			subProg := readProg(r)
 			// Assemble the included file in a nested stack.
 			a.flushInstructions()
-			subA := assembler{state: a.state, stack: libsam.NewStack(a.state)}
+			subA := assembler{state: a.state, stack: libsam.NewStack()}
 			subA.assembleSequence(subProg)
 			a.stack.PushArray(subA.stack)
 		case "!istack":
