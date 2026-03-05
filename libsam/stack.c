@@ -29,7 +29,7 @@ int sam_stack_new(sam_blob_t **new_stack)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_blob_t *blob;
-    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_STACK, &blob));
+    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_STACK, sizeof(sam_stack_t), &blob));
     sam_stack_t *s;
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     s->size = 1;

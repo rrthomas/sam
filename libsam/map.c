@@ -8,35 +8,31 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
-#define NAME _sam_map
-#define KEY_TY uintptr_t
-#define VAL_TY uintptr_t
-#include "verstable.h"
-
-typedef struct sam_map_struct {
-    _sam_map map;
-} *sam_map_t;
-
-typedef struct sam_map_iter_struct {
-    _sam_map_itr itr;
-} *sam_map_iter_t;
-
 #include "sam.h"
 #include "sam_opcodes.h"
 
 #include "private.h"
 
 
+#define NAME _sam_map
+#define KEY_TY uintptr_t
+#define VAL_TY uintptr_t
+#define IMPLEMENTATION_MODE
+#include "verstable.h"
+
+typedef _sam_map sam_map_t;
+
+typedef _sam_map_itr sam_map_iter_t;
+
+
 int sam_map_new(sam_blob_t **new_map)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_blob_t *blob;
-    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_MAP, &blob));
+    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_MAP, sizeof(_sam_map), &blob));
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
-    *m = malloc(sizeof(struct sam_map_struct));
-    // FIXME: check for NULL
-    vt_init(&(*m)->map);
+    vt_init(m);
     *new_map = blob;
 
 error:
@@ -49,7 +45,7 @@ int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map)
     HALT_IF_ERROR(sam_map_new(new_map));
 
     // Copy the contents of the map.
-    sam_map_iter_t i;
+    sam_map_iter_t *i;
     HALT_IF_ERROR(sam_map_iter_new(map, &i));
     for (;;) {
         sam_word_t key, val;
@@ -68,7 +64,7 @@ int sam_map_get(sam_blob_t *blob, sam_word_t key, sam_word_t *val)
     sam_word_t error = SAM_ERROR_OK;
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
-    _sam_map_itr itr = vt_get(&(*m)->map, key);
+    _sam_map_itr itr = vt_get(m, key);
     if (vt_is_end(itr))
        *val = (SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG;
     *val = itr.data->val;
@@ -83,9 +79,9 @@ int sam_map_set(sam_blob_t *blob, sam_word_t key, sam_word_t val)
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
     if (val == ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG)) {
-        vt_erase(&(*m)->map, key);
+        vt_erase(m, key);
     } else {
-        _sam_map_itr itr = vt_insert(&(*m)->map, key, val);
+        _sam_map_itr itr = vt_insert(m, key, val);
         if (vt_is_end(itr))
             HALT(SAM_ERROR_NO_MEMORY);
     }
@@ -94,27 +90,27 @@ error:
     return error;
 }
 
-int sam_map_iter_new(sam_blob_t *blob, sam_map_iter_t *i)
+int sam_map_iter_new(sam_blob_t *blob, sam_map_iter_t **i)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
-    *i = malloc(sizeof(struct sam_map_iter_struct));
+    *i = malloc(sizeof(_sam_map_itr));
     // FIXME: check for NULL
-    (*i)->itr = vt_first(&(*m)->map);
+    **i = vt_first(m);
 
 error:
     return error;
 }
 
-int sam_map_iter_next(sam_map_iter_t i, sam_word_t *key, sam_word_t *val)
+int sam_map_iter_next(sam_map_iter_t *i, sam_word_t *key, sam_word_t *val)
 {
-    if (vt_is_end(i->itr)) {
+    if (vt_is_end(*i)) {
         *key = *val = (SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG;
     } else {
-        *key = i->itr.data->key;
-        *val = i->itr.data->val;
-        i->itr = vt_next(i->itr);
+        *key = i->data->key;
+        *val = i->data->val;
+        *i = vt_next(*i);
     }
     return SAM_ERROR_OK;
 }

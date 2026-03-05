@@ -16,12 +16,12 @@
 #include "private.h"
 
 
-int sam_blob_new(unsigned type, sam_blob_t **new_blob)
+int sam_blob_new(unsigned type, size_t data_size, sam_blob_t **new_blob)
 {
     sam_word_t error = SAM_ERROR_OK;
     if (type > SAM_BLOB_TYPES)
         HALT(SAM_ERROR_INVALID_BLOB_TYPE);
-    sam_blob_t *blob = calloc(1, sizeof(sam_blob_t) + sizeof(sam_stack_t));
+    sam_blob_t *blob = calloc(1, sizeof(sam_blob_t) + data_size);
     if (blob == NULL)
         HALT(SAM_ERROR_NO_MEMORY);
     blob->type = type;

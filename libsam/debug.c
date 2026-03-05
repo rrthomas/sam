@@ -219,7 +219,7 @@ static sam_blob_list_t *disas_stack(sam_blob_list_t *l, sam_uword_t level, sam_b
 static sam_blob_list_t *disas_map(sam_blob_list_t *l, sam_uword_t level, sam_blob_t *blob, char **text)
 {
     xasprintf(text, "");
-    sam_map_iter_t i;
+    sam_map_iter_t *i;
     assert(sam_map_iter_new(blob, &i) == SAM_ERROR_OK);
     for (;;) {
         sam_word_t key, val;

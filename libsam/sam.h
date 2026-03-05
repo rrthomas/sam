@@ -34,13 +34,23 @@ typedef double sam_float_t;
 #define SAM_RET_SHIFT 8
 #define SAM_RET_MASK ((1 << SAM_RET_SHIFT) - 1)
 
+#define NAME _sam_map
+#define KEY_TY uintptr_t
+#define VAL_TY uintptr_t
+#define HEADER_MODE
+#include "verstable.h"
+#undef NAME
+#undef KEY_TY
+#undef VAL_TY
+#undef HEADER_MODE
+
 // Blobs
 typedef struct sam_blob sam_blob_t;
 typedef struct sam_stack sam_stack_t;
-typedef struct sam_map_struct *sam_map_t;
+typedef _sam_map sam_map_t;
 
 // Map iterators
-typedef struct sam_map_iter_struct *sam_map_iter_t;
+typedef _sam_map_itr sam_map_iter_t;
 
 // Top-level state
 typedef struct sam_state sam_state_t;
@@ -61,7 +71,7 @@ enum SAM_ERROR {
 };
 
 // Blobs
-int sam_blob_new(unsigned type, sam_blob_t **new_blob);
+int sam_blob_new(unsigned type, size_t data_size, sam_blob_t **new_blob);
 
 // Stack access
 int sam_stack_from_blob(sam_blob_t *blob, sam_stack_t **s);
@@ -88,8 +98,8 @@ int sam_map_new(sam_blob_t **new_map);
 int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map);
 int sam_map_get(sam_blob_t *blob, sam_word_t key, sam_word_t *val);
 int sam_map_set(sam_blob_t *blob, sam_word_t key, sam_word_t val);
-int sam_map_iter_new(sam_blob_t *blob, sam_map_iter_t *i);
-int sam_map_iter_next(sam_map_iter_t i, sam_word_t *key, sam_word_t *val);
+int sam_map_iter_new(sam_blob_t *blob, sam_map_iter_t **i);
+int sam_map_iter_next(sam_map_iter_t *i, sam_word_t *key, sam_word_t *val);
 
 // Top-level states
 sam_state_t *sam_state_new(void);
