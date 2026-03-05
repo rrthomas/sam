@@ -8,7 +8,6 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
-#include <assert.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -206,20 +205,6 @@ int sam_push_insts(sam_blob_t *blob, sam_uword_t insts)
 {
     // FIXME: error if too many bits
     return sam_stack_push(blob, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
-}
-
-int sam_blob_new(unsigned type, sam_blob_t **new_blob)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    if (type > SAM_BLOB_TYPES)
-        HALT(SAM_ERROR_INVALID_BLOB_TYPE);
-    sam_blob_t *blob = calloc(1, sizeof(sam_blob_t) + sizeof(sam_stack_t));
-    if (blob == NULL)
-        HALT(SAM_ERROR_NO_MEMORY);
-    blob->type = type;
-    *new_blob = blob;
-error:
-    return error;
 }
 
 int sam_stack_new(sam_blob_t **new_stack)

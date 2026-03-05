@@ -19,6 +19,7 @@ libsam_la_SOURCES = \
 	$(include_HEADERS) \
 	private.h \
 	run.h \
+	blob.c \
 	debug.c \
 	map.c \
 	stack.c \
