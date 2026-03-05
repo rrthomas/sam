@@ -36,7 +36,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_QUOTE:
         {
             sam_uword_t ir;
-            HALT_IF_ERROR(sam_stack_peek(state->pc0, state->pc++, &ir));
+            HALT_IF_ERROR(sam_stack_peek(state->p0, state->pc++, &ir));
             PUSH_WORD(ir);
         }
     break;

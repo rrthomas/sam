@@ -651,7 +651,7 @@ func (f *Function) Compile(ctx *Frame) {
 		captures: &captures,
 		asm:      make([]any, 0),
 		baseSp:   0,
-		sp:       libsam.Word(nargs) + 2, // exclude PC & PC0 from count
+		sp:       libsam.Word(nargs) + 2, // exclude PC & P0 from count
 		nargs:    nargs,
 	}
 	if f.Parameters != nil {

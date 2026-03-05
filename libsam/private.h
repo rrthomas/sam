@@ -24,7 +24,7 @@ typedef struct sam_stack {
 
 typedef struct sam_state {
     sam_blob_t *s0;
-    sam_blob_t *pc0;
+    sam_blob_t *p0;
     sam_uword_t pc;
 } sam_state_t;
 

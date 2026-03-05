@@ -99,11 +99,11 @@ sam_word_t sam_run(sam_state_t *state)
     CHECK_BLOB(state->s0, SAM_BLOB_STACK);
 
     for (;;) {
-        sam_stack_t *pc0;
-        EXTRACT_BLOB(state->pc0, SAM_BLOB_STACK, sam_stack_t, pc0);
-        if (state->pc == pc0->sp) {
+        sam_stack_t *p0;
+        EXTRACT_BLOB(state->p0, SAM_BLOB_STACK, sam_stack_t, p0);
+        if (state->pc == p0->sp) {
 #ifdef SAM_DEBUG
-            debug("sam_run: pc0 = %p, pc = %u, s0 = %p, sp = %u\n", state->pc0, state->pc, s, s->sp);
+            debug("sam_run: p0 = %p, pc = %u, s0 = %p, sp = %u\n", state->p0, state->pc, s, s->sp);
             sam_print_working_stack(state->s0);
 #endif
             DONE;
@@ -111,9 +111,9 @@ sam_word_t sam_run(sam_state_t *state)
         }
 
         sam_uword_t ir;
-        HALT_IF_ERROR(sam_stack_peek(state->pc0, state->pc++, &ir));
+        HALT_IF_ERROR(sam_stack_peek(state->p0, state->pc++, &ir));
 #ifdef SAM_DEBUG
-        debug("sam_run: pc0 = %p, pc = %u, s0 = %p, sp = %u, ir = %x\n", state->pc0, state->pc, s, s->sp, ir);
+        debug("sam_run: p0 = %p, pc = %u, s0 = %p, sp = %u, ir = %x\n", state->p0, state->pc, s, s->sp, ir);
         sam_print_working_stack(state->s0);
 #endif
 
@@ -509,7 +509,7 @@ sam_word_t sam_run(sam_state_t *state)
 
 #ifdef SAM_DEBUG
                 if (opcodes != 0) {
-                    debug("sam_run: pc0 = %p, pc = %u, s0 = %p, sp = %u, ir = %x\n", state->pc0, state->pc, s, s->sp, ir);
+                    debug("sam_run: p0 = %p, pc = %u, s0 = %p, sp = %u, ir = %x\n", state->p0, state->pc, s, s->sp, ir);
                     sam_print_working_stack(state->s0);
                 }
 #endif

@@ -22,104 +22,104 @@ Stack: XXXXXXXX (23 item(s))
 - get iset
 - int 0
 - halt
-sam_run: pc0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 trap NEW_MAP
-sam_run: pc0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - map XXXXXXXX
 trap COPY
-sam_run: pc0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - map XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - int 13
 float
-sam_run: pc0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - int 13
 - float 1.000000
 int
-sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - int 13
 - float 1.000000
 - int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - int 13
 - float 1.000000
 - map XXXXXXXX
 iset
-sam_run: pc0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - map XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - int 42
 float
-sam_run: pc0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - int 42
 - float 2.000000
 int
-sam_run: pc0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - int 42
 - float 2.000000
 - int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - int 42
 - float 2.000000
 - map XXXXXXXX
 iset
-sam_run: pc0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - map XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - int -1
 get
-sam_run: pc0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 trap COPY
-sam_run: pc0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 null
-sam_run: pc0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - null
 float
-sam_run: pc0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - null
 - float 1.000000
 int
-sam_run: pc0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
@@ -127,7 +127,7 @@ Working stack: (5 word(s))
 - float 1.000000
 - int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
@@ -135,25 +135,25 @@ Working stack: (5 word(s))
 - float 1.000000
 - map XXXXXXXX
 iset
-sam_run: pc0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int 28
 float
-sam_run: pc0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int 28
 - float 2.000000
 int
-sam_run: pc0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
@@ -161,7 +161,7 @@ Working stack: (5 word(s))
 - float 2.000000
 - int -3
 get
-sam_run: pc0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
@@ -169,12 +169,12 @@ Working stack: (5 word(s))
 - float 2.000000
 - map XXXXXXXX
 iset
-sam_run: pc0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 int
-sam_run: pc0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX

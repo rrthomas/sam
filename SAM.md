@@ -24,7 +24,7 @@ The registers are as follows:
 | `S0`      | The current `S`tack. |
 | `SP`      | The `S`tack `P`ointer. The number of items currently on the stack. |
 | `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
-| `PC0`     | The current stack from which code is being executed. |
+| `P0 `     | The current stack from which code is being executed. |
 | `PC`      | The `P`rogram `C`ounter points to the next instruction. |
 
 All of the registers are word-sized.
@@ -241,22 +241,22 @@ These instructions implement branches, conditions and subroutine calls.
 > `DO`  
 > `s₁` → `s₂` `i`
 >
-> Pop `s₁`. Push `PC0` to the stack as a reference and `PC` as an integer, and set `PC0` to `s₁` and `PC` to 0.
+> Pop `s₁`. Push `P0` to the stack as a reference and `PC` as an integer, and set `P0` to `s₁` and `PC` to 0.
 
 > `DONE`  
 > `s` `i` →
 >
-> Pop `i` into `PC` and `s` into `PC0`.
+> Pop `i` into `PC` and `s` into `P0`.
 
 > `CALL`  
 > `x₁`…`xₙ` `i₁` `s₁` `i₂` `s₂` →
 >
-> Pop `i₁`, `s₁`, `i₂` and `s₂`. Pop `i₁` stack items, and push them to the stack given by `s₂`, in order from `x₁` to `xₙ`. Push `PC0`, `PC` and `S0` to the stack given by `s₂`. Set `S0` to `s₂`, `PC0` to `s₁` and `PC` to `i₂`.
+> Pop `i₁`, `s₁`, `i₂` and `s₂`. Pop `i₁` stack items, and push them to the stack given by `s₂`, in order from `x₁` to `xₙ`. Push `P0`, `PC` and `S0` to the stack given by `s₂`. Set `S0` to `s₂`, `P0` to `s₁` and `PC` to `i₂`.
 
 > `RET`  
 > `s₁` `s₂` `i` `x` →
 >
-> Pop `x`, `i`, `s₂` and `s₁`. Set `PC0` to `s₂`, `PC` to `i`, and `S0` to `s₁`. Push `x` to the stack.
+> Pop `x`, `i`, `s₂` and `s₁`. Set `P0` to `s₂`, `PC` to `i`, and `S0` to `s₁`. Push `x` to the stack.
 
 > `IF`  
 > `i` `s₁` `s₂` → `p`

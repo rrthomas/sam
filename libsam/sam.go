@@ -119,7 +119,7 @@ func (s *Stack) PushInsts(insts Uword) int {
 }
 
 func Run(state *State, code *Stack) Word {
-	state.state.pc0 = code.stack
+	state.state.p0 = code.stack
 	res := C.sam_run(state.state)
 	if res == ERROR_OK {
 		blob := state.Stack().stack
