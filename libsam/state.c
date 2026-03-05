@@ -11,6 +11,7 @@
 #include <stdlib.h>
 
 #include "sam.h"
+#include "private.h"
 
 sam_state_t *sam_state_new(void)
 {

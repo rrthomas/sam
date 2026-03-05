@@ -35,30 +35,15 @@ typedef double sam_float_t;
 #define SAM_RET_MASK ((1 << SAM_RET_SHIFT) - 1)
 
 // Blobs
-typedef struct {
-    sam_uword_t type;
-    _Alignas(max_align_t) sam_word_t data[];
-} sam_blob_t;
-
-// Stacks (SAM_BLOB_STACK)
-typedef struct {
-    sam_word_t *data;
-    sam_uword_t size; // Size of stack in words
-    sam_uword_t sp; // Number of words in stack
-} sam_stack_t;
-
-// Maps (SAM_BLOB_MAP)
+typedef struct sam_blob sam_blob_t;
+typedef struct sam_stack sam_stack_t;
 typedef struct sam_map_struct *sam_map_t;
 
 // Map iterators
 typedef struct sam_map_iter_struct *sam_map_iter_t;
 
 // Top-level state
-typedef struct sam_state {
-    sam_blob_t *s0;
-    sam_blob_t *pc0;
-    sam_uword_t pc;
-} sam_state_t;
+typedef struct sam_state sam_state_t;
 
 // Error codes
 enum SAM_ERROR {

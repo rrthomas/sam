@@ -7,6 +7,7 @@ package libsam
 //#include <stdlib.h>
 //#include "sam.h"
 //#include "sam_opcodes.h"
+//#include "private.h"
 //#include "traps_basic.h"
 //#include "traps_math.h"
 //#include "traps_graphics.h"

@@ -10,6 +10,24 @@
 
 #include "sam.h"
 
+// Structs
+typedef struct sam_blob {
+    sam_uword_t type;
+    _Alignas(max_align_t) sam_word_t data[];
+} sam_blob_t;
+
+typedef struct sam_stack {
+    sam_word_t *data;
+    sam_uword_t size; // Size of stack in words
+    sam_uword_t sp; // Number of words in stack
+} sam_stack_t;
+
+typedef struct sam_state {
+    sam_blob_t *s0;
+    sam_blob_t *pc0;
+    sam_uword_t pc;
+} sam_state_t;
+
 // Errors
 #define HALT(code)                              \
     do {                                        \
