@@ -7,7 +7,7 @@ EMPTY =
 noinst_LTLIBRARIES = libsam.la
 
 AM_CPPFLAGS = -DSAM_DEBUG
-AM_CFLAGS = -Wall -Wno-strict-aliasing
+AM_CFLAGS = -Wall -Wextra -Wno-strict-aliasing
 
 include_HEADERS = \
 	sam.h \
