@@ -59,10 +59,6 @@ func (state *State) Stack() Stack {
 	return Stack{state.state.s0}
 }
 
-func (state *State) Code() Stack {
-	return Stack{state.state.root_code}
-}
-
 func NewStack() Stack {
 	stack := Stack{}
 	C.sam_stack_new(&stack.stack)
@@ -74,9 +70,6 @@ func NewState() State {
 	var stack *C.sam_blob_t
 	C.sam_stack_new(&stack)
 	state.s0 = stack
-	C.sam_stack_new(&stack)
-	state.root_code = stack
-	state.pc0 = stack
 	return State{state: state}
 }
 
@@ -124,7 +117,8 @@ func (s *Stack) PushInsts(insts Uword) int {
 	return int(C.sam_push_insts(s.stack, insts))
 }
 
-func Run(state *State) Word {
+func Run(state *State, code *Stack) Word {
+	state.state.pc0 = code.stack
 	res := C.sam_run(state.state)
 	if res == ERROR_OK {
 		blob := state.Stack().stack

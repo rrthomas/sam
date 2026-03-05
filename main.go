@@ -68,14 +68,13 @@ var rootCmd = &cobra.Command{
 		}
 
 		// Assemble and run the program
-		Assemble(state, yaml)
+		code := Assemble(yaml)
 		err := libsam.GraphicsInit()
 		if err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
-		code := state.Code()
 		code.PrintStack()
-		res2 := libsam.Run(&state)
+		res2 := libsam.Run(&state, &code)
 
 		if debug {
 			fmt.Printf("\n\nsam_run returns: %s\n", state.ErrorMessage(res2))

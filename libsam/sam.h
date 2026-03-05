@@ -55,7 +55,6 @@ typedef struct sam_map_iter_struct *sam_map_iter_t;
 
 // Top-level state
 typedef struct sam_state {
-    sam_blob_t *root_code;
     sam_blob_t *s0;
     sam_blob_t *pc0;
     sam_uword_t pc;

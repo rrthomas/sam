@@ -60,7 +60,6 @@ type address struct {
 }
 
 type assembler struct {
-	state  libsam.State
 	stack  libsam.Stack
 	insts  libsam.Uword
 	nInsts uint
@@ -200,7 +199,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
 		a.flushInstructions()
-		subA := assembler{state: a.state, stack: libsam.NewStack()}
+		subA := assembler{stack: libsam.NewStack()}
 		subA.assembleSequence(n)
 		a.stack.PushArray(subA.stack)
 		return nil
@@ -247,7 +246,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			subProg := readProg(r)
 			// Assemble the included file in a nested stack.
 			a.flushInstructions()
-			subA := assembler{state: a.state, stack: libsam.NewStack()}
+			subA := assembler{stack: libsam.NewStack()}
 			subA.assembleSequence(subProg)
 			a.stack.PushArray(subA.stack)
 		case "!istack":
@@ -277,9 +276,10 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	}
 }
 
-func Assemble(state libsam.State, source []byte) {
+func Assemble(source []byte) libsam.Stack {
 	prog := readProg(bytes.NewReader(source))
 	labels = map[string]address{}
-	a := assembler{state: state, stack: state.Code()}
+	a := assembler{stack: libsam.NewStack()}
 	a.assembleSequence(prog)
+	return a.stack
 }
