@@ -32,8 +32,8 @@ int sam_stack_new(sam_blob_t **new_stack)
     HALT_IF_ERROR(sam_blob_new(SAM_BLOB_STACK, &blob));
     sam_stack_t *s;
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
-    s->ssize = 1;
-    s->s0 = calloc(s->ssize, sizeof(sam_word_t));
+    s->size = 1;
+    s->s0 = calloc(s->size, sizeof(sam_word_t));
     if (s->s0 == NULL) {
         free(blob);
         HALT(SAM_ERROR_NO_MEMORY);
@@ -79,7 +79,7 @@ int sam_stack_poke(sam_blob_t *blob, sam_uword_t addr, sam_uword_t val)
     sam_word_t error = SAM_ERROR_OK;
     sam_stack_t *s;
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
-    if (addr >= s->ssize)
+    if (addr >= s->size)
         return SAM_ERROR_INVALID_ADDRESS;
     s->s0[addr] = val;
 error:
@@ -90,7 +90,7 @@ error:
 // The blocks may overlap.
 static sam_word_t move_n(sam_stack_t *s, sam_uword_t dst, sam_uword_t src, sam_uword_t size)
 {
-    if (size > s->ssize || src > s->ssize - size || dst > s->ssize - size)
+    if (size > s->size || src > s->size - size || dst > s->size - size)
         return SAM_ERROR_INVALID_ADDRESS;
     memmove(&s->s0[dst], &s->s0[src], size * sizeof(sam_word_t));
     return SAM_ERROR_OK;
@@ -173,13 +173,13 @@ int sam_stack_shift(sam_blob_t *blob, sam_word_t *val_ptr)
 static int stack_maybe_grow(sam_stack_t *s)
 {
     sam_word_t error = SAM_ERROR_OK;
-    if (s->sp >= s->ssize) {
-        sam_uword_t new_size = s->ssize * 2;
+    if (s->sp >= s->size) {
+        sam_uword_t new_size = s->size * 2;
         s->s0 = realloc(s->s0, new_size * sizeof(sam_uword_t));
         if (s->s0 == NULL)
             HALT(SAM_ERROR_NO_MEMORY);
-        memset(s->s0 + s->ssize, 0, s->ssize * sizeof(sam_uword_t));
-        s->ssize = new_size;
+        memset(s->s0 + s->size, 0, s->size * sizeof(sam_uword_t));
+        s->size = new_size;
     }
 error:
     return error;

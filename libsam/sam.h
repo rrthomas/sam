@@ -43,7 +43,7 @@ typedef struct {
 // Stacks (SAM_BLOB_STACK)
 typedef struct {
     sam_word_t *s0;
-    sam_uword_t ssize; // Size of stack in words
+    sam_uword_t size; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
 } sam_stack_t;
 
