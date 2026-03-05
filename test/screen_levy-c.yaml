@@ -28,7 +28,7 @@
 - pop
 - blob pendown
 - do
-- int 8
+- int 6
 - trap DISPLAY_WIDTH
 - trap I2F
 - float 2.0
