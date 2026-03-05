@@ -134,7 +134,7 @@ int sam_stack_item(sam_blob_t *blob, sam_word_t n, sam_uword_t *addr)
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     if (n < 0)
         n = s->sp + n;
-    if (n >= s->sp)
+    if ((sam_uword_t)n >= s->sp)
         return SAM_ERROR_STACK_OVERFLOW;
     sam_uword_t p = n, inst;
     HALT_IF_ERROR(sam_stack_peek(blob, p, &inst));

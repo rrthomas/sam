@@ -9,7 +9,7 @@
 // RISK.
 
 #define CHECK_TYPE(var, mask, insn)             \
-    if ((var & (mask)) != (insn))               \
+    if ((sam_word_t)(var & (mask)) != (insn))   \
         HALT(SAM_ERROR_WRONG_TYPE);
 
 #define POP_WORD(ptr)                           \
@@ -48,7 +48,7 @@
 
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
-        sam_uword_t _w;                                                 \
+        sam_word_t _w;                                                 \
         _POP_INSN(_w, SAM_FLOAT_TAG, SAM_FLOAT_TAG_MASK, LRSHIFT, SAM_FLOAT_SHIFT); \
         var = *(sam_float_t *)&_w;                                      \
     } while (0)

@@ -57,12 +57,12 @@ sam_word_t sam_math_trap(sam_state_t *state, sam_uword_t function)
         {
             sam_uword_t operand;
             HALT_IF_ERROR(sam_stack_peek(state->stack, s->sp - 1, &operand));
-            if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+            if ((int)(operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                 sam_uword_t a, b;
                 POP_UINT(b);
                 POP_UINT(a);
                 PUSH_INT(powi(a, b));
-            } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
+            } else if ((int)(operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
                 sam_float_t a, b;
                 POP_FLOAT(b);
                 POP_FLOAT(a);
