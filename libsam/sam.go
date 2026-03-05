@@ -56,7 +56,7 @@ type State struct {
 }
 
 func (state *State) Stack() Stack {
-	return Stack{state.state.stack}
+	return Stack{state.state.s0}
 }
 
 func (state *State) Code() Stack {
@@ -73,7 +73,7 @@ func NewState() State {
 	state := C.sam_state_new()
 	var stack *C.sam_blob_t
 	C.sam_stack_new(&stack)
-	state.stack = stack
+	state.s0 = stack
 	C.sam_stack_new(&stack)
 	state.root_code = stack
 	state.pc0 = stack

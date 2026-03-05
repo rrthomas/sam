@@ -33,8 +33,8 @@ int sam_stack_new(sam_blob_t **new_stack)
     sam_stack_t *s;
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     s->size = 1;
-    s->s0 = calloc(s->size, sizeof(sam_word_t));
-    if (s->s0 == NULL) {
+    s->data = calloc(s->size, sizeof(sam_word_t));
+    if (s->data == NULL) {
         free(blob);
         HALT(SAM_ERROR_NO_MEMORY);
     }
@@ -68,7 +68,7 @@ int sam_stack_peek(sam_blob_t *blob, sam_uword_t addr, sam_uword_t *val)
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     if (addr >= s->sp)
         return SAM_ERROR_INVALID_ADDRESS;
-    *val = s->s0[addr];
+    *val = s->data[addr];
 
 error:
     return error;
@@ -81,7 +81,7 @@ int sam_stack_poke(sam_blob_t *blob, sam_uword_t addr, sam_uword_t val)
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     if (addr >= s->size)
         return SAM_ERROR_INVALID_ADDRESS;
-    s->s0[addr] = val;
+    s->data[addr] = val;
 error:
     return error;
 }
@@ -92,7 +92,7 @@ static sam_word_t move_n(sam_stack_t *s, sam_uword_t dst, sam_uword_t src, sam_u
 {
     if (size > s->size || src > s->size - size || dst > s->size - size)
         return SAM_ERROR_INVALID_ADDRESS;
-    memmove(&s->s0[dst], &s->s0[src], size * sizeof(sam_word_t));
+    memmove(&s->data[dst], &s->data[src], size * sizeof(sam_word_t));
     return SAM_ERROR_OK;
 }
 
@@ -164,7 +164,7 @@ int sam_stack_shift(sam_blob_t *blob, sam_word_t *val_ptr)
     if (s->sp == 0)
         return SAM_ERROR_STACK_UNDERFLOW;
     HALT_IF_ERROR(sam_stack_peek(blob, 0, (sam_uword_t *)val_ptr));
-    memmove(s->s0, s->s0 + 1, s->sp * sizeof(sam_uword_t));
+    memmove(s->data, s->data + 1, s->sp * sizeof(sam_uword_t));
     s->sp--;
  error:
     return error;
@@ -175,10 +175,10 @@ static int stack_maybe_grow(sam_stack_t *s)
     sam_word_t error = SAM_ERROR_OK;
     if (s->sp >= s->size) {
         sam_uword_t new_size = s->size * 2;
-        s->s0 = realloc(s->s0, new_size * sizeof(sam_uword_t));
-        if (s->s0 == NULL)
+        s->data = realloc(s->data, new_size * sizeof(sam_uword_t));
+        if (s->data == NULL)
             HALT(SAM_ERROR_NO_MEMORY);
-        memset(s->s0 + s->size, 0, s->size * sizeof(sam_uword_t));
+        memset(s->data + s->size, 0, s->size * sizeof(sam_uword_t));
         s->size = new_size;
     }
 error:
@@ -202,7 +202,7 @@ int sam_stack_prepend(sam_blob_t *blob, sam_word_t val)
     sam_stack_t *s;
     EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
     HALT_IF_ERROR(stack_maybe_grow(s));
-    memmove(s->s0 + 1, s->s0, s->sp * sizeof(sam_uword_t));
+    memmove(s->data + 1, s->data, s->sp * sizeof(sam_uword_t));
     HALT_IF_ERROR(sam_stack_poke(blob, 0, val));
     s->sp++;
  error:

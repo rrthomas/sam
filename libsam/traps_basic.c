@@ -16,13 +16,13 @@
 
 sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s ((sam_stack_t *)state->stack->data)
+#define s ((sam_stack_t *)state->s0->data)
     sam_word_t error = SAM_ERROR_OK;
-    CHECK_BLOB(state->stack, SAM_BLOB_STACK);
+    CHECK_BLOB(state->s0, SAM_BLOB_STACK);
     
     switch (function) {
     case TRAP_BASIC_S0:
-        HALT_IF_ERROR(sam_push_ref(state->stack, state->stack));
+        HALT_IF_ERROR(sam_push_ref(state->s0, state->s0));
         break;
     case TRAP_BASIC_SIZE:
         {
@@ -66,7 +66,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         {
             sam_blob_t *stack;
             HALT_IF_ERROR(sam_stack_new(&stack));
-            HALT_IF_ERROR(sam_push_ref(state->stack, stack));
+            HALT_IF_ERROR(sam_push_ref(state->s0, stack));
         }
         break;
     case TRAP_BASIC_COPY:
@@ -88,13 +88,13 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_RET:
         {
             sam_word_t item;
-            HALT_IF_ERROR(sam_stack_pop(state->stack, &item));
-            sam_blob_t *frame, *old_stack_blob = state->stack;
+            HALT_IF_ERROR(sam_stack_pop(state->s0, &item));
+            sam_blob_t *frame, *old_stack_blob = state->s0;
             sam_stack_t *old_stack;
             EXTRACT_BLOB(old_stack_blob, SAM_BLOB_STACK, sam_stack_t, old_stack);
             DONE;
             POP_REF(frame);
-            state->stack = frame;
+            state->s0 = frame;
             PUSH_WORD(item);
             // Wipe the stack slot for the return value.
             HALT_IF_ERROR(sam_stack_poke(old_stack_blob, old_stack->sp, SAM_INSTS_TAG));
@@ -132,7 +132,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         {
             sam_blob_t *map;
             HALT_IF_ERROR(sam_map_new(&map));
-            HALT_IF_ERROR(sam_push_ref(state->stack, map));
+            HALT_IF_ERROR(sam_push_ref(state->s0, map));
         }
         break;
     }

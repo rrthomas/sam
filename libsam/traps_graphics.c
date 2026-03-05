@@ -136,7 +136,7 @@ void sam_graphics_finish(void)
 
 sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s ((sam_stack_t *)state->stack->data)
+#define s ((sam_stack_t *)state->s0->data)
     int error = SAM_ERROR_OK;
 
     switch (function) {

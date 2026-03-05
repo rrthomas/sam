@@ -34,9 +34,9 @@ static sam_uword_t powi(sam_uword_t base, sam_uword_t exp)
 
 sam_word_t sam_math_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s ((sam_stack_t *)state->stack->data)
+#define s ((sam_stack_t *)state->s0->data)
     sam_word_t error = SAM_ERROR_OK;
-    CHECK_BLOB(state->stack, SAM_BLOB_STACK);
+    CHECK_BLOB(state->s0, SAM_BLOB_STACK);
 
     switch (function) {
     case TRAP_MATH_I2F:
@@ -56,7 +56,7 @@ sam_word_t sam_math_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_MATH_POW:
         {
             sam_uword_t operand;
-            HALT_IF_ERROR(sam_stack_peek(state->stack, s->sp - 1, &operand));
+            HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
             if ((int)(operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                 sam_uword_t a, b;
                 POP_UINT(b);
