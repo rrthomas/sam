@@ -72,6 +72,6 @@
 
 #define DONE                                    \
     do {                                        \
-        POP_INT(state->pc);                     \
+        POP_UINT(state->pc);                    \
         POP_REF(state->pc0);                    \
     } while (0)

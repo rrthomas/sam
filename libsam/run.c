@@ -297,9 +297,9 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_blob_t *code, *frame;
                         POP_REF(frame);
                         sam_uword_t addr, nargs;
-                        POP_INT(addr);
+                        POP_UINT(addr);
                         POP_REF(code);
-                        POP_INT(nargs);
+                        POP_UINT(nargs);
                         for (sam_uword_t i = nargs; i > 0; i--) {
                             sam_uword_t val;
                             HALT_IF_ERROR(sam_stack_peek(state->stack, s->sp - i, &val));
