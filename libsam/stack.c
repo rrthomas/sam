@@ -25,6 +25,42 @@ error:
     return error;
 }
 
+int sam_stack_new(sam_blob_t **new_stack)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    sam_blob_t *blob;
+    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_STACK, &blob));
+    sam_stack_t *s;
+    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
+    s->ssize = 1;
+    s->s0 = calloc(s->ssize, sizeof(sam_word_t));
+    if (s->s0 == NULL) {
+        free(blob);
+        HALT(SAM_ERROR_NO_MEMORY);
+    }
+    *new_stack = blob;
+error:
+    return error;
+}
+
+int sam_stack_copy(sam_blob_t *stack, sam_blob_t **new_stack)
+{
+    int error = SAM_ERROR_OK;
+    sam_stack_t *s;
+    EXTRACT_BLOB(stack, SAM_BLOB_STACK, sam_stack_t, s);
+    HALT_IF_ERROR(sam_stack_new(new_stack));
+    
+    // Copy the contents of the stack.
+    for (sam_uword_t pos = 0; pos < s->sp; pos++) {
+        sam_uword_t val;
+        HALT_IF_ERROR(sam_stack_peek(stack, pos, &val));
+        HALT_IF_ERROR(sam_stack_push(*new_stack, val));
+    }
+
+ error:
+    return error;
+}
+
 int sam_stack_peek(sam_blob_t *blob, sam_uword_t addr, sam_uword_t *val)
 {
     sam_word_t error = SAM_ERROR_OK;
@@ -205,40 +241,4 @@ int sam_push_insts(sam_blob_t *blob, sam_uword_t insts)
 {
     // FIXME: error if too many bits
     return sam_stack_push(blob, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
-}
-
-int sam_stack_new(sam_blob_t **new_stack)
-{
-    sam_word_t error = SAM_ERROR_OK;
-    sam_blob_t *blob;
-    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_STACK, &blob));
-    sam_stack_t *s;
-    EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
-    s->ssize = 1;
-    s->s0 = calloc(s->ssize, sizeof(sam_word_t));
-    if (s->s0 == NULL) {
-        free(blob);
-        HALT(SAM_ERROR_NO_MEMORY);
-    }
-    *new_stack = blob;
-error:
-    return error;
-}
-
-int sam_stack_copy(sam_blob_t *stack, sam_blob_t **new_stack)
-{
-    int error = SAM_ERROR_OK;
-    sam_stack_t *s;
-    EXTRACT_BLOB(stack, SAM_BLOB_STACK, sam_stack_t, s);
-    HALT_IF_ERROR(sam_stack_new(new_stack));
-    
-    // Copy the contents of the stack.
-    for (sam_uword_t pos = 0; pos < s->sp; pos++) {
-        sam_uword_t val;
-        HALT_IF_ERROR(sam_stack_peek(stack, pos, &val));
-        HALT_IF_ERROR(sam_stack_push(*new_stack, val));
-    }
-
- error:
-    return error;
 }

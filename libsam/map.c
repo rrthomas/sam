@@ -43,6 +43,26 @@ error:
     return error;
 }
 
+int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map)
+{
+    int error = SAM_ERROR_OK;
+    HALT_IF_ERROR(sam_map_new(new_map));
+
+    // Copy the contents of the map.
+    sam_map_iter_t i;
+    HALT_IF_ERROR(sam_map_iter_new(map, &i));
+    for (;;) {
+        sam_word_t key, val;
+        HALT_IF_ERROR(sam_map_iter_next(i, &key, &val));
+        if (val == ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG))
+            break;
+        HALT_IF_ERROR(sam_map_set(*new_map, key, val));
+    }
+
+ error:
+    return error;
+}
+
 int sam_map_get(sam_blob_t *blob, sam_word_t key, sam_word_t *val)
 {
     sam_word_t error = SAM_ERROR_OK;
@@ -97,24 +117,4 @@ int sam_map_iter_next(sam_map_iter_t i, sam_word_t *key, sam_word_t *val)
         i->itr = vt_next(i->itr);
     }
     return SAM_ERROR_OK;
-}
-
-int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map)
-{
-    int error = SAM_ERROR_OK;
-    HALT_IF_ERROR(sam_map_new(new_map));
-
-    // Copy the contents of the map.
-    sam_map_iter_t i;
-    HALT_IF_ERROR(sam_map_iter_new(map, &i));
-    for (;;) {
-        sam_word_t key, val;
-        HALT_IF_ERROR(sam_map_iter_next(i, &key, &val));
-        if (val == ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG))
-            break;
-        HALT_IF_ERROR(sam_map_set(*new_map, key, val));
-    }
-
- error:
-    return error;
 }
