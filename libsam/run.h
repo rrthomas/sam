@@ -17,15 +17,15 @@
 #define PUSH_WORD(val)                          \
     HALT_IF_ERROR(sam_stack_push(state->stack, val))
 
-#define _POP_INSN(var, pop, insn, insn_mask, rshift, shift)     \
+#define _POP_INSN(var, insn, insn_mask, rshift, shift)     \
     do {                                        \
-        pop((sam_word_t *)&var);                \
+        POP_WORD((sam_word_t *)&var);           \
         CHECK_TYPE(var, insn_mask, insn);       \
         var = rshift(var, shift);               \
     } while (0)
 
 #define _POP_INT(var, rshift)                   \
-    _POP_INSN(var, POP_WORD, SAM_INT_TAG, SAM_INT_TAG_MASK, rshift, SAM_INT_SHIFT)
+    _POP_INSN(var, SAM_INT_TAG, SAM_INT_TAG_MASK, rshift, SAM_INT_SHIFT)
 #define POP_INT(var)                            \
     _POP_INT(var, ARSHIFT)
 #define POP_UINT(var)                           \
@@ -39,7 +39,7 @@
 #define POP_REF(var)                                                    \
     do {                                                                \
         sam_uword_t _ptr;                                               \
-        _POP_INSN(_ptr, POP_WORD, SAM_BLOB_TAG, SAM_BLOB_TAG_MASK, LRSHIFT, SAM_BLOB_SHIFT); \
+        _POP_INSN(_ptr, SAM_BLOB_TAG, SAM_BLOB_TAG_MASK, LRSHIFT, SAM_BLOB_SHIFT); \
         var = (void *)(_ptr << SAM_BLOB_SHIFT);                         \
     } while (0)
 
@@ -49,7 +49,7 @@
 #define POP_FLOAT(var)                                                  \
     do {                                                                \
         sam_uword_t _w;                                                 \
-        _POP_INSN(_w, POP_WORD, SAM_FLOAT_TAG, SAM_FLOAT_TAG_MASK, LRSHIFT, SAM_FLOAT_SHIFT); \
+        _POP_INSN(_w, SAM_FLOAT_TAG, SAM_FLOAT_TAG_MASK, LRSHIFT, SAM_FLOAT_SHIFT); \
         var = *(sam_float_t *)&_w;                                      \
     } while (0)
 #define PUSH_FLOAT(val)                         \
