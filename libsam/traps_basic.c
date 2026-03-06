@@ -125,8 +125,57 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         }
         break;
     case TRAP_BASIC_ITER:
+        {
+            sam_word_t opcode;
+            POP_WORD(&opcode);
+
+            if ((opcode & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                HALT(SAM_ERROR_WRONG_TYPE);
+                // FIXME
+            } else if ((opcode & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
+                sam_word_t atom_type = (opcode & SAM_ATOM_TYPE_MASK) >> SAM_ATOM_TYPE_SHIFT;
+                switch (atom_type) {
+                case SAM_ATOM_NULL:
+                    HALT(SAM_ERROR_WRONG_TYPE);
+                    // FIXME: create empty iterator
+                    break;
+                default:
+                    HALT(SAM_ERROR_INVALID_ATOM_TYPE);
+                    break;
+                }
+            } else if ((opcode & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
+                sam_blob_t *blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
+                switch (blob->type) {
+                    case SAM_BLOB_STACK:
+                        HALT(SAM_ERROR_WRONG_TYPE);
+                        // FIXME
+                        break;
+                    case SAM_BLOB_MAP:
+                        {
+                            sam_blob_t *iter;
+                            HALT_IF_ERROR(sam_map_iter_new(blob, &iter));
+                            PUSH_REF(iter);
+                        }
+                        break;
+                    default:
+                        HALT(SAM_ERROR_WRONG_TYPE);
+                        break;
+                }
+            } else
+                HALT(SAM_ERROR_WRONG_TYPE);
+        }
         break;
     case TRAP_BASIC_NEXT:
+        {
+            sam_blob_t *blob;
+            POP_REF(blob);
+            sam_word_t key, val;
+            sam_iter_t *iter;
+            EXTRACT_BLOB(blob, SAM_BLOB_ITER, sam_iter_t, iter);
+            iter->next(iter, &key, &val);
+            PUSH_WORD(key);
+            PUSH_WORD(val);
+        }
         break;
     case TRAP_BASIC_NEW_MAP:
         {
@@ -165,12 +214,12 @@ char *sam_basic_trap_name(sam_word_t function)
         return "RSH";
     case TRAP_BASIC_ARSH:
         return "ARSH";
-    case TRAP_BASIC_NEW_MAP:
-        return "NEW_MAP";
     case TRAP_BASIC_ITER:
         return "ITER";
     case TRAP_BASIC_NEXT:
         return "NEXT";
+    case TRAP_BASIC_NEW_MAP:
+        return "NEW_MAP";
     default:
         return NULL;
     }

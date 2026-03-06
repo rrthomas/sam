@@ -48,6 +48,7 @@ typedef double sam_float_t;
 typedef struct sam_blob sam_blob_t;
 typedef struct sam_stack sam_stack_t;
 typedef _sam_map sam_map_t;
+typedef struct sam_iter sam_iter_t;
 
 // Map iterators
 typedef _sam_map_itr sam_map_iter_t;
@@ -86,7 +87,7 @@ int sam_stack_pop(sam_blob_t *s, sam_word_t *val_ptr);
 int sam_stack_shift(sam_blob_t *s, sam_word_t *val_ptr);
 int sam_stack_push(sam_blob_t *s, sam_word_t val);
 int sam_stack_prepend(sam_blob_t *s, sam_word_t val);
-int sam_push_ref(sam_blob_t *s, void *ptr);
+int sam_push_ref(sam_blob_t *s, /* FIXME: sam_blob_t * */ void *ptr);
 int sam_push_int(sam_blob_t *s, sam_uword_t val);
 int sam_push_float(sam_blob_t *s, sam_float_t n);
 int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);
@@ -98,8 +99,10 @@ int sam_map_new(sam_blob_t **new_map);
 int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map);
 int sam_map_get(sam_blob_t *blob, sam_word_t key, sam_word_t *val);
 int sam_map_set(sam_blob_t *blob, sam_word_t key, sam_word_t val);
-int sam_map_iter_new(sam_blob_t *blob, sam_map_iter_t **i);
-int sam_map_iter_next(sam_map_iter_t *i, sam_word_t *key, sam_word_t *val);
+int sam_map_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
+
+// Iterators
+int sam_iter_next(sam_iter_t *i, sam_word_t *key, sam_word_t *val);
 
 // Top-level states
 sam_state_t *sam_state_new(void);

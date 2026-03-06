@@ -21,6 +21,7 @@ libsam_la_SOURCES = \
 	run.h \
 	blob.c \
 	debug.c \
+	iter.c \
 	map.c \
 	stack.c \
 	run.c \

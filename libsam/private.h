@@ -22,6 +22,15 @@ typedef struct sam_stack {
     sam_uword_t sp; // Number of words in stack
 } sam_stack_t;
 
+typedef struct sam_iter {
+    sam_word_t tag;
+    int (*next)(sam_iter_t *i, sam_word_t *key, sam_word_t *val);
+    union {
+        sam_word_t word_state;
+        void *ptr_state;
+    } iter;
+} sam_iter_t;
+
 typedef struct sam_state {
     sam_blob_t *s0;
     sam_blob_t *p0;

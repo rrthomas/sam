@@ -27,6 +27,22 @@
 - int -3
 - get
 - iset
+# Iterate over the map, getting and discarding its values
+- int -1
+- get
+- trap iter
+-
+  - loop: int -3
+  - get
+  - trap next
+  - drop
+  - null
+  - eq
+  - not
+  - while
+  - blob loop
+  - go
+- do
 # Exit 
 - int 0
 - halt

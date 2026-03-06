@@ -25,6 +25,19 @@ typedef _sam_map sam_map_t;
 typedef _sam_map_itr sam_map_iter_t;
 
 
+static int sam_map_iter_next(sam_iter_t *i, sam_word_t *key, sam_word_t *val)
+{
+    _sam_map_itr *itr = (_sam_map_itr *)i->iter.ptr_state;
+    if (vt_is_end(*itr)) {
+        *key = *val = (SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG;
+    } else {
+        *key = itr->data->key;
+        *val = itr->data->val;
+        *itr = vt_next(*itr);
+    }
+    return SAM_ERROR_OK;
+}
+
 int sam_map_new(sam_blob_t **new_map)
 {
     sam_word_t error = SAM_ERROR_OK;
@@ -45,8 +58,10 @@ int sam_map_copy(sam_blob_t *map, sam_blob_t **new_map)
     HALT_IF_ERROR(sam_map_new(new_map));
 
     // Copy the contents of the map.
-    sam_map_iter_t *i;
-    HALT_IF_ERROR(sam_map_iter_new(map, &i));
+    sam_blob_t *iter_blob;
+    HALT_IF_ERROR(sam_map_iter_new(map, &iter_blob));
+    sam_iter_t *i;
+    EXTRACT_BLOB(iter_blob, SAM_BLOB_ITER, sam_iter_t, i);
     for (;;) {
         sam_word_t key, val;
         HALT_IF_ERROR(sam_map_iter_next(i, &key, &val));
@@ -90,27 +105,21 @@ error:
     return error;
 }
 
-int sam_map_iter_new(sam_blob_t *blob, sam_map_iter_t **i)
+int sam_map_iter_new(sam_blob_t *blob, sam_blob_t **new_iter)
 {
     sam_word_t error = SAM_ERROR_OK;
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
-    *i = malloc(sizeof(_sam_map_itr));
-    // FIXME: check for NULL
-    **i = vt_first(m);
+    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_ITER, sizeof(sam_iter_t), new_iter));
+    sam_iter_t *i;
+    EXTRACT_BLOB(*new_iter, SAM_BLOB_ITER, sam_iter_t, i);
+    i->tag = SAM_BLOB_TAG | (SAM_BLOB_MAP << SAM_BLOB_SHIFT);
+    i->next = sam_map_iter_next;
+    i->iter.ptr_state = malloc(sizeof(_sam_map_itr));
+    if (i->iter.ptr_state == NULL)
+        HALT(SAM_ERROR_NO_MEMORY);
+    *(_sam_map_itr *)(i->iter.ptr_state) = vt_first(m);
 
 error:
     return error;
-}
-
-int sam_map_iter_next(sam_map_iter_t *i, sam_word_t *key, sam_word_t *val)
-{
-    if (vt_is_end(*i)) {
-        *key = *val = (SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG;
-    } else {
-        *key = i->data->key;
-        *val = i->data->val;
-        *i = vt_next(*i);
-    }
-    return SAM_ERROR_OK;
 }
