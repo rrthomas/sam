@@ -16,14 +16,14 @@
 # Pop an item from one of the copies
 - int -1
 - get
-- ipop
+- pop
 # Shift an item from the same copy
 - int -2
 - get
-- trap ishift
-# Pop an item from the current blob using ipop (no effect!)
+- trap shift
+# Pop an item from the current blob using pop (no effect!)
 - trap s0
-- ipop
+- pop
 # Exit 
 - int 0
 - halt

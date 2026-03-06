@@ -26,7 +26,7 @@ Stack: XXXXXXXX (8 item(s))
   - stack XXXXXXXX (18 items)
   - go
 - do
-- pop
+- drop
 - float 4.000000
 - div halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
@@ -786,7 +786,7 @@ Working stack: (3 word(s))
 - stack XXXXXXXX (4 items)
 - float 37.000000
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX (4 items)

@@ -159,7 +159,7 @@ sam_word_t sam_run(sam_state_t *state)
                 switch (opcode) {
                 case INST_NOP:
                     break;
-                case INST_POP:
+                case INST_DROP:
                     if (s->sp < 1)
                         HALT(SAM_ERROR_STACK_UNDERFLOW);
                     s->sp -= 1;
@@ -254,7 +254,7 @@ sam_word_t sam_run(sam_state_t *state)
                         }
                     }
                     break;
-                case INST_IPOP:
+                case INST_POP:
                     {
                         sam_blob_t *blob;
                         POP_REF(blob);

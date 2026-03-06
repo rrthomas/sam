@@ -63,8 +63,8 @@ char *inst_name(sam_uword_t inst_opcode)
     switch (inst_opcode) {
     case INST_NOP:
         return "nop";
-    case INST_POP:
-        return "pop";
+    case INST_DROP:
+        return "drop";
     case INST_GET:
         return "get";
     case INST_SET:
@@ -77,8 +77,8 @@ char *inst_name(sam_uword_t inst_opcode)
         return "iget";
     case INST_ISET:
         return "iset";
-    case INST_IPOP:
-        return "ipop";
+    case INST_POP:
+        return "pop";
     case INST_APPEND:
         return "append";
     case INST_GO:

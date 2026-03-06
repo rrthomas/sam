@@ -162,10 +162,10 @@ These instructions manage stacks.
 >
 > Create an empty stack and push a reference to it to the current stack.
 
-> `POP`  
+> `DROP`  
 > `x` →
 >
-> Pop `x` from the top of the stack. If the stack is empty, raise the error `STACK_UNDERFLOW`.
+> If the stack is empty, raise the error `STACK_UNDERFLOW`. Discard `x` from the top of the stack.
 
 > `GET`  
 > `i` → `x`
@@ -197,12 +197,12 @@ These instructions manage stacks.
 >
 > Set the `i`th item of the stack pointed to by `s` to `x`.
 
-> `IPOP`  
+> `POP`  
 > `s` → `x`
 >
 > Pop `x` from the stack pointed to by `s`.
 
-> `ISHIFT`
+> `SHIFT`
 > `s` → `x`
 >
 > Remove the first element from the stack pointed to by `s` and push it to the current stack.

@@ -49,7 +49,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             HALT_IF_ERROR(sam_stack_prepend(stack, val));
         }
         break;
-    case TRAP_BASIC_ISHIFT:
+    case TRAP_BASIC_SHIFT:
         {
             sam_blob_t *blob;
             POP_REF(blob);
@@ -151,8 +151,8 @@ char *sam_basic_trap_name(sam_word_t function)
         return "QUOTE";
     case TRAP_BASIC_PREPEND:
         return "PREPEND";
-    case TRAP_BASIC_ISHIFT:
-        return "ISHIFT";
+    case TRAP_BASIC_SHIFT:
+        return "SHIFT";
     case TRAP_BASIC_NEW:
         return "NEW";
     case TRAP_BASIC_COPY:

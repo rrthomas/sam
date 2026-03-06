@@ -7,10 +7,10 @@
 - trap rad
 - blob turn
 - do
-- pop
+- drop
 - float 500.0
 - blob go
 - do
-- pop
+- drop
 - int 0
 - halt

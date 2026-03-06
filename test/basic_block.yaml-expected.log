@@ -1,6 +1,6 @@
 Stack: XXXXXXXX (9 item(s))
 - null
-- pop
+- drop
 - int 21
 - int 2
 - mul
@@ -14,7 +14,7 @@ null
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - null
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 int

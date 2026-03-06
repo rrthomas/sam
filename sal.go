@@ -291,7 +291,7 @@ func (e *UnaryExp) Compile(ctx *Frame) {
 		case "#":
 			ctx.assembleTrap("size")
 		case "<<<":
-			ctx.assembleTrap("ishift")
+			ctx.assembleTrap("shift")
 		default:
 			panic(fmt.Errorf("unknown UnaryExp.PreOp %s", e.PreOp))
 		}
@@ -302,7 +302,7 @@ func (e *UnaryExp) Compile(ctx *Frame) {
 		if e.PostOp != nil {
 			switch *e.PostOp {
 			case ">>>":
-				ctx.assemble("ipop")
+				ctx.assemble("pop")
 			default:
 				panic(fmt.Errorf("unknown UnaryExp.PostOp %s", *e.PostOp))
 			}
@@ -483,7 +483,7 @@ func (e *Expression) Compile(ctx *Frame) {
 		ctx.assemble("int 0")
 		blockCtx := e.Loop.Compile(ctx, true)
 		for range blockCtx.sp - blockCtx.baseSp {
-			blockCtx.assemble("pop")
+			blockCtx.assemble("drop")
 		}
 		blockCtx.assemble(fmt.Sprintf("blob %s", blockCtx.label))
 		blockCtx.assembleSingle("go")
@@ -580,18 +580,18 @@ func (t *Terminator) Compile(ctx *Frame) {
 			ctx.assemble("zero")
 		}
 		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+3)), "set")
-		// Pop items down to loop start
+		// Drop items down to loop start
 		for range ctx.sp - ctx.loop.baseSp {
-			ctx.assemble("pop")
+			ctx.assemble("drop")
 		}
 		ctx.assemble("zero", "while")
 	} else if t.Continue {
 		if ctx.loop == nil {
 			panic("'continue' used outside a loop")
 		}
-		// Pop items down to loop start
+		// Drop items down to loop start
 		for range ctx.sp - ctx.loop.baseSp {
-			ctx.assemble("pop")
+			ctx.assemble("drop")
 		}
 		ctx.assemble(fmt.Sprintf("blob %s", ctx.loop.label))
 		ctx.assemble("go")
@@ -610,7 +610,7 @@ func (b *Body) Compile(ctx *Frame) {
 		for i, s := range *b.Statements {
 			s.Compile(ctx)
 			if i < len(*b.Statements)-1 || b.Terminator != nil {
-				ctx.assemble("pop")
+				ctx.assemble("drop")
 			}
 		}
 	}
@@ -832,9 +832,9 @@ func (ctx *Frame) tearDownBlock() {
 	}
 	// Set result
 	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-ctx.baseSp+3)), "set")
-	// Pop remaining stack items in this frame, except for return address
+	// Drop remaining stack items in this frame, except for return address
 	for range ctx.sp - ctx.baseSp {
-		ctx.assemble("pop")
+		ctx.assemble("drop")
 	}
 }
 

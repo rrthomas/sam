@@ -116,11 +116,11 @@ Stack: XXXXXXXX (16 item(s))
 - trap RAD
 - stack XXXXXXXX (8 items)
 - do
-- pop
+- drop
 - float 500.000000
 - stack XXXXXXXX (30 items)
 - do
-- pop
+- drop
 - int 0
 - halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
@@ -559,7 +559,7 @@ sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX (10 items)
 - float -0.785398
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX (10 items)
@@ -1163,7 +1163,7 @@ sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX (10 items)
 - float 500.000000
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX (10 items)

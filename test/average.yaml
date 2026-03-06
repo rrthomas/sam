@@ -27,7 +27,7 @@
   - blob loop
   - go
 - do
-- pop
+- drop
 - float 4.0
 - div
 - halt

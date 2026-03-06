@@ -61,14 +61,14 @@ enum SAM_BLOB_TYPE {
 // Instructions (5 bits)
 enum SAM_INST {
   INST_NOP,
-  INST_POP,
+  INST_DROP,
   INST_GET,
   INST_SET,
   INST_EXTRACT,
   INST_INSERT,
   INST_IGET,
   INST_ISET,
-  INST_IPOP,
+  INST_POP,
   INST_APPEND,
   INST_GO,
   INST_DO,

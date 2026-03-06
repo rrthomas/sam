@@ -6,26 +6,26 @@
 - trap rad
 - blob turn
 - do
-- pop
+- drop
 - trap DISPLAY_HEIGHT
 - trap I2F
 - float 4.0
 - div
 - blob go
 - do
-- pop
+- drop
 - float 90.0
 - trap rad
 - blob turn
 - do
-- pop
+- drop
 - trap DISPLAY_WIDTH
 - trap I2F
 - float 4.0
 - div
 - blob go
 - do
-- pop
+- drop
 - blob pendown
 - do
 - int 6
@@ -41,7 +41,7 @@
     - trap rad
     - blob turn
     - do
-    - pop
+    - drop
     - int -6
     - get
     - int -1
@@ -56,25 +56,25 @@
     - trap rad
     - blob turn
     - do
-    - pop
+    - drop
     - blob levy_c
     - do
-    - pop
-    - pop
+    - drop
+    - drop
     - float -45.0
     - trap rad
     - blob turn
     - do
-    - pop
+    - drop
   -
     - int -5
     - get
     - blob go
     - do
-    - pop
+    - drop
   - if
 - do
-- pop
-- pop
+- drop
+- drop
 - int 0
 - halt

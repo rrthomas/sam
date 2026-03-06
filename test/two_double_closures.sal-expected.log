@@ -86,7 +86,7 @@ Stack: XXXXXXXX (4 item(s))
     - int 2
     - _one get
     - int 4
-    - set pop
+    - set drop
     - int 5
     - get
     - int 0
@@ -173,7 +173,7 @@ Stack: XXXXXXXX (4 item(s))
   - int -2
   - get append
   - int -7
-  - set pop pop pop
+  - set drop drop drop
 - do
 - halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
@@ -993,7 +993,7 @@ Working stack: (7 word(s))
 - int 2
 - stack XXXXXXXX (2 items)
 - int 2
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
@@ -1828,7 +1828,7 @@ Working stack: (7 word(s))
 - int 2
 - stack XXXXXXXX (2 items)
 - int 2
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (5 items)
@@ -5571,7 +5571,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX (3 items)
 - stack XXXXXXXX (2 items)
 - stack XXXXXXXX (2 items)
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 80, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (2 items)
@@ -5579,14 +5579,14 @@ Working stack: (5 word(s))
 - int 3
 - stack XXXXXXXX (3 items)
 - stack XXXXXXXX (2 items)
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 80, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (2 items)
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 80, s0 = XXXXXXXX, sp = 3
 Working stack: (3 word(s))
 - stack XXXXXXXX (2 items)

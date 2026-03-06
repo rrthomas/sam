@@ -27,5 +27,5 @@
   - blob loop
   - go
 - do
-- pop
+- drop
 - halt

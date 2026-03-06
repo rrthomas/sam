@@ -27,7 +27,7 @@ Stack: XXXXXXXX (5 item(s))
   - stack XXXXXXXX (20 items)
   - go
 - do
-- pop halt
+- drop halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 blob
@@ -739,7 +739,7 @@ sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - stack XXXXXXXX (4 items)
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - stack XXXXXXXX (4 items)

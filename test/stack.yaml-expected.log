@@ -12,12 +12,12 @@ Stack: XXXXXXXX (21 item(s))
 - get
 - trap COPY
 - int -1
-- get ipop
+- get pop
 - int -2
 - get
-- trap ISHIFT
+- trap SHIFT
 - trap S0
-- ipop
+- pop
 - int 0
 - halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
@@ -99,7 +99,7 @@ Working stack: (3 word(s))
 - stack XXXXXXXX (2 items)
 - stack XXXXXXXX (2 items)
 - stack XXXXXXXX (2 items)
-ipop
+pop
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX (2 items)
@@ -119,7 +119,7 @@ Working stack: (4 word(s))
 - stack XXXXXXXX (1 items)
 - int 13
 - stack XXXXXXXX (1 items)
-trap ISHIFT
+trap SHIFT
 sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (2 items)
@@ -134,7 +134,7 @@ Working stack: (5 word(s))
 - int 13
 - int 42
 - stack XXXXXXXX (5 items)
-ipop
+pop
 sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (2 items)

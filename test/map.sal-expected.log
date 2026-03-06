@@ -17,16 +17,16 @@ Stack: XXXXXXXX (4 item(s))
   - trap NEW_MAP
   - int 3
   - int 3
-  - get iget pop
+  - get iget drop
   - int 5
   - _one get
   - int 2
   - int 4
-  - get iset pop
+  - get iset drop
   - int 4
   - get
   - int -6
-  - set pop pop
+  - set drop drop
 - do
 - halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
@@ -231,7 +231,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int 4
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
@@ -312,7 +312,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int 5
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
@@ -356,14 +356,14 @@ Working stack: (5 word(s))
 - int 3
 - map XXXXXXXX
 - map XXXXXXXX
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - stack XXXXXXXX (4 items)
 - int 3
 - map XXXXXXXX
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 3
 Working stack: (3 word(s))
 - map XXXXXXXX

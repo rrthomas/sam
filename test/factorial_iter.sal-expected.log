@@ -17,22 +17,22 @@ Stack: XXXXXXXX (4 item(s))
         - int 5
         - get
         - int -7
-        - set pop pop pop zero while
+        - set drop drop drop zero while
       - stack XXXXXXXX (0 items)
       - if
-      - pop
+      - drop
       - int 5
       - get
       - int 0
       - get mul _one get
       - int 5
-      - set pop
+      - set drop
       - int 0
       - get
       - int 1
       - neg add _one get
       - int 0
-      - set pop
+      - set drop
       - stack XXXXXXXX (23 items)
       - go
     - do
@@ -56,7 +56,7 @@ Stack: XXXXXXXX (4 item(s))
   - trap NEW
   - call
   - int -5
-  - set pop
+  - set drop
 - do
 - halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
@@ -458,7 +458,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 5
@@ -593,7 +593,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 5
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 5
@@ -728,7 +728,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 4
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 4
@@ -907,7 +907,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 4
@@ -1042,7 +1042,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 20
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 4
@@ -1177,7 +1177,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 3
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 3
@@ -1356,7 +1356,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 3
@@ -1491,7 +1491,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 60
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 3
@@ -1626,7 +1626,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 2
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 2
@@ -1805,7 +1805,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 2
@@ -1940,7 +1940,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 120
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 2
@@ -2075,7 +2075,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 1
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 1
@@ -2254,7 +2254,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 1
@@ -2389,7 +2389,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 120
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 1
@@ -2524,7 +2524,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
@@ -2755,7 +2755,7 @@ Working stack: (12 word(s))
 - int 0
 - stack XXXXXXXX (23 items)
 - int 8
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0
@@ -2769,7 +2769,7 @@ Working stack: (11 word(s))
 - int 4
 - int 0
 - stack XXXXXXXX (23 items)
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 0
@@ -2782,7 +2782,7 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (13 items)
 - int 4
 - int 0
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 0
@@ -2940,7 +2940,7 @@ Working stack: (4 word(s))
 - stack XXXXXXXX (4 items)
 - int 3
 - stack XXXXXXXX (3 items)
-pop
+drop
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 3
 Working stack: (3 word(s))
 - int 120
