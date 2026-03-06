@@ -22,7 +22,6 @@ The registers are as follows:
 | Register  | Function  |
 | --------- | --------- |
 | `S0`      | The current `S`tack. |
-| `SP`      | The `S`tack `P`ointer. The number of items currently on the stack. |
 | `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
 | `P0 `     | The current stack from which code is being executed. |
 | `PC`      | The `P`rogram `C`ounter points to the next instruction. |
@@ -45,7 +44,7 @@ A valid address is one that points to a valid instruction.
 
 ### Operation
 
-Before SAM is started, the stack should be given suitable contents, `SP` set appropriately, and `PC` to the address of some item in the stack.
+Before SAM is started, the stack should be given suitable contents, and `PC` set to the address of some item in the stack.
 
 ```
 begin
