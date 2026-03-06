@@ -432,4 +432,4 @@ See `libsam/sam.h`.
 
 ## Acknowledgements
 
-Alistair Turnbull, as ever, has been a meticulous tester and reviewer.
+Alistair Turnbull, as ever, has helped in many ways, from design suggestions to coding assistance, to code review and testing.
