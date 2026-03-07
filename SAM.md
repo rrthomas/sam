@@ -127,6 +127,11 @@ These instructions encode literal values.
 >
 > Push the float encoded in the `FLOAT` instruction on to the stack. Increment `PC`.
 
+> `NULL`  
+> → `a`
+>
+> Push the atom `NULL`.
+
 
 ### Numeric type conversion
 
@@ -265,7 +270,7 @@ These instructions implement branches, conditions and subroutine calls.
 > `WHILE`  
 > `i` →
 >
-> Pop `i`. If it is zero, perform the action of `RET`.
+> Pop `i`. If it is the integer zero, perform the action of `DONE`.
 
 
 ### Logic and shifts
@@ -394,7 +399,7 @@ The encoding achieves the following aims:
 
 + Allow pointers to address the entire address space
 + As much precision as possible for floats & integers
-+ Some expansion ability for new atom & blob types
++ Allow new atom and blob types to be defined
 + Compact instruction encoding
 
 #### 64-bit encoding
