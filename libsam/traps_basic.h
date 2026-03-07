@@ -13,6 +13,8 @@
 
 #include "sam.h"
 
+sam_word_t sam_basic_init(void);
+void sam_basic_finish(void);
 sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function);
 char *sam_basic_trap_name(sam_word_t function);
 
@@ -33,6 +35,7 @@ enum SAM_TRAP_BASIC {
     TRAP_BASIC_ITER,
     TRAP_BASIC_NEXT,
     TRAP_BASIC_NEW_MAP,
+    TRAP_BASIC_DEBUG,
 };
 
 #endif

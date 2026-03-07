@@ -8,11 +8,23 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
+#include <stdio.h>
+
 #include "sam.h"
 #include "sam_opcodes.h"
 #include "private.h"
 #include "run.h"
 #include "traps_basic.h"
+
+sam_word_t sam_basic_init(void)
+{
+    return SAM_ERROR_OK;
+}
+
+void sam_basic_finish(void)
+{
+    fflush(stdout);
+}
 
 sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
 {
@@ -184,6 +196,13 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             HALT_IF_ERROR(sam_push_ref(state->s0, map));
         }
         break;
+    case TRAP_BASIC_DEBUG:
+        {
+            sam_word_t opcode;
+            POP_WORD(&opcode);
+            char *text = disas(opcode);
+            printf("%s\n", text);
+        }
     }
 error:
     return error;
@@ -220,6 +239,8 @@ char *sam_basic_trap_name(sam_word_t function)
         return "NEXT";
     case TRAP_BASIC_NEW_MAP:
         return "NEW_MAP";
+    case TRAP_BASIC_DEBUG:
+        return "DEBUG";
     default:
         return NULL;
     }

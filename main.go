@@ -69,15 +69,17 @@ var rootCmd = &cobra.Command{
 
 		// Assemble and run the program
 		code := Assemble(yaml)
-		err := libsam.GraphicsInit()
-		if err != libsam.ERROR_OK {
+		if err := libsam.BasicInit(); err != libsam.ERROR_OK {
+			os.Exit(int(err))
+		}
+		if err := libsam.GraphicsInit(); err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
 		code.PrintStack()
-		res2 := libsam.Run(&state, &code)
+		res := libsam.Run(&state, &code)
 
 		if debug {
-			fmt.Printf("\n\nsam_run returns: %s\n", state.ErrorMessage(res2))
+			fmt.Printf("\n\nsam_run returns: %s\n", state.ErrorMessage(res))
 			stack := state.Stack()
 			stack.PrintStack()
 		}
@@ -92,8 +94,9 @@ var rootCmd = &cobra.Command{
 			libsam.GraphicsWait()
 		}
 
+		libsam.BasicFinish()
 		libsam.GraphicsFinish()
-		os.Exit(int(err))
+		os.Exit(int(res))
 
 		return nil
 	},

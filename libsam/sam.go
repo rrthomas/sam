@@ -135,6 +135,14 @@ func Run(state *State, code *Stack) Word {
 	return res
 }
 
+func BasicInit() Word {
+	return C.sam_basic_init()
+}
+
+func BasicFinish() {
+	C.sam_basic_finish()
+}
+
 func GraphicsInit() Word {
 	return C.sam_graphics_init()
 }
@@ -291,6 +299,7 @@ var Traps = map[string]int{
 	"ITER":    C.TRAP_BASIC_ITER,
 	"NEXT":    C.TRAP_BASIC_NEXT,
 	"NEW_MAP": C.TRAP_BASIC_NEW_MAP,
+	"DEBUG":   C.TRAP_BASIC_DEBUG,
 
 	"I2F": C.TRAP_MATH_I2F,
 	"F2I": C.TRAP_MATH_F2I,
@@ -388,6 +397,7 @@ var TrapStackEffect = map[string]StackEffect{
 	"ITER":    {1, 1},
 	"NEXT":    {1, 2},
 	"NEW_MAP": {0, 1},
+	"DEBUG":   {1, 0},
 
 	// Math traps
 	"I2F": {1, 1},
