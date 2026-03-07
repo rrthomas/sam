@@ -21,6 +21,12 @@ AC_SUBST([SIZEOF_SIZE_T])
 # Checks for libraries
 PKG_CHECK_MODULES(SDL2, [sdl2 SDL2_gfx])
 
+# Counting code
+AM_EXTRA_RECURSIVE_TARGETS([loc])
+AC_PATH_PROG(CLOC, cloc, true)
+CLOC_OPTS="--force-lang="C",h"
+AC_SUBST([CLOC_OPTS])
+
 # Generate output
 AC_CONFIG_FILES([Makefile libsam/Makefile test/Makefile])
 AC_OUTPUT

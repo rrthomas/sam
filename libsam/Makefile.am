@@ -34,6 +34,9 @@ libsam_la_SOURCES = \
 	traps_graphics.c \
 	$(EMPTY)
 
+loc-local:
+	$(CLOC) $(libsam_la_SOURCES) *.go
+
 EXTRA_DIST = \
 	sam.go \
 	verstable.h \

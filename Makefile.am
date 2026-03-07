@@ -6,10 +6,8 @@ SUBDIRS = libsam test
 
 EMPTY =
 
-CLOC = cloc --force-lang="C",h
-
-loc:
-	$(CLOC) libsam/*.[ch] libsam/*.go *.go
+loc-local:
+	$(CLOC) *.go
 
 EXTRA_DIST = \
 	HACKING.md \
