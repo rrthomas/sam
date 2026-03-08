@@ -81,8 +81,9 @@ int sam_map_get(sam_blob_t *blob, sam_word_t key, sam_word_t *val)
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
     _sam_map_itr itr = vt_get(m, key);
     if (vt_is_end(itr))
-       *val = (SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG;
-    *val = itr.data->val;
+        *val = SAM_VALUE_NULL;
+    else
+        *val = itr.data->val;
 
 error:
     return error;
@@ -93,7 +94,7 @@ int sam_map_set(sam_blob_t *blob, sam_word_t key, sam_word_t val)
     sam_word_t error = SAM_ERROR_OK;
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
-    if (val == ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG)) {
+    if (val == SAM_VALUE_NULL) {
         vt_erase(m, key);
     } else {
         _sam_map_itr itr = vt_insert(m, key, val);

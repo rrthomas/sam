@@ -226,7 +226,7 @@ static sam_blob_list_t *disas_map(sam_blob_list_t *l, sam_uword_t level, sam_blo
     for (;;) {
         sam_word_t key, val;
         assert(i->next(i, &key, &val) == SAM_ERROR_OK);
-        if (val == ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG))
+        if (key == SAM_VALUE_NULL)
             break;
         l = disas_word(l, level, key, text);
         l = disas_word(l, level + 1, val, text);
