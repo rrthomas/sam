@@ -49,7 +49,7 @@ int sam_stack_copy(sam_blob_t *stack, sam_blob_t **new_stack)
     sam_stack_t *s;
     EXTRACT_BLOB(stack, SAM_BLOB_STACK, sam_stack_t, s);
     HALT_IF_ERROR(sam_stack_new(new_stack));
-    
+
     // Copy the contents of the stack.
     for (sam_uword_t pos = 0; pos < s->sp; pos++) {
         sam_uword_t val;
