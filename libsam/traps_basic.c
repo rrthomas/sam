@@ -8,6 +8,7 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
+#include <math.h>
 #include <stdio.h>
 
 #include "sam.h"
@@ -15,6 +16,10 @@
 #include "private.h"
 #include "run.h"
 #include "traps_basic.h"
+
+// Division macros
+#define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))
+#define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
 
 sam_word_t sam_basic_init(void)
 {
@@ -49,28 +54,6 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             PUSH_WORD(ir);
         }
     break;
-    case TRAP_BASIC_PREPEND:
-        {
-            sam_blob_t *stack;
-            POP_REF(stack);
-            sam_word_t val;
-            POP_WORD(&val);
-            HALT_IF_ERROR(sam_stack_prepend(stack, val));
-        }
-        break;
-    case TRAP_BASIC_SHIFT:
-        {
-            sam_blob_t *blob;
-            POP_REF(blob);
-            sam_stack_t *stack;
-            EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, stack);
-            if (stack->sp < 1)
-                HALT(SAM_ERROR_STACK_UNDERFLOW);
-            sam_word_t val;
-            HALT_IF_ERROR(sam_stack_shift(blob, &val));
-            PUSH_WORD(val);
-        }
-        break;
     case TRAP_BASIC_COPY:
         {
             sam_blob_t *blob;
@@ -124,6 +107,46 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             POP_INT(shift);
             POP_INT(value);
             PUSH_INT(ARSHIFT(value, shift));
+        }
+        break;
+    case TRAP_BASIC_DIV:
+        {
+            sam_uword_t operand;
+            HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
+            if ((sam_word_t)(operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                sam_word_t divisor, dividend;
+                POP_INT(divisor);
+                POP_INT(dividend);
+                if (dividend == SAM_INT_MIN && divisor == -1) {
+                    PUSH_INT(SAM_INT_MIN);
+                } else {
+                    PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
+                }
+            } else if ((sam_word_t)(operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
+                sam_float_t divisor, dividend;
+                POP_FLOAT(divisor);
+                POP_FLOAT(dividend);
+                PUSH_FLOAT(DIV_CATCH_ZERO(dividend, divisor));
+            } else
+                HALT(SAM_ERROR_WRONG_TYPE);
+        }
+        break;
+    case TRAP_BASIC_REM:
+        {
+            sam_uword_t operand;
+            HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
+            if ((sam_word_t)(operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                sam_uword_t divisor, dividend;
+                POP_UINT(divisor);
+                POP_UINT(dividend);
+                PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
+            } else if ((sam_word_t)(operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
+                sam_float_t divisor, dividend;
+                POP_FLOAT(divisor);
+                POP_FLOAT(dividend);
+                PUSH_FLOAT(divisor == 0 ? dividend : fmodf(divisor, dividend));
+            } else
+                HALT(SAM_ERROR_WRONG_TYPE);
         }
         break;
     case TRAP_BASIC_ITER:
@@ -217,10 +240,6 @@ char *sam_basic_trap_name(sam_word_t function)
         return "SIZE";
     case TRAP_BASIC_QUOTE:
         return "QUOTE";
-    case TRAP_BASIC_PREPEND:
-        return "PREPEND";
-    case TRAP_BASIC_SHIFT:
-        return "SHIFT";
     case TRAP_BASIC_COPY:
         return "COPY";
     case TRAP_BASIC_RET:
@@ -231,6 +250,10 @@ char *sam_basic_trap_name(sam_word_t function)
         return "RSH";
     case TRAP_BASIC_ARSH:
         return "ARSH";
+    case TRAP_BASIC_DIV:
+        return "DIV";
+    case TRAP_BASIC_REM:
+        return "REM";
     case TRAP_BASIC_ITER:
         return "ITER";
     case TRAP_BASIC_NEXT:

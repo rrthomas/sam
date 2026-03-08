@@ -79,8 +79,12 @@ char *inst_name(sam_uword_t inst_opcode)
         return "insert";
     case INST_POP:
         return "pop";
+    case INST_SHIFT:
+        return "shift";
     case INST_APPEND:
         return "append";
+    case INST_PREPEND:
+        return "prepend";
     case INST_GO:
         return "go";
     case INST_DO:
@@ -109,10 +113,6 @@ char *inst_name(sam_uword_t inst_opcode)
         return "add";
     case INST_MUL:
         return "mul";
-    case INST_DIV:
-        return "div";
-    case INST_REM:
-        return "rem";
     case INST_0:
         return "zero";
     case INST_1:
@@ -317,7 +317,7 @@ char *disas(sam_word_t inst)
                 xasprintf(&text, "%s", inst_name(opcode));
             else
                 xasprintf(&text, "%s %s", text, inst_name(opcode));
-            opcodes >>= SAM_INST_SHIFT;
+            opcodes >>= SAM_ONE_INST_SHIFT;
         } while (opcodes != 0);
     } else if ((inst & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
         sam_blob_t *blob = (sam_blob_t *)(inst & ~SAM_BLOB_TAG_MASK);

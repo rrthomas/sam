@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (9 item(s))
+Stack: XXXXXXXX (10 item(s))
 - null
 - drop
 - int 21
@@ -7,7 +7,8 @@ Stack: XXXXXXXX (9 item(s))
 - int 3
 - neg add
 - int -3
-- div halt
+- trap DIV
+- halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
@@ -49,8 +50,8 @@ sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 39
 - int -3
-div
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+trap DIV
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int -13
 halt

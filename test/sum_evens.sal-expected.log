@@ -29,7 +29,7 @@ Stack: XXXXXXXX (4 item(s))
       - int 0
       - s0 get
       - int 2
-      - rem
+      - trap REM
       - int 0
       - eq neg
       - stack XXXXXXXX (3 items)
@@ -851,7 +851,7 @@ Working stack: (12 word(s))
 - null
 - int 8
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 8
@@ -1500,7 +1500,7 @@ Working stack: (12 word(s))
 - null
 - int 7
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 7
@@ -2358,7 +2358,7 @@ Working stack: (12 word(s))
 - null
 - int 6
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 6
@@ -3007,7 +3007,7 @@ Working stack: (12 word(s))
 - null
 - int 5
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 5
@@ -3865,7 +3865,7 @@ Working stack: (12 word(s))
 - null
 - int 4
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 4
@@ -4514,7 +4514,7 @@ Working stack: (12 word(s))
 - null
 - int 3
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 3
@@ -5372,7 +5372,7 @@ Working stack: (12 word(s))
 - null
 - int 2
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 2
@@ -6021,7 +6021,7 @@ Working stack: (12 word(s))
 - null
 - int 1
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 1
@@ -6879,7 +6879,7 @@ Working stack: (12 word(s))
 - null
 - int 0
 - int 2
-rem
+trap REM
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 0

@@ -43,7 +43,7 @@ var INSTS_SHIFT = C.SAM_INSTS_SHIFT
 var INST_SET_MASK = C.SAM_INST_SET_MASK
 var INST_SET_SHIFT = C.SAM_INST_SET_SHIFT
 var INST_MASK = C.SAM_INST_MASK
-var INST_SHIFT = C.SAM_INST_SHIFT
+var ONE_INST_SHIFT = C.SAM_ONE_INST_SHIFT
 var WORD_BIT = C.SAM_WORD_BIT
 var WORD_MASK = Uword(((1 << C.SAM_WORD_BIT) - 1))
 
@@ -257,7 +257,9 @@ var Instructions = map[string]InstOpcode{
 	"extract": {C.SAM_INSTS_TAG, C.INST_EXTRACT, false},
 	"insert":  {C.SAM_INSTS_TAG, C.INST_INSERT, false},
 	"pop":     {C.SAM_INSTS_TAG, C.INST_POP, false},
+	"shift":   {C.SAM_INSTS_TAG, C.INST_SHIFT, false},
 	"append":  {C.SAM_INSTS_TAG, C.INST_APPEND, false},
+	"prepend": {C.SAM_INSTS_TAG, C.INST_PREPEND, false},
 	"go":      {C.SAM_INSTS_TAG, C.INST_GO, true},
 	"do":      {C.SAM_INSTS_TAG, C.INST_DO, true},
 	"call":    {C.SAM_INSTS_TAG, C.INST_CALL, true},
@@ -272,8 +274,6 @@ var Instructions = map[string]InstOpcode{
 	"neg":     {C.SAM_INSTS_TAG, C.INST_NEG, false},
 	"add":     {C.SAM_INSTS_TAG, C.INST_ADD, false},
 	"mul":     {C.SAM_INSTS_TAG, C.INST_MUL, false},
-	"div":     {C.SAM_INSTS_TAG, C.INST_DIV, false},
-	"rem":     {C.SAM_INSTS_TAG, C.INST_REM, false},
 	"zero":    {C.SAM_INSTS_TAG, C.INST_0, false},
 	"false":   {C.SAM_INSTS_TAG, C.INST_0, false},
 	"one":     {C.SAM_INSTS_TAG, C.INST_1, false},
@@ -287,13 +287,13 @@ var Instructions = map[string]InstOpcode{
 var Traps = map[string]int{
 	"SIZE":    C.TRAP_BASIC_SIZE,
 	"QUOTE":   C.TRAP_BASIC_QUOTE,
-	"PREPEND": C.TRAP_BASIC_PREPEND,
-	"SHIFT":   C.TRAP_BASIC_SHIFT,
 	"COPY":    C.TRAP_BASIC_COPY,
 	"RET":     C.TRAP_BASIC_RET,
 	"LSH":     C.TRAP_BASIC_LSH,
 	"RSH":     C.TRAP_BASIC_RSH,
 	"ARSH":    C.TRAP_BASIC_ARSH,
+	"DIV":     C.TRAP_BASIC_DIV,
+	"REM":     C.TRAP_BASIC_REM,
 	"ITER":    C.TRAP_BASIC_ITER,
 	"NEXT":    C.TRAP_BASIC_NEXT,
 	"NEW_MAP": C.TRAP_BASIC_NEW_MAP,
@@ -345,7 +345,9 @@ var StackDifference = map[string]int{
 	"extract": -2,
 	"insert":  -2,
 	"pop":     0,
+	"shift":   0,
 	"append":  -2,
+	"prepend": -2,
 	"go":      -1,
 	"do":      -1,
 	"call":    -3,
@@ -360,8 +362,6 @@ var StackDifference = map[string]int{
 	"neg":     0,
 	"add":     -1,
 	"mul":     -1,
-	"div":     -1,
-	"rem":     -1,
 	"zero":    1,
 	"false":   1,
 	"one":     1,
@@ -383,13 +383,13 @@ var TrapStackEffect = map[string]StackEffect{
 	// Basic traps
 	"SIZE":    {1, 1},
 	"QUOTE":   {0, 1},
-	"PREPEND": {2, 0},
-	"SHIFT":   {1, 1},
 	"COPY":    {1, 1},
 	"RET":     {4, 0},
 	"LSH":     {2, 1},
 	"RSH":     {2, 1},
 	"ARSH":    {2, 1},
+	"DIV":     {2, 1},
+	"REM":     {2, 1},
 	"ITER":    {1, 1},
 	"NEXT":    {1, 1},
 	"NEW_MAP": {0, 1},
@@ -398,8 +398,6 @@ var TrapStackEffect = map[string]StackEffect{
 	// Math traps
 	"I2F": {1, 1},
 	"F2I": {1, 1},
-	"DIV": {2, 1},
-	"REM": {2, 1},
 	"POW": {2, 1},
 	"SIN": {1, 1},
 	"COS": {1, 1},

@@ -35,5 +35,5 @@
 - do
 - drop
 - float 4.0
-- div
+- trap div
 - halt

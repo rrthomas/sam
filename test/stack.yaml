@@ -11,7 +11,7 @@
 - int -2
 - s0
 - get
-- trap prepend
+- prepend
 - int -1
 - s0
 - get
@@ -25,7 +25,7 @@
 - int -2
 - s0
 - get
-- trap shift
+- shift
 # Pop an item from the current blob using pop (no effect!)
 - s0
 - pop

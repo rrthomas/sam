@@ -10,7 +10,7 @@
 - trap DISPLAY_HEIGHT
 - trap I2F
 - float 4.0
-- div
+- trap div
 - blob go
 - do
 - drop
@@ -22,7 +22,7 @@
 - trap DISPLAY_WIDTH
 - trap I2F
 - float 4.0
-- div
+- trap div
 - blob go
 - do
 - drop
@@ -32,7 +32,7 @@
 - trap DISPLAY_WIDTH
 - trap I2F
 - float 2.0
-- div
+- trap div
 -
   - levy_c: int -4
   - s0

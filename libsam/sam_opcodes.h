@@ -38,7 +38,7 @@ extern const sam_word_t SAM_INST_SET_MASK;
 extern const int SAM_INST_SET_SHIFT;
 extern const int SAM_INSTS_SHIFT;
 extern const sam_word_t SAM_INST_MASK;
-extern const int SAM_INST_SHIFT;
+extern const int SAM_ONE_INST_SHIFT;
 
 extern const sam_word_t SAM_TRAP_BASE_MASK;
 
@@ -70,7 +70,9 @@ enum SAM_INST {
   INST_EXTRACT,
   INST_INSERT,
   INST_POP,
+  INST_SHIFT,
   INST_APPEND,
+  INST_PREPEND,
   INST_GO,
   INST_DO,
   INST_CALL,
@@ -85,8 +87,6 @@ enum SAM_INST {
   INST_NEG,
   INST_ADD,
   INST_MUL,
-  INST_DIV,
-  INST_REM,
   INST_0,
   INST_1,
   INST_MINUS_1,
@@ -94,6 +94,7 @@ enum SAM_INST {
   INST_MINUS_2,
   INST_HALT,
 };
+_Static_assert(INST_HALT == 31);
 
 // Useful aliases
 #define INST_TRUE INST_MINUS_1

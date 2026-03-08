@@ -7,5 +7,5 @@
 - neg
 - add
 - int -3
-- div
+- trap div
 - halt

@@ -8,7 +8,6 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
-#include <math.h>
 #include <stdlib.h>
 
 #ifdef SAM_DEBUG
@@ -68,13 +67,9 @@ const sam_word_t SAM_INSTS_TAG = 0x1f;
 const sam_word_t SAM_INSTS_TAG_MASK = 0x3f;
 const int SAM_INST_SET_SHIFT = 6;
 const sam_word_t SAM_INST_MASK = 0x1f;
-const int SAM_INST_SHIFT = 5;
+const int SAM_ONE_INST_SHIFT = 5;
 
 const sam_word_t SAM_TRAP_BASE_MASK = ~0xff;
-
-// Division macros
-#define DIV_CATCH_ZERO(a, b) ((b) == 0 ? 0 : (a) / (b))
-#define MOD_CATCH_ZERO(a, b) ((b) == 0 ? (a) : (a) % (b))
 
 // Trap dispatcher
 static sam_word_t sam_trap(sam_state_t *state, sam_uword_t function)
@@ -261,6 +256,19 @@ sam_word_t sam_run(sam_state_t *state)
                         PUSH_WORD(val);
                     }
                     break;
+                case INST_SHIFT:
+                    {
+                        sam_blob_t *blob;
+                        POP_REF(blob);
+                        sam_stack_t *stack;
+                        EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, stack);
+                        if (stack->sp < 1)
+                            HALT(SAM_ERROR_STACK_UNDERFLOW);
+                        sam_word_t val;
+                        HALT_IF_ERROR(sam_stack_shift(blob, &val));
+                        PUSH_WORD(val);
+                    }
+                    break;
                 case INST_APPEND:
                     {
                         sam_blob_t *stack;
@@ -268,6 +276,15 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_word_t val;
                         POP_WORD(&val);
                         HALT_IF_ERROR(sam_stack_push(stack, val));
+                    }
+                    break;
+                case INST_PREPEND:
+                    {
+                        sam_blob_t *stack;
+                        POP_REF(stack);
+                        sam_word_t val;
+                        POP_WORD(&val);
+                        HALT_IF_ERROR(sam_stack_prepend(stack, val));
                     }
                     break;
                 case INST_GO:
@@ -439,46 +456,6 @@ sam_word_t sam_run(sam_state_t *state)
                             HALT(SAM_ERROR_WRONG_TYPE);
                     }
                     break;
-                case INST_DIV:
-                    {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
-                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
-                            sam_word_t divisor, dividend;
-                            POP_INT(divisor);
-                            POP_INT(dividend);
-                            if (dividend == SAM_INT_MIN && divisor == -1) {
-                                PUSH_INT(SAM_INT_MIN);
-                            } else {
-                                PUSH_INT(DIV_CATCH_ZERO(dividend, divisor));
-                            }
-                        } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
-                            sam_float_t divisor, dividend;
-                            POP_FLOAT(divisor);
-                            POP_FLOAT(dividend);
-                            PUSH_FLOAT(DIV_CATCH_ZERO(dividend, divisor));
-                        } else
-                            HALT(SAM_ERROR_WRONG_TYPE);
-                    }
-                    break;
-                case INST_REM:
-                    {
-                        sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
-                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
-                            sam_uword_t divisor, dividend;
-                            POP_UINT(divisor);
-                            POP_UINT(dividend);
-                            PUSH_INT(MOD_CATCH_ZERO(dividend, divisor));
-                        } else if ((operand & SAM_FLOAT_TAG_MASK) == SAM_FLOAT_TAG) {
-                            sam_float_t divisor, dividend;
-                            POP_FLOAT(divisor);
-                            POP_FLOAT(dividend);
-                            PUSH_FLOAT(divisor == 0 ? dividend : fmodf(divisor, dividend));
-                        } else
-                            HALT(SAM_ERROR_WRONG_TYPE);
-                    }
-                    break;
                 case INST_0:
                     PUSH_INT(0);
                     break;
@@ -499,7 +476,7 @@ sam_word_t sam_run(sam_state_t *state)
                     break;
                 }
 
-                opcodes >>= SAM_INST_SHIFT;
+                opcodes >>= SAM_ONE_INST_SHIFT;
 
 #ifdef SAM_DEBUG
                 if (opcodes != 0) {

@@ -294,7 +294,7 @@ func (e *UnaryExp) Compile(ctx *Frame) {
 		case "#":
 			ctx.assembleTrap("size")
 		case "<<<":
-			ctx.assembleTrap("shift")
+			ctx.assemble("shift")
 		default:
 			panic(fmt.Errorf("unknown UnaryExp.PreOp %s", e.PreOp))
 		}
@@ -366,9 +366,9 @@ func (e *ProductExp) Compile(ctx *Frame) {
 		case "*":
 			ctx.assemble("mul")
 		case "/":
-			ctx.assemble("div")
+			ctx.assembleTrap("div")
 		case "%":
-			ctx.assemble("rem")
+			ctx.assembleTrap("rem")
 		default:
 			panic(fmt.Errorf("unknown ProductExp.Op %s", e.Op))
 		}
@@ -440,8 +440,7 @@ func (e *PushExp) Compile(ctx *Frame) {
 		case ">>": // List prepend: i >> l
 			e.Right.Compile(ctx)
 			e.Left.Compile(ctx)
-			ctx.assemble("_two", "s0", "get")
-			ctx.assembleTrap("prepend")
+			ctx.assemble("_two", "s0", "get", "prepend")
 		default:
 			panic(fmt.Errorf("unknown PushExp.Op %s", e.Op))
 		}

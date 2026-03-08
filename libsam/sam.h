@@ -29,7 +29,7 @@ typedef double sam_float_t;
 #define SAM_WORD_BYTES (sizeof(size_t))
 #define SAM_WORD_BIT (SAM_WORD_BYTES * 8)
 #define SAM_WORD_MIN ((sam_word_t)(1UL << (SAM_WORD_BIT - 1)))
-#define SAM_INT_MIN ((sam_uword_t)SAM_WORD_MIN >> SAM_INT_SHIFT)
+#define SAM_INT_MIN ((sam_word_t)((sam_uword_t)SAM_WORD_MIN >> SAM_INT_SHIFT))
 #define SAM_UWORD_MAX (SIZE_MAX)
 #define SAM_RET_SHIFT 8
 #define SAM_RET_MASK ((1 << SAM_RET_SHIFT) - 1)

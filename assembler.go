@@ -74,10 +74,10 @@ func (a *assembler) flushInstructions() {
 }
 
 func (a *assembler) addInstruction(opcode libsam.InstOpcode) {
-	if (a.nInsts+1)*uint(libsam.INST_SHIFT)+uint(libsam.INSTS_SHIFT) > uint(libsam.WORD_BIT) {
+	if (a.nInsts+1)*uint(libsam.ONE_INST_SHIFT)+uint(libsam.INSTS_SHIFT) > uint(libsam.WORD_BIT) {
 		a.flushInstructions()
 	}
-	a.insts |= (opcode.Opcode & libsam.Uword(libsam.INST_MASK)) << (libsam.Uword(a.nInsts) * libsam.Uword(libsam.INST_SHIFT))
+	a.insts |= (opcode.Opcode & libsam.Uword(libsam.INST_MASK)) << (libsam.Uword(a.nInsts) * libsam.Uword(libsam.ONE_INST_SHIFT))
 	a.nInsts += 1
 	if opcode.Terminal {
 		a.flushInstructions()
