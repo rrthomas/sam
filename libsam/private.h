@@ -70,7 +70,7 @@ typedef struct sam_state {
     (((n) & (SAM_UWORD_MAX >> (p))) << (p))
 
 // Portable arithmetic right shift (the behaviour of >> on signed
-// quantities is implementation-defined in C99)
+// quantities is implementation-defined in C11)
 #define ARSHIFT(n, p)                                                   \
     (((n) >> (p)) | (sam_word_t)(LSHIFT(-((n) < 0), (SAM_WORD_BIT - p))))
 

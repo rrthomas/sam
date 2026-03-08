@@ -2,7 +2,8 @@
 
 <img src="mascot/SAL SAM.svg" width=256 alt="logo">
 
-SAM is a Simple Abstract Machine intended as a teaching tool and toy. It comes with a programming language, SAL (SAM’s Awesome Language).
+SAM is a Simple Abstract Machine intended as a teaching tool and toy. It
+comes with a programming language, SAL (SAM’s Awesome Language).
 
 SAM is a Stack–Array Machine. It has no memory or registers; instead it has
 a nested stack of stacks. Each stack is an array of items that can be
@@ -14,7 +15,8 @@ Electromagnetic Field 2014. It now runs on most personal computers.
 
 SAM was invented as a tenth birthday present for my nephew, Sam. It was
 named after my first computer, a Sinclair ZX81, “Super Advanced Micro”.
-SAM’s logo is a simpatico astute mongrel called Sam mashed up with a sweet acute leonine called Sal.
+SAM’s logo is a simpatico astute mongrel called Sam mashed up with a sweet
+acute leonine called Sal.
 
 
 ## The idea
@@ -30,7 +32,7 @@ and reason about.
 
 ## Installing and using SAM
 
-To install SAM, you need Go:
+To install SAM, you need Go, and a C compiler that supports C11:
 
 ```
 go install github.com/rrthomas/sam@latest
