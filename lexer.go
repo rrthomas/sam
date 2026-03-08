@@ -34,8 +34,8 @@ var (
 
 			{Name: "Keyword", Pattern: `\b(if|fn|loop|then|else|break|continue|return)\b`, Action: nil},
 			{Name: "Ident", Pattern: `\b([[:alpha:]_]\w*)\b`, Action: nil},
-			{Name: "Int", Pattern: `\b(\d+)\b`, Action: nil},
 			{Name: "Float", Pattern: `\b(\d+\.\d+?)\b`, Action: nil},
+			{Name: "Int", Pattern: `\b(\d+)\b`, Action: nil},
 			{Name: "String", Pattern: `"`, Action: lexer.Push("String")},
 			{Name: "LiteralString", Pattern: `` + "`.*?`|'.*?'" + ``, Action: nil},
 			{Name: "Newline", Pattern: `\n`, Action: nil},
