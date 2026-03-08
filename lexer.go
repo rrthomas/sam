@@ -134,7 +134,7 @@ next:
 					continue next
 				}
 			}
-		} else if token.Value == "}" {
+		} else if token.Value == "}" || token.Type == lexer.EOF {
 			// Do we need to insert a semi-colon?
 			if l.last.Value != ";" {
 				l.extra = &lexer.Token{Value: token.Value, Type: token.Type}
