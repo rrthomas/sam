@@ -95,7 +95,7 @@ func (s *Stack) PushStack(val Word) int {
 }
 
 func (s *Stack) PushArray(stack Stack) int {
-	return int(C.sam_push_ref(s.stack, unsafe.Pointer(stack.stack)))
+	return int(C.sam_push_ref(s.stack, stack.stack))
 }
 
 func (s *Stack) PushInt(val Uword) int {

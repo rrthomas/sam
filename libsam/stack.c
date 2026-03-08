@@ -209,9 +209,9 @@ int sam_stack_prepend(sam_blob_t *blob, sam_word_t val)
     return error;
 }
 
-int sam_push_ref(sam_blob_t *blob, void *ptr)
+int sam_push_ref(sam_blob_t *blob, sam_blob_t *val)
 {
-    return sam_stack_push(blob, SAM_BLOB_TAG | ((sam_uword_t)ptr));
+    return sam_stack_push(blob, SAM_BLOB_TAG | ((sam_uword_t)val));
 }
 
 int sam_push_int(sam_blob_t *blob, sam_uword_t val)

@@ -87,7 +87,7 @@ int sam_stack_pop(sam_blob_t *s, sam_word_t *val_ptr);
 int sam_stack_shift(sam_blob_t *s, sam_word_t *val_ptr);
 int sam_stack_push(sam_blob_t *s, sam_word_t val);
 int sam_stack_prepend(sam_blob_t *s, sam_word_t val);
-int sam_push_ref(sam_blob_t *s, /* FIXME: sam_blob_t * */ void *ptr);
+int sam_push_ref(sam_blob_t *s, sam_blob_t *val);
 int sam_push_int(sam_blob_t *s, sam_uword_t val);
 int sam_push_float(sam_blob_t *s, sam_float_t n);
 int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);
