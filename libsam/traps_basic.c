@@ -33,9 +33,6 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     CHECK_BLOB(state->s0, SAM_BLOB_STACK);
 
     switch (function) {
-    case TRAP_BASIC_S0:
-        HALT_IF_ERROR(sam_push_ref(state->s0, state->s0));
-        break;
     case TRAP_BASIC_SIZE:
         {
             sam_blob_t *blob;
@@ -72,13 +69,6 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             sam_word_t val;
             HALT_IF_ERROR(sam_stack_shift(blob, &val));
             PUSH_WORD(val);
-        }
-        break;
-    case TRAP_BASIC_NEW:
-        {
-            sam_blob_t *stack;
-            HALT_IF_ERROR(sam_stack_new(&stack));
-            HALT_IF_ERROR(sam_push_ref(state->s0, stack));
         }
         break;
     case TRAP_BASIC_COPY:
@@ -223,8 +213,6 @@ error:
 char *sam_basic_trap_name(sam_word_t function)
 {
     switch (function) {
-    case TRAP_BASIC_S0:
-        return "S0";
     case TRAP_BASIC_SIZE:
         return "SIZE";
     case TRAP_BASIC_QUOTE:
@@ -233,8 +221,6 @@ char *sam_basic_trap_name(sam_word_t function)
         return "PREPEND";
     case TRAP_BASIC_SHIFT:
         return "SHIFT";
-    case TRAP_BASIC_NEW:
-        return "NEW";
     case TRAP_BASIC_COPY:
         return "COPY";
     case TRAP_BASIC_RET:

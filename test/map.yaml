@@ -5,41 +5,41 @@
 - int 13
 - float 1.0
 - int -3
-- trap s0
+- s0
 - get
 - set
 - int 42
 - float 2.0
 - int -3
-- trap s0
+- s0
 - get
 - set
 - int -1
-- trap s0
+- s0
 - get
 - trap copy
 # Remove an item from one of the copies
 - null
 - float 1.0
 - int -3
-- trap s0
+- s0
 - get
 - set
 # Replace an item in the same copy
 - int 28
 - float 2.0
 - int -3
-- trap s0
+- s0
 - get
 - set
 # Iterate over the map, getting and discarding its values
 - int -1
-- trap s0
+- s0
 - get
 - trap iter
 -
   - loop: int -3
-  - trap s0
+  - s0
   - get
   - trap next
   - null

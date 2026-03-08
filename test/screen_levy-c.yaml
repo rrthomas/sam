@@ -35,7 +35,7 @@
 - div
 -
   - levy_c: int -4
-  - trap s0
+  - s0
   - get
   -
     - float -45.0
@@ -44,12 +44,12 @@
     - do
     - drop
     - int -6
-    - trap s0
+    - s0
     - get
     - int -1
     - add
     - int -6
-    - trap s0
+    - s0
     - get
     - float 0.70710678
     - mul
@@ -71,7 +71,7 @@
     - drop
   -
     - int -5
-    - trap s0
+    - s0
     - get
     - blob go
     - do

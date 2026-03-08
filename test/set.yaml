@@ -1,7 +1,7 @@
 - int 1
 - int 2
 - int -2
-- trap s0
+- s0
 - set
 - drop
 - float 1.0
@@ -12,19 +12,19 @@
 - int -2
 - insert
 - int -2
-- trap s0
+- s0
 - set
 - drop
 - int 1
 - float 2.0
 - int -2
-- trap s0
+- s0
 - set
 - drop
 - float 1.0
 - int 2
 - int -2
-- trap s0
+- s0
 - set
 - drop
 - int 0

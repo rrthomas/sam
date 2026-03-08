@@ -1,42 +1,35 @@
-Stack: XXXXXXXX (34 item(s))
+Stack: XXXXXXXX (28 item(s))
 - trap NEW_MAP
 - trap COPY
 - int 13
 - float 1.000000
 - int -3
-- trap S0
-- get set
+- s0 get set
 - int 42
 - float 2.000000
 - int -3
-- trap S0
-- get set
+- s0 get set
 - int -1
-- trap S0
-- get
+- s0 get
 - trap COPY
 - null
 - float 1.000000
 - int -3
-- trap S0
-- get set
+- s0 get set
 - int 28
 - float 2.000000
 - int -3
-- trap S0
-- get set
+- s0 get set
 - int -1
-- trap S0
-- get
+- s0 get
 - trap ITER
-- stack XXXXXXXX (8 items)
+- stack XXXXXXXX (7 items)
   - int -3
-  - trap S0
-  - get
+  - s0 get
   - trap NEXT
   - null
   - eq not while
-  - stack XXXXXXXX (8 items)
+  - stack XXXXXXXX (7 items)
   - go
 - do
 - int 0
@@ -69,8 +62,8 @@ Working stack: (4 word(s))
 - int 13
 - float 1.000000
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - int 13
@@ -78,36 +71,36 @@ Working stack: (5 word(s))
 - int -3
 - stack XXXXXXXX (5 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - int 13
 - float 1.000000
 - map XXXXXXXX
 set
-sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - map XXXXXXXX
 int
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - int 42
 float
-sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - int 42
 - float 2.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - int 42
 - float 2.000000
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - int 42
@@ -115,60 +108,60 @@ Working stack: (5 word(s))
 - int -3
 - stack XXXXXXXX (5 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - int 42
 - float 2.000000
 - map XXXXXXXX
 set
-sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - map XXXXXXXX
 int
-sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - int -1
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - int -1
 - stack XXXXXXXX (3 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 trap COPY
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 null
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - null
 float
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - null
 - float 1.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - null
 - float 1.000000
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
@@ -177,12 +170,55 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - null
 - float 1.000000
+- map XXXXXXXX
+set
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+int
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- int 28
+float
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- int 28
+- float 2.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- int 28
+- float 2.000000
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- int 28
+- float 2.000000
+- int -3
+- stack XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- int 28
+- float 2.000000
 - map XXXXXXXX
 set
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
@@ -194,247 +230,204 @@ sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
-- int 28
-float
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- int 28
-- float 2.000000
-int
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- int 28
-- float 2.000000
-- int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- int 28
-- float 2.000000
-- int -3
-- stack XXXXXXXX (6 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- int 28
-- float 2.000000
-- map XXXXXXXX
-set
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
-Working stack: (2 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-int
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
 - int -1
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int -1
 - stack XXXXXXXX (4 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - map XXXXXXXX
 trap ITER
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
 blob
-sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (8 items)
+- stack XXXXXXXX (7 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 - int -3
 - stack XXXXXXXX (7 items)
 get
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- stack XXXXXXXX (28 items)
+- int 26
+- iter XXXXXXXX
+trap NEXT
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
+- float 2.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
 - iter XXXXXXXX
-trap NEXT
+- stack XXXXXXXX (28 items)
+- int 26
+- float 2.000000
+- null
+eq
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
-- float 2.000000
-null
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
-- float 2.000000
-- null
-eq
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 - int 0
 not
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 - int -1
 while
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 blob
-sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
-- stack XXXXXXXX (8 items)
+- stack XXXXXXXX (28 items)
+- int 26
+- stack XXXXXXXX (7 items)
 go
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 - int -3
 - stack XXXXXXXX (7 items)
 get
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- stack XXXXXXXX (28 items)
+- int 26
+- iter XXXXXXXX
+trap NEXT
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
 - iter XXXXXXXX
-trap NEXT
+- stack XXXXXXXX (28 items)
+- int 26
+- null
+- null
+eq
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
-- null
-null
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
-- null
-- null
-eq
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 - int -1
 not
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (34 items)
-- int 32
+- stack XXXXXXXX (28 items)
+- int 26
 - int 0
 while
-sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
 int
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX

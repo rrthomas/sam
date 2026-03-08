@@ -5,31 +5,26 @@ Stack: XXXXXXXX (5 item(s))
   - float 10.000000
   - float 20.000000
 - int -4
-- stack XXXXXXXX (25 items)
+- stack XXXXXXXX (20 items)
   - int -3
-  - trap S0
-  - get
+  - s0 get
   - stack XXXXXXXX (4 items)
   - get
   - float 2.000000
   - mul
   - int -4
-  - trap S0
-  - get
+  - s0 get
   - stack XXXXXXXX (4 items)
   - set
   - int -3
-  - trap S0
-  - get
+  - s0 get
   - int 1
   - add
   - int -1
-  - trap S0
-  - get
+  - s0 get
   - int -5
-  - trap S0
-  - set while
-  - stack XXXXXXXX (25 items)
+  - s0 set while
+  - stack XXXXXXXX (20 items)
   - go
 - do
 - drop halt
@@ -49,7 +44,7 @@ sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
-- stack XXXXXXXX (25 items)
+- stack XXXXXXXX (20 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -65,8 +60,8 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (5 items)
 - int 4
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -75,7 +70,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -83,7 +78,7 @@ Working stack: (5 word(s))
 - int 4
 - int -4
 blob
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -92,7 +87,7 @@ Working stack: (6 word(s))
 - int -4
 - stack XXXXXXXX (4 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -100,7 +95,7 @@ Working stack: (5 word(s))
 - int 4
 - float 2.000000
 float
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -109,7 +104,7 @@ Working stack: (6 word(s))
 - float 2.000000
 - float 2.000000
 mul
-sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -117,7 +112,7 @@ Working stack: (5 word(s))
 - int 4
 - float 4.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -125,8 +120,8 @@ Working stack: (6 word(s))
 - int 4
 - float 4.000000
 - int -4
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -136,7 +131,7 @@ Working stack: (7 word(s))
 - int -4
 - stack XXXXXXXX (7 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -145,7 +140,7 @@ Working stack: (6 word(s))
 - float 4.000000
 - int -4
 blob
-sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -155,22 +150,22 @@ Working stack: (7 word(s))
 - int -4
 - stack XXXXXXXX (4 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
 - stack XXXXXXXX (5 items)
 - int 4
 int
-sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
 - stack XXXXXXXX (5 items)
 - int 4
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -179,7 +174,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -187,7 +182,7 @@ Working stack: (5 word(s))
 - int 4
 - int -4
 int
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -196,7 +191,7 @@ Working stack: (6 word(s))
 - int -4
 - int 1
 add
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -204,7 +199,7 @@ Working stack: (5 word(s))
 - int 4
 - int -3
 int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -212,8 +207,8 @@ Working stack: (6 word(s))
 - int 4
 - int -3
 - int -1
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -223,7 +218,7 @@ Working stack: (7 word(s))
 - int -1
 - stack XXXXXXXX (7 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -232,7 +227,7 @@ Working stack: (6 word(s))
 - int -3
 - int -3
 int
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -241,8 +236,8 @@ Working stack: (7 word(s))
 - int -3
 - int -3
 - int -5
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - stack XXXXXXXX (4 items)
 - int -4
@@ -253,7 +248,7 @@ Working stack: (8 word(s))
 - int -5
 - stack XXXXXXXX (8 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -261,20 +256,20 @@ Working stack: (5 word(s))
 - int 4
 - int -3
 while
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
 - stack XXXXXXXX (5 items)
 - int 4
 blob
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
 - stack XXXXXXXX (5 items)
 - int 4
-- stack XXXXXXXX (25 items)
+- stack XXXXXXXX (20 items)
 go
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -290,8 +285,8 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (5 items)
 - int 4
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -300,7 +295,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -308,7 +303,7 @@ Working stack: (5 word(s))
 - int 4
 - int -3
 blob
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -317,7 +312,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (4 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -325,7 +320,7 @@ Working stack: (5 word(s))
 - int 4
 - float 5.000000
 float
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -334,7 +329,7 @@ Working stack: (6 word(s))
 - float 5.000000
 - float 2.000000
 mul
-sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -342,7 +337,7 @@ Working stack: (5 word(s))
 - int 4
 - float 10.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -350,8 +345,8 @@ Working stack: (6 word(s))
 - int 4
 - float 10.000000
 - int -4
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -361,7 +356,7 @@ Working stack: (7 word(s))
 - int -4
 - stack XXXXXXXX (7 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -370,7 +365,7 @@ Working stack: (6 word(s))
 - float 10.000000
 - int -3
 blob
-sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -380,22 +375,22 @@ Working stack: (7 word(s))
 - int -3
 - stack XXXXXXXX (4 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
 - stack XXXXXXXX (5 items)
 - int 4
 int
-sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
 - stack XXXXXXXX (5 items)
 - int 4
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -404,7 +399,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -412,7 +407,7 @@ Working stack: (5 word(s))
 - int 4
 - int -3
 int
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -421,7 +416,7 @@ Working stack: (6 word(s))
 - int -3
 - int 1
 add
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -429,7 +424,7 @@ Working stack: (5 word(s))
 - int 4
 - int -2
 int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -437,8 +432,8 @@ Working stack: (6 word(s))
 - int 4
 - int -2
 - int -1
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -448,7 +443,7 @@ Working stack: (7 word(s))
 - int -1
 - stack XXXXXXXX (7 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -457,7 +452,7 @@ Working stack: (6 word(s))
 - int -2
 - int -2
 int
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -466,8 +461,8 @@ Working stack: (7 word(s))
 - int -2
 - int -2
 - int -5
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - stack XXXXXXXX (4 items)
 - int -3
@@ -478,7 +473,7 @@ Working stack: (8 word(s))
 - int -5
 - stack XXXXXXXX (8 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -486,20 +481,20 @@ Working stack: (5 word(s))
 - int 4
 - int -2
 while
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
 - stack XXXXXXXX (5 items)
 - int 4
 blob
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
 - stack XXXXXXXX (5 items)
 - int 4
-- stack XXXXXXXX (25 items)
+- stack XXXXXXXX (20 items)
 go
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -515,8 +510,8 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (5 items)
 - int 4
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -525,7 +520,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -533,7 +528,7 @@ Working stack: (5 word(s))
 - int 4
 - int -2
 blob
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -542,7 +537,7 @@ Working stack: (6 word(s))
 - int -2
 - stack XXXXXXXX (4 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -550,7 +545,7 @@ Working stack: (5 word(s))
 - int 4
 - float 10.000000
 float
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -559,7 +554,7 @@ Working stack: (6 word(s))
 - float 10.000000
 - float 2.000000
 mul
-sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -567,7 +562,7 @@ Working stack: (5 word(s))
 - int 4
 - float 20.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -575,8 +570,8 @@ Working stack: (6 word(s))
 - int 4
 - float 20.000000
 - int -4
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -586,7 +581,7 @@ Working stack: (7 word(s))
 - int -4
 - stack XXXXXXXX (7 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -595,7 +590,7 @@ Working stack: (6 word(s))
 - float 20.000000
 - int -2
 blob
-sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -605,22 +600,22 @@ Working stack: (7 word(s))
 - int -2
 - stack XXXXXXXX (4 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
 - stack XXXXXXXX (5 items)
 - int 4
 int
-sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
 - stack XXXXXXXX (5 items)
 - int 4
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -629,7 +624,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -637,7 +632,7 @@ Working stack: (5 word(s))
 - int 4
 - int -2
 int
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -646,7 +641,7 @@ Working stack: (6 word(s))
 - int -2
 - int 1
 add
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -654,7 +649,7 @@ Working stack: (5 word(s))
 - int 4
 - int -1
 int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -662,8 +657,8 @@ Working stack: (6 word(s))
 - int 4
 - int -1
 - int -1
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -673,7 +668,7 @@ Working stack: (7 word(s))
 - int -1
 - stack XXXXXXXX (7 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -682,7 +677,7 @@ Working stack: (6 word(s))
 - int -1
 - int -1
 int
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -691,8 +686,8 @@ Working stack: (7 word(s))
 - int -1
 - int -1
 - int -5
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - stack XXXXXXXX (4 items)
 - int -2
@@ -703,7 +698,7 @@ Working stack: (8 word(s))
 - int -5
 - stack XXXXXXXX (8 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -711,20 +706,20 @@ Working stack: (5 word(s))
 - int 4
 - int -1
 while
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
 - stack XXXXXXXX (5 items)
 - int 4
 blob
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
 - stack XXXXXXXX (5 items)
 - int 4
-- stack XXXXXXXX (25 items)
+- stack XXXXXXXX (20 items)
 go
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -740,8 +735,8 @@ Working stack: (5 word(s))
 - stack XXXXXXXX (5 items)
 - int 4
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -750,7 +745,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -758,7 +753,7 @@ Working stack: (5 word(s))
 - int 4
 - int -1
 blob
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -767,7 +762,7 @@ Working stack: (6 word(s))
 - int -1
 - stack XXXXXXXX (4 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -775,7 +770,7 @@ Working stack: (5 word(s))
 - int 4
 - float 20.000000
 float
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -784,7 +779,7 @@ Working stack: (6 word(s))
 - float 20.000000
 - float 2.000000
 mul
-sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -792,7 +787,7 @@ Working stack: (5 word(s))
 - int 4
 - float 40.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -800,8 +795,8 @@ Working stack: (6 word(s))
 - int 4
 - float 40.000000
 - int -4
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -811,7 +806,7 @@ Working stack: (7 word(s))
 - int -4
 - stack XXXXXXXX (7 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -820,7 +815,7 @@ Working stack: (6 word(s))
 - float 40.000000
 - int -1
 blob
-sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -830,22 +825,22 @@ Working stack: (7 word(s))
 - int -1
 - stack XXXXXXXX (4 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
 - stack XXXXXXXX (5 items)
 - int 4
 int
-sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
 - stack XXXXXXXX (5 items)
 - int 4
 - int -3
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -854,7 +849,7 @@ Working stack: (6 word(s))
 - int -3
 - stack XXXXXXXX (6 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -862,7 +857,7 @@ Working stack: (5 word(s))
 - int 4
 - int -1
 int
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -871,7 +866,7 @@ Working stack: (6 word(s))
 - int -1
 - int 1
 add
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -879,7 +874,7 @@ Working stack: (5 word(s))
 - int 4
 - int 0
 int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -887,8 +882,8 @@ Working stack: (6 word(s))
 - int 4
 - int 0
 - int -1
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -898,7 +893,7 @@ Working stack: (7 word(s))
 - int -1
 - stack XXXXXXXX (7 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -907,7 +902,7 @@ Working stack: (6 word(s))
 - int 0
 - int 0
 int
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -916,8 +911,8 @@ Working stack: (7 word(s))
 - int 0
 - int 0
 - int -5
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - stack XXXXXXXX (4 items)
 - int -1
@@ -928,7 +923,7 @@ Working stack: (8 word(s))
 - int -5
 - stack XXXXXXXX (8 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (4 items)
 - int 0

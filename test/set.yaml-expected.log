@@ -1,9 +1,8 @@
-Stack: XXXXXXXX (27 item(s))
+Stack: XXXXXXXX (23 item(s))
 - int 1
 - int 2
 - int -2
-- trap S0
-- set drop
+- s0 set drop
 - float 1.000000
 - float 2.000000
 - float 3.000000
@@ -12,18 +11,15 @@ Stack: XXXXXXXX (27 item(s))
 - int -2
 - insert
 - int -2
-- trap S0
-- set drop
+- s0 set drop
 - int 1
 - float 2.000000
 - int -2
-- trap S0
-- set drop
+- s0 set drop
 - float 1.000000
 - int 2
 - int -2
-- trap S0
-- set drop
+- s0 set drop
 - int 0
 - halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
@@ -43,70 +39,70 @@ Working stack: (3 word(s))
 - int 1
 - int 2
 - int -2
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 1
 - int 2
 - int -2
 - stack XXXXXXXX (4 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 2
 drop
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 float
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 1.000000
 float
-sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - float 2.000000
 float
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
 - int -2
 extract
-sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 3.000000
 - float 2.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - float 3.000000
 - float 2.000000
 - int -2
 insert
-sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - float 2.000000
 - float 3.000000
 - int -2
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - float 1.000000
 - float 2.000000
@@ -114,69 +110,69 @@ Working stack: (5 word(s))
 - int -2
 - stack XXXXXXXX (5 items)
 set
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- float 1.000000
+- float 3.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- float 1.000000
+int
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
-- float 3.000000
-drop
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
-Working stack: (1 word(s))
+- int 1
+float
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
 - float 1.000000
+- int 1
+- float 2.000000
 int
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- float 1.000000
+- int 1
+- float 2.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- float 1.000000
+- int 1
+- float 2.000000
+- int -2
+- stack XXXXXXXX (5 items)
+set
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
-- int 1
-float
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- float 1.000000
-- int 1
-- float 2.000000
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- float 1.000000
-- int 1
-- float 2.000000
-- int -2
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- float 1.000000
-- int 1
-- float 2.000000
-- int -2
-- stack XXXXXXXX (5 items)
-set
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
-Working stack: (2 word(s))
-- float 1.000000
 - float 2.000000
 drop
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 1.000000
 float
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - float 1.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - float 1.000000
 - float 1.000000
 - int 2
 int
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - float 1.000000
 - float 1.000000
 - int 2
 - int -2
-trap S0
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - float 1.000000
 - float 1.000000
@@ -184,16 +180,16 @@ Working stack: (5 word(s))
 - int -2
 - stack XXXXXXXX (5 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - int 2
 drop
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 1.000000
 int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - float 1.000000
 - int 0

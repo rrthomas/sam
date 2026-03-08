@@ -249,6 +249,8 @@ var Instructions = map[string]InstOpcode{
 
 	// Instructions
 	"nop":     {C.SAM_INSTS_TAG, C.INST_NOP, false},
+	"new":     {C.SAM_INSTS_TAG, C.INST_NEW, false},
+	"s0":      {C.SAM_INSTS_TAG, C.INST_S0, false},
 	"drop":    {C.SAM_INSTS_TAG, C.INST_DROP, false},
 	"extract": {C.SAM_INSTS_TAG, C.INST_EXTRACT, false},
 	"insert":  {C.SAM_INSTS_TAG, C.INST_INSERT, false},
@@ -283,12 +285,10 @@ var Instructions = map[string]InstOpcode{
 }
 
 var Traps = map[string]int{
-	"S0":      C.TRAP_BASIC_S0,
 	"SIZE":    C.TRAP_BASIC_SIZE,
 	"QUOTE":   C.TRAP_BASIC_QUOTE,
 	"PREPEND": C.TRAP_BASIC_PREPEND,
 	"SHIFT":   C.TRAP_BASIC_SHIFT,
-	"NEW":     C.TRAP_BASIC_NEW,
 	"COPY":    C.TRAP_BASIC_COPY,
 	"RET":     C.TRAP_BASIC_RET,
 	"LSH":     C.TRAP_BASIC_LSH,
@@ -337,6 +337,8 @@ var StackDifference = map[string]int{
 
 	// Instructions without immediate operand
 	"nop":     0,
+	"new":     1,
+	"s0":      1,
 	"drop":    -1,
 	"extract": -1,
 	"insert":  -1,
@@ -379,12 +381,10 @@ type StackEffect struct {
 
 var TrapStackEffect = map[string]StackEffect{
 	// Basic traps
-	"S0":      {0, 1},
 	"SIZE":    {1, 1},
 	"QUOTE":   {0, 1},
 	"PREPEND": {2, 0},
 	"SHIFT":   {1, 1},
-	"NEW":     {0, 1},
 	"COPY":    {1, 1},
 	"RET":     {4, 0},
 	"LSH":     {2, 1},

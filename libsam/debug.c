@@ -63,6 +63,10 @@ char *inst_name(sam_uword_t inst_opcode)
     switch (inst_opcode) {
     case INST_NOP:
         return "nop";
+    case INST_NEW:
+        return "new";
+    case INST_S0:
+        return "s0";
     case INST_DROP:
         return "drop";
     case INST_EXTRACT:

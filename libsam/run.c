@@ -164,6 +164,16 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT(SAM_ERROR_STACK_UNDERFLOW);
                     s->sp -= 1;
                     break;
+                case INST_NEW:
+                    {
+                        sam_blob_t *stack;
+                        HALT_IF_ERROR(sam_stack_new(&stack));
+                        HALT_IF_ERROR(sam_push_ref(state->s0, stack));
+                    }
+                    break;
+                case INST_S0:
+                    HALT_IF_ERROR(sam_push_ref(state->s0, state->s0));
+                    break;
                 case INST_EXTRACT:
                     {
                         sam_word_t pos;

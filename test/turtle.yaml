@@ -42,7 +42,7 @@
   - turn: !istack pen_theta
   - get
   - int -4
-  - trap s0
+  - s0
   - get
   - neg
   - add
@@ -53,7 +53,7 @@
   - get
   - trap cos
   - int -4
-  - trap s0
+  - s0
   - get
   - mul
   - !istack pen_x
@@ -63,7 +63,7 @@
   - get
   - trap sin
   - int -5
-  - trap s0
+  - s0
   - get
   - mul
   - !istack pen_y
@@ -79,11 +79,11 @@
     - get
     - trap F2I
     - int -6
-    - trap s0
+    - s0
     - get
     - trap F2I
     - int -6
-    - trap s0
+    - s0
     - get
     - trap F2I
     - !istack pen_color

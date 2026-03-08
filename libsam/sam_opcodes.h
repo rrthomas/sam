@@ -62,6 +62,8 @@ enum SAM_BLOB_TYPE {
 // Instructions (5 bits)
 enum SAM_INST {
   INST_NOP,
+  INST_NEW,
+  INST_S0,
   INST_DROP,
   INST_EXTRACT,
   INST_INSERT,

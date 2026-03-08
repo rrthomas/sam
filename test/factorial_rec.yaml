@@ -1,27 +1,27 @@
 - int 5
 -
   - fact: int -3
-  - trap s0
+  - s0
   - get
   -
     - int -5
-    - trap s0
+    - s0
     - get
     - int -1
     - add
     - blob fact
     - do
     - int -6
-    - trap s0
+    - s0
     - get
     - mul
     - int -6
-    - trap s0
+    - s0
     - set
   -
     - int 1
     - int -6
-    - trap s0
+    - s0
     - set
   - if
 - do
