@@ -170,17 +170,7 @@ These instructions manage stacks.
 > `DROP`  
 > `x` →
 >
-> If the stack is empty, raise the error `STACK_UNDERFLOW`. Discard `x` from the top of the stack.
-
-> `EXTRACT`  
-> `x₁`…`xₙ` `i` → `x₂`…`xₙ` `x₁`
->
-> Pop `i` from the top of the stack. Move the `i`th stack item to the top of the stack.
-
-> `INSERT`  
-> `x₁`…`xₙ` `i` →  `xₙ` `x₁`…`xₙ₋₁`
->
-> Pop `i` from the top of the stack. Move the top stack item to position `i`.
+> Discard `x` from the top of the stack.
 
 > `GET`  
 > `i` `s` → `x`
@@ -190,7 +180,17 @@ These instructions manage stacks.
 > `SET`  
 > `x` `i` `s` →
 >
-> Pop `i` and `s` from the set. Set the `i`th item of the stack pointed to by `s` to `x`. Pop `x` from the stack.
+> Pop `i` and `s` from the stack. Set the `i`th item of the stack pointed to by `s` to `x`. Pop `x` from the stack.
+
+> `EXTRACT`  
+> `i` `s` →
+>
+> Pop `i` and `s` from the stack. Move the `i`th stack item of the stack pointed to by `s` to the top of the stack.
+
+> `INSERT`  
+> `i` `s` →
+>
+> Pop `i` and `s` from the stack. Insert the top item of the stack pointed to by `s` at position `i`.
 
 > `POP`  
 > `s` → `x`

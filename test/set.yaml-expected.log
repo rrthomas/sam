@@ -7,9 +7,9 @@ Stack: XXXXXXXX (23 item(s))
 - float 2.000000
 - float 3.000000
 - int -2
-- extract
+- s0 extract
 - int -2
-- insert
+- s0 insert
 - int -2
 - s0 set drop
 - int 1
@@ -75,6 +75,14 @@ Working stack: (4 word(s))
 - float 2.000000
 - float 3.000000
 - int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- float 1.000000
+- float 2.000000
+- float 3.000000
+- int -2
+- stack XXXXXXXX (5 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -88,6 +96,14 @@ Working stack: (4 word(s))
 - float 3.000000
 - float 2.000000
 - int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- float 1.000000
+- float 3.000000
+- float 2.000000
+- int -2
+- stack XXXXXXXX (5 items)
 insert
 sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))

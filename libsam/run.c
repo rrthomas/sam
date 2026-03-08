@@ -159,11 +159,6 @@ sam_word_t sam_run(sam_state_t *state)
                 switch (opcode) {
                 case INST_NOP:
                     break;
-                case INST_DROP:
-                    if (s->sp < 1)
-                        HALT(SAM_ERROR_STACK_UNDERFLOW);
-                    s->sp -= 1;
-                    break;
                 case INST_NEW:
                     {
                         sam_blob_t *stack;
@@ -174,23 +169,10 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_S0:
                     HALT_IF_ERROR(sam_push_ref(state->s0, state->s0));
                     break;
-                case INST_EXTRACT:
-                    {
-                        sam_word_t pos;
-                        POP_INT(pos);
-                        sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(state->s0, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_extract(state->s0, addr));
-                    }
-                    break;
-                case INST_INSERT:
-                    {
-                        sam_word_t pos;
-                        POP_INT(pos);
-                        sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(state->s0, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_insert(state->s0, addr));
-                    }
+                case INST_DROP:
+                    if (s->sp < 1)
+                        HALT(SAM_ERROR_STACK_UNDERFLOW);
+                    s->sp -= 1;
                     break;
                 case INST_GET:
                     {
@@ -242,6 +224,28 @@ sam_word_t sam_run(sam_state_t *state)
                             }
                             break;
                         }
+                    }
+                    break;
+                case INST_EXTRACT:
+                    {
+                        sam_blob_t *blob;
+                        POP_REF(blob);
+                        sam_word_t pos;
+                        POP_INT(pos);
+                        sam_uword_t addr;
+                        HALT_IF_ERROR(sam_stack_item(blob, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_extract(blob, addr));
+                    }
+                    break;
+                case INST_INSERT:
+                    {
+                        sam_blob_t *blob;
+                        POP_REF(blob);
+                        sam_word_t pos;
+                        POP_INT(pos);
+                        sam_uword_t addr;
+                        HALT_IF_ERROR(sam_stack_item(blob, pos, &addr));
+                        HALT_IF_ERROR(sam_stack_insert(blob, addr));
                     }
                     break;
                 case INST_POP:

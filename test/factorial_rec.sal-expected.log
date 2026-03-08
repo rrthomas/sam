@@ -28,7 +28,7 @@ Stack: XXXXXXXX (4 item(s))
       - _two s0 get get
       - int 0
       - int -3
-      - extract get get zero new call
+      - s0 extract get get zero new call
       - mul
       - int -4
       - s0 set
@@ -40,7 +40,7 @@ Stack: XXXXXXXX (4 item(s))
     - int 3
     - s0 get
     - int -4
-    - extract
+    - s0 extract
     - trap RET
   - _two s0 get append
   - trap QUOTE
@@ -808,6 +808,25 @@ Working stack: (15 word(s))
 - int 3
 - int 0
 - int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- int 5
+- stack XXXXXXXX (4 items)
+- stack XXXXXXXX (14 items)
+- int 12
+- stack XXXXXXXX (2 items)
+- null
+- stack XXXXXXXX (17 items)
+- int 8
+- int 5
+- int 4
+- int 1
+- stack XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+- stack XXXXXXXX (16 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -1323,6 +1342,25 @@ Working stack: (15 word(s))
 - int 3
 - int 0
 - int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- int 4
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- null
+- stack XXXXXXXX (17 items)
+- int 8
+- int 4
+- int 3
+- int 1
+- stack XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+- stack XXXXXXXX (16 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -1838,6 +1876,25 @@ Working stack: (15 word(s))
 - int 3
 - int 0
 - int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- int 3
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- null
+- stack XXXXXXXX (17 items)
+- int 8
+- int 3
+- int 2
+- int 1
+- stack XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+- stack XXXXXXXX (16 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -2353,6 +2410,25 @@ Working stack: (15 word(s))
 - int 3
 - int 0
 - int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- int 2
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- null
+- stack XXXXXXXX (17 items)
+- int 8
+- int 2
+- int 1
+- int 1
+- stack XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+- stack XXXXXXXX (16 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -2868,6 +2944,25 @@ Working stack: (15 word(s))
 - int 3
 - int 0
 - int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- int 1
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- null
+- stack XXXXXXXX (17 items)
+- int 8
+- int 1
+- int 0
+- int 1
+- stack XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+- stack XXXXXXXX (16 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -3259,6 +3354,20 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (17 items)
 - int 14
 - int -4
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- int 0
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- int 1
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- int -4
+- stack XXXXXXXX (11 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -3457,6 +3566,20 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (17 items)
 - int 14
 - int -4
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- int 1
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- int 1
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- int -4
+- stack XXXXXXXX (11 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -3655,6 +3778,20 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (17 items)
 - int 14
 - int -4
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- int 2
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- int 2
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- int -4
+- stack XXXXXXXX (11 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -3853,6 +3990,20 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (17 items)
 - int 14
 - int -4
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- int 3
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- int 6
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- int -4
+- stack XXXXXXXX (11 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -4051,6 +4202,20 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (17 items)
 - int 14
 - int -4
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- int 4
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- stack XXXXXXXX (2 items)
+- int 24
+- stack XXXXXXXX (9 items)
+- stack XXXXXXXX (17 items)
+- int 14
+- int -4
+- stack XXXXXXXX (11 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -4249,6 +4414,20 @@ Working stack: (10 word(s))
 - stack XXXXXXXX (14 items)
 - int 12
 - int -4
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- int 5
+- stack XXXXXXXX (4 items)
+- stack XXXXXXXX (14 items)
+- int 12
+- stack XXXXXXXX (2 items)
+- int 120
+- stack XXXXXXXX (4 items)
+- stack XXXXXXXX (14 items)
+- int 12
+- int -4
+- stack XXXXXXXX (11 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))

@@ -8,8 +8,10 @@
 - float 2.0
 - float 3.0
 - int -2
+- s0
 - extract
 - int -2
+- s0
 - insert
 - int -2
 - s0

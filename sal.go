@@ -402,9 +402,9 @@ func (e *CompareExp) Compile(ctx *Frame) {
 		case "<":
 			ctx.assemble("lt", "neg")
 		case "<=":
-			ctx.assemble("_two", "extract", "lt", "not", "neg")
+			ctx.assemble("_two", "s0", "extract", "lt", "not", "neg")
 		case ">":
-			ctx.assemble("_two", "extract", "lt", "neg")
+			ctx.assemble("_two", "s0", "extract", "lt", "neg")
 		case ">=":
 			ctx.assemble("lt", "not", "neg")
 		default:
@@ -729,7 +729,7 @@ func (ctx *Frame) compileCaptureAddr(i uint) {
 		"_two", "s0", "get",
 		"get",
 		fmt.Sprintf("int %d", i*2),
-		"int -3", "extract",
+		"int -3", "s0", "extract",
 		"get",
 	)
 }
@@ -840,7 +840,7 @@ func (ctx *Frame) assembleReturn() {
 	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs+1), "s0", "get")
 	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs+2), "s0", "get")
 	// Extract return value
-	ctx.assemble("int -4", "extract")
+	ctx.assemble("int -4", "s0", "extract")
 	ctx.assembleTrap("ret")
 }
 
