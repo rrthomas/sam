@@ -65,18 +65,14 @@ char *inst_name(sam_uword_t inst_opcode)
         return "nop";
     case INST_DROP:
         return "drop";
-    case INST_GET:
-        return "get";
-    case INST_SET:
-        return "set";
     case INST_EXTRACT:
         return "extract";
     case INST_INSERT:
         return "insert";
-    case INST_IGET:
-        return "iget";
-    case INST_ISET:
-        return "iset";
+    case INST_GET:
+        return "get";
+    case INST_SET:
+        return "set";
     case INST_POP:
         return "pop";
     case INST_APPEND:

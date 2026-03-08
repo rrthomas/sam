@@ -6,22 +6,27 @@
 - int -4
 -
   - loop: int -3
+  - trap s0
   - get
   - blob data
-  - iget
+  - get
   - float 2.0
   - mul
   - int -4
+  - trap s0
   - get
   - blob data
-  - iset
+  - set
   - int -3
+  - trap s0
   - get
   - int 1
   - add
   - int -1
+  - trap s0
   - get
   - int -5
+  - trap s0
   - set
   - while
   - blob loop

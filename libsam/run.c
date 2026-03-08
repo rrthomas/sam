@@ -164,26 +164,6 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT(SAM_ERROR_STACK_UNDERFLOW);
                     s->sp -= 1;
                     break;
-                case INST_GET:
-                    {
-                        sam_word_t pos;
-                        POP_INT(pos);
-                        sam_uword_t addr, item;
-                        HALT_IF_ERROR(sam_stack_item(state->s0, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_peek(state->s0, addr, &item));
-                        HALT_IF_ERROR(sam_stack_push(state->s0, item));
-                    }
-                    break;
-                case INST_SET:
-                    {
-                        sam_word_t pos, val;
-                        POP_INT(pos);
-                        sam_uword_t dest;
-                        HALT_IF_ERROR(sam_stack_item(state->s0, pos, &dest));
-                        POP_WORD(&val);
-                        HALT_IF_ERROR(sam_stack_poke(state->s0, dest, val));
-                    }
-                    break;
                 case INST_EXTRACT:
                     {
                         sam_word_t pos;
@@ -202,7 +182,7 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT_IF_ERROR(sam_stack_insert(state->s0, addr));
                     }
                     break;
-                case INST_IGET:
+                case INST_GET:
                     {
                         sam_blob_t *blob;
                         POP_REF(blob);
@@ -228,7 +208,7 @@ sam_word_t sam_run(sam_state_t *state)
                         }
                     }
                     break;
-                case INST_ISET:
+                case INST_SET:
                     {
                         sam_blob_t *blob;
                         POP_REF(blob);
@@ -237,9 +217,9 @@ sam_word_t sam_run(sam_state_t *state)
                             {
                                 sam_word_t pos, val;
                                 POP_INT(pos);
-                                POP_WORD(&val);
                                 sam_uword_t dest;
                                 HALT_IF_ERROR(sam_stack_item(blob, pos, &dest));
+                                POP_WORD(&val);
                                 HALT_IF_ERROR(sam_stack_poke(blob, dest, val));
                             }
                             break;

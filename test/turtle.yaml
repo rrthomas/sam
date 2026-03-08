@@ -8,85 +8,90 @@
   - trap CLEARSCREEN
   - float 0.0
   - !istack pen_x
-  - iset
+  - set
   - float 0.0
   - !istack pen_y
-  - iset
+  - set
   - float 0.0
   - !istack pen_theta
-  - iset
+  - set
   - trap BLACK
   - !istack pen_color
-  - iset
+  - set
   - int 0
   - !istack pen_drawing
-  - iset
+  - set
 -
   - penup: int 0
   - !istack pen_drawing
-  - iset
+  - set
 -
   - pendown: int 1
   - !istack pen_drawing
-  - iset
+  - set
   - !istack pen_x
-  - iget
+  - get
   - trap F2I
   - !istack pen_y
-  - iget
+  - get
   - trap F2I
   - !istack pen_color
-  - iget
+  - get
   - trap SETDOT
 -
   - turn: !istack pen_theta
-  - iget
+  - get
   - int -4
+  - trap s0
   - get
   - neg
   - add
   - !istack pen_theta
-  - iset
+  - set
 -
   - go: !istack pen_theta
-  - iget
+  - get
   - trap cos
   - int -4
+  - trap s0
   - get
   - mul
   - !istack pen_x
-  - iget
+  - get
   - add
   - !istack pen_theta
-  - iget
+  - get
   - trap sin
   - int -5
+  - trap s0
   - get
   - mul
   - !istack pen_y
-  - iget
+  - get
   - add
   - !istack pen_drawing
-  - iget
+  - get
   -
     - !istack pen_x
-    - iget
+    - get
     - trap F2I
     - !istack pen_y
-    - iget
-    - trap F2I
-    - int -6
     - get
     - trap F2I
     - int -6
+    - trap s0
+    - get
+    - trap F2I
+    - int -6
+    - trap s0
     - get
     - trap F2I
     - !istack pen_color
-    - iget
+    - get
     - trap DRAWLINE
   - []
   - if
   - !istack pen_y
-  - iset
+  - set
   - !istack pen_x
-  - iset
+  - set

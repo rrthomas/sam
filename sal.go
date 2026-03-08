@@ -244,14 +244,20 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 			ctx.assembleTrap("new")
 			for _, e := range *e.Container {
 				e.Key.Compile(ctx)
-				ctx.assemble("int -2", "get", "append")
+				ctx.assemble("int -2")
+				ctx.assembleTrap("s0")
+				ctx.assemble("get")
+				ctx.assemble("append")
 			}
 		} else {
 			ctx.assembleTrap("new_map")
 			for _, e := range *e.Container {
 				e.Value.Compile(ctx)
 				e.Key.Compile(ctx)
-				ctx.assemble("int -3", "get", "iset")
+				ctx.assemble("int -3")
+				ctx.assembleTrap("s0")
+				ctx.assemble("get")
+				ctx.assemble("set")
 			}
 		}
 	} else if e.EmptyMap {
@@ -277,7 +283,7 @@ func (e *IndexedExp) Compile(ctx *Frame) {
 	}
 	e.Object.Compile(ctx)
 	if e.Index != nil {
-		ctx.assemble("iget")
+		ctx.assemble("get")
 	}
 }
 
@@ -438,11 +444,16 @@ func (e *PushExp) Compile(ctx *Frame) {
 		case "<<": // List append: l << i
 			e.Left.Compile(ctx)
 			e.Right.Compile(ctx)
-			ctx.assemble("_two", "get", "append")
+			ctx.assemble("_two")
+			ctx.assembleTrap("s0")
+			ctx.assemble("get")
+			ctx.assemble("append")
 		case ">>": // List prepend: i >> l
 			e.Right.Compile(ctx)
 			e.Left.Compile(ctx)
-			ctx.assemble("_two", "get")
+			ctx.assemble("_two")
+			ctx.assembleTrap("s0")
+			ctx.assemble("get")
 			ctx.assembleTrap("prepend")
 		default:
 			panic(fmt.Errorf("unknown PushExp.Op %s", e.Op))
@@ -502,7 +513,9 @@ func (e *Expression) Compile(ctx *Frame) {
 		thenCtx := blockCtx.newBlock(false)
 		thenCtx.assembleBreak()
 		elseCtx := blockCtx.assembleBlock(e.For, false)
-		blockCtx.assemble("_two", "get", "null", "eq")
+		blockCtx.assemble("_two")
+		blockCtx.assembleTrap("s0")
+		blockCtx.assemble("get", "null", "eq")
 		blockCtx.assemble(thenCtx.asm)
 		blockCtx.assemble(elseCtx.asm)
 		blockCtx.assemble("if")
@@ -532,7 +545,9 @@ func (i *If) Compile(ctx *Frame) {
 func (a *Assignment) Compile(ctx *Frame) {
 	if a.Expression != nil {
 		a.Expression.Compile(ctx)
-		ctx.assemble("_one", "get")
+		ctx.assemble("_one")
+		ctx.assembleTrap("s0")
+		ctx.assemble("get")
 		ctx.compileAssignLvalue(a.Lvalue)
 	} else {
 		a.Lvalue.Compile(ctx)
@@ -594,7 +609,9 @@ func (t *Terminator) Compile(ctx *Frame) {
 		} else {
 			ctx.assemble("null")
 		}
-		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+3)), "set")
+		ctx.assemble(fmt.Sprintf("int %d", ctx.loop.baseSp-(ctx.sp+3)))
+		ctx.assembleTrap("s0")
+		ctx.assemble("set")
 		ctx.assembleBreak()
 	} else if t.Continue {
 		if ctx.loop == nil {
@@ -659,14 +676,23 @@ func (f *Function) Compile(ctx *Frame) {
 	ctx.assembleTrap("new") // closure array
 	ctx.assembleTrap("new") // captures array
 	blockCtx := f.Body.Compile(&innerCtx, false)
-	ctx.assemble("_two", "get", "append") // append captures to closure
+	ctx.assemble("_two")
+	ctx.assembleTrap("s0")
+	ctx.assemble("get")
+	ctx.assemble("append") // append captures to closure
 	if f.Body.Body.Terminator == nil {
 		blockCtx.assembleReturn()
 	}
 	ctx.assemble(blockCtx.asm)
-	ctx.assemble("_two", "get", "append") // append code to closure
+	ctx.assemble("_two")
+	ctx.assembleTrap("s0")
+	ctx.assemble("get")
+	ctx.assemble("append") // append code to closure
 	ctx.assembleQuote("go")
-	ctx.assemble("_two", "get", "append") // append tail call to closure
+	ctx.assemble("_two")
+	ctx.assembleTrap("s0")
+	ctx.assemble("get")
+	ctx.assemble("append") // append tail call to closure
 }
 
 type Local struct {
@@ -707,14 +733,26 @@ func (ctx *Frame) findCapture(id string) *uint {
 		if l := parent.findLocal(id); l != nil {
 			// Append address of local to captures array
 			parent.assembleTrap("s0")
-			parent.assemble("_two", "get", "append")
+			parent.assemble("_two")
+			parent.assembleTrap("s0")
+			parent.assemble("get")
+			parent.assemble("append")
 			parent.assemble(fmt.Sprintf("int %d", int(l.pos)))
-			parent.assemble("_two", "get", "append")
+			parent.assemble("_two")
+			parent.assembleTrap("s0")
+			parent.assemble("get")
+			parent.assemble("append")
 		} else if i := parent.findCapture(id); i != nil {
 			// Append address of capture to captures array
 			parent.compileCaptureAddr(*i)
-			parent.assemble("int -3", "get", "append")
-			parent.assemble("_two", "get", "append")
+			parent.assemble("int -3")
+			parent.assembleTrap("s0")
+			parent.assemble("get")
+			parent.assemble("append")
+			parent.assemble("_two")
+			parent.assembleTrap("s0")
+			parent.assemble("get")
+			parent.assemble("append")
 		}
 		return &newCaptureIndex
 	}
@@ -726,24 +764,29 @@ func (ctx *Frame) compileLocalAddr(l Local) {
 }
 
 func (ctx *Frame) compileCaptureAddr(i uint) {
-	ctx.assemble(
-		"int 4", "get",
+	ctx.assemble("int 4")
+	ctx.assembleTrap("s0")
+	ctx.assemble("get",
 		fmt.Sprintf("int %d", i*2+1),
-		"_two", "get",
-		"iget",
+		"_two",
+	)
+	ctx.assembleTrap("s0")
+	ctx.assemble("get",
+		"get",
 		fmt.Sprintf("int %d", i*2),
 		"int -3", "extract",
-		"iget",
+		"get",
 	)
 }
 
 func (ctx *Frame) compileGetVar(id string) {
 	if l := ctx.findLocal(id); l != nil {
 		ctx.compileLocalAddr(*l)
+		ctx.assembleTrap("s0")
 		ctx.assemble("get")
 	} else if c := ctx.findCapture(id); c != nil {
 		ctx.compileCaptureAddr(*c)
-		ctx.assemble("iget")
+		ctx.assemble("get")
 	} else {
 		panic(fmt.Errorf("no such variable %s", id))
 	}
@@ -752,10 +795,11 @@ func (ctx *Frame) compileGetVar(id string) {
 func (ctx *Frame) compileSetVar(id string) {
 	if l := ctx.findLocal(id); l != nil {
 		ctx.compileLocalAddr(*l)
+		ctx.assembleTrap("s0")
 		ctx.assemble("set")
 	} else if c := ctx.findCapture(id); c != nil {
 		ctx.compileCaptureAddr(*c)
-		ctx.assemble("iset")
+		ctx.assemble("set")
 	} else {
 		panic(fmt.Errorf("no such variable %s", id))
 	}
@@ -819,7 +863,7 @@ func (ctx *Frame) compileAssignLvalue(e *Expression) {
 	} else {
 		lv.IndexedExp.Index.Compile(ctx)
 		lv.IndexedExp.Object.Compile(ctx)
-		ctx.assemble("iset")
+		ctx.assemble("set")
 	}
 }
 
@@ -828,7 +872,9 @@ func (ctx *Frame) tearDownBlock() {
 		panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, ctx.baseSp))
 	}
 	// Set result
-	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-ctx.baseSp+3)), "set")
+	ctx.assemble(fmt.Sprintf("int %d", -int(ctx.sp-ctx.baseSp+3)))
+	ctx.assembleTrap("s0")
+	ctx.assemble("set")
 	// Drop remaining stack items in this frame, except for return address
 	for range ctx.sp - ctx.baseSp {
 		ctx.assemble("drop")
@@ -839,9 +885,15 @@ func (ctx *Frame) tearDownBlock() {
 // frame lives on to be used for captures.
 func (ctx *Frame) assembleReturn() {
 	// Get return information
-	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs), "get")
-	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs+1), "get")
-	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs+2), "get")
+	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs))
+	ctx.assembleTrap("s0")
+	ctx.assemble("get")
+	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs+1))
+	ctx.assembleTrap("s0")
+	ctx.assemble("get")
+	ctx.assemble(fmt.Sprintf("int %d", ctx.nargs+2))
+	ctx.assembleTrap("s0")
+	ctx.assemble("get")
 	// Extract return value
 	ctx.assemble("int -4", "extract")
 	ctx.assembleTrap("ret")
