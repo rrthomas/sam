@@ -1,7 +1,7 @@
-# Copy a blob's only reference
+# Copy a stack's only reference
 - trap new_map
 - trap copy
-# Insert two items, then copy the blob
+# Insert two items, then copy the stack
 - int 13
 - float 1.0
 - int -3
@@ -46,7 +46,7 @@
   - eq
   - not
   - while
-  - blob loop
+  - stack loop
   - go
 - do
 # Exit 

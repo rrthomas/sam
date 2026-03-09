@@ -1,32 +1,32 @@
 - !include turtle.yaml
-- blob init
+- stack init
 - do
 # Move just down from top left of screen and point towards right
 - float -90.0
 - trap rad
-- blob turn
+- stack turn
 - do
 - drop
 - trap DISPLAY_HEIGHT
 - trap I2F
 - float 4.0
 - trap div
-- blob go
+- stack go
 - do
 - drop
 - float 90.0
 - trap rad
-- blob turn
+- stack turn
 - do
 - drop
 - trap DISPLAY_WIDTH
 - trap I2F
 - float 4.0
 - trap div
-- blob go
+- stack go
 - do
 - drop
-- blob pendown
+- stack pendown
 - do
 - int 6
 - trap DISPLAY_WIDTH
@@ -40,7 +40,7 @@
   -
     - float -45.0
     - trap rad
-    - blob turn
+    - stack turn
     - do
     - drop
     - int -6
@@ -53,27 +53,27 @@
     - get
     - float 0.70710678
     - mul
-    - blob levy_c
+    - stack levy_c
     - do
     - float 90.0
     - trap rad
-    - blob turn
+    - stack turn
     - do
     - drop
-    - blob levy_c
+    - stack levy_c
     - do
     - drop
     - drop
     - float -45.0
     - trap rad
-    - blob turn
+    - stack turn
     - do
     - drop
   -
     - int -5
     - s0
     - get
-    - blob go
+    - stack go
     - do
     - drop
   - if

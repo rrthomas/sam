@@ -9,7 +9,7 @@
     - get
     - int -1
     - add
-    - blob fact
+    - stack fact
     - do
     - int -6
     - s0

@@ -125,7 +125,7 @@ var operandInsns = []string{
 	"float",
 	"trap",
 	"push",
-	"blob",
+	"stack",
 }
 
 func (a *assembler) assembleInstruction(tokens ...string) {
@@ -146,7 +146,12 @@ func (a *assembler) assembleInstruction(tokens ...string) {
 		case libsam.INT_TAG:
 			a.stack.PushInt(libsam.Uword(a.parseLiteral(operandStr)))
 		case libsam.BLOB_TAG:
-			a.stack.PushArray(a.parseStack(operandStr))
+			switch opcode.Opcode {
+			case libsam.BLOB_STACK:
+				a.stack.PushArray(a.parseStack(operandStr))
+			default:
+				panic(fmt.Errorf("invalid blob type %+v", opcode.Opcode))
+			}
 		case libsam.TRAP_TAG:
 			trap, ok := parseTrap(operandStr)
 			if !ok {

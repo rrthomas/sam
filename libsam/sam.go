@@ -239,10 +239,12 @@ type InstOpcode struct {
 }
 
 var Instructions = map[string]InstOpcode{
-	"blob":  {C.SAM_BLOB_TAG, 0, true},
 	"int":   {C.SAM_INT_TAG, 0, true},
 	"float": {C.SAM_FLOAT_TAG, 0, true},
 	"trap":  {C.SAM_TRAP_TAG, 0, true},
+
+	// Blobs
+	"stack": {C.SAM_BLOB_TAG, C.SAM_BLOB_STACK, true},
 
 	// Atoms
 	"null": {C.SAM_ATOM_TAG, C.SAM_ATOM_NULL, true},
@@ -327,7 +329,7 @@ var Traps = map[string]int{
 // continues at the next instruction.
 var StackDifference = map[string]int{
 	// Tag instructions
-	"blob":  1,
+	"stack": 1,
 	"atom":  1,
 	"int":   1,
 	"float": 1,

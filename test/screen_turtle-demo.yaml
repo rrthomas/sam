@@ -1,15 +1,15 @@
 - !include turtle.yaml
-- blob init
+- stack init
 - do
-- blob pendown
+- stack pendown
 - do
 - float -45.0
 - trap rad
-- blob turn
+- stack turn
 - do
 - drop
 - float 500.0
-- blob go
+- stack go
 - do
 - drop
 - int 0

@@ -8,14 +8,14 @@
   - loop: int -3
   - s0
   - get
-  - blob data
+  - stack data
   - get
   - float 2.0
   - mul
   - int -4
   - s0
   - get
-  - blob data
+  - stack data
   - set
   - int -3
   - s0
@@ -29,7 +29,7 @@
   - s0
   - set
   - while
-  - blob loop
+  - stack loop
   - go
 - do
 - drop

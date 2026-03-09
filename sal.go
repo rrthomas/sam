@@ -601,7 +601,7 @@ func (t *Terminator) Compile(ctx *Frame) {
 		for range ctx.sp - ctx.loop.baseSp {
 			ctx.assemble("drop")
 		}
-		ctx.assemble(fmt.Sprintf("blob %s", ctx.loop.label))
+		ctx.assemble(fmt.Sprintf("stack %s", ctx.loop.label))
 		ctx.assemble("go")
 	} else {
 		panic("invalid Terminator")
@@ -964,7 +964,7 @@ func (ctx *Frame) assembleLoop(bodyCtx *Frame) {
 	for range bodyCtx.sp - bodyCtx.baseSp {
 		bodyCtx.assemble("drop")
 	}
-	bodyCtx.assemble(fmt.Sprintf("blob %s", bodyCtx.label))
+	bodyCtx.assemble(fmt.Sprintf("stack %s", bodyCtx.label))
 	bodyCtx.assembleSingle("go")
 	// Add loop label to start of block
 	if len(bodyCtx.asm) > 0 {
