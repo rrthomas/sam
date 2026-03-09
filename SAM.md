@@ -90,6 +90,7 @@ The instruction set is listed below, with the instructions grouped according to 
 | `i`    | a signed integer |
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
+| `S`    | a reference to a string |
 | `a`    | an atom |
 | `r`    | a reference (pointer to a blob) |
 | `s`    | a reference to a stack |
@@ -131,6 +132,10 @@ These instructions encode literal values.
 > → `a`
 >
 > Push the atom `NULL`.
+
+> `STRING`  
+>  → `S`
+> Push a reference to the string `S`.
 
 
 ### Numeric type conversion

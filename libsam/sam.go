@@ -3,7 +3,7 @@ package libsam
 
 //#cgo LDFLAGS: -lm
 //#cgo CFLAGS: -DSAM_DEBUG
-//#cgo pkg-config: sdl2 SDL2_gfx
+//#cgo pkg-config: sdl2 SDL2_gfx libgrapheme
 //#include <stdlib.h>
 //#include "sam.h"
 //#include "sam_opcodes.h"
@@ -66,6 +66,12 @@ func NewStack() Stack {
 	return stack
 }
 
+func NewString(str string) Stack {
+	stack := Stack{}
+	cstr := C.CString(str)
+	C.sam_string_new(&stack.stack, cstr, C.size_t(len(str)))
+	return stack
+}
 func NewState() State {
 	state := C.sam_state_new()
 	var stack *C.sam_blob_t
@@ -193,8 +199,9 @@ const (
 )
 
 const (
-	BLOB_STACK = C.SAM_BLOB_STACK
-	BLOB_RAW   = C.SAM_BLOB_RAW
+	BLOB_STACK  = C.SAM_BLOB_STACK
+	BLOB_STRING = C.SAM_BLOB_STRING
+	BLOB_RAW    = C.SAM_BLOB_RAW
 )
 
 var errors = map[int]string{
@@ -232,58 +239,60 @@ func (state *State) ErrorMessage(code Word) string {
 	return fmt.Sprintf("unknown error code %d (0x%x)", code, uint(Uword(code)&WORD_MASK))
 }
 
-type InstOpcode struct {
+type Instruction struct {
 	Tag      Word
 	Opcode   Uword
+	Operands int // -1 means >=1 argument
 	Terminal bool
 }
 
-var Instructions = map[string]InstOpcode{
-	"int":   {C.SAM_INT_TAG, 0, true},
-	"float": {C.SAM_FLOAT_TAG, 0, true},
-	"trap":  {C.SAM_TRAP_TAG, 0, true},
+var Instructions = map[string]Instruction{
+	"int":   {C.SAM_INT_TAG, 0, 1, true},
+	"float": {C.SAM_FLOAT_TAG, 0, 1, true},
+	"trap":  {C.SAM_TRAP_TAG, 0, 1, true},
 
 	// Blobs
-	"stack": {C.SAM_BLOB_TAG, C.SAM_BLOB_STACK, true},
+	"stack":  {C.SAM_BLOB_TAG, C.SAM_BLOB_STACK, 1, true},
+	"string": {C.SAM_BLOB_TAG, C.SAM_BLOB_STRING, -1, true},
 
 	// Atoms
-	"null": {C.SAM_ATOM_TAG, C.SAM_ATOM_NULL, true},
+	"null": {C.SAM_ATOM_TAG, C.SAM_ATOM_NULL, 0, true},
 
 	// Instructions
-	"nop":     {C.SAM_INSTS_TAG, C.INST_NOP, false},
-	"new":     {C.SAM_INSTS_TAG, C.INST_NEW, false},
-	"s0":      {C.SAM_INSTS_TAG, C.INST_S0, false},
-	"drop":    {C.SAM_INSTS_TAG, C.INST_DROP, false},
-	"get":     {C.SAM_INSTS_TAG, C.INST_GET, false},
-	"set":     {C.SAM_INSTS_TAG, C.INST_SET, false},
-	"extract": {C.SAM_INSTS_TAG, C.INST_EXTRACT, false},
-	"insert":  {C.SAM_INSTS_TAG, C.INST_INSERT, false},
-	"pop":     {C.SAM_INSTS_TAG, C.INST_POP, false},
-	"shift":   {C.SAM_INSTS_TAG, C.INST_SHIFT, false},
-	"append":  {C.SAM_INSTS_TAG, C.INST_APPEND, false},
-	"prepend": {C.SAM_INSTS_TAG, C.INST_PREPEND, false},
-	"go":      {C.SAM_INSTS_TAG, C.INST_GO, true},
-	"do":      {C.SAM_INSTS_TAG, C.INST_DO, true},
-	"call":    {C.SAM_INSTS_TAG, C.INST_CALL, true},
-	"if":      {C.SAM_INSTS_TAG, C.INST_IF, true},
-	"while":   {C.SAM_INSTS_TAG, C.INST_WHILE, false},
-	"not":     {C.SAM_INSTS_TAG, C.INST_NOT, false},
-	"and":     {C.SAM_INSTS_TAG, C.INST_AND, false},
-	"or":      {C.SAM_INSTS_TAG, C.INST_OR, false},
-	"xor":     {C.SAM_INSTS_TAG, C.INST_XOR, false},
-	"eq":      {C.SAM_INSTS_TAG, C.INST_EQ, false},
-	"lt":      {C.SAM_INSTS_TAG, C.INST_LT, false},
-	"neg":     {C.SAM_INSTS_TAG, C.INST_NEG, false},
-	"add":     {C.SAM_INSTS_TAG, C.INST_ADD, false},
-	"mul":     {C.SAM_INSTS_TAG, C.INST_MUL, false},
-	"zero":    {C.SAM_INSTS_TAG, C.INST_0, false},
-	"false":   {C.SAM_INSTS_TAG, C.INST_0, false},
-	"one":     {C.SAM_INSTS_TAG, C.INST_1, false},
-	"_one":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, false},
-	"true":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, false},
-	"two":     {C.SAM_INSTS_TAG, C.INST_2, false},
-	"_two":    {C.SAM_INSTS_TAG, C.INST_MINUS_2, false},
-	"halt":    {C.SAM_INSTS_TAG, C.INST_HALT, true},
+	"nop":     {C.SAM_INSTS_TAG, C.INST_NOP, 0, false},
+	"new":     {C.SAM_INSTS_TAG, C.INST_NEW, 0, false},
+	"s0":      {C.SAM_INSTS_TAG, C.INST_S0, 0, false},
+	"drop":    {C.SAM_INSTS_TAG, C.INST_DROP, 0, false},
+	"get":     {C.SAM_INSTS_TAG, C.INST_GET, 0, false},
+	"set":     {C.SAM_INSTS_TAG, C.INST_SET, 0, false},
+	"extract": {C.SAM_INSTS_TAG, C.INST_EXTRACT, 0, false},
+	"insert":  {C.SAM_INSTS_TAG, C.INST_INSERT, 0, false},
+	"pop":     {C.SAM_INSTS_TAG, C.INST_POP, 0, false},
+	"shift":   {C.SAM_INSTS_TAG, C.INST_SHIFT, 0, false},
+	"append":  {C.SAM_INSTS_TAG, C.INST_APPEND, 0, false},
+	"prepend": {C.SAM_INSTS_TAG, C.INST_PREPEND, 0, false},
+	"go":      {C.SAM_INSTS_TAG, C.INST_GO, 0, true},
+	"do":      {C.SAM_INSTS_TAG, C.INST_DO, 0, true},
+	"call":    {C.SAM_INSTS_TAG, C.INST_CALL, 0, true},
+	"if":      {C.SAM_INSTS_TAG, C.INST_IF, 0, true},
+	"while":   {C.SAM_INSTS_TAG, C.INST_WHILE, 0, false},
+	"not":     {C.SAM_INSTS_TAG, C.INST_NOT, 0, false},
+	"and":     {C.SAM_INSTS_TAG, C.INST_AND, 0, false},
+	"or":      {C.SAM_INSTS_TAG, C.INST_OR, 0, false},
+	"xor":     {C.SAM_INSTS_TAG, C.INST_XOR, 0, false},
+	"eq":      {C.SAM_INSTS_TAG, C.INST_EQ, 0, false},
+	"lt":      {C.SAM_INSTS_TAG, C.INST_LT, 0, false},
+	"neg":     {C.SAM_INSTS_TAG, C.INST_NEG, 0, false},
+	"add":     {C.SAM_INSTS_TAG, C.INST_ADD, 0, false},
+	"mul":     {C.SAM_INSTS_TAG, C.INST_MUL, 0, false},
+	"zero":    {C.SAM_INSTS_TAG, C.INST_0, 0, false},
+	"false":   {C.SAM_INSTS_TAG, C.INST_0, 0, false},
+	"one":     {C.SAM_INSTS_TAG, C.INST_1, 0, false},
+	"_one":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, 0, false},
+	"true":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, 0, false},
+	"two":     {C.SAM_INSTS_TAG, C.INST_2, 0, false},
+	"_two":    {C.SAM_INSTS_TAG, C.INST_MINUS_2, 0, false},
+	"halt":    {C.SAM_INSTS_TAG, C.INST_HALT, 0, true},
 }
 
 var Traps = map[string]int{
@@ -300,6 +309,7 @@ var Traps = map[string]int{
 	"NEXT":    C.TRAP_BASIC_NEXT,
 	"NEW_MAP": C.TRAP_BASIC_NEW_MAP,
 	"DEBUG":   C.TRAP_BASIC_DEBUG,
+	"LOG":     C.TRAP_BASIC_LOG,
 
 	"I2F": C.TRAP_MATH_I2F,
 	"F2I": C.TRAP_MATH_F2I,
@@ -329,10 +339,13 @@ var Traps = map[string]int{
 // continues at the next instruction.
 var StackDifference = map[string]int{
 	// Tag instructions
-	"stack": 1,
 	"atom":  1,
 	"int":   1,
 	"float": 1,
+
+	// Blobs
+	"stack":  1,
+	"string": 1,
 
 	// Atoms
 	"null": 1,
@@ -396,6 +409,7 @@ var TrapStackEffect = map[string]StackEffect{
 	"NEXT":    {1, 1},
 	"NEW_MAP": {0, 1},
 	"DEBUG":   {1, 0},
+	"LOG":     {1, 0},
 
 	// Math traps
 	"I2F": {1, 1},

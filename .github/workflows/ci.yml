@@ -13,15 +13,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
-      - name: Install dependencies (Ubuntu)
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: sudo apt-get update && sudo apt-get -y install golang libsdl2-gfx-dev
-      - name: Install dependencies (macOS)
-        if: ${{ matrix.os == 'macos-latest' }}
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@main
+      - name: Install dependencies
         run: |
-          brew install coreutils automake pkg-config go sdl2_gfx
+          brew install coreutils automake pkg-config go sdl2_gfx libgrapheme
           # Prepend optional brew binary directories to PATH
-          echo "$(brew --prefix)/opt/m4/bin:${PATH}" >> $GITHUB_PATH
+          echo "$(brew --prefix m4)/bin:${PATH}" >> $GITHUB_PATH
       - name: configure
         run: autoreconf -fi && ./configure && go mod download
       - name: make
@@ -31,10 +29,15 @@ jobs:
           CXXFLAGS: -g ${{ env.ASAN_FLAGS }}
           LDFLAGS: ${{ env.ASAN_FLAGS }}
       - name: make check
-        run: make check --jobs=`nproc` || ( cat test-suite.log && exit 1 )
+        run: |
+          export LD_LIBRARY_PATH=$(brew --prefix)/lib
+          go run . --debug test/iter.sal
+          make check --jobs=`nproc` || ( cat test-suite.log && exit 1 )
       - name: make distcheck
         # normal build is with ASAN, distcheck is without ASAN. Both are covered.
-        run: make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test-suite.log && exit 1 )
+        run: |
+          export LD_LIBRARY_PATH=$(brew --prefix)/lib
+          make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test-suite.log && exit 1 )
 
   # build-windows:
   #   runs-on: windows-latest

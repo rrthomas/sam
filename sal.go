@@ -43,10 +43,10 @@ type Pair struct {
 type PrimaryExp struct {
 	Pos lexer.Position
 
-	Null  bool     `  @"null"`
-	Int   *int64   `| @Int`
-	Float *float64 `| @Float`
-	// String
+	Null      bool        `  @"null"`
+	Int       *int64      `| @Int`
+	Float     *float64    `| @Float`
+	String    *string     `| @String`
 	EmptyMap  bool        `| @"[" ":" "]"`
 	Container *[]Pair     `| "[" [ @@ ("," @@)* ","? ] "]"`
 	Block     *Block      `| @@`
@@ -153,7 +153,7 @@ type Expression struct {
 	Loop       *Block      `| "loop" @@`
 	ForVar     string      `| "for" @Ident "in"`
 	Iter       *Expression `  @@`
-	For        *Block      `  @@`
+	Body       *Block      `  @@`
 	Expression *LogicExp   `| @@`
 }
 
@@ -230,6 +230,8 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 		ctx.assemble(fmt.Sprintf("int %d", *e.Int))
 	} else if e.Float != nil {
 		ctx.assemble(fmt.Sprintf("float %g", *e.Float))
+	} else if e.String != nil {
+		ctx.assemble(fmt.Sprintf("string \"%s\"", *e.String)) // FIXME
 	} else if e.Container != nil {
 		// Check we have a list or map, not a combination
 		isMap := false
@@ -498,7 +500,7 @@ func (e *Expression) Compile(ctx *Frame) {
 		blockCtx.assemble("null") // return value
 		thenCtx := blockCtx.newBlock(false)
 		thenCtx.assembleBreak()
-		elseCtx := blockCtx.assembleBlock(e.For, false)
+		elseCtx := blockCtx.assembleBlock(e.Body, false)
 		blockCtx.assemble("_two", "s0", "get", "null", "eq")
 		blockCtx.assemble(thenCtx.asm)
 		blockCtx.assemble(elseCtx.asm)

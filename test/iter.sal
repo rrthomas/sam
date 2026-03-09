@@ -30,3 +30,8 @@ for i in null {
     }
     m
 }
+
+// Print a string a grapheme at a time
+for g in "γεια σου, ρὸζα" {
+    trap log, g
+}

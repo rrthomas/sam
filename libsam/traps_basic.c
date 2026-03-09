@@ -180,25 +180,22 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 }
             } else if ((opcode & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
                 sam_blob_t *blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
+                            sam_blob_t *iter;
                 switch (blob->type) {
                     case SAM_BLOB_STACK:
-                        {
-                            sam_blob_t *iter;
-                            HALT_IF_ERROR(sam_stack_iter_new(blob, &iter));
-                            PUSH_REF(iter);
-                        }
+                        HALT_IF_ERROR(sam_stack_iter_new(blob, &iter));
                         break;
                     case SAM_BLOB_MAP:
-                        {
-                            sam_blob_t *iter;
-                            HALT_IF_ERROR(sam_map_iter_new(blob, &iter));
-                            PUSH_REF(iter);
-                        }
+                        HALT_IF_ERROR(sam_map_iter_new(blob, &iter));
+                        break;
+                    case SAM_BLOB_STRING:
+                        HALT_IF_ERROR(sam_string_iter_new(blob, &iter));
                         break;
                     default:
                         HALT(SAM_ERROR_WRONG_TYPE);
                         break;
                 }
+                PUSH_REF(iter);
             } else
                 HALT(SAM_ERROR_WRONG_TYPE);
         }
@@ -228,6 +225,16 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             char *text = disas(opcode);
             printf("%s\n", text);
         }
+        break;
+    case TRAP_BASIC_LOG:
+        {
+            sam_blob_t *blob;
+            POP_REF(blob);
+            sam_string_t *str;
+            EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
+            printf("%.*s", (int)str->len, str->str); // FIXME
+        }
+        break;
     }
 error:
     return error;
@@ -262,6 +269,8 @@ char *sam_basic_trap_name(sam_word_t function)
         return "NEW_MAP";
     case TRAP_BASIC_DEBUG:
         return "DEBUG";
+    case TRAP_BASIC_LOG:
+        return "LOG";
     default:
         return NULL;
     }

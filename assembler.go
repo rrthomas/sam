@@ -24,7 +24,6 @@ import (
 	"fmt"
 	"io"
 	"os"
-	"slices"
 	"strconv"
 	"strings"
 
@@ -73,7 +72,7 @@ func (a *assembler) flushInstructions() {
 	a.insts = 0
 }
 
-func (a *assembler) addInstruction(opcode libsam.InstOpcode) {
+func (a *assembler) addInstruction(opcode libsam.Instruction) {
 	if (a.nInsts+1)*uint(libsam.ONE_INST_SHIFT)+uint(libsam.INSTS_SHIFT) > uint(libsam.WORD_BIT) {
 		a.flushInstructions()
 	}
@@ -84,9 +83,9 @@ func (a *assembler) addInstruction(opcode libsam.InstOpcode) {
 	}
 }
 
-func parseInsn(instStr string) (libsam.InstOpcode, bool) {
-	opcode, ok := libsam.Instructions[strings.ToLower(instStr)]
-	return opcode, ok
+func parseInsn(instStr string) (libsam.Instruction, bool) {
+	insn, ok := libsam.Instructions[strings.ToLower(instStr)]
+	return insn, ok
 }
 
 func parseTrap(trapStr string) (libsam.Word, bool) {
@@ -120,12 +119,8 @@ func (a *assembler) parseStack(argStr string) libsam.Stack {
 	return address.stack
 }
 
-var operandInsns = []string{
-	"int",
-	"float",
-	"trap",
-	"push",
-	"stack",
+func (a *assembler) parseString(argStr string) libsam.Stack {
+	return libsam.NewString(argStr)
 }
 
 func (a *assembler) assembleInstruction(str string) {
@@ -134,27 +129,29 @@ func (a *assembler) assembleInstruction(str string) {
 		panic(errors.New("empty instruction"))
 	}
 	instStr := tokens[0]
-	opcode, ok := parseInsn(instStr)
+	insn, ok := parseInsn(instStr)
 	if !ok {
 		panic(fmt.Errorf("unknown instruction %s", instStr))
 	}
-	if slices.Contains(operandInsns, strings.ToLower(instStr)) {
+	if insn.Operands != 0 {
 		a.flushInstructions()
 
-		if len(tokens) != 2 {
+		if insn.Operands != -1 && len(tokens)-1 != insn.Operands {
 			panic(fmt.Errorf("%s needs an operand", instStr))
 		}
 		operandStr := tokens[1]
 
-		switch opcode.Tag {
+		switch insn.Tag {
 		case libsam.INT_TAG:
 			a.stack.PushInt(libsam.Uword(a.parseLiteral(operandStr)))
 		case libsam.BLOB_TAG:
-			switch opcode.Opcode {
+			switch insn.Opcode {
 			case libsam.BLOB_STACK:
 				a.stack.PushArray(a.parseStack(operandStr))
+			case libsam.BLOB_STRING:
+				a.stack.PushArray(a.parseString(strings.TrimPrefix(strings.TrimSuffix(strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(str), "string")), "\""), "\"")))
 			default:
-				panic(fmt.Errorf("invalid blob type %+v", opcode.Opcode))
+				panic(fmt.Errorf("invalid blob type %+v", insn.Opcode))
 			}
 		case libsam.TRAP_TAG:
 			trap, ok := parseTrap(operandStr)
@@ -174,20 +171,20 @@ func (a *assembler) assembleInstruction(str string) {
 			panic(fmt.Errorf("unexpected operand for %s", instStr))
 		}
 
-		switch opcode.Tag {
+		switch insn.Tag {
 		case libsam.ATOM_TAG:
 			a.flushInstructions()
 
-			switch opcode.Opcode {
+			switch insn.Opcode {
 			case libsam.ATOM_NULL:
 				a.stack.PushAtom(libsam.ATOM_NULL, 0)
 			default:
-				panic(fmt.Errorf("invalid atom type %d", opcode.Opcode))
+				panic(fmt.Errorf("invalid atom type %d", insn.Opcode))
 			}
 		case libsam.INSTS_TAG:
-			a.addInstruction(opcode)
+			a.addInstruction(insn)
 		default:
-			panic(fmt.Errorf("unknown tag %d", opcode.Tag))
+			panic(fmt.Errorf("unknown tag %d", insn.Tag))
 		}
 	}
 }

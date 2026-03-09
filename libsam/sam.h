@@ -49,6 +49,7 @@ typedef struct sam_blob sam_blob_t;
 typedef struct sam_stack sam_stack_t;
 typedef _sam_map sam_map_t;
 typedef struct sam_iter sam_iter_t;
+typedef struct sam_string sam_string_t;
 
 // Map iterators
 typedef _sam_map_itr sam_map_iter_t;
@@ -105,6 +106,10 @@ int sam_map_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
 // Iterators
 int sam_iter_next(sam_iter_t *i, sam_word_t *val);
 int sam_int_iter_new(sam_uword_t n, sam_blob_t **new_iter);
+
+// Strings
+int sam_string_new(sam_blob_t **new_string, const char *cstr, size_t len);
+int sam_string_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
 
 // Top-level states
 sam_state_t *sam_state_new(void);

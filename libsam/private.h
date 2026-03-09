@@ -23,14 +23,18 @@ typedef struct sam_stack {
 } sam_stack_t;
 
 typedef struct sam_iter {
-    sam_word_t tag;
     sam_blob_t *blob;
     int (*next)(sam_iter_t *i, sam_word_t *val);
     union {
         sam_word_t word_state;
-        void *ptr_state;
+        const void *ptr_state;
     } iter;
 } sam_iter_t;
+
+typedef struct sam_string {
+    char const *str;
+    size_t len;
+} sam_string_t;
 
 typedef struct sam_state {
     sam_blob_t *s0;

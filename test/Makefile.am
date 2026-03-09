@@ -17,11 +17,12 @@ TESTS = \
 	factorial_rec.yaml \
 	map.yaml \
 	quote.yaml \
-	set.yaml \
 	screen_graphics.yaml \
 	screen_turtle-demo.yaml \
 	screen_levy-c.yaml \
+	set.yaml \
 	stack.yaml \
+	string.yaml \
 	double_list.sal \
 	expr.sal \
 	factorial_iter.sal \
@@ -50,8 +51,9 @@ RESULTS = \
 	screen_turtle-demo.yaml-expected.pbm \
 	screen_levy-c.yaml-expected.log \
 	screen_levy-c.yaml-expected.pbm \
-	stack.yaml-expected.log \
 	set.yaml-expected.log \
+	stack.yaml-expected.log \
+	string.yaml-expected.log \
 	double_list.sal-expected.log \
 	expr.sal-expected.log \
 	factorial_iter.sal-expected.log \

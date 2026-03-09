@@ -34,6 +34,7 @@ enum SAM_TRAP_BASIC {
     TRAP_BASIC_NEXT,
     TRAP_BASIC_NEW_MAP,
     TRAP_BASIC_DEBUG,
+    TRAP_BASIC_LOG,
 };
 
 #endif

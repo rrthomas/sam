@@ -211,7 +211,7 @@ int sam_stack_prepend(sam_blob_t *blob, sam_word_t val)
 
 int sam_push_ref(sam_blob_t *blob, sam_blob_t *val)
 {
-    return sam_stack_push(blob, SAM_BLOB_TAG | ((sam_uword_t)val));
+    return sam_stack_push(blob, SAM_BLOB_TAG | (sam_uword_t)val);
 }
 
 int sam_push_int(sam_blob_t *blob, sam_uword_t val)
@@ -266,7 +266,6 @@ int sam_stack_iter_new(sam_blob_t *blob, sam_blob_t **new_iter)
     HALT_IF_ERROR(sam_blob_new(SAM_BLOB_ITER, sizeof(sam_iter_t), new_iter));
     sam_iter_t *i;
     EXTRACT_BLOB(*new_iter, SAM_BLOB_ITER, sam_iter_t, i);
-    i->tag = SAM_BLOB_TAG | (SAM_BLOB_MAP << SAM_BLOB_SHIFT);
     i->blob = blob;
     i->next = iter_next;
     i->iter.word_state = 0;

@@ -34,7 +34,6 @@ func TestLexer(t *testing.T) {
 		}
 		a := 1 + \
 			 2.0
-		b := `+"`literal string`"+`
 	}
 	`))
 	assert.NoError(t, err)
@@ -46,8 +45,8 @@ func TestLexer(t *testing.T) {
 		actual = append(actual, token.Value)
 	}
 	expected := []string{
-		"fn", "foo", "(", ")", "{", "if", "true", "{", "print", "(", "\"", "hello", "\"", ")", ";", "}", ";", "a", ":=",
-		"1", "+", "2.0", ";", "b", ":=", "literal string", ";", "}", ";", "",
+		"fn", "foo", "(", ")", "{", "if", "true", "{", "print", "(", "hello", ")", ";", "}", ";", "a", ":=",
+		"1", "+", "2.0", ";", "}", ";", "",
 	}
 	assert.Equal(t, expected, actual)
 }

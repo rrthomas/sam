@@ -1,6 +1,6 @@
 # sam configure.ac
 #
-# © 2020-2025 Reuben Thomas <rrt@sc3d.org>
+# © 2020-2026 Reuben Thomas <rrt@sc3d.org>
 
 AC_INIT([sam],[0.1])
 AM_INIT_AUTOMAKE([-Wall std-options foreign])
@@ -20,6 +20,7 @@ AC_SUBST([SIZEOF_SIZE_T])
 
 # Checks for libraries
 PKG_CHECK_MODULES(SDL2, [sdl2 SDL2_gfx])
+PKG_CHECK_MODULES(LIBGRAPHEME, [libgrapheme])
 
 # Counting code
 AM_EXTRA_RECURSIVE_TARGETS([loc])

@@ -13,8 +13,8 @@ include_HEADERS = \
 	sam.h \
 	sam_opcodes.h
 
-libsam_la_CFLAGS = $(SDL2_CFLAGS) $(AM_CFLAGS)
-libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) -lm
+libsam_la_CFLAGS = $(SDL2_CFLAGS) $(LIBGRAPHEME_CFLAGS) $(AM_CFLAGS)
+libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) $(LIBGRAPHEME_LIBS) -lm
 libsam_la_SOURCES = \
 	$(include_HEADERS) \
 	private.h \
@@ -24,6 +24,7 @@ libsam_la_SOURCES = \
 	iter.c \
 	map.c \
 	stack.c \
+	string.c \
 	run.c \
 	state.c \
 	traps_basic.h \
@@ -32,6 +33,8 @@ libsam_la_SOURCES = \
 	traps_math.c \
 	traps_graphics.h \
 	traps_graphics.c \
+	traps_string.h \
+	traps_string.c \
 	$(EMPTY)
 
 loc-local:
