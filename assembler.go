@@ -128,7 +128,11 @@ var operandInsns = []string{
 	"stack",
 }
 
-func (a *assembler) assembleInstruction(tokens ...string) {
+func (a *assembler) assembleInstruction(str string) {
+	tokens := strings.Fields(str)
+	if len(tokens) < 1 {
+		panic(errors.New("empty instruction"))
+	}
 	instStr := tokens[0]
 	opcode, ok := parseInsn(instStr)
 	if !ok {
@@ -209,11 +213,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		a.stack.PushArray(subA.stack)
 		return nil
 	case ast.StringType:
-		tokens := strings.Fields(n.String())
-		if len(tokens) < 1 {
-			panic(errors.New("empty instruction"))
-		}
-		a.assembleInstruction(tokens...)
+		a.assembleInstruction(n.String())
 		return nil
 	case ast.NullType: // Special case for "null"
 		a.assembleInstruction("null")
@@ -261,7 +261,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			}
 			label := val.String()
 			address := a.parseLabel(label)
-			a.assembleInstruction("int", fmt.Sprintf("%d", address.item))
+			a.assembleInstruction(fmt.Sprintf("int %d", address.item))
 			a.stack.PushArray(address.stack)
 		case "!single":
 			val := tag.Value
