@@ -32,12 +32,12 @@ jobs:
         run: |
           export LD_LIBRARY_PATH=$(brew --prefix)/lib
           go run . --debug test/iter.sal
-          make check --jobs=`nproc` || ( cat test-suite.log && exit 1 )
+          make check --jobs=`nproc` || ( cat test/test-suite.log && exit 1 )
       - name: make distcheck
         # normal build is with ASAN, distcheck is without ASAN. Both are covered.
         run: |
           export LD_LIBRARY_PATH=$(brew --prefix)/lib
-          make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test-suite.log && exit 1 )
+          make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test/test-suite.log && exit 1 )
 
   # build-windows:
   #   runs-on: windows-latest
