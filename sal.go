@@ -168,7 +168,7 @@ type If struct {
 type Trap struct {
 	Pos lexer.Position
 
-	Function  *string       `"trap" @Ident`
+	Function  *string       `@Ident`
 	Arguments *[]Expression `("," @@)*`
 }
 
@@ -742,6 +742,8 @@ func (ctx *Frame) compileGetVar(id string) {
 	} else if c := ctx.findCapture(id); c != nil {
 		ctx.compileCaptureAddr(*c)
 		ctx.assemble("get")
+	} else if _, ok := libsam.TrapStackEffect[strings.ToUpper(id)]; ok {
+		ctx.assembleTrap(id)
 	} else {
 		panic(fmt.Errorf("no such variable %s", id))
 	}
