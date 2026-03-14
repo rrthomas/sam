@@ -1,6 +1,6 @@
 // SAM's graphics traps.
 //
-// (c) Reuben Thomas 2020-2025
+// (c) Reuben Thomas 2020-2026
 //
 // The package is distributed under the GNU Public License version 3, or,
 // at your option, any later version.
@@ -11,7 +11,18 @@
 #include <stdbool.h>
 
 #include <SDL.h>
-#include <SDL2_gfxPrimitives.h>
+
+#ifndef DEBUG_NANOVG
+#define NVG_LOG(...)
+#endif
+#include "nanovg.h"
+#define NANOVG_SW_IMPLEMENTATION
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+#pragma GCC diagnostic ignored "-Wunused-variable"
+#pragma GCC diagnostic ignored "-Wsign-compare"
+#include "nanovg_sw.h"
+#pragma GCC diagnostic pop
 
 #include "sam.h"
 #include "sam_opcodes.h"
@@ -21,18 +32,26 @@
 
 const unsigned sam_update_interval = 10; // milliseconds between screen updates
 
-#define PIXEL_SIZE 2
+#define PIXEL_SIZE 2 // FIXME calculate pixel ratio
 static SDL_Window *win;
-static SDL_Renderer *ren;
 static SDL_Surface *srf;
 static Uint64 last_update_time;
 static bool need_window = false;
+static NVGcontext* vg;
+static SDL_PixelFormat *fmt;
+const unsigned bytes_per_pixel = 4;
+
+#define POP_COLOR(var)                                   \
+    do {                                                 \
+        sam_uword_t color_word;                          \
+        POP_UINT(color_word);                            \
+        var = (NVGcolor){.c = (unsigned int)color_word}; \
+    } while (0)
 
 void sam_update_screen(void)
 {
     SDL_ShowWindow(win);
     SDL_UpdateWindowSurface(win);
-    SDL_RenderPresent(ren);
 }
 
 int sam_graphics_process_events(void)
@@ -76,32 +95,11 @@ int sam_graphics_window_used(void)
     return SDL_GetWindowFlags(win) & SDL_WINDOW_SHOWN;
 }
 
-// Code from https://stackoverflow.com/questions/53033971/how-to-get-the-color-of-a-specific-pixel-from-sdl-surface
+// Code adapted from https://stackoverflow.com/questions/53033971/how-to-get-the-color-of-a-specific-pixel-from-sdl-surface
 uint32_t sam_getpixel(int x, int y)
 {
-    int bpp = srf->format->BytesPerPixel;
-    /* Here p is the address to the pixel we want to retrieve */
-    Uint8 *p = (Uint8 *)srf->pixels + y * srf->pitch * PIXEL_SIZE + x * bpp * PIXEL_SIZE;
-
-    switch (bpp) {
-    case 1:
-        return *p;
-        break;
-    case 2:
-        return *(Uint16 *)p;
-        break;
-    case 3:
-        if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
-            return p[0] << 16 | p[1] << 8 | p[2];
-        else
-            return p[0] | p[1] << 8 | p[2] << 16;
-        break;
-    case 4:
-        return *(Uint32 *)p;
-        break;
-    default:
-        return 0; /* shouldn't happen, but avoids warnings */
-    }
+    Uint32 *p = (Uint32 *)((Uint8 *)srf->pixels + y * srf->pitch * PIXEL_SIZE + x * bytes_per_pixel * PIXEL_SIZE);
+    return *p;
 }
 
 sam_word_t sam_graphics_init(void)
@@ -114,13 +112,9 @@ sam_word_t sam_graphics_init(void)
         return SAM_ERROR_TRAP_INIT;
 
     srf = SDL_GetWindowSurface(win);
-    ren = SDL_CreateSoftwareRenderer(srf);
-    SDL_RenderSetLogicalSize(ren, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT);
-    if (ren == NULL)
-        return SAM_ERROR_TRAP_INIT;
-
-    SDL_SetRenderDrawColor(ren, 255, 255, 255, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(ren);
+    vg = nvgswCreate(NVG_SRGB | NVG_AUTOW_DEFAULT);
+    fmt = srf->format;
+    nvgswSetFramebuffer(vg, srf->pixels, srf->w, srf->h, fmt->Rshift, fmt->Gshift, fmt->Bshift, 24);
 
     last_update_time = 0;
 
@@ -129,7 +123,6 @@ sam_word_t sam_graphics_init(void)
 
 void sam_graphics_finish(void)
 {
-    SDL_DestroyRenderer(ren);
     SDL_DestroyWindow(win);
     SDL_Quit();
 }
@@ -141,10 +134,10 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
 
     switch (function) {
     case TRAP_GRAPHICS_BLACK:
-        PUSH_INT(0);
+        PUSH_INT(nvgRGBA(0, 0, 0, 255).c);
         break;
     case TRAP_GRAPHICS_WHITE:
-        PUSH_INT(-1);
+        PUSH_INT(nvgRGBA(255, 255, 255, 255).c);
         break;
     case TRAP_GRAPHICS_DISPLAY_WIDTH:
         PUSH_INT(SAM_DISPLAY_WIDTH);
@@ -154,102 +147,162 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
         break;
     case TRAP_GRAPHICS_CLEARSCREEN:
         {
-            sam_word_t color;
-            POP_UINT(color);
-            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
-            SDL_RenderClear(ren);
+            NVGcolor color;
+            POP_COLOR(color);
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginPath(vg);
+            nvgFillColor(vg, color);
+            nvgRect(vg, 0, 0, SAM_DISPLAY_WIDTH * PIXEL_SIZE, SAM_DISPLAY_HEIGHT * PIXEL_SIZE);
+            nvgFill(vg);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
             need_window = true;
         }
         break;
     case TRAP_GRAPHICS_SETDOT:
         {
-            sam_word_t x, y, color;
-            POP_UINT(color);
+            sam_word_t x, y;
+            NVGcolor color;
+            POP_COLOR(color);
             POP_UINT(y);
             POP_UINT(x);
-            pixelRGBA(ren, x, y, color, color, color, SDL_ALPHA_OPAQUE);
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginPath(vg);
+            nvgFillColor(vg, color);
+            nvgLineTo(vg, x * PIXEL_SIZE, y * PIXEL_SIZE);
+            nvgRect(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, PIXEL_SIZE, PIXEL_SIZE);
+            nvgFill(vg);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
             need_window = true;
         }
         break;
     case TRAP_GRAPHICS_DRAWLINE:
         {
-            sam_word_t x1, y1, x2, y2, color;
-            POP_UINT(color);
+            sam_word_t x1, y1, x2, y2;
+            NVGcolor color;
+            POP_COLOR(color);
             POP_UINT(y2);
             POP_UINT(x2);
             POP_UINT(y1);
             POP_UINT(x1);
-            lineRGBA(ren, x1, y1, x2, y2, color, color, color, SDL_ALPHA_OPAQUE);
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginPath(vg);
+            nvgStrokeColor(vg, color);
+            nvgMoveTo(vg, x1 * PIXEL_SIZE, y1 * PIXEL_SIZE);
+            nvgLineTo(vg, x2 * PIXEL_SIZE, y2 * PIXEL_SIZE);
+            nvgStrokeWidth(vg, PIXEL_SIZE);
+            nvgStroke(vg);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
             need_window = true;
         }
         break;
     case TRAP_GRAPHICS_DRAWRECT:
         {
-            sam_word_t x, y, width, height, color;
-            POP_UINT(color);
+            sam_word_t x, y, width, height;
+            NVGcolor color;
+            POP_COLOR(color);
             POP_UINT(height);
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            rectangleRGBA(ren, x, y, x + width - 1, y + height - 1, color, color, color, SDL_ALPHA_OPAQUE);
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginPath(vg);
+            nvgStrokeColor(vg, color);
+            nvgRect(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, width * PIXEL_SIZE, height * PIXEL_SIZE);
+            nvgStrokeWidth(vg, PIXEL_SIZE);
+            nvgStroke(vg);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
             need_window = true;
         }
         break;
     case TRAP_GRAPHICS_DRAWROUNDRECT:
         {
-            sam_word_t x, y, width, height, radius, color;
-            POP_UINT(color);
+            sam_word_t x, y, width, height, radius;
+            NVGcolor color;
+            POP_COLOR(color);
             POP_UINT(radius);
             POP_UINT(height);
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            roundedRectangleRGBA(ren, x, y, x + width - 1, y + height - 1, radius, color, color, color, SDL_ALPHA_OPAQUE);
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginPath(vg);
+            nvgStrokeColor(vg, color);
+            nvgRoundedRect(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, width * PIXEL_SIZE, height * PIXEL_SIZE, radius * PIXEL_SIZE);
+            nvgStrokeWidth(vg, PIXEL_SIZE);
+            nvgStroke(vg);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
             need_window = true;
         }
         break;
     case TRAP_GRAPHICS_FILLRECT:
         {
-            sam_word_t x, y, width, height, color;
-            POP_UINT(color);
+            sam_word_t x, y, width, height;
+            NVGcolor color;
+            POP_COLOR(color);
             POP_UINT(height);
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            boxRGBA(ren, x, y, x + width - 1, y + height - 1, color, color, color, SDL_ALPHA_OPAQUE);
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginPath(vg);
+            nvgFillColor(vg, color);
+            nvgRect(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, width * PIXEL_SIZE, height * PIXEL_SIZE);
+            nvgFill(vg);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
             need_window = true;
         }
         break;
     case TRAP_GRAPHICS_DRAWCIRCLE:
         {
-            sam_word_t xCenter, yCenter, radius, color;
-            POP_UINT(color);
+            sam_word_t xCenter, yCenter, radius;
+            NVGcolor color;
+            POP_COLOR(color);
             POP_UINT(radius);
             POP_UINT(yCenter);
             POP_UINT(xCenter);
-            circleRGBA(ren, xCenter, yCenter, radius, color, color, color, SDL_ALPHA_OPAQUE);
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginPath(vg);
+            nvgStrokeColor(vg, color);
+            nvgCircle(vg, xCenter * PIXEL_SIZE, yCenter * PIXEL_SIZE, radius * PIXEL_SIZE);
+            nvgStrokeWidth(vg, PIXEL_SIZE);
+            nvgStroke(vg);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
             need_window = true;
         }
         break;
     case TRAP_GRAPHICS_FILLCIRCLE:
         {
-            sam_word_t xCenter, yCenter, radius, color;
-            POP_UINT(color);
+            sam_word_t xCenter, yCenter, radius;
+            NVGcolor color;
+            POP_COLOR(color);
             POP_UINT(radius);
             POP_UINT(yCenter);
             POP_UINT(xCenter);
-            filledCircleRGBA(ren, xCenter, yCenter, radius, color, color, color, SDL_ALPHA_OPAQUE);
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginPath(vg);
+            nvgFillColor(vg, color);
+            nvgCircle(vg, xCenter * PIXEL_SIZE, yCenter * PIXEL_SIZE, radius * PIXEL_SIZE);
+            nvgFill(vg);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
             need_window = true;
         }
         break;
     case TRAP_GRAPHICS_DRAWBITMAP:
         {
-            sam_word_t bitmap, x, y, color;
-            POP_UINT(color);
+            sam_word_t bitmap, x, y;
+            NVGcolor color;
+            POP_COLOR(color);
             POP_UINT(y);
             POP_UINT(x);
             POP_UINT(bitmap);
-            SDL_SetRenderDrawColor(ren, color, color, color, SDL_ALPHA_OPAQUE);
             // TODO
             need_window = true;
         }

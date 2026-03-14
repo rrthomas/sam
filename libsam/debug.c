@@ -373,14 +373,18 @@ void sam_dump_screen(const char *filename)
     if (fp == NULL)
         debug("could not open file %s\n", filename);
     else {
-        fprintf(fp, "P1\n");
+        fprintf(fp, "P3\n");
         fprintf(fp, "# SAM screen dump\n");
-        fprintf(fp, "%u %u\n", SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT);
+        fprintf(fp, "%u %u 255\n", SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT);
         for (size_t j = 0; j < SAM_DISPLAY_HEIGHT; j++) {
             for (size_t i = 0; i < SAM_DISPLAY_WIDTH; i++) {
-                fprintf(fp, "%d", sam_getpixel(i, j) ? 0 : 1);
+                uint32_t p = sam_getpixel(i, j);
+                uint8_t r = p & 0xff;
+                uint8_t g = (p >> 8) & 0xff;
+                uint8_t b = (p >> 16) & 0xff;
+                fprintf(fp, "%d %d %d", r, g, b);
                 if (i < SAM_DISPLAY_WIDTH - 1)
-                    fprintf(fp, " ");
+                    fprintf(fp, "  ");
             }
             fprintf(fp, "\n");
         }

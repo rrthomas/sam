@@ -6,7 +6,7 @@ Stack: XXXXXXXX (16 item(s))
   - int 0
   - int 0
   - stack XXXXXXXX (22 items)
-    - trap WHITE
+    - trap BLACK
     - trap CLEARSCREEN
     - float 0.000000
     - int 0
@@ -20,7 +20,7 @@ Stack: XXXXXXXX (16 item(s))
     - int 2
     - stack XXXXXXXX (10 items)
     - set
-    - trap BLACK
+    - trap WHITE
     - int 3
     - stack XXXXXXXX (10 items)
     - set
@@ -140,13 +140,13 @@ Working stack: (3 word(s))
 - stack XXXXXXXX (10 items)
 - stack XXXXXXXX (16 items)
 - int 3
-trap WHITE
+trap BLACK
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (10 items)
 - stack XXXXXXXX (16 items)
 - int 3
-- int -1
+- int 4278190080
 trap CLEARSCREEN
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -243,20 +243,20 @@ Working stack: (3 word(s))
 - stack XXXXXXXX (10 items)
 - stack XXXXXXXX (16 items)
 - int 3
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - stack XXXXXXXX (10 items)
 - stack XXXXXXXX (16 items)
 - int 3
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - stack XXXXXXXX (10 items)
 - stack XXXXXXXX (16 items)
 - int 3
-- int 0
+- int 4294967295
 - int 3
 blob
 sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -264,7 +264,7 @@ Working stack: (6 word(s))
 - stack XXXXXXXX (10 items)
 - stack XXXXXXXX (16 items)
 - int 3
-- int 0
+- int 4294967295
 - int 3
 - stack XXXXXXXX (10 items)
 set
@@ -436,7 +436,7 @@ Working stack: (6 word(s))
 - int 5
 - int 0
 - int 0
-- int 0
+- int 4294967295
 trap SETDOT
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 3
 Working stack: (3 word(s))
@@ -1146,7 +1146,7 @@ Working stack: (13 word(s))
 - int 0
 - int 354
 - int 354
-- int 0
+- int 4294967295
 trap DRAWLINE
 sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8
 Working stack: (8 word(s))
@@ -1243,10 +1243,10 @@ Stack: XXXXXXXX (2 item(s))
   - float 353.553385
   - float 353.553385
   - float 0.785398
-  - int 0
+  - int 4294967295
   - int 1
   - stack XXXXXXXX (22 items)
-    - trap WHITE
+    - trap BLACK
     - trap CLEARSCREEN
     - float 0.000000
     - int 0
@@ -1260,7 +1260,7 @@ Stack: XXXXXXXX (2 item(s))
     - int 2
     - stack XXXXXXXX (10 items)
     - set
-    - trap BLACK
+    - trap WHITE
     - int 3
     - stack XXXXXXXX (10 items)
     - set
