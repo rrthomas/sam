@@ -17,7 +17,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
       - name: Install dependencies
         run: |
-          brew install coreutils automake pkg-config go sdl2_gfx libgrapheme
+          brew install coreutils automake pkg-config go libgrapheme
           # Prepend optional brew binary directories to PATH
           echo "$(brew --prefix m4)/bin:${PATH}" >> $GITHUB_PATH
       - name: configure
@@ -59,7 +59,6 @@ jobs:
   #         mingw-w64-${{matrix.env}}-pkg-config
   #         mingw-w64-${{matrix.env}}-gcc
   #         mingw-w64-${{matrix.env}}-go
-  #         mingw-w64-${{matrix.env}}-SDL2_gfx
   #   - uses: actions/checkout@v5
   #   - name: configure
   #     run: autoreconf -fi && ./configure && go mod download

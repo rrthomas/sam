@@ -5,7 +5,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 100
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -16,7 +16,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 100
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -27,7 +27,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 50
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -40,7 +40,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 50
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -53,7 +53,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 80
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -66,7 +66,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 40
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -80,7 +80,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 30
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -92,7 +92,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 40
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -104,7 +104,7 @@ Stack: XXXXXXXX (4 item(s))
   - int 40
   - null
   - stack XXXXXXXX (3 items)
-    - trap BLACK
+    - trap WHITE
     - int -4
     - s0 set
   - do
@@ -176,7 +176,7 @@ Working stack: (8 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 5
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - null
@@ -187,7 +187,7 @@ Working stack: (9 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 5
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
@@ -199,7 +199,7 @@ Working stack: (10 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 5
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
@@ -212,7 +212,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 5
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (11 items)
 set
@@ -223,7 +223,7 @@ Working stack: (8 word(s))
 - int 3
 - int 50
 - int 100
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 5
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -233,7 +233,7 @@ Working stack: (6 word(s))
 - int 3
 - int 50
 - int 100
-- int 0
+- int 4294967295
 trap SETDOT
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -298,7 +298,7 @@ Working stack: (8 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 13
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - null
@@ -309,7 +309,7 @@ Working stack: (9 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 13
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
@@ -321,7 +321,7 @@ Working stack: (10 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 13
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
@@ -334,7 +334,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 13
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (11 items)
 set
@@ -345,7 +345,7 @@ Working stack: (8 word(s))
 - int 3
 - int 20
 - int 100
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 13
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -355,7 +355,7 @@ Working stack: (6 word(s))
 - int 3
 - int 20
 - int 100
-- int 0
+- int 4294967295
 trap SETDOT
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -420,7 +420,7 @@ Working stack: (8 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 21
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - null
@@ -431,7 +431,7 @@ Working stack: (9 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 21
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
@@ -443,7 +443,7 @@ Working stack: (10 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 21
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
@@ -456,7 +456,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 21
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (11 items)
 set
@@ -467,7 +467,7 @@ Working stack: (8 word(s))
 - int 3
 - int 20
 - int 50
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 21
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -477,7 +477,7 @@ Working stack: (6 word(s))
 - int 3
 - int 20
 - int 50
-- int 0
+- int 4294967295
 trap SETDOT
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -567,7 +567,7 @@ Working stack: (10 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 31
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -580,7 +580,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 31
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
@@ -594,7 +594,7 @@ Working stack: (12 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 31
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
@@ -609,7 +609,7 @@ Working stack: (13 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 31
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (13 items)
 set
@@ -622,7 +622,7 @@ Working stack: (10 word(s))
 - int 10
 - int 110
 - int 50
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 31
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -634,7 +634,7 @@ Working stack: (8 word(s))
 - int 10
 - int 110
 - int 50
-- int 0
+- int 4294967295
 trap DRAWLINE
 sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -724,7 +724,7 @@ Working stack: (10 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 41
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -737,7 +737,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 41
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
@@ -751,7 +751,7 @@ Working stack: (12 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 41
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
@@ -766,7 +766,7 @@ Working stack: (13 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 41
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (13 items)
 set
@@ -779,7 +779,7 @@ Working stack: (10 word(s))
 - int 120
 - int 60
 - int 80
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 41
 sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -791,7 +791,7 @@ Working stack: (8 word(s))
 - int 120
 - int 60
 - int 80
-- int 0
+- int 4294967295
 trap DRAWRECT
 sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -881,7 +881,7 @@ Working stack: (10 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 51
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -894,7 +894,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 51
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
@@ -908,7 +908,7 @@ Working stack: (12 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 51
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
@@ -923,7 +923,7 @@ Working stack: (13 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 51
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (13 items)
 set
@@ -936,7 +936,7 @@ Working stack: (10 word(s))
 - int 140
 - int 20
 - int 40
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 51
 sam_run: p0 = XXXXXXXX, pc = 52, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -948,7 +948,7 @@ Working stack: (8 word(s))
 - int 140
 - int 20
 - int 40
-- int 0
+- int 4294967295
 trap FILLRECT
 sam_run: p0 = XXXXXXXX, pc = 53, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -1052,7 +1052,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 62
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - null
@@ -1066,7 +1066,7 @@ Working stack: (12 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 62
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
@@ -1081,7 +1081,7 @@ Working stack: (13 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 62
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
@@ -1097,7 +1097,7 @@ Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 62
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (14 items)
 set
@@ -1111,7 +1111,7 @@ Working stack: (11 word(s))
 - int 60
 - int 80
 - int 30
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 62
 sam_run: p0 = XXXXXXXX, pc = 63, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
@@ -1124,7 +1124,7 @@ Working stack: (9 word(s))
 - int 60
 - int 80
 - int 30
-- int 0
+- int 4294967295
 trap DRAWROUNDRECT
 sam_run: p0 = XXXXXXXX, pc = 64, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -1201,7 +1201,7 @@ Working stack: (9 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 71
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - null
@@ -1213,7 +1213,7 @@ Working stack: (10 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 71
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
@@ -1226,7 +1226,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 71
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
@@ -1240,7 +1240,7 @@ Working stack: (12 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 71
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (12 items)
 set
@@ -1252,7 +1252,7 @@ Working stack: (9 word(s))
 - int 210
 - int 160
 - int 40
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 71
 sam_run: p0 = XXXXXXXX, pc = 72, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -1263,7 +1263,7 @@ Working stack: (7 word(s))
 - int 210
 - int 160
 - int 40
-- int 0
+- int 4294967295
 trap DRAWCIRCLE
 sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -1340,7 +1340,7 @@ Working stack: (9 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 80
-trap BLACK
+trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - null
@@ -1352,7 +1352,7 @@ Working stack: (10 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 80
-- int 0
+- int 4294967295
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
@@ -1365,7 +1365,7 @@ Working stack: (11 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 80
-- int 0
+- int 4294967295
 - int -4
 s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
@@ -1379,7 +1379,7 @@ Working stack: (12 word(s))
 - null
 - stack XXXXXXXX (84 items)
 - int 80
-- int 0
+- int 4294967295
 - int -4
 - stack XXXXXXXX (12 items)
 set
@@ -1391,7 +1391,7 @@ Working stack: (9 word(s))
 - int 290
 - int 160
 - int 40
-- int 0
+- int 4294967295
 - stack XXXXXXXX (84 items)
 - int 80
 sam_run: p0 = XXXXXXXX, pc = 81, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
@@ -1402,7 +1402,7 @@ Working stack: (7 word(s))
 - int 290
 - int 160
 - int 40
-- int 0
+- int 4294967295
 trap FILLCIRCLE
 sam_run: p0 = XXXXXXXX, pc = 82, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))

@@ -4,7 +4,7 @@
 - pen_color: int 0
 - pen_drawing: int 0
 -
-  - init: trap WHITE
+  - init: trap BLACK
   - trap CLEARSCREEN
   - float 0.0
   - !istack pen_x
@@ -15,7 +15,7 @@
   - float 0.0
   - !istack pen_theta
   - set
-  - trap BLACK
+  - trap WHITE
   - !istack pen_color
   - set
   - int 0
