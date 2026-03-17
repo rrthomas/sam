@@ -41,6 +41,38 @@ static NVGcontext* vg;
 static SDL_PixelFormat *fmt;
 const unsigned bytes_per_pixel = 4;
 
+enum font_handle {
+    FONT_REGULAR,
+    FONT_ITALIC,
+    FONT_BOLD,
+    FONT_BOLDITALIC,
+    FONT_EMOJI,
+    FONT_NUM_FONTS,
+};
+
+static int fonts[FONT_NUM_FONTS];
+
+unsigned char font_regular[] = {
+#embed "NotoSans-Regular.ttf"
+};
+
+unsigned char font_italic[] = {
+#embed "NotoSans-Italic.ttf"
+};
+
+unsigned char font_bold[] = {
+#embed "NotoSans-Bold.ttf"
+};
+
+unsigned char font_bolditalic[] = {
+#embed "NotoSans-BoldItalic.ttf"
+};
+
+unsigned char font_emoji[] = {
+/* #embed "NotoColorEmoji.ttf" */ // FIXME: stb_truetype fails to load this font.
+#embed "NotoEmoji-Regular.ttf"
+};
+
 #define POP_COLOR(var)                                   \
     do {                                                 \
         sam_uword_t color_word;                          \
@@ -115,6 +147,16 @@ sam_word_t sam_graphics_init(void)
     vg = nvgswCreate(NVG_SRGB | NVG_AUTOW_DEFAULT);
     fmt = srf->format;
     nvgswSetFramebuffer(vg, srf->pixels, srf->w, srf->h, fmt->Rshift, fmt->Gshift, fmt->Bshift, 24);
+
+    fonts[FONT_REGULAR] = nvgCreateFontMem(vg, "Regular", font_regular, sizeof(font_regular), 0);
+    fonts[FONT_ITALIC] = nvgCreateFontMem(vg, "Italic", font_italic, sizeof(font_italic), 0);
+    fonts[FONT_BOLD] = nvgCreateFontMem(vg, "Bold", font_bold, sizeof(font_bold), 0);
+    fonts[FONT_BOLDITALIC] = nvgCreateFontMem(vg, "BoldItalic", font_bolditalic, sizeof(font_bolditalic), 0);
+    fonts[FONT_EMOJI] = nvgCreateFontMem(vg, "Emoji", font_emoji, sizeof(font_emoji), 0);
+    nvgAddFallbackFontId(vg, fonts[FONT_REGULAR], fonts[FONT_EMOJI]);
+    // Use Emoji font as fallback for all the rest.
+    for (int i = 0; i < FONT_NUM_FONTS; i++)
+        nvgAddFallbackFontId(vg, fonts[i], fonts[FONT_EMOJI]);
 
     last_update_time = 0;
 
@@ -307,6 +349,49 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             need_window = true;
         }
         break;
+    case TRAP_GRAPHICS_FONT_REGULAR:
+        PUSH_INT(FONT_REGULAR);
+        break;
+    case TRAP_GRAPHICS_FONT_ITALIC:
+        PUSH_INT(FONT_ITALIC);
+        break;
+    case TRAP_GRAPHICS_FONT_BOLD:
+        PUSH_INT(FONT_BOLD);
+        break;
+    case TRAP_GRAPHICS_FONT_BOLDITALIC:
+        PUSH_INT(FONT_BOLDITALIC);
+        break;
+    case TRAP_GRAPHICS_FONT_EMOJI:
+        PUSH_INT(FONT_EMOJI);
+        break;
+    case TRAP_GRAPHICS_TEXT:
+        {
+            sam_uword_t font;
+            POP_UINT(font);
+            if (font > FONT_NUM_FONTS)
+                HALT(SAM_ERROR_WRONG_TYPE); // FIXME: better error
+            NVGcolor color;
+            POP_COLOR(color);
+            sam_word_t x, y;
+            POP_UINT(y);
+            POP_UINT(x);
+            sam_blob_t *blob;
+            POP_REF(blob);
+            sam_string_t *str;
+            EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
+
+            // FIXME: make the following parameters or state
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgFontFaceId(vg, fonts[font]);
+            nvgFontSize(vg, 16.0 * PIXEL_SIZE);
+            nvgFillColor(vg, color);
+            nvgBeginPath(vg);
+            nvgText(vg, x, y, str->str, str->str + str->len);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
+            need_window = true;
+        }
+        break;
     default:
         error = SAM_ERROR_INVALID_TRAP;
         break;
@@ -352,6 +437,18 @@ char *sam_graphics_trap_name(sam_word_t function)
         return "FILLCIRCLE";
     case TRAP_GRAPHICS_DRAWBITMAP:
         return "DRAWBITMAP";
+    case TRAP_GRAPHICS_FONT_REGULAR:
+        return "FONT_REGULAR";
+    case TRAP_GRAPHICS_FONT_ITALIC:
+        return "FONT_ITALIC";
+    case TRAP_GRAPHICS_FONT_BOLD:
+        return "FONT_BOLD";
+    case TRAP_GRAPHICS_FONT_BOLDITALIC:
+        return "FONT_BOLDITALIC";
+    case TRAP_GRAPHICS_FONT_EMOJI:
+        return "FONT_EMOJI";
+    case TRAP_GRAPHICS_TEXT:
+        return "TEXT";
     default:
         return NULL;
     }
