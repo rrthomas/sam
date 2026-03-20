@@ -21,6 +21,7 @@
 #include "traps_basic.h"
 #include "traps_math.h"
 #include "traps_graphics.h"
+#include "traps_input.h"
 #include "traps_string.h"
 
 // Instruction constants
@@ -84,6 +85,8 @@ static sam_word_t sam_trap(sam_state_t *state, sam_uword_t function)
         return sam_graphics_trap(state, function);
     case SAM_TRAP_STRING_BASE:
         return sam_string_trap(state, function);
+    case SAM_TRAP_INPUT_BASE:
+        return sam_input_trap(state, function);
     default:
         return SAM_ERROR_INVALID_TRAP;
     }
