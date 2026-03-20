@@ -32,9 +32,10 @@ libsam_la_SOURCES = \
 	traps_math.h \
 	traps_math.c \
 	traps_graphics.h \
-	traps_graphics.c \
+	traps_input.h \
 	traps_string.h \
 	traps_string.c \
+	traps_sdl.c \
 	$(EMPTY)
 
 loc-local:

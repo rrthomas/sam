@@ -71,6 +71,7 @@ RESULTS = \
 
 EXTRA_DIST = $(LOG_COMPILER) $(TESTS) $(RESULTS) \
 	turtle.yaml \
+	keyboard.sal \
 	$(EMPTY)
 
 clean-local:

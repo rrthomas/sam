@@ -1,0 +1,6 @@
+LOG, "Please focus the SAM window"
+TEXT, "Please press Space to end", 100, 100, WHITE, FONT_REGULAR
+loop {
+    let space_pressed = {KEYPRESSED, KEY_SPACE}
+    if space_pressed {break}
+}
