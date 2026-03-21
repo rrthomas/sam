@@ -50,9 +50,10 @@ var (
 		unquoteString(),
 	)
 
-	identToken = lex.Symbols()["Ident"]
-	intToken   = lex.Symbols()["Int"]
-	floatToken = lex.Symbols()["Float"]
+	identToken  = lex.Symbols()["Ident"]
+	intToken    = lex.Symbols()["Int"]
+	floatToken  = lex.Symbols()["Float"]
+	stringToken = lex.Symbols()["String"]
 )
 
 func unquoteString() participle.Option {
@@ -113,7 +114,7 @@ next:
 
 			default:
 				switch l.last.Type {
-				case intToken, floatToken, identToken:
+				case intToken, floatToken, identToken, stringToken:
 					token.Value = ";"
 					token.Type = ';'
 
