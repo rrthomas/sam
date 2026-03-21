@@ -10315,7 +10315,7 @@ Working stack: (15 word(s))
 - int 10
 - string γ
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+γsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -10735,7 +10735,7 @@ Working stack: (15 word(s))
 - int 10
 - string ε
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+εsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -11155,7 +11155,7 @@ Working stack: (15 word(s))
 - int 10
 - string ι
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+ιsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -11575,7 +11575,7 @@ Working stack: (15 word(s))
 - int 10
 - string α
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+αsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -11995,7 +11995,7 @@ Working stack: (15 word(s))
 - int 10
 - string  
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+ sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -12415,7 +12415,7 @@ Working stack: (15 word(s))
 - int 10
 - string σ
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+σsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -12835,7 +12835,7 @@ Working stack: (15 word(s))
 - int 10
 - string ο
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+οsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -13255,7 +13255,7 @@ Working stack: (15 word(s))
 - int 10
 - string υ
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+υsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -13675,7 +13675,7 @@ Working stack: (15 word(s))
 - int 10
 - string ,
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+,sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -14095,7 +14095,7 @@ Working stack: (15 word(s))
 - int 10
 - string  
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+ sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -14515,7 +14515,7 @@ Working stack: (15 word(s))
 - int 10
 - string ρ
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+ρsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -14935,7 +14935,7 @@ Working stack: (15 word(s))
 - int 10
 - string ὸ
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+ὸsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -15355,7 +15355,7 @@ Working stack: (15 word(s))
 - int 10
 - string ζ
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+ζsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - null
 - stack XXXXXXXX (4 items)
@@ -15889,4 +15889,3 @@ int 5
 int 6
 int 1
 float 3.400000
-γεια σου, ρὸζ

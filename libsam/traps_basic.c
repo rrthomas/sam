@@ -232,7 +232,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             POP_REF(blob);
             sam_string_t *str;
             EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
-            fwrite(str->str, sizeof(char), str->len, stdout);
+            fwrite(str->str, sizeof(char), str->len, stderr);
         }
         break;
     }
