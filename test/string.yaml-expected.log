@@ -28,7 +28,7 @@ Working stack: (2 word(s))
 - string hello rose
 - string hello rose
 trap LOG
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+hello rosesam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - string hello rose
 int
@@ -43,4 +43,3 @@ sam_run returns: halt with result int 0
 Stack: XXXXXXXX (2 item(s))
 - string hello rose
 - int 0
-hello rose
