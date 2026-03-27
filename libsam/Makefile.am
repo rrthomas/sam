@@ -11,7 +11,8 @@ AM_CFLAGS = -Wall -Wextra -Wno-strict-aliasing
 
 include_HEADERS = \
 	sam.h \
-	sam_opcodes.h
+	sam_opcodes.h \
+	sam_sdl.h
 
 libsam_la_CFLAGS = $(SDL2_CFLAGS) $(LIBGRAPHEME_CFLAGS) $(AM_CFLAGS)
 libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) $(LIBGRAPHEME_LIBS) -lm
@@ -26,6 +27,7 @@ libsam_la_SOURCES = \
 	stack.c \
 	string.c \
 	run.c \
+	sdl.c \
 	state.c \
 	traps_basic.h \
 	traps_basic.c \
@@ -35,7 +37,6 @@ libsam_la_SOURCES = \
 	traps_input.h \
 	traps_string.h \
 	traps_string.c \
-	traps_sdl.c \
 	$(EMPTY)
 
 loc-local:

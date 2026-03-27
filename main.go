@@ -72,7 +72,7 @@ var rootCmd = &cobra.Command{
 		if err := libsam.BasicInit(); err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
-		if err := libsam.GraphicsInit(); err != libsam.ERROR_OK {
+		if err := libsam.SdlInit(); err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
 		code.PrintStack()
@@ -84,18 +84,18 @@ var rootCmd = &cobra.Command{
 			stack.PrintStack()
 		}
 
-		if libsam.GraphicsWindowUsed() {
+		if libsam.SdlWindowUsed() {
 			if pbmFile != "" {
 				libsam.DumpScreen(pbmFile)
 			}
 		}
 
-		if wait && libsam.GraphicsWindowUsed() {
-			libsam.GraphicsWait()
+		if wait && libsam.SdlWindowUsed() {
+			libsam.SdlWait()
 		}
 
 		libsam.BasicFinish()
-		libsam.GraphicsFinish()
+		libsam.SdlFinish()
 		os.Exit(int(res))
 
 		return nil

@@ -6,6 +6,7 @@ package libsam
 //#cgo pkg-config: sdl2 libgrapheme
 //#include <stdlib.h>
 //#include "sam.h"
+//#include "sam_sdl.h"
 //#include "sam_opcodes.h"
 //#include "private.h"
 //#include "traps_basic.h"
@@ -150,20 +151,20 @@ func BasicFinish() {
 	C.sam_basic_finish()
 }
 
-func GraphicsInit() Word {
-	return C.sam_graphics_init()
+func SdlInit() Word {
+	return C.sam_sdl_init()
 }
 
-func GraphicsFinish() {
-	C.sam_graphics_finish()
+func SdlFinish() {
+	C.sam_sdl_finish()
 }
 
-func GraphicsWindowUsed() bool {
-	return C.sam_graphics_window_used() != 0
+func SdlWindowUsed() bool {
+	return C.sam_sdl_window_used() != 0
 }
 
-func GraphicsWait() {
-	C.sam_graphics_wait()
+func SdlWait() {
+	C.sam_sdl_wait()
 }
 
 func SetDebug(flag bool) {

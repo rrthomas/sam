@@ -18,6 +18,8 @@
 
 #include "sam.h"
 #include "sam_opcodes.h"
+#include "sam_sdl.h"
+
 #include "private.h"
 #include "traps_basic.h"
 #include "traps_math.h"

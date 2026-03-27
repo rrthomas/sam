@@ -16,6 +16,8 @@
 
 #include "sam.h"
 #include "sam_opcodes.h"
+#include "sam_sdl.h"
+
 #include "private.h"
 #include "run.h"
 #include "traps_basic.h"
@@ -495,7 +497,7 @@ sam_word_t sam_run(sam_state_t *state)
             abort(); // The opcodes are exhaustive
         }
 
-        sam_graphics_process_events();
+        sam_sdl_process_events();
     }
 
 error:

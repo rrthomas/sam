@@ -26,6 +26,8 @@
 
 #include "sam.h"
 #include "sam_opcodes.h"
+#include "sam_sdl.h"
+
 #include "private.h"
 #include "run.h"
 #include "traps_graphics.h"
@@ -90,7 +92,7 @@ void sam_update_screen(void)
     SDL_UpdateWindowSurface(win);
 }
 
-int sam_graphics_process_events(void)
+int sam_sdl_process_events(void)
 {
     SDL_bool quit = 0;
     SDL_Event event;
@@ -126,7 +128,7 @@ int sam_graphics_process_events(void)
     return quit;
 }
 
-int sam_graphics_window_used(void)
+int sam_sdl_window_used(void)
 {
     return SDL_GetWindowFlags(win) & SDL_WINDOW_SHOWN;
 }
@@ -138,7 +140,7 @@ uint32_t sam_getpixel(int x, int y)
     return *p;
 }
 
-sam_word_t sam_graphics_init(void)
+sam_word_t sam_sdl_init(void)
 {
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
         return SAM_ERROR_TRAP_INIT;
@@ -169,7 +171,7 @@ sam_word_t sam_graphics_init(void)
     return SAM_ERROR_OK;
 }
 
-void sam_graphics_finish(void)
+void sam_sdl_finish(void)
 {
     SDL_DestroyWindow(win);
     SDL_Quit();
@@ -407,9 +409,9 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
     return error;
 }
 
-void sam_graphics_wait(void)
+void sam_sdl_wait(void)
 {
-    while (sam_graphics_process_events() == 0) {
+    while (sam_sdl_process_events() == 0) {
         SDL_Delay(sam_update_interval);
     }
 }

@@ -13,20 +13,8 @@
 
 #include "sam.h"
 
-#define SAM_DISPLAY_WIDTH 800
-#define SAM_DISPLAY_HEIGHT 600
-extern const unsigned sam_update_interval;
-
-sam_word_t sam_graphics_init(void);
-void sam_graphics_finish(void);
-int sam_graphics_process_events(void);
 sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function);
 char *sam_graphics_trap_name(sam_word_t function);
-int sam_graphics_window_used(void);
-uint32_t sam_getpixel(int x, int y);
-void sam_dump_screen(const char *filename);
-void sam_update_screen(void);
-void sam_graphics_wait(void);
 
 #define SAM_TRAP_GRAPHICS_BASE 0x200
 
