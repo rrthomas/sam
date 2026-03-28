@@ -17,6 +17,8 @@
 #define SAM_DISPLAY_HEIGHT 600
 extern const unsigned sam_update_interval;
 
+typedef struct sam_audiofile sam_audiofile_t;
+
 sam_word_t sam_sdl_init(void);
 void sam_sdl_finish(void);
 int sam_sdl_process_events(void);

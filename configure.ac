@@ -20,7 +20,7 @@ AS_IF([test "$SIZEOF_SIZE_T" != 4 -a "$SIZEOF_SIZE_T" != 8],
 AC_SUBST([SIZEOF_SIZE_T])
 
 # Checks for libraries
-PKG_CHECK_MODULES(SDL2, [sdl2])
+PKG_CHECK_MODULES(SDL2, [sdl2 SDL2_mixer])
 PKG_CHECK_MODULES(LIBGRAPHEME, [libgrapheme])
 
 # Counting code

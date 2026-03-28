@@ -25,6 +25,7 @@
 #include "traps_math.h"
 #include "traps_graphics.h"
 #include "traps_input.h"
+#include "traps_audio.h"
 
 #define XEXTRACT_BLOB(blob, type_code, blob_type, var)  \
     do {                                                \
@@ -148,6 +149,9 @@ char *trap_name(sam_uword_t function)
         break;
     case SAM_TRAP_INPUT_BASE:
         name = sam_input_trap_name(function);
+        break;
+    case SAM_TRAP_AUDIO_BASE:
+        name = sam_audio_trap_name(function);
         break;
     default:
         break;

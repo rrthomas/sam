@@ -11,6 +11,7 @@
 #include <stdbool.h>
 
 #include <SDL.h>
+#include <SDL_mixer.h>
 
 #ifndef DEBUG_NANOVG
 #define NVG_LOG(...)
@@ -29,9 +30,11 @@
 #include "sam_sdl.h"
 
 #include "private.h"
+#include "sdl_private.h"
 #include "run.h"
 #include "traps_graphics.h"
 #include "traps_input.h"
+#include "traps_audio.h"
 
 const unsigned sam_update_interval = 10; // milliseconds between screen updates
 
@@ -75,6 +78,77 @@ unsigned char font_emoji[] = {
 /* #embed "NotoColorEmoji.ttf" */ // FIXME: stb_truetype fails to load this font.
 #embed "NotoEmoji-Regular.ttf"
 };
+
+
+enum sound_handle {
+    SOUND_APPLAUSE,
+    SOUND_BEEP,
+    SOUND_BELL,
+    SOUND_COW,
+    SOUND_EXPLOSION,
+    SOUND_GONG,
+    SOUND_HORSE,
+    SOUND_LASER,
+    SOUND_NUM_SOUNDS,
+};
+
+static sam_blob_t *sounds[SOUND_NUM_SOUNDS];
+
+unsigned char sound_applause[] = {
+#embed "applause.wav"
+};
+
+unsigned char sound_beep[] = {
+#embed "beep.wav"
+};
+
+unsigned char sound_bell[] = {
+#embed "bell.wav"
+};
+
+unsigned char sound_cow[] = {
+#embed "cow.wav"
+};
+
+unsigned char sound_explosion[] = {
+#embed "explos.wav"
+};
+
+unsigned char sound_gong[] = {
+#embed "gong.wav"
+};
+
+unsigned char sound_horse[] = {
+#embed "horse.wav"
+};
+
+unsigned char sound_laser[] = {
+#embed "laser.wav"
+};
+
+int sam_audiofile_new(sam_blob_t **new_audiofile, Mix_Music *audiofile)
+{
+    sam_word_t error = SAM_ERROR_OK;
+    sam_blob_t *blob;
+    HALT_IF_ERROR(sam_blob_new(SAM_BLOB_AUDIOFILE, sizeof(sam_audiofile_t), &blob));
+    sam_audiofile_t *audio;
+    EXTRACT_BLOB(blob, SAM_BLOB_AUDIOFILE, sam_audiofile_t, audio);
+    audio->audio = audiofile;
+    *new_audiofile = blob;
+
+error:
+    return error;
+}
+
+static int load_audio_memory(unsigned char *mem, size_t size, sam_blob_t **blob)
+{
+    SDL_RWops *src = SDL_RWFromMem((void *)mem, (int)size);
+    Mix_Music *audiofile = Mix_LoadMUSType_RW(src, MUS_WAV, 1);
+    if (audiofile == NULL)
+        return SAM_ERROR_TRAP_INIT;
+    return sam_audiofile_new(blob, audiofile);
+}
+
 
 #define POP_COLOR(var)                                   \
     do {                                                 \
@@ -142,12 +216,14 @@ uint32_t sam_getpixel(int x, int y)
 
 sam_word_t sam_sdl_init(void)
 {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0)
+    sam_word_t error = SAM_ERROR_OK;
+
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
         return SAM_ERROR_TRAP_INIT;
 
     win = SDL_CreateWindow("SAM", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SAM_DISPLAY_WIDTH * PIXEL_SIZE, SAM_DISPLAY_HEIGHT * PIXEL_SIZE, SDL_WINDOW_HIDDEN);
     if (win == NULL)
-        return SAM_ERROR_TRAP_INIT;
+        HALT(SAM_ERROR_TRAP_INIT);
 
     srf = SDL_GetWindowSurface(win);
     vg = nvgswCreate(NVG_SRGB | NVG_AUTOW_DEFAULT);
@@ -164,15 +240,33 @@ sam_word_t sam_sdl_init(void)
     for (int i = 0; i < FONT_NUM_FONTS; i++)
         nvgAddFallbackFontId(vg, fonts[i], fonts[FONT_EMOJI]);
 
+    Mix_Init(0);
+    if (Mix_OpenAudio(48000, MIX_DEFAULT_FORMAT, 2, 4096) != 0)
+        HALT(SAM_ERROR_TRAP_INIT);
+    HALT_IF_ERROR(load_audio_memory(sound_applause, sizeof(sound_applause), &sounds[SOUND_APPLAUSE]));
+    HALT_IF_ERROR(load_audio_memory(sound_beep, sizeof(sound_beep), &sounds[SOUND_BEEP]));
+    HALT_IF_ERROR(load_audio_memory(sound_bell, sizeof(sound_bell), &sounds[SOUND_BELL]));
+    HALT_IF_ERROR(load_audio_memory(sound_cow, sizeof(sound_cow), &sounds[SOUND_COW]));
+    HALT_IF_ERROR(load_audio_memory(sound_explosion, sizeof(sound_explosion), &sounds[SOUND_EXPLOSION]));
+    HALT_IF_ERROR(load_audio_memory(sound_gong, sizeof(sound_gong), &sounds[SOUND_GONG]));
+    HALT_IF_ERROR(load_audio_memory(sound_horse, sizeof(sound_horse), &sounds[SOUND_HORSE]));
+    HALT_IF_ERROR(load_audio_memory(sound_laser, sizeof(sound_laser), &sounds[SOUND_LASER]));
+
     keymap = SDL_GetKeyboardState(&numkeys);
 
     last_update_time = 0;
 
-    return SAM_ERROR_OK;
+error:
+    return error;
 }
 
 void sam_sdl_finish(void)
 {
+    // Wait for sounds playing to finish
+    while (Mix_PlayingMusic()) {
+        SDL_Delay(100);
+    }
+    
     SDL_DestroyWindow(win);
     SDL_Quit();
 }
@@ -1719,6 +1813,129 @@ char *sam_input_trap_name(sam_word_t function)
     case TRAP_INPUT_KEY_ENDCALL:
       return "KEY_ENDCALL";
       default:
+        return NULL;
+    }
+}
+
+sam_word_t sam_audio_trap(sam_state_t *state, sam_uword_t function)
+{
+#define s ((sam_stack_t *)state->s0->data)
+    int error = SAM_ERROR_OK;
+
+    switch (function) {
+    case TRAP_AUDIO_NEW_AUDIOFILE:
+        // FIXME
+        break;
+    case TRAP_AUDIO_VOL:
+        break;
+    case TRAP_AUDIO_PITCH:
+        break;
+    case TRAP_AUDIO_CUE:
+        break;
+    case TRAP_AUDIO_PLAY:
+        {
+            sam_blob_t *blob;
+            POP_REF(blob);
+            sam_audiofile_t *audio;
+            EXTRACT_BLOB(blob, SAM_BLOB_AUDIOFILE, sam_audiofile_t, audio);
+            Mix_PlayMusic(audio->audio, 0); // FIXME: check error
+        }
+        break;
+    case TRAP_AUDIO_DURATION:
+        break;
+    case TRAP_AUDIO_ISPLAYING:
+        break;
+    case TRAP_AUDIO_JUMP:
+        break;
+    case TRAP_AUDIO_LOOP:
+        break;
+    case TRAP_AUDIO_PAN:
+        break;
+    case TRAP_AUDIO_PAUSE:
+        break;
+    case TRAP_AUDIO_SPEED:
+        break;
+
+    case TRAP_AUDIO_APPLAUSE:
+        PUSH_REF(sounds[SOUND_APPLAUSE]);
+        break;
+    case TRAP_AUDIO_BEEP:
+        PUSH_REF(sounds[SOUND_BEEP]);
+        break;
+    case TRAP_AUDIO_BELL:
+        PUSH_REF(sounds[SOUND_BEEP]);
+        break;
+    case TRAP_AUDIO_COW:
+        PUSH_REF(sounds[SOUND_COW]);
+        break;
+    case TRAP_AUDIO_EXPLOSION:
+        PUSH_REF(sounds[SOUND_EXPLOSION]);
+        break;
+    case TRAP_AUDIO_GONG:
+        PUSH_REF(sounds[SOUND_GONG]);
+        break;
+    case TRAP_AUDIO_HORSE:
+        PUSH_REF(sounds[SOUND_HORSE]);
+        break;
+    case TRAP_AUDIO_LASER:
+        PUSH_REF(sounds[SOUND_LASER]);
+        break;
+
+    default:
+        error = SAM_ERROR_INVALID_TRAP;
+        break;
+    }
+
+ error:
+    return error;
+}
+
+char *sam_audio_trap_name(sam_word_t function)
+{
+    switch (function) {
+    case TRAP_AUDIO_NEW_AUDIOFILE:
+        return "NEW_AUDIOFILE";
+    case TRAP_AUDIO_VOL:
+        return "AUDIO_VOL";
+    case TRAP_AUDIO_PITCH:
+        return "AUDIO_PITCH";
+    case TRAP_AUDIO_CUE:
+        return "AUDIO_CUE";
+    case TRAP_AUDIO_PLAY:
+        return "AUDIO_PLAY";
+    case TRAP_AUDIO_DURATION:
+        return "AUDIO_DURATION";
+    case TRAP_AUDIO_ISPLAYING:
+        return "AUDIO_ISPLAYING";
+    case TRAP_AUDIO_JUMP:
+        return "AUDIO_JUMP";
+    case TRAP_AUDIO_LOOP:
+        return "AUDIO_LOOP";
+    case TRAP_AUDIO_PAN:
+        return "AUDIO_PAN";
+    case TRAP_AUDIO_PAUSE:
+        return "AUDIO_PAUSE";
+    case TRAP_AUDIO_SPEED:
+        return "AUDIO_SPEED";
+
+    case TRAP_AUDIO_APPLAUSE:
+        return "APPLAUSE";
+    case TRAP_AUDIO_BEEP:
+        return "BEEP";
+    case TRAP_AUDIO_BELL:
+        return "BELL";
+    case TRAP_AUDIO_COW:
+        return "COW";
+    case TRAP_AUDIO_EXPLOSION:
+        return "EXPLOSION";
+    case TRAP_AUDIO_GONG:
+        return "GONG";
+    case TRAP_AUDIO_HORSE:
+        return "HORSE";
+    case TRAP_AUDIO_LASER:
+        return "LASER";
+
+    default:
         return NULL;
     }
 }

@@ -35,6 +35,7 @@ libsam_la_SOURCES = \
 	traps_math.c \
 	traps_graphics.h \
 	traps_input.h \
+	traps_audio.h \
 	traps_string.h \
 	traps_string.c \
 	$(EMPTY)

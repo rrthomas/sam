@@ -1,4 +1,4 @@
-# Top-level & tests Makefile.am
+# Top-level & tests Make file.am
 #
 # © 2020-2026 Reuben Thomas <rrt@sc3d.org>
 
@@ -72,6 +72,7 @@ RESULTS = \
 EXTRA_DIST = $(LOG_COMPILER) $(TESTS) $(RESULTS) \
 	turtle.yaml \
 	keyboard.sal \
+	audio.sal \
 	$(EMPTY)
 
 clean-local:

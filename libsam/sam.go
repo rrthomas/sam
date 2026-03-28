@@ -3,7 +3,7 @@ package libsam
 
 //#cgo LDFLAGS: -lm
 //#cgo CFLAGS: -DSAM_DEBUG
-//#cgo pkg-config: sdl2 libgrapheme
+//#cgo pkg-config: sdl2 SDL2_mixer libgrapheme
 //#include <stdlib.h>
 //#include "sam.h"
 //#include "sam_sdl.h"
@@ -13,6 +13,7 @@ package libsam
 //#include "traps_math.h"
 //#include "traps_graphics.h"
 //#include "traps_input.h"
+//#include "traps_audio.h"
 import "C"
 import (
 	"fmt"
@@ -587,6 +588,26 @@ var Traps = map[string]int{
 	"KEY_SOFTRIGHT":          C.TRAP_INPUT_KEY_SOFTRIGHT,
 	"KEY_CALL":               C.TRAP_INPUT_KEY_CALL,
 	"KEY_ENDCALL":            C.TRAP_INPUT_KEY_ENDCALL,
+	"NEW_AUDIOFILE":          C.TRAP_AUDIO_NEW_AUDIOFILE,
+	"AUDIO_VOL":              C.TRAP_AUDIO_VOL,
+	"AUDIO_PITCH":            C.TRAP_AUDIO_PITCH,
+	"AUDIO_CUE":              C.TRAP_AUDIO_CUE,
+	"AUDIO_PLAY":             C.TRAP_AUDIO_PLAY,
+	"AUDIO_DURATION":         C.TRAP_AUDIO_DURATION,
+	"AUDIO_ISPLAYING":        C.TRAP_AUDIO_ISPLAYING,
+	"AUDIO_JUMP":             C.TRAP_AUDIO_JUMP,
+	"AUDIO_LOOP":             C.TRAP_AUDIO_LOOP,
+	"AUDIO_PAN":              C.TRAP_AUDIO_PAN,
+	"AUDIO_PAUSE":            C.TRAP_AUDIO_PAUSE,
+	"AUDIO_SPEED":            C.TRAP_AUDIO_SPEED,
+	"APPLAUSE":               C.TRAP_AUDIO_APPLAUSE,
+	"BEEP":                   C.TRAP_AUDIO_BEEP,
+	"BELL":                   C.TRAP_AUDIO_BELL,
+	"COW":                    C.TRAP_AUDIO_COW,
+	"EXPLOSION":              C.TRAP_AUDIO_EXPLOSION,
+	"GONG":                   C.TRAP_AUDIO_GONG,
+	"HORSE":                  C.TRAP_AUDIO_HORSE,
+	"LASER":                  C.TRAP_AUDIO_LASER,
 }
 
 // The net change in `SP` caused by each instruction.
@@ -943,4 +964,26 @@ var TrapStackEffect = map[string]StackEffect{
 	"KEY_SOFTRIGHT":          {0, 1},
 	"KEY_CALL":               {0, 1},
 	"KEY_ENDCALL":            {0, 1},
+
+	// Audio traps
+	"NEW_AUDIOFILE":   {0, 1},
+	"AUDIO_VOL":       {2, 0},
+	"AUDIO_PITCH":     {2, 0},
+	"AUDIO_CUE":       {2, 0},
+	"AUDIO_PLAY":      {1, 0},
+	"AUDIO_DURATION":  {1, 1},
+	"AUDIO_ISPLAYING": {1, 1},
+	"AUDIO_JUMP":      {2, 0},
+	"AUDIO_LOOP":      {2, 0},
+	"AUDIO_PAN":       {2, 0},
+	"AUDIO_PAUSE":     {1, 0},
+	"AUDIO_SPEED":     {1, 1},
+	"APPLAUSE":        {0, 1},
+	"BEEP":            {0, 1},
+	"BELL":            {0, 1},
+	"COW":             {0, 1},
+	"EXPLOSION":       {0, 1},
+	"GONG":            {0, 1},
+	"HORSE":           {0, 1},
+	"LASER":           {0, 1},
 }

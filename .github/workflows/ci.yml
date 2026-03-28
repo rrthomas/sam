@@ -17,11 +17,13 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
       - name: Install dependencies
         run: |
-          brew install coreutils automake pkg-config go libgrapheme
+          brew install coreutils automake pkg-config go sdl2_mixer libgrapheme
           # Prepend optional brew binary directories to PATH
           echo "$(brew --prefix m4)/bin:${PATH}" >> $GITHUB_PATH
       - name: configure
-        run: autoreconf -fi && ./configure && go mod download
+        run: |
+          export PKG_CONFIG_PATH="$(brew --prefix systemd)/lib/pkgconfig:$PKG_CONFIG_PATH"
+          autoreconf -fi && ./configure && go mod download
       - name: make
         run: make --jobs=`nproc`
         env:
@@ -59,6 +61,7 @@ jobs:
   #         mingw-w64-${{matrix.env}}-pkg-config
   #         mingw-w64-${{matrix.env}}-gcc
   #         mingw-w64-${{matrix.env}}-go
+  #         mingw-w64-${{matrix.env}}-SDL2_mixer
   #   - uses: actions/checkout@v5
   #   - name: configure
   #     run: autoreconf -fi && ./configure && go mod download
