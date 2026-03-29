@@ -341,6 +341,8 @@ var Traps = map[string]int{
 	"FONT_BOLDITALIC": C.TRAP_GRAPHICS_FONT_BOLDITALIC,
 	"FONT_EMOJI":      C.TRAP_GRAPHICS_FONT_EMOJI,
 	"TEXT":            C.TRAP_GRAPHICS_TEXT,
+	"FPS":             C.TRAP_GRAPHICS_FPS,
+	"WAIT":            C.TRAP_GRAPHICS_WAIT,
 
 	"KEYPRESSED":             C.TRAP_INPUT_KEYPRESSED,
 	"KEY_A":                  C.TRAP_INPUT_KEY_A,
@@ -716,6 +718,8 @@ var TrapStackEffect = map[string]StackEffect{
 	"FONT_BOLDITALIC": {0, 1},
 	"FONT_EMOJI":      {0, 1},
 	"TEXT":            {5, 0},
+	"FPS":             {1, 0},
+	"WAIT":            {0, 0},
 
 	// Input traps
 	"KEYPRESSED":             {1, 1},

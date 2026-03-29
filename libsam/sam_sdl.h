@@ -15,7 +15,7 @@
 
 #define SAM_DISPLAY_WIDTH 800
 #define SAM_DISPLAY_HEIGHT 600
-extern const unsigned sam_update_interval;
+extern unsigned sam_update_interval;
 
 typedef struct sam_audiofile sam_audiofile_t;
 

@@ -36,7 +36,7 @@
 #include "traps_input.h"
 #include "traps_audio.h"
 
-const unsigned sam_update_interval = 10; // milliseconds between screen updates
+unsigned sam_update_interval = 10; // milliseconds between screen updates
 
 #define PIXEL_SIZE 2 // FIXME calculate pixel ratio
 static SDL_Window *win;
@@ -266,7 +266,7 @@ void sam_sdl_finish(void)
     while (Mix_PlayingMusic()) {
         SDL_Delay(100);
     }
-    
+
     SDL_DestroyWindow(win);
     SDL_Quit();
 }
@@ -494,7 +494,17 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             need_window = true;
         }
         break;
-    default:
+    case TRAP_GRAPHICS_FPS:
+        {
+            sam_uword_t fps;
+            POP_UINT(fps);
+            sam_update_interval = 1000 / fps;
+        }
+        break;
+    case TRAP_GRAPHICS_WAIT:
+        sam_sdl_wait();
+        break;
+     default:
         error = SAM_ERROR_INVALID_TRAP;
         break;
     }
