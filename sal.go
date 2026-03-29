@@ -268,8 +268,8 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 		e.Function.Compile(ctx)
 	} else if e.Paren != nil {
 		e.Paren.Compile(ctx)
-	} else {
-		panic("invalid PrimaryExp")
+	} else { // empty list
+		ctx.assemble("new")
 	}
 }
 
