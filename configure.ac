@@ -2,7 +2,7 @@
 #
 # © 2020-2026 Reuben Thomas <rrt@sc3d.org>
 
-AC_PREREQ([2.72])
+AC_PREREQ([2.73])
 AC_INIT([sam],[0.1])
 AM_INIT_AUTOMAKE([-Wall std-options foreign])
 
