@@ -176,7 +176,7 @@ type Declaration struct {
 	Pos lexer.Position
 
 	Variable *string     `"let" @Ident "="`
-	Value    *Expression `@@ ";"`
+	Value    *Expression `@@`
 }
 
 type Assignment struct {
@@ -189,8 +189,9 @@ type Assignment struct {
 type Statement struct {
 	Pos lexer.Position
 
-	Assignment *Assignment `  @@ ";"`
-	Trap       *Trap       `| @@ ";"`
+	Assignment   *Assignment    `  @@ ";"`
+	Trap         *Trap          `| @@ ";"`
+	Declarations *[]Declaration `| ( @@ ";" )+`
 }
 
 type Terminator struct {
@@ -203,9 +204,8 @@ type Terminator struct {
 type Body struct {
 	Pos lexer.Position
 
-	Declarations *[]Declaration `@@*`
-	Statements   *[]Statement   `@@*`
-	Terminator   *Terminator    `@@?`
+	Statements *[]Statement `@@*`
+	Terminator *Terminator  `@@?`
 }
 
 type Block struct {
@@ -574,6 +574,10 @@ func (s *Statement) Compile(ctx *Frame) {
 		s.Assignment.Compile(ctx)
 	} else if s.Trap != nil {
 		s.Trap.Compile(ctx)
+	} else if s.Declarations != nil {
+		for _, d := range *s.Declarations {
+			d.Compile(ctx)
+		}
 	} else {
 		panic("invalid Statement")
 	}
@@ -611,15 +615,10 @@ func (t *Terminator) Compile(ctx *Frame) {
 }
 
 func (b *Body) Compile(ctx *Frame) {
-	if b.Declarations != nil {
-		for _, d := range *b.Declarations {
-			d.Compile(ctx)
-		}
-	}
 	if b.Statements != nil {
 		for i, s := range *b.Statements {
 			s.Compile(ctx)
-			if i < len(*b.Statements)-1 || b.Terminator != nil {
+			if s.Declarations == nil && (i < len(*b.Statements)-1 || b.Terminator != nil) {
 				ctx.assemble("drop")
 			}
 		}
