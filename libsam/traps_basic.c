@@ -10,6 +10,7 @@
 
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "sam.h"
 #include "sam_opcodes.h"
@@ -23,6 +24,9 @@
 
 sam_word_t sam_basic_init(void)
 {
+    // Initialise the random number generator
+    srand48(42);
+
     return SAM_ERROR_OK;
 }
 
@@ -235,6 +239,15 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             fwrite(str->str, sizeof(char), str->len, stderr);
         }
         break;
+    case TRAP_BASIC_SEED:
+        {
+            sam_word_t w;
+            POP_WORD(&w);
+            srand48((long)w);
+        }
+        break;
+    case TRAP_BASIC_RANDOM:
+        PUSH_FLOAT(drand48());
     }
 error:
     return error;
@@ -271,6 +284,10 @@ char *sam_basic_trap_name(sam_word_t function)
         return "DEBUG";
     case TRAP_BASIC_LOG:
         return "LOG";
+    case TRAP_BASIC_SEED:
+        return "SEED";
+    case TRAP_BASIC_RANDOM:
+        return "RANDOM";
     default:
         return NULL;
     }

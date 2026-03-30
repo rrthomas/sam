@@ -313,6 +313,8 @@ var Traps = map[string]int{
 	"NEW_MAP": C.TRAP_BASIC_NEW_MAP,
 	"DEBUG":   C.TRAP_BASIC_DEBUG,
 	"LOG":     C.TRAP_BASIC_LOG,
+	"SEED":    C.TRAP_BASIC_SEED,
+	"RANDOM":  C.TRAP_BASIC_RANDOM,
 
 	"I2F": C.TRAP_MATH_I2F,
 	"F2I": C.TRAP_MATH_F2I,
@@ -688,6 +690,8 @@ var TrapStackEffect = map[string]StackEffect{
 	"NEW_MAP": {0, 1},
 	"DEBUG":   {1, 0},
 	"LOG":     {1, 0},
+	"SEED":    {1, 0},
+	"RANDOM":  {0, 1},
 
 	// Math traps
 	"I2F": {1, 1},
