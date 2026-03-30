@@ -641,7 +641,7 @@ Working stack: (8 word(s))
 - int 100
 - int 500
 - int 4294967295
-- int 0
+- int 2
 trap TEXT
 sam_run: p0 = XXXXXXXX, pc = 72, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))

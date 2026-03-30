@@ -48,6 +48,8 @@ static SDL_PixelFormat *fmt;
 const unsigned bytes_per_pixel = 4;
 
 enum font_handle {
+    FONT_MONO,
+    FONT_MONO_BOLD,
     FONT_REGULAR,
     FONT_ITALIC,
     FONT_BOLD,
@@ -57,6 +59,14 @@ enum font_handle {
 };
 
 static int fonts[FONT_NUM_FONTS];
+
+unsigned char font_mono[] = {
+#embed "NotoSansMono-Regular.ttf"
+};
+
+unsigned char font_mono_bold[] = {
+#embed "NotoSansMono-Bold.ttf"
+};
 
 unsigned char font_regular[] = {
 #embed "NotoSans-Regular.ttf"
@@ -230,6 +240,8 @@ sam_word_t sam_sdl_init(void)
     fmt = srf->format;
     nvgswSetFramebuffer(vg, srf->pixels, srf->w, srf->h, fmt->Rshift, fmt->Gshift, fmt->Bshift, 24);
 
+    fonts[FONT_MONO] = nvgCreateFontMem(vg, "Mono", font_mono, sizeof(font_mono), 0);
+    fonts[FONT_MONO_BOLD] = nvgCreateFontMem(vg, "Mono Bold", font_mono_bold, sizeof(font_mono_bold), 0);
     fonts[FONT_REGULAR] = nvgCreateFontMem(vg, "Regular", font_regular, sizeof(font_regular), 0);
     fonts[FONT_ITALIC] = nvgCreateFontMem(vg, "Italic", font_italic, sizeof(font_italic), 0);
     fonts[FONT_BOLD] = nvgCreateFontMem(vg, "Bold", font_bold, sizeof(font_bold), 0);
@@ -451,6 +463,12 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             need_window = true;
         }
         break;
+    case TRAP_GRAPHICS_FONT_MONO:
+        PUSH_INT(FONT_MONO);
+        break;
+    case TRAP_GRAPHICS_FONT_MONO_BOLD:
+        PUSH_INT(FONT_MONO_BOLD);
+        break;
     case TRAP_GRAPHICS_FONT_REGULAR:
         PUSH_INT(FONT_REGULAR);
         break;
@@ -549,6 +567,10 @@ char *sam_graphics_trap_name(sam_word_t function)
         return "FILLCIRCLE";
     case TRAP_GRAPHICS_DRAWBITMAP:
         return "DRAWBITMAP";
+    case TRAP_GRAPHICS_FONT_MONO:
+        return "FONT_MONO";
+    case TRAP_GRAPHICS_FONT_MONO_BOLD:
+        return "FONT_MONO_BOLD";
     case TRAP_GRAPHICS_FONT_REGULAR:
         return "FONT_REGULAR";
     case TRAP_GRAPHICS_FONT_ITALIC:

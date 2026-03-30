@@ -46,4 +46,5 @@ loc-local:
 EXTRA_DIST = \
 	sam.go \
 	verstable.h \
+	*.ttf \
 	$(EMPTY)
