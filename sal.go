@@ -58,8 +58,8 @@ type PrimaryExp struct {
 type IndexedExp struct {
 	Pos lexer.Position
 
-	Object *PrimaryExp `@@`
-	Index  *Expression `[ "[" @@ "]" ]`
+	Object  *PrimaryExp   `@@`
+	Indexes *[]Expression `("[" @@ "]")*`
 }
 
 type CallExp struct {
@@ -273,14 +273,28 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	}
 }
 
+func (ctx *Frame) compileIndexedExp(object *PrimaryExp, indexes *[]Expression, set bool) {
+	if indexes != nil {
+		for i := range *indexes {
+			(*indexes)[i].Compile(ctx)
+		}
+	}
+	object.Compile(ctx)
+	if indexes != nil {
+		for range len(*indexes) - 1 {
+			ctx.assemble("get")
+		}
+		if set {
+			ctx.assemble("set")
+		} else {
+			ctx.assemble("get")
+		}
+	}
+
+}
+
 func (e *IndexedExp) Compile(ctx *Frame) {
-	if e.Index != nil {
-		e.Index.Compile(ctx)
-	}
-	e.Object.Compile(ctx)
-	if e.Index != nil {
-		ctx.assemble("get")
-	}
+	ctx.compileIndexedExp(e.Object, e.Indexes, false)
 }
 
 func (e *UnaryExp) Compile(ctx *Frame) {
@@ -788,7 +802,7 @@ func expToLvalue(e *Expression) Lvalue {
 											e := e.PostfixExp
 											if e.Calls == nil {
 												e := e.Function
-												if e.Index != nil {
+												if e.Indexes != nil {
 													return Lvalue{IndexedExp: e}
 												} else {
 													e := e.Object
@@ -816,9 +830,7 @@ func (ctx *Frame) compileAssignLvalue(e *Expression) {
 	if lv.IndexedExp == nil {
 		ctx.compileSetVar(*lv.Variable)
 	} else {
-		lv.IndexedExp.Index.Compile(ctx)
-		lv.IndexedExp.Object.Compile(ctx)
-		ctx.assemble("set")
+		ctx.compileIndexedExp(lv.IndexedExp.Object, lv.IndexedExp.Indexes, true)
 	}
 }
 
