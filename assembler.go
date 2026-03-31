@@ -210,7 +210,9 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		a.stack.PushArray(subA.stack)
 		return nil
 	case ast.StringType:
-		a.assembleInstruction(n.String())
+		var s string
+		yaml.NodeToValue(n, &s)
+		a.assembleInstruction(s)
 		return nil
 	case ast.NullType: // Special case for "null"
 		a.assembleInstruction("null")
