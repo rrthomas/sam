@@ -23,10 +23,12 @@ TESTS = \
 	set.yaml \
 	stack.yaml \
 	string.yaml \
+	ackermann.sal \
 	double_list.sal \
 	expr.sal \
 	factorial_iter.sal \
 	factorial_rec.sal \
+	fizzbuzz.sal \
 	iter.sal \
 	map.sal \
 	mutated_capture.sal \
@@ -54,10 +56,12 @@ RESULTS = \
 	set.yaml-expected.log \
 	stack.yaml-expected.log \
 	string.yaml-expected.log \
+	ackermann.sal-expected.log \
 	double_list.sal-expected.log \
 	expr.sal-expected.log \
 	factorial_iter.sal-expected.log \
 	factorial_rec.sal-expected.log \
+	fizzbuzz.sal-expected.log \
 	iter.sal-expected.log \
 	map.sal-expected.log \
 	mutated_capture.sal-expected.log \

@@ -149,7 +149,7 @@ type LogicExp struct {
 type Expression struct {
 	Pos lexer.Position
 
-	If         *If         `  @@`
+	Ifs        *Ifs        `  @@`
 	Loop       *Block      `| "loop" @@`
 	ForVar     string      `| "for" @Ident "in"`
 	Iter       *Expression `  @@`
@@ -157,12 +157,18 @@ type Expression struct {
 	Expression *LogicExp   `| @@`
 }
 
+type Ifs struct {
+	Pos lexer.Position
+
+	IfList    *[]If  `@@ ("else" @@)*`
+	FinalElse *Block `["else" @@]`
+}
+
 type If struct {
 	Pos lexer.Position
 
 	Cond *Expression `"if" @@`
 	Then *Block      `@@`
-	Else *Block      `[ "else" @@ ]`
 }
 
 type Trap struct {
@@ -478,14 +484,34 @@ func (e *LogicNotExp) Compile(ctx *Frame) {
 }
 
 func (e *LogicExp) Compile(ctx *Frame) {
-	e.Left.Compile(ctx)
-	if e.Right != nil {
-		e.Right.Compile(ctx)
+	if e.Right == nil {
+		e.Left.Compile(ctx)
+	} else {
 		switch e.Op {
 		case "and":
-			panic("implement compilation of LogicExp and")
+			ctx.assemble("null")
+			thenCtx := ctx.newBlock(false)
+			e.Right.Compile(&thenCtx)
+			thenCtx.tearDownBlock()
+			elseCtx := ctx.newBlock(false)
+			elseCtx.assemble("false")
+			elseCtx.tearDownBlock()
+			e.Left.Compile(ctx)
+			ctx.assemble(thenCtx.asm)
+			ctx.assemble(elseCtx.asm)
+			ctx.assemble("if")
 		case "or":
-			panic("implement compilation of LogicExp or")
+			ctx.assemble("null")
+			elseCtx := ctx.newBlock(false)
+			e.Right.Compile(&elseCtx)
+			elseCtx.tearDownBlock()
+			thenCtx := ctx.newBlock(false)
+			thenCtx.assemble("true")
+			thenCtx.tearDownBlock()
+			e.Left.Compile(ctx)
+			ctx.assemble(thenCtx.asm)
+			ctx.assemble(elseCtx.asm)
+			ctx.assemble("if")
 		default:
 			panic(fmt.Errorf("unknown LogicExp.Op %s", e.Op))
 		}
@@ -493,8 +519,8 @@ func (e *LogicExp) Compile(ctx *Frame) {
 }
 
 func (e *Expression) Compile(ctx *Frame) {
-	if e.If != nil {
-		e.If.Compile(ctx)
+	if e.Ifs != nil {
+		e.Ifs.Compile(ctx)
 	} else if e.Loop != nil {
 		ctx.assemble("null")
 		blockCtx := e.Loop.Compile(ctx, true)
@@ -528,17 +554,30 @@ func (e *Expression) Compile(ctx *Frame) {
 	}
 }
 
-func (i *If) Compile(ctx *Frame) {
-	ctx.assemble("null") // return value
-	thenCtx := ctx.assembleBlock(i.Then, false)
-	elseCtx := Frame{}
-	if i.Else != nil {
-		elseCtx = ctx.assembleBlock(i.Else, false)
+func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
+	if il == nil || len(*il) == 0 {
+		panic("unexpected nil or empty IfList")
 	}
-	i.Cond.Compile(ctx)
+	ctx.assemble("null") // return value
+	thenCtx := ctx.assembleBlock((*il)[0].Then, false)
+	elseCtx := Frame{}
+	if len(*il) > 1 {
+		elseCtx = ctx.newBlock(false)
+		restIl := (*il)[1:]
+		restIfs := Ifs{Pos: (*il)[1].Pos, IfList: &restIl, FinalElse: fe}
+		restIfs.Compile(&elseCtx)
+		elseCtx.tearDownBlock()
+	} else if fe != nil {
+		elseCtx = ctx.assembleBlock(fe, false)
+	}
+	(*il)[0].Cond.Compile(ctx)
 	ctx.assemble(thenCtx.asm)
 	ctx.assemble(elseCtx.asm)
 	ctx.assemble("if")
+}
+
+func (i *Ifs) Compile(ctx *Frame) {
+	ctx.compileIfs(i.IfList, i.FinalElse)
 }
 
 // Assignment, or an rvalue that is syntactically an lvalue
