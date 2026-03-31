@@ -9,6 +9,7 @@ jobs:
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     env:
+      CC: gcc-15
       ASAN_FLAGS: "-fsanitize=address -fsanitize=undefined"
 
     steps:
@@ -17,9 +18,9 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
       - name: Install dependencies
         run: |
-          brew install coreutils automake pkg-config go sdl2_mixer libgrapheme
+          brew install coreutils automake pkg-config go sdl2_mixer libgrapheme gcc
           # Prepend optional brew binary directories to PATH
-          echo "$(brew --prefix m4)/bin:${PATH}" >> $GITHUB_PATH
+          echo "$(brew --prefix m4)/bin:$(brew --prefix binutils)/bin:${PATH}" >> $GITHUB_PATH
       - name: configure
         run: |
           export PKG_CONFIG_PATH="$(brew --prefix systemd)/lib/pkgconfig:$PKG_CONFIG_PATH"
@@ -32,12 +33,14 @@ jobs:
           LDFLAGS: ${{ env.ASAN_FLAGS }}
       - name: make check
         run: |
+          export PKG_CONFIG_PATH="$(brew --prefix systemd)/lib/pkgconfig:$PKG_CONFIG_PATH"
           export LD_LIBRARY_PATH=$(brew --prefix)/lib
-          go run . --debug test/iter.sal
+          go run . --debug test/iter.sal # Useful for debug
           make check --jobs=`nproc` || ( cat test/test-suite.log && exit 1 )
       - name: make distcheck
         # normal build is with ASAN, distcheck is without ASAN. Both are covered.
         run: |
+          export PKG_CONFIG_PATH="$(brew --prefix systemd)/lib/pkgconfig:$PKG_CONFIG_PATH"
           export LD_LIBRARY_PATH=$(brew --prefix)/lib
           make distcheck --jobs=`nproc` || ( cat sam-*/_build/sub/test/test-suite.log && exit 1 )
 
