@@ -272,12 +272,9 @@ static sam_blob_list_t *disas_word(sam_blob_list_t *l, sam_uword_t level, sam_wo
                 xasprintf(&blob_str, "iter %p", inner_i);
             }
             break;
-        case SAM_BLOB_STRING:
-            {
-                sam_string_t *inner_str;
-                XEXTRACT_BLOB(inner_blob, SAM_BLOB_STRING, sam_string_t, inner_str);
-                xasprintf(&blob_str, "string %s", inner_str->str);
-            }
+        default:
+            blob_str = disas(opcode);
+            break;
         }
         char *line = indent(level, blob_str);
         xstrcat(text, line);
@@ -340,10 +337,20 @@ char *disas(sam_word_t inst)
         sam_blob_list_t *l = list_append(NULL, blob);
         switch (blob->type) {
         case SAM_BLOB_STACK:
-            free(disas_stack(l, 0, blob, &text));
+            free_list(disas_stack(l, 0, blob, &text));
             break;
         case SAM_BLOB_MAP:
-            free(disas_map(l, 0, blob, &text));
+            free_list(disas_map(l, 0, blob, &text));
+            break;
+        case SAM_BLOB_STRING:
+            {
+                sam_string_t *str;
+                XEXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
+                xasprintf(&text, "string %s", str->str);
+            }
+            break;
+        default:
+            xasprintf(&text, "blob type %d %p", blob->type, blob);
             break;
         }
     } else {
