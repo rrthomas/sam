@@ -48,7 +48,7 @@ type PrimaryExp struct {
 	Float     *float64    `| @Float`
 	String    *string     `| @String`
 	EmptyMap  bool        `| @"[" ":" "]"`
-	Container *[]Pair     `| "[" [ @@ ("," @@)* ","? ] "]"`
+	Container *[]Pair     `| "[" [@@ ("," @@)* ","?] "]"`
 	Block     *Block      `| @@`
 	Function  *Function   `| @@`
 	Variable  *string     `| @Ident`
@@ -72,7 +72,7 @@ type CallExp struct {
 type Args struct {
 	Pos lexer.Position
 
-	Arguments *[]Expression `"(" [@@ ("," @@)* ","? ] ")"`
+	Arguments *[]Expression `"(" [@@ ("," @@)* ","?] ")"`
 }
 
 type UnaryExp struct {
@@ -81,60 +81,60 @@ type UnaryExp struct {
 	PreOp          string    `  @("~" | "+" | "-" | "#" | "<<<")`
 	PrefixUnaryExp *UnaryExp `  @@`
 	PostfixExp     *CallExp  `| @@`
-	PostOp         *string   `  [ @">>>" ]`
+	PostOp         *string   `  [@">>>"]`
 }
 
 type ExponentExp struct {
 	Pos lexer.Position
 
 	Left  *UnaryExp    `@@`
-	Right *ExponentExp `[ "**" @@ ]`
+	Right *ExponentExp `["**" @@]`
 }
 
 type ProductExp struct {
 	Pos lexer.Position
 
 	Left  *ExponentExp `@@`
-	Op    string       `[ @("*" | "/" | "%")`
-	Right *ProductExp  `@@ ]`
+	Op    string       `[@("*" | "/" | "%")`
+	Right *ProductExp  `@@]`
 }
 
 type SumExp struct {
 	Pos lexer.Position
 
 	Left  *ProductExp `@@`
-	Op    string      `[ @("+" | "-")`
-	Right *SumExp     `@@ ]`
+	Op    string      `[@("+" | "-")`
+	Right *SumExp     `@@]`
 }
 
 type CompareExp struct {
 	Pos lexer.Position
 
 	Left  *SumExp     `@@`
-	Op    string      `[ @("==" | "!=" | "<" | "<=" | ">" | ">=")`
-	Right *CompareExp `@@ ]`
+	Op    string      `[@("==" | "!=" | "<" | "<=" | ">" | ">=")`
+	Right *CompareExp `@@]`
 }
 
 type BitwiseExp struct {
 	Pos lexer.Position
 
 	Left  *CompareExp `@@`
-	Op    string      `[ @("&" | "^" | "|")`
-	Right *BitwiseExp `@@ ]`
+	Op    string      `[@("&" | "^" | "|")`
+	Right *BitwiseExp `@@]`
 }
 
 type PushExp struct {
 	Pos lexer.Position
 
 	Left  *BitwiseExp `@@`
-	Op    string      `[ @("<<" | ">>")`
-	Right *PushExp    `@@ ]`
+	Op    string      `[@("<<" | ">>")`
+	Right *PushExp    `@@]`
 }
 
 type LogicNotExp struct {
 	Pos lexer.Position
 
-	LogicNotExp *LogicNotExp `  ( "not" @@ )`
+	LogicNotExp *LogicNotExp `  "not" @@`
 	PushExp     *PushExp     `| @@`
 }
 
@@ -142,8 +142,8 @@ type LogicExp struct {
 	Pos lexer.Position
 
 	Left  *LogicNotExp `@@`
-	Op    string       `[ @("and" | "or")`
-	Right *LogicExp    `@@ ]`
+	Op    string       `[@("and" | "or")`
+	Right *LogicExp    `@@]`
 }
 
 type Expression struct {
@@ -182,8 +182,8 @@ type Declaration struct {
 type Assignment struct {
 	Pos lexer.Position
 
-	Lvalue     *Expression `@@ [ ":="`
-	Expression *Expression `@@ ]`
+	Lvalue     *Expression `@@ [":="`
+	Expression *Expression `@@]`
 }
 
 type Statement struct {
@@ -191,7 +191,7 @@ type Statement struct {
 
 	Assignment   *Assignment    `  @@ ";"`
 	Trap         *Trap          `| @@ ";"`
-	Declarations *[]Declaration `| ( @@ ";" )+`
+	Declarations *[]Declaration `| (@@ ";")+`
 }
 
 type Terminator struct {
@@ -217,7 +217,7 @@ type Block struct {
 type Function struct {
 	Pos lexer.Position
 
-	Parameters *[]string `"fn" "(" [ @Ident ("," @Ident)* ","? ] ")"`
+	Parameters *[]string `"fn" "(" [@Ident ("," @Ident)* ","?] ")"`
 	Body       *Block    `@@`
 }
 
