@@ -756,20 +756,25 @@ func (ctx *Frame) findCapture(id string) *uint {
 		}
 	}
 	if parent := ctx.parent; parent != nil {
-		newCaptureIndex := uint(len(*ctx.captures))
-		*ctx.captures = append(*ctx.captures, Capture{id: id})
+		found := false
 		if l := parent.findLocal(id); l != nil {
 			// Append address of local to captures array
 			parent.assemble("s0", "_two", "s0", "get", "append")
 			parent.assemble(fmt.Sprintf("int %d", int(l.pos)))
 			parent.assemble("_two", "s0", "get", "append")
+			found = true
 		} else if i := parent.findCapture(id); i != nil {
 			// Append address of capture to captures array
 			parent.compileCaptureAddr(*i)
 			parent.assemble("int -3", "s0", "get", "append")
 			parent.assemble("_two", "s0", "get", "append")
+			found = true
 		}
-		return &newCaptureIndex
+		if found {
+			newCaptureIndex := uint(len(*ctx.captures))
+			*ctx.captures = append(*ctx.captures, Capture{id: id})
+			return &newCaptureIndex
+		}
 	}
 	return nil
 }
