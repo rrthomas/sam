@@ -195,7 +195,8 @@ type Assignment struct {
 type Statement struct {
 	Pos lexer.Position
 
-	Assignment   *Assignment    `  @@ ";"`
+	Empty        bool           `  @";"`
+	Assignment   *Assignment    `| @@ ";"`
 	Trap         *Trap          `| @@ ";"`
 	Declarations *[]Declaration `| (@@ ";")+`
 }
@@ -623,7 +624,9 @@ func (d *Declaration) Compile(ctx *Frame) {
 }
 
 func (s *Statement) Compile(ctx *Frame) {
-	if s.Assignment != nil {
+	if s.Empty {
+		// Do nothing
+	} else if s.Assignment != nil {
 		s.Assignment.Compile(ctx)
 	} else if s.Trap != nil {
 		s.Trap.Compile(ctx)
