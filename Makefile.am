@@ -1,4 +1,4 @@
-# Top-level & tests Makefile.am
+# Top-level Makefile.am
 #
 # © 2020-2026 Reuben Thomas <rrt@sc3d.org>
 
