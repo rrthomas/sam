@@ -70,9 +70,9 @@ EXTRA_DIST = \
 	beep.wav \
 	bell.wav \
 	cow.wav \
-	explos.wav \
+	explosion.wav \
 	gong.wav \
 	horse.wav \
 	laser.wav \
-	ups.wav \
+	oops.wav \
 	$(EMPTY)

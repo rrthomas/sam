@@ -614,6 +614,7 @@ var Traps = map[string]int{
 	"GONG":                   C.TRAP_AUDIO_GONG,
 	"HORSE":                  C.TRAP_AUDIO_HORSE,
 	"LASER":                  C.TRAP_AUDIO_LASER,
+	"OOPS":                   C.TRAP_AUDIO_OOPS,
 }
 
 // The net change in `SP` caused by each instruction.
@@ -998,4 +999,5 @@ var TrapStackEffect = map[string]StackEffect{
 	"GONG":            {0, 1},
 	"HORSE":           {0, 1},
 	"LASER":           {0, 1},
+	"OOPS":            {0, 1},
 }

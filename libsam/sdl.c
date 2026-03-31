@@ -99,6 +99,7 @@ enum sound_handle {
     SOUND_GONG,
     SOUND_HORSE,
     SOUND_LASER,
+    SOUND_OOPS,
     SOUND_NUM_SOUNDS,
 };
 
@@ -121,7 +122,7 @@ unsigned char sound_cow[] = {
 };
 
 unsigned char sound_explosion[] = {
-#embed "explos.wav"
+#embed "explosion.wav"
 };
 
 unsigned char sound_gong[] = {
@@ -134,6 +135,10 @@ unsigned char sound_horse[] = {
 
 unsigned char sound_laser[] = {
 #embed "laser.wav"
+};
+
+unsigned char sound_oops[] = {
+#embed "oops.wav"
 };
 
 int sam_audiofile_new(sam_blob_t **new_audiofile, Mix_Music *audiofile)
@@ -263,6 +268,7 @@ sam_word_t sam_sdl_init(void)
     HALT_IF_ERROR(load_audio_memory(sound_gong, sizeof(sound_gong), &sounds[SOUND_GONG]));
     HALT_IF_ERROR(load_audio_memory(sound_horse, sizeof(sound_horse), &sounds[SOUND_HORSE]));
     HALT_IF_ERROR(load_audio_memory(sound_laser, sizeof(sound_laser), &sounds[SOUND_LASER]));
+    HALT_IF_ERROR(load_audio_memory(sound_oops, sizeof(sound_oops), &sounds[SOUND_OOPS]));
 
     keymap = SDL_GetKeyboardState(&numkeys);
 
@@ -1912,6 +1918,9 @@ sam_word_t sam_audio_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_AUDIO_LASER:
         PUSH_REF(sounds[SOUND_LASER]);
         break;
+    case TRAP_AUDIO_OOPS:
+        PUSH_REF(sounds[SOUND_OOPS]);
+        break;
 
     default:
         error = SAM_ERROR_INVALID_TRAP;
@@ -1966,6 +1975,8 @@ char *sam_audio_trap_name(sam_word_t function)
         return "HORSE";
     case TRAP_AUDIO_LASER:
         return "LASER";
+    case TRAP_AUDIO_OOPS:
+        return "OOPS";
 
     default:
         return NULL;
