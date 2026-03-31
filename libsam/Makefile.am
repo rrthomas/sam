@@ -18,7 +18,19 @@ libsam_la_CFLAGS = $(SDL2_CFLAGS) $(LIBGRAPHEME_CFLAGS) $(AM_CFLAGS)
 libsam_la_LIBADD = $(LTLIBOBJS) $(SDL2_LIBS) $(LIBGRAPHEME_LIBS) -lm
 libsam_la_SOURCES = \
 	$(include_HEADERS) \
+	nanovg.h \
+	nanovg_gl.h \
+	nanovg_gl_utils.h \
+	nanovg_sw.h \
+	nanovg_sw_utils.h \
+	nanovg_vtex.h \
+	fontstash.h \
+	stb_image.h \
+	stb_image_write.h \
+	stb_truetype.h \
+	nanovg.c \
 	private.h \
+	sdl_private.h \
 	run.h \
 	blob.c \
 	debug.c \
@@ -46,5 +58,21 @@ loc-local:
 EXTRA_DIST = \
 	sam.go \
 	verstable.h \
-	*.ttf \
+	NotoColorEmoji.ttf \
+	NotoEmoji-Regular.ttf \
+	NotoSansMono-Regular.ttf \
+	NotoSansMono-Bold.ttf \
+	NotoSans-Regular.ttf \
+	NotoSans-Italic.ttf \
+	NotoSans-Bold.ttf \
+	NotoSans-BoldItalic.ttf \
+	applause.wav \
+	beep.wav \
+	bell.wav \
+	cow.wav \
+	explos.wav \
+	gong.wav \
+	horse.wav \
+	laser.wav \
+	ups.wav \
 	$(EMPTY)
