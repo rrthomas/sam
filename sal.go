@@ -738,7 +738,7 @@ func (ctx *Frame) compileLocalAddr(l Local) {
 
 func (ctx *Frame) compileCaptureAddr(i uint) {
 	ctx.assemble(
-		"int 4", "s0", "get",
+		fmt.Sprintf("int %d", ctx.nargs+3), "s0", "get",
 		fmt.Sprintf("int %d", i*2+1),
 		"_two", "s0", "get",
 		"get",
