@@ -40,10 +40,18 @@ type Pair struct {
 	Value *Expression `@@ ]`
 }
 
+type Boolean bool
+
+func (b *Boolean) Capture(values []string) error {
+	*b = values[0] == "true"
+	return nil
+}
+
 type PrimaryExp struct {
 	Pos lexer.Position
 
 	Null      bool        `  @"null"`
+	Bool      *Boolean    `| @("false" | "true")`
 	Int       *int64      `| @Int`
 	Float     *float64    `| @Float`
 	String    *string     `| @String`
@@ -233,6 +241,12 @@ type Function struct {
 func (e *PrimaryExp) Compile(ctx *Frame) {
 	if e.Null {
 		ctx.assemble("null")
+	} else if e.Bool != nil {
+		if *e.Bool {
+			ctx.assemble("true")
+		} else {
+			ctx.assemble("false")
+		}
 	} else if e.Int != nil {
 		ctx.assemble(fmt.Sprintf("int %d", *e.Int))
 	} else if e.Float != nil {
