@@ -14,22 +14,18 @@ for i in null {
 }
 
 // Modify a list while iterating
-{
-    let l = [1, 2.0, 3.4, 5]
-    for i in l {
-        <<<l
-        debug, i
-    }
+let l = [1, 2.0, 3.4, 5]
+for i in l {
+    <<<l
+    debug, i
 }
 
 // Modify a map while itering
-{
-    let m = [1: 4.0, 2: 3.0]
-    for k in m {
-        m[k] := m[k] * 2.0
-    }
-    m
+let m = [1: 4.0, 2: 3.0]
+for k in m {
+    m[k] := m[k] * 2.0
 }
+m
 
 // Print a string a grapheme at a time
 for g in "γεια σου, ρὸζα" {
