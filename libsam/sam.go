@@ -316,13 +316,14 @@ var Traps = map[string]int{
 	"SEED":    C.TRAP_BASIC_SEED,
 	"RANDOM":  C.TRAP_BASIC_RANDOM,
 
-	"I2F": C.TRAP_MATH_I2F,
-	"F2I": C.TRAP_MATH_F2I,
-	"POW": C.TRAP_MATH_POW,
-	"SIN": C.TRAP_MATH_SIN,
-	"COS": C.TRAP_MATH_COS,
-	"DEG": C.TRAP_MATH_DEG,
-	"RAD": C.TRAP_MATH_RAD,
+	"I2F":   C.TRAP_MATH_I2F,
+	"F2I":   C.TRAP_MATH_F2I,
+	"FLOOR": C.TRAP_MATH_FLOOR,
+	"POW":   C.TRAP_MATH_POW,
+	"SIN":   C.TRAP_MATH_SIN,
+	"COS":   C.TRAP_MATH_COS,
+	"DEG":   C.TRAP_MATH_DEG,
+	"RAD":   C.TRAP_MATH_RAD,
 
 	"BLACK":           C.TRAP_GRAPHICS_BLACK,
 	"WHITE":           C.TRAP_GRAPHICS_WHITE,
@@ -697,13 +698,14 @@ var TrapStackEffect = map[string]StackEffect{
 	"RANDOM":  {0, 1},
 
 	// Math traps
-	"I2F": {1, 1},
-	"F2I": {1, 1},
-	"POW": {2, 1},
-	"SIN": {1, 1},
-	"COS": {1, 1},
-	"DEG": {1, 1},
-	"RAD": {1, 1},
+	"I2F":   {1, 1},
+	"F2I":   {1, 1},
+	"FLOOR": {1, 1},
+	"POW":   {2, 1},
+	"SIN":   {1, 1},
+	"COS":   {1, 1},
+	"DEG":   {1, 1},
+	"RAD":   {1, 1},
 
 	// Graphics traps
 	"BLACK":           {0, 1},

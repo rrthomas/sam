@@ -21,6 +21,7 @@ char *sam_math_trap_name(sam_word_t function);
 enum SAM_TRAP_MATH {
     TRAP_MATH_I2F  = SAM_TRAP_MATH_BASE,
     TRAP_MATH_F2I,
+    TRAP_MATH_FLOOR,
     TRAP_MATH_POW,
     TRAP_MATH_SIN,
     TRAP_MATH_COS,

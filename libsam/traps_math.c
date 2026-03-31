@@ -53,6 +53,13 @@ sam_word_t sam_math_trap(sam_state_t *state, sam_uword_t function)
             PUSH_INT((sam_word_t)rint(fl));
         }
         break;
+    case TRAP_MATH_FLOOR:
+        {
+            sam_float_t fl;
+            POP_FLOAT(fl);
+            PUSH_INT((sam_word_t)floor(fl));
+        }
+        break;
     case TRAP_MATH_POW:
         {
             sam_uword_t operand;
