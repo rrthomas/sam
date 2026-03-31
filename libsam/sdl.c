@@ -214,7 +214,7 @@ int sam_sdl_process_events(void)
 
 int sam_sdl_window_used(void)
 {
-    return SDL_GetWindowFlags(win) & SDL_WINDOW_SHOWN;
+    return need_window;
 }
 
 // Code adapted from https://stackoverflow.com/questions/53033971/how-to-get-the-color-of-a-specific-pixel-from-sdl-surface
