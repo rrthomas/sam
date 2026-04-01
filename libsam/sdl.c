@@ -39,6 +39,7 @@
 unsigned sam_update_interval = 10; // milliseconds between screen updates
 
 #define PIXEL_SIZE 2 // FIXME calculate pixel ratio
+static double text_size = 16.0;
 static SDL_Window *win;
 static SDL_Surface *srf;
 static Uint64 last_update_time;
@@ -490,6 +491,13 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_GRAPHICS_FONT_EMOJI:
         PUSH_INT(FONT_EMOJI);
         break;
+    case TRAP_GRAPHICS_TEXT_SIZE:
+        {
+            sam_float_t f;
+            POP_FLOAT(f);
+            text_size = f;
+        }
+        break;
     case TRAP_GRAPHICS_TEXT:
         {
             sam_uword_t font;
@@ -509,10 +517,10 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             // FIXME: make the following parameters or state
             nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
             nvgFontFaceId(vg, fonts[font]);
-            nvgFontSize(vg, 16.0 * PIXEL_SIZE);
+            nvgFontSize(vg, text_size * PIXEL_SIZE);
             nvgFillColor(vg, color);
             nvgBeginPath(vg);
-            nvgText(vg, x, y, str->str, str->str + str->len);
+            nvgText(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, str->str, str->str + str->len);
             nvgClosePath(vg);
             nvgEndFrame(vg);
             need_window = true;
@@ -587,6 +595,8 @@ char *sam_graphics_trap_name(sam_word_t function)
         return "FONT_BOLDITALIC";
     case TRAP_GRAPHICS_FONT_EMOJI:
         return "FONT_EMOJI";
+    case TRAP_GRAPHICS_TEXT_SIZE:
+        return "TEXT_SIZE";
     case TRAP_GRAPHICS_TEXT:
         return "TEXT";
     default:
