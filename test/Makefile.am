@@ -25,6 +25,7 @@ TESTS = \
 	string.yaml \
 	ackermann.sal \
 	double_list.sal \
+	empty_loop.sal \
 	expr.sal \
 	factorial_iter.sal \
 	factorial_rec.sal \
@@ -58,6 +59,7 @@ RESULTS = \
 	string.yaml-expected.log \
 	ackermann.sal-expected.log \
 	double_list.sal-expected.log \
+	empty_loop.sal-expected.log \
 	expr.sal-expected.log \
 	factorial_iter.sal-expected.log \
 	factorial_rec.sal-expected.log \

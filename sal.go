@@ -1031,7 +1031,7 @@ func (ctx *Frame) newBlock(loop bool) Frame {
 
 func (ctx *Frame) assembleBlock(b *Block, loop bool) Frame {
 	blockCtx := b.Compile(ctx, loop)
-	if b.Body.Terminator == nil {
+	if b.Body.Terminator == nil && len(blockCtx.asm) > 0 {
 		blockCtx.tearDownBlock()
 	}
 	return blockCtx
