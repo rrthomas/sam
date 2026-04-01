@@ -296,8 +296,9 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 
 func (ctx *Frame) compileIndexedExp(object *PrimaryExp, indexes *[]Expression, set bool) {
 	if indexes != nil {
+		n_indexes := len(*indexes)
 		for i := range *indexes {
-			(*indexes)[i].Compile(ctx)
+			(*indexes)[n_indexes-i-1].Compile(ctx)
 		}
 	}
 	object.Compile(ctx)
