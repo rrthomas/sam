@@ -13,8 +13,8 @@
 
 #include "sam.h"
 
-#define SAM_DISPLAY_WIDTH 800
-#define SAM_DISPLAY_HEIGHT 600
+#define SAM_DISPLAY_WIDTH 1024
+#define SAM_DISPLAY_HEIGHT 720
 extern unsigned sam_update_interval;
 
 typedef struct sam_audiofile sam_audiofile_t;
