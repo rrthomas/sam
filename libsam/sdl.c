@@ -302,6 +302,24 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_GRAPHICS_WHITE:
         PUSH_INT(nvgRGBA(255, 255, 255, 255).c);
         break;
+    case TRAP_GRAPHICS_RED:
+        PUSH_INT(nvgRGBA(255, 0, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_GREEN:
+        PUSH_INT(nvgRGBA(0, 255, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_BLUE:
+        PUSH_INT(nvgRGBA(0, 0, 255, 255).c);
+        break;
+    case TRAP_GRAPHICS_CYAN:
+        PUSH_INT(nvgRGBA(0, 255, 255, 255).c);
+        break;
+    case TRAP_GRAPHICS_MAGENTA:
+        PUSH_INT(nvgRGBA(255, 0, 255, 255).c);
+        break;
+    case TRAP_GRAPHICS_YELLOW:
+        PUSH_INT(nvgRGBA(255, 255, 0, 255).c);
+        break;
     case TRAP_GRAPHICS_DISPLAY_WIDTH:
         PUSH_INT(SAM_DISPLAY_WIDTH);
         break;
@@ -559,6 +577,18 @@ char *sam_graphics_trap_name(sam_word_t function)
         return "BLACK";
     case TRAP_GRAPHICS_WHITE:
         return "WHITE";
+    case TRAP_GRAPHICS_RED:
+        return "RED";
+    case TRAP_GRAPHICS_GREEN:
+        return "GREEN";
+    case TRAP_GRAPHICS_BLUE:
+        return "BLUE";
+    case TRAP_GRAPHICS_CYAN:
+        return "CYAN";
+    case TRAP_GRAPHICS_MAGENTA:
+        return "MAGENTA";
+    case TRAP_GRAPHICS_YELLOW:
+        return "YELLOW";
     case TRAP_GRAPHICS_DISPLAY_WIDTH:
         return "DISPLAY_WIDTH";
     case TRAP_GRAPHICS_DISPLAY_HEIGHT:
