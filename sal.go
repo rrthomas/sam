@@ -47,6 +47,20 @@ func (b *Boolean) Capture(values []string) error {
 	return nil
 }
 
+// String with escapes.
+type String struct {
+	Pos lexer.Position
+
+	Fragments []*StringFragment `"\"" @@* "\""`
+}
+
+type StringFragment struct {
+	Pos lexer.Position
+
+	Escaped string `  @Escaped`
+	String  string `| @Chars`
+}
+
 type PrimaryExp struct {
 	Pos lexer.Position
 
@@ -54,7 +68,7 @@ type PrimaryExp struct {
 	Bool      *Boolean    `| @("false" | "true")`
 	Int       *int64      `| @Int`
 	Float     *float64    `| @Float`
-	String    *string     `| @String`
+	String    *String     `| @@`
 	EmptyMap  bool        `| @"[" ":" "]"`
 	Container *[]Pair     `| "[" [@@ ("," @@)* ","?] "]"`
 	Block     *Block      `| @@`
@@ -252,7 +266,14 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	} else if e.Float != nil {
 		ctx.assemble(fmt.Sprintf("float %g", *e.Float))
 	} else if e.String != nil {
-		ctx.assemble(fmt.Sprintf("string \"%s\"", *e.String)) // FIXME
+		str := ""
+		for _, s := range e.String.Fragments {
+			str += s.String
+			if len(s.Escaped) > 1 {
+				str += s.Escaped[1:]
+			}
+		}
+		ctx.assemble(fmt.Sprintf("string \"%s\"", str)) // FIXME
 	} else if e.Container != nil {
 		// Check we have a list or map, not a combination
 		isMap := false

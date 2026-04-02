@@ -36,32 +36,29 @@ var (
 			{Name: "Ident", Pattern: `\b([[:alpha:]_]\w*)\b`, Action: nil},
 			{Name: "Float", Pattern: `\b(\d+\.\d+?)\b`, Action: nil},
 			{Name: "Int", Pattern: `\b(\d+)\b`, Action: nil},
-			{Name: "String", Pattern: `"([^"])*"`},
+			{Name: "String", Pattern: `"`, Action: lexer.Push("String")},
 			{Name: "Newline", Pattern: `\n`, Action: nil},
 			{Name: "Operator", Pattern: `->|%=|>=|<=|&&|\|\||==|!=|<<<|>>>|<<|>>`, Action: nil},
 			{Name: "Assignment", Pattern: `=|:=`, Action: nil},
 			{Name: "SingleOperator", Pattern: `[-+*/<>%^!|&]`, Action: nil},
 			{Name: "Punct", Pattern: `[]` + "`" + `~[()@#${}:;?.,]`, Action: nil},
 		},
+		"String": {
+			{Name: "Escaped", Pattern: `\\.`, Action: nil},
+			{Name: "StringEnd", Pattern: `"`, Action: lexer.Pop()},
+			{Name: "Chars", Pattern: `[^{"\\]+`, Action: nil},
+		},
 	})
 	parser = participle.MustBuild[Body](
 		participle.Lexer(&fixupLexerDefinition{}),
 		participle.UseLookahead(1),
-		unquoteString(),
 	)
 
-	identToken  = lex.Symbols()["Ident"]
-	intToken    = lex.Symbols()["Int"]
-	floatToken  = lex.Symbols()["Float"]
-	stringToken = lex.Symbols()["String"]
+	identToken     = lex.Symbols()["Ident"]
+	stringEndToken = lex.Symbols()["StringEnd"]
+	intToken       = lex.Symbols()["Int"]
+	floatToken     = lex.Symbols()["Float"]
 )
-
-func unquoteString() participle.Option {
-	return participle.Map(func(token lexer.Token) (lexer.Token, error) {
-		token.Value = token.Value[1 : len(token.Value)-1]
-		return token, nil
-	}, "String")
-}
 
 // A Lexer that inserts semi-colons and collapses \-separated lines.
 type fixupLexerDefinition struct{}
@@ -108,13 +105,13 @@ next:
 				l.last = token
 				continue next
 
-			case "\"", ")", "}", "]", ">>>":
+			case ")", "}", "]", ">>>":
 				token.Value = ";"
 				token.Type = ';'
 
 			default:
 				switch l.last.Type {
-				case intToken, floatToken, identToken, stringToken:
+				case intToken, floatToken, stringEndToken, identToken:
 					token.Value = ";"
 					token.Type = ';'
 
