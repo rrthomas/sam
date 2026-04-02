@@ -1,6 +1,6 @@
 Stack: XXXXXXXX (4 item(s))
 - null
-- stack XXXXXXXX (74 items)
+- stack XXXXXXXX (73 items)
   - int 50
   - int 100
   - trap WHITE
@@ -72,7 +72,6 @@ Stack: XXXXXXXX (4 item(s))
   - trap WHITE
   - trap FONT_REGULAR
   - trap TEXT
-  - null
   - int -4
   - s0 set
 - do
@@ -87,7 +86,7 @@ blob
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - null
-- stack XXXXXXXX (74 items)
+- stack XXXXXXXX (73 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -643,47 +642,41 @@ Working stack: (8 word(s))
 - int 4294967295
 - int 2
 trap TEXT
-sam_run: p0 = XXXXXXXX, pc = 72, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
-Working stack: (3 word(s))
-- null
-- stack XXXXXXXX (4 items)
-- int 3
-null
-sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 72, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
 - stack XXXXXXXX (4 items)
 - int 3
-- null
+- float 449.878510
 int
-sam_run: p0 = XXXXXXXX, pc = 74, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
 - stack XXXXXXXX (4 items)
 - int 3
-- null
+- float 449.878510
 - int -4
 s0
-sam_run: p0 = XXXXXXXX, pc = 74, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
 - stack XXXXXXXX (4 items)
 - int 3
-- null
+- float 449.878510
 - int -4
 - stack XXXXXXXX (6 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 74, s0 = XXXXXXXX, sp = 3
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 3
 Working stack: (3 word(s))
-- null
+- float 449.878510
 - stack XXXXXXXX (4 items)
 - int 3
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
-- null
+- float 449.878510
 halt
 
 
-sam_run returns: halt with result null
+sam_run returns: halt with result float 449.878510
 Stack: XXXXXXXX (1 item(s))
-- null
+- float 449.878510

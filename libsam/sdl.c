@@ -538,9 +538,10 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             nvgFontSize(vg, text_size * PIXEL_SIZE);
             nvgFillColor(vg, color);
             nvgBeginPath(vg);
-            nvgText(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, str->str, str->str + str->len);
+            float new_x = nvgText(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, str->str, str->str + str->len);
             nvgClosePath(vg);
             nvgEndFrame(vg);
+            PUSH_FLOAT(new_x);
             need_window = true;
         }
         break;

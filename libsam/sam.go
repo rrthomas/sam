@@ -742,7 +742,7 @@ var TrapStackEffect = map[string]StackEffect{
 	"FONT_BOLDITALIC": {0, 1},
 	"FONT_EMOJI":      {0, 1},
 	"TEXT_SIZE":       {1, 0},
-	"TEXT":            {5, 0},
+	"TEXT":            {5, 1},
 	"FPS":             {1, 0},
 	"WAIT":            {0, 0},
 
