@@ -45,18 +45,20 @@ var rootCmd = &cobra.Command{
 		libsam.SetDebug(debug)
 		progFile := args[0]
 
-		var yaml []byte
+		var code libsam.Stack
 		{
 			ext := filepath.Ext(progFile)
 			var err error
 			switch ext {
 			case ".yaml":
-				yaml, err = os.ReadFile(progFile)
+				if yaml, err := os.ReadFile(progFile); err == nil {
+					code = Assemble(yaml)
+				}
 
 			case ".sal":
 				var source []byte
 				if source, err = os.ReadFile(progFile); err == nil {
-					yaml = Sal(string(source), printAst, printAsm)
+					code = Sal(string(source), printAst, printAsm)
 				}
 
 			default:
@@ -68,7 +70,6 @@ var rootCmd = &cobra.Command{
 		}
 
 		// Assemble and run the program
-		code := Assemble(yaml)
 		if err := libsam.BasicInit(); err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
@@ -121,7 +122,7 @@ func Execute() {
 
 func init() {
 	rootCmd.SetUsageTemplate(`Usage: {{.CommandPath}} [OPTION...] PROGRAM
-	
+
 {{.Flags.FlagUsages}}`)
 	rootCmd.Flags().BoolVar(&debug, "debug", false, "output debug information to standard error")
 	rootCmd.Flags().BoolVar(&wait, "wait", false, "wait for user to close window on termination")

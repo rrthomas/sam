@@ -41,7 +41,6 @@ type assembler struct {
 
 func (a *assembler) newLabel(label string) {
 	labels[label] = address{stack: a.stack, item: a.stack.Sp()}
-
 }
 
 func (a *assembler) getLabel(label string) address {
@@ -72,23 +71,28 @@ func (a *assembler) addInstruction(opcode libsam.Instruction) {
 }
 
 func (a *assembler) addTrap(function libsam.Uword) {
+	a.flushInstructions()
 	a.stack.PushTrap(function)
 }
 
 func (a *assembler) addNull() {
+	a.flushInstructions()
 	a.stack.PushAtom(libsam.ATOM_NULL, 0)
 }
 
 func (a *assembler) addInt(int libsam.Word) {
+	a.flushInstructions()
 	// FIXME: PushInt should take a Word, not a Uword
 	a.stack.PushInt(libsam.Uword(int))
 }
 
 func (a *assembler) addFloat(float float64) {
+	a.flushInstructions()
 	a.stack.PushFloat(float)
 }
 
 func (a *assembler) addStack(stack libsam.Stack) {
+	a.flushInstructions()
 	a.stack.PushArray(stack)
 }
 
