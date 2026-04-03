@@ -51,49 +51,20 @@ func readProg(r io.Reader) ast.Node {
 }
 
 // Assemble a program
-var labels map[string]address
-
-type address struct {
-	stack libsam.Stack
-	item  libsam.Uword
-}
-
-type assembler struct {
-	stack  libsam.Stack
-	insts  libsam.Uword
-	nInsts uint
-}
-
-func (a *assembler) flushInstructions() {
-	if a.nInsts > 0 {
-		a.stack.PushInsts(a.insts)
-	}
-	a.nInsts = 0
-	a.insts = 0
-}
-
-func (a *assembler) addInstruction(opcode libsam.Instruction) {
-	if (a.nInsts+1)*uint(libsam.ONE_INST_SHIFT)+uint(libsam.INSTS_SHIFT) > uint(libsam.WORD_BIT) {
-		a.flushInstructions()
-	}
-	a.insts |= (opcode.Opcode & libsam.Uword(libsam.INST_MASK)) << (libsam.Uword(a.nInsts) * libsam.Uword(libsam.ONE_INST_SHIFT))
-	a.nInsts += 1
-	if opcode.Terminal {
-		a.flushInstructions()
-	}
-}
-
-func parseInsn(instStr string) (libsam.Instruction, bool) {
+func parseInsn(instStr string) libsam.Instruction {
 	insn, ok := libsam.Instructions[strings.ToLower(instStr)]
-	return insn, ok
+	if !ok {
+		panic(fmt.Errorf("unknown instruction %s", instStr))
+	}
+	return insn
 }
 
-func parseTrap(trapStr string) (libsam.Word, bool) {
+func parseTrap(trapStr string) (libsam.Uword, bool) {
 	trap, ok := libsam.Traps[strings.ToUpper(trapStr)]
-	return libsam.Word(trap), ok
+	return libsam.Uword(trap), ok
 }
 
-func (a *assembler) parseLiteral(argStr string) libsam.Word {
+func parseLiteral(argStr string) libsam.Word {
 	if opcode, ok := parseTrap(argStr); ok {
 		return libsam.Word(opcode)
 	}
@@ -103,24 +74,12 @@ func (a *assembler) parseLiteral(argStr string) libsam.Word {
 	panic(fmt.Errorf("bad literal %s", argStr))
 }
 
-func (a *assembler) parseLabel(argStr string) address {
-	address, ok := labels[argStr]
-	if ok {
-		return address
-	}
-	panic(fmt.Errorf("no such label ‘%s’", argStr))
-}
-
 func (a *assembler) parseStack(argStr string) libsam.Stack {
-	address := a.parseLabel(argStr)
+	address := a.getLabel(argStr)
 	if address.item != 0 {
 		panic(fmt.Errorf("expected stack but found other label ‘%s’", argStr))
 	}
 	return address.stack
-}
-
-func (a *assembler) parseString(argStr string) libsam.Stack {
-	return libsam.NewString(argStr)
 }
 
 func (a *assembler) assembleInstruction(str string) {
@@ -129,10 +88,7 @@ func (a *assembler) assembleInstruction(str string) {
 		panic(errors.New("empty instruction"))
 	}
 	instStr := tokens[0]
-	insn, ok := parseInsn(instStr)
-	if !ok {
-		panic(fmt.Errorf("unknown instruction %s", instStr))
-	}
+	insn := parseInsn(instStr)
 	if insn.Operands != 0 {
 		a.flushInstructions()
 
@@ -143,13 +99,13 @@ func (a *assembler) assembleInstruction(str string) {
 
 		switch insn.Tag {
 		case libsam.INT_TAG:
-			a.stack.PushInt(libsam.Uword(a.parseLiteral(operandStr)))
+			a.addInt(parseLiteral(operandStr))
 		case libsam.BLOB_TAG:
 			switch insn.Opcode {
 			case libsam.BLOB_STACK:
-				a.stack.PushArray(a.parseStack(operandStr))
+				a.addStack(a.parseStack(operandStr))
 			case libsam.BLOB_STRING:
-				a.stack.PushArray(a.parseString(strings.TrimPrefix(strings.TrimSuffix(strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(str), "string")), "\""), "\"")))
+				a.addStack(libsam.NewString(strings.TrimPrefix(strings.TrimSuffix(strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(str), "string")), "\""), "\"")))
 			default:
 				panic(fmt.Errorf("invalid blob type %+v", insn.Opcode))
 			}
@@ -158,13 +114,13 @@ func (a *assembler) assembleInstruction(str string) {
 			if !ok {
 				panic(fmt.Errorf("unknown trap %s", operandStr))
 			}
-			a.stack.PushTrap(libsam.Uword(trap))
+			a.addTrap(trap)
 		case libsam.FLOAT_TAG:
 			float, err := strconv.ParseFloat(operandStr, 64)
 			if err != nil {
 				panic(fmt.Errorf("bad float %s", operandStr))
 			}
-			a.stack.PushFloat(float64(float))
+			a.addFloat(float64(float))
 		}
 	} else {
 		if len(tokens) > 1 {
@@ -177,7 +133,7 @@ func (a *assembler) assembleInstruction(str string) {
 
 			switch insn.Opcode {
 			case libsam.ATOM_NULL:
-				a.stack.PushAtom(libsam.ATOM_NULL, 0)
+				a.addNull()
 			default:
 				panic(fmt.Errorf("invalid atom type %d", insn.Opcode))
 			}
@@ -187,6 +143,10 @@ func (a *assembler) assembleInstruction(str string) {
 			panic(fmt.Errorf("unknown tag %d", insn.Tag))
 		}
 	}
+}
+
+func (a *assembler) assembleSingleInstruction(instStr string) {
+	a.addSingleInstruction(parseInsn(instStr))
 }
 
 func (a *assembler) assembleSequence(n ast.Node) {
@@ -207,7 +167,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		a.flushInstructions()
 		subA := assembler{stack: libsam.NewStack()}
 		subA.assembleSequence(n)
-		a.stack.PushArray(subA.stack)
+		a.addStack(subA.stack)
 		return nil
 	case ast.StringType:
 		var s string
@@ -230,7 +190,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 		}
 		label := keyNode.String()
 		a.flushInstructions()
-		labels[label] = address{stack: a.stack, item: a.stack.Sp()}
+		a.newLabel(label)
 		subNode := mapNode.Value
 		ast.Walk(a, subNode)
 		return nil
@@ -252,25 +212,23 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			a.flushInstructions()
 			subA := assembler{stack: libsam.NewStack()}
 			subA.assembleSequence(subProg)
-			a.stack.PushArray(subA.stack)
+			a.addStack(subA.stack)
 		case "!istack":
 			val := tag.Value
 			if val.Type() != ast.StringType {
 				panic(fmt.Errorf("invalid !istack: label argument expected"))
 			}
 			label := val.String()
-			address := a.parseLabel(label)
+			address := a.getLabel(label)
 			a.assembleInstruction(fmt.Sprintf("int %d", address.item))
-			a.stack.PushArray(address.stack)
+			a.addStack(address.stack)
 		case "!single":
 			val := tag.Value
 			if val.Type() != ast.StringType {
 				panic(fmt.Errorf("invalid !single: instruction expected"))
 			}
 			instName := val.String()
-			a.flushInstructions()
-			a.assembleInstruction(instName)
-			a.flushInstructions()
+			a.assembleSingleInstruction(instName)
 		default:
 			panic(fmt.Errorf("invalid directive %s", tagName))
 		}

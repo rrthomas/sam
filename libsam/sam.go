@@ -298,7 +298,7 @@ var Instructions = map[string]Instruction{
 	"halt":    {C.SAM_INSTS_TAG, C.INST_HALT, 0, true},
 }
 
-var Traps = map[string]int{
+var Traps = map[string]uint{
 	"SIZE":    C.TRAP_BASIC_SIZE,
 	"QUOTE":   C.TRAP_BASIC_QUOTE,
 	"COPY":    C.TRAP_BASIC_COPY,

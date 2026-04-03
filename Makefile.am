@@ -16,6 +16,7 @@ EXTRA_DIST = \
 	go.sum \
 	main.go \
 	assembler.go \
+	codegen.go \
 	sal.go \
 	lexer.go \
 	lexer_test.go \
