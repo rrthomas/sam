@@ -24,6 +24,7 @@ import (
 	"fmt"
 	"os"
 	"slices"
+	"strconv"
 	"strings"
 
 	"github.com/alecthomas/participle/v2/lexer"
@@ -265,12 +266,14 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	} else if e.Float != nil {
 		ctx.assembleFloat(*e.Float)
 	} else if e.String != nil {
-		str := ""
+		str := "\""
 		for _, s := range e.String.Fragments {
-			str += s.String
-			if len(s.Escaped) > 1 {
-				str += s.Escaped[1:]
-			}
+			str += s.String + s.Escaped
+		}
+		str += "\""
+		str, ok := strconv.Unquote(str)
+		if ok != nil {
+			panic(fmt.Errorf("Invalid string %s", str))
 		}
 		ctx.assembleBlob(libsam.NewString(str))
 	} else if e.Container != nil {
