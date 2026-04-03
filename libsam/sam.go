@@ -353,6 +353,7 @@ var Traps = map[string]uint{
 	"FONT_EMOJI":      C.TRAP_GRAPHICS_FONT_EMOJI,
 	"TEXT_SIZE":       C.TRAP_GRAPHICS_TEXT_SIZE,
 	"TEXT":            C.TRAP_GRAPHICS_TEXT,
+	"TEXTBOX":         C.TRAP_GRAPHICS_TEXTBOX,
 	"FPS":             C.TRAP_GRAPHICS_FPS,
 	"WAIT":            C.TRAP_GRAPHICS_WAIT,
 
@@ -743,6 +744,7 @@ var TrapStackEffect = map[string]StackEffect{
 	"FONT_EMOJI":      {0, 1},
 	"TEXT_SIZE":       {1, 0},
 	"TEXT":            {5, 1},
+	"TEXTBOX":         {6, 0},
 	"FPS":             {1, 0},
 	"WAIT":            {0, 0},
 

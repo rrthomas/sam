@@ -545,6 +545,35 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             need_window = true;
         }
         break;
+    case TRAP_GRAPHICS_TEXTBOX:
+        {
+            sam_uword_t font;
+            POP_UINT(font);
+            if (font > FONT_NUM_FONTS)
+                HALT(SAM_ERROR_WRONG_TYPE); // FIXME: better error
+            NVGcolor color;
+            POP_COLOR(color);
+            sam_word_t x, y, width;
+            POP_UINT(width);
+            POP_UINT(y);
+            POP_UINT(x);
+            sam_blob_t *blob;
+            POP_REF(blob);
+            sam_string_t *str;
+            EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
+
+            // FIXME: make the following parameters or state
+            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgFontFaceId(vg, fonts[font]);
+            nvgFontSize(vg, text_size * PIXEL_SIZE);
+            nvgFillColor(vg, color);
+            nvgBeginPath(vg);
+            nvgTextBox(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, width * PIXEL_SIZE, str->str, str->str + str->len);
+            nvgClosePath(vg);
+            nvgEndFrame(vg);
+            need_window = true;
+        }
+        break;
     case TRAP_GRAPHICS_FPS:
         {
             sam_uword_t fps;
