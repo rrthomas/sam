@@ -282,8 +282,7 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 			ctx.assembleInst("new")
 			for _, e := range *e.Container {
 				e.Key.Compile(ctx)
-				ctx.assembleInt(-2)
-				// FIXME: ctx.assembleInst("_two")
+				ctx.assembleInst("_two")
 				ctx.assembleInst("s0")
 				ctx.assembleInst("get")
 				ctx.assembleInst("append")
