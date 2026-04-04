@@ -220,6 +220,13 @@ var errors = map[int]string{
 	ERROR_INVALID_BLOB_TYPE: "ERROR_INVALID_BLOB_TYPE",
 }
 
+func ErrorMessage(code Word) string {
+	if code >= ERROR_OK && code <= ERROR_INVALID_BLOB_TYPE {
+		return fmt.Sprintf(errors[int(code)])
+	}
+	return fmt.Sprintf("unknown error code %d (0x%x)", code, uint(Uword(code)&WORD_MASK))
+}
+
 func (state *State) ErrorMessage(code Word) string {
 	if code == ERROR_OK {
 		res := C.disas(state.result)
@@ -236,10 +243,8 @@ func (state *State) ErrorMessage(code Word) string {
 		}
 		C.free(unsafe.Pointer(res))
 		return msg
-	} else if code >= ERROR_OK && code <= ERROR_INVALID_BLOB_TYPE {
-		return fmt.Sprintf(errors[int(code)])
 	}
-	return fmt.Sprintf("unknown error code %d (0x%x)", code, uint(Uword(code)&WORD_MASK))
+	return ErrorMessage(code)
 }
 
 type Instruction struct {
