@@ -1176,7 +1176,7 @@ func (ctx *Frame) assembleLoop(bodyCtx *Frame) {
 	ctx.assembleInst("do")
 }
 
-func Sal(src string, ast bool, asm bool) libsam.Stack {
+func Sal(src string, ast bool) libsam.Stack {
 	body, err := parser.ParseString("", src)
 	if err != nil {
 		panic(fmt.Errorf("error in source %v", err))
@@ -1201,11 +1201,6 @@ func Sal(src string, ast bool, asm bool) libsam.Stack {
 	ctx.assembleCode(blockCtx.asm)
 	ctx.assembleInst("do")
 	ctx.assembleInst("halt")
-
-	// FIXME: call debug() on output
-	// if asm {
-	//	print(string(yaml))
-	// }
 
 	return ctx.asm.stack
 }
