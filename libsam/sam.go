@@ -657,7 +657,7 @@ var StackDifference = map[string]int{
 	"prepend": -2,
 	"go":      -1,
 	"do":      -1,
-	"call":    -3,
+	"call":    -2,
 	"if":      -3,
 	"while":   -1,
 	"not":     0,

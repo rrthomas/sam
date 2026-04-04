@@ -397,7 +397,6 @@ func (e *CallExp) Compile(ctx *Frame) {
 	// Call the successive functions, adjusting sp after each
 	if e.Calls != nil {
 		for _, args := range *e.Calls {
-			ctx.assembleInst("zero")
 			ctx.assembleInst("new")
 			ctx.assembleInst("call")
 			if args.Arguments != nil {
