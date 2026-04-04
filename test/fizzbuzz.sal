@@ -1,12 +1,12 @@
 for i in 100 {
     let n = i + 1
     if n % 3 == 0 and n % 5 == 0 {
-        debug, "FizzBuzz"
+        debug("FizzBuzz")
     } else if n % 3 == 0 {
-        debug, "Fizz"
+        debug("Fizz")
     } else if n % 5 == 0 {
-        debug, "Buzz"
+        debug("Buzz")
     } else {
-        debug, n
+        debug(n)
     }
 }

@@ -7,6 +7,6 @@ let A = fn(m, n) {
     A(m - 1, A(m, n - 1))
   }
 }
-debug, A(0, 0)
-// debug, A(3, 4) FIXME: too much debug output!
-debug, A(3, 1)
+debug(A(0, 0))
+// debug(A(3, 4)) FIXME: too much debug output!
+debug(A(3, 1))

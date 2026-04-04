@@ -193,13 +193,6 @@ type If struct {
 	Then *Block      `@@`
 }
 
-type Trap struct {
-	Pos lexer.Position
-
-	Function  *string       `@Ident`
-	Arguments *[]Expression `("," @@)*`
-}
-
 type Declaration struct {
 	Pos lexer.Position
 
@@ -219,7 +212,6 @@ type Statement struct {
 
 	Empty        bool           `  @";"`
 	Assignment   *Assignment    `| @@ ";"`
-	Trap         *Trap          `| @@ ";"`
 	Declarations *[]Declaration `| (@@ ";")+`
 }
 
@@ -384,10 +376,26 @@ func (e *UnaryExp) Compile(ctx *Frame) {
 }
 
 func (e *CallExp) Compile(ctx *Frame) {
+	// Check whether the first call is a trap
+	haveTrap := false
+	maybeId := e.Function.Object.Variable
+	if maybeId != nil {
+		haveTrap = ctx.isTrap(*maybeId)
+	}
+
 	// Argument lists
 	if e.Calls != nil {
 		for i := len(*e.Calls) - 1; i >= 0; i-- {
-			(*e.Calls)[i].Compile(ctx)
+			if i == 0 && haveTrap {
+				args := (*e.Calls)[i].Arguments
+				if args != nil {
+					for _, a := range *args {
+						a.Compile(ctx)
+					}
+				}
+			} else {
+				(*e.Calls)[i].Compile(ctx)
+			}
 		}
 	}
 
@@ -396,11 +404,15 @@ func (e *CallExp) Compile(ctx *Frame) {
 
 	// Call the successive functions, adjusting sp after each
 	if e.Calls != nil {
-		for _, args := range *e.Calls {
-			ctx.assembleInst("new")
-			ctx.assembleInst("call")
-			if args.Arguments != nil {
-				ctx.adjustSp(-(len(*args.Arguments)))
+		for i, args := range *e.Calls {
+			if i == 0 && haveTrap {
+				ctx.compileTrapCall(*e.Function.Object.Variable, args.Arguments)
+			} else {
+				ctx.assembleInst("new")
+				ctx.assembleInst("call")
+				if args.Arguments != nil {
+					ctx.adjustSp(-(len(*args.Arguments)))
+				}
 			}
 		}
 	}
@@ -668,26 +680,20 @@ func (a *Assignment) Compile(ctx *Frame) {
 	}
 }
 
-func (t *Trap) Compile(ctx *Frame) {
-	stackEffect := trapStackEffect(*t.Function)
+func (ctx *Frame) compileTrapCall(function string, args *[]Expression) {
+	stackEffect := trapStackEffect(function)
 	nargs := 0
-	if t.Arguments != nil {
-		nargs = len(*t.Arguments)
+	if args != nil {
+		nargs = len(*args)
 	}
 	if stackEffect.In != libsam.Uword(nargs) {
 		panic(fmt.Errorf("trap %s takes %d argument(s), but %d supplied",
-			*t.Function, stackEffect.In, nargs,
+			function, stackEffect.In, nargs,
 		))
 	}
 	if stackEffect.Out > 1 {
 		panic("Support for traps returning more than one value is not implemented yet")
 	}
-	if t.Arguments != nil {
-		for _, a := range *t.Arguments {
-			a.Compile(ctx)
-		}
-	}
-	ctx.assembleTrap(*t.Function)
 	// If the trap returns no values, return a dummy value
 	if stackEffect.Out == 0 {
 		ctx.assembleNull()
@@ -704,8 +710,6 @@ func (s *Statement) Compile(ctx *Frame) {
 		// Do nothing
 	} else if s.Assignment != nil {
 		s.Assignment.Compile(ctx)
-	} else if s.Trap != nil {
-		s.Trap.Compile(ctx)
 	} else if s.Declarations != nil {
 		for _, d := range *s.Declarations {
 			d.Compile(ctx)
@@ -897,6 +901,15 @@ func (ctx *Frame) compileCaptureAddr(i uint) {
 	ctx.assembleInst("s0")
 	ctx.assembleInst("extract")
 	ctx.assembleInst("get")
+}
+
+func (ctx *Frame) isTrap(id string) bool {
+	if ctx.findLocal(id) == nil || ctx.findCapture(id) == nil {
+		if _, ok := libsam.TrapStackEffect[strings.ToUpper(id)]; ok {
+			return true
+		}
+	}
+	return false
 }
 
 func (ctx *Frame) compileGetVar(id string) {

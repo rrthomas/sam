@@ -1,23 +1,23 @@
 // List iterator
 for i in [1, 2, 42, 5.0] {
-    debug, i
+    debug(i)
 }
 
 // Int iterator
 for i in 7 {
-    debug, i
+    debug(i)
 }
 
 // 'null' iterator
 for i in null {
-    debug, i
+    debug(i)
 }
 
 // Modify a list while iterating
 let l = [1, 2.0, 3.4, 5]
 for i in l {
     <<<l
-    debug, i
+    debug(i)
 }
 
 // Modify a map while itering
@@ -29,5 +29,5 @@ m
 
 // Print a string a grapheme at a time
 for g in "γεια σου, ρὸζα" {
-    log, g
+    log(g)
 }
