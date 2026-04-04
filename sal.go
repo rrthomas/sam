@@ -266,11 +266,11 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	} else if e.Float != nil {
 		ctx.assembleFloat(*e.Float)
 	} else if e.String != nil {
-		str := "\""
+		str := "`"
 		for _, s := range e.String.Fragments {
 			str += s.String + s.Escaped
 		}
-		str += "\""
+		str += "`"
 		str, ok := strconv.Unquote(str)
 		if ok != nil {
 			panic(fmt.Errorf("Invalid string %s", str))
