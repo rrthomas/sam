@@ -18,15 +18,10 @@
 // Basic types
 typedef ptrdiff_t sam_word_t;
 typedef size_t sam_uword_t;
-#if SIZE_MAX == 4294967295ULL
-typedef float sam_float_t;
-#elif SIZE_MAX == 18446744073709551615ULL
 typedef double sam_float_t;
-#else
-#error "SAM needs 4- or 8-byte size_t"
-#endif
 
 #define SAM_WORD_BYTES (sizeof(size_t))
+_Static_assert(sizeof(size_t) == 8);
 #define SAM_WORD_BIT (SAM_WORD_BYTES * 8)
 #define SAM_WORD_MIN ((sam_word_t)(1UL << (SAM_WORD_BIT - 1)))
 #define SAM_INT_MIN ((sam_word_t)((sam_uword_t)SAM_WORD_MIN >> SAM_INT_SHIFT))

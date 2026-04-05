@@ -32,18 +32,6 @@ const sam_word_t SAM_FLOAT_TAG = 0x0;
 const sam_word_t SAM_FLOAT_TAG_MASK = 0x1;
 const int SAM_FLOAT_SHIFT = 0;
 
-#if SIZE_MAX == 4294967295ULL
-const sam_word_t SAM_BLOB_TAG = 0x1;
-const sam_word_t SAM_BLOB_TAG_MASK = 0x3;
-const int SAM_BLOB_SHIFT = 2;
-
-const sam_word_t SAM_INT_TAG = 0x3;
-const sam_word_t SAM_INT_TAG_MASK = 0x7;
-const int SAM_INT_SHIFT = 3;
-
-const sam_word_t SAM_INST_SET_MASK = 0x40;
-const int SAM_INSTS_SHIFT = 7;
-#elif SIZE_MAX == 18446744073709551615ULL
 const sam_word_t SAM_INT_TAG = 0x1;
 const sam_word_t SAM_INT_TAG_MASK = 0x3;
 const int SAM_INT_SHIFT = 2;
@@ -51,12 +39,6 @@ const int SAM_INT_SHIFT = 2;
 const sam_word_t SAM_BLOB_TAG = 0x3;
 const sam_word_t SAM_BLOB_TAG_MASK = 0x7;
 const int SAM_BLOB_SHIFT = 3;
-
-const sam_word_t SAM_INST_SET_MASK = 0x1c0;
-const int SAM_INSTS_SHIFT = 9;
-#else
-#error "SAM needs 4- or 8-byte size_t"
-#endif
 
 const sam_word_t SAM_ATOM_TAG = 0x7;
 const sam_word_t SAM_ATOM_TAG_MASK = 0xf;
@@ -68,6 +50,8 @@ const sam_word_t SAM_TRAP_TAG = 0xf;
 const sam_word_t SAM_TRAP_TAG_MASK = 0x1f;
 const int SAM_TRAP_FUNCTION_SHIFT = 5;
 
+const sam_word_t SAM_INST_SET_MASK = 0x1c0;
+const int SAM_INSTS_SHIFT = 9;
 const sam_word_t SAM_INSTS_TAG = 0x1f;
 const sam_word_t SAM_INSTS_TAG_MASK = 0x3f;
 const int SAM_INST_SET_SHIFT = 6;

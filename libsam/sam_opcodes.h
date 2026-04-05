@@ -49,7 +49,7 @@ enum SAM_ATOM_TYPE {
   SAM_ATOM_NULL,
 };
 
-// Blob types (5 or 10 bits)
+// Blob types (10 bits)
 enum SAM_BLOB_TYPE {
   SAM_BLOB_RAW,
   SAM_BLOB_ARRAY,
