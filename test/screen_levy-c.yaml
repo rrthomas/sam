@@ -1,32 +1,32 @@
 - !include turtle.yaml
-- stack init
+- array init
 - do
 # Move just down from top left of screen and point towards right
 - float -90.0
 - trap rad
-- stack turn
+- array turn
 - do
 - drop
 - trap DISPLAY_HEIGHT
 - trap I2F
 - float 4.0
 - trap div
-- stack go
+- array go
 - do
 - drop
 - float 90.0
 - trap rad
-- stack turn
+- array turn
 - do
 - drop
 - trap DISPLAY_WIDTH
 - trap I2F
 - float 4.0
 - trap div
-- stack go
+- array go
 - do
 - drop
-- stack pendown
+- array pendown
 - do
 - int 6
 - trap DISPLAY_WIDTH
@@ -40,7 +40,7 @@
   -
     - float -45.0
     - trap rad
-    - stack turn
+    - array turn
     - do
     - drop
     - int -6
@@ -53,27 +53,27 @@
     - get
     - float 0.70710678
     - mul
-    - stack levy_c
+    - array levy_c
     - do
     - float 90.0
     - trap rad
-    - stack turn
+    - array turn
     - do
     - drop
-    - stack levy_c
+    - array levy_c
     - do
     - drop
     - drop
     - float -45.0
     - trap rad
-    - stack turn
+    - array turn
     - do
     - drop
   -
     - int -5
     - s0
     - get
-    - stack go
+    - array go
     - do
     - drop
   - if

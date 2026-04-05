@@ -37,24 +37,24 @@ void sam_basic_finish(void)
 
 sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s ((sam_stack_t *)state->s0->data)
+#define s ((sam_array_t *)state->s0->data)
     sam_word_t error = SAM_ERROR_OK;
-    CHECK_BLOB(state->s0, SAM_BLOB_STACK);
+    CHECK_BLOB(state->s0, SAM_BLOB_ARRAY);
 
     switch (function) {
     case TRAP_BASIC_SIZE:
         {
             sam_blob_t *blob;
             POP_REF(blob);
-            sam_stack_t *stack;
-            EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, stack);
+            sam_array_t *stack;
+            EXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, stack);
             PUSH_INT(stack->sp);
         }
         break;
     case TRAP_BASIC_QUOTE:
         {
             sam_uword_t ir;
-            HALT_IF_ERROR(sam_stack_peek(state->p0, state->pc++, &ir));
+            HALT_IF_ERROR(sam_array_peek(state->p0, state->pc++, &ir));
             PUSH_WORD(ir);
         }
     break;
@@ -64,8 +64,8 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             POP_REF(blob);
             sam_blob_t *new_blob;
             switch (blob->type) {
-                case SAM_BLOB_STACK:
-                    HALT_IF_ERROR(sam_stack_copy(blob, &new_blob));
+                case SAM_BLOB_ARRAY:
+                    HALT_IF_ERROR(sam_array_copy(blob, &new_blob));
                     break;
                 case SAM_BLOB_MAP:
                     HALT_IF_ERROR(sam_map_copy(blob, &new_blob));
@@ -77,16 +77,16 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_RET:
         {
             sam_word_t item;
-            HALT_IF_ERROR(sam_stack_pop(state->s0, &item));
+            HALT_IF_ERROR(sam_array_pop(state->s0, &item));
             sam_blob_t *frame, *old_stack_blob = state->s0;
-            sam_stack_t *old_stack;
-            EXTRACT_BLOB(old_stack_blob, SAM_BLOB_STACK, sam_stack_t, old_stack);
+            sam_array_t *old_stack;
+            EXTRACT_BLOB(old_stack_blob, SAM_BLOB_ARRAY, sam_array_t, old_stack);
             DONE;
             POP_REF(frame);
             state->s0 = frame;
             PUSH_WORD(item);
             // Wipe the stack slot for the return value.
-            HALT_IF_ERROR(sam_stack_poke(old_stack_blob, old_stack->sp, SAM_INSTS_TAG));
+            HALT_IF_ERROR(sam_array_poke(old_stack_blob, old_stack->sp, SAM_INSTS_TAG));
         }
         break;
     case TRAP_BASIC_LSH:
@@ -116,7 +116,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_DIV:
         {
             sam_uword_t operand;
-            HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
+            HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
             if ((sam_word_t)(operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                 sam_word_t divisor, dividend;
                 POP_INT(divisor);
@@ -138,7 +138,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_REM:
         {
             sam_uword_t operand;
-            HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
+            HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
             if ((sam_word_t)(operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                 sam_uword_t divisor, dividend;
                 POP_UINT(divisor);
@@ -172,9 +172,9 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 case SAM_ATOM_NULL:
                     {
                         sam_blob_t *blob, *iter;
-                        HALT_IF_ERROR(sam_stack_new(&blob));
+                        HALT_IF_ERROR(sam_array_new(&blob));
                         // Iterator over empty list
-                        HALT_IF_ERROR(sam_stack_iter_new(blob, &iter));
+                        HALT_IF_ERROR(sam_array_iter_new(blob, &iter));
                         PUSH_REF(iter);
                     }
                     break;
@@ -186,8 +186,8 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 sam_blob_t *blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
                             sam_blob_t *iter;
                 switch (blob->type) {
-                    case SAM_BLOB_STACK:
-                        HALT_IF_ERROR(sam_stack_iter_new(blob, &iter));
+                    case SAM_BLOB_ARRAY:
+                        HALT_IF_ERROR(sam_array_iter_new(blob, &iter));
                         break;
                     case SAM_BLOB_MAP:
                         HALT_IF_ERROR(sam_map_iter_new(blob, &iter));

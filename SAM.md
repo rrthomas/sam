@@ -5,14 +5,14 @@ by Reuben Thomas
 
 ## Introduction
 
-SAM is a simple virtual machine designed playfully to teach some elements of low-level programming. It is programmed with an assembly language written as YAML.
+SAM is a simple virtual machine designed to teach some elements of low-level programming. It is programmed with an assembly language written as YAML.
 
 SAM is self-contained, and performs I/O via the `TRAP` instruction, which provides access to I/O and possibly implementation-dependent facilities.
 
 
 ## Architecture
 
-SAM is a stack-based VM. Its memory is a single stack of items, each of which is a word-sized VM instruction, or a reference to a stack or other blob. It has no other memory. It has a handful of registers.
+SAM is an array-based VM. Its memory is a single array of items, each of which is a word-sized VM instruction, or a reference to an array or other blob. It has a handful of registers. At any given time, computation is performed on a particular array, called the “stack”.
 
 
 ### Registers
@@ -21,23 +21,23 @@ The registers are as follows:
 
 | Register  | Function  |
 | --------- | --------- |
-| `S0`      | The current `S`tack. |
+| `S0`      | The array which is the current `S`tack. |
 | `IR`      | The `I`nstruction `R`egister holds the currently-executing instruction. |
-| `P0 `     | The current stack from which code is being executed. |
+| `P0 `     | The array from which code is being executed. |
 | `PC`      | The `P`rogram `C`ounter points to the next instruction. |
 
 All of the registers are word-sized.
 
 
-### The stack
+### Arrays
 
-The stack is represented as a series of VM instructions encoded as 4- or 8-byte words.
+Arrays are a series of VM instructions encoded as 4- or 8-byte words.
 
-The stack is addressed with signed integers.
+Arrays are addressed with signed integers.
 
-A positive address `n` refers to the `n`th item, starting from zero at the bottom of the stack.
+A positive address `n` refers to the `n`th item, starting from zero.
 
-A negative address –`n` refers to the `n`th item, counting from 1 at the top of the stack.
+A negative address –`n` refers to the `n`th item, counting from 1 at the end of the array.
 
 A valid address is one that points to a valid instruction.
 
@@ -65,9 +65,9 @@ The following table lists the errors and the conditions under which they are rai
 | `OK` | No error (returned by `HALT`). |
 | `INVALID_OPCODE` | An attempt was made to execute an invalid opcode. |
 | `INVALID_ADDRESS` | Invalid address. |
-| `STACK_UNDERFLOW` | An attempt was made to access beyond the bottom of the given stack. |
-| `STACK_OVERFLOW` | An attempt was made to access beyond the top of the given stack. |
-| `WRONG_TYPE` | A stack item’s type is incorrect for the current operation. |
+| `ARRAY_UNDERFLOW` | An attempt was made to access before the start of the given array. |
+| `ARRAY_OVERFLOW` | An attempt was made to access after the end of the given array. |
+| `WRONG_TYPE` | A array item’s type is incorrect for the current operation. |
 | `INVALID_TRAP` | An invalid function number was given to `TRAP`. |
 
 
@@ -80,7 +80,7 @@ The instruction set is listed below, with the instructions grouped according to 
 >
 > Description.
 
-**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of a stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`iₙ₋₁` `iₙ` where the `iₖ` are stack items, with `iₙ` being on top of the stack. The symbols denoting different types of stack item are shown next.
+**Stack comments** are written `before` → `after`, where `before` and `after` are stack pictures showing the items on top of the stack before and after the instruction is executed (the change is called the **stack effect**). An instruction only affects the items shown in its stack comments. **Stack pictures** are a representation of the top-most items on the stack, and are written `i₁` `i₂`…`iₙ₋₁` `iₙ` where the `iₖ` are stack items, with `iₙ` being on top of the stack. The symbols denoting different types of item are shown next.
 
 
 ### Types and their representations
@@ -90,10 +90,9 @@ The instruction set is listed below, with the instructions grouped according to 
 | `i`    | a signed integer |
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
-| `S`    | a reference to a string |
-| `a`    | an atom |
 | `r`    | a reference (pointer to a blob) |
-| `s`    | a reference to a stack |
+| `a`    | a reference to an array |
+| `s`    | a reference to a string |
 | `x`    | an unspecified item |
 
 See the section “Machine code format” below for more details of binary representation.
@@ -129,13 +128,13 @@ These instructions encode literal values.
 > Push the float encoded in the `FLOAT` instruction on to the stack. Increment `PC`.
 
 > `NULL`  
-> → `a`
+> → `NULL`
 >
 > Push the atom `NULL`.
 
 > `STRING`  
->  → `S`
-> Push a reference to the string `S`.
+>  → `s`
+> Push a reference to the string `s`.
 
 
 ### Numeric type conversion
@@ -153,24 +152,24 @@ Numeric conversions:
 > Pop `f`, convert the float to an integer, and push the integer.
 
 
-### Stack manipulation
+### Array manipulation
 
-These instructions manage stacks.
+These instructions manage arrays.
 
 > `S0`  
-> → `s`
+> → `a`
 >
-> Push a reference to `S0` to the current stack.
+> Push a reference to `S0` to the stack.
 
 > `SIZE`  
-> `s` -> `i`
+> `a` -> `i`
 >
-> Pop `s`, and push the number of items in that stack to the current stack.
+> Pop `a`, and push the number of items in that array to the stack.
 
 > `NEW`  
-> → `s`
+> → `a`
 >
-> Create an empty stack and push a reference to it to the current stack.
+> Create an empty array and push a reference to it to the stack.
 
 > `DROP`  
 > `x` →
@@ -178,49 +177,49 @@ These instructions manage stacks.
 > Discard `x` from the top of the stack.
 
 > `GET`  
-> `i` `s` → `x`
+> `i` `a` → `x`
 >
-> Pop `i` and `s` from the stack. Push the `i`th item of the stack pointed to by `s` to the stack.
+> Pop `i` and `a` from the stack. Push the `i`th item of the array pointed to by `a` to the stack.
 
 > `SET`  
-> `x` `i` `s` →
+> `x` `i` `a` →
 >
-> Pop `i` and `s` from the stack. Set the `i`th item of the stack pointed to by `s` to `x`. Pop `x` from the stack.
+> Pop `i` and `a` from the stack. Set the `i`th item of the array pointed to by `a` to `x`. Pop `x` from the stack.
 
 > `EXTRACT`  
-> `i` `s` →
+> `i` `a` →
 >
-> Pop `i` and `s` from the stack. Move the `i`th stack item of the stack pointed to by `s` to the top of the stack.
+> Pop `i` and `a` from the stack. Move the `i`th item of the array pointed to by `a` to the top of the stack.
 
 > `INSERT`  
-> `i` `s` →
+> `i` `a` →
 >
-> Pop `i` and `s` from the stack. Insert the top item of the stack pointed to by `s` at position `i`.
+> Pop `i` and `a` from the stack. Insert the top item of the array pointed to by `a` at position `i`.
 
 > `POP`  
-> `s` → `x`
+> `a` → `x`
 >
-> Pop `x` from the stack pointed to by `s`.
+> Pop `x` from the array pointed to by `a`.
 
 > `SHIFT`
-> `s` → `x`
+> `a` → `x`
 >
-> Remove the first element from the stack pointed to by `s` and push it to the current stack.
+> Remove the first element from the array pointed to by `a` and push it to the stack.
 
 > `APPEND`  
-> `x` `s` →
+> `x` `a` →
 >
-> Push `x` to the stack pointed to by `s`.
+> Append `x` to the array pointed to by `a`.
 
 > `PREPEND`  
-> `x` `s` →
+> `x` `a` →
 >
-> Prepend `x` to the array pointed to by `s`.
+> Prepend `x` to the array pointed to by `a`.
 
 > `QUOTE`  
 > → `x`
 >
-> Push the word at `PC` to the current stack and increment `PC` to point to the next stack item.
+> Push the word at `PC` to the stack and increment `PC` to point to the next item.
 
 
 ### Control structures
@@ -233,34 +232,34 @@ These instructions implement branches, conditions and subroutine calls.
 > Push `IR` on to the stack.
 
 > `GO`  
-> `s` →
+> `a` →
 > 
-> Pop `s`. Set `PC` to the address of the first item of the stack pointed to by `s`.
+> Pop `a`. Set `PC` to the address of the first item of the array pointed to by `a`.
 
 > `DO`  
-> `s₁` → `s₂` `i`
+> `a₁` → `a₂` `i`
 >
-> Pop `s₁`. Push `P0` to the stack as a reference and `PC` as an integer, and set `P0` to `s₁` and `PC` to 0.
+> Pop `a₁`. Push `P0` to the stack as a reference and `PC` as an integer, and set `P0` to `a₁` and `PC` to 0.
 
 > `DONE`  
-> `s` `i` →
+> `a` `i` →
 >
-> Pop `i` into `PC` and `s` into `P0`.
+> Pop `i` into `PC` and `a` into `P0`.
 
 > `CALL`  
-> `x₁`…`xₙ` `i` `s₁` `s₂` →
+> `x₁`…`xₙ` `i` `a₁` `a₂` →
 >
-> Pop `i`, `s₁` and `s₂`. Pop `i` stack items, and push them to the stack given by `s₂`, in order from `x₁` to `xₙ`. Push `S0`, `P0`, and `PC` to the stack given by `s₂`. Set `S0` to `s₂`, `P0` to `s₁` and `PC` to 0.
+> Pop `i`, `a₁` and `a₂`. Pop `i` stack items, and push them to the array given by `a₂`, in order from `x₁` to `xₙ`. Push `S0`, `P0`, and `PC` to the array given by `a₂`. Set `S0` to `a₂`, `P0` to `a₁` and `PC` to 0.
 
 > `RET`  
-> `s₁` `s₂` `i` `x` →
+> `a₁` `a₂` `i` `x` →
 >
-> Pop `x`, `i`, `s₂` and `s₁`. Set `S0` to `s₁`, `P0` to `s₂`, and `PC` to `i`. Push `x` to the stack.
+> Pop `x`, `i`, `a₂` and `a₁`. Set `S0` to `a₁`, `P0` to `a₂`, and `PC` to `i`. Push `x` to the stack.
 
 > `IF`  
-> `i` `s₁` `s₂` → `p`
+> `i` `a₁` `a₂` → `p`
 >
-> Pop `s₁` and `s₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `s₁`, otherwise on `s₂`.
+> Pop `a₁` and `a₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `a₁`, otherwise on `a₂`.
 
 > `WHILE`  
 > `i` →

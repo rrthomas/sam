@@ -9,7 +9,7 @@
   - loop: int -3
   - s0
   - get
-  - stack data
+  - array data
   - get
   - int -5
   - s0
@@ -30,7 +30,7 @@
   - s0
   - set
   - while
-  - stack loop
+  - array loop
   - go
 - do
 - drop

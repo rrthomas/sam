@@ -16,11 +16,11 @@ typedef struct sam_blob {
     _Alignas(max_align_t) sam_word_t data[];
 } sam_blob_t;
 
-typedef struct sam_stack {
+typedef struct sam_array {
     sam_word_t *data;
     sam_uword_t size; // Size of stack in words
     sam_uword_t sp; // Number of words in stack
-} sam_stack_t;
+} sam_array_t;
 
 typedef struct sam_iter {
     sam_blob_t *blob;

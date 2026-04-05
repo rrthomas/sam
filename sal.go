@@ -646,7 +646,7 @@ func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
 	}
 	ctx.assembleNull() // return value
 	thenCtx := ctx.assembleBlock((*il)[0].Then, false)
-	elseCtx := Frame{asm: &assembler{stack: libsam.NewStack()}}
+	elseCtx := Frame{asm: &assembler{stack: libsam.NewArray()}}
 	if len(*il) > 1 {
 		elseCtx = ctx.newBlock(false)
 		restIl := (*il)[1:]
@@ -781,7 +781,7 @@ func (f *Function) Compile(ctx *Frame) {
 		parent:   ctx,
 		locals:   make([]Local, 0),
 		captures: &captures,
-		asm:      &assembler{stack: libsam.NewStack()},
+		asm:      &assembler{stack: libsam.NewArray()},
 		baseSp:   0,
 		sp:       libsam.Word(nargs) + 2, // exclude PC & P0 from count
 		nargs:    nargs,
@@ -1094,7 +1094,7 @@ func (ctx *Frame) assembleFloat(f float64) {
 	ctx.adjustSp(1)
 }
 
-func (ctx *Frame) assembleBlob(s libsam.Stack) {
+func (ctx *Frame) assembleBlob(s libsam.Array) {
 	ctx.asm.addStack(s)
 	ctx.adjustSp(1)
 }
@@ -1146,7 +1146,7 @@ func (ctx *Frame) newBlock(loop bool) Frame {
 		label:    newLabel(),
 		locals:   slices.Clone(ctx.locals),
 		captures: ctx.captures,
-		asm:      &assembler{stack: libsam.NewStack()},
+		asm:      &assembler{stack: libsam.NewArray()},
 		baseSp:   baseSp,
 		sp:       baseSp,
 		nargs:    ctx.nargs,
@@ -1176,7 +1176,7 @@ func (ctx *Frame) assembleLoop(bodyCtx *Frame) {
 	ctx.assembleInst("do")
 }
 
-func Sal(src string, ast bool) libsam.Stack {
+func Sal(src string, ast bool) libsam.Array {
 	body, err := parser.ParseString("", src)
 	if err != nil {
 		panic(fmt.Errorf("error in source %v", err))
@@ -1194,7 +1194,7 @@ func Sal(src string, ast bool) libsam.Stack {
 	ctx := Frame{
 		locals:   make([]Local, 0),
 		captures: &captures,
-		asm:      &assembler{stack: libsam.NewStack()},
+		asm:      &assembler{stack: libsam.NewArray()},
 	}
 	ctx.assembleNull() // value of top level
 	blockCtx := ctx.assembleBlock(&block, false)

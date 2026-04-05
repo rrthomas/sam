@@ -1,6 +1,6 @@
-Stack: XXXXXXXX (4 item(s))
+Array: XXXXXXXX (4 item(s))
 - null
-- stack XXXXXXXX (73 items)
+- array XXXXXXXX (73 items)
   - int 50
   - int 100
   - trap WHITE
@@ -86,25 +86,25 @@ blob
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - null
-- stack XXXXXXXX (73 items)
+- array XXXXXXXX (73 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 50
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 50
 - int 100
@@ -112,7 +112,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 50
 - int 100
@@ -121,33 +121,33 @@ trap SETDOT
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 20
 int
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 20
 - int 100
@@ -155,7 +155,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 20
 - int 100
@@ -164,33 +164,33 @@ trap SETDOT
 sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 20
 int
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 20
 - int 50
@@ -198,7 +198,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 20
 - int 50
@@ -207,33 +207,33 @@ trap SETDOT
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 10
 int
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 10
 - int 10
@@ -241,7 +241,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 10
 - int 10
@@ -250,7 +250,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 10
 - int 10
@@ -260,7 +260,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 10
 - int 10
@@ -271,33 +271,33 @@ trap DRAWLINE
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 40
 int
 sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 40
 - int 120
@@ -305,7 +305,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 40
 - int 120
@@ -314,7 +314,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 40
 - int 120
@@ -324,7 +324,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 40
 - int 120
@@ -335,33 +335,33 @@ trap DRAWRECT
 sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 60
 int
 sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 60
 - int 140
@@ -369,7 +369,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 60
 - int 140
@@ -378,7 +378,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 60
 - int 140
@@ -388,7 +388,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 60
 - int 140
@@ -399,33 +399,33 @@ trap FILLRECT
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 110
 int
 sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 110
 - int 120
@@ -433,7 +433,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 110
 - int 120
@@ -442,7 +442,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 110
 - int 120
@@ -452,7 +452,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 110
 - int 120
@@ -463,7 +463,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 110
 - int 120
@@ -475,33 +475,33 @@ trap DRAWROUNDRECT
 sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 52, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 53, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 210
 int
 sam_run: p0 = XXXXXXXX, pc = 54, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 210
 - int 160
@@ -509,7 +509,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 55, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 210
 - int 160
@@ -518,7 +518,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 210
 - int 160
@@ -528,33 +528,33 @@ trap DRAWCIRCLE
 sam_run: p0 = XXXXXXXX, pc = 57, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 60, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 290
 int
 sam_run: p0 = XXXXXXXX, pc = 61, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 290
 - int 160
@@ -562,7 +562,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 62, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 290
 - int 160
@@ -571,7 +571,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 63, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 290
 - int 160
@@ -581,33 +581,33 @@ trap FILLCIRCLE
 sam_run: p0 = XXXXXXXX, pc = 64, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 null
 sam_run: p0 = XXXXXXXX, pc = 65, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 66, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 blob
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - string γεια σου, ροζ ☺
 int
 sam_run: p0 = XXXXXXXX, pc = 68, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - string γεια σου, ροζ ☺
 - int 100
@@ -615,7 +615,7 @@ int
 sam_run: p0 = XXXXXXXX, pc = 69, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - string γεια σου, ροζ ☺
 - int 100
@@ -624,7 +624,7 @@ trap WHITE
 sam_run: p0 = XXXXXXXX, pc = 70, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - string γεια σου, ροζ ☺
 - int 100
@@ -634,7 +634,7 @@ trap FONT_REGULAR
 sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - string γεια σου, ροζ ☺
 - int 100
@@ -645,14 +645,14 @@ trap TEXT
 sam_run: p0 = XXXXXXXX, pc = 72, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - float 449.878510
 int
 sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - float 449.878510
 - int -4
@@ -660,16 +660,16 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - float 449.878510
 - int -4
-- stack XXXXXXXX (6 items)
+- array XXXXXXXX (6 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 3
 Working stack: (3 word(s))
 - float 449.878510
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
@@ -678,5 +678,5 @@ halt
 
 
 sam_run returns: halt with result float 449.878510
-Stack: XXXXXXXX (1 item(s))
+Array: XXXXXXXX (1 item(s))
 - float 449.878510

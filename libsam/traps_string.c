@@ -19,7 +19,7 @@
 
 sam_word_t sam_string_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s ((sam_stack_t *)state->s0->data)
+#define s ((sam_array_t *)state->s0->data)
     int error = SAM_ERROR_OK;
 
     switch (function) {

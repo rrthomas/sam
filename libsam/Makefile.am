@@ -36,7 +36,7 @@ libsam_la_SOURCES = \
 	debug.c \
 	iter.c \
 	map.c \
-	stack.c \
+	array.c \
 	string.c \
 	run.c \
 	sdl.c \

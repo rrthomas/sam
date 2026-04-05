@@ -50,8 +50,8 @@ var ONE_INST_SHIFT = C.SAM_ONE_INST_SHIFT
 var WORD_BIT = C.SAM_WORD_BIT
 var WORD_MASK = Uword(((1 << C.SAM_WORD_BIT) - 1))
 
-type Stack struct {
-	stack *C.sam_blob_t
+type Array struct {
+	array *C.sam_blob_t
 }
 
 type State struct {
@@ -59,83 +59,83 @@ type State struct {
 	result Word
 }
 
-func (state *State) Stack() Stack {
-	return Stack{state.state.s0}
+func (state *State) Stack() Array {
+	return Array{state.state.s0}
 }
 
-func NewStack() Stack {
-	stack := Stack{}
-	C.sam_stack_new(&stack.stack)
-	return stack
+func NewArray() Array {
+	arr := Array{}
+	C.sam_array_new(&arr.array)
+	return arr
 }
 
-func NewString(str string) Stack {
-	stack := Stack{}
+func NewString(str string) Array {
+	arr := Array{}
 	cstr := C.CString(str)
-	C.sam_string_new(&stack.stack, cstr, C.size_t(len(str)))
-	return stack
+	C.sam_string_new(&arr.array, cstr, C.size_t(len(str)))
+	return arr
 }
 func NewState() State {
 	state := C.sam_state_new()
-	var stack *C.sam_blob_t
-	C.sam_stack_new(&stack)
-	state.s0 = stack
+	var arr *C.sam_blob_t
+	C.sam_array_new(&arr)
+	state.s0 = arr
 	return State{state: state}
 }
 
-func (s *Stack) Sp() Uword {
-	var stack *C.sam_stack_t
-	C.sam_stack_from_blob(s.stack, &stack)
-	return stack.sp
+func (s *Array) Sp() Uword {
+	var arr *C.sam_array_t
+	C.sam_array_from_blob(s.array, &arr)
+	return arr.sp
 }
 
-func (s *Stack) StackPeek(addr Uword) (int, Uword) {
+func (arr *Array) Peek(addr Uword) (int, Uword) {
 	var val Uword
-	res := C.sam_stack_peek(s.stack, addr, &val)
+	res := C.sam_array_peek(arr.array, addr, &val)
 	return int(res), val
 }
 
-func (s *Stack) StackPoke(addr Uword, val Uword) int {
-	return int(C.sam_stack_poke(s.stack, addr, val))
+func (arr *Array) Poke(addr Uword, val Uword) int {
+	return int(C.sam_array_poke(arr.array, addr, val))
 }
 
-func (s *Stack) PushStack(val Word) int {
-	return int(C.sam_stack_push(s.stack, val))
+func (arr *Array) Push(val Word) int {
+	return int(C.sam_array_push(arr.array, val))
 }
 
-func (s *Stack) PushArray(stack Stack) int {
-	return int(C.sam_push_ref(s.stack, stack.stack))
+func (s *Array) PushArray(arr Array) int {
+	return int(C.sam_push_ref(s.array, arr.array))
 }
 
-func (s *Stack) PushInt(val Uword) int {
-	return int(C.sam_push_int(s.stack, val))
+func (arr *Array) PushInt(val Uword) int {
+	return int(C.sam_push_int(arr.array, val))
 }
 
-func (s *Stack) PushFloat(f float64) int {
-	return int(C.sam_push_float(s.stack, C.sam_float_t(f)))
+func (arr *Array) PushFloat(f float64) int {
+	return int(C.sam_push_float(arr.array, C.sam_float_t(f)))
 }
 
-func (s *Stack) PushAtom(atomType Uword, operand Uword) int {
-	return int(C.sam_push_atom(s.stack, atomType, operand))
+func (arr *Array) PushAtom(atomType Uword, operand Uword) int {
+	return int(C.sam_push_atom(arr.array, atomType, operand))
 }
 
-func (s *Stack) PushTrap(function Uword) int {
-	return int(C.sam_push_trap(s.stack, function))
+func (arr *Array) PushTrap(function Uword) int {
+	return int(C.sam_push_trap(arr.array, function))
 }
 
-func (s *Stack) PushInsts(insts Uword) int {
-	return int(C.sam_push_insts(s.stack, insts))
+func (arr *Array) PushInsts(insts Uword) int {
+	return int(C.sam_push_insts(arr.array, insts))
 }
 
-func Run(state *State, code *Stack) Word {
-	state.state.p0 = code.stack
+func Run(state *State, code *Array) Word {
+	state.state.p0 = code.array
 	res := C.sam_run(state.state)
 	if res == ERROR_OK {
-		blob := state.Stack().stack
-		var stack *C.sam_stack_t
-		C.sam_stack_from_blob(blob, &stack)
+		blob := state.Stack().array
+		var array *C.sam_array_t
+		C.sam_array_from_blob(blob, &array)
 		var val Uword
-		res := C.sam_stack_peek(blob, stack.sp-1, &val)
+		res := C.sam_array_peek(blob, array.sp-1, &val)
 		state.result = Word(val)
 		if res != ERROR_OK {
 			panic("Run: error while getting HALT result")
@@ -176,8 +176,8 @@ func SetDebug(flag bool) {
 	}
 }
 
-func (stack *Stack) PrintStack() {
-	C.sam_print_stack(stack.stack)
+func (arr *Array) Print() {
+	C.sam_print_array(arr.array)
 }
 
 func DumpScreen(file string) {
@@ -188,8 +188,8 @@ const (
 	ERROR_OK                = C.SAM_ERROR_OK
 	ERROR_INVALID_OPCODE    = C.SAM_ERROR_INVALID_OPCODE
 	ERROR_INVALID_ADDRESS   = C.SAM_ERROR_INVALID_ADDRESS
-	ERROR_STACK_UNDERFLOW   = C.SAM_ERROR_STACK_UNDERFLOW
-	ERROR_STACK_OVERFLOW    = C.SAM_ERROR_STACK_OVERFLOW
+	ERROR_ARRAY_UNDERFLOW   = C.SAM_ERROR_ARRAY_UNDERFLOW
+	ERROR_ARRAY_OVERFLOW    = C.SAM_ERROR_ARRAY_OVERFLOW
 	ERROR_WRONG_TYPE        = C.SAM_ERROR_WRONG_TYPE
 	ERROR_INVALID_TRAP      = C.SAM_ERROR_INVALID_TRAP
 	ERROR_TRAP_INIT         = C.SAM_ERROR_TRAP_INIT
@@ -202,7 +202,7 @@ const (
 )
 
 const (
-	BLOB_STACK  = C.SAM_BLOB_STACK
+	BLOB_ARRAY  = C.SAM_BLOB_ARRAY
 	BLOB_STRING = C.SAM_BLOB_STRING
 	BLOB_RAW    = C.SAM_BLOB_RAW
 )
@@ -211,8 +211,8 @@ var errors = map[int]string{
 	ERROR_OK:                "ERROR_OK",
 	ERROR_INVALID_OPCODE:    "ERROR_INVALID_OPCODE",
 	ERROR_INVALID_ADDRESS:   "ERROR_INVALID_ADDRESS",
-	ERROR_STACK_UNDERFLOW:   "ERROR_STACK_UNDERFLOW",
-	ERROR_STACK_OVERFLOW:    "ERROR_STACK_OVERFLOW",
+	ERROR_ARRAY_UNDERFLOW:   "ERROR_ARRAY_UNDERFLOW",
+	ERROR_ARRAY_OVERFLOW:    "ERROR_ARRAY_OVERFLOW",
 	ERROR_WRONG_TYPE:        "ERROR_WRONG_TYPE",
 	ERROR_INVALID_TRAP:      "ERROR_INVALID_TRAP",
 	ERROR_TRAP_INIT:         "ERROR_TRAP_INIT",
@@ -233,11 +233,11 @@ func (state *State) ErrorMessage(code Word) string {
 		goRes := C.GoString(res)
 		msg := "halt with result"
 		if (state.result & C.SAM_BLOB_TAG_MASK) == C.SAM_BLOB_TAG {
-			stack := state.result & ^C.SAM_BLOB_TAG_MASK
+			arr := state.result & ^C.SAM_BLOB_TAG_MASK
 			if len(goRes) == 0 {
-				goRes = "(empty stack)\n"
+				goRes = "(empty array)\n"
 			}
-			msg += fmt.Sprintf(" stack %#x:\n", stack) + goRes[0:max(len(goRes)-1, 0)]
+			msg += fmt.Sprintf(" array %#x:\n", arr) + goRes[0:max(len(goRes)-1, 0)]
 		} else {
 			msg += " " + goRes
 		}
@@ -260,7 +260,7 @@ var Instructions = map[string]Instruction{
 	"trap":  {C.SAM_TRAP_TAG, 0, 1, true},
 
 	// Blobs
-	"stack":  {C.SAM_BLOB_TAG, C.SAM_BLOB_STACK, 1, true},
+	"array":  {C.SAM_BLOB_TAG, C.SAM_BLOB_ARRAY, 1, true},
 	"string": {C.SAM_BLOB_TAG, C.SAM_BLOB_STRING, -1, true},
 
 	// Atoms
@@ -641,7 +641,7 @@ var StackDifference = map[string]int{
 	"float": 1,
 
 	// Blobs
-	"stack":  1,
+	"array":  1,
 	"string": 1,
 
 	// Atoms

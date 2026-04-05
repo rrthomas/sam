@@ -7,91 +7,91 @@
   - init: trap BLACK
   - trap CLEARSCREEN
   - float 0.0
-  - !istack pen_x
+  - !iarray pen_x
   - set
   - float 0.0
-  - !istack pen_y
+  - !iarray pen_y
   - set
   - float 0.0
-  - !istack pen_theta
+  - !iarray pen_theta
   - set
   - trap WHITE
-  - !istack pen_color
+  - !iarray pen_color
   - set
   - int 0
-  - !istack pen_drawing
+  - !iarray pen_drawing
   - set
 -
   - penup: int 0
-  - !istack pen_drawing
+  - !iarray pen_drawing
   - set
 -
   - pendown: int 1
-  - !istack pen_drawing
+  - !iarray pen_drawing
   - set
-  - !istack pen_x
+  - !iarray pen_x
   - get
   - trap F2I
-  - !istack pen_y
+  - !iarray pen_y
   - get
   - trap F2I
-  - !istack pen_color
+  - !iarray pen_color
   - get
   - trap SETDOT
 -
-  - turn: !istack pen_theta
+  - turn: !iarray pen_theta
   - get
   - int -4
   - s0
   - get
   - neg
   - add
-  - !istack pen_theta
+  - !iarray pen_theta
   - set
 -
-  - go: !istack pen_theta
+  - go: !iarray pen_theta
   - get
   - trap cos
   - int -4
   - s0
   - get
   - mul
-  - !istack pen_x
+  - !iarray pen_x
   - get
   - add
-  - !istack pen_theta
+  - !iarray pen_theta
   - get
   - trap sin
   - int -5
   - s0
   - get
   - mul
-  - !istack pen_y
+  - !iarray pen_y
   - get
   - add
-  - !istack pen_drawing
+  - !iarray pen_drawing
   - get
   -
-    - !istack pen_x
+    - !iarray pen_x
     - get
     - trap F2I
-    - !istack pen_y
-    - get
-    - trap F2I
-    - int -6
-    - s0
+    - !iarray pen_y
     - get
     - trap F2I
     - int -6
     - s0
     - get
     - trap F2I
-    - !istack pen_color
+    - int -6
+    - s0
+    - get
+    - trap F2I
+    - !iarray pen_color
     - get
     - trap DRAWLINE
   - []
   - if
-  - !istack pen_y
+  - !iarray pen_y
   - set
-  - !istack pen_x
+  - !iarray pen_x
   - set

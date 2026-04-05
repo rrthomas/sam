@@ -45,7 +45,7 @@ var rootCmd = &cobra.Command{
 		libsam.SetDebug(debug)
 		progFile := args[0]
 
-		var code libsam.Stack
+		var code libsam.Array
 		{
 			ext := filepath.Ext(progFile)
 			var err error
@@ -76,13 +76,13 @@ var rootCmd = &cobra.Command{
 		if err := libsam.SdlInit(); err != libsam.ERROR_OK {
 			os.Exit(int(err))
 		}
-		code.PrintStack()
+		code.Print()
 		res := libsam.Run(&state, &code)
 
 		if debug {
 			fmt.Printf("\n\nsam_run returns: %s\n", state.ErrorMessage(res))
 			stack := state.Stack()
-			stack.PrintStack()
+			stack.Print()
 		}
 
 		if libsam.SdlWindowUsed() {

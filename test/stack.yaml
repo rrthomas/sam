@@ -1,7 +1,7 @@
-# Copy a stack's only reference
+# Copy a array's only reference
 - new
 - trap copy
-# Append an item, then prepend an item to the new stack, then copy the stack
+# Append an item, then prepend an item to the new array, then copy the array
 - int 13
 - int -2
 - s0
@@ -26,7 +26,7 @@
 - s0
 - get
 - shift
-# Pop an item from the current stack using pop (no effect!)
+# Pop an item from the current array using pop (no effect!)
 - s0
 - pop
 # Exit 

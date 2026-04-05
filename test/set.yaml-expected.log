@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (23 item(s))
+Array: XXXXXXXX (23 item(s))
 - int 1
 - int 2
 - int -2
@@ -45,7 +45,7 @@ Working stack: (4 word(s))
 - int 1
 - int 2
 - int -2
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
@@ -82,7 +82,7 @@ Working stack: (5 word(s))
 - float 2.000000
 - float 3.000000
 - int -2
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 extract
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -103,7 +103,7 @@ Working stack: (5 word(s))
 - float 3.000000
 - float 2.000000
 - int -2
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 insert
 sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -124,7 +124,7 @@ Working stack: (5 word(s))
 - float 2.000000
 - float 3.000000
 - int -2
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
@@ -159,7 +159,7 @@ Working stack: (5 word(s))
 - int 1
 - float 2.000000
 - int -2
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
@@ -194,7 +194,7 @@ Working stack: (5 word(s))
 - float 1.000000
 - int 2
 - int -2
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
@@ -213,6 +213,6 @@ halt
 
 
 sam_run returns: halt with result int 0
-Stack: XXXXXXXX (2 item(s))
+Array: XXXXXXXX (2 item(s))
 - float 1.000000
 - int 0

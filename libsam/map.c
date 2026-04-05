@@ -95,11 +95,11 @@ int sam_map_iter_new(sam_blob_t *blob, sam_blob_t **new_iter)
     sam_map_t *m;
     EXTRACT_BLOB(blob, SAM_BLOB_MAP, sam_map_t, m);
     sam_blob_t *keys;
-    HALT_IF_ERROR(sam_stack_new(&keys));
+    HALT_IF_ERROR(sam_array_new(&keys));
     for (_sam_map_itr itr = vt_first(m); !vt_is_end(itr); itr = vt_next(itr))
-        sam_stack_push(keys, itr.data->key);
+        sam_array_push(keys, itr.data->key);
 
-    HALT_IF_ERROR(sam_stack_iter_new(keys, new_iter));
+    HALT_IF_ERROR(sam_array_iter_new(keys, new_iter));
 
 error:
     return error;

@@ -13,9 +13,9 @@
         HALT(SAM_ERROR_WRONG_TYPE);
 
 #define POP_WORD(ptr)                           \
-    HALT_IF_ERROR(sam_stack_pop(state->s0, ptr))
+    HALT_IF_ERROR(sam_array_pop(state->s0, ptr))
 #define PUSH_WORD(val)                          \
-    HALT_IF_ERROR(sam_stack_push(state->s0, val))
+    HALT_IF_ERROR(sam_array_push(state->s0, val))
 
 #define _POP_INSN(var, insn, insn_mask, rshift, shift)     \
     do {                                        \

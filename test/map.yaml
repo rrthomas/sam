@@ -1,7 +1,7 @@
-# Copy a stack's only reference
+# Copy a array's only reference
 - trap new_map
 - trap copy
-# Insert two items, then copy the stack
+# Insert two items, then copy the array
 - int 13
 - float 1.0
 - int -3
@@ -46,7 +46,7 @@
   - eq
   - not
   - while
-  - stack loop
+  - array loop
   - go
 - do
 # Exit 

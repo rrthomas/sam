@@ -100,13 +100,13 @@ static sam_word_t sam_trap(sam_state_t *state, sam_uword_t function)
 // Execution function
 sam_word_t sam_run(sam_state_t *state)
 {
-#define s ((sam_stack_t *)state->s0->data)
+#define s ((sam_array_t *)state->s0->data)
     sam_word_t error = SAM_ERROR_OK;
-    CHECK_BLOB(state->s0, SAM_BLOB_STACK);
+    CHECK_BLOB(state->s0, SAM_BLOB_ARRAY);
 
     for (;;) {
-        sam_stack_t *p0;
-        EXTRACT_BLOB(state->p0, SAM_BLOB_STACK, sam_stack_t, p0);
+        sam_array_t *p0;
+        EXTRACT_BLOB(state->p0, SAM_BLOB_ARRAY, sam_array_t, p0);
         if (state->pc == p0->sp) {
 #ifdef SAM_DEBUG
             debug("sam_run: p0 = %p, pc = %u, s0 = %p, sp = %u\n", state->p0, state->pc, s, s->sp);
@@ -117,7 +117,7 @@ sam_word_t sam_run(sam_state_t *state)
         }
 
         sam_uword_t ir;
-        HALT_IF_ERROR(sam_stack_peek(state->p0, state->pc++, &ir));
+        HALT_IF_ERROR(sam_array_peek(state->p0, state->pc++, &ir));
 #ifdef SAM_DEBUG
         debug("sam_run: p0 = %p, pc = %u, s0 = %p, sp = %u, ir = %x\n", state->p0, state->pc, s, s->sp, ir);
         sam_print_working_stack(state->s0);
@@ -127,7 +127,7 @@ sam_word_t sam_run(sam_state_t *state)
 #ifdef SAM_DEBUG
             debug("blob\n");
 #endif
-            PUSH_WORD(ir); // Push the same ref on the stack
+            PUSH_WORD(ir); // Push the same blob on the stack
         } else if ((ir & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
 #ifdef SAM_DEBUG
             debug("int\n");
@@ -168,7 +168,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_NEW:
                     {
                         sam_blob_t *stack;
-                        HALT_IF_ERROR(sam_stack_new(&stack));
+                        HALT_IF_ERROR(sam_array_new(&stack));
                         HALT_IF_ERROR(sam_push_ref(state->s0, stack));
                     }
                     break;
@@ -177,7 +177,7 @@ sam_word_t sam_run(sam_state_t *state)
                     break;
                 case INST_DROP:
                     if (s->sp < 1)
-                        HALT(SAM_ERROR_STACK_UNDERFLOW);
+                        HALT(SAM_ERROR_ARRAY_UNDERFLOW);
                     s->sp -= 1;
                     break;
                 case INST_GET:
@@ -185,14 +185,14 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_blob_t *blob;
                         POP_REF(blob);
                         switch (blob->type) {
-                        case SAM_BLOB_STACK:
+                        case SAM_BLOB_ARRAY:
                             {
                                 sam_word_t pos;
                                 POP_INT(pos);
                                 sam_uword_t addr, item;
-                                HALT_IF_ERROR(sam_stack_item(blob, pos, &addr));
-                                HALT_IF_ERROR(sam_stack_peek(blob, addr, &item));
-                                HALT_IF_ERROR(sam_stack_push(state->s0, item));
+                                HALT_IF_ERROR(sam_array_item(blob, pos, &addr));
+                                HALT_IF_ERROR(sam_array_peek(blob, addr, &item));
+                                HALT_IF_ERROR(sam_array_push(state->s0, item));
                             }
                             break;
                         case SAM_BLOB_MAP:
@@ -200,7 +200,7 @@ sam_word_t sam_run(sam_state_t *state)
                                 sam_word_t key, val;
                                 POP_WORD(&key);
                                 HALT_IF_ERROR(sam_map_get(blob, key, &val));
-                                HALT_IF_ERROR(sam_stack_push(state->s0, val));
+                                HALT_IF_ERROR(sam_array_push(state->s0, val));
                             }
                             break;
                         }
@@ -211,14 +211,14 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_blob_t *blob;
                         POP_REF(blob);
                         switch (blob->type) {
-                        case SAM_BLOB_STACK:
+                        case SAM_BLOB_ARRAY:
                             {
                                 sam_word_t pos, val;
                                 POP_INT(pos);
                                 sam_uword_t dest;
-                                HALT_IF_ERROR(sam_stack_item(blob, pos, &dest));
+                                HALT_IF_ERROR(sam_array_item(blob, pos, &dest));
                                 POP_WORD(&val);
-                                HALT_IF_ERROR(sam_stack_poke(blob, dest, val));
+                                HALT_IF_ERROR(sam_array_poke(blob, dest, val));
                             }
                             break;
                         case SAM_BLOB_MAP:
@@ -239,8 +239,8 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(blob, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_extract(blob, addr));
+                        HALT_IF_ERROR(sam_array_item(blob, pos, &addr));
+                        HALT_IF_ERROR(sam_array_extract(blob, addr));
                     }
                     break;
                 case INST_INSERT:
@@ -250,20 +250,20 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
-                        HALT_IF_ERROR(sam_stack_item(blob, pos, &addr));
-                        HALT_IF_ERROR(sam_stack_insert(blob, addr));
+                        HALT_IF_ERROR(sam_array_item(blob, pos, &addr));
+                        HALT_IF_ERROR(sam_array_insert(blob, addr));
                     }
                     break;
                 case INST_POP:
                     {
                         sam_blob_t *blob;
                         POP_REF(blob);
-                        sam_stack_t *stack;
-                        EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, stack);
+                        sam_array_t *stack;
+                        EXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, stack);
                         if (stack->sp < 1)
-                            HALT(SAM_ERROR_STACK_UNDERFLOW);
+                            HALT(SAM_ERROR_ARRAY_UNDERFLOW);
                         sam_word_t val;
-                        HALT_IF_ERROR(sam_stack_pop(blob, &val));
+                        HALT_IF_ERROR(sam_array_pop(blob, &val));
                         PUSH_WORD(val);
                     }
                     break;
@@ -271,12 +271,12 @@ sam_word_t sam_run(sam_state_t *state)
                     {
                         sam_blob_t *blob;
                         POP_REF(blob);
-                        sam_stack_t *stack;
-                        EXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, stack);
+                        sam_array_t *stack;
+                        EXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, stack);
                         if (stack->sp < 1)
-                            HALT(SAM_ERROR_STACK_UNDERFLOW);
+                            HALT(SAM_ERROR_ARRAY_UNDERFLOW);
                         sam_word_t val;
-                        HALT_IF_ERROR(sam_stack_shift(blob, &val));
+                        HALT_IF_ERROR(sam_array_shift(blob, &val));
                         PUSH_WORD(val);
                     }
                     break;
@@ -286,7 +286,7 @@ sam_word_t sam_run(sam_state_t *state)
                         POP_REF(stack);
                         sam_word_t val;
                         POP_WORD(&val);
-                        HALT_IF_ERROR(sam_stack_push(stack, val));
+                        HALT_IF_ERROR(sam_array_push(stack, val));
                     }
                     break;
                 case INST_PREPEND:
@@ -295,7 +295,7 @@ sam_word_t sam_run(sam_state_t *state)
                         POP_REF(stack);
                         sam_word_t val;
                         POP_WORD(&val);
-                        HALT_IF_ERROR(sam_stack_prepend(stack, val));
+                        HALT_IF_ERROR(sam_array_prepend(stack, val));
                     }
                     break;
                 case INST_GO:
@@ -323,8 +323,8 @@ sam_word_t sam_run(sam_state_t *state)
                         POP_UINT(nargs);
                         for (sam_uword_t i = nargs; i > 0; i--) {
                             sam_uword_t val;
-                            HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - i, &val));
-                            HALT_IF_ERROR(sam_stack_push(frame, val));
+                            HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - i, &val));
+                            HALT_IF_ERROR(sam_array_push(frame, val));
                         }
                         sam_word_t val;
                         for (sam_uword_t i = 0; i < nargs; i++)
@@ -399,7 +399,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_LT:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_word_t a, b;
                             POP_INT(b);
@@ -417,7 +417,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_NEG:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a;
                             POP_UINT(a);
@@ -433,7 +433,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_ADD:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a, b;
                             POP_UINT(b);
@@ -451,7 +451,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_MUL:
                     {
                         sam_uword_t operand;
-                        HALT_IF_ERROR(sam_stack_peek(state->s0, s->sp - 1, &operand));
+                        HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
                         if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
                             sam_uword_t a, b;
                             POP_UINT(b);

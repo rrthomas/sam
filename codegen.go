@@ -29,12 +29,12 @@ import (
 var labels map[string]address
 
 type address struct {
-	stack libsam.Stack
+	stack libsam.Array
 	item  libsam.Uword
 }
 
 type assembler struct {
-	stack  libsam.Stack
+	stack  libsam.Array
 	insts  libsam.Uword
 	nInsts uint
 }
@@ -91,7 +91,7 @@ func (a *assembler) addFloat(float float64) {
 	a.stack.PushFloat(float)
 }
 
-func (a *assembler) addStack(stack libsam.Stack) {
+func (a *assembler) addStack(stack libsam.Array) {
 	a.flushInstructions()
 	a.stack.PushArray(stack)
 }

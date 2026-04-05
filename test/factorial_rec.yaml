@@ -9,7 +9,7 @@
     - get
     - int -1
     - add
-    - stack fact
+    - array fact
     - do
     - int -6
     - s0

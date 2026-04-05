@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (49 item(s))
+Array: XXXXXXXX (49 item(s))
 - int 50
 - int 100
 - trap WHITE
@@ -303,5 +303,5 @@ halt
 
 
 sam_run returns: halt with result int 0
-Stack: XXXXXXXX (1 item(s))
+Array: XXXXXXXX (1 item(s))
 - int 0

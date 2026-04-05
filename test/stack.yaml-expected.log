@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (17 item(s))
+Array: XXXXXXXX (17 item(s))
 - new
 - trap COPY
 - int 13
@@ -21,162 +21,162 @@ Working stack: (0 word(s))
 new
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (0 items)
 trap COPY
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (0 items)
 int
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (0 items)
 - int 13
 int
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (0 items)
 - int 13
 - int -2
 s0
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (0 items)
 - int 13
 - int -2
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (0 items)
 - int 13
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (0 items)
 append
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (1 items)
 int
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (1 items)
 - int 42
 int
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (1 items)
 - int 42
 - int -2
 s0
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (1 items)
 - int 42
 - int -2
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (1 items)
 - int 42
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (1 items)
 prepend
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
-- stack XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
 int
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- stack XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
 - int -1
 s0
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
 - int -1
-- stack XXXXXXXX (3 items)
+- array XXXXXXXX (3 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
 trap COPY
 sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
 int
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
 - int -1
 s0
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
 - int -1
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (2 items)
 pop
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (1 items)
 - int 13
 int
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (1 items)
 - int 13
 - int -2
 s0
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (1 items)
 - int 13
 - int -2
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (1 items)
 - int 13
-- stack XXXXXXXX (1 items)
+- array XXXXXXXX (1 items)
 shift
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (0 items)
 - int 13
 - int 42
 s0
 sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (0 items)
 - int 13
 - int 42
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 pop
 sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (0 items)
 - int 13
 - int 42
 int
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
-- stack XXXXXXXX (2 items)
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (2 items)
+- array XXXXXXXX (0 items)
 - int 13
 - int 42
 - int 0
@@ -184,11 +184,11 @@ halt
 
 
 sam_run returns: halt with result int 0
-Stack: XXXXXXXX (5 item(s))
-- stack XXXXXXXX (2 items)
+Array: XXXXXXXX (5 item(s))
+- array XXXXXXXX (2 items)
   - int 42
   - int 13
-- stack XXXXXXXX (0 items)
+- array XXXXXXXX (0 items)
 - int 13
 - int 42
 - int 0

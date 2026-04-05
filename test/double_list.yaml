@@ -8,14 +8,14 @@
   - loop: int -3
   - s0
   - get
-  - stack data
+  - array data
   - get
   - float 2.0
   - mul
   - int -4
   - s0
   - get
-  - stack data
+  - array data
   - set
   - int -3
   - s0
@@ -29,7 +29,7 @@
   - s0
   - set
   - while
-  - stack loop
+  - array loop
   - go
 - do
 - drop

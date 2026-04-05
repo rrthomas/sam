@@ -74,7 +74,7 @@ func parseLiteral(argStr string) libsam.Word {
 	panic(fmt.Errorf("bad literal %s", argStr))
 }
 
-func (a *assembler) parseStack(argStr string) libsam.Stack {
+func (a *assembler) parseStack(argStr string) libsam.Array {
 	address := a.getLabel(argStr)
 	if address.item != 0 {
 		panic(fmt.Errorf("expected stack but found other label ‘%s’", argStr))
@@ -102,7 +102,7 @@ func (a *assembler) assembleInstruction(str string) {
 			a.addInt(parseLiteral(operandStr))
 		case libsam.BLOB_TAG:
 			switch insn.Opcode {
-			case libsam.BLOB_STACK:
+			case libsam.BLOB_ARRAY:
 				a.addStack(a.parseStack(operandStr))
 			case libsam.BLOB_STRING:
 				a.addStack(libsam.NewString(strings.TrimPrefix(strings.TrimSuffix(strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(str), "string")), "\""), "\"")))
@@ -165,7 +165,7 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
 		a.flushInstructions()
-		subA := assembler{stack: libsam.NewStack()}
+		subA := assembler{stack: libsam.NewArray()}
 		subA.assembleSequence(n)
 		a.addStack(subA.stack)
 		return nil
@@ -210,10 +210,10 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			subProg := readProg(r)
 			// Assemble the included file in a nested stack.
 			a.flushInstructions()
-			subA := assembler{stack: libsam.NewStack()}
+			subA := assembler{stack: libsam.NewArray()}
 			subA.assembleSequence(subProg)
 			a.addStack(subA.stack)
-		case "!istack":
+		case "!iarray":
 			val := tag.Value
 			if val.Type() != ast.StringType {
 				panic(fmt.Errorf("invalid !istack: label argument expected"))
@@ -238,10 +238,10 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	}
 }
 
-func Assemble(source []byte) libsam.Stack {
+func Assemble(source []byte) libsam.Array {
 	prog := readProg(bytes.NewReader(source))
 	labels = map[string]address{}
-	a := assembler{stack: libsam.NewStack()}
+	a := assembler{stack: libsam.NewArray()}
 	a.assembleSequence(prog)
 	return a.stack
 }

@@ -292,7 +292,7 @@ void sam_sdl_finish(void)
 
 sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s ((sam_stack_t *)state->s0->data)
+#define s ((sam_array_t *)state->s0->data)
     int error = SAM_ERROR_OK;
 
     switch (function) {
@@ -666,7 +666,7 @@ char *sam_graphics_trap_name(sam_word_t function)
 
 sam_word_t sam_input_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s ((sam_stack_t *)state->s0->data)
+#define s ((sam_array_t *)state->s0->data)
     int error = SAM_ERROR_OK;
 
     switch (function) {
@@ -1927,7 +1927,7 @@ char *sam_input_trap_name(sam_word_t function)
 
 sam_word_t sam_audio_trap(sam_state_t *state, sam_uword_t function)
 {
-#define s ((sam_stack_t *)state->s0->data)
+#define s ((sam_array_t *)state->s0->data)
     int error = SAM_ERROR_OK;
 
     switch (function) {

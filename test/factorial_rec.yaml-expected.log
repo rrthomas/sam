@@ -1,20 +1,20 @@
-Stack: XXXXXXXX (4 item(s))
+Array: XXXXXXXX (4 item(s))
 - int 5
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
   - int -3
   - s0 get
-  - stack XXXXXXXX (10 items)
+  - array XXXXXXXX (10 items)
     - int -5
     - s0 get
     - int -1
     - add
-    - stack XXXXXXXX (5 items)
+    - array XXXXXXXX (5 items)
     - do
     - int -6
     - s0 get mul
     - int -6
     - s0 set
-  - stack XXXXXXXX (3 items)
+  - array XXXXXXXX (3 items)
     - int 1
     - int -6
     - s0 set
@@ -31,95 +31,95 @@ blob
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - int 5
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int -3
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int -3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 5
 blob
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 5
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 - int 5
-- stack XXXXXXXX (10 items)
-- stack XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (3 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
-- stack XXXXXXXX (7 items)
+- array XXXXXXXX (7 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 5
 - int -1
@@ -127,164 +127,164 @@ add
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
 blob
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 4
 blob
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 4
-- stack XXXXXXXX (10 items)
-- stack XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (3 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
-- stack XXXXXXXX (12 items)
+- array XXXXXXXX (12 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
 int
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
 - int -1
@@ -292,229 +292,229 @@ add
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
 blob
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
 Working stack: (15 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
-- stack XXXXXXXX (15 items)
+- array XXXXXXXX (15 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 3
 blob
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
 Working stack: (15 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 3
-- stack XXXXXXXX (10 items)
-- stack XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (3 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
 Working stack: (15 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
 Working stack: (17 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
-- stack XXXXXXXX (17 items)
+- array XXXXXXXX (17 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
 Working stack: (17 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
 - int -1
@@ -522,294 +522,294 @@ add
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 blob
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
 Working stack: (17 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 18, ir = XXXXXXXX
 Working stack: (18 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 19, ir = XXXXXXXX
 Working stack: (19 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 20, ir = XXXXXXXX
 Working stack: (20 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
-- stack XXXXXXXX (20 items)
+- array XXXXXXXX (20 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 19, ir = XXXXXXXX
 Working stack: (19 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 2
 blob
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 20, ir = XXXXXXXX
 Working stack: (20 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 21, ir = XXXXXXXX
 Working stack: (21 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 2
-- stack XXXXXXXX (10 items)
-- stack XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (3 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 20, ir = XXXXXXXX
 Working stack: (20 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 21, ir = XXXXXXXX
 Working stack: (21 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 22, ir = XXXXXXXX
 Working stack: (22 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
-- stack XXXXXXXX (22 items)
+- array XXXXXXXX (22 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 21, ir = XXXXXXXX
 Working stack: (21 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 int
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 22, ir = XXXXXXXX
 Working stack: (22 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 - int -1
@@ -817,359 +817,359 @@ add
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 21, ir = XXXXXXXX
 Working stack: (21 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 blob
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 22, ir = XXXXXXXX
 Working stack: (22 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 23, ir = XXXXXXXX
 Working stack: (23 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 24, ir = XXXXXXXX
 Working stack: (24 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 25, ir = XXXXXXXX
 Working stack: (25 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
-- stack XXXXXXXX (25 items)
+- array XXXXXXXX (25 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 24, ir = XXXXXXXX
 Working stack: (24 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 1
 blob
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 25, ir = XXXXXXXX
 Working stack: (25 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 26, ir = XXXXXXXX
 Working stack: (26 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 1
-- stack XXXXXXXX (10 items)
-- stack XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (3 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 25, ir = XXXXXXXX
 Working stack: (25 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 26, ir = XXXXXXXX
 Working stack: (26 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 27, ir = XXXXXXXX
 Working stack: (27 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int -5
-- stack XXXXXXXX (27 items)
+- array XXXXXXXX (27 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 26, ir = XXXXXXXX
 Working stack: (26 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 int
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 27, ir = XXXXXXXX
 Working stack: (27 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -1
@@ -1177,355 +1177,355 @@ add
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 26, ir = XXXXXXXX
 Working stack: (26 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
 blob
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 27, ir = XXXXXXXX
 Working stack: (27 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 28, ir = XXXXXXXX
 Working stack: (28 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 29, ir = XXXXXXXX
 Working stack: (29 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
 s0
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 30, ir = XXXXXXXX
 Working stack: (30 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int -3
-- stack XXXXXXXX (30 items)
+- array XXXXXXXX (30 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 29, ir = XXXXXXXX
 Working stack: (29 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 0
 blob
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 30, ir = XXXXXXXX
 Working stack: (30 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 31, ir = XXXXXXXX
 Working stack: (31 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 - int 0
-- stack XXXXXXXX (10 items)
-- stack XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (3 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 30, ir = XXXXXXXX
 Working stack: (30 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 31, ir = XXXXXXXX
 Working stack: (31 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 32, ir = XXXXXXXX
 Working stack: (32 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -6
@@ -1533,156 +1533,156 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 33, ir = XXXXXXXX
 Working stack: (33 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 0
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -6
-- stack XXXXXXXX (33 items)
+- array XXXXXXXX (33 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 30
 Working stack: (30 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 28
 Working stack: (28 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 26, ir = XXXXXXXX
 Working stack: (26 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 int
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 27, ir = XXXXXXXX
 Working stack: (27 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -6
@@ -1690,60 +1690,60 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 28, ir = XXXXXXXX
 Working stack: (28 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -6
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 27, ir = XXXXXXXX
 Working stack: (27 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int 1
@@ -1751,58 +1751,58 @@ mul
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 26, ir = XXXXXXXX
 Working stack: (26 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 int
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 27, ir = XXXXXXXX
 Working stack: (27 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -6
@@ -1810,131 +1810,131 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 28, ir = XXXXXXXX
 Working stack: (28 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -6
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 25
 Working stack: (25 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 23
 Working stack: (23 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 21, ir = XXXXXXXX
 Working stack: (21 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 int
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 22, ir = XXXXXXXX
 Working stack: (22 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -6
@@ -1942,50 +1942,50 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 23, ir = XXXXXXXX
 Working stack: (23 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int -6
-- stack XXXXXXXX (23 items)
+- array XXXXXXXX (23 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 22, ir = XXXXXXXX
 Working stack: (22 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 1
 - int 2
@@ -1993,48 +1993,48 @@ mul
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 21, ir = XXXXXXXX
 Working stack: (21 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 int
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 22, ir = XXXXXXXX
 Working stack: (22 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 - int -6
@@ -2042,106 +2042,106 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 23, ir = XXXXXXXX
 Working stack: (23 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 - int -6
-- stack XXXXXXXX (23 items)
+- array XXXXXXXX (23 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 20
 Working stack: (20 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 18
 Working stack: (18 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 int
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
 Working stack: (17 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 - int -6
@@ -2149,40 +2149,40 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 18, ir = XXXXXXXX
 Working stack: (18 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 - int -6
-- stack XXXXXXXX (18 items)
+- array XXXXXXXX (18 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
 Working stack: (17 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 2
 - int 3
@@ -2190,38 +2190,38 @@ mul
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
 int
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
 Working stack: (17 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
 - int -6
@@ -2229,81 +2229,81 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 18, ir = XXXXXXXX
 Working stack: (18 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 3
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
 - int -6
-- stack XXXXXXXX (18 items)
+- array XXXXXXXX (18 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 15
 Working stack: (15 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 13
 Working stack: (13 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
 int
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
 - int -6
@@ -2311,30 +2311,30 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
 - int -6
-- stack XXXXXXXX (13 items)
+- array XXXXXXXX (13 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 6
 - int 4
@@ -2342,28 +2342,28 @@ mul
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
 int
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
 - int -6
@@ -2371,56 +2371,56 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 4
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
 - int -6
-- stack XXXXXXXX (13 items)
+- array XXXXXXXX (13 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 10
 Working stack: (10 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8
 Working stack: (8 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
-- stack XXXXXXXX (10 items)
+- array XXXXXXXX (10 items)
 - int 6
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
 int
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
 - int -6
@@ -2428,20 +2428,20 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
 - int -6
-- stack XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 24
 - int 5
@@ -2449,18 +2449,18 @@ mul
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 120
 int
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 120
 - int -6
@@ -2468,25 +2468,25 @@ s0
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - int 5
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 - int 120
 - int -6
-- stack XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 5
 Working stack: (5 word(s))
 - int 120
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 - int 5
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3
 Working stack: (3 word(s))
 - int 120
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 - int 3
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
@@ -2495,5 +2495,5 @@ halt
 
 
 sam_run returns: halt with result int 120
-Stack: XXXXXXXX (1 item(s))
+Array: XXXXXXXX (1 item(s))
 - int 120

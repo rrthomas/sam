@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (28 item(s))
+Array: XXXXXXXX (28 item(s))
 - trap NEW_MAP
 - trap COPY
 - int 13
@@ -23,13 +23,13 @@ Stack: XXXXXXXX (28 item(s))
 - int -1
 - s0 get
 - trap ITER
-- stack XXXXXXXX (7 items)
+- array XXXXXXXX (7 items)
   - int -3
   - s0 get
   - trap NEXT
   - null
   - eq not while
-  - stack XXXXXXXX (7 items)
+  - array XXXXXXXX (7 items)
   - go
 - do
 - int 0
@@ -69,7 +69,7 @@ Working stack: (5 word(s))
 - int 13
 - float 1.000000
 - int -3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -106,7 +106,7 @@ Working stack: (5 word(s))
 - int 42
 - float 2.000000
 - int -3
-- stack XXXXXXXX (5 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -128,7 +128,7 @@ sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - int -1
-- stack XXXXXXXX (3 items)
+- array XXXXXXXX (3 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
@@ -168,7 +168,7 @@ Working stack: (6 word(s))
 - null
 - float 1.000000
 - int -3
-- stack XXXXXXXX (6 items)
+- array XXXXXXXX (6 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -211,7 +211,7 @@ Working stack: (6 word(s))
 - int 28
 - float 2.000000
 - int -3
-- stack XXXXXXXX (6 items)
+- array XXXXXXXX (6 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -237,7 +237,7 @@ Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int -1
-- stack XXXXXXXX (4 items)
+- array XXXXXXXX (4 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -256,14 +256,14 @@ Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (7 items)
+- array XXXXXXXX (7 items)
 do
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -271,7 +271,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - int -3
 s0
@@ -280,17 +280,17 @@ Working stack: (7 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - int -3
-- stack XXXXXXXX (7 items)
+- array XXXXXXXX (7 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - iter XXXXXXXX
 trap NEXT
@@ -299,7 +299,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - float 2.000000
 null
@@ -308,7 +308,7 @@ Working stack: (7 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - float 2.000000
 - null
@@ -318,7 +318,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - int 0
 not
@@ -327,7 +327,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - int -1
 while
@@ -336,7 +336,7 @@ Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -344,16 +344,16 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
-- stack XXXXXXXX (7 items)
+- array XXXXXXXX (7 items)
 go
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 int
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -361,7 +361,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - int -3
 s0
@@ -370,17 +370,17 @@ Working stack: (7 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - int -3
-- stack XXXXXXXX (7 items)
+- array XXXXXXXX (7 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - iter XXXXXXXX
 trap NEXT
@@ -389,7 +389,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - null
 null
@@ -398,7 +398,7 @@ Working stack: (7 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - null
 - null
@@ -408,7 +408,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - int -1
 not
@@ -417,7 +417,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- stack XXXXXXXX (28 items)
+- array XXXXXXXX (28 items)
 - int 26
 - int 0
 while
@@ -437,7 +437,7 @@ halt
 
 
 sam_run returns: halt with result int 0
-Stack: XXXXXXXX (4 item(s))
+Array: XXXXXXXX (4 item(s))
 - map XXXXXXXX
   - float 2.000000
     - int 42

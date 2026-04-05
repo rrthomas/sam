@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (10 item(s))
+Array: XXXXXXXX (10 item(s))
 - null
 - drop
 - int 21
@@ -58,5 +58,5 @@ halt
 
 
 sam_run returns: halt with result int -13
-Stack: XXXXXXXX (1 item(s))
+Array: XXXXXXXX (1 item(s))
 - int -13

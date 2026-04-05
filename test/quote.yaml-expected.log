@@ -1,4 +1,4 @@
-Stack: XXXXXXXX (4 item(s))
+Array: XXXXXXXX (4 item(s))
 - trap QUOTE
 - go
 - int 0
@@ -18,6 +18,6 @@ halt
 
 
 sam_run returns: halt with result int 0
-Stack: XXXXXXXX (2 item(s))
+Array: XXXXXXXX (2 item(s))
 - go
 - int 0

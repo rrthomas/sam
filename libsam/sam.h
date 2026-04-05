@@ -46,7 +46,7 @@ typedef double sam_float_t;
 
 // Blobs
 typedef struct sam_blob sam_blob_t;
-typedef struct sam_stack sam_stack_t;
+typedef struct sam_array sam_array_t;
 typedef _sam_map sam_map_t;
 typedef struct sam_iter sam_iter_t;
 typedef struct sam_string sam_string_t;
@@ -62,8 +62,8 @@ enum SAM_ERROR {
     SAM_ERROR_OK,
     SAM_ERROR_INVALID_OPCODE,
     SAM_ERROR_INVALID_ADDRESS,
-    SAM_ERROR_STACK_UNDERFLOW,
-    SAM_ERROR_STACK_OVERFLOW,
+    SAM_ERROR_ARRAY_UNDERFLOW,
+    SAM_ERROR_ARRAY_OVERFLOW,
     SAM_ERROR_WRONG_TYPE,
     SAM_ERROR_INVALID_TRAP,
     SAM_ERROR_TRAP_INIT,
@@ -75,26 +75,26 @@ enum SAM_ERROR {
 // Blobs
 int sam_blob_new(unsigned type, size_t data_size, sam_blob_t **new_blob);
 
-// Stack access
-int sam_stack_from_blob(sam_blob_t *blob, sam_stack_t **s);
-int sam_stack_new(sam_blob_t **new_stack);
-int sam_stack_copy(sam_blob_t *stack, sam_blob_t **new_stack);
-int sam_stack_peek(sam_blob_t *s, sam_uword_t addr, sam_uword_t *val);
-int sam_stack_poke(sam_blob_t *s, sam_uword_t addr, sam_uword_t val);
-int sam_stack_extract(sam_blob_t *s, sam_uword_t addr);
-int sam_stack_insert(sam_blob_t *s, sam_uword_t addr);
-int sam_stack_item(sam_blob_t *s, sam_word_t n, sam_uword_t *addr);
-int sam_stack_pop(sam_blob_t *s, sam_word_t *val_ptr);
-int sam_stack_shift(sam_blob_t *s, sam_word_t *val_ptr);
-int sam_stack_push(sam_blob_t *s, sam_word_t val);
-int sam_stack_prepend(sam_blob_t *s, sam_word_t val);
+// Array access
+int sam_array_from_blob(sam_blob_t *blob, sam_array_t **s);
+int sam_array_new(sam_blob_t **new_array);
+int sam_array_copy(sam_blob_t *array, sam_blob_t **new_array);
+int sam_array_peek(sam_blob_t *s, sam_uword_t addr, sam_uword_t *val);
+int sam_array_poke(sam_blob_t *s, sam_uword_t addr, sam_uword_t val);
+int sam_array_extract(sam_blob_t *s, sam_uword_t addr);
+int sam_array_insert(sam_blob_t *s, sam_uword_t addr);
+int sam_array_item(sam_blob_t *s, sam_word_t n, sam_uword_t *addr);
+int sam_array_pop(sam_blob_t *s, sam_word_t *val_ptr);
+int sam_array_shift(sam_blob_t *s, sam_word_t *val_ptr);
+int sam_array_push(sam_blob_t *s, sam_word_t val);
+int sam_array_prepend(sam_blob_t *s, sam_word_t val);
 int sam_push_ref(sam_blob_t *s, sam_blob_t *val);
 int sam_push_int(sam_blob_t *s, sam_uword_t val);
 int sam_push_float(sam_blob_t *s, sam_float_t n);
 int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);
 int sam_push_trap(sam_blob_t *s, sam_uword_t function);
 int sam_push_insts(sam_blob_t *s, sam_uword_t insts);
-int sam_stack_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
+int sam_array_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
 
 // Maps
 int sam_map_new(sam_blob_t **new_map);
@@ -124,7 +124,7 @@ extern bool do_debug;
 char *inst_name(sam_uword_t inst_opcode);
 char *trap_name(sam_uword_t function);
 char *disas(sam_word_t inst);
-void sam_print_stack(sam_blob_t *blob);
+void sam_print_array(sam_blob_t *blob);
 void sam_print_working_stack(sam_blob_t *blob);
 void debug(const char *fmt, ...);
 #endif

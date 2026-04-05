@@ -213,14 +213,14 @@ static bool already_visited(sam_blob_list_t *l, sam_blob_t *blob)
 
 static sam_blob_list_t *disas_word(sam_blob_list_t *l, sam_uword_t level, sam_word_t opcode, char **text);
 
-static sam_blob_list_t *disas_stack(sam_blob_list_t *l, sam_uword_t level, sam_blob_t *blob, char **text)
+static sam_blob_list_t *disas_array(sam_blob_list_t *l, sam_uword_t level, sam_blob_t *blob, char **text)
 {
     xasprintf(text, "");
-    sam_stack_t *s;
-    XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
+    sam_array_t *s;
+    XEXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, s);
     for (sam_uword_t i = 0; i < s->sp; i++) {
         sam_uword_t opcode;
-        assert(sam_stack_peek(blob, i, &opcode) == SAM_ERROR_OK);
+        assert(sam_array_peek(blob, i, &opcode) == SAM_ERROR_OK);
         l = disas_word(l, level, opcode, text);
     }
     return l;
@@ -251,11 +251,11 @@ static sam_blob_list_t *disas_word(sam_blob_list_t *l, sam_uword_t level, sam_wo
         sam_blob_t *inner_blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
         char *blob_str;
         switch (inner_blob->type) {
-        case SAM_BLOB_STACK:
+        case SAM_BLOB_ARRAY:
             {
-                sam_stack_t *inner_s;
-                XEXTRACT_BLOB(inner_blob, SAM_BLOB_STACK, sam_stack_t, inner_s);
-                xasprintf(&blob_str, "stack %p (%u items)", inner_s, inner_s->sp);
+                sam_array_t *inner_s;
+                XEXTRACT_BLOB(inner_blob, SAM_BLOB_ARRAY, sam_array_t, inner_s);
+                xasprintf(&blob_str, "array %p (%u items)", inner_s, inner_s->sp);
             }
             break;
         case SAM_BLOB_MAP:
@@ -282,8 +282,8 @@ static sam_blob_list_t *disas_word(sam_blob_list_t *l, sam_uword_t level, sam_wo
             l = list_append(l, inner_blob);
             char *blob_str;
             switch (inner_blob->type) {
-            case SAM_BLOB_STACK:
-                l = disas_stack(l, level + 1, inner_blob, &blob_str);
+            case SAM_BLOB_ARRAY:
+                l = disas_array(l, level + 1, inner_blob, &blob_str);
                 xstrcat(text, blob_str);
                 break;
             case SAM_BLOB_MAP:
@@ -336,8 +336,8 @@ char *disas(sam_word_t inst)
         sam_blob_t *blob = (sam_blob_t *)(inst & ~SAM_BLOB_TAG_MASK);
         sam_blob_list_t *l = list_append(NULL, blob);
         switch (blob->type) {
-        case SAM_BLOB_STACK:
-            free_list(disas_stack(l, 0, blob, &text));
+        case SAM_BLOB_ARRAY:
+            free_list(disas_array(l, 0, blob, &text));
             break;
         case SAM_BLOB_MAP:
             free_list(disas_map(l, 0, blob, &text));
@@ -359,14 +359,14 @@ char *disas(sam_word_t inst)
     return text;
 }
 
-void sam_print_stack(sam_blob_t *blob)
+void sam_print_array(sam_blob_t *blob)
 {
-    sam_stack_t *s;
-    XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
-    debug("Stack: %p (%u item(s))\n", blob, s->sp);
+    sam_array_t *s;
+    XEXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, s);
+    debug("Array: %p (%u item(s))\n", blob, s->sp);
     sam_blob_list_t *l = list_append(NULL, blob);
     char *text;
-    l = disas_stack(l, 0, blob, &text);
+    l = disas_array(l, 0, blob, &text);
     debug("%s", text);
     free(text);
     free_list(l);
@@ -374,11 +374,11 @@ void sam_print_stack(sam_blob_t *blob)
 
 void sam_print_working_stack(sam_blob_t *blob)
 {
-    sam_stack_t *s;
-    XEXTRACT_BLOB(blob, SAM_BLOB_STACK, sam_stack_t, s);
+    sam_array_t *s;
+    XEXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, s);
     debug("Working stack: (%u word(s))\n", s->sp);
     char *text;
-    disas_stack(NULL, 0, blob, &text);
+    disas_array(NULL, 0, blob, &text);
     debug("%s", text);
     free(text);
 }
