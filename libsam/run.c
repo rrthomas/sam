@@ -96,6 +96,7 @@ sam_word_t sam_run(sam_state_t *state)
             debug("sam_run: p0 = %p, pc = %u, s0 = %p, sp = %u\n", state->p0, state->pc, s, s->sp);
             sam_print_working_stack(state->s0);
 #endif
+            debug("done\n");
             DONE;
             continue;
         }

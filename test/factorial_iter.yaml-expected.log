@@ -1438,6 +1438,7 @@ Working stack: (3 word(s))
 - float 120.000000
 - array XXXXXXXX (4 items)
 - int 3
+done
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 120.000000

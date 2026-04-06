@@ -1598,6 +1598,7 @@ Working stack: (30 word(s))
 - int 6
 - array XXXXXXXX (5 items)
 - int 5
+done
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 28
 Working stack: (28 word(s))
 - int 5
@@ -1628,6 +1629,7 @@ Working stack: (28 word(s))
 - int 1
 - array XXXXXXXX (10 items)
 - int 6
+done
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 26, ir = XXXXXXXX
 Working stack: (26 word(s))
 - int 5
@@ -1865,6 +1867,7 @@ Working stack: (25 word(s))
 - int 6
 - array XXXXXXXX (5 items)
 - int 5
+done
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 23
 Working stack: (23 word(s))
 - int 5
@@ -1890,6 +1893,7 @@ Working stack: (23 word(s))
 - int 1
 - array XXXXXXXX (10 items)
 - int 6
+done
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 21, ir = XXXXXXXX
 Working stack: (21 word(s))
 - int 5
@@ -2087,6 +2091,7 @@ Working stack: (20 word(s))
 - int 6
 - array XXXXXXXX (5 items)
 - int 5
+done
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 18
 Working stack: (18 word(s))
 - int 5
@@ -2107,6 +2112,7 @@ Working stack: (18 word(s))
 - int 2
 - array XXXXXXXX (10 items)
 - int 6
+done
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
 - int 5
@@ -2264,6 +2270,7 @@ Working stack: (15 word(s))
 - int 6
 - array XXXXXXXX (5 items)
 - int 5
+done
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 13
 Working stack: (13 word(s))
 - int 5
@@ -2279,6 +2286,7 @@ Working stack: (13 word(s))
 - int 6
 - array XXXXXXXX (10 items)
 - int 6
+done
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - int 5
@@ -2396,6 +2404,7 @@ Working stack: (10 word(s))
 - int 6
 - array XXXXXXXX (5 items)
 - int 5
+done
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 8
 Working stack: (8 word(s))
 - int 5
@@ -2406,6 +2415,7 @@ Working stack: (8 word(s))
 - int 24
 - array XXXXXXXX (10 items)
 - int 6
+done
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 5
@@ -2483,11 +2493,13 @@ Working stack: (5 word(s))
 - int 3
 - array XXXXXXXX (5 items)
 - int 5
+done
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3
 Working stack: (3 word(s))
 - int 120
 - array XXXXXXXX (4 items)
 - int 3
+done
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 120

@@ -1079,6 +1079,7 @@ Working stack: (7 word(s))
 - null
 - array XXXXXXXX (23 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
@@ -1855,6 +1856,7 @@ Working stack: (7 word(s))
 - int 41
 - array XXXXXXXX (23 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 41
@@ -2325,6 +2327,7 @@ Working stack: (7 word(s))
 - null
 - array XXXXXXXX (23 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
@@ -2913,6 +2916,7 @@ Working stack: (3 word(s))
 - array XXXXXXXX (2 items)
 - array XXXXXXXX (4 items)
 - int 3
+done
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - array XXXXXXXX (2 items)

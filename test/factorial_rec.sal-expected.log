@@ -2919,6 +2919,7 @@ Working stack: (7 word(s))
 - int 1
 - array XXXXXXXX (15 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 0
@@ -3076,6 +3077,7 @@ Working stack: (7 word(s))
 - int 1
 - array XXXXXXXX (15 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 1
@@ -3233,6 +3235,7 @@ Working stack: (7 word(s))
 - int 2
 - array XXXXXXXX (15 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 2
@@ -3390,6 +3393,7 @@ Working stack: (7 word(s))
 - int 6
 - array XXXXXXXX (15 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 3
@@ -3547,6 +3551,7 @@ Working stack: (7 word(s))
 - int 24
 - array XXXXXXXX (15 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 4
@@ -3704,6 +3709,7 @@ Working stack: (7 word(s))
 - int 120
 - array XXXXXXXX (15 items)
 - int 8
+done
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - int 5
@@ -3843,6 +3849,7 @@ Working stack: (3 word(s))
 - int 120
 - array XXXXXXXX (4 items)
 - int 3
+done
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - int 120
