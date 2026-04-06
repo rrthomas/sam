@@ -783,7 +783,7 @@ func (f *Function) Compile(ctx *Frame) {
 		captures: &captures,
 		asm:      &assembler{stack: libsam.NewArray()},
 		baseSp:   0,
-		sp:       libsam.Word(nargs) + 2, // exclude PC & P0 from count
+		sp:       libsam.Word(nargs) + 1, // exclude P0 from count
 		nargs:    nargs,
 	}
 	if f.Parameters != nil {
@@ -887,7 +887,7 @@ func (ctx *Frame) compileLocalAddr(l Local) {
 }
 
 func (ctx *Frame) compileCaptureAddr(i uint) {
-	ctx.assembleInt(int(ctx.nargs + 3))
+	ctx.assembleInt(int(ctx.nargs + 2))
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
 	ctx.assembleInt(int(i*2 + 1))
@@ -1023,11 +1023,8 @@ func (ctx *Frame) assembleReturn() {
 	ctx.assembleInt(int(ctx.nargs + 1))
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
-	ctx.assembleInt(int(ctx.nargs + 2))
-	ctx.assembleInst("s0")
-	ctx.assembleInst("get")
 	// Extract return value
-	ctx.assembleInt(-4)
+	ctx.assembleInt(-3)
 	ctx.assembleInst("s0")
 	ctx.assembleInst("extract")
 	ctx.assembleTrap("ret")

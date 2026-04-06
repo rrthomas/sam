@@ -696,7 +696,7 @@ var TrapStackEffect = map[string]StackEffect{
 	"SIZE":    {1, 1},
 	"QUOTE":   {0, 1},
 	"COPY":    {1, 1},
-	"RET":     {4, 0},
+	"RET":     {3, 0},
 	"LSH":     {2, 1},
 	"RSH":     {2, 1},
 	"ARSH":    {2, 1},

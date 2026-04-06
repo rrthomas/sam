@@ -81,9 +81,10 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             sam_blob_t *frame, *old_stack_blob = state->s0;
             sam_array_t *old_stack;
             EXTRACT_BLOB(old_stack_blob, SAM_BLOB_ARRAY, sam_array_t, old_stack);
-            DONE;
+            POP_REF(state->p0);
             POP_REF(frame);
             state->s0 = frame;
+            POP_UINT(state->pc);
             PUSH_WORD(item);
             // Wipe the stack slot for the return value.
             HALT_IF_ERROR(sam_array_poke(old_stack_blob, old_stack->sp, SAM_INSTS_TAG));

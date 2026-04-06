@@ -314,8 +314,10 @@ sam_word_t sam_run(sam_state_t *state)
                         for (sam_uword_t i = 0; i < nargs; i++)
                             POP_WORD(&val);
                         HALT_IF_ERROR(sam_push_ref(frame, state->s0));
+                        PUSH_INT(state->pc);
                         state->s0 = frame;
-                        DO(code);
+                        PUSH_REF(state->p0);
+                        GO(code);
                         opcodes = 0;
                     }
                     break;
