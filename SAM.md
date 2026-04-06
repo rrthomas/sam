@@ -87,6 +87,7 @@ The instruction set is listed below, with the instructions grouped according to 
 
 | Symbol | Data type  |
 | ------ | ---------- |
+| `b`    | a boolean |
 | `i`    | a signed integer |
 | `f`    | a floating-point number |
 | `n`    | a number (integer or floating point) |
@@ -131,6 +132,16 @@ These instructions encode literal values.
 > → `NULL`
 >
 > Push the atom `NULL`.
+
+> `FALSE`  
+> → `FALSE`
+>
+> Push the boolean atom `FALSE`.
+
+> `TRUE`  
+> → `TRUE`
+>
+> Push the boolean atom `TRUE`.
 
 > `STRING`  
 >  → `s`
@@ -276,22 +287,22 @@ Logic functions:
 > `NOT`  
 > `x₁` → `x₂`
 >
-> Invert all bits of `x₁`, giving its logical inverse `x₂`.
+> If `x₁` is an integer, then invert all bits of `x₁`, giving its two’s complement `x₂`; if `x₁` is a boolean, pop it and push its logical negation `x₂`; otherwise, raise `WRONG_TYPE`.
 
 > `AND`  
 > `x₁` `x₂` → `x₃`
 >
-> `x₃` is the bit-by-bit logical “and” of `x₁` with `x₂`.
+> If `x₁` and `x₂` are integers, `x₃` is the bit-by-bit logical “and” of `x₁` with `x₂`; if `x₁` and `x₂` are booleans, `x₃` is the logical “and” of `x₁` and `x₂`; otherwise, raise `WRONG_TYPE`.
 
 > `OR`  
 > `x₁` `x₂` → `x₃`
 >
-> `x₃` is the bit-by-bit inclusive-or of `x₁` with `x₂`.
+> If `x₁` and `x₂` are integers, `x₃` is the bit-by-bit inclusive-or of `x₁` with `x₂`; if `x₁` and `x₂` are booleans, `x₃` is the logical “or” of `x₁` and `x₂`; otherwise, raise `WRONG_TYPE`.
 
 > `XOR`  
 > `x₁` `x₂` → `x₃`
 >
-> `x₃` is the bit-by-bit exclusive-or of `x₁` with `x₂`.
+> If `x₁` and `x₂` are integers, `x₃` is the bit-by-bit exclusive-or of `x₁` with `x₂`; if `x₁` and `x₂` are booleans, `x₃` is the logical “exclusive-or” of `x₁` and `x₂`; otherwise, raise `WRONG_TYPE`.
 
 
 Shifts:
@@ -316,14 +327,14 @@ Shifts:
 ### Comparison
 
 > `EQ`  
-> `x₁` `x₂` → `i`
+> `x₁` `x₂` → `b`
 >
-> `i` is –1 if `x₁` and `x₂` are equal, and 0 otherwise.
+> `i` is `TRUE` if `x₁` and `x₂` are equal, and `FALSE` otherwise.
 
 > `LT`  
-> `n₁` `n₂` → `i`
+> `n₁` `n₂` → `b`
 >
-> `i` is –1 if `n₁` is less than `n₂` and 0 otherwise.
+> `i` is `TRUE` if `n₁` is less than `n₂` and `FALSE` otherwise.
 
 
 

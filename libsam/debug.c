@@ -315,6 +315,12 @@ char *disas(sam_word_t inst)
         case SAM_ATOM_NULL:
             xasprintf(&text, "null");
             break;
+        case SAM_ATOM_BOOL:
+            {
+                sam_uword_t f = inst >> SAM_ATOM_SHIFT;
+                xasprintf(&text, f ? "true" : "false");
+            }
+            break;
         default:
             xasprintf(&text, "invalid atom type %d", atom_type);
             break;

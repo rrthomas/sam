@@ -6,7 +6,7 @@ Array: XXXXXXXX (4 item(s))
     - int -6
     - s0 get
     - trap F2I
-    - while
+    - zero eq not while
     - int -3
     - s0 get
     - int -7
@@ -108,6 +108,37 @@ Working stack: (7 word(s))
 - array XXXXXXXX (5 items)
 - int 3
 - int 5
+zero
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- float 5.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 1.000000
+- array XXXXXXXX (5 items)
+- int 3
+- int 5
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 5.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 1.000000
+- array XXXXXXXX (5 items)
+- int 3
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 5.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 1.000000
+- array XXXXXXXX (5 items)
+- int 3
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -368,6 +399,37 @@ Working stack: (7 word(s))
 - array XXXXXXXX (5 items)
 - int 3
 - int 4
+zero
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- float 4.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 5.000000
+- array XXXXXXXX (5 items)
+- int 3
+- int 4
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 4.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 5.000000
+- array XXXXXXXX (5 items)
+- int 3
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 4.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 5.000000
+- array XXXXXXXX (5 items)
+- int 3
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -628,6 +690,37 @@ Working stack: (7 word(s))
 - array XXXXXXXX (5 items)
 - int 3
 - int 3
+zero
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- float 3.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 20.000000
+- array XXXXXXXX (5 items)
+- int 3
+- int 3
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 3.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 20.000000
+- array XXXXXXXX (5 items)
+- int 3
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 3.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 20.000000
+- array XXXXXXXX (5 items)
+- int 3
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -888,6 +981,37 @@ Working stack: (7 word(s))
 - array XXXXXXXX (5 items)
 - int 3
 - int 2
+zero
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- float 2.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 60.000000
+- array XXXXXXXX (5 items)
+- int 3
+- int 2
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 2.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 60.000000
+- array XXXXXXXX (5 items)
+- int 3
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 2.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 60.000000
+- array XXXXXXXX (5 items)
+- int 3
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -1148,6 +1272,37 @@ Working stack: (7 word(s))
 - array XXXXXXXX (5 items)
 - int 3
 - int 1
+zero
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- float 1.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 120.000000
+- array XXXXXXXX (5 items)
+- int 3
+- int 1
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 1.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 120.000000
+- array XXXXXXXX (5 items)
+- int 3
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 1.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 120.000000
+- array XXXXXXXX (5 items)
+- int 3
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -1408,6 +1563,37 @@ Working stack: (7 word(s))
 - array XXXXXXXX (5 items)
 - int 3
 - int 0
+zero
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- float 0.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 120.000000
+- array XXXXXXXX (5 items)
+- int 3
+- int 0
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 0.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 120.000000
+- array XXXXXXXX (5 items)
+- int 3
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 0.000000
+- array XXXXXXXX (4 items)
+- int 3
+- float 120.000000
+- array XXXXXXXX (5 items)
+- int 3
+- false
 while
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))

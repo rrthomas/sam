@@ -199,6 +199,12 @@ const (
 
 const (
 	ATOM_NULL = C.SAM_ATOM_NULL
+	ATOM_BOOL = C.SAM_ATOM_BOOL
+)
+
+const (
+	TRUE  = C.SAM_TRUE
+	FALSE = C.SAM_FALSE
 )
 
 const (
@@ -265,6 +271,7 @@ var Instructions = map[string]Instruction{
 
 	// Atoms
 	"null": {C.SAM_ATOM_TAG, C.SAM_ATOM_NULL, 0, true},
+	"bool": {C.SAM_ATOM_TAG, C.SAM_ATOM_BOOL, 1, false},
 
 	// Instructions
 	"nop":     {C.SAM_INSTS_TAG, C.INST_NOP, 0, false},
@@ -294,10 +301,8 @@ var Instructions = map[string]Instruction{
 	"add":     {C.SAM_INSTS_TAG, C.INST_ADD, 0, false},
 	"mul":     {C.SAM_INSTS_TAG, C.INST_MUL, 0, false},
 	"zero":    {C.SAM_INSTS_TAG, C.INST_0, 0, false},
-	"false":   {C.SAM_INSTS_TAG, C.INST_0, 0, false},
 	"one":     {C.SAM_INSTS_TAG, C.INST_1, 0, false},
 	"_one":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, 0, false},
-	"true":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, 0, false},
 	"two":     {C.SAM_INSTS_TAG, C.INST_2, 0, false},
 	"_two":    {C.SAM_INSTS_TAG, C.INST_MINUS_2, 0, false},
 	"halt":    {C.SAM_INSTS_TAG, C.INST_HALT, 0, true},
@@ -646,6 +651,7 @@ var StackDifference = map[string]int{
 
 	// Atoms
 	"null": 1,
+	"bool": 1,
 
 	// Instructions without immediate operand
 	"nop":     0,
@@ -675,10 +681,8 @@ var StackDifference = map[string]int{
 	"add":     -1,
 	"mul":     -1,
 	"zero":    1,
-	"false":   1,
 	"one":     1,
 	"_one":    1,
-	"true":    1,
 	"two":     1,
 	"_two":    1,
 	"halt":    -1,

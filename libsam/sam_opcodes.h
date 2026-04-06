@@ -47,6 +47,13 @@ extern const sam_word_t SAM_TRAP_BASE_MASK;
 // Atom types (4 bits)
 enum SAM_ATOM_TYPE {
   SAM_ATOM_NULL,
+  SAM_ATOM_BOOL,
+};
+
+// Atoms (56 bits)
+enum SAM_BOOL {
+    SAM_FALSE,
+    SAM_TRUE,
 };
 
 // Blob types (10 bits)
@@ -99,7 +106,4 @@ enum SAM_INST {
 _Static_assert(INST_HALT == 31);
 
 // Useful aliases
-#define INST_TRUE INST_MINUS_1
-#define INST_FALSE INST_0
-#define SAM_VALUE_FALSE SAM_INT_TAG
 #define SAM_VALUE_NULL ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG)

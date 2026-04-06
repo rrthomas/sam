@@ -6,6 +6,9 @@
     - s0
     - get
     - trap F2I
+    - zero
+    - eq
+    - not
     - while
     - int -3
     - s0

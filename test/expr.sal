@@ -16,7 +16,7 @@
 // - use a plain block as a value (call of max)
 
 let b = 2
-if 1 {
+if true {
     let f = fn(u) {
         return u + 1
     }

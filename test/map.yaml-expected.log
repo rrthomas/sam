@@ -320,7 +320,7 @@ Working stack: (6 word(s))
 - iter XXXXXXXX
 - array XXXXXXXX (28 items)
 - int 26
-- int 0
+- false
 not
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -329,7 +329,7 @@ Working stack: (6 word(s))
 - iter XXXXXXXX
 - array XXXXXXXX (28 items)
 - int 26
-- int -1
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -410,7 +410,7 @@ Working stack: (6 word(s))
 - iter XXXXXXXX
 - array XXXXXXXX (28 items)
 - int 26
-- int -1
+- true
 not
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
@@ -419,7 +419,7 @@ Working stack: (6 word(s))
 - iter XXXXXXXX
 - array XXXXXXXX (28 items)
 - int 26
-- int 0
+- false
 while
 sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))

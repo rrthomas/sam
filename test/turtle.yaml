@@ -2,7 +2,7 @@
 - pen_y: float 0.0
 - pen_theta: float 0.0
 - pen_color: int 0
-- pen_drawing: int 0
+- pen_drawing: bool false
 -
   - init: trap BLACK
   - trap CLEARSCREEN
@@ -18,15 +18,15 @@
   - trap WHITE
   - !iarray pen_color
   - set
-  - int 0
+  - bool false
   - !iarray pen_drawing
   - set
 -
-  - penup: int 0
+  - penup: bool false
   - !iarray pen_drawing
   - set
 -
-  - pendown: int 1
+  - pendown: bool true
   - !iarray pen_drawing
   - set
   - !iarray pen_x

@@ -80,6 +80,17 @@ func (a *assembler) addNull() {
 	a.stack.PushAtom(libsam.ATOM_NULL, 0)
 }
 
+func (a *assembler) addBool(f bool) {
+	a.flushInstructions()
+	var boolVal libsam.Uword
+	if f {
+		boolVal = libsam.Uword(libsam.TRUE)
+	} else {
+		boolVal = libsam.Uword(libsam.FALSE)
+	}
+	a.stack.PushAtom(libsam.ATOM_BOOL, boolVal)
+}
+
 func (a *assembler) addInt(int libsam.Word) {
 	a.flushInstructions()
 	// FIXME: PushInt should take a Word, not a Uword

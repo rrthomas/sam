@@ -23,7 +23,7 @@ Array: XXXXXXXX (5 item(s))
   - int -1
   - s0 get
   - int -5
-  - s0 set while
+  - s0 set zero eq not while
   - array XXXXXXXX (20 items)
   - go
 - do
@@ -255,6 +255,31 @@ Working stack: (5 word(s))
 - array XXXXXXXX (5 items)
 - int 4
 - int -3
+zero
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (4 items)
+- int -3
+- array XXXXXXXX (5 items)
+- int 4
+- int -3
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- int -3
+- array XXXXXXXX (5 items)
+- int 4
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- int -3
+- array XXXXXXXX (5 items)
+- int 4
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -480,6 +505,31 @@ Working stack: (5 word(s))
 - array XXXXXXXX (5 items)
 - int 4
 - int -2
+zero
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (4 items)
+- int -2
+- array XXXXXXXX (5 items)
+- int 4
+- int -2
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- int -2
+- array XXXXXXXX (5 items)
+- int 4
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- int -2
+- array XXXXXXXX (5 items)
+- int 4
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -705,6 +755,31 @@ Working stack: (5 word(s))
 - array XXXXXXXX (5 items)
 - int 4
 - int -1
+zero
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (4 items)
+- int -1
+- array XXXXXXXX (5 items)
+- int 4
+- int -1
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- int -1
+- array XXXXXXXX (5 items)
+- int 4
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- int -1
+- array XXXXXXXX (5 items)
+- int 4
+- true
 while
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -930,6 +1005,31 @@ Working stack: (5 word(s))
 - array XXXXXXXX (5 items)
 - int 4
 - int 0
+zero
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (4 items)
+- int 0
+- array XXXXXXXX (5 items)
+- int 4
+- int 0
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- int 0
+- array XXXXXXXX (5 items)
+- int 4
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- int 0
+- array XXXXXXXX (5 items)
+- int 4
+- false
 while
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))

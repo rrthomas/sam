@@ -3,7 +3,7 @@ Array: XXXXXXXX (4 item(s))
 - array XXXXXXXX (8 items)
   - int 2
   - null
-  - int 1
+  - true
   - array XXXXXXXX (53 items)
     - new new _two s0 get append
     - array XXXXXXXX (11 items)
@@ -43,7 +43,7 @@ Array: XXXXXXXX (4 item(s))
       - int 0
       - s0 get
       - int 1
-      - s0 get _two s0 extract lt neg
+      - s0 get _two s0 extract lt
       - array XXXXXXXX (9 items)
         - int 0
         - s0 get
@@ -166,7 +166,7 @@ Working stack: (5 word(s))
 - int 3
 - int 2
 - null
-int
+bool
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
@@ -174,7 +174,7 @@ Working stack: (6 word(s))
 - int 3
 - int 2
 - null
-- int 1
+- true
 blob
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -183,7 +183,7 @@ Working stack: (7 word(s))
 - int 3
 - int 2
 - null
-- int 1
+- true
 - array XXXXXXXX (53 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -193,7 +193,7 @@ Working stack: (8 word(s))
 - int 3
 - int 2
 - null
-- int 1
+- true
 - array XXXXXXXX (53 items)
 - array XXXXXXXX (0 items)
 if
@@ -1833,16 +1833,6 @@ Working stack: (8 word(s))
 - int 1
 - int 5
 lt
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- int 5
-- int 1
-- array XXXXXXXX (16 items)
-- array XXXXXXXX (8 items)
-- array XXXXXXXX (0 items)
-- null
-- int -1
-neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - int 5
@@ -1851,7 +1841,7 @@ Working stack: (7 word(s))
 - array XXXXXXXX (8 items)
 - array XXXXXXXX (0 items)
 - null
-- int 1
+- true
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -1861,7 +1851,7 @@ Working stack: (8 word(s))
 - array XXXXXXXX (8 items)
 - array XXXXXXXX (0 items)
 - null
-- int 1
+- true
 - array XXXXXXXX (9 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
@@ -1872,7 +1862,7 @@ Working stack: (9 word(s))
 - array XXXXXXXX (8 items)
 - array XXXXXXXX (0 items)
 - null
-- int 1
+- true
 - array XXXXXXXX (9 items)
 - array XXXXXXXX (0 items)
 if

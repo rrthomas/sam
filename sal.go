@@ -249,9 +249,9 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 		ctx.assembleNull()
 	} else if e.Bool != nil {
 		if *e.Bool {
-			ctx.assembleInst("true")
+			ctx.assembleBool(true)
 		} else {
-			ctx.assembleInst("false")
+			ctx.assembleBool(false)
 		}
 	} else if e.Int != nil {
 		ctx.assembleInt(int(*e.Int))
@@ -478,31 +478,25 @@ func (e *CompareExp) Compile(ctx *Frame) {
 		switch e.Op {
 		case "==":
 			ctx.assembleInst("eq")
-			ctx.assembleInst("neg")
 		case "!=":
 			ctx.assembleInst("eq")
 			ctx.assembleInst("not")
-			ctx.assembleInst("neg")
 		case "<":
 			ctx.assembleInst("lt")
-			ctx.assembleInst("neg")
 		case "<=":
 			ctx.assembleInst("_two")
 			ctx.assembleInst("s0")
 			ctx.assembleInst("extract")
 			ctx.assembleInst("lt")
 			ctx.assembleInst("not")
-			ctx.assembleInst("neg")
 		case ">":
 			ctx.assembleInst("_two")
 			ctx.assembleInst("s0")
 			ctx.assembleInst("extract")
 			ctx.assembleInst("lt")
-			ctx.assembleInst("neg")
 		case ">=":
 			ctx.assembleInst("lt")
 			ctx.assembleInst("not")
-			ctx.assembleInst("neg")
 		default:
 			panic(fmt.Errorf("unknown SumExp.Op %s", e.Op))
 		}
@@ -554,9 +548,7 @@ func (e *PushExp) Compile(ctx *Frame) {
 func (e *LogicNotExp) Compile(ctx *Frame) {
 	if e.LogicNotExp != nil {
 		e.LogicNotExp.Compile(ctx)
-		ctx.assembleInst("neg")
 		ctx.assembleInst("not")
-		ctx.assembleInst("neg")
 	} else if e.PushExp != nil {
 		e.PushExp.Compile(ctx)
 	} else {
@@ -576,7 +568,7 @@ func (e *LogicExp) Compile(ctx *Frame) {
 			e.Right.Compile(&thenCtx)
 			thenCtx.tearDownBlock()
 			elseCtx := ctx.newBlock(false)
-			elseCtx.assembleInst("false")
+			elseCtx.assembleBool(false)
 			elseCtx.tearDownBlock()
 			e.Left.Compile(ctx)
 			ctx.assembleCode(thenCtx.asm)
@@ -588,7 +580,7 @@ func (e *LogicExp) Compile(ctx *Frame) {
 			e.Right.Compile(&elseCtx)
 			elseCtx.tearDownBlock()
 			thenCtx := ctx.newBlock(false)
-			thenCtx.assembleInst("true")
+			thenCtx.assembleBool(true)
 			thenCtx.tearDownBlock()
 			e.Left.Compile(ctx)
 			ctx.assembleCode(thenCtx.asm)
@@ -1081,6 +1073,11 @@ func (ctx *Frame) assembleNull() {
 	ctx.adjustSp(1)
 }
 
+func (ctx *Frame) assembleBool(f bool) {
+	ctx.asm.addBool(f)
+	ctx.adjustSp(1)
+}
+
 func (ctx *Frame) assembleInt(n int) {
 	ctx.asm.addInt(libsam.Word(n))
 	ctx.adjustSp(1)
@@ -1132,7 +1129,7 @@ func (ctx *Frame) assembleBreak() {
 	for range ctx.sp - ctx.loop.baseSp {
 		ctx.assembleInst("drop")
 	}
-	ctx.assembleInst("zero")
+	ctx.assembleBool(false)
 	ctx.assembleInst("while")
 }
 

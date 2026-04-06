@@ -49,9 +49,10 @@ var rootCmd = &cobra.Command{
 		{
 			ext := filepath.Ext(progFile)
 			var err error
+			var yaml []byte
 			switch ext {
 			case ".yaml":
-				if yaml, err := os.ReadFile(progFile); err == nil {
+				if yaml, err = os.ReadFile(progFile); err == nil {
 					code = Assemble(yaml)
 				}
 

@@ -4,7 +4,7 @@ Array: XXXXXXXX (16 item(s))
   - float 0.000000
   - float 0.000000
   - int 0
-  - int 0
+  - false
   - array XXXXXXXX (22 items)
     - trap BLACK
     - trap CLEARSCREEN
@@ -24,17 +24,17 @@ Array: XXXXXXXX (16 item(s))
     - int 3
     - array XXXXXXXX (10 items)
     - set
-    - int 0
+    - false
     - int 4
     - array XXXXXXXX (10 items)
     - set
   - array XXXXXXXX (4 items)
-    - int 0
+    - false
     - int 4
     - array XXXXXXXX (10 items)
     - set
   - array XXXXXXXX (16 items)
-    - int 1
+    - true
     - int 4
     - array XXXXXXXX (10 items)
     - set
@@ -273,20 +273,20 @@ Working stack: (3 word(s))
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (16 items)
 - int 3
-int
+bool
 sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (16 items)
 - int 3
-- int 0
+- false
 int
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (16 items)
 - int 3
-- int 0
+- false
 - int 4
 blob
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -294,7 +294,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (16 items)
 - int 3
-- int 0
+- false
 - int 4
 - array XXXXXXXX (10 items)
 set
@@ -318,20 +318,20 @@ Working stack: (3 word(s))
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (16 items)
 - int 5
-int
+bool
 sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (16 items)
 - int 5
-- int 1
+- true
 int
 sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (16 items)
 - int 5
-- int 1
+- true
 - int 4
 blob
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
@@ -339,7 +339,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (16 items)
 - int 5
-- int 1
+- true
 - int 4
 - array XXXXXXXX (10 items)
 set
@@ -846,7 +846,7 @@ Working stack: (7 word(s))
 - int 13
 - float 353.553385
 - float 353.553385
-- int 1
+- true
 blob
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -856,7 +856,7 @@ Working stack: (8 word(s))
 - int 13
 - float 353.553385
 - float 353.553385
-- int 1
+- true
 - array XXXXXXXX (18 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
@@ -867,7 +867,7 @@ Working stack: (9 word(s))
 - int 13
 - float 353.553385
 - float 353.553385
-- int 1
+- true
 - array XXXXXXXX (18 items)
 - array XXXXXXXX (0 items)
 if
@@ -1249,7 +1249,7 @@ Array: XXXXXXXX (2 item(s))
   - float 353.553385
   - float 0.785398
   - int 4294967295
-  - int 1
+  - true
   - array XXXXXXXX (22 items)
     - trap BLACK
     - trap CLEARSCREEN
@@ -1269,17 +1269,17 @@ Array: XXXXXXXX (2 item(s))
     - int 3
     - array XXXXXXXX (10 items)
     - set
-    - int 0
+    - false
     - int 4
     - array XXXXXXXX (10 items)
     - set
   - array XXXXXXXX (4 items)
-    - int 0
+    - false
     - int 4
     - array XXXXXXXX (10 items)
     - set
   - array XXXXXXXX (16 items)
-    - int 1
+    - true
     - int 4
     - array XXXXXXXX (10 items)
     - set

@@ -98,6 +98,22 @@ func (a *assembler) assembleInstruction(str string) {
 		operandStr := tokens[1]
 
 		switch insn.Tag {
+		case libsam.ATOM_TAG:
+			a.flushInstructions()
+
+			switch insn.Opcode {
+			case libsam.ATOM_BOOL:
+				switch operandStr {
+				case "false":
+					a.addBool(false)
+				case "true":
+					a.addBool(true)
+				default:
+					panic(fmt.Errorf("invalid boolean %s", operandStr))
+				}
+			default:
+				panic(fmt.Errorf("invalid atom type %d", insn.Opcode))
+			}
 		case libsam.INT_TAG:
 			a.addInt(parseLiteral(operandStr))
 		case libsam.BLOB_TAG:
@@ -121,6 +137,8 @@ func (a *assembler) assembleInstruction(str string) {
 				panic(fmt.Errorf("bad float %s", operandStr))
 			}
 			a.addFloat(float64(float))
+		default:
+			panic(fmt.Errorf("unknown instruction %+v", insn))
 		}
 	} else {
 		if len(tokens) > 1 {

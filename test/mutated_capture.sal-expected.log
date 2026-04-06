@@ -12,7 +12,7 @@ Array: XXXXXXXX (4 item(s))
       - int 0
       - s0 get
       - int 0
-      - eq not neg
+      - eq not
       - array XXXXXXXX (11 items)
         - int 0
         - s0 get _one s0 get
@@ -1029,17 +1029,8 @@ Working stack: (6 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int -1
+- true
 not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- int 0
-- array XXXXXXXX (6 items)
-- array XXXXXXXX (33 items)
-- array XXXXXXXX (2 items)
-- null
-- int 0
-neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 0
@@ -1047,7 +1038,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 0
+- false
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1056,7 +1047,7 @@ Working stack: (7 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 0
+- false
 - array XXXXXXXX (11 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -1066,7 +1057,7 @@ Working stack: (8 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 0
+- false
 - array XXXXXXXX (11 items)
 - array XXXXXXXX (0 items)
 if
@@ -1498,17 +1489,8 @@ Working stack: (6 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 0
+- false
 not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- int 41
-- array XXXXXXXX (8 items)
-- array XXXXXXXX (33 items)
-- array XXXXXXXX (2 items)
-- null
-- int -1
-neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 41
@@ -1516,7 +1498,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 1
+- true
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1525,7 +1507,7 @@ Working stack: (7 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 1
+- true
 - array XXXXXXXX (11 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -1535,7 +1517,7 @@ Working stack: (8 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 1
+- true
 - array XXXXXXXX (11 items)
 - array XXXXXXXX (0 items)
 if
@@ -2277,17 +2259,8 @@ Working stack: (6 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int -1
+- true
 not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- int 0
-- array XXXXXXXX (8 items)
-- array XXXXXXXX (33 items)
-- array XXXXXXXX (2 items)
-- null
-- int 0
-neg
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - int 0
@@ -2295,7 +2268,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 0
+- false
 blob
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -2304,7 +2277,7 @@ Working stack: (7 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 0
+- false
 - array XXXXXXXX (11 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
@@ -2314,7 +2287,7 @@ Working stack: (8 word(s))
 - array XXXXXXXX (33 items)
 - array XXXXXXXX (2 items)
 - null
-- int 0
+- false
 - array XXXXXXXX (11 items)
 - array XXXXXXXX (0 items)
 if

@@ -37,6 +37,9 @@
   - levy_c: int -4
   - s0
   - get
+  - zero
+  - eq
+  - not
   -
     - float -45.0
     - trap rad

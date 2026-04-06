@@ -3,6 +3,9 @@
   - fact: int -3
   - s0
   - get
+  - zero
+  - eq
+  - not
   -
     - int -5
     - s0

@@ -37,8 +37,10 @@ Array: XXXXXXXX (4 item(s))
     - _two s0 get
     - null
     - eq
-    - array XXXXXXXX (1 items)
-      - drop drop drop drop zero while
+    - array XXXXXXXX (3 items)
+      - drop drop drop drop
+      - false
+      - while
     - array XXXXXXXX (9 items)
       - new
       - int 9
@@ -666,7 +668,7 @@ Working stack: (12 word(s))
 - int 30
 - int 1
 - null
-- int 0
+- false
 blob
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
@@ -681,8 +683,8 @@ Working stack: (13 word(s))
 - int 30
 - int 1
 - null
-- int 0
-- array XXXXXXXX (1 items)
+- false
+- array XXXXXXXX (3 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -697,8 +699,8 @@ Working stack: (14 word(s))
 - int 30
 - int 1
 - null
-- int 0
-- array XXXXXXXX (1 items)
+- false
+- array XXXXXXXX (3 items)
 - array XXXXXXXX (9 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
@@ -1329,7 +1331,7 @@ Working stack: (12 word(s))
 - int 30
 - int 3
 - null
-- int 0
+- false
 blob
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
@@ -1344,8 +1346,8 @@ Working stack: (13 word(s))
 - int 30
 - int 3
 - null
-- int 0
-- array XXXXXXXX (1 items)
+- false
+- array XXXXXXXX (3 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -1360,8 +1362,8 @@ Working stack: (14 word(s))
 - int 30
 - int 3
 - null
-- int 0
-- array XXXXXXXX (1 items)
+- false
+- array XXXXXXXX (3 items)
 - array XXXXXXXX (9 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
@@ -1992,7 +1994,7 @@ Working stack: (12 word(s))
 - int 30
 - null
 - null
-- int -1
+- true
 blob
 sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
 Working stack: (13 word(s))
@@ -2007,8 +2009,8 @@ Working stack: (13 word(s))
 - int 30
 - null
 - null
-- int -1
-- array XXXXXXXX (1 items)
+- true
+- array XXXXXXXX (3 items)
 blob
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -2023,8 +2025,8 @@ Working stack: (14 word(s))
 - int 30
 - null
 - null
-- int -1
-- array XXXXXXXX (1 items)
+- true
+- array XXXXXXXX (3 items)
 - array XXXXXXXX (9 items)
 if
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
@@ -2085,7 +2087,7 @@ Working stack: (10 word(s))
 - int 30
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - null
 - array XXXXXXXX (4 items)
@@ -2096,8 +2098,8 @@ Working stack: (9 word(s))
 - null
 - array XXXXXXXX (32 items)
 - int 30
-zero
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+bool
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - null
 - array XXXXXXXX (4 items)
@@ -2108,7 +2110,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (32 items)
 - int 30
-- int 0
+- false
 while
 sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))

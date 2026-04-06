@@ -132,6 +132,12 @@ sam_word_t sam_run(sam_state_t *state)
 #endif
                 PUSH_WORD(ir);
                 break;
+            case SAM_ATOM_BOOL:
+#ifdef SAM_DEBUG
+                debug("bool\n");
+#endif
+                PUSH_WORD(ir);
+                break;
             default:
                 HALT(SAM_ERROR_INVALID_ATOM_TYPE);
             }
@@ -328,7 +334,7 @@ sam_word_t sam_run(sam_state_t *state)
                         POP_REF(else_);
                         POP_REF(then);
                         sam_word_t flag;
-                        POP_INT(flag);
+                        POP_BOOL(flag);
                         sam_blob_t *addr = flag ? then : else_;
                         DO(addr);
                         opcodes = 0;
@@ -337,7 +343,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_WHILE:
                     {
                         sam_word_t flag;
-                        POP_INT(flag);
+                        POP_BOOL(flag);
                         if (!flag) {
                             DONE;
                             opcodes = 0;
@@ -346,33 +352,64 @@ sam_word_t sam_run(sam_state_t *state)
                     break;
                 case INST_NOT:
                     {
+                        sam_uword_t operand;
                         sam_word_t a;
-                        POP_INT(a);
-                        PUSH_INT(~a);
+                        HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                            POP_INT(a);
+                            PUSH_INT(~a);
+                        } else {
+                            POP_BOOL(a);
+                            PUSH_BOOL(!a);
+                        }
                     }
                     break;
                 case INST_AND:
                     {
+                        sam_uword_t operand;
                         sam_word_t a, b;
-                        POP_INT(b);
-                        POP_INT(a);
-                        PUSH_INT(a & b);
+                        HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                            POP_INT(b);
+                            POP_INT(a);
+                            PUSH_INT(a & b);
+                        } else {
+                            POP_BOOL(b);
+                            POP_BOOL(a);
+                            PUSH_BOOL(a & b);
+                        }
                     }
                     break;
                 case INST_OR:
                     {
+                        sam_uword_t operand;
                         sam_word_t a, b;
-                        POP_INT(b);
-                        POP_INT(a);
-                        PUSH_INT(a | b);
+                        HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                            POP_INT(b);
+                            POP_INT(a);
+                            PUSH_INT(a | b);
+                        } else {
+                            POP_BOOL(b);
+                            POP_BOOL(a);
+                            PUSH_BOOL(a | b);
+                        }
                     }
                     break;
                 case INST_XOR:
                     {
+                        sam_uword_t operand;
                         sam_word_t a, b;
-                        POP_INT(b);
-                        POP_INT(a);
-                        PUSH_INT(a ^ b);
+                        HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - 1, &operand));
+                        if ((operand & SAM_INT_TAG_MASK) == SAM_INT_TAG) {
+                            POP_INT(b);
+                            POP_INT(a);
+                            PUSH_INT(a ^ b);
+                        } else {
+                            POP_BOOL(b);
+                            POP_BOOL(a);
+                            PUSH_BOOL(a ^ b);
+                        }
                     }
                     break;
                 case INST_EQ:

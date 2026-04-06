@@ -29,6 +29,9 @@
   - int -5
   - s0
   - set
+  - zero
+  - eq
+  - not
   - while
   - array loop
   - go

@@ -33,8 +33,10 @@
 #define PUSH_INT(val)                           \
     PUSH_WORD(SAM_INT_TAG | LSHIFT(val, SAM_INT_SHIFT))
 
+#define POP_BOOL(var)                           \
+    _POP_INSN(var, SAM_ATOM_TAG | (SAM_ATOM_BOOL << SAM_ATOM_TYPE_SHIFT), SAM_ATOM_TAG_MASK | SAM_ATOM_TYPE_MASK, LRSHIFT, SAM_ATOM_SHIFT)
 #define PUSH_BOOL(val)                          \
-    PUSH_INT(-((val) != 0))
+    PUSH_WORD(SAM_ATOM_TAG | LSHIFT(SAM_ATOM_BOOL, SAM_ATOM_TYPE_SHIFT) | LSHIFT(val ? SAM_TRUE : SAM_FALSE, SAM_ATOM_SHIFT))
 
 #define POP_REF(var)                                                    \
     do {                                                                \
