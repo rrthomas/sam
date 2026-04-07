@@ -160,11 +160,11 @@ sam_word_t sam_run(sam_state_t *state)
                     {
                         sam_blob_t *stack;
                         HALT_IF_ERROR(sam_array_new(&stack));
-                        HALT_IF_ERROR(sam_push_ref(state->s0, stack));
+                        HALT_IF_ERROR(sam_push_blob(state->s0, stack));
                     }
                     break;
                 case INST_S0:
-                    HALT_IF_ERROR(sam_push_ref(state->s0, state->s0));
+                    HALT_IF_ERROR(sam_push_blob(state->s0, state->s0));
                     break;
                 case INST_DROP:
                     if (s->sp < 1)
@@ -320,7 +320,7 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_word_t val;
                         for (sam_uword_t i = 0; i < nargs; i++)
                             POP_WORD(&val);
-                        HALT_IF_ERROR(sam_push_ref(frame, state->s0));
+                        HALT_IF_ERROR(sam_push_blob(frame, state->s0));
                         PUSH_INT(state->pc);
                         state->s0 = frame;
                         PUSH_REF(state->p0);

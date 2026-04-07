@@ -83,7 +83,7 @@ int sam_array_pop(sam_blob_t *s, sam_word_t *val_ptr);
 int sam_array_shift(sam_blob_t *s, sam_word_t *val_ptr);
 int sam_array_push(sam_blob_t *s, sam_word_t val);
 int sam_array_prepend(sam_blob_t *s, sam_word_t val);
-int sam_push_ref(sam_blob_t *s, sam_blob_t *val);
+int sam_push_blob(sam_blob_t *s, sam_blob_t *val);
 int sam_push_int(sam_blob_t *s, sam_uword_t val);
 int sam_push_float(sam_blob_t *s, sam_float_t n);
 int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);

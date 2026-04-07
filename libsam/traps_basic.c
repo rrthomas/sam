@@ -220,7 +220,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         {
             sam_blob_t *map;
             HALT_IF_ERROR(sam_map_new(&map));
-            HALT_IF_ERROR(sam_push_ref(state->s0, map));
+            HALT_IF_ERROR(sam_push_blob(state->s0, map));
         }
         break;
     case TRAP_BASIC_DEBUG:

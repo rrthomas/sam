@@ -104,7 +104,7 @@ func (arr *Array) Push(val Word) int {
 }
 
 func (s *Array) PushArray(arr Array) int {
-	return int(C.sam_push_ref(s.array, arr.array))
+	return int(C.sam_push_blob(s.array, arr.array))
 }
 
 func (arr *Array) PushInt(val Uword) int {
