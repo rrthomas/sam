@@ -786,6 +786,7 @@ func (f *Function) Compile(ctx *Frame) {
 	ctx.assembleInst("new") // closure array
 	ctx.assembleInst("new") // captures array
 	blockCtx := f.Body.Compile(&innerCtx, false)
+	ctx.compileCaptures(&blockCtx)
 	ctx.assembleInst("_two") // append captures to closure
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
@@ -810,8 +811,16 @@ type Local struct {
 	pos int // relative to base of stack frame
 }
 
+const (
+	CaptureNone = iota
+	CaptureLocal
+	CaptureParent
+)
+
 type Capture struct {
-	id string
+	id  string
+	ty  int
+	pos uint
 }
 
 func (ctx *Frame) adjustSp(delta int) {
@@ -838,44 +847,51 @@ func (ctx *Frame) findCapture(id string) *uint {
 		}
 	}
 	if parent := ctx.parent; parent != nil {
-		found := false
+		var capture *Capture = nil
 		if l := parent.findLocal(id); l != nil {
-			// Append address of local to captures array
-			parent.assembleInst("s0")
-			parent.assembleInst("_two")
-			parent.assembleInst("s0")
-			parent.assembleInst("get")
-			parent.assembleInst("append")
-			parent.compileLocalAddr(*l)
-			parent.assembleInst("_two")
-			parent.assembleInst("s0")
-			parent.assembleInst("get")
-			parent.assembleInst("append")
-			found = true
+			capture = &Capture{id: id, ty: CaptureLocal, pos: uint(l.pos)}
 		} else if i := parent.findCapture(id); i != nil {
-			// Append address of capture to captures array
-			parent.compileCaptureAddr(*i)
-			parent.assembleInt(-3)
-			parent.assembleInst("s0")
-			parent.assembleInst("get")
-			parent.assembleInst("append")
-			parent.assembleInst("_two")
-			parent.assembleInst("s0")
-			parent.assembleInst("get")
-			parent.assembleInst("append")
-			found = true
+			capture = &Capture{id: id, ty: CaptureParent, pos: *i}
 		}
-		if found {
+		if capture != nil {
 			newCaptureIndex := uint(len(*ctx.captures))
-			*ctx.captures = append(*ctx.captures, Capture{id: id})
+			*ctx.captures = append(*ctx.captures, *capture)
 			return &newCaptureIndex
 		}
 	}
 	return nil
 }
 
-func (ctx *Frame) compileLocalAddr(l Local) {
-	ctx.assembleInt(int(l.pos))
+func (ctx *Frame) compileCaptures(blockCtx *Frame) {
+	for _, c := range *blockCtx.captures {
+		switch c.ty {
+		case CaptureLocal:
+			// Append address of local to captures array
+			ctx.assembleInst("s0")
+			ctx.assembleInst("_two")
+			ctx.assembleInst("s0")
+			ctx.assembleInst("get")
+			ctx.assembleInst("append")
+			ctx.assembleInt(int(c.pos))
+			ctx.assembleInst("_two")
+			ctx.assembleInst("s0")
+			ctx.assembleInst("get")
+			ctx.assembleInst("append")
+		case CaptureParent:
+			// Append address of capture to captures array
+			ctx.compileCaptureAddr(c.pos)
+			ctx.assembleInt(-3)
+			ctx.assembleInst("s0")
+			ctx.assembleInst("get")
+			ctx.assembleInst("append")
+			ctx.assembleInst("_two")
+			ctx.assembleInst("s0")
+			ctx.assembleInst("get")
+			ctx.assembleInst("append")
+		default:
+			panic(fmt.Errorf("invalid capture %+v", c))
+		}
+	}
 }
 
 func (ctx *Frame) compileCaptureAddr(i uint) {
@@ -905,7 +921,7 @@ func (ctx *Frame) isTrap(id string) bool {
 
 func (ctx *Frame) compileGetVar(id string) {
 	if l := ctx.findLocal(id); l != nil {
-		ctx.compileLocalAddr(*l)
+		ctx.assembleInt(l.pos)
 		ctx.assembleInst("s0")
 		ctx.assembleInst("get")
 	} else if c := ctx.findCapture(id); c != nil {
@@ -920,7 +936,7 @@ func (ctx *Frame) compileGetVar(id string) {
 
 func (ctx *Frame) compileSetVar(id string) {
 	if l := ctx.findLocal(id); l != nil {
-		ctx.compileLocalAddr(*l)
+		ctx.assembleInt(l.pos)
 		ctx.assembleInst("s0")
 		ctx.assembleInst("set")
 	} else if c := ctx.findCapture(id); c != nil {
