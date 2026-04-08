@@ -60,13 +60,13 @@
 // Execution macros
 #define GO(addr)                                \
     do {                                        \
-        state->p0 = (sam_blob_t *)addr;        \
+        state->p0 = (sam_blob_t *)addr;         \
         state->pc = 0;                          \
     } while (0)
 
 #define DO(addr)                                \
     do {                                        \
-        PUSH_REF(state->p0);                   \
+        PUSH_REF(state->p0);                    \
         PUSH_INT(state->pc);                    \
         GO(addr);                               \
     } while (0)
@@ -75,5 +75,5 @@
 #define DONE                                    \
     do {                                        \
         POP_UINT(state->pc);                    \
-        POP_REF(state->p0);                    \
+        POP_REF(state->p0);                     \
     } while (0)
