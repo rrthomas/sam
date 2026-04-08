@@ -90,6 +90,14 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             HALT_IF_ERROR(sam_array_poke(old_stack_blob, old_stack->sp, SAM_INSTS_TAG));
         }
         break;
+    case TRAP_BASIC_GODO:
+        {
+            sam_blob_t *code;
+            POP_REF(code);
+            PUSH_REF(state->p0);
+            GO(code);
+        }
+        break;
     case TRAP_BASIC_LSH:
         {
             sam_word_t shift, value;
@@ -265,6 +273,8 @@ char *sam_basic_trap_name(sam_word_t function)
         return "COPY";
     case TRAP_BASIC_RET:
         return "RET";
+    case TRAP_BASIC_GODO:
+        return "GODO";
     case TRAP_BASIC_LSH:
         return "LSH";
     case TRAP_BASIC_RSH:

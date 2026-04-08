@@ -783,27 +783,26 @@ func (f *Function) Compile(ctx *Frame) {
 			innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i})
 		}
 	}
-	ctx.assembleInst("new") // closure array
-	ctx.assembleInst("new") // captures array
+
+	// Compile function body
 	blockCtx := f.Body.Compile(&innerCtx, false)
-	ctx.compileCaptures(&blockCtx)
-	ctx.assembleInst("_two") // append captures to closure
-	ctx.assembleInst("s0")
-	ctx.assembleInst("get")
-	ctx.assembleInst("append")
 	if f.Body.Body.Terminator == nil {
 		blockCtx.assembleReturn()
 	}
+
+	// Construct closure
+	ctx.assembleInst("new")
 	ctx.assembleCode(blockCtx.asm)
-	ctx.assembleInst("_two") // append code to closure
+	ctx.assembleInst("_two") // append code address to closure
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
 	ctx.assembleInst("append")
-	ctx.assembleQuote("go")
-	ctx.assembleInst("_two") // append tail call to closure
+	ctx.assembleQuoteTrap("godo") // append tail call to closure
+	ctx.assembleInst("_two")
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
 	ctx.assembleInst("append")
+	ctx.compileCaptures(&blockCtx) // append captures to closure
 }
 
 type Local struct {
@@ -898,12 +897,12 @@ func (ctx *Frame) compileCaptureAddr(i uint) {
 	ctx.assembleInt(int(ctx.nargs + 2))
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
-	ctx.assembleInt(int(i*2 + 1))
+	ctx.assembleInt(int(i*2 + 3))
 	ctx.assembleInst("_two")
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
 	ctx.assembleInst("get")
-	ctx.assembleInt(int(i * 2))
+	ctx.assembleInt(int(i*2 + 2))
 	ctx.assembleInt(-3)
 	ctx.assembleInst("s0")
 	ctx.assembleInst("extract")
@@ -1120,6 +1119,14 @@ func (ctx *Frame) assembleQuote(inst string) {
 	// Now undo the stack effect of the instruction we just compiled
 	delta := libsam.StackDifference[inst]
 	ctx.adjustSp(-delta)
+}
+
+func (ctx *Frame) assembleQuoteTrap(trapName string) {
+	ctx.assembleTrap("quote")
+	ctx.assembleTrap(trapName)
+	// Now undo the stack effect of the instruction we just compiled
+	stackEffect := trapStackEffect(trapName)
+	ctx.adjustSp(int(stackEffect.In) - int(stackEffect.Out))
 }
 
 func trapStackEffect(function string) libsam.StackEffect {
