@@ -45,7 +45,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_SIZE:
         {
             sam_blob_t *blob;
-            POP_REF(blob);
+            POP_BLOB(blob);
             sam_array_t *stack;
             EXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, stack);
             PUSH_INT(stack->sp);
@@ -61,7 +61,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_COPY:
         {
             sam_blob_t *blob;
-            POP_REF(blob);
+            POP_BLOB(blob);
             sam_blob_t *new_blob;
             switch (blob->type) {
                 case SAM_BLOB_ARRAY:
@@ -71,7 +71,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                     HALT_IF_ERROR(sam_map_copy(blob, &new_blob));
                     break;
             }
-            PUSH_REF(new_blob);
+            PUSH_BLOB(new_blob);
         }
         break;
     case TRAP_BASIC_RET:
@@ -81,8 +81,8 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             sam_blob_t *frame, *old_stack_blob = state->s0;
             sam_array_t *old_stack;
             EXTRACT_BLOB(old_stack_blob, SAM_BLOB_ARRAY, sam_array_t, old_stack);
-            POP_REF(state->p0);
-            POP_REF(frame);
+            POP_BLOB(state->p0);
+            POP_BLOB(frame);
             state->s0 = frame;
             POP_UINT(state->pc);
             PUSH_WORD(item);
@@ -93,8 +93,8 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_GODO:
         {
             sam_blob_t *code;
-            POP_REF(code);
-            PUSH_REF(state->p0);
+            POP_BLOB(code);
+            PUSH_BLOB(state->p0);
             GO(code);
         }
         break;
@@ -172,7 +172,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                     sam_uword_t n = opcode >> SAM_INT_SHIFT;
                     sam_blob_t *iter;
                     HALT_IF_ERROR(sam_int_iter_new(n, &iter));
-                    PUSH_REF(iter);
+                    PUSH_BLOB(iter);
                 }
                 break;
             } else if ((opcode & SAM_ATOM_TAG_MASK) == SAM_ATOM_TAG) {
@@ -184,7 +184,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                         HALT_IF_ERROR(sam_array_new(&blob));
                         // Iterator over empty list
                         HALT_IF_ERROR(sam_array_iter_new(blob, &iter));
-                        PUSH_REF(iter);
+                        PUSH_BLOB(iter);
                     }
                     break;
                 default:
@@ -208,7 +208,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                         HALT(SAM_ERROR_WRONG_TYPE);
                         break;
                 }
-                PUSH_REF(iter);
+                PUSH_BLOB(iter);
             } else
                 HALT(SAM_ERROR_WRONG_TYPE);
         }
@@ -216,7 +216,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_NEXT:
         {
             sam_blob_t *blob;
-            POP_REF(blob);
+            POP_BLOB(blob);
             sam_word_t val;
             sam_iter_t *iter;
             EXTRACT_BLOB(blob, SAM_BLOB_ITER, sam_iter_t, iter);
@@ -242,7 +242,7 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_BASIC_LOG:
         {
             sam_blob_t *blob;
-            POP_REF(blob);
+            POP_BLOB(blob);
             sam_string_t *str;
             EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
             fwrite(str->str, sizeof(char), str->len, stderr);

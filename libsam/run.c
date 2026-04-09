@@ -174,7 +174,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_GET:
                     {
                         sam_blob_t *blob;
-                        POP_REF(blob);
+                        POP_BLOB(blob);
                         switch (blob->type) {
                         case SAM_BLOB_ARRAY:
                             {
@@ -200,7 +200,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_SET:
                     {
                         sam_blob_t *blob;
-                        POP_REF(blob);
+                        POP_BLOB(blob);
                         switch (blob->type) {
                         case SAM_BLOB_ARRAY:
                             {
@@ -226,7 +226,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_EXTRACT:
                     {
                         sam_blob_t *blob;
-                        POP_REF(blob);
+                        POP_BLOB(blob);
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
@@ -237,7 +237,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_INSERT:
                     {
                         sam_blob_t *blob;
-                        POP_REF(blob);
+                        POP_BLOB(blob);
                         sam_word_t pos;
                         POP_INT(pos);
                         sam_uword_t addr;
@@ -248,7 +248,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_POP:
                     {
                         sam_blob_t *blob;
-                        POP_REF(blob);
+                        POP_BLOB(blob);
                         sam_array_t *stack;
                         EXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, stack);
                         if (stack->sp < 1)
@@ -261,7 +261,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_SHIFT:
                     {
                         sam_blob_t *blob;
-                        POP_REF(blob);
+                        POP_BLOB(blob);
                         sam_array_t *stack;
                         EXTRACT_BLOB(blob, SAM_BLOB_ARRAY, sam_array_t, stack);
                         if (stack->sp < 1)
@@ -274,7 +274,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_APPEND:
                     {
                         sam_blob_t *stack;
-                        POP_REF(stack);
+                        POP_BLOB(stack);
                         sam_word_t val;
                         POP_WORD(&val);
                         HALT_IF_ERROR(sam_array_push(stack, val));
@@ -283,7 +283,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_PREPEND:
                     {
                         sam_blob_t *stack;
-                        POP_REF(stack);
+                        POP_BLOB(stack);
                         sam_word_t val;
                         POP_WORD(&val);
                         HALT_IF_ERROR(sam_array_prepend(stack, val));
@@ -292,7 +292,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_GO:
                     {
                         sam_blob_t *code;
-                        POP_REF(code);
+                        POP_BLOB(code);
                         GO(code);
                         opcodes = 0;
                     }
@@ -300,7 +300,7 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_DO:
                     {
                         sam_blob_t *code;
-                        POP_REF(code);
+                        POP_BLOB(code);
                         DO(code);
                         opcodes = 0;
                     }
@@ -308,8 +308,8 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_CALL:
                     {
                         sam_blob_t *code, *frame;
-                        POP_REF(frame);
-                        POP_REF(code);
+                        POP_BLOB(frame);
+                        POP_BLOB(code);
                         sam_uword_t nargs;
                         POP_UINT(nargs);
                         for (sam_uword_t i = nargs; i > 0; i--) {
@@ -323,7 +323,7 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT_IF_ERROR(sam_push_blob(frame, state->s0));
                         PUSH_INT(state->pc);
                         state->s0 = frame;
-                        PUSH_REF(state->p0);
+                        PUSH_BLOB(state->p0);
                         GO(code);
                         opcodes = 0;
                     }
@@ -331,8 +331,8 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_IF:
                     {
                         sam_blob_t *then, *else_;
-                        POP_REF(else_);
-                        POP_REF(then);
+                        POP_BLOB(else_);
+                        POP_BLOB(then);
                         sam_word_t flag;
                         POP_BOOL(flag);
                         sam_blob_t *addr = flag ? then : else_;

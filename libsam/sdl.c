@@ -528,7 +528,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_UINT(y);
             POP_UINT(x);
             sam_blob_t *blob;
-            POP_REF(blob);
+            POP_BLOB(blob);
             sam_string_t *str;
             EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
 
@@ -558,7 +558,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_UINT(y);
             POP_UINT(x);
             sam_blob_t *blob;
-            POP_REF(blob);
+            POP_BLOB(blob);
             sam_string_t *str;
             EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
 
@@ -1943,7 +1943,7 @@ sam_word_t sam_audio_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_AUDIO_PLAY:
         {
             sam_blob_t *blob;
-            POP_REF(blob);
+            POP_BLOB(blob);
             sam_audiofile_t *audio;
             EXTRACT_BLOB(blob, SAM_BLOB_AUDIOFILE, sam_audiofile_t, audio);
             Mix_PlayMusic(audio->audio, 0); // FIXME: check error
@@ -1965,31 +1965,31 @@ sam_word_t sam_audio_trap(sam_state_t *state, sam_uword_t function)
         break;
 
     case TRAP_AUDIO_APPLAUSE:
-        PUSH_REF(sounds[SOUND_APPLAUSE]);
+        PUSH_BLOB(sounds[SOUND_APPLAUSE]);
         break;
     case TRAP_AUDIO_BEEP:
-        PUSH_REF(sounds[SOUND_BEEP]);
+        PUSH_BLOB(sounds[SOUND_BEEP]);
         break;
     case TRAP_AUDIO_BELL:
-        PUSH_REF(sounds[SOUND_BEEP]);
+        PUSH_BLOB(sounds[SOUND_BEEP]);
         break;
     case TRAP_AUDIO_COW:
-        PUSH_REF(sounds[SOUND_COW]);
+        PUSH_BLOB(sounds[SOUND_COW]);
         break;
     case TRAP_AUDIO_EXPLOSION:
-        PUSH_REF(sounds[SOUND_EXPLOSION]);
+        PUSH_BLOB(sounds[SOUND_EXPLOSION]);
         break;
     case TRAP_AUDIO_GONG:
-        PUSH_REF(sounds[SOUND_GONG]);
+        PUSH_BLOB(sounds[SOUND_GONG]);
         break;
     case TRAP_AUDIO_HORSE:
-        PUSH_REF(sounds[SOUND_HORSE]);
+        PUSH_BLOB(sounds[SOUND_HORSE]);
         break;
     case TRAP_AUDIO_LASER:
-        PUSH_REF(sounds[SOUND_LASER]);
+        PUSH_BLOB(sounds[SOUND_LASER]);
         break;
     case TRAP_AUDIO_OOPS:
-        PUSH_REF(sounds[SOUND_OOPS]);
+        PUSH_BLOB(sounds[SOUND_OOPS]);
         break;
 
     default:

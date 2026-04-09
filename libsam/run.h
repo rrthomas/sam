@@ -38,14 +38,14 @@
 #define PUSH_BOOL(val)                          \
     PUSH_WORD(SAM_ATOM_TAG | LSHIFT(SAM_ATOM_BOOL, SAM_ATOM_TYPE_SHIFT) | LSHIFT(val ? SAM_TRUE : SAM_FALSE, SAM_ATOM_SHIFT))
 
-#define POP_REF(var)                                                    \
+#define POP_BLOB(var)                                                    \
     do {                                                                \
         sam_uword_t _ptr;                                               \
         _POP_INSN(_ptr, SAM_BLOB_TAG, SAM_BLOB_TAG_MASK, LRSHIFT, SAM_BLOB_SHIFT); \
         var = (void *)(_ptr << SAM_BLOB_SHIFT);                         \
     } while (0)
 
-#define PUSH_REF(addr)                                \
+#define PUSH_BLOB(addr)                                \
     PUSH_WORD(((sam_uword_t)addr) | SAM_BLOB_TAG)
 
 #define POP_FLOAT(var)                                                  \
@@ -66,7 +66,7 @@
 
 #define DO(addr)                                \
     do {                                        \
-        PUSH_REF(state->p0);                    \
+        PUSH_BLOB(state->p0);                    \
         PUSH_INT(state->pc);                    \
         GO(addr);                               \
     } while (0)
@@ -75,5 +75,5 @@
 #define DONE                                    \
     do {                                        \
         POP_UINT(state->pc);                    \
-        POP_REF(state->p0);                     \
+        POP_BLOB(state->p0);                     \
     } while (0)
