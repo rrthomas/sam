@@ -42,6 +42,7 @@ _Static_assert(sizeof(size_t) == 8);
 // Blobs
 typedef struct sam_blob sam_blob_t;
 typedef struct sam_array sam_array_t;
+typedef struct sam_closure sam_closure_t;
 typedef _sam_map sam_map_t;
 typedef struct sam_iter sam_iter_t;
 typedef struct sam_string sam_string_t;
@@ -90,6 +91,9 @@ int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);
 int sam_push_trap(sam_blob_t *s, sam_uword_t function);
 int sam_push_insts(sam_blob_t *s, sam_uword_t insts);
 int sam_array_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
+
+// Closures
+int sam_closure_new(sam_blob_t **new_closure, sam_blob_t *code, sam_blob_t *context);
 
 // Maps
 int sam_map_new(sam_blob_t **new_map);

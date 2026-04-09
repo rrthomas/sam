@@ -98,6 +98,26 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             GO(code);
         }
         break;
+    case TRAP_BASIC_NEW_CLOSURE:
+        {
+            sam_blob_t *context, *code;
+            HALT_IF_ERROR(sam_array_new(&context));
+            POP_BLOB(code);
+            sam_uword_t nitems;
+            POP_UINT(nitems);
+            for (sam_uword_t i = nitems; i > 0; i--) {
+                sam_uword_t val;
+                HALT_IF_ERROR(sam_array_peek(state->s0, s->sp - i, &val));
+                HALT_IF_ERROR(sam_array_push(context, val));
+            }
+            sam_word_t val;
+            for (sam_uword_t i = 0; i < nitems; i++)
+                POP_WORD(&val);
+            sam_blob_t *cl_blob;
+            HALT_IF_ERROR(sam_closure_new(&cl_blob, code, context));
+            HALT_IF_ERROR(sam_push_blob(state->s0, cl_blob));
+        }
+        break;
     case TRAP_BASIC_LSH:
         {
             sam_word_t shift, value;
@@ -275,6 +295,8 @@ char *sam_basic_trap_name(sam_word_t function)
         return "RET";
     case TRAP_BASIC_GODO:
         return "GODO";
+    case TRAP_BASIC_NEW_CLOSURE:
+        return "NEW_CLOSURE";
     case TRAP_BASIC_LSH:
         return "LSH";
     case TRAP_BASIC_RSH:

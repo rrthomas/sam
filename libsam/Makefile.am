@@ -33,6 +33,7 @@ libsam_la_SOURCES = \
 	sdl_private.h \
 	run.h \
 	blob.c \
+	closure.c \
 	debug.c \
 	iter.c \
 	map.c \

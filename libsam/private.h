@@ -22,6 +22,11 @@ typedef struct sam_array {
     sam_uword_t sp; // Number of words in stack
 } sam_array_t;
 
+typedef struct sam_closure {
+    sam_blob_t *code;
+    sam_blob_t *context;
+} sam_closure_t;
+
 typedef struct sam_iter {
     sam_blob_t *blob;
     int (*next)(sam_iter_t *i, sam_word_t *val);

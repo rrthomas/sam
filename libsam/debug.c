@@ -345,6 +345,13 @@ char *disas(sam_word_t inst)
         case SAM_BLOB_ARRAY:
             free_list(disas_array(l, 0, blob, &text));
             break;
+        case SAM_BLOB_CLOSURE:
+            {
+                sam_closure_t *cl;
+                XEXTRACT_BLOB(blob, SAM_BLOB_CLOSURE, sam_closure_t, cl);
+                xasprintf(&text, "closure %p", cl);
+            }
+            break;
         case SAM_BLOB_MAP:
             free_list(disas_map(l, 0, blob, &text));
             break;

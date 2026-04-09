@@ -307,9 +307,9 @@ sam_word_t sam_run(sam_state_t *state)
                     break;
                 case INST_CALL:
                     {
-                        sam_blob_t *code, *frame;
+                        sam_blob_t *blob, *frame;
                         POP_BLOB(frame);
-                        POP_BLOB(code);
+                        POP_BLOB(blob);
                         sam_uword_t nargs;
                         POP_UINT(nargs);
                         for (sam_uword_t i = nargs; i > 0; i--) {
@@ -324,7 +324,10 @@ sam_word_t sam_run(sam_state_t *state)
                         PUSH_INT(state->pc);
                         state->s0 = frame;
                         PUSH_BLOB(state->p0);
-                        GO(code);
+                        sam_closure_t *cl;
+                        EXTRACT_BLOB(blob, SAM_BLOB_CLOSURE, sam_closure_t, cl);
+                        HALT_IF_ERROR(sam_push_blob(frame, cl->context));
+                        GO(cl->code);
                         opcodes = 0;
                     }
                     break;

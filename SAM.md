@@ -237,6 +237,11 @@ These instructions manage arrays.
 
 These instructions implement branches, conditions and subroutine calls.
 
+> `NEW_CLOSURE`  
+> `x₁`…`xₙ` `i` `a₁` → `a₂`
+>
+> Pop `i` and `a₁`. Pop 2`i` stack items and create a new closure `a₂` with context `x₁`…`xₙ` and code `a₁`.
+
 > `BLOB`  
 > → `r`
 >

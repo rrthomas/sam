@@ -791,18 +791,10 @@ func (f *Function) Compile(ctx *Frame) {
 	}
 
 	// Construct closure
-	ctx.assembleInst("new")
+	ctx.compileCaptures(&blockCtx)
 	ctx.assembleCode(blockCtx.asm)
-	ctx.assembleInst("_two") // append code address to closure
-	ctx.assembleInst("s0")
-	ctx.assembleInst("get")
-	ctx.assembleInst("append")
-	ctx.assembleQuoteTrap("godo") // append tail call to closure
-	ctx.assembleInst("_two")
-	ctx.assembleInst("s0")
-	ctx.assembleInst("get")
-	ctx.assembleInst("append")
-	ctx.compileCaptures(&blockCtx) // append captures to closure
+	ctx.assembleTrap("new_closure")
+	ctx.adjustSp(-(len(*blockCtx.captures) * 2))
 }
 
 type Local struct {
@@ -865,44 +857,27 @@ func (ctx *Frame) compileCaptures(blockCtx *Frame) {
 	for _, c := range *blockCtx.captures {
 		switch c.ty {
 		case CaptureLocal:
-			// Append address of local to captures array
 			ctx.assembleInst("s0")
-			ctx.assembleInst("_two")
-			ctx.assembleInst("s0")
-			ctx.assembleInst("get")
-			ctx.assembleInst("append")
 			ctx.assembleInt(int(c.pos))
-			ctx.assembleInst("_two")
-			ctx.assembleInst("s0")
-			ctx.assembleInst("get")
-			ctx.assembleInst("append")
 		case CaptureParent:
-			// Append address of capture to captures array
 			ctx.compileCaptureAddr(c.pos)
-			ctx.assembleInt(-3)
-			ctx.assembleInst("s0")
-			ctx.assembleInst("get")
-			ctx.assembleInst("append")
-			ctx.assembleInst("_two")
-			ctx.assembleInst("s0")
-			ctx.assembleInst("get")
-			ctx.assembleInst("append")
 		default:
 			panic(fmt.Errorf("invalid capture %+v", c))
 		}
 	}
+	ctx.assembleInt(len(*blockCtx.captures) * 2)
 }
 
 func (ctx *Frame) compileCaptureAddr(i uint) {
 	ctx.assembleInt(int(ctx.nargs + 2))
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
-	ctx.assembleInt(int(i*2 + 3))
+	ctx.assembleInt(int(i*2 + 1))
 	ctx.assembleInst("_two")
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
 	ctx.assembleInst("get")
-	ctx.assembleInt(int(i*2 + 2))
+	ctx.assembleInt(int(i * 2))
 	ctx.assembleInt(-3)
 	ctx.assembleInst("s0")
 	ctx.assembleInst("extract")
