@@ -713,7 +713,7 @@ func (s *Statement) Compile(ctx *Frame) {
 func (t *Terminator) Compile(ctx *Frame) {
 	if t.Return != nil {
 		t.Return.Compile(ctx)
-		ctx.assembleReturn()
+		ctx.assembleTrap("ret")
 	} else if t.BreakExp != nil || t.Break {
 		if ctx.loop == nil {
 			panic("'break' used outside a loop")
@@ -780,14 +780,14 @@ func (f *Function) Compile(ctx *Frame) {
 	}
 	if f.Parameters != nil {
 		for i, p := range *f.Parameters {
-			innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i})
+			innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i + 2})
 		}
 	}
 
 	// Compile function body
 	blockCtx := f.Body.Compile(&innerCtx, false)
 	if f.Body.Body.Terminator == nil {
-		blockCtx.assembleReturn()
+		blockCtx.assembleTrap("ret")
 	}
 
 	// Construct closure
@@ -993,23 +993,6 @@ func (ctx *Frame) tearDownBlock() {
 	for range ctx.sp - ctx.baseSp {
 		ctx.assembleInst("drop")
 	}
-}
-
-// We do not destroy any information in the frame when returning in case the
-// frame lives on to be used for captures.
-func (ctx *Frame) assembleReturn() {
-	// Get return information
-	ctx.assembleInt(int(ctx.nargs))
-	ctx.assembleInst("s0")
-	ctx.assembleInst("get")
-	ctx.assembleInt(int(ctx.nargs + 1))
-	ctx.assembleInst("s0")
-	ctx.assembleInst("get")
-	// Extract return value
-	ctx.assembleInt(-3)
-	ctx.assembleInst("s0")
-	ctx.assembleInst("extract")
-	ctx.assembleTrap("ret")
 }
 
 var nextLabel uint = 0

@@ -265,12 +265,12 @@ These instructions implement branches, conditions and subroutine calls.
 > `CALL`  
 > `x₁`…`xₙ` `i₁` `a₁` `a₂` → `i₂`
 >
-> Pop `i₁`, `a₁` and `a₂`. Pop `i₁` stack items, and push them to the array given by `a₂`, in order from `x₁` to `xₙ`. Push `S0` and `P0` to the array given by `a₂`, and `PC` to the current stack. Set `S0` to `a₂`, `P0` to `a₁` and `PC` to 0.
+> Pop `i₁`, `a₁` and `a₂`. Push `S0` and `P0` to the array given by `a₂`. Pop `i₁` stack items, and push them to the array given by `a₂`, in order from `x₁` to `xₙ`. Push `PC` to the current stack. Set `S0` to `a₂`, `P0` to `a₁` and `PC` to 0.
 
 > `RET`  
-> `a₁` `a₂` `x` →
+> `x` `i` →
 >
-> Pop `x`, `a₂` and `a₁`. Set `S0` to `a₁` and `P0` to `a₂`. Pop `PC` from the stack, and push `x` to the stack.
+> Pop `x`. Set `P0` to item 1 of `S0` and `S0` to item 0 of `S0`. Pop `PC` from the stack, and push `x` to the stack.
 
 > `IF`  
 > `i` `a₁` `a₂` → `p`

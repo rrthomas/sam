@@ -81,8 +81,8 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             sam_blob_t *frame, *old_stack_blob = state->s0;
             sam_array_t *old_stack;
             EXTRACT_BLOB(old_stack_blob, SAM_BLOB_ARRAY, sam_array_t, old_stack);
-            POP_BLOB(state->p0);
-            POP_BLOB(frame);
+            PEEK_BLOB(frame, 0);
+            PEEK_BLOB(state->p0, 1);
             state->s0 = frame;
             POP_UINT(state->pc);
             PUSH_WORD(item);

@@ -75,6 +75,7 @@ int sam_blob_new(unsigned type, size_t data_size, sam_blob_t **new_blob);
 int sam_array_from_blob(sam_blob_t *blob, sam_array_t **s);
 int sam_array_new(sam_blob_t **new_array);
 int sam_array_copy(sam_blob_t *array, sam_blob_t **new_array);
+// FIXME: val in next two functions should be word, not uword
 int sam_array_peek(sam_blob_t *s, sam_uword_t addr, sam_uword_t *val);
 int sam_array_poke(sam_blob_t *s, sam_uword_t addr, sam_uword_t val);
 int sam_array_extract(sam_blob_t *s, sam_uword_t addr);

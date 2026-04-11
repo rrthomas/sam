@@ -309,6 +309,8 @@ sam_word_t sam_run(sam_state_t *state)
                     {
                         sam_blob_t *blob, *frame;
                         POP_BLOB(frame);
+                        HALT_IF_ERROR(sam_push_blob(frame, state->s0));
+                        HALT_IF_ERROR(sam_push_blob(frame, state->p0));
                         POP_BLOB(blob);
                         sam_uword_t nargs;
                         POP_UINT(nargs);
@@ -320,10 +322,8 @@ sam_word_t sam_run(sam_state_t *state)
                         sam_word_t val;
                         for (sam_uword_t i = 0; i < nargs; i++)
                             POP_WORD(&val);
-                        HALT_IF_ERROR(sam_push_blob(frame, state->s0));
                         PUSH_INT(state->pc);
                         state->s0 = frame;
-                        PUSH_BLOB(state->p0);
                         sam_closure_t *cl;
                         EXTRACT_BLOB(blob, SAM_BLOB_CLOSURE, sam_closure_t, cl);
                         HALT_IF_ERROR(sam_push_blob(frame, cl->context));
