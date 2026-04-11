@@ -1088,22 +1088,6 @@ func (ctx *Frame) assembleCode(asm *assembler) {
 	ctx.assembleBlob(asm.stack)
 }
 
-func (ctx *Frame) assembleQuote(inst string) {
-	ctx.assembleTrap("quote")
-	ctx.assembleSingle(inst)
-	// Now undo the stack effect of the instruction we just compiled
-	delta := libsam.StackDifference[inst]
-	ctx.adjustSp(-delta)
-}
-
-func (ctx *Frame) assembleQuoteTrap(trapName string) {
-	ctx.assembleTrap("quote")
-	ctx.assembleTrap(trapName)
-	// Now undo the stack effect of the instruction we just compiled
-	stackEffect := trapStackEffect(trapName)
-	ctx.adjustSp(int(stackEffect.In) - int(stackEffect.Out))
-}
-
 func trapStackEffect(function string) libsam.StackEffect {
 	stackEffect, ok := libsam.TrapStackEffect[strings.ToUpper(function)]
 	if !ok {

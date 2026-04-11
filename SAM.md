@@ -257,11 +257,6 @@ These instructions implement branches, conditions and subroutine calls.
 >
 > Pop `a₁`. Push `P0` to the stack as a reference and `PC` as an integer, and set `P0` to `a₁` and `PC` to 0.
 
-> `GODO`  
-> `a₁` → `a₂`
-> 
-> Pop `a₁`. Push `P0` on to the stack. Set `P0` to `a₁` and `PC` to the address of the first item of the array pointed to by `a₁`.
-
 > `DONE`  
 > `a` `i` →
 >
