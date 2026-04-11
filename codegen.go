@@ -93,8 +93,7 @@ func (a *assembler) addBool(f bool) {
 
 func (a *assembler) addInt(int libsam.Word) {
 	a.flushInstructions()
-	// FIXME: PushInt should take a Word, not a Uword
-	a.stack.PushInt(libsam.Uword(int))
+	a.stack.PushInt(int)
 }
 
 func (a *assembler) addFloat(float float64) {

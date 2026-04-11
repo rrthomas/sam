@@ -214,7 +214,7 @@ int sam_push_blob(sam_blob_t *blob, sam_blob_t *val)
     return sam_array_push(blob, SAM_BLOB_TAG | (sam_uword_t)val);
 }
 
-int sam_push_int(sam_blob_t *blob, sam_uword_t val)
+int sam_push_int(sam_blob_t *blob, sam_word_t val)
 {
     return sam_array_push(blob, SAM_INT_TAG | (val << SAM_INT_SHIFT));
 }

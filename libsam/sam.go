@@ -107,7 +107,7 @@ func (s *Array) PushArray(arr Array) int {
 	return int(C.sam_push_blob(s.array, arr.array))
 }
 
-func (arr *Array) PushInt(val Uword) int {
+func (arr *Array) PushInt(val Word) int {
 	return int(C.sam_push_int(arr.array, val))
 }
 
