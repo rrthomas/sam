@@ -629,7 +629,7 @@ func (e *Expression) Compile(ctx *Frame) {
 		blockCtx.assembleNull() // return value
 		thenCtx := blockCtx.newBlock(false)
 		thenCtx.assembleBreak()
-		elseCtx := blockCtx.assembleBlock(e.Body, false)
+		elseCtx := blockCtx.assembleBlock(e.Body)
 		blockCtx.assembleInst("_two")
 		blockCtx.assembleInst("s0")
 		blockCtx.assembleInst("get")
@@ -652,7 +652,7 @@ func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
 		panic("unexpected nil or empty IfList")
 	}
 	ctx.assembleNull() // return value
-	thenCtx := ctx.assembleBlock((*il)[0].Then, false)
+	thenCtx := ctx.assembleBlock((*il)[0].Then)
 	elseCtx := Frame{asm: &assembler{stack: libsam.NewArray()}}
 	if len(*il) > 1 {
 		elseCtx = ctx.newBlock(false)
@@ -661,7 +661,7 @@ func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
 		restIfs.Compile(&elseCtx)
 		elseCtx.tearDownBlock()
 	} else if fe != nil {
-		elseCtx = ctx.assembleBlock(fe, false)
+		elseCtx = ctx.assembleBlock(fe)
 	}
 	(*il)[0].Cond.Compile(ctx)
 	ctx.assembleCode(thenCtx.asm)
@@ -1132,8 +1132,8 @@ func (ctx *Frame) newBlock(loop bool) Frame {
 	return blockCtx
 }
 
-func (ctx *Frame) assembleBlock(b *Block, loop bool) Frame {
-	blockCtx := b.Compile(ctx, loop)
+func (ctx *Frame) assembleBlock(b *Block) Frame {
+	blockCtx := b.Compile(ctx, false)
 	if b.Body.Terminator == nil && blockCtx.asm.stack.Sp() > 0 {
 		blockCtx.tearDownBlock()
 	}
