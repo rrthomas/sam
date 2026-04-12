@@ -1010,13 +1010,6 @@ func (ctx *Frame) tearDownBlock() {
 	}
 }
 
-var nextLabel uint = 0
-
-func newLabel() string {
-	nextLabel += 1
-	return fmt.Sprintf("$%d", nextLabel)
-}
-
 // FIXME: Separate Block (no args) from Frame
 type Frame struct {
 	parent   *Frame // lexically enclosing scope
@@ -1117,7 +1110,6 @@ func (ctx *Frame) newBlock(loop bool) Frame {
 	baseSp := libsam.Word(int(ctx.sp) + 2)
 	blockCtx := Frame{
 		parent:   ctx.parent,
-		label:    newLabel(),
 		locals:   slices.Clone(ctx.locals),
 		captures: ctx.captures,
 		asm:      &assembler{stack: libsam.NewArray()},
