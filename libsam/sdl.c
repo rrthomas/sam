@@ -677,7 +677,7 @@ sam_word_t sam_input_trap(sam_state_t *state, sam_uword_t function)
             if (key >= numkeys)
                 HALT(SAM_ERROR_WRONG_TYPE);
             SDL_PumpEvents();
-            PUSH_INT(keymap[key]);
+            PUSH_BOOL(keymap[key] != 0);
             need_window = true;
         }
         break;
