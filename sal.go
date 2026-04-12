@@ -244,6 +244,23 @@ type Function struct {
 
 // Compilation
 
+func (ctx *Frame) compileBlock(b *Block) {
+	ctx.assembleNull() // value of block
+	baseSp := ctx.sp
+	b.Body.Compile(ctx) // body of block
+	if ctx.sp < baseSp {
+		panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, baseSp))
+	}
+	// Set result
+	ctx.assembleInt(-int(ctx.sp - baseSp + 1))
+	ctx.assembleInst("s0")
+	ctx.assembleInst("set")
+	// Drop remaining stack items in this block
+	for range ctx.sp - baseSp {
+		ctx.assembleInst("drop")
+	}
+}
+
 func (e *PrimaryExp) Compile(ctx *Frame) {
 	if e.Null {
 		ctx.assembleNull()
@@ -303,9 +320,7 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	} else if e.Variable != nil {
 		ctx.compileGetVar(*e.Variable)
 	} else if e.Block != nil {
-		ctx.assembleNull() // value of block
-		ctx.assembleCode(ctx.assembleBlock(e.Block, false).asm)
-		ctx.assembleInst("do")
+		ctx.compileBlock(e.Block)
 	} else if e.Function != nil {
 		e.Function.Compile(ctx)
 	} else if e.Paren != nil {
@@ -1155,10 +1170,7 @@ func Sal(src string, ast bool) libsam.Array {
 		captures: &captures,
 		asm:      &assembler{stack: libsam.NewArray()},
 	}
-	ctx.assembleNull() // value of top level
-	blockCtx := ctx.assembleBlock(&block, false)
-	ctx.assembleCode(blockCtx.asm)
-	ctx.assembleInst("do")
+	ctx.compileBlock(&block)
 	ctx.assembleInst("halt")
 
 	return ctx.asm.stack
