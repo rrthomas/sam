@@ -205,20 +205,23 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 }
             } else if ((opcode & SAM_BLOB_TAG_MASK) == SAM_BLOB_TAG) {
                 sam_blob_t *blob = (sam_blob_t *)(opcode & ~SAM_BLOB_TAG_MASK);
-                            sam_blob_t *iter;
+                sam_blob_t *iter;
                 switch (blob->type) {
-                    case SAM_BLOB_ARRAY:
-                        HALT_IF_ERROR(sam_array_iter_new(blob, &iter));
-                        break;
-                    case SAM_BLOB_MAP:
-                        HALT_IF_ERROR(sam_map_iter_new(blob, &iter));
-                        break;
-                    case SAM_BLOB_STRING:
-                        HALT_IF_ERROR(sam_string_iter_new(blob, &iter));
-                        break;
-                    default:
-                        HALT(SAM_ERROR_WRONG_TYPE);
-                        break;
+                case SAM_BLOB_ARRAY:
+                    HALT_IF_ERROR(sam_array_iter_new(blob, &iter));
+                    break;
+                case SAM_BLOB_CLOSURE:
+                    iter = blob;
+                    break;
+                case SAM_BLOB_MAP:
+                    HALT_IF_ERROR(sam_map_iter_new(blob, &iter));
+                    break;
+                case SAM_BLOB_STRING:
+                    HALT_IF_ERROR(sam_string_iter_new(blob, &iter));
+                    break;
+                default:
+                    HALT(SAM_ERROR_WRONG_TYPE);
+                    break;
                 }
                 PUSH_BLOB(iter);
             } else
@@ -229,11 +232,25 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         {
             sam_blob_t *blob;
             POP_BLOB(blob);
-            sam_word_t val;
-            sam_iter_t *iter;
-            EXTRACT_BLOB(blob, SAM_BLOB_ITER, sam_iter_t, iter);
-            iter->next(iter, &val);
-            PUSH_WORD(val);
+            if (blob->type == SAM_BLOB_CLOSURE) {
+                // Call closure with no arguments
+                sam_blob_t *frame;
+                HALT_IF_ERROR(sam_array_new(&frame));
+                HALT_IF_ERROR(sam_push_blob(frame, state->s0));
+                HALT_IF_ERROR(sam_push_blob(frame, state->p0));
+                sam_closure_t *cl;
+                EXTRACT_BLOB(blob, SAM_BLOB_CLOSURE, sam_closure_t, cl);
+                HALT_IF_ERROR(sam_push_blob(frame, cl->context));
+                PUSH_INT(state->pc);
+                state->s0 = frame;
+                GO(cl->code);
+            } else {
+                sam_word_t val;
+                sam_iter_t *iter;
+                EXTRACT_BLOB(blob, SAM_BLOB_ITER, sam_iter_t, iter);
+                iter->next(iter, &val);
+                PUSH_WORD(val);
+            }
         }
         break;
     case TRAP_BASIC_NEW_MAP:

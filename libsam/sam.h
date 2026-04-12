@@ -95,6 +95,7 @@ int sam_array_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
 
 // Closures
 int sam_closure_new(sam_blob_t **new_closure, sam_blob_t *code, sam_blob_t *context);
+int sam_closure_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
 
 // Maps
 int sam_map_new(sam_blob_t **new_map);
