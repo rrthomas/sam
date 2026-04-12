@@ -780,7 +780,7 @@ func (f *Function) Compile(ctx *Frame) {
 	}
 	if f.Parameters != nil {
 		for i, p := range *f.Parameters {
-			innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i + 2})
+			innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i + 3})
 		}
 	}
 
@@ -869,7 +869,7 @@ func (ctx *Frame) compileCaptures(blockCtx *Frame) {
 }
 
 func (ctx *Frame) compileCaptureAddr(i uint) {
-	ctx.assembleInt(int(ctx.nargs + 2))
+	ctx.assembleInst("two")
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
 	ctx.assembleInt(int(i*2 + 1))

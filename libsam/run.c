@@ -312,6 +312,9 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT_IF_ERROR(sam_push_blob(frame, state->s0));
                         HALT_IF_ERROR(sam_push_blob(frame, state->p0));
                         POP_BLOB(blob);
+                        sam_closure_t *cl;
+                        EXTRACT_BLOB(blob, SAM_BLOB_CLOSURE, sam_closure_t, cl);
+                        HALT_IF_ERROR(sam_push_blob(frame, cl->context));
                         sam_uword_t nargs;
                         POP_UINT(nargs);
                         for (sam_uword_t i = nargs; i > 0; i--) {
@@ -324,9 +327,6 @@ sam_word_t sam_run(sam_state_t *state)
                             POP_WORD(&val);
                         PUSH_INT(state->pc);
                         state->s0 = frame;
-                        sam_closure_t *cl;
-                        EXTRACT_BLOB(blob, SAM_BLOB_CLOSURE, sam_closure_t, cl);
-                        HALT_IF_ERROR(sam_push_blob(frame, cl->context));
                         GO(cl->code);
                         opcodes = 0;
                     }

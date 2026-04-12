@@ -93,6 +93,7 @@ The instruction set is listed below, with the instructions grouped according to 
 | `n`    | a number (integer or floating point) |
 | `r`    | a reference (pointer to a blob) |
 | `a`    | a reference to an array |
+| `c`    | a reference to a closure |
 | `s`    | a reference to a string |
 | `x`    | an unspecified item |
 
@@ -238,9 +239,9 @@ These instructions manage arrays.
 These instructions implement branches, conditions and subroutine calls.
 
 > `NEW_CLOSURE`  
-> `x₁`…`xₙ` `i` `a₁` → `a₂`
+> `x₁`…`xₙ` `i` `a` → `c`
 >
-> Pop `i` and `a₁`. Pop 2`i` stack items and create a new closure `a₂` with context `x₁`…`xₙ` and code `a₁`.
+> Pop `i` and `a`. Pop 2`i` stack items and create a new closure `c` with context `x₁`…`xₙ` and code `a`.
 
 > `BLOB`  
 > → `r`
@@ -263,9 +264,9 @@ These instructions implement branches, conditions and subroutine calls.
 > Pop `i` into `PC` and `a` into `P0`.
 
 > `CALL`  
-> `x₁`…`xₙ` `i₁` `a₁` `a₂` → `i₂`
+> `x₁`…`xₙ` `i₁` `c` `a` → `i₂`
 >
-> Pop `i₁`, `a₁` and `a₂`. Push `S0` and `P0` to the array given by `a₂`. Pop `i₁` stack items, and push them to the array given by `a₂`, in order from `x₁` to `xₙ`. Push `PC` to the current stack. Set `S0` to `a₂`, `P0` to `a₁` and `PC` to 0.
+> Pop `i₁`, `c` and `a`. Push `S0` and `P0` to the array given by `a`, then push `c`’s context array. Pop `i₁` stack items, and push them to the array given by `a`, in order from `x₁` to `xₙ`. Push `PC` to the current stack. Set `S0` to `a`, `P0` to `c`’s code array and `PC` to 0.
 
 > `RET`  
 > `x` `i` →
