@@ -74,6 +74,25 @@ func parseLiteral(argStr string) libsam.Word {
 	panic(fmt.Errorf("bad literal %s", argStr))
 }
 
+type address struct {
+	stack libsam.Array
+	item  libsam.Uword
+}
+
+var labels map[string]address
+
+func (a *assembler) newLabel(label string) {
+	labels[label] = address{stack: a.stack, item: a.stack.Sp()}
+}
+
+func (a *assembler) getLabel(label string) address {
+	address, ok := labels[label]
+	if ok {
+		return address
+	}
+	panic(fmt.Errorf("no such label ‘%s’", label))
+}
+
 func (a *assembler) parseStack(argStr string) libsam.Array {
 	address := a.getLabel(argStr)
 	if address.item != 0 {

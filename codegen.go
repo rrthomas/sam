@@ -19,36 +19,16 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 package main
 
 import (
-	"fmt"
-
 	"github.com/rrthomas/sam/libsam"
 )
 
 // Assemble a program
 // FIXME: check all return codes from libsam and panic on error
-var labels map[string]address
-
-type address struct {
-	stack libsam.Array
-	item  libsam.Uword
-}
-
+// FIXME: separate assembler in this module from assembler in assembler.go
 type assembler struct {
 	stack  libsam.Array
 	insts  libsam.Uword
 	nInsts uint
-}
-
-func (a *assembler) newLabel(label string) {
-	labels[label] = address{stack: a.stack, item: a.stack.Sp()}
-}
-
-func (a *assembler) getLabel(label string) address {
-	address, ok := labels[label]
-	if ok {
-		return address
-	}
-	panic(fmt.Errorf("no such label ‘%s’", label))
 }
 
 func (a *assembler) flushInstructions() {
