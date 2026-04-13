@@ -103,28 +103,58 @@ func (arr *Array) Push(val Word) int {
 	return int(C.sam_array_push(arr.array, val))
 }
 
-func (s *Array) PushArray(arr Array) int {
-	return int(C.sam_push_blob(s.array, arr.array))
+func (arr *Array) PushArray(a Array) int {
+	var inst Word
+	res := C.sam_make_inst_blob(&inst, a.array)
+	if res == ERROR_OK {
+		res = C.sam_array_push(arr.array, inst)
+	}
+	return int(res)
 }
 
 func (arr *Array) PushInt(val Word) int {
-	return int(C.sam_push_int(arr.array, val))
+	var inst Word
+	res := C.sam_make_inst_int(&inst, val)
+	if res == ERROR_OK {
+		res = C.sam_array_push(arr.array, inst)
+	}
+	return int(res)
 }
 
 func (arr *Array) PushFloat(f float64) int {
-	return int(C.sam_push_float(arr.array, C.sam_float_t(f)))
+	var inst Word
+	res := C.sam_make_inst_float(&inst, C.sam_float_t(f))
+	if res == ERROR_OK {
+		res = C.sam_array_push(arr.array, inst)
+	}
+	return int(res)
 }
 
 func (arr *Array) PushAtom(atomType Uword, operand Uword) int {
-	return int(C.sam_push_atom(arr.array, atomType, operand))
+	var inst Word
+	res := C.sam_make_inst_atom(&inst, atomType, operand)
+	if res == ERROR_OK {
+		res = C.sam_array_push(arr.array, inst)
+	}
+	return int(res)
 }
 
 func (arr *Array) PushTrap(function Uword) int {
-	return int(C.sam_push_trap(arr.array, function))
+	var inst Word
+	res := C.sam_make_inst_trap(&inst, function)
+	if res == ERROR_OK {
+		res = C.sam_array_push(arr.array, inst)
+	}
+	return int(res)
 }
 
 func (arr *Array) PushInsts(insts Uword) int {
-	return int(C.sam_push_insts(arr.array, insts))
+	var inst Word
+	res := C.sam_make_inst_insts(&inst, insts)
+	if res == ERROR_OK {
+		res = C.sam_array_push(arr.array, inst)
+	}
+	return int(res)
 }
 
 func Run(state *State, code *Array) Word {

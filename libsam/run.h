@@ -72,8 +72,12 @@
         _POP_INSN(_w, SAM_FLOAT_TAG, SAM_FLOAT_TAG_MASK, LRSHIFT, SAM_FLOAT_SHIFT); \
         var = *(sam_float_t *)&_w;                                      \
     } while (0)
-#define PUSH_FLOAT(val)                         \
-    sam_push_float(state->s0, val)
+#define PUSH_FLOAT(val)                                        \
+    do {                                                       \
+        sam_word_t inst;                                       \
+        HALT_IF_ERROR(sam_make_inst_float(&inst, val));        \
+        HALT_IF_ERROR(sam_array_push(state->s0, inst));        \
+    } while (0)
 
 // Execution macros
 #define GO(addr)                                \
@@ -84,7 +88,7 @@
 
 #define DO(addr)                                \
     do {                                        \
-        PUSH_BLOB(state->p0);                    \
+        PUSH_BLOB(state->p0);                   \
         PUSH_INT(state->pc);                    \
         GO(addr);                               \
     } while (0)

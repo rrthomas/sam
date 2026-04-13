@@ -209,38 +209,46 @@ int sam_array_prepend(sam_blob_t *blob, sam_word_t val)
     return error;
 }
 
-int sam_push_blob(sam_blob_t *blob, sam_blob_t *val)
+int sam_make_inst_blob(sam_word_t *inst, sam_blob_t *val)
 {
-    return sam_array_push(blob, SAM_BLOB_TAG | (sam_uword_t)val);
+    // FIXME: validate no bottom bits set
+    *inst = SAM_BLOB_TAG | (sam_uword_t)val;
+    return SAM_ERROR_OK;
 }
 
-int sam_push_int(sam_blob_t *blob, sam_word_t val)
+int sam_make_inst_int(sam_word_t *inst, sam_word_t val)
 {
-    return sam_array_push(blob, SAM_INT_TAG | (val << SAM_INT_SHIFT));
+    // FIXME: validate integer not too large
+    *inst = SAM_INT_TAG | (val << SAM_INT_SHIFT);
+    return SAM_ERROR_OK;
 }
 
-int sam_push_float(sam_blob_t *blob, sam_float_t n)
+int sam_make_inst_float(sam_word_t *inst, sam_float_t n)
 {
     sam_uword_t operand = *(sam_uword_t *)&n;
-    return sam_array_push(blob, SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT));
+    *inst = SAM_FLOAT_TAG | ((operand & ~SAM_FLOAT_TAG_MASK) << SAM_FLOAT_SHIFT);
+    return SAM_ERROR_OK;
 }
 
-int sam_push_atom(sam_blob_t *blob, sam_uword_t atom_type, sam_uword_t operand)
+int sam_make_inst_atom(sam_word_t *inst, sam_uword_t atom_type, sam_uword_t operand)
 {
-    sam_uword_t atom = SAM_ATOM_TAG | (atom_type << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_ATOM_SHIFT);
-    return sam_array_push(blob, atom);
+    // FIXME validate atom type and operand
+    *inst = SAM_ATOM_TAG | (atom_type << SAM_ATOM_TYPE_SHIFT) | (operand << SAM_ATOM_SHIFT);
+    return SAM_ERROR_OK;
 }
 
-int sam_push_trap(sam_blob_t *blob, sam_uword_t function)
+int sam_make_inst_trap(sam_word_t *inst, sam_uword_t function)
 {
     // FIXME: error if function code is too large
-    return sam_array_push(blob, SAM_TRAP_TAG | (function << SAM_TRAP_FUNCTION_SHIFT));
+    *inst = SAM_TRAP_TAG | (function << SAM_TRAP_FUNCTION_SHIFT);
+    return SAM_ERROR_OK;
 }
 
-int sam_push_insts(sam_blob_t *blob, sam_uword_t insts)
+int sam_make_inst_insts(sam_word_t *inst, sam_uword_t insts)
 {
     // FIXME: error if too many bits
-    return sam_array_push(blob, SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT));
+    *inst = SAM_INSTS_TAG | (insts << SAM_INSTS_SHIFT);
+    return SAM_ERROR_OK;
 }
 
 static int iter_next(sam_iter_t *i, sam_word_t *val)

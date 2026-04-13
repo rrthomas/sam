@@ -85,12 +85,12 @@ int sam_array_pop(sam_blob_t *s, sam_word_t *val_ptr);
 int sam_array_shift(sam_blob_t *s, sam_word_t *val_ptr);
 int sam_array_push(sam_blob_t *s, sam_word_t val);
 int sam_array_prepend(sam_blob_t *s, sam_word_t val);
-int sam_push_blob(sam_blob_t *s, sam_blob_t *val);
-int sam_push_int(sam_blob_t *s, sam_word_t val);
-int sam_push_float(sam_blob_t *s, sam_float_t n);
-int sam_push_atom(sam_blob_t *s, sam_uword_t atom_type, sam_uword_t operand);
-int sam_push_trap(sam_blob_t *s, sam_uword_t function);
-int sam_push_insts(sam_blob_t *s, sam_uword_t insts);
+int sam_make_inst_blob(sam_word_t *inst, sam_blob_t *val);
+int sam_make_inst_int(sam_word_t *inst, sam_word_t val);
+int sam_make_inst_float(sam_word_t *inst, sam_float_t n);
+int sam_make_inst_atom(sam_word_t *inst, sam_uword_t atom_type, sam_uword_t operand);
+int sam_make_inst_trap(sam_word_t *inst, sam_uword_t function);
+int sam_make_inst_insts(sam_word_t *inst, sam_uword_t insts);
 int sam_array_iter_new(sam_blob_t *blob, sam_blob_t **new_iter);
 
 // Closures

@@ -160,11 +160,17 @@ sam_word_t sam_run(sam_state_t *state)
                     {
                         sam_blob_t *stack;
                         HALT_IF_ERROR(sam_array_new(&stack));
-                        HALT_IF_ERROR(sam_push_blob(state->s0, stack));
+                        sam_word_t inst;
+                        HALT_IF_ERROR(sam_make_inst_blob(&inst, stack));
+                        HALT_IF_ERROR(sam_array_push(state->s0, inst));
                     }
                     break;
                 case INST_S0:
-                    HALT_IF_ERROR(sam_push_blob(state->s0, state->s0));
+                    {
+                        sam_word_t inst;
+                        HALT_IF_ERROR(sam_make_inst_blob(&inst, state->s0));
+                        HALT_IF_ERROR(sam_array_push(state->s0, inst));
+                    }
                     break;
                 case INST_DROP:
                     if (s->sp < 1)
@@ -309,12 +315,16 @@ sam_word_t sam_run(sam_state_t *state)
                     {
                         sam_blob_t *blob, *frame;
                         POP_BLOB(frame);
-                        HALT_IF_ERROR(sam_push_blob(frame, state->s0));
-                        HALT_IF_ERROR(sam_push_blob(frame, state->p0));
+                        sam_word_t inst;
+                        HALT_IF_ERROR(sam_make_inst_blob(&inst, state->s0));
+                        HALT_IF_ERROR(sam_array_push(frame, inst));
+                        HALT_IF_ERROR(sam_make_inst_blob(&inst, state->p0));
+                        HALT_IF_ERROR(sam_array_push(frame, inst));
                         POP_BLOB(blob);
                         sam_closure_t *cl;
                         EXTRACT_BLOB(blob, SAM_BLOB_CLOSURE, sam_closure_t, cl);
-                        HALT_IF_ERROR(sam_push_blob(frame, cl->context));
+                        HALT_IF_ERROR(sam_make_inst_blob(&inst, cl->context));
+                        HALT_IF_ERROR(sam_array_push(frame, inst));
                         sam_uword_t nargs;
                         POP_UINT(nargs);
                         for (sam_uword_t i = nargs; i > 0; i--) {

@@ -107,7 +107,9 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 POP_WORD(&val);
             sam_blob_t *cl_blob;
             HALT_IF_ERROR(sam_closure_new(&cl_blob, code, context));
-            HALT_IF_ERROR(sam_push_blob(state->s0, cl_blob));
+            sam_word_t inst;
+            HALT_IF_ERROR(sam_make_inst_blob(&inst, cl_blob));
+            HALT_IF_ERROR(sam_array_push(state->s0, inst));
         }
         break;
     case TRAP_BASIC_LSH:
@@ -236,11 +238,15 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 // Call closure with no arguments
                 sam_blob_t *frame;
                 HALT_IF_ERROR(sam_array_new(&frame));
-                HALT_IF_ERROR(sam_push_blob(frame, state->s0));
-                HALT_IF_ERROR(sam_push_blob(frame, state->p0));
+                sam_word_t inst;
+                HALT_IF_ERROR(sam_make_inst_blob(&inst, state->s0));
+                HALT_IF_ERROR(sam_array_push(frame, inst));
+                HALT_IF_ERROR(sam_make_inst_blob(&inst, state->p0));
+                HALT_IF_ERROR(sam_array_push(frame, inst));
                 sam_closure_t *cl;
                 EXTRACT_BLOB(blob, SAM_BLOB_CLOSURE, sam_closure_t, cl);
-                HALT_IF_ERROR(sam_push_blob(frame, cl->context));
+                HALT_IF_ERROR(sam_make_inst_blob(&inst, cl->context));
+                HALT_IF_ERROR(sam_array_push(frame, inst));
                 PUSH_INT(state->pc);
                 state->s0 = frame;
                 GO(cl->code);
@@ -257,7 +263,9 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         {
             sam_blob_t *map;
             HALT_IF_ERROR(sam_map_new(&map));
-            HALT_IF_ERROR(sam_push_blob(state->s0, map));
+            sam_word_t inst;
+            HALT_IF_ERROR(sam_make_inst_blob(&inst, map));
+            HALT_IF_ERROR(sam_array_push(state->s0, inst));
         }
         break;
     case TRAP_BASIC_DEBUG:

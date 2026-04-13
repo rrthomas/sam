@@ -27,7 +27,9 @@ sam_word_t sam_string_trap(sam_state_t *state, sam_uword_t function)
         {
             sam_blob_t *str;
             HALT_IF_ERROR(sam_string_new(&str, "", 0));
-            HALT_IF_ERROR(sam_push_blob(state->s0, str));
+            sam_word_t inst;
+            HALT_IF_ERROR(sam_make_inst_blob(&inst, str));
+            HALT_IF_ERROR(sam_array_push(state->s0, inst));
         }
         break;
     default:
