@@ -103,58 +103,76 @@ func (arr *Array) Push(val Word) int {
 	return int(C.sam_array_push(arr.array, val))
 }
 
-func (arr *Array) PushArray(a Array) int {
+func MakeInstArray(a Array) Word {
 	var inst Word
-	res := C.sam_make_inst_blob(&inst, a.array)
-	if res == ERROR_OK {
-		res = C.sam_array_push(arr.array, inst)
+	if res := C.sam_make_inst_blob(&inst, a.array); res != ERROR_OK {
+		panic("invalid array")
 	}
-	return int(res)
+	return inst
 }
 
-func (arr *Array) PushInt(val Word) int {
+func MakeInstInt(i Word) Word {
 	var inst Word
-	res := C.sam_make_inst_int(&inst, val)
-	if res == ERROR_OK {
-		res = C.sam_array_push(arr.array, inst)
+	if res := C.sam_make_inst_int(&inst, i); res != ERROR_OK {
+		panic("invalid int")
 	}
-	return int(res)
+	return inst
+}
+
+func MakeInstFloat(f float64) Word {
+	var inst Word
+	if res := C.sam_make_inst_float(&inst, C.sam_float_t(f)); res != ERROR_OK {
+		panic("invalid float")
+	}
+	return inst
+}
+
+func MakeInstAtom(atomType Uword, operand Uword) Word {
+	var inst Word
+	if res := C.sam_make_inst_atom(&inst, atomType, operand); res != ERROR_OK {
+		panic("invalid atom")
+	}
+	return inst
+}
+
+func MakeInstTrap(function Uword) Word {
+	var inst Word
+	if res := C.sam_make_inst_trap(&inst, function); res != ERROR_OK {
+		panic("invalid atom")
+	}
+	return inst
+}
+
+func MakeInstInsts(insts Uword) Word {
+	var inst Word
+	if res := C.sam_make_inst_insts(&inst, insts); res != ERROR_OK {
+		panic("invalid insts")
+	}
+	return inst
+}
+
+func (arr *Array) PushArray(a Array) int {
+	return int(C.sam_array_push(arr.array, MakeInstArray(a)))
+}
+
+func (arr *Array) PushInt(i Word) int {
+	return int(C.sam_array_push(arr.array, MakeInstInt(i)))
 }
 
 func (arr *Array) PushFloat(f float64) int {
-	var inst Word
-	res := C.sam_make_inst_float(&inst, C.sam_float_t(f))
-	if res == ERROR_OK {
-		res = C.sam_array_push(arr.array, inst)
-	}
-	return int(res)
+	return int(C.sam_array_push(arr.array, MakeInstFloat(f)))
 }
 
 func (arr *Array) PushAtom(atomType Uword, operand Uword) int {
-	var inst Word
-	res := C.sam_make_inst_atom(&inst, atomType, operand)
-	if res == ERROR_OK {
-		res = C.sam_array_push(arr.array, inst)
-	}
-	return int(res)
+	return int(C.sam_array_push(arr.array, MakeInstAtom(atomType, operand)))
 }
 
 func (arr *Array) PushTrap(function Uword) int {
-	var inst Word
-	res := C.sam_make_inst_trap(&inst, function)
-	if res == ERROR_OK {
-		res = C.sam_array_push(arr.array, inst)
-	}
-	return int(res)
+	return int(C.sam_array_push(arr.array, MakeInstTrap(function)))
 }
 
 func (arr *Array) PushInsts(insts Uword) int {
-	var inst Word
-	res := C.sam_make_inst_insts(&inst, insts)
-	if res == ERROR_OK {
-		res = C.sam_array_push(arr.array, inst)
-	}
-	return int(res)
+	return int(C.sam_array_push(arr.array, MakeInstInsts(insts)))
 }
 
 func Run(state *State, code *Array) Word {
@@ -339,23 +357,25 @@ var Instructions = map[string]Instruction{
 }
 
 var Traps = map[string]uint{
-	"SIZE":        C.TRAP_BASIC_SIZE,
-	"QUOTE":       C.TRAP_BASIC_QUOTE,
-	"COPY":        C.TRAP_BASIC_COPY,
-	"RET":         C.TRAP_BASIC_RET,
-	"NEW_CLOSURE": C.TRAP_BASIC_NEW_CLOSURE,
-	"LSH":         C.TRAP_BASIC_LSH,
-	"RSH":         C.TRAP_BASIC_RSH,
-	"ARSH":        C.TRAP_BASIC_ARSH,
-	"DIV":         C.TRAP_BASIC_DIV,
-	"REM":         C.TRAP_BASIC_REM,
-	"ITER":        C.TRAP_BASIC_ITER,
-	"NEXT":        C.TRAP_BASIC_NEXT,
-	"NEW_MAP":     C.TRAP_BASIC_NEW_MAP,
-	"DEBUG":       C.TRAP_BASIC_DEBUG,
-	"LOG":         C.TRAP_BASIC_LOG,
-	"SEED":        C.TRAP_BASIC_SEED,
-	"RANDOM":      C.TRAP_BASIC_RANDOM,
+	"SIZE":          C.TRAP_BASIC_SIZE,
+	"QUOTE":         C.TRAP_BASIC_QUOTE,
+	"COPY":          C.TRAP_BASIC_COPY,
+	"JUMP":          C.TRAP_BASIC_JUMP,
+	"JUMP_IF_FALSE": C.TRAP_BASIC_JUMP_IF_FALSE,
+	"RET":           C.TRAP_BASIC_RET,
+	"NEW_CLOSURE":   C.TRAP_BASIC_NEW_CLOSURE,
+	"LSH":           C.TRAP_BASIC_LSH,
+	"RSH":           C.TRAP_BASIC_RSH,
+	"ARSH":          C.TRAP_BASIC_ARSH,
+	"DIV":           C.TRAP_BASIC_DIV,
+	"REM":           C.TRAP_BASIC_REM,
+	"ITER":          C.TRAP_BASIC_ITER,
+	"NEXT":          C.TRAP_BASIC_NEXT,
+	"NEW_MAP":       C.TRAP_BASIC_NEW_MAP,
+	"DEBUG":         C.TRAP_BASIC_DEBUG,
+	"LOG":           C.TRAP_BASIC_LOG,
+	"SEED":          C.TRAP_BASIC_SEED,
+	"RANDOM":        C.TRAP_BASIC_RANDOM,
 
 	"I2F":   C.TRAP_MATH_I2F,
 	"F2I":   C.TRAP_MATH_F2I,
@@ -728,23 +748,25 @@ type StackEffect struct {
 
 var TrapStackEffect = map[string]StackEffect{
 	// Basic traps
-	"SIZE":        {1, 1},
-	"QUOTE":       {0, 1},
-	"COPY":        {1, 1},
-	"RET":         {3, 0},
-	"NEW_CLOSURE": {2, 1},
-	"LSH":         {2, 1},
-	"RSH":         {2, 1},
-	"ARSH":        {2, 1},
-	"DIV":         {2, 1},
-	"REM":         {2, 1},
-	"ITER":        {1, 1},
-	"NEXT":        {1, 1},
-	"NEW_MAP":     {0, 1},
-	"DEBUG":       {1, 0},
-	"LOG":         {1, 0},
-	"SEED":        {1, 0},
-	"RANDOM":      {0, 1},
+	"SIZE":          {1, 1},
+	"QUOTE":         {0, 1},
+	"COPY":          {1, 1},
+	"JUMP":          {1, 0},
+	"JUMP_IF_FALSE": {2, 0},
+	"RET":           {3, 0},
+	"NEW_CLOSURE":   {2, 1},
+	"LSH":           {2, 1},
+	"RSH":           {2, 1},
+	"ARSH":          {2, 1},
+	"DIV":           {2, 1},
+	"REM":           {2, 1},
+	"ITER":          {1, 1},
+	"NEXT":          {1, 1},
+	"NEW_MAP":       {0, 1},
+	"DEBUG":         {1, 0},
+	"LOG":           {1, 0},
+	"SEED":          {1, 0},
+	"RANDOM":        {0, 1},
 
 	// Math traps
 	"I2F":   {1, 1},

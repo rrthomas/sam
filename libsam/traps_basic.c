@@ -74,6 +74,23 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
             PUSH_BLOB(new_blob);
         }
         break;
+    case TRAP_BASIC_JUMP:
+        {
+            sam_uword_t addr;
+            POP_UINT(addr);
+            state->pc = addr;
+        }
+        break;
+    case TRAP_BASIC_JUMP_IF_FALSE:
+        {
+            sam_uword_t addr;
+            POP_UINT(addr);
+            sam_word_t flag;
+            POP_BOOL(flag);
+            if (!flag)
+                state->pc = addr;
+        }
+        break;
     case TRAP_BASIC_RET:
         {
             sam_word_t item;
@@ -308,6 +325,10 @@ char *sam_basic_trap_name(sam_word_t function)
         return "QUOTE";
     case TRAP_BASIC_COPY:
         return "COPY";
+    case TRAP_BASIC_JUMP:
+        return "JUMP";
+    case TRAP_BASIC_JUMP_IF_FALSE:
+        return "JUMP_IF_FALSE";
     case TRAP_BASIC_RET:
         return "RET";
     case TRAP_BASIC_NEW_CLOSURE:

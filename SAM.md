@@ -248,6 +248,16 @@ These instructions implement branches, conditions and subroutine calls.
 >
 > Push `IR` on to the stack.
 
+> `JUMP`  
+> `i` →
+> 
+> Pop `i`. Set `PC` to `i`.
+
+> `JUMP_IF_FALSE`  
+> `b` `i` →
+> 
+> Pop `b` and `i`. If `b` is false, set `PC` to `i`.
+
 > `GO`  
 > `a` →
 > 

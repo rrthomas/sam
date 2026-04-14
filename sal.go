@@ -248,16 +248,18 @@ func (ctx *Frame) compileBlock(b *Block) {
 	ctx.assembleNull() // value of block
 	baseSp := ctx.sp
 	b.Body.Compile(ctx) // body of block
-	if ctx.sp < baseSp {
-		panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, baseSp))
-	}
-	// Set result
-	ctx.assembleInt(-int(ctx.sp - baseSp + 1))
-	ctx.assembleInst("s0")
-	ctx.assembleInst("set")
-	// Drop remaining stack items in this block
-	for range ctx.sp - baseSp {
-		ctx.assembleInst("drop")
+	if b.Body.Terminator == nil {
+		if ctx.sp < baseSp {
+			panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, baseSp))
+		}
+		// Set result
+		ctx.assembleInt(-int(ctx.sp - baseSp + 1))
+		ctx.assembleInst("s0")
+		ctx.assembleInst("set")
+		// Drop remaining stack items in this block
+		for range ctx.sp - baseSp {
+			ctx.assembleInst("drop")
+		}
 	}
 }
 
@@ -578,29 +580,39 @@ func (e *LogicExp) Compile(ctx *Frame) {
 	} else {
 		switch e.Op {
 		case "and":
-			ctx.assembleNull()
-			thenCtx := ctx.newBlock(false)
-			e.Right.Compile(&thenCtx)
-			thenCtx.tearDownBlock()
-			elseCtx := ctx.newBlock(false)
-			elseCtx.assembleBool(false)
-			elseCtx.tearDownBlock()
 			e.Left.Compile(ctx)
-			ctx.assembleCode(thenCtx.asm)
-			ctx.assembleCode(elseCtx.asm)
-			ctx.assembleInst("if")
+			ctx.assembleInt(0) // space for jump target
+			ifJumpAddr := libsam.Uword(ctx.asm.stack.Sp() - 1)
+			ctx.assembleTrap("jump_if_false")
+			ifJumpSp := ctx.sp
+			e.Right.Compile(ctx)
+			var thenJumpAddr libsam.Uword
+			ctx.assembleInt(0) // space for jump target
+			thenJumpAddr = libsam.Uword(ctx.asm.stack.Sp() - 1)
+			ctx.assembleTrap("jump")
+			ctx.asm.flushInstructions()
+			ctx.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+			ctx.sp = ifJumpSp
+			ctx.assembleBool(false)
+			ctx.asm.flushInstructions()
+			ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
 		case "or":
-			ctx.assembleNull()
-			elseCtx := ctx.newBlock(false)
-			e.Right.Compile(&elseCtx)
-			elseCtx.tearDownBlock()
-			thenCtx := ctx.newBlock(false)
-			thenCtx.assembleBool(true)
-			thenCtx.tearDownBlock()
 			e.Left.Compile(ctx)
-			ctx.assembleCode(thenCtx.asm)
-			ctx.assembleCode(elseCtx.asm)
-			ctx.assembleInst("if")
+			ctx.assembleInt(0) // space for jump target
+			ifJumpAddr := libsam.Uword(ctx.asm.stack.Sp() - 1)
+			ctx.assembleTrap("jump_if_false")
+			ifJumpSp := ctx.sp
+			e.Right.Compile(ctx)
+			var thenJumpAddr libsam.Uword
+			ctx.assembleInt(0) // space for jump target
+			thenJumpAddr = libsam.Uword(ctx.asm.stack.Sp() - 1)
+			ctx.assembleTrap("jump")
+			ctx.asm.flushInstructions()
+			ctx.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+			ctx.sp = ifJumpSp
+			ctx.assembleBool(true)
+			ctx.asm.flushInstructions()
+			ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
 		default:
 			panic(fmt.Errorf("unknown LogicExp.Op %s", e.Op))
 		}
@@ -648,25 +660,40 @@ func (e *Expression) Compile(ctx *Frame) {
 }
 
 func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
+	// FIXME: compile fe (final else) inside this block (when *il is empty)
 	if il == nil || len(*il) == 0 {
 		panic("unexpected nil or empty IfList")
 	}
-	ctx.assembleNull() // return value
-	thenCtx := ctx.assembleBlock((*il)[0].Then)
-	elseCtx := Frame{asm: &assembler{stack: libsam.NewArray()}}
+	(*il)[0].Cond.Compile(ctx)
+	ctx.assembleInt(0) // space for jump target
+	ifJumpAddr := libsam.Uword(ctx.asm.stack.Sp() - 1)
+	ctx.assembleTrap("jump_if_false")
+	ifJumpSp := ctx.sp
+	ctx.compileBlock((*il)[0].Then)
+	needThenJump := len(*il) > 1 || fe != nil
+	var thenJumpAddr libsam.Uword
+	if needThenJump {
+		ctx.assembleInt(0) // space for jump target
+		thenJumpAddr = libsam.Uword(ctx.asm.stack.Sp() - 1)
+		ctx.assembleTrap("jump")
+	}
+	ctx.asm.flushInstructions()
+	ctx.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+	ctx.sp = ifJumpSp
+	// FIXME: This if will vanish when we do the FIXME above
 	if len(*il) > 1 {
-		elseCtx = ctx.newBlock(false)
 		restIl := (*il)[1:]
 		restIfs := Ifs{Pos: (*il)[1].Pos, IfList: &restIl, FinalElse: fe}
-		restIfs.Compile(&elseCtx)
-		elseCtx.tearDownBlock()
+		restIfs.Compile(ctx)
 	} else if fe != nil {
-		elseCtx = ctx.assembleBlock(fe)
+		ctx.compileBlock(fe)
+	} else {
+		ctx.assembleNull()
 	}
-	(*il)[0].Cond.Compile(ctx)
-	ctx.assembleCode(thenCtx.asm)
-	ctx.assembleCode(elseCtx.asm)
-	ctx.assembleInst("if")
+	if needThenJump {
+		ctx.asm.flushInstructions()
+		ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+	}
 }
 
 func (i *Ifs) Compile(ctx *Frame) {
@@ -748,6 +775,9 @@ func (t *Terminator) Compile(ctx *Frame) {
 			panic("'continue' used outside a loop")
 		}
 		// Drop items down to loop start
+		// if ctx.sp < ctx.loop.baseSp {
+		//	panic(fmt.Sprintf("frame sp %d is below loop's baseSp %d\n", ctx.sp, ctx.loop.baseSp))
+		// }
 		for range ctx.sp - ctx.loop.baseSp {
 			ctx.assembleInst("drop")
 		}
