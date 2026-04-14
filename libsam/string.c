@@ -42,10 +42,10 @@ static int iter_next(sam_iter_t *i, sam_word_t *val)
     sam_string_t *str;
     EXTRACT_BLOB(i->blob, SAM_BLOB_STRING, sam_string_t, str);
     size_t len_remaining = str->len - (pos - str->str);
-    size_t grapheme_len = grapheme_next_character_break_utf8(pos, len_remaining);
-    if (grapheme_len == len_remaining) {
+    if (len_remaining == 0)
         *val = SAM_VALUE_NULL;
-    } else {
+    else {
+        size_t grapheme_len = grapheme_next_character_break_utf8(pos, len_remaining);
         sam_blob_t *blob;
         HALT_IF_ERROR(sam_string_new(&blob, pos, grapheme_len));
         *val = SAM_BLOB_TAG | (sam_uword_t)blob;

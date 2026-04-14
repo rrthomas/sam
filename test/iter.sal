@@ -28,7 +28,7 @@ for k in m {
 m
 
 // Print a string a grapheme at a time
-for g in "γεια σου, ρὸζα" {
+for g in "γεια σου, ρόζα" {
     log(g)
 }
 

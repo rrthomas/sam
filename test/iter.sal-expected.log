@@ -177,7 +177,7 @@ Array: XXXXXXXX (80 item(s))
 - drop
 - int 6
 - s0 get drop
-- string γεια σου, ρὸζα
+- string γεια σου, ρόζα
 - trap ITER
 - null
 - array XXXXXXXX (13 items)
@@ -8217,7 +8217,7 @@ Working stack: (9 word(s))
 - iter XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- string γεια σου, ρὸζα
+- string γεια σου, ρόζα
 trap ITER
 sam_run: p0 = XXXXXXXX, pc = 63, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -13539,7 +13539,7 @@ Working stack: (13 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 null
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
 Working stack: (14 word(s))
@@ -13555,7 +13555,7 @@ Working stack: (14 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 _two
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
@@ -13572,7 +13572,7 @@ Working stack: (15 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - int -2
 s0
@@ -13590,7 +13590,7 @@ Working stack: (16 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - int -2
 - array XXXXXXXX (16 items)
@@ -13609,9 +13609,9 @@ Working stack: (15 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
-- string ὸ
+- string ό
 null
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
@@ -13627,9 +13627,9 @@ Working stack: (16 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
-- string ὸ
+- string ό
 - null
 eq
 sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
@@ -13646,7 +13646,7 @@ Working stack: (15 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - false
 blob
@@ -13664,7 +13664,7 @@ Working stack: (16 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - false
 - array XXXXXXXX (3 items)
@@ -13683,7 +13683,7 @@ Working stack: (17 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - false
 - array XXXXXXXX (3 items)
@@ -13703,7 +13703,7 @@ Working stack: (16 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
@@ -13722,7 +13722,7 @@ Working stack: (17 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
@@ -13742,7 +13742,7 @@ Working stack: (18 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
@@ -13763,13 +13763,13 @@ Working stack: (17 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
-- string ὸ
+- string ό
 trap LOG
-ὸsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+όsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
 Working stack: (16 word(s))
 - null
 - iter XXXXXXXX
@@ -13783,7 +13783,7 @@ Working stack: (16 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
@@ -13802,7 +13802,7 @@ Working stack: (17 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
@@ -13822,7 +13822,7 @@ Working stack: (18 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
@@ -13843,7 +13843,7 @@ Working stack: (19 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
@@ -13865,7 +13865,7 @@ Working stack: (16 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 - array XXXXXXXX (13 items)
 - int 10
@@ -13884,7 +13884,7 @@ Working stack: (14 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 - null
 drop
 sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
@@ -13901,7 +13901,7 @@ Working stack: (13 word(s))
 - null
 - array XXXXXXXX (80 items)
 - int 65
-- string ὸ
+- string ό
 drop
 sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
@@ -14375,6 +14375,479 @@ Working stack: (13 word(s))
 - array XXXXXXXX (80 items)
 - int 65
 - string ζ
+drop
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+blob
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- array XXXXXXXX (13 items)
+go
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+int
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- int 8
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- int 8
+- array XXXXXXXX (14 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- iter XXXXXXXX
+trap NEXT
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+null
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+_two
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- int -2
+- array XXXXXXXX (16 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- string α
+null
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- string α
+- null
+eq
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- false
+blob
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- false
+- array XXXXXXXX (3 items)
+blob
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- false
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (6 items)
+if
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+int
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+- int 12
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 18, ir = XXXXXXXX
+Working stack: (18 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+- int 12
+- array XXXXXXXX (18 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+- string α
+trap LOG
+αsam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+null
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 18, ir = XXXXXXXX
+Working stack: (18 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+- null
+- int -4
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 19, ir = XXXXXXXX
+Working stack: (19 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+- null
+- int -4
+- array XXXXXXXX (19 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 16
+Working stack: (16 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+- array XXXXXXXX (13 items)
+- int 10
+done
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- null
+- array XXXXXXXX (80 items)
+- int 65
+- string α
 drop
 sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
 Working stack: (12 word(s))
