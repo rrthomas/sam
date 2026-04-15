@@ -580,39 +580,17 @@ func (e *LogicExp) Compile(ctx *Frame) {
 	} else {
 		switch e.Op {
 		case "and":
-			e.Left.Compile(ctx)
-			ctx.assembleInt(0) // space for jump target
-			ifJumpAddr := libsam.Uword(ctx.asm.stack.Sp() - 1)
-			ctx.assembleTrap("jump_if_false")
-			ifJumpSp := ctx.sp
-			e.Right.Compile(ctx)
-			var thenJumpAddr libsam.Uword
-			ctx.assembleInt(0) // space for jump target
-			thenJumpAddr = libsam.Uword(ctx.asm.stack.Sp() - 1)
-			ctx.assembleTrap("jump")
-			ctx.asm.flushInstructions()
-			ctx.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
-			ctx.sp = ifJumpSp
-			ctx.assembleBool(false)
-			ctx.asm.flushInstructions()
-			ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+			ctx.compileIf(
+				func(ctx *Frame) { e.Left.Compile(ctx) },
+				func(ctx *Frame) { e.Right.Compile(ctx) },
+				func(ctx *Frame) { ctx.assembleBool(false) },
+			)
 		case "or":
-			e.Left.Compile(ctx)
-			ctx.assembleInt(0) // space for jump target
-			ifJumpAddr := libsam.Uword(ctx.asm.stack.Sp() - 1)
-			ctx.assembleTrap("jump_if_false")
-			ifJumpSp := ctx.sp
-			e.Right.Compile(ctx)
-			var thenJumpAddr libsam.Uword
-			ctx.assembleInt(0) // space for jump target
-			thenJumpAddr = libsam.Uword(ctx.asm.stack.Sp() - 1)
-			ctx.assembleTrap("jump")
-			ctx.asm.flushInstructions()
-			ctx.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
-			ctx.sp = ifJumpSp
-			ctx.assembleBool(true)
-			ctx.asm.flushInstructions()
-			ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+			ctx.compileIf(
+				func(ctx *Frame) { e.Left.Compile(ctx) },
+				func(ctx *Frame) { ctx.assembleBool(true) },
+				func(ctx *Frame) { e.Right.Compile(ctx) },
+			)
 		default:
 			panic(fmt.Errorf("unknown LogicExp.Op %s", e.Op))
 		}
@@ -639,17 +617,17 @@ func (e *Expression) Compile(ctx *Frame) {
 		blockCtx.compileGetVar("$iter")
 		blockCtx.assembleTrap("next")
 		blockCtx.assembleNull() // return value
-		thenCtx := blockCtx.newBlock(false)
-		thenCtx.assembleBreak()
-		elseCtx := blockCtx.assembleBlock(e.Body)
-		blockCtx.assembleInst("_two")
-		blockCtx.assembleInst("s0")
-		blockCtx.assembleInst("get")
-		blockCtx.assembleNull()
-		blockCtx.assembleInst("eq")
-		blockCtx.assembleCode(thenCtx.asm)
-		blockCtx.assembleCode(elseCtx.asm)
-		blockCtx.assembleInst("if")
+		blockCtx.compileIf(
+			func(ctx *Frame) {
+				ctx.assembleInst("_two")
+				ctx.assembleInst("s0")
+				ctx.assembleInst("get")
+				ctx.assembleNull()
+				ctx.assembleInst("eq")
+			},
+			func(ctx *Frame) { ctx.assembleBreak() },
+			func(ctx *Frame) { ctx.compileBlock(e.Body) },
+		)
 		// Complete the loop body and add to the current context
 		ctx.assembleLoop(&blockCtx)
 	} else if e.Expression != nil {
@@ -659,38 +637,55 @@ func (e *Expression) Compile(ctx *Frame) {
 	}
 }
 
-func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
-	if il == nil || len(*il) == 0 {
-		if fe != nil {
-			ctx.compileBlock(fe)
-		} else {
-			ctx.assembleNull()
-		}
-		return
+type compiler = func(ctx *Frame)
+
+func (ctx *Frame) compileIf(cond compiler, then compiler, else_ compiler) {
+	if cond == nil || then == nil {
+		panic("compileIf: cond and then cannot be nil")
 	}
-	(*il)[0].Cond.Compile(ctx)
+	cond(ctx)
 	ctx.assembleInt(0) // space for jump target
 	ifJumpAddr := libsam.Uword(ctx.asm.stack.Sp() - 1)
 	ctx.assembleTrap("jump_if_false")
 	ifJumpSp := ctx.sp
-	ctx.compileBlock((*il)[0].Then)
-	needThenJump := len(*il) > 1 || fe != nil
+	then(ctx)
 	var thenJumpAddr libsam.Uword
-	if needThenJump {
-		ctx.assembleInt(0) // space for jump target
-		thenJumpAddr = libsam.Uword(ctx.asm.stack.Sp() - 1)
-		ctx.assembleTrap("jump")
-	}
+	ctx.assembleInt(0) // space for jump target
+	thenJumpAddr = libsam.Uword(ctx.asm.stack.Sp() - 1)
+	ctx.assembleTrap("jump")
 	ctx.asm.flushInstructions()
 	ctx.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
 	ctx.sp = ifJumpSp
-	restIl := (*il)[1:]
-	restIfs := Ifs{Pos: (*il)[0].Pos, IfList: &restIl, FinalElse: fe}
-	restIfs.Compile(ctx)
-	if needThenJump {
-		ctx.asm.flushInstructions()
-		ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+	if else_ != nil {
+		else_(ctx)
+	} else {
+		ctx.assembleNull()
 	}
+	ctx.asm.flushInstructions()
+	ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+}
+
+func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
+	if il == nil || len(*il) == 0 {
+		panic("unexpected nil or empty IfList")
+	}
+	ctx.compileIf(
+		func(ctx *Frame) { (*il)[0].Cond.Compile(ctx) },
+		func(ctx *Frame) { ctx.compileBlock((*il)[0].Then) },
+		func(ctx *Frame) {
+			if len(*il) == 1 {
+				if fe != nil {
+					ctx.compileBlock(fe)
+				} else {
+					ctx.assembleNull()
+				}
+			} else {
+				restIl := (*il)[1:]
+				restIfs := Ifs{Pos: (*il)[0].Pos, IfList: &restIl, FinalElse: fe}
+				restIfs.Compile(ctx)
+			}
+		},
+	)
 }
 
 func (i *Ifs) Compile(ctx *Frame) {

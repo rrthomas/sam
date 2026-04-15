@@ -151,6 +151,10 @@ func MakeInstInsts(insts Uword) Word {
 	return inst
 }
 
+func (arr *Array) PushWord(w Word) int {
+	return int(C.sam_array_push(arr.array, w))
+}
+
 func (arr *Array) PushArray(a Array) int {
 	return int(C.sam_array_push(arr.array, MakeInstArray(a)))
 }
