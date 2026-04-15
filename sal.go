@@ -660,9 +660,13 @@ func (e *Expression) Compile(ctx *Frame) {
 }
 
 func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
-	// FIXME: compile fe (final else) inside this block (when *il is empty)
 	if il == nil || len(*il) == 0 {
-		panic("unexpected nil or empty IfList")
+		if fe != nil {
+			ctx.compileBlock(fe)
+		} else {
+			ctx.assembleNull()
+		}
+		return
 	}
 	(*il)[0].Cond.Compile(ctx)
 	ctx.assembleInt(0) // space for jump target
@@ -680,16 +684,9 @@ func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
 	ctx.asm.flushInstructions()
 	ctx.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
 	ctx.sp = ifJumpSp
-	// FIXME: This if will vanish when we do the FIXME above
-	if len(*il) > 1 {
-		restIl := (*il)[1:]
-		restIfs := Ifs{Pos: (*il)[1].Pos, IfList: &restIl, FinalElse: fe}
-		restIfs.Compile(ctx)
-	} else if fe != nil {
-		ctx.compileBlock(fe)
-	} else {
-		ctx.assembleNull()
-	}
+	restIl := (*il)[1:]
+	restIfs := Ifs{Pos: (*il)[0].Pos, IfList: &restIl, FinalElse: fe}
+	restIfs.Compile(ctx)
 	if needThenJump {
 		ctx.asm.flushInstructions()
 		ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
