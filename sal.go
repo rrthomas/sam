@@ -244,26 +244,26 @@ type Function struct {
 
 // Compilation
 
-func (ctx *Frame) compileBlock(b *Block) {
+func (ctx *Scope) compileBlock(b *Block) {
 	ctx.assembleNull() // value of block
-	baseSp := ctx.sp
-	b.Body.Compile(ctx) // body of block
+	blockCtx := ctx.newBlock(false)
+	b.Body.Compile(&blockCtx) // body of block
 	if b.Body.Terminator == nil {
-		if ctx.sp < baseSp {
-			panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, baseSp))
+		if blockCtx.frame.sp < blockCtx.baseSp {
+			panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", blockCtx.frame.sp, blockCtx.baseSp))
 		}
 		// Set result
-		ctx.assembleInt(-int(ctx.sp - baseSp + 1))
-		ctx.assembleInst("s0")
-		ctx.assembleInst("set")
+		blockCtx.assembleInt(-int(blockCtx.frame.sp - blockCtx.baseSp + 1))
+		blockCtx.assembleInst("s0")
+		blockCtx.assembleInst("set")
 		// Drop remaining stack items in this block
-		for range ctx.sp - baseSp {
-			ctx.assembleInst("drop")
+		for range blockCtx.frame.sp - blockCtx.baseSp {
+			blockCtx.assembleInst("drop")
 		}
 	}
 }
 
-func (e *PrimaryExp) Compile(ctx *Frame) {
+func (e *PrimaryExp) Compile(ctx *Scope) {
 	if e.Null {
 		ctx.assembleNull()
 	} else if e.Bool != nil {
@@ -332,7 +332,7 @@ func (e *PrimaryExp) Compile(ctx *Frame) {
 	}
 }
 
-func (ctx *Frame) compileIndexedExp(object *PrimaryExp, indexes *[]Expression, set bool) {
+func (ctx *Scope) compileIndexedExp(object *PrimaryExp, indexes *[]Expression, set bool) {
 	if indexes != nil {
 		n_indexes := len(*indexes)
 		for i := range *indexes {
@@ -353,11 +353,11 @@ func (ctx *Frame) compileIndexedExp(object *PrimaryExp, indexes *[]Expression, s
 
 }
 
-func (e *IndexedExp) Compile(ctx *Frame) {
+func (e *IndexedExp) Compile(ctx *Scope) {
 	ctx.compileIndexedExp(e.Object, e.Indexes, false)
 }
 
-func (e *UnaryExp) Compile(ctx *Frame) {
+func (e *UnaryExp) Compile(ctx *Scope) {
 	if e.PrefixUnaryExp != nil {
 		e.PrefixUnaryExp.Compile(ctx)
 		switch e.PreOp {
@@ -391,7 +391,7 @@ func (e *UnaryExp) Compile(ctx *Frame) {
 	}
 }
 
-func (e *CallExp) Compile(ctx *Frame) {
+func (e *CallExp) Compile(ctx *Scope) {
 	// Check whether the first call is a trap
 	haveTrap := false
 	maybeId := e.Function.Object.Variable
@@ -434,7 +434,7 @@ func (e *CallExp) Compile(ctx *Frame) {
 	}
 }
 
-func (a *Args) Compile(ctx *Frame) {
+func (a *Args) Compile(ctx *Scope) {
 	// Push arguments
 	if a.Arguments == nil {
 		ctx.assembleInst("zero")
@@ -447,7 +447,7 @@ func (a *Args) Compile(ctx *Frame) {
 	ctx.assembleInt(len(*a.Arguments))
 }
 
-func (e *ExponentExp) Compile(ctx *Frame) {
+func (e *ExponentExp) Compile(ctx *Scope) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -455,7 +455,7 @@ func (e *ExponentExp) Compile(ctx *Frame) {
 	}
 }
 
-func (e *ProductExp) Compile(ctx *Frame) {
+func (e *ProductExp) Compile(ctx *Scope) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -472,7 +472,7 @@ func (e *ProductExp) Compile(ctx *Frame) {
 	}
 }
 
-func (e *SumExp) Compile(ctx *Frame) {
+func (e *SumExp) Compile(ctx *Scope) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -488,7 +488,7 @@ func (e *SumExp) Compile(ctx *Frame) {
 	}
 }
 
-func (e *CompareExp) Compile(ctx *Frame) {
+func (e *CompareExp) Compile(ctx *Scope) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -520,7 +520,7 @@ func (e *CompareExp) Compile(ctx *Frame) {
 	}
 }
 
-func (e *BitwiseExp) Compile(ctx *Frame) {
+func (e *BitwiseExp) Compile(ctx *Scope) {
 	e.Left.Compile(ctx)
 	if e.Right != nil {
 		e.Right.Compile(ctx)
@@ -537,7 +537,7 @@ func (e *BitwiseExp) Compile(ctx *Frame) {
 	}
 }
 
-func (e *PushExp) Compile(ctx *Frame) {
+func (e *PushExp) Compile(ctx *Scope) {
 	if e.Right != nil {
 		switch e.Op {
 		case "<<": // List append: l << i
@@ -562,7 +562,7 @@ func (e *PushExp) Compile(ctx *Frame) {
 	}
 }
 
-func (e *LogicNotExp) Compile(ctx *Frame) {
+func (e *LogicNotExp) Compile(ctx *Scope) {
 	if e.LogicNotExp != nil {
 		e.LogicNotExp.Compile(ctx)
 		ctx.assembleInst("not")
@@ -574,22 +574,22 @@ func (e *LogicNotExp) Compile(ctx *Frame) {
 
 }
 
-func (e *LogicExp) Compile(ctx *Frame) {
+func (e *LogicExp) Compile(ctx *Scope) {
 	if e.Right == nil {
 		e.Left.Compile(ctx)
 	} else {
 		switch e.Op {
 		case "and":
 			ctx.compileIf(
-				func(ctx *Frame) { e.Left.Compile(ctx) },
-				func(ctx *Frame) { e.Right.Compile(ctx) },
-				func(ctx *Frame) { ctx.assembleBool(false) },
+				func(ctx *Scope) { e.Left.Compile(ctx) },
+				func(ctx *Scope) { e.Right.Compile(ctx) },
+				func(ctx *Scope) { ctx.assembleBool(false) },
 			)
 		case "or":
 			ctx.compileIf(
-				func(ctx *Frame) { e.Left.Compile(ctx) },
-				func(ctx *Frame) { ctx.assembleBool(true) },
-				func(ctx *Frame) { e.Right.Compile(ctx) },
+				func(ctx *Scope) { e.Left.Compile(ctx) },
+				func(ctx *Scope) { ctx.assembleBool(true) },
+				func(ctx *Scope) { e.Right.Compile(ctx) },
 			)
 		default:
 			panic(fmt.Errorf("unknown LogicExp.Op %s", e.Op))
@@ -597,7 +597,7 @@ func (e *LogicExp) Compile(ctx *Frame) {
 	}
 }
 
-func (e *Expression) Compile(ctx *Frame) {
+func (e *Expression) Compile(ctx *Scope) {
 	if e.Ifs != nil {
 		e.Ifs.Compile(ctx)
 	} else if e.Loop != nil {
@@ -606,27 +606,27 @@ func (e *Expression) Compile(ctx *Frame) {
 		ctx.assembleLoop(&blockCtx)
 	} else if e.ForVar != "" {
 		// Initialize iterator
-		ctx.locals = append(ctx.locals, Local{id: "$iter", pos: int(ctx.sp)})
+		ctx.locals = append(ctx.locals, Local{id: "$iter", pos: int(ctx.frame.sp)})
 		e.Iter.Compile(ctx)
 		ctx.assembleTrap("iter")
 		// Loop body
 		ctx.assembleNull()
 		blockCtx := ctx.newBlock(true)
 		// Call iterator and test for termination
-		blockCtx.locals = append(blockCtx.locals, Local{id: e.ForVar, pos: int(blockCtx.sp)})
+		blockCtx.locals = append(blockCtx.locals, Local{id: e.ForVar, pos: int(blockCtx.frame.sp)})
 		blockCtx.compileGetVar("$iter")
 		blockCtx.assembleTrap("next")
 		blockCtx.assembleNull() // return value
 		blockCtx.compileIf(
-			func(ctx *Frame) {
+			func(ctx *Scope) {
 				ctx.assembleInst("_two")
 				ctx.assembleInst("s0")
 				ctx.assembleInst("get")
 				ctx.assembleNull()
 				ctx.assembleInst("eq")
 			},
-			func(ctx *Frame) { ctx.assembleBreak() },
-			func(ctx *Frame) { ctx.compileBlock(e.Body) },
+			func(ctx *Scope) { ctx.assembleBreak() },
+			func(ctx *Scope) { ctx.compileBlock(e.Body) },
 		)
 		// Complete the loop body and add to the current context
 		ctx.assembleLoop(&blockCtx)
@@ -637,42 +637,42 @@ func (e *Expression) Compile(ctx *Frame) {
 	}
 }
 
-type compiler = func(ctx *Frame)
+type compiler = func(ctx *Scope)
 
-func (ctx *Frame) compileIf(cond compiler, then compiler, else_ compiler) {
+func (ctx *Scope) compileIf(cond compiler, then compiler, else_ compiler) {
 	if cond == nil || then == nil {
 		panic("compileIf: cond and then cannot be nil")
 	}
 	cond(ctx)
 	ctx.assembleInt(0) // space for jump target
-	ifJumpAddr := libsam.Uword(ctx.asm.stack.Sp() - 1)
+	ifJumpAddr := libsam.Uword(ctx.frame.asm.stack.Sp() - 1)
 	ctx.assembleTrap("jump_if_false")
-	ifJumpSp := ctx.sp
+	ifJumpSp := ctx.frame.sp
 	then(ctx)
 	var thenJumpAddr libsam.Uword
 	ctx.assembleInt(0) // space for jump target
-	thenJumpAddr = libsam.Uword(ctx.asm.stack.Sp() - 1)
+	thenJumpAddr = libsam.Uword(ctx.frame.asm.stack.Sp() - 1)
 	ctx.assembleTrap("jump")
-	ctx.asm.flushInstructions()
-	ctx.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
-	ctx.sp = ifJumpSp
+	ctx.frame.asm.flushInstructions()
+	ctx.frame.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.stack.Sp()))))
+	ctx.frame.sp = ifJumpSp
 	if else_ != nil {
 		else_(ctx)
 	} else {
 		ctx.assembleNull()
 	}
-	ctx.asm.flushInstructions()
-	ctx.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.asm.stack.Sp()))))
+	ctx.frame.asm.flushInstructions()
+	ctx.frame.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.stack.Sp()))))
 }
 
-func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
+func (ctx *Scope) compileIfs(il *[]If, fe *Block) {
 	if il == nil || len(*il) == 0 {
 		panic("unexpected nil or empty IfList")
 	}
 	ctx.compileIf(
-		func(ctx *Frame) { (*il)[0].Cond.Compile(ctx) },
-		func(ctx *Frame) { ctx.compileBlock((*il)[0].Then) },
-		func(ctx *Frame) {
+		func(ctx *Scope) { (*il)[0].Cond.Compile(ctx) },
+		func(ctx *Scope) { ctx.compileBlock((*il)[0].Then) },
+		func(ctx *Scope) {
 			if len(*il) == 1 {
 				if fe != nil {
 					ctx.compileBlock(fe)
@@ -688,12 +688,12 @@ func (ctx *Frame) compileIfs(il *[]If, fe *Block) {
 	)
 }
 
-func (i *Ifs) Compile(ctx *Frame) {
+func (i *Ifs) Compile(ctx *Scope) {
 	ctx.compileIfs(i.IfList, i.FinalElse)
 }
 
 // Assignment, or an rvalue that is syntactically an lvalue
-func (a *Assignment) Compile(ctx *Frame) {
+func (a *Assignment) Compile(ctx *Scope) {
 	if a.Expression != nil {
 		a.Expression.Compile(ctx)
 		ctx.assembleInst("_one")
@@ -705,7 +705,7 @@ func (a *Assignment) Compile(ctx *Frame) {
 	}
 }
 
-func (ctx *Frame) compileTrapCall(function string, args *[]Expression) {
+func (ctx *Scope) compileTrapCall(function string, args *[]Expression) {
 	stackEffect := trapStackEffect(function)
 	nargs := 0
 	if args != nil {
@@ -725,12 +725,12 @@ func (ctx *Frame) compileTrapCall(function string, args *[]Expression) {
 	}
 }
 
-func (d *Declaration) Compile(ctx *Frame) {
-	ctx.locals = append(ctx.locals, Local{id: *d.Variable, pos: int(ctx.sp)})
+func (d *Declaration) Compile(ctx *Scope) {
+	ctx.locals = append(ctx.locals, Local{id: *d.Variable, pos: int(ctx.frame.sp)})
 	d.Value.Compile(ctx)
 }
 
-func (s *Statement) Compile(ctx *Frame) {
+func (s *Statement) Compile(ctx *Scope) {
 	if s.Empty {
 		// Do nothing
 	} else if s.Assignment != nil {
@@ -744,7 +744,7 @@ func (s *Statement) Compile(ctx *Frame) {
 	}
 }
 
-func (t *Terminator) Compile(ctx *Frame) {
+func (t *Terminator) Compile(ctx *Scope) {
 	if t.Return != nil {
 		t.Return.Compile(ctx)
 		ctx.assembleTrap("ret")
@@ -752,13 +752,13 @@ func (t *Terminator) Compile(ctx *Frame) {
 		if ctx.loop == nil {
 			panic("'break' used outside a loop")
 		}
-		// Set return value
+		// Set loop value
 		if t.BreakExp != nil {
 			t.BreakExp.Compile(ctx)
 		} else {
 			ctx.assembleNull()
 		}
-		ctx.assembleInt(int(ctx.loop.baseSp - (ctx.sp + 3)))
+		ctx.assembleInt(int(ctx.loop.baseSp - (ctx.frame.sp + 1)))
 		ctx.assembleInst("s0")
 		ctx.assembleInst("set")
 		ctx.assembleBreak()
@@ -767,20 +767,20 @@ func (t *Terminator) Compile(ctx *Frame) {
 			panic("'continue' used outside a loop")
 		}
 		// Drop items down to loop start
-		// if ctx.sp < ctx.loop.baseSp {
-		//	panic(fmt.Sprintf("frame sp %d is below loop's baseSp %d\n", ctx.sp, ctx.loop.baseSp))
-		// }
-		for range ctx.sp - ctx.loop.baseSp {
+		if ctx.frame.sp < ctx.loop.baseSp {
+			panic(fmt.Sprintf("frame sp %d is below loop's baseSp %d\n", ctx.frame.sp, ctx.loop.baseSp))
+		}
+		for range ctx.frame.sp - ctx.loop.baseSp {
 			ctx.assembleInst("drop")
 		}
-		ctx.assembleCode(ctx.loop.asm)
-		ctx.assembleInst("go")
+		ctx.assembleInt(int(ctx.loop.initialPc))
+		ctx.assembleTrap("jump")
 	} else {
 		panic("invalid Terminator")
 	}
 }
 
-func (b *Body) Compile(ctx *Frame) {
+func (b *Body) Compile(ctx *Scope) {
 	if b.Statements != nil {
 		for i, s := range *b.Statements {
 			s.Compile(ctx)
@@ -794,26 +794,29 @@ func (b *Body) Compile(ctx *Frame) {
 	}
 }
 
-func (b *Block) Compile(ctx *Frame, loop bool) Frame {
+func (b *Block) Compile(ctx *Scope, loop bool) Scope {
 	blockCtx := ctx.newBlock(loop)
 	b.Body.Compile(&blockCtx)
 	return blockCtx
 }
 
-func (f *Function) Compile(ctx *Frame) {
+func (f *Function) Compile(ctx *Scope) {
 	nargs := libsam.Uword(0)
 	if f.Parameters != nil {
 		nargs = libsam.Uword(len(*f.Parameters))
 	}
 	captures := make([]Capture, 0)
-	innerCtx := Frame{
-		parent:   ctx,
-		locals:   make([]Local, 0),
-		captures: &captures,
-		asm:      &assembler{stack: libsam.NewArray()},
-		baseSp:   0,
-		sp:       libsam.Word(nargs) + 1, // exclude P0 from count
-		nargs:    nargs,
+	frame := Frame{
+		asm: &assembler{stack: libsam.NewArray()},
+		sp:  libsam.Word(nargs) + 3,
+	}
+	innerCtx := Scope{
+		frame:     &frame,
+		parent:    ctx,
+		locals:    make([]Local, 0),
+		captures:  &captures,
+		baseSp:    0,
+		exitJumps: make([]libsam.Uword, 0),
 	}
 	if f.Parameters != nil {
 		for i, p := range *f.Parameters {
@@ -829,7 +832,7 @@ func (f *Function) Compile(ctx *Frame) {
 
 	// Construct closure
 	ctx.compileCaptures(&blockCtx)
-	ctx.assembleCode(blockCtx.asm)
+	ctx.assembleCode(blockCtx.frame.asm)
 	ctx.assembleTrap("new_closure")
 	ctx.adjustSp(-(len(*blockCtx.captures) * 2))
 }
@@ -851,12 +854,12 @@ type Capture struct {
 	pos uint
 }
 
-func (ctx *Frame) adjustSp(delta int) {
+func (ctx *Scope) adjustSp(delta int) {
 	// FIXME: check this doesn't go outside some limit.
-	ctx.sp += libsam.Word(delta)
+	ctx.frame.sp += libsam.Word(delta)
 }
 
-func (ctx *Frame) findLocal(id string) *Local {
+func (ctx *Scope) findLocal(id string) *Local {
 	for i := len(ctx.locals) - 1; i >= 0; i-- {
 		l := ctx.locals[i]
 		if l.id == id {
@@ -866,7 +869,7 @@ func (ctx *Frame) findLocal(id string) *Local {
 	return nil
 }
 
-func (ctx *Frame) findCapture(id string) *uint {
+func (ctx *Scope) findCapture(id string) *uint {
 	for i := len(*ctx.captures) - 1; i >= 0; i-- {
 		c := (*ctx.captures)[i]
 		if c.id == id {
@@ -890,7 +893,7 @@ func (ctx *Frame) findCapture(id string) *uint {
 	return nil
 }
 
-func (ctx *Frame) compileCaptures(blockCtx *Frame) {
+func (ctx *Scope) compileCaptures(blockCtx *Scope) {
 	for _, c := range *blockCtx.captures {
 		switch c.ty {
 		case CaptureLocal:
@@ -905,7 +908,7 @@ func (ctx *Frame) compileCaptures(blockCtx *Frame) {
 	ctx.assembleInt(len(*blockCtx.captures) * 2)
 }
 
-func (ctx *Frame) compileCaptureAddr(i uint) {
+func (ctx *Scope) compileCaptureAddr(i uint) {
 	ctx.assembleInst("two")
 	ctx.assembleInst("s0")
 	ctx.assembleInst("get")
@@ -921,7 +924,7 @@ func (ctx *Frame) compileCaptureAddr(i uint) {
 	ctx.assembleInst("get")
 }
 
-func (ctx *Frame) isTrap(id string) bool {
+func (ctx *Scope) isTrap(id string) bool {
 	if ctx.findLocal(id) == nil || ctx.findCapture(id) == nil {
 		if _, ok := libsam.TrapStackEffect[strings.ToUpper(id)]; ok {
 			return true
@@ -930,7 +933,7 @@ func (ctx *Frame) isTrap(id string) bool {
 	return false
 }
 
-func (ctx *Frame) compileGetVar(id string) {
+func (ctx *Scope) compileGetVar(id string) {
 	if l := ctx.findLocal(id); l != nil {
 		ctx.assembleInt(l.pos)
 		ctx.assembleInst("s0")
@@ -945,7 +948,7 @@ func (ctx *Frame) compileGetVar(id string) {
 	}
 }
 
-func (ctx *Frame) compileSetVar(id string) {
+func (ctx *Scope) compileSetVar(id string) {
 	if l := ctx.findLocal(id); l != nil {
 		ctx.assembleInt(l.pos)
 		ctx.assembleInst("s0")
@@ -1009,7 +1012,7 @@ func expToLvalue(e *Expression) Lvalue {
 	panic("invalid lvalue")
 }
 
-func (ctx *Frame) compileAssignLvalue(e *Expression) {
+func (ctx *Scope) compileAssignLvalue(e *Expression) {
 	lv := expToLvalue(e)
 	if lv.IndexedExp == nil {
 		ctx.compileSetVar(*lv.Variable)
@@ -1018,20 +1021,23 @@ func (ctx *Frame) compileAssignLvalue(e *Expression) {
 	}
 }
 
-// FIXME: Separate Block (no args) from Frame
 type Frame struct {
-	parent   *Frame // lexically enclosing scope
-	label    string
-	locals   []Local
-	captures *[]Capture
-	asm      *assembler
-	baseSp   libsam.Word
-	sp       libsam.Word
-	nargs    libsam.Uword // Number of arguments to this frame
-	loop     *Frame       // Innermost loop, if any
+	asm *assembler
+	sp  libsam.Word
 }
 
-func (ctx *Frame) prepareInst(inst string) string {
+type Scope struct {
+	frame     *Frame
+	parent    *Scope // lexically enclosing scope
+	locals    []Local
+	captures  *[]Capture
+	baseSp    libsam.Word
+	initialPc libsam.Uword
+	loop      *Scope // Innermost loop, if any
+	exitJumps []libsam.Uword
+}
+
+func (ctx *Scope) prepareInst(inst string) string {
 	instName := strings.Fields(inst)[0]
 	switch instName {
 	case "trap":
@@ -1047,42 +1053,42 @@ func (ctx *Frame) prepareInst(inst string) string {
 	return instName
 }
 
-func (ctx *Frame) assembleInst(inst string) {
+func (ctx *Scope) assembleInst(inst string) {
 	instName := ctx.prepareInst(inst)
-	ctx.asm.addInstruction(libsam.Instructions[instName])
+	ctx.frame.asm.addInstruction(libsam.Instructions[instName])
 }
 
-func (ctx *Frame) assembleSingle(inst string) {
+func (ctx *Scope) assembleSingle(inst string) {
 	instName := ctx.prepareInst(inst)
-	ctx.asm.addSingleInstruction(libsam.Instructions[instName])
+	ctx.frame.asm.addSingleInstruction(libsam.Instructions[instName])
 }
 
-func (ctx *Frame) assembleNull() {
-	ctx.asm.addNull()
+func (ctx *Scope) assembleNull() {
+	ctx.frame.asm.addNull()
 	ctx.adjustSp(1)
 }
 
-func (ctx *Frame) assembleBool(f bool) {
-	ctx.asm.addBool(f)
+func (ctx *Scope) assembleBool(f bool) {
+	ctx.frame.asm.addBool(f)
 	ctx.adjustSp(1)
 }
 
-func (ctx *Frame) assembleInt(n int) {
-	ctx.asm.addInt(libsam.Word(n))
+func (ctx *Scope) assembleInt(n int) {
+	ctx.frame.asm.addInt(libsam.Word(n))
 	ctx.adjustSp(1)
 }
 
-func (ctx *Frame) assembleFloat(f float64) {
-	ctx.asm.addFloat(f)
+func (ctx *Scope) assembleFloat(f float64) {
+	ctx.frame.asm.addFloat(f)
 	ctx.adjustSp(1)
 }
 
-func (ctx *Frame) assembleBlob(s libsam.Array) {
-	ctx.asm.addStack(s)
+func (ctx *Scope) assembleBlob(s libsam.Array) {
+	ctx.frame.asm.addStack(s)
 	ctx.adjustSp(1)
 }
 
-func (ctx *Frame) assembleCode(asm *assembler) {
+func (ctx *Scope) assembleCode(asm *assembler) {
 	asm.flushInstructions()
 	ctx.assembleBlob(asm.stack)
 }
@@ -1095,51 +1101,58 @@ func trapStackEffect(function string) libsam.StackEffect {
 	return stackEffect
 }
 
-func (ctx *Frame) assembleTrap(trapName string) {
+func (ctx *Scope) assembleTrap(trapName string) {
 	function, ok := libsam.Traps[strings.ToUpper(trapName)]
 	if !ok {
 		panic(fmt.Errorf("unknown trap %s", trapName))
 	}
-	ctx.asm.addTrap(libsam.Uword(function))
+	ctx.frame.asm.addTrap(libsam.Uword(function))
 	stackEffect := trapStackEffect(trapName)
 	ctx.adjustSp(int(stackEffect.Out) - int(stackEffect.In))
 }
 
-func (ctx *Frame) assembleBreak() {
-	// Drop items down to loop start
-	for range ctx.sp - ctx.loop.baseSp {
-		ctx.assembleInst("drop")
+func (ctx *Scope) resolveExitJumps() {
+	jumpAddr := ctx.frame.asm.stack.Sp()
+	jumpInst := libsam.Uword(libsam.MakeInstInt(libsam.Word(jumpAddr)))
+	for _, addr := range ctx.exitJumps {
+		ctx.frame.asm.stack.Poke(addr, jumpInst)
 	}
-	ctx.assembleBool(false)
-	ctx.assembleInst("while")
 }
 
-func (ctx *Frame) newBlock(loop bool) Frame {
-	baseSp := libsam.Word(int(ctx.sp) + 2)
-	blockCtx := Frame{
-		parent:   ctx.parent,
-		locals:   slices.Clone(ctx.locals),
-		captures: ctx.captures,
-		asm:      &assembler{stack: libsam.NewArray()},
-		baseSp:   baseSp,
-		sp:       baseSp,
-		nargs:    ctx.nargs,
-		loop:     ctx.loop,
+func (ctx *Scope) assembleBreak() {
+	// Drop items down to loop start
+	for range ctx.frame.sp - ctx.loop.baseSp {
+		ctx.assembleInst("drop")
 	}
-	if loop {
+	ctx.assembleInt(0) // space for jump target
+	ctx.loop.exitJumps = append(ctx.loop.exitJumps, ctx.frame.asm.stack.Sp()-1)
+	ctx.assembleTrap("jump")
+}
+
+func (ctx *Scope) newBlock(isLoop bool) Scope {
+	blockCtx := Scope{
+		frame:     ctx.frame,
+		parent:    ctx.parent,
+		locals:    slices.Clone(ctx.locals), // FIXME: probe outer blocks instead
+		captures:  ctx.captures,
+		baseSp:    ctx.frame.sp,
+		loop:      ctx.loop,
+		initialPc: ctx.frame.asm.stack.Sp(),
+		exitJumps: make([]libsam.Uword, 0),
+	}
+	if isLoop {
 		blockCtx.loop = &blockCtx
 	}
 	return blockCtx
 }
 
-func (ctx *Frame) assembleLoop(bodyCtx *Frame) {
-	for range bodyCtx.sp - bodyCtx.baseSp {
-		bodyCtx.assembleInst("drop")
+func (ctx *Scope) assembleLoop(bodyCtx *Scope) {
+	for range bodyCtx.frame.sp - bodyCtx.baseSp {
+		ctx.assembleInst("drop")
 	}
-	bodyCtx.assembleCode(bodyCtx.asm)
-	bodyCtx.assembleSingle("go")
-	ctx.assembleCode(bodyCtx.asm)
-	ctx.assembleInst("do")
+	ctx.assembleInt(int(bodyCtx.initialPc))
+	ctx.assembleTrap("jump")
+	bodyCtx.loop.resolveExitJumps()
 }
 
 func Sal(src string, ast bool) libsam.Array {
@@ -1157,13 +1170,17 @@ func Sal(src string, ast bool) libsam.Array {
 	// Wrap the top-level body in a Block and compile it
 	block := Block{Pos: body.Pos, Body: body}
 	captures := make([]Capture, 0)
-	ctx := Frame{
-		locals:   make([]Local, 0),
-		captures: &captures,
-		asm:      &assembler{stack: libsam.NewArray()},
+	frame := Frame{
+		asm: &assembler{stack: libsam.NewArray()},
+	}
+	ctx := Scope{
+		frame:     &frame,
+		locals:    make([]Local, 0),
+		captures:  &captures,
+		exitJumps: make([]libsam.Uword, 0),
 	}
 	ctx.compileBlock(&block)
 	ctx.assembleInst("halt")
 
-	return ctx.asm.stack
+	return ctx.frame.asm.stack
 }

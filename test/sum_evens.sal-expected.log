@@ -1,60 +1,58 @@
 Array: XXXXXXXX (10 item(s))
 - null
 - int 0
-- array XXXXXXXX (5 items)
+- array XXXXXXXX (52 items)
   - int 0
   - null
-  - array XXXXXXXX (49 items)
-    - int 3
-    - s0 get
-    - int 0
-    - _two s0 extract lt not
-    - int 15
-    - trap JUMP_IF_FALSE
-    - null
-    - int 4
-    - s0 get
-    - int -5
-    - s0 set drop
-    - false
-    - while
-    - int 16
-    - trap JUMP
-    - null
-    - drop
-    - int 3
-    - s0 get
-    - int 1
-    - neg add _one s0 get
-    - int 3
-    - s0 set drop
-    - int 3
-    - s0 get
-    - int 2
-    - trap REM
-    - int 0
-    - eq
-    - int 37
-    - trap JUMP_IF_FALSE
-    - null
-    - drop
-    - array XXXXXXXX (49 items)
-    - go
-    - int 38
-    - trap JUMP
-    - null
-    - drop
-    - int 4
-    - s0 get
-    - int 3
-    - s0 get
-    - int 1
-    - add add _one s0 get
-    - int 4
-    - s0 set drop
-    - array XXXXXXXX (49 items)
-    - go
-  - do
+  - int 3
+  - s0 get
+  - int 0
+  - _two s0 extract lt not
+  - int 17
+  - trap JUMP_IF_FALSE
+  - null
+  - int 4
+  - s0 get
+  - int -3
+  - s0 set drop
+  - int 51
+  - trap JUMP
+  - int 18
+  - trap JUMP
+  - null
+  - drop
+  - int 3
+  - s0 get
+  - int 1
+  - neg add _one s0 get
+  - int 3
+  - s0 set drop
+  - int 3
+  - s0 get
+  - int 2
+  - trap REM
+  - int 0
+  - eq
+  - int 39
+  - trap JUMP_IF_FALSE
+  - null
+  - drop
+  - int 2
+  - trap JUMP
+  - int 40
+  - trap JUMP
+  - null
+  - drop
+  - int 4
+  - s0 get
+  - int 3
+  - s0 get
+  - int 1
+  - add add _one s0 get
+  - int 4
+  - s0 set drop
+  - int 2
+  - trap JUMP
   - trap RET
 - trap NEW_CLOSURE
 - int 9
@@ -79,7 +77,7 @@ sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - null
 - int 0
-- array XXXXXXXX (5 items)
+- array XXXXXXXX (52 items)
 trap NEW_CLOSURE
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
@@ -156,7 +154,7 @@ Working stack: (6 word(s))
 - int 9
 - int 0
 - null
-blob
+int
 sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
@@ -165,9 +163,9 @@ Working stack: (7 word(s))
 - int 9
 - int 0
 - null
-- array XXXXXXXX (49 items)
-do
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -175,125 +173,42 @@ Working stack: (8 word(s))
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 9
 int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 9
 - int 0
 _two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 9
 - int 0
 - int -2
 s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 9
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 9
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
@@ -302,12 +217,12 @@ Working stack: (10 word(s))
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 9
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -315,22 +230,79 @@ Working stack: (8 word(s))
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- int 0
+- int 9
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 9
+- int 0
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 9
+- int 0
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 9
+- int 0
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 9
+- int 0
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 9
+- int 0
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 9
+- int 0
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -338,73 +310,63 @@ Working stack: (8 word(s))
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 9
 int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 9
 - int 1
 neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 9
 - int -1
 add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 9
+- int 0
+- null
+- int 8
+_one
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 9
+- int 0
+- null
+- int 8
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -412,79 +374,407 @@ Working stack: (9 word(s))
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-_one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 8
 - int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 9
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int -1
-- array XXXXXXXX (11 items)
+- array XXXXXXXX (9 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 8
 - int 8
 int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 8
 - int 8
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 9
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 8
 - int 8
 - int 3
-- array XXXXXXXX (12 items)
+- array XXXXXXXX (10 items)
 set
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+drop
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+int
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+- int 2
+trap REM
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 0
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- true
+int
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- true
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+- int 0
+_two
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+- int 0
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 0
+- int 8
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+int
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+- int 1
+neg
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 8
+- int -1
+add
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 7
+_one
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 8
+- int 0
+- null
+- int 7
+- int -1
+s0
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -493,10 +783,10 @@ Working stack: (9 word(s))
 - int 8
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-drop
+- int 7
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
@@ -505,8 +795,8 @@ Working stack: (8 word(s))
 - int 8
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 7
+- int 7
 int
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -516,8 +806,8 @@ Working stack: (9 word(s))
 - int 8
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 7
+- int 7
 - int 3
 s0
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
@@ -528,463 +818,41 @@ Working stack: (10 word(s))
 - int 8
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 2
-trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-drop
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-blob
-sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 0
-_two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 0
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 8
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 1
-neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int -1
-add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 7
-_one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 7
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 7
-- int -1
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 7
-- int 7
-int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 - int 7
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 8
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 7
-- int 7
-- int 3
-- array XXXXXXXX (12 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 drop
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -992,110 +860,62 @@ Working stack: (8 word(s))
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 - int 2
 trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 0
 eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - false
 int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -1103,22 +923,48 @@ Working stack: (8 word(s))
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- false
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
+null
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -1126,113 +972,30 @@ Working stack: (8 word(s))
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
 - int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-s0
-sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 int
-sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 3
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 7
-int
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 7
-- int 1
-add
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 8
-add
 sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -1241,115 +1004,162 @@ Working stack: (9 word(s))
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-_one
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
 - int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int -1
-- array XXXXXXXX (11 items)
+- int 3
+- array XXXXXXXX (9 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 8
+- int 0
+- int 7
 int
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 8
-- int 4
-s0
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 0
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 8
-- int 4
-- array XXXXXXXX (12 items)
-set
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
-- int 8
+- int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 0
+- int 7
+- int 1
+add
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+- int 0
 - int 8
-drop
+add
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+- int 8
+_one
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+- int 8
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+- int 8
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
-- int 8
+- int 0
 - null
-- array XXXXXXXX (5 items)
-- int 4
-blob
+- int 8
+- int 8
+int
 sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
+- int 0
+- null
+- int 8
+- int 8
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 0
+- null
+- int 8
+- int 8
+- int 4
+- array XXXXXXXX (10 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 8
+drop
+sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -1357,125 +1167,42 @@ Working stack: (8 word(s))
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 - int 0
 _two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 - int 0
 - int -2
 s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 7
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 7
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
@@ -1484,12 +1211,12 @@ Working stack: (10 word(s))
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 7
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -1497,22 +1224,79 @@ Working stack: (8 word(s))
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- int 0
+- int 7
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -1520,73 +1304,63 @@ Working stack: (8 word(s))
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 - int 1
 neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 7
 - int -1
 add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+- int 6
+_one
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 7
+- int 8
+- null
+- int 6
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -1594,79 +1368,407 @@ Working stack: (9 word(s))
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-_one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 6
 - int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 7
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-- int -1
-- array XXXXXXXX (11 items)
+- array XXXXXXXX (9 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 6
 - int 6
 int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 6
 - int 6
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 7
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 6
 - int 6
 - int 3
-- array XXXXXXXX (12 items)
+- array XXXXXXXX (10 items)
 set
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+drop
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+int
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+- int 2
+trap REM
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 0
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- true
+int
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- true
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+- int 0
+_two
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+- int 0
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 0
+- int 6
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+int
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+- int 1
+neg
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 6
+- int -1
+add
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 5
+_one
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 6
+- int 8
+- null
+- int 5
+- int -1
+s0
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -1675,10 +1777,10 @@ Working stack: (9 word(s))
 - int 6
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-drop
+- int 5
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
@@ -1687,8 +1789,8 @@ Working stack: (8 word(s))
 - int 6
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 5
+- int 5
 int
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -1698,8 +1800,8 @@ Working stack: (9 word(s))
 - int 6
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 5
+- int 5
 - int 3
 s0
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
@@ -1710,463 +1812,41 @@ Working stack: (10 word(s))
 - int 6
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-- int 2
-trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-drop
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-blob
-sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-- int 0
-_two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-- int 0
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 6
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-- int 1
-neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 6
-- int -1
-add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 5
-_one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 5
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 5
-- int -1
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 5
-- int 5
-int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 - int 5
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 6
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 5
-- int 5
-- int 3
-- array XXXXXXXX (12 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 drop
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -2174,110 +1854,62 @@ Working stack: (8 word(s))
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 - int 2
 trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 0
 eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - false
 int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -2285,22 +1917,48 @@ Working stack: (8 word(s))
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- false
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
+null
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -2308,113 +1966,30 @@ Working stack: (8 word(s))
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
 - int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-s0
-sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 8
 int
-sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 8
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 3
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 5
-int
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 5
-- int 1
-add
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 8
-- int 6
-add
 sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -2423,115 +1998,162 @@ Working stack: (9 word(s))
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-_one
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
 - int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int -1
-- array XXXXXXXX (11 items)
+- int 3
+- array XXXXXXXX (9 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int 14
+- int 8
+- int 5
 int
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int 14
-- int 4
-s0
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 8
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int 14
-- int 4
-- array XXXXXXXX (12 items)
-set
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
-- int 14
+- int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 8
+- int 5
+- int 1
+add
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
+- int 8
+- int 6
+add
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
 - int 14
-drop
+_one
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
+- int 14
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
+- int 14
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
-- int 14
+- int 8
 - null
-- array XXXXXXXX (5 items)
-- int 4
-blob
+- int 14
+- int 14
+int
 sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
+- int 8
+- null
+- int 14
+- int 14
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 8
+- null
+- int 14
+- int 14
+- int 4
+- array XXXXXXXX (10 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 14
+drop
+sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -2539,125 +2161,42 @@ Working stack: (8 word(s))
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 - int 0
 _two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 - int 0
 - int -2
 s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 5
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 5
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
@@ -2666,12 +2205,12 @@ Working stack: (10 word(s))
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 5
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -2679,22 +2218,79 @@ Working stack: (8 word(s))
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- int 0
+- int 5
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -2702,73 +2298,63 @@ Working stack: (8 word(s))
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 - int 1
 neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 5
 - int -1
 add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+- int 4
+_one
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 5
+- int 14
+- null
+- int 4
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -2776,79 +2362,407 @@ Working stack: (9 word(s))
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-_one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 4
 - int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 5
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- int -1
-- array XXXXXXXX (11 items)
+- array XXXXXXXX (9 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 4
 - int 4
 int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 4
 - int 4
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 5
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 4
 - int 4
 - int 3
-- array XXXXXXXX (12 items)
+- array XXXXXXXX (10 items)
 set
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+drop
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+- int 2
+trap REM
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 0
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- true
+int
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- true
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+- int 0
+_two
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+- int 0
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 0
+- int 4
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+- int 1
+neg
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 4
+- int -1
+add
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 3
+_one
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 4
+- int 14
+- null
+- int 3
+- int -1
+s0
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -2857,10 +2771,10 @@ Working stack: (9 word(s))
 - int 4
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-drop
+- int 3
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
@@ -2869,8 +2783,8 @@ Working stack: (8 word(s))
 - int 4
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 3
+- int 3
 int
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -2880,8 +2794,8 @@ Working stack: (9 word(s))
 - int 4
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 3
+- int 3
 - int 3
 s0
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
@@ -2892,463 +2806,41 @@ Working stack: (10 word(s))
 - int 4
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- int 2
-trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-drop
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-blob
-sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- int 0
-_two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- int 0
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 4
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- int 1
-neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- int -1
-add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-_one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- int -1
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- int 3
-int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 - int 3
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 4
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- int 3
-- int 3
-- array XXXXXXXX (12 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 drop
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -3356,110 +2848,62 @@ Working stack: (8 word(s))
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
 - int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 - int 2
 trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 0
 eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - false
 int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -3467,22 +2911,48 @@ Working stack: (8 word(s))
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- false
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
+null
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -3490,113 +2960,30 @@ Working stack: (8 word(s))
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
 - int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-s0
-sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 14
 int
-sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 14
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int 3
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int 3
-int
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int 3
-- int 1
-add
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 14
-- int 4
-add
 sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -3605,115 +2992,162 @@ Working stack: (9 word(s))
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-_one
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
 - int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
 - int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int -1
-- array XXXXXXXX (11 items)
+- array XXXXXXXX (9 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int 18
+- int 14
+- int 3
 int
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int 18
-- int 4
-s0
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 14
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int 18
-- int 4
-- array XXXXXXXX (12 items)
-set
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
-- int 18
+- int 14
 - null
-- array XXXXXXXX (5 items)
+- int 14
+- int 3
+- int 1
+add
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
+- int 14
 - int 4
+add
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
 - int 18
-drop
+_one
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
+- int 18
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
+- int 18
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
-- int 18
+- int 14
 - null
-- array XXXXXXXX (5 items)
-- int 4
-blob
+- int 18
+- int 18
+int
 sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
+- int 14
+- null
+- int 18
+- int 18
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 14
+- null
+- int 18
+- int 18
+- int 4
+- array XXXXXXXX (10 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 18
+drop
+sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -3721,125 +3155,42 @@ Working stack: (8 word(s))
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
 - int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 - int 0
 _two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 - int 0
 - int -2
 s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 3
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
@@ -3848,12 +3199,12 @@ Working stack: (10 word(s))
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 3
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -3861,22 +3212,79 @@ Working stack: (8 word(s))
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- int 0
+- int 3
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -3884,73 +3292,63 @@ Working stack: (8 word(s))
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
 - int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 - int 1
 neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
 - int -1
 add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+- int 2
+_one
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 3
+- int 18
+- null
+- int 2
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -3958,79 +3356,407 @@ Working stack: (9 word(s))
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-_one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 2
 - int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 3
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-- int -1
-- array XXXXXXXX (11 items)
+- array XXXXXXXX (9 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 2
 - int 2
 int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 2
 - int 2
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 3
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 2
 - int 2
 - int 3
-- array XXXXXXXX (12 items)
+- array XXXXXXXX (10 items)
 set
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+drop
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+- int 2
+trap REM
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 0
+- int 0
+eq
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- true
+int
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- true
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+- int 0
+_two
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+- int 0
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 0
+- int 2
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+- int 1
+neg
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 2
+- int -1
+add
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 1
+_one
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 2
+- int 18
+- null
+- int 1
+- int -1
+s0
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -4039,10 +3765,10 @@ Working stack: (9 word(s))
 - int 2
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-drop
+- int 1
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
@@ -4051,8 +3777,8 @@ Working stack: (8 word(s))
 - int 2
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 1
+- int 1
 int
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
@@ -4062,8 +3788,8 @@ Working stack: (9 word(s))
 - int 2
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 1
+- int 1
 - int 3
 s0
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
@@ -4074,463 +3800,41 @@ Working stack: (10 word(s))
 - int 2
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-- int 2
-trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-drop
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-blob
-sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-- int 0
-_two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-- int 0
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 2
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-- int 1
-neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 2
-- int -1
-add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 1
-_one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 1
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 1
-- int -1
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 1
-- int 1
-int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 1
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 2
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 1
-- int 1
-- int 3
-- array XXXXXXXX (12 items)
 set
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 drop
-sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -4538,110 +3842,62 @@ Working stack: (8 word(s))
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 2
 trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 0
 eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - false
 int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -4649,22 +3905,48 @@ Working stack: (8 word(s))
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- false
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
+null
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -4672,113 +3954,30 @@ Working stack: (8 word(s))
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
 - int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-s0
-sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 4
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 18
 int
-sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 18
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int 3
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int 1
-int
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int 1
-- int 1
-add
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 18
-- int 2
-add
 sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -4787,115 +3986,162 @@ Working stack: (9 word(s))
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 20
-_one
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
 - int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 20
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 20
-- int -1
-- array XXXXXXXX (11 items)
+- int 3
+- array XXXXXXXX (9 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- int 20
-- int 20
+- int 18
+- int 1
 int
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 20
-- int 20
-- int 4
-s0
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 18
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 20
-- int 20
-- int 4
-- array XXXXXXXX (12 items)
-set
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
-- int 20
+- int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 18
+- int 1
+- int 1
+add
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
+- int 18
+- int 2
+add
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
 - int 20
-drop
+_one
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
+- int 20
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
+- int 20
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
-- int 20
+- int 18
 - null
-- array XXXXXXXX (5 items)
-- int 4
-blob
+- int 20
+- int 20
+int
 sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
+- int 18
+- null
+- int 20
+- int 20
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 18
+- null
+- int 20
+- int 20
+- int 4
+- array XXXXXXXX (10 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 20
+drop
+sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -4903,125 +4149,42 @@ Working stack: (8 word(s))
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 0
 _two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 0
 - int -2
 s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 1
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 1
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-int
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
@@ -5030,12 +4193,12 @@ Working stack: (10 word(s))
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 1
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -5043,22 +4206,79 @@ Working stack: (8 word(s))
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- int 0
+- int 1
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- true
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+- false
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 1
+- int 20
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -5066,186 +4286,95 @@ Working stack: (8 word(s))
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
-int
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 int
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int 1
 neg
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 1
 - int -1
 add
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 _one
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 - int -1
 s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int -1
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-int
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-- int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 1
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-- int 3
-- array XXXXXXXX (12 items)
-set
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
-- int 0
+- int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
-drop
+- int -1
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
-- int 0
+- int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 0
+- int 0
 int
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
-- int 0
+- int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 0
+- int 0
 - int 3
 s0
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
@@ -5253,90 +4382,107 @@ Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
-- int 0
+- int 1
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 0
+- int 0
 - int 3
 - array XXXXXXXX (10 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+set
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 0
+drop
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
 - int 0
 int
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 - int 2
 trap REM
-sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 int
-sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 - int 0
 eq
-sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - true
 int
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-- int 37
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -5344,171 +4490,110 @@ Working stack: (8 word(s))
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
-null
-sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+- true
+- int 39
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
+null
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
 - null
 drop
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
-blob
-sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- array XXXXXXXX (49 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
 int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 2
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
 - int 3
 s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 3
-- array XXXXXXXX (10 items)
+- array XXXXXXXX (8 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 int
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 - int 0
 _two
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - int 0
 - int 0
 - int -2
 s0
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-- int -2
-- array XXXXXXXX (12 items)
-extract
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- int 0
-- int 0
-lt
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- false
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-int
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - array XXXXXXXX (3 items)
@@ -5517,12 +4602,12 @@ Working stack: (10 word(s))
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
-- true
-- int 15
-trap JUMP_IF_FALSE
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+- int 0
+- int 0
+- int -2
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
@@ -5530,90 +4615,70 @@ Working stack: (8 word(s))
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
+- int 0
+- int 0
+lt
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
+- false
+not
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
+- true
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
+- true
+- int 17
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
 null
-sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - null
 int
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
 - null
-- array XXXXXXXX (5 items)
-- int 4
 - null
 - int 4
 s0
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-- int 4
-- array XXXXXXXX (11 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
-Working stack: (10 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-- int 20
-int
-sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-- int 20
-- int -5
-s0
-sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- array XXXXXXXX (3 items)
-- array XXXXXXXX (10 items)
-- array XXXXXXXX (0 items)
-- int 0
-- int 20
-- null
-- array XXXXXXXX (5 items)
-- int 4
-- null
-- int 20
-- int -5
-- array XXXXXXXX (12 items)
-set
 sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -5621,11 +4686,11 @@ Working stack: (9 word(s))
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
-- int 20
-- array XXXXXXXX (5 items)
-- int 4
 - null
-drop
+- null
+- int 4
+- array XXXXXXXX (9 items)
+get
 sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - array XXXXXXXX (3 items)
@@ -5633,10 +4698,10 @@ Working stack: (8 word(s))
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
+- null
+- null
 - int 20
-- array XXXXXXXX (5 items)
-- int 4
-bool
+int
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
 Working stack: (9 word(s))
 - array XXXXXXXX (3 items)
@@ -5644,12 +4709,54 @@ Working stack: (9 word(s))
 - array XXXXXXXX (0 items)
 - int 0
 - int 20
+- null
+- null
 - int 20
-- array XXXXXXXX (5 items)
-- int 4
-- false
-while
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- null
+- null
+- int 20
+- int -3
+- array XXXXXXXX (10 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- int 20
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- int 20
+int
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (10 items)
+- array XXXXXXXX (0 items)
+- int 0
+- int 20
+- int 20
+- int 51
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 52, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - array XXXXXXXX (3 items)
 - array XXXXXXXX (10 items)
