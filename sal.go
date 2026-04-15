@@ -1018,20 +1018,6 @@ func (ctx *Frame) compileAssignLvalue(e *Expression) {
 	}
 }
 
-func (ctx *Frame) tearDownBlock() {
-	if ctx.sp < ctx.baseSp {
-		panic(fmt.Sprintf("frame sp %d is below baseSp %d\n", ctx.sp, ctx.baseSp))
-	}
-	// Set result
-	ctx.assembleInt(-int(ctx.sp - ctx.baseSp + 3))
-	ctx.assembleInst("s0")
-	ctx.assembleInst("set")
-	// Drop remaining stack items in this frame, except for return address
-	for range ctx.sp - ctx.baseSp {
-		ctx.assembleInst("drop")
-	}
-}
-
 // FIXME: Separate Block (no args) from Frame
 type Frame struct {
 	parent   *Frame // lexically enclosing scope
@@ -1142,14 +1128,6 @@ func (ctx *Frame) newBlock(loop bool) Frame {
 	}
 	if loop {
 		blockCtx.loop = &blockCtx
-	}
-	return blockCtx
-}
-
-func (ctx *Frame) assembleBlock(b *Block) Frame {
-	blockCtx := b.Compile(ctx, false)
-	if b.Body.Terminator == nil && blockCtx.asm.stack.Sp() > 0 {
-		blockCtx.tearDownBlock()
 	}
 	return blockCtx
 }
