@@ -39,11 +39,6 @@ func (a *assembler) flushInstructions() {
 	a.insts = 0
 }
 
-func (a *assembler) addWord(w libsam.Word) {
-	a.flushInstructions()
-	a.stack.PushWord(w)
-}
-
 func (a *assembler) addInstruction(opcode libsam.Instruction) {
 	if (a.nInsts+1)*uint(libsam.ONE_INST_SHIFT)+uint(libsam.INSTS_SHIFT) > uint(libsam.WORD_BIT) {
 		a.flushInstructions()
@@ -95,13 +90,4 @@ func (a *assembler) addSingleInstruction(opcode libsam.Instruction) {
 	a.flushInstructions()
 	a.addInstruction(opcode)
 	a.flushInstructions()
-}
-
-func (a *assembler) addAssembler(b *assembler) {
-	a.flushInstructions()
-	for i := range b.stack.Sp() {
-		if ok, w := b.stack.Peek(i); ok == libsam.ERROR_OK {
-			a.addWord(libsam.Word(w))
-		}
-	}
 }
