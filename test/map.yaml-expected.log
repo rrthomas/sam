@@ -1,4 +1,4 @@
-Array: XXXXXXXX (28 item(s))
+Array: XXXXXXXX (33 item(s))
 - trap NEW_MAP
 - trap COPY
 - int 13
@@ -23,15 +23,13 @@ Array: XXXXXXXX (28 item(s))
 - int -1
 - s0 get
 - trap ITER
-- array XXXXXXXX (7 items)
-  - int -3
-  - s0 get
-  - trap NEXT
-  - null
-  - eq not while
-  - array XXXXXXXX (7 items)
-  - go
-- do
+- int -1
+- s0 get
+- trap NEXT
+- null
+- eq
+- int 24
+- trap JUMP_IF_FALSE
 - int 0
 - halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
@@ -250,184 +248,124 @@ Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-blob
+int
 sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- array XXXXXXXX (7 items)
-do
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- int -3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- int -3
-- array XXXXXXXX (7 items)
+- int -1
+- array XXXXXXXX (5 items)
 get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
 - iter XXXXXXXX
 trap NEXT
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
 - float 2.000000
 null
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
 - float 2.000000
 - null
 eq
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
 - false
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- true
-while
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-blob
-sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- array XXXXXXXX (7 items)
-go
-sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
 int
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- int -3
-s0
-sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- int -3
-- array XXXXXXXX (7 items)
-get
-sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- iter XXXXXXXX
-trap NEXT
-sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- null
-null
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- null
-- null
-eq
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
-- true
-not
-sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- array XXXXXXXX (28 items)
-- int 26
 - false
-while
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+- int 24
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - iter XXXXXXXX
 int
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- int -1
+- array XXXXXXXX (5 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+trap NEXT
 sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- null
+- null
+eq
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- true
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- true
+- int 24
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- map XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+int
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX

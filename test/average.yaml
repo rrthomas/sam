@@ -5,37 +5,33 @@
   - float 20.0
 - float 0.0
 - int -4
--
-  - loop: int -3
-  - s0
-  - get
-  - array data
-  - get
-  - int -5
-  - s0
-  - get
-  - add
-  - int -5
-  - s0
-  - set
-  - int -3
-  - s0
-  - get
-  - int 1
-  - add
-  - int -1
-  - s0
-  - get
-  - int -5
-  - s0
-  - set
-  - zero
-  - eq
-  - not
-  - while
-  - array loop
-  - go
-- do
+- loop: int -1
+- s0
+- get
+- array data
+- get
+- int -3
+- s0
+- get
+- add
+- int -3
+- s0
+- set
+- int -1
+- s0
+- get
+- int 1
+- add
+- int -1
+- s0
+- get
+- int -3
+- s0
+- set
+- zero
+- eq
+- int loop
+- trap jump_if_false
 - drop
 - float 4.0
 - trap div

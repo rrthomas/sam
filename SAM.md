@@ -258,21 +258,6 @@ These instructions implement branches, conditions and subroutine calls.
 > 
 > Pop `b` and `i`. If `b` is false, set `PC` to `i`.
 
-> `GO`  
-> `a` →
-> 
-> Pop `a`. Set `P0` to `a` and `PC` to the address of the first item of the array pointed to by `a`.
-
-> `DO`  
-> `a₁` → `a₂` `i`
->
-> Pop `a₁`. Push `P0` to the stack as a reference and `PC` as an integer, and set `P0` to `a₁` and `PC` to 0.
-
-> `DONE`  
-> `a` `i` →
->
-> Pop `i` into `PC` and `a` into `P0`.
-
 > `CALL`  
 > `x₁`…`xₙ` `i₁` `c` `a` → `i₂`
 >
@@ -282,16 +267,6 @@ These instructions implement branches, conditions and subroutine calls.
 > `x` `i` →
 >
 > Pop `x`. Set `P0` to item 1 of `S0` and `S0` to item 0 of `S0`. Pop `PC` from the stack, and push `x` to the stack.
-
-> `IF`  
-> `i` `a₁` `a₂` → `p`
->
-> Pop `a₁` and `a₂`. Pop `i`. If it is non-zero, perform the action of `DO` on `a₁`, otherwise on `a₂`.
-
-> `WHILE`  
-> `i` →
->
-> Pop `i`. If it is the integer zero, perform the action of `DONE`.
 
 
 ### Logic and shifts

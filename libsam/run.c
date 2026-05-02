@@ -91,15 +91,8 @@ sam_word_t sam_run(sam_state_t *state)
     for (;;) {
         sam_array_t *p0;
         EXTRACT_BLOB(state->p0, SAM_BLOB_ARRAY, sam_array_t, p0);
-        if (state->pc == p0->sp) {
-#ifdef SAM_DEBUG
-            debug("sam_run: p0 = %p, pc = %u, s0 = %p, sp = %u\n", state->p0, state->pc, s, s->sp);
-            sam_print_working_stack(state->s0);
-#endif
-            debug("done\n");
-            DONE;
-            continue;
-        }
+        if (state->pc == p0->sp)
+            HALT(SAM_ERROR_ARRAY_OVERFLOW);
 
         sam_uword_t ir;
         HALT_IF_ERROR(sam_array_peek(state->p0, state->pc++, &ir));
@@ -295,22 +288,6 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT_IF_ERROR(sam_array_prepend(stack, val));
                     }
                     break;
-                case INST_GO:
-                    {
-                        sam_blob_t *code;
-                        POP_BLOB(code);
-                        GO(code);
-                        opcodes = 0;
-                    }
-                    break;
-                case INST_DO:
-                    {
-                        sam_blob_t *code;
-                        POP_BLOB(code);
-                        DO(code);
-                        opcodes = 0;
-                    }
-                    break;
                 case INST_CALL:
                     {
                         sam_blob_t *blob, *frame;
@@ -339,28 +316,6 @@ sam_word_t sam_run(sam_state_t *state)
                         state->s0 = frame;
                         GO(cl->code);
                         opcodes = 0;
-                    }
-                    break;
-                case INST_IF:
-                    {
-                        sam_blob_t *then, *else_;
-                        POP_BLOB(else_);
-                        POP_BLOB(then);
-                        sam_word_t flag;
-                        POP_BOOL(flag);
-                        sam_blob_t *addr = flag ? then : else_;
-                        DO(addr);
-                        opcodes = 0;
-                    }
-                    break;
-                case INST_WHILE:
-                    {
-                        sam_word_t flag;
-                        POP_BOOL(flag);
-                        if (!flag) {
-                            DONE;
-                            opcodes = 0;
-                        }
                     }
                     break;
                 case INST_NOT:

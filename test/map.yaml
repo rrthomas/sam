@@ -37,18 +37,14 @@
 - s0
 - get
 - trap iter
--
-  - loop: int -3
-  - s0
-  - get
-  - trap next
-  - null
-  - eq
-  - not
-  - while
-  - array loop
-  - go
-- do
-# Exit 
+- loop: int -1
+- s0
+- get
+- trap next
+- null
+- eq
+- int loop
+- trap jump_if_false
+# Exit
 - int 0
 - halt

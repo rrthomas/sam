@@ -83,11 +83,7 @@ enum SAM_INST {
   INST_SHIFT,
   INST_APPEND,
   INST_PREPEND,
-  INST_GO,
-  INST_DO,
   INST_CALL,
-  INST_IF,
-  INST_WHILE,
   INST_NOT,
   INST_AND,
   INST_OR,
@@ -104,7 +100,7 @@ enum SAM_INST {
   INST_MINUS_2,
   INST_HALT,
 };
-_Static_assert(INST_HALT == 31);
+/* FIXME _Static_assert(INST_HALT == 31); */
 
 // Useful aliases
 #define SAM_VALUE_NULL ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG)

@@ -65,6 +65,9 @@ func parseTrap(trapStr string) (libsam.Uword, bool) {
 }
 
 func parseLiteral(argStr string) libsam.Word {
+	if address, ok := labels[argStr]; ok {
+		return libsam.Word(address.item)
+	}
 	if opcode, ok := parseTrap(argStr); ok {
 		return libsam.Word(opcode)
 	}

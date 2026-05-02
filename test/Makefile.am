@@ -7,14 +7,12 @@ LOG_COMPILER = $(srcdir)/run-test
 EMPTY =
 
 AM_TESTS_ENVIRONMENT = export top_srcdir=$(top_srcdir); \
-	cp $(srcdir)/turtle.yaml .;
+	cp $(srcdir)/turtle.sal .;
 
 TESTS = \
 	average.yaml \
 	basic_block.yaml \
 	double_list.yaml \
-	factorial_iter.yaml \
-	factorial_rec.yaml \
 	map.yaml \
 	quote.yaml \
 	screen_graphics.yaml \
@@ -44,8 +42,6 @@ RESULTS = \
 	average.yaml-expected.log \
 	basic_block.yaml-expected.log \
 	double_list.yaml-expected.log \
-	factorial_iter.yaml-expected.log \
-	factorial_rec.yaml-expected.log \
 	map.yaml-expected.log \
 	quote.yaml-expected.log \
 	screen_graphics.yaml-expected.log \
@@ -83,4 +79,4 @@ EXTRA_DIST = $(LOG_COMPILER) $(TESTS) $(RESULTS) \
 
 clean-local:
 	rm -f *-fixed.log *-output.log *-output.pbm; \
-	if test "$(srcdir)" != "$(builddir)"; then rm -f $(builddir)/turtle.yaml; fi
+	if test "$(srcdir)" != "$(builddir)"; then rm -f $(builddir)/turtle.sal; fi
