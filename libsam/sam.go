@@ -48,7 +48,7 @@ var INST_SET_SHIFT = C.SAM_INST_SET_SHIFT
 var INST_MASK = C.SAM_INST_MASK
 var ONE_INST_SHIFT = C.SAM_ONE_INST_SHIFT
 var WORD_BIT = C.SAM_WORD_BIT
-var WORD_MASK = Uword(((1 << C.SAM_WORD_BIT) - 1))
+var WORD_MASK = Uword(((1 << WORD_BIT) - 1))
 
 type Array struct {
 	array *C.sam_blob_t
