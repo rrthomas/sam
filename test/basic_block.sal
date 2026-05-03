@@ -1,0 +1,13 @@
+asm {
+    null
+    drop
+    21
+    2
+    mul
+    3
+    neg
+    add
+    -3
+    trap div
+    halt
+}

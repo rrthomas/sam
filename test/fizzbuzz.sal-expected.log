@@ -10,12 +10,12 @@ Array: XXXXXXXX (96 item(s))
 - _two s0 get
 - null
 - eq
-- int 18
+- int 5
 - trap JUMP_IF_FALSE
 - drop drop
-- int 94
+- int 78
 - trap JUMP
-- int 91
+- int 73
 - trap JUMP
 - null
 - int 3
@@ -28,7 +28,7 @@ Array: XXXXXXXX (96 item(s))
 - trap REM
 - int 0
 - eq
-- int 39
+- int 8
 - trap JUMP_IF_FALSE
 - int 6
 - s0 get
@@ -36,10 +36,10 @@ Array: XXXXXXXX (96 item(s))
 - trap REM
 - int 0
 - eq
-- int 40
+- int 1
 - trap JUMP
 - false
-- int 50
+- int 8
 - trap JUMP_IF_FALSE
 - null
 - string FizzBuzz
@@ -47,7 +47,7 @@ Array: XXXXXXXX (96 item(s))
 - null
 - int -2
 - s0 set
-- int 89
+- int 39
 - trap JUMP
 - int 6
 - s0 get
@@ -55,7 +55,7 @@ Array: XXXXXXXX (96 item(s))
 - trap REM
 - int 0
 - eq
-- int 66
+- int 8
 - trap JUMP_IF_FALSE
 - null
 - string Fizz
@@ -63,7 +63,7 @@ Array: XXXXXXXX (96 item(s))
 - null
 - int -2
 - s0 set
-- int 89
+- int 23
 - trap JUMP
 - int 6
 - s0 get
@@ -71,7 +71,7 @@ Array: XXXXXXXX (96 item(s))
 - trap REM
 - int 0
 - eq
-- int 82
+- int 8
 - trap JUMP_IF_FALSE
 - null
 - string Buzz
@@ -79,7 +79,7 @@ Array: XXXXXXXX (96 item(s))
 - null
 - int -2
 - s0 set
-- int 89
+- int 7
 - trap JUMP
 - null
 - int 6
@@ -91,7 +91,7 @@ Array: XXXXXXXX (96 item(s))
 - int -3
 - s0 set drop
 - drop drop drop
-- int 4
+- int -90
 - trap JUMP
 - int -3
 - s0 set drop halt
@@ -210,7 +210,7 @@ Working stack: (7 word(s))
 - int 0
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -371,7 +371,7 @@ Working stack: (9 word(s))
 - null
 - int 1
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -404,7 +404,7 @@ Working stack: (9 word(s))
 - null
 - int 1
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -506,7 +506,7 @@ Working stack: (9 word(s))
 - null
 - int 1
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -608,7 +608,7 @@ Working stack: (9 word(s))
 - null
 - int 1
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -799,7 +799,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -899,7 +899,7 @@ Working stack: (7 word(s))
 - int 1
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -1060,7 +1060,7 @@ Working stack: (9 word(s))
 - null
 - int 2
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1093,7 +1093,7 @@ Working stack: (9 word(s))
 - null
 - int 2
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1195,7 +1195,7 @@ Working stack: (9 word(s))
 - null
 - int 2
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1297,7 +1297,7 @@ Working stack: (9 word(s))
 - null
 - int 2
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1488,7 +1488,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -1588,7 +1588,7 @@ Working stack: (7 word(s))
 - int 2
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -1749,7 +1749,7 @@ Working stack: (9 word(s))
 - null
 - int 3
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1851,7 +1851,7 @@ Working stack: (9 word(s))
 - null
 - int 3
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -1874,7 +1874,7 @@ Working stack: (9 word(s))
 - null
 - int 3
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1976,7 +1976,7 @@ Working stack: (9 word(s))
 - null
 - int 3
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -2082,7 +2082,7 @@ Working stack: (9 word(s))
 - null
 - int 3
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -2165,7 +2165,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -2265,7 +2265,7 @@ Working stack: (7 word(s))
 - int 3
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -2426,7 +2426,7 @@ Working stack: (9 word(s))
 - null
 - int 4
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -2459,7 +2459,7 @@ Working stack: (9 word(s))
 - null
 - int 4
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -2561,7 +2561,7 @@ Working stack: (9 word(s))
 - null
 - int 4
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -2663,7 +2663,7 @@ Working stack: (9 word(s))
 - null
 - int 4
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -2854,7 +2854,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -2954,7 +2954,7 @@ Working stack: (7 word(s))
 - int 4
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -3115,7 +3115,7 @@ Working stack: (9 word(s))
 - null
 - int 5
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -3148,7 +3148,7 @@ Working stack: (9 word(s))
 - null
 - int 5
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -3250,7 +3250,7 @@ Working stack: (9 word(s))
 - null
 - int 5
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -3352,7 +3352,7 @@ Working stack: (9 word(s))
 - null
 - int 5
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -3458,7 +3458,7 @@ Working stack: (9 word(s))
 - null
 - int 5
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -3541,7 +3541,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -3641,7 +3641,7 @@ Working stack: (7 word(s))
 - int 5
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -3802,7 +3802,7 @@ Working stack: (9 word(s))
 - null
 - int 6
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -3904,7 +3904,7 @@ Working stack: (9 word(s))
 - null
 - int 6
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -3927,7 +3927,7 @@ Working stack: (9 word(s))
 - null
 - int 6
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -4029,7 +4029,7 @@ Working stack: (9 word(s))
 - null
 - int 6
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -4135,7 +4135,7 @@ Working stack: (9 word(s))
 - null
 - int 6
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -4218,7 +4218,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -4318,7 +4318,7 @@ Working stack: (7 word(s))
 - int 6
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -4479,7 +4479,7 @@ Working stack: (9 word(s))
 - null
 - int 7
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -4512,7 +4512,7 @@ Working stack: (9 word(s))
 - null
 - int 7
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -4614,7 +4614,7 @@ Working stack: (9 word(s))
 - null
 - int 7
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -4716,7 +4716,7 @@ Working stack: (9 word(s))
 - null
 - int 7
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -4907,7 +4907,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -5007,7 +5007,7 @@ Working stack: (7 word(s))
 - int 7
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -5168,7 +5168,7 @@ Working stack: (9 word(s))
 - null
 - int 8
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -5201,7 +5201,7 @@ Working stack: (9 word(s))
 - null
 - int 8
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -5303,7 +5303,7 @@ Working stack: (9 word(s))
 - null
 - int 8
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -5405,7 +5405,7 @@ Working stack: (9 word(s))
 - null
 - int 8
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -5596,7 +5596,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -5696,7 +5696,7 @@ Working stack: (7 word(s))
 - int 8
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -5857,7 +5857,7 @@ Working stack: (9 word(s))
 - null
 - int 9
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -5959,7 +5959,7 @@ Working stack: (9 word(s))
 - null
 - int 9
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -5982,7 +5982,7 @@ Working stack: (9 word(s))
 - null
 - int 9
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -6084,7 +6084,7 @@ Working stack: (9 word(s))
 - null
 - int 9
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -6190,7 +6190,7 @@ Working stack: (9 word(s))
 - null
 - int 9
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -6273,7 +6273,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -6373,7 +6373,7 @@ Working stack: (7 word(s))
 - int 9
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -6534,7 +6534,7 @@ Working stack: (9 word(s))
 - null
 - int 10
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -6567,7 +6567,7 @@ Working stack: (9 word(s))
 - null
 - int 10
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -6669,7 +6669,7 @@ Working stack: (9 word(s))
 - null
 - int 10
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -6771,7 +6771,7 @@ Working stack: (9 word(s))
 - null
 - int 10
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -6877,7 +6877,7 @@ Working stack: (9 word(s))
 - null
 - int 10
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -6960,7 +6960,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -7060,7 +7060,7 @@ Working stack: (7 word(s))
 - int 10
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -7221,7 +7221,7 @@ Working stack: (9 word(s))
 - null
 - int 11
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -7254,7 +7254,7 @@ Working stack: (9 word(s))
 - null
 - int 11
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -7356,7 +7356,7 @@ Working stack: (9 word(s))
 - null
 - int 11
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -7458,7 +7458,7 @@ Working stack: (9 word(s))
 - null
 - int 11
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -7649,7 +7649,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -7749,7 +7749,7 @@ Working stack: (7 word(s))
 - int 11
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -7910,7 +7910,7 @@ Working stack: (9 word(s))
 - null
 - int 12
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -8012,7 +8012,7 @@ Working stack: (9 word(s))
 - null
 - int 12
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -8035,7 +8035,7 @@ Working stack: (9 word(s))
 - null
 - int 12
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -8137,7 +8137,7 @@ Working stack: (9 word(s))
 - null
 - int 12
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -8243,7 +8243,7 @@ Working stack: (9 word(s))
 - null
 - int 12
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -8326,7 +8326,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -8426,7 +8426,7 @@ Working stack: (7 word(s))
 - int 12
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -8587,7 +8587,7 @@ Working stack: (9 word(s))
 - null
 - int 13
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -8620,7 +8620,7 @@ Working stack: (9 word(s))
 - null
 - int 13
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -8722,7 +8722,7 @@ Working stack: (9 word(s))
 - null
 - int 13
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -8824,7 +8824,7 @@ Working stack: (9 word(s))
 - null
 - int 13
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -9015,7 +9015,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -9115,7 +9115,7 @@ Working stack: (7 word(s))
 - int 13
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -9276,7 +9276,7 @@ Working stack: (9 word(s))
 - null
 - int 14
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -9309,7 +9309,7 @@ Working stack: (9 word(s))
 - null
 - int 14
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -9411,7 +9411,7 @@ Working stack: (9 word(s))
 - null
 - int 14
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -9513,7 +9513,7 @@ Working stack: (9 word(s))
 - null
 - int 14
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -9704,7 +9704,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -9804,7 +9804,7 @@ Working stack: (7 word(s))
 - int 14
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -9965,7 +9965,7 @@ Working stack: (9 word(s))
 - null
 - int 15
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -10067,7 +10067,7 @@ Working stack: (9 word(s))
 - null
 - int 15
 - true
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -10090,7 +10090,7 @@ Working stack: (9 word(s))
 - null
 - int 15
 - true
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -10196,7 +10196,7 @@ Working stack: (9 word(s))
 - null
 - int 15
 - null
-- int 89
+- int 39
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -10279,7 +10279,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -10379,7 +10379,7 @@ Working stack: (7 word(s))
 - int 15
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -10540,7 +10540,7 @@ Working stack: (9 word(s))
 - null
 - int 16
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -10573,7 +10573,7 @@ Working stack: (9 word(s))
 - null
 - int 16
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -10675,7 +10675,7 @@ Working stack: (9 word(s))
 - null
 - int 16
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -10777,7 +10777,7 @@ Working stack: (9 word(s))
 - null
 - int 16
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -10968,7 +10968,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -11068,7 +11068,7 @@ Working stack: (7 word(s))
 - int 16
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -11229,7 +11229,7 @@ Working stack: (9 word(s))
 - null
 - int 17
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -11262,7 +11262,7 @@ Working stack: (9 word(s))
 - null
 - int 17
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -11364,7 +11364,7 @@ Working stack: (9 word(s))
 - null
 - int 17
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -11466,7 +11466,7 @@ Working stack: (9 word(s))
 - null
 - int 17
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -11657,7 +11657,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -11757,7 +11757,7 @@ Working stack: (7 word(s))
 - int 17
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -11918,7 +11918,7 @@ Working stack: (9 word(s))
 - null
 - int 18
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -12020,7 +12020,7 @@ Working stack: (9 word(s))
 - null
 - int 18
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -12043,7 +12043,7 @@ Working stack: (9 word(s))
 - null
 - int 18
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -12145,7 +12145,7 @@ Working stack: (9 word(s))
 - null
 - int 18
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -12251,7 +12251,7 @@ Working stack: (9 word(s))
 - null
 - int 18
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -12334,7 +12334,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -12434,7 +12434,7 @@ Working stack: (7 word(s))
 - int 18
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -12595,7 +12595,7 @@ Working stack: (9 word(s))
 - null
 - int 19
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -12628,7 +12628,7 @@ Working stack: (9 word(s))
 - null
 - int 19
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -12730,7 +12730,7 @@ Working stack: (9 word(s))
 - null
 - int 19
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -12832,7 +12832,7 @@ Working stack: (9 word(s))
 - null
 - int 19
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -13023,7 +13023,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -13123,7 +13123,7 @@ Working stack: (7 word(s))
 - int 19
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -13284,7 +13284,7 @@ Working stack: (9 word(s))
 - null
 - int 20
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -13317,7 +13317,7 @@ Working stack: (9 word(s))
 - null
 - int 20
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -13419,7 +13419,7 @@ Working stack: (9 word(s))
 - null
 - int 20
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -13521,7 +13521,7 @@ Working stack: (9 word(s))
 - null
 - int 20
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -13627,7 +13627,7 @@ Working stack: (9 word(s))
 - null
 - int 20
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -13710,7 +13710,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -13810,7 +13810,7 @@ Working stack: (7 word(s))
 - int 20
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -13971,7 +13971,7 @@ Working stack: (9 word(s))
 - null
 - int 21
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -14073,7 +14073,7 @@ Working stack: (9 word(s))
 - null
 - int 21
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -14096,7 +14096,7 @@ Working stack: (9 word(s))
 - null
 - int 21
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -14198,7 +14198,7 @@ Working stack: (9 word(s))
 - null
 - int 21
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -14304,7 +14304,7 @@ Working stack: (9 word(s))
 - null
 - int 21
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -14387,7 +14387,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -14487,7 +14487,7 @@ Working stack: (7 word(s))
 - int 21
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -14648,7 +14648,7 @@ Working stack: (9 word(s))
 - null
 - int 22
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -14681,7 +14681,7 @@ Working stack: (9 word(s))
 - null
 - int 22
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -14783,7 +14783,7 @@ Working stack: (9 word(s))
 - null
 - int 22
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -14885,7 +14885,7 @@ Working stack: (9 word(s))
 - null
 - int 22
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -15076,7 +15076,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -15176,7 +15176,7 @@ Working stack: (7 word(s))
 - int 22
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -15337,7 +15337,7 @@ Working stack: (9 word(s))
 - null
 - int 23
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -15370,7 +15370,7 @@ Working stack: (9 word(s))
 - null
 - int 23
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -15472,7 +15472,7 @@ Working stack: (9 word(s))
 - null
 - int 23
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -15574,7 +15574,7 @@ Working stack: (9 word(s))
 - null
 - int 23
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -15765,7 +15765,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -15865,7 +15865,7 @@ Working stack: (7 word(s))
 - int 23
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -16026,7 +16026,7 @@ Working stack: (9 word(s))
 - null
 - int 24
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -16128,7 +16128,7 @@ Working stack: (9 word(s))
 - null
 - int 24
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -16151,7 +16151,7 @@ Working stack: (9 word(s))
 - null
 - int 24
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -16253,7 +16253,7 @@ Working stack: (9 word(s))
 - null
 - int 24
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -16359,7 +16359,7 @@ Working stack: (9 word(s))
 - null
 - int 24
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -16442,7 +16442,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -16542,7 +16542,7 @@ Working stack: (7 word(s))
 - int 24
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -16703,7 +16703,7 @@ Working stack: (9 word(s))
 - null
 - int 25
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -16736,7 +16736,7 @@ Working stack: (9 word(s))
 - null
 - int 25
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -16838,7 +16838,7 @@ Working stack: (9 word(s))
 - null
 - int 25
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -16940,7 +16940,7 @@ Working stack: (9 word(s))
 - null
 - int 25
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -17046,7 +17046,7 @@ Working stack: (9 word(s))
 - null
 - int 25
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -17129,7 +17129,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -17229,7 +17229,7 @@ Working stack: (7 word(s))
 - int 25
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -17390,7 +17390,7 @@ Working stack: (9 word(s))
 - null
 - int 26
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -17423,7 +17423,7 @@ Working stack: (9 word(s))
 - null
 - int 26
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -17525,7 +17525,7 @@ Working stack: (9 word(s))
 - null
 - int 26
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -17627,7 +17627,7 @@ Working stack: (9 word(s))
 - null
 - int 26
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -17818,7 +17818,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -17918,7 +17918,7 @@ Working stack: (7 word(s))
 - int 26
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -18079,7 +18079,7 @@ Working stack: (9 word(s))
 - null
 - int 27
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -18181,7 +18181,7 @@ Working stack: (9 word(s))
 - null
 - int 27
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -18204,7 +18204,7 @@ Working stack: (9 word(s))
 - null
 - int 27
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -18306,7 +18306,7 @@ Working stack: (9 word(s))
 - null
 - int 27
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -18412,7 +18412,7 @@ Working stack: (9 word(s))
 - null
 - int 27
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -18495,7 +18495,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -18595,7 +18595,7 @@ Working stack: (7 word(s))
 - int 27
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -18756,7 +18756,7 @@ Working stack: (9 word(s))
 - null
 - int 28
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -18789,7 +18789,7 @@ Working stack: (9 word(s))
 - null
 - int 28
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -18891,7 +18891,7 @@ Working stack: (9 word(s))
 - null
 - int 28
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -18993,7 +18993,7 @@ Working stack: (9 word(s))
 - null
 - int 28
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -19184,7 +19184,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -19284,7 +19284,7 @@ Working stack: (7 word(s))
 - int 28
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -19445,7 +19445,7 @@ Working stack: (9 word(s))
 - null
 - int 29
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -19478,7 +19478,7 @@ Working stack: (9 word(s))
 - null
 - int 29
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -19580,7 +19580,7 @@ Working stack: (9 word(s))
 - null
 - int 29
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -19682,7 +19682,7 @@ Working stack: (9 word(s))
 - null
 - int 29
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -19873,7 +19873,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -19973,7 +19973,7 @@ Working stack: (7 word(s))
 - int 29
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -20134,7 +20134,7 @@ Working stack: (9 word(s))
 - null
 - int 30
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -20236,7 +20236,7 @@ Working stack: (9 word(s))
 - null
 - int 30
 - true
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -20259,7 +20259,7 @@ Working stack: (9 word(s))
 - null
 - int 30
 - true
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -20365,7 +20365,7 @@ Working stack: (9 word(s))
 - null
 - int 30
 - null
-- int 89
+- int 39
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -20448,7 +20448,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -20548,7 +20548,7 @@ Working stack: (7 word(s))
 - int 30
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -20709,7 +20709,7 @@ Working stack: (9 word(s))
 - null
 - int 31
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -20742,7 +20742,7 @@ Working stack: (9 word(s))
 - null
 - int 31
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -20844,7 +20844,7 @@ Working stack: (9 word(s))
 - null
 - int 31
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -20946,7 +20946,7 @@ Working stack: (9 word(s))
 - null
 - int 31
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -21137,7 +21137,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -21237,7 +21237,7 @@ Working stack: (7 word(s))
 - int 31
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -21398,7 +21398,7 @@ Working stack: (9 word(s))
 - null
 - int 32
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -21431,7 +21431,7 @@ Working stack: (9 word(s))
 - null
 - int 32
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -21533,7 +21533,7 @@ Working stack: (9 word(s))
 - null
 - int 32
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -21635,7 +21635,7 @@ Working stack: (9 word(s))
 - null
 - int 32
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -21826,7 +21826,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -21926,7 +21926,7 @@ Working stack: (7 word(s))
 - int 32
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -22087,7 +22087,7 @@ Working stack: (9 word(s))
 - null
 - int 33
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -22189,7 +22189,7 @@ Working stack: (9 word(s))
 - null
 - int 33
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -22212,7 +22212,7 @@ Working stack: (9 word(s))
 - null
 - int 33
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -22314,7 +22314,7 @@ Working stack: (9 word(s))
 - null
 - int 33
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -22420,7 +22420,7 @@ Working stack: (9 word(s))
 - null
 - int 33
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -22503,7 +22503,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -22603,7 +22603,7 @@ Working stack: (7 word(s))
 - int 33
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -22764,7 +22764,7 @@ Working stack: (9 word(s))
 - null
 - int 34
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -22797,7 +22797,7 @@ Working stack: (9 word(s))
 - null
 - int 34
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -22899,7 +22899,7 @@ Working stack: (9 word(s))
 - null
 - int 34
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -23001,7 +23001,7 @@ Working stack: (9 word(s))
 - null
 - int 34
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -23192,7 +23192,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -23292,7 +23292,7 @@ Working stack: (7 word(s))
 - int 34
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -23453,7 +23453,7 @@ Working stack: (9 word(s))
 - null
 - int 35
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -23486,7 +23486,7 @@ Working stack: (9 word(s))
 - null
 - int 35
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -23588,7 +23588,7 @@ Working stack: (9 word(s))
 - null
 - int 35
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -23690,7 +23690,7 @@ Working stack: (9 word(s))
 - null
 - int 35
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -23796,7 +23796,7 @@ Working stack: (9 word(s))
 - null
 - int 35
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -23879,7 +23879,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -23979,7 +23979,7 @@ Working stack: (7 word(s))
 - int 35
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -24140,7 +24140,7 @@ Working stack: (9 word(s))
 - null
 - int 36
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -24242,7 +24242,7 @@ Working stack: (9 word(s))
 - null
 - int 36
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -24265,7 +24265,7 @@ Working stack: (9 word(s))
 - null
 - int 36
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -24367,7 +24367,7 @@ Working stack: (9 word(s))
 - null
 - int 36
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -24473,7 +24473,7 @@ Working stack: (9 word(s))
 - null
 - int 36
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -24556,7 +24556,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -24656,7 +24656,7 @@ Working stack: (7 word(s))
 - int 36
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -24817,7 +24817,7 @@ Working stack: (9 word(s))
 - null
 - int 37
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -24850,7 +24850,7 @@ Working stack: (9 word(s))
 - null
 - int 37
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -24952,7 +24952,7 @@ Working stack: (9 word(s))
 - null
 - int 37
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -25054,7 +25054,7 @@ Working stack: (9 word(s))
 - null
 - int 37
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -25245,7 +25245,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -25345,7 +25345,7 @@ Working stack: (7 word(s))
 - int 37
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -25506,7 +25506,7 @@ Working stack: (9 word(s))
 - null
 - int 38
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -25539,7 +25539,7 @@ Working stack: (9 word(s))
 - null
 - int 38
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -25641,7 +25641,7 @@ Working stack: (9 word(s))
 - null
 - int 38
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -25743,7 +25743,7 @@ Working stack: (9 word(s))
 - null
 - int 38
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -25934,7 +25934,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -26034,7 +26034,7 @@ Working stack: (7 word(s))
 - int 38
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -26195,7 +26195,7 @@ Working stack: (9 word(s))
 - null
 - int 39
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -26297,7 +26297,7 @@ Working stack: (9 word(s))
 - null
 - int 39
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -26320,7 +26320,7 @@ Working stack: (9 word(s))
 - null
 - int 39
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -26422,7 +26422,7 @@ Working stack: (9 word(s))
 - null
 - int 39
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -26528,7 +26528,7 @@ Working stack: (9 word(s))
 - null
 - int 39
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -26611,7 +26611,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -26711,7 +26711,7 @@ Working stack: (7 word(s))
 - int 39
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -26872,7 +26872,7 @@ Working stack: (9 word(s))
 - null
 - int 40
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -26905,7 +26905,7 @@ Working stack: (9 word(s))
 - null
 - int 40
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -27007,7 +27007,7 @@ Working stack: (9 word(s))
 - null
 - int 40
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -27109,7 +27109,7 @@ Working stack: (9 word(s))
 - null
 - int 40
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -27215,7 +27215,7 @@ Working stack: (9 word(s))
 - null
 - int 40
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -27298,7 +27298,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -27398,7 +27398,7 @@ Working stack: (7 word(s))
 - int 40
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -27559,7 +27559,7 @@ Working stack: (9 word(s))
 - null
 - int 41
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -27592,7 +27592,7 @@ Working stack: (9 word(s))
 - null
 - int 41
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -27694,7 +27694,7 @@ Working stack: (9 word(s))
 - null
 - int 41
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -27796,7 +27796,7 @@ Working stack: (9 word(s))
 - null
 - int 41
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -27987,7 +27987,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -28087,7 +28087,7 @@ Working stack: (7 word(s))
 - int 41
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -28248,7 +28248,7 @@ Working stack: (9 word(s))
 - null
 - int 42
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -28350,7 +28350,7 @@ Working stack: (9 word(s))
 - null
 - int 42
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -28373,7 +28373,7 @@ Working stack: (9 word(s))
 - null
 - int 42
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -28475,7 +28475,7 @@ Working stack: (9 word(s))
 - null
 - int 42
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -28581,7 +28581,7 @@ Working stack: (9 word(s))
 - null
 - int 42
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -28664,7 +28664,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -28764,7 +28764,7 @@ Working stack: (7 word(s))
 - int 42
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -28925,7 +28925,7 @@ Working stack: (9 word(s))
 - null
 - int 43
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -28958,7 +28958,7 @@ Working stack: (9 word(s))
 - null
 - int 43
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -29060,7 +29060,7 @@ Working stack: (9 word(s))
 - null
 - int 43
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -29162,7 +29162,7 @@ Working stack: (9 word(s))
 - null
 - int 43
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -29353,7 +29353,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -29453,7 +29453,7 @@ Working stack: (7 word(s))
 - int 43
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -29614,7 +29614,7 @@ Working stack: (9 word(s))
 - null
 - int 44
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -29647,7 +29647,7 @@ Working stack: (9 word(s))
 - null
 - int 44
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -29749,7 +29749,7 @@ Working stack: (9 word(s))
 - null
 - int 44
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -29851,7 +29851,7 @@ Working stack: (9 word(s))
 - null
 - int 44
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -30042,7 +30042,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -30142,7 +30142,7 @@ Working stack: (7 word(s))
 - int 44
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -30303,7 +30303,7 @@ Working stack: (9 word(s))
 - null
 - int 45
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -30405,7 +30405,7 @@ Working stack: (9 word(s))
 - null
 - int 45
 - true
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -30428,7 +30428,7 @@ Working stack: (9 word(s))
 - null
 - int 45
 - true
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -30534,7 +30534,7 @@ Working stack: (9 word(s))
 - null
 - int 45
 - null
-- int 89
+- int 39
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -30617,7 +30617,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -30717,7 +30717,7 @@ Working stack: (7 word(s))
 - int 45
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -30878,7 +30878,7 @@ Working stack: (9 word(s))
 - null
 - int 46
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -30911,7 +30911,7 @@ Working stack: (9 word(s))
 - null
 - int 46
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -31013,7 +31013,7 @@ Working stack: (9 word(s))
 - null
 - int 46
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -31115,7 +31115,7 @@ Working stack: (9 word(s))
 - null
 - int 46
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -31306,7 +31306,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -31406,7 +31406,7 @@ Working stack: (7 word(s))
 - int 46
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -31567,7 +31567,7 @@ Working stack: (9 word(s))
 - null
 - int 47
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -31600,7 +31600,7 @@ Working stack: (9 word(s))
 - null
 - int 47
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -31702,7 +31702,7 @@ Working stack: (9 word(s))
 - null
 - int 47
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -31804,7 +31804,7 @@ Working stack: (9 word(s))
 - null
 - int 47
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -31995,7 +31995,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -32095,7 +32095,7 @@ Working stack: (7 word(s))
 - int 47
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -32256,7 +32256,7 @@ Working stack: (9 word(s))
 - null
 - int 48
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -32358,7 +32358,7 @@ Working stack: (9 word(s))
 - null
 - int 48
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -32381,7 +32381,7 @@ Working stack: (9 word(s))
 - null
 - int 48
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -32483,7 +32483,7 @@ Working stack: (9 word(s))
 - null
 - int 48
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -32589,7 +32589,7 @@ Working stack: (9 word(s))
 - null
 - int 48
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -32672,7 +32672,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -32772,7 +32772,7 @@ Working stack: (7 word(s))
 - int 48
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -32933,7 +32933,7 @@ Working stack: (9 word(s))
 - null
 - int 49
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -32966,7 +32966,7 @@ Working stack: (9 word(s))
 - null
 - int 49
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -33068,7 +33068,7 @@ Working stack: (9 word(s))
 - null
 - int 49
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -33170,7 +33170,7 @@ Working stack: (9 word(s))
 - null
 - int 49
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -33361,7 +33361,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -33461,7 +33461,7 @@ Working stack: (7 word(s))
 - int 49
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -33622,7 +33622,7 @@ Working stack: (9 word(s))
 - null
 - int 50
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -33655,7 +33655,7 @@ Working stack: (9 word(s))
 - null
 - int 50
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -33757,7 +33757,7 @@ Working stack: (9 word(s))
 - null
 - int 50
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -33859,7 +33859,7 @@ Working stack: (9 word(s))
 - null
 - int 50
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -33965,7 +33965,7 @@ Working stack: (9 word(s))
 - null
 - int 50
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -34048,7 +34048,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -34148,7 +34148,7 @@ Working stack: (7 word(s))
 - int 50
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -34309,7 +34309,7 @@ Working stack: (9 word(s))
 - null
 - int 51
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -34411,7 +34411,7 @@ Working stack: (9 word(s))
 - null
 - int 51
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -34434,7 +34434,7 @@ Working stack: (9 word(s))
 - null
 - int 51
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -34536,7 +34536,7 @@ Working stack: (9 word(s))
 - null
 - int 51
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -34642,7 +34642,7 @@ Working stack: (9 word(s))
 - null
 - int 51
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -34725,7 +34725,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -34825,7 +34825,7 @@ Working stack: (7 word(s))
 - int 51
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -34986,7 +34986,7 @@ Working stack: (9 word(s))
 - null
 - int 52
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -35019,7 +35019,7 @@ Working stack: (9 word(s))
 - null
 - int 52
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -35121,7 +35121,7 @@ Working stack: (9 word(s))
 - null
 - int 52
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -35223,7 +35223,7 @@ Working stack: (9 word(s))
 - null
 - int 52
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -35414,7 +35414,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -35514,7 +35514,7 @@ Working stack: (7 word(s))
 - int 52
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -35675,7 +35675,7 @@ Working stack: (9 word(s))
 - null
 - int 53
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -35708,7 +35708,7 @@ Working stack: (9 word(s))
 - null
 - int 53
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -35810,7 +35810,7 @@ Working stack: (9 word(s))
 - null
 - int 53
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -35912,7 +35912,7 @@ Working stack: (9 word(s))
 - null
 - int 53
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -36103,7 +36103,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -36203,7 +36203,7 @@ Working stack: (7 word(s))
 - int 53
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -36364,7 +36364,7 @@ Working stack: (9 word(s))
 - null
 - int 54
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -36466,7 +36466,7 @@ Working stack: (9 word(s))
 - null
 - int 54
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -36489,7 +36489,7 @@ Working stack: (9 word(s))
 - null
 - int 54
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -36591,7 +36591,7 @@ Working stack: (9 word(s))
 - null
 - int 54
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -36697,7 +36697,7 @@ Working stack: (9 word(s))
 - null
 - int 54
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -36780,7 +36780,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -36880,7 +36880,7 @@ Working stack: (7 word(s))
 - int 54
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -37041,7 +37041,7 @@ Working stack: (9 word(s))
 - null
 - int 55
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -37074,7 +37074,7 @@ Working stack: (9 word(s))
 - null
 - int 55
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -37176,7 +37176,7 @@ Working stack: (9 word(s))
 - null
 - int 55
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -37278,7 +37278,7 @@ Working stack: (9 word(s))
 - null
 - int 55
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -37384,7 +37384,7 @@ Working stack: (9 word(s))
 - null
 - int 55
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -37467,7 +37467,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -37567,7 +37567,7 @@ Working stack: (7 word(s))
 - int 55
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -37728,7 +37728,7 @@ Working stack: (9 word(s))
 - null
 - int 56
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -37761,7 +37761,7 @@ Working stack: (9 word(s))
 - null
 - int 56
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -37863,7 +37863,7 @@ Working stack: (9 word(s))
 - null
 - int 56
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -37965,7 +37965,7 @@ Working stack: (9 word(s))
 - null
 - int 56
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -38156,7 +38156,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -38256,7 +38256,7 @@ Working stack: (7 word(s))
 - int 56
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -38417,7 +38417,7 @@ Working stack: (9 word(s))
 - null
 - int 57
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -38519,7 +38519,7 @@ Working stack: (9 word(s))
 - null
 - int 57
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -38542,7 +38542,7 @@ Working stack: (9 word(s))
 - null
 - int 57
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -38644,7 +38644,7 @@ Working stack: (9 word(s))
 - null
 - int 57
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -38750,7 +38750,7 @@ Working stack: (9 word(s))
 - null
 - int 57
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -38833,7 +38833,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -38933,7 +38933,7 @@ Working stack: (7 word(s))
 - int 57
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -39094,7 +39094,7 @@ Working stack: (9 word(s))
 - null
 - int 58
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -39127,7 +39127,7 @@ Working stack: (9 word(s))
 - null
 - int 58
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -39229,7 +39229,7 @@ Working stack: (9 word(s))
 - null
 - int 58
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -39331,7 +39331,7 @@ Working stack: (9 word(s))
 - null
 - int 58
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -39522,7 +39522,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -39622,7 +39622,7 @@ Working stack: (7 word(s))
 - int 58
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -39783,7 +39783,7 @@ Working stack: (9 word(s))
 - null
 - int 59
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -39816,7 +39816,7 @@ Working stack: (9 word(s))
 - null
 - int 59
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -39918,7 +39918,7 @@ Working stack: (9 word(s))
 - null
 - int 59
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -40020,7 +40020,7 @@ Working stack: (9 word(s))
 - null
 - int 59
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -40211,7 +40211,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -40311,7 +40311,7 @@ Working stack: (7 word(s))
 - int 59
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -40472,7 +40472,7 @@ Working stack: (9 word(s))
 - null
 - int 60
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -40574,7 +40574,7 @@ Working stack: (9 word(s))
 - null
 - int 60
 - true
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -40597,7 +40597,7 @@ Working stack: (9 word(s))
 - null
 - int 60
 - true
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -40703,7 +40703,7 @@ Working stack: (9 word(s))
 - null
 - int 60
 - null
-- int 89
+- int 39
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -40786,7 +40786,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -40886,7 +40886,7 @@ Working stack: (7 word(s))
 - int 60
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -41047,7 +41047,7 @@ Working stack: (9 word(s))
 - null
 - int 61
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -41080,7 +41080,7 @@ Working stack: (9 word(s))
 - null
 - int 61
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -41182,7 +41182,7 @@ Working stack: (9 word(s))
 - null
 - int 61
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -41284,7 +41284,7 @@ Working stack: (9 word(s))
 - null
 - int 61
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -41475,7 +41475,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -41575,7 +41575,7 @@ Working stack: (7 word(s))
 - int 61
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -41736,7 +41736,7 @@ Working stack: (9 word(s))
 - null
 - int 62
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -41769,7 +41769,7 @@ Working stack: (9 word(s))
 - null
 - int 62
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -41871,7 +41871,7 @@ Working stack: (9 word(s))
 - null
 - int 62
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -41973,7 +41973,7 @@ Working stack: (9 word(s))
 - null
 - int 62
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -42164,7 +42164,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -42264,7 +42264,7 @@ Working stack: (7 word(s))
 - int 62
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -42425,7 +42425,7 @@ Working stack: (9 word(s))
 - null
 - int 63
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -42527,7 +42527,7 @@ Working stack: (9 word(s))
 - null
 - int 63
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -42550,7 +42550,7 @@ Working stack: (9 word(s))
 - null
 - int 63
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -42652,7 +42652,7 @@ Working stack: (9 word(s))
 - null
 - int 63
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -42758,7 +42758,7 @@ Working stack: (9 word(s))
 - null
 - int 63
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -42841,7 +42841,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -42941,7 +42941,7 @@ Working stack: (7 word(s))
 - int 63
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -43102,7 +43102,7 @@ Working stack: (9 word(s))
 - null
 - int 64
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -43135,7 +43135,7 @@ Working stack: (9 word(s))
 - null
 - int 64
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -43237,7 +43237,7 @@ Working stack: (9 word(s))
 - null
 - int 64
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -43339,7 +43339,7 @@ Working stack: (9 word(s))
 - null
 - int 64
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -43530,7 +43530,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -43630,7 +43630,7 @@ Working stack: (7 word(s))
 - int 64
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -43791,7 +43791,7 @@ Working stack: (9 word(s))
 - null
 - int 65
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -43824,7 +43824,7 @@ Working stack: (9 word(s))
 - null
 - int 65
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -43926,7 +43926,7 @@ Working stack: (9 word(s))
 - null
 - int 65
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -44028,7 +44028,7 @@ Working stack: (9 word(s))
 - null
 - int 65
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -44134,7 +44134,7 @@ Working stack: (9 word(s))
 - null
 - int 65
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -44217,7 +44217,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -44317,7 +44317,7 @@ Working stack: (7 word(s))
 - int 65
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -44478,7 +44478,7 @@ Working stack: (9 word(s))
 - null
 - int 66
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -44580,7 +44580,7 @@ Working stack: (9 word(s))
 - null
 - int 66
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -44603,7 +44603,7 @@ Working stack: (9 word(s))
 - null
 - int 66
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -44705,7 +44705,7 @@ Working stack: (9 word(s))
 - null
 - int 66
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -44811,7 +44811,7 @@ Working stack: (9 word(s))
 - null
 - int 66
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -44894,7 +44894,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -44994,7 +44994,7 @@ Working stack: (7 word(s))
 - int 66
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -45155,7 +45155,7 @@ Working stack: (9 word(s))
 - null
 - int 67
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -45188,7 +45188,7 @@ Working stack: (9 word(s))
 - null
 - int 67
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -45290,7 +45290,7 @@ Working stack: (9 word(s))
 - null
 - int 67
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -45392,7 +45392,7 @@ Working stack: (9 word(s))
 - null
 - int 67
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -45583,7 +45583,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -45683,7 +45683,7 @@ Working stack: (7 word(s))
 - int 67
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -45844,7 +45844,7 @@ Working stack: (9 word(s))
 - null
 - int 68
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -45877,7 +45877,7 @@ Working stack: (9 word(s))
 - null
 - int 68
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -45979,7 +45979,7 @@ Working stack: (9 word(s))
 - null
 - int 68
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -46081,7 +46081,7 @@ Working stack: (9 word(s))
 - null
 - int 68
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -46272,7 +46272,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -46372,7 +46372,7 @@ Working stack: (7 word(s))
 - int 68
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -46533,7 +46533,7 @@ Working stack: (9 word(s))
 - null
 - int 69
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -46635,7 +46635,7 @@ Working stack: (9 word(s))
 - null
 - int 69
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -46658,7 +46658,7 @@ Working stack: (9 word(s))
 - null
 - int 69
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -46760,7 +46760,7 @@ Working stack: (9 word(s))
 - null
 - int 69
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -46866,7 +46866,7 @@ Working stack: (9 word(s))
 - null
 - int 69
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -46949,7 +46949,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -47049,7 +47049,7 @@ Working stack: (7 word(s))
 - int 69
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -47210,7 +47210,7 @@ Working stack: (9 word(s))
 - null
 - int 70
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -47243,7 +47243,7 @@ Working stack: (9 word(s))
 - null
 - int 70
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -47345,7 +47345,7 @@ Working stack: (9 word(s))
 - null
 - int 70
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -47447,7 +47447,7 @@ Working stack: (9 word(s))
 - null
 - int 70
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -47553,7 +47553,7 @@ Working stack: (9 word(s))
 - null
 - int 70
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -47636,7 +47636,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -47736,7 +47736,7 @@ Working stack: (7 word(s))
 - int 70
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -47897,7 +47897,7 @@ Working stack: (9 word(s))
 - null
 - int 71
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -47930,7 +47930,7 @@ Working stack: (9 word(s))
 - null
 - int 71
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -48032,7 +48032,7 @@ Working stack: (9 word(s))
 - null
 - int 71
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -48134,7 +48134,7 @@ Working stack: (9 word(s))
 - null
 - int 71
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -48325,7 +48325,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -48425,7 +48425,7 @@ Working stack: (7 word(s))
 - int 71
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -48586,7 +48586,7 @@ Working stack: (9 word(s))
 - null
 - int 72
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -48688,7 +48688,7 @@ Working stack: (9 word(s))
 - null
 - int 72
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -48711,7 +48711,7 @@ Working stack: (9 word(s))
 - null
 - int 72
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -48813,7 +48813,7 @@ Working stack: (9 word(s))
 - null
 - int 72
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -48919,7 +48919,7 @@ Working stack: (9 word(s))
 - null
 - int 72
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -49002,7 +49002,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -49102,7 +49102,7 @@ Working stack: (7 word(s))
 - int 72
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -49263,7 +49263,7 @@ Working stack: (9 word(s))
 - null
 - int 73
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -49296,7 +49296,7 @@ Working stack: (9 word(s))
 - null
 - int 73
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -49398,7 +49398,7 @@ Working stack: (9 word(s))
 - null
 - int 73
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -49500,7 +49500,7 @@ Working stack: (9 word(s))
 - null
 - int 73
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -49691,7 +49691,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -49791,7 +49791,7 @@ Working stack: (7 word(s))
 - int 73
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -49952,7 +49952,7 @@ Working stack: (9 word(s))
 - null
 - int 74
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -49985,7 +49985,7 @@ Working stack: (9 word(s))
 - null
 - int 74
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -50087,7 +50087,7 @@ Working stack: (9 word(s))
 - null
 - int 74
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -50189,7 +50189,7 @@ Working stack: (9 word(s))
 - null
 - int 74
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -50380,7 +50380,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -50480,7 +50480,7 @@ Working stack: (7 word(s))
 - int 74
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -50641,7 +50641,7 @@ Working stack: (9 word(s))
 - null
 - int 75
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -50743,7 +50743,7 @@ Working stack: (9 word(s))
 - null
 - int 75
 - true
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -50766,7 +50766,7 @@ Working stack: (9 word(s))
 - null
 - int 75
 - true
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -50872,7 +50872,7 @@ Working stack: (9 word(s))
 - null
 - int 75
 - null
-- int 89
+- int 39
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -50955,7 +50955,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -51055,7 +51055,7 @@ Working stack: (7 word(s))
 - int 75
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -51216,7 +51216,7 @@ Working stack: (9 word(s))
 - null
 - int 76
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -51249,7 +51249,7 @@ Working stack: (9 word(s))
 - null
 - int 76
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -51351,7 +51351,7 @@ Working stack: (9 word(s))
 - null
 - int 76
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -51453,7 +51453,7 @@ Working stack: (9 word(s))
 - null
 - int 76
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -51644,7 +51644,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -51744,7 +51744,7 @@ Working stack: (7 word(s))
 - int 76
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -51905,7 +51905,7 @@ Working stack: (9 word(s))
 - null
 - int 77
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -51938,7 +51938,7 @@ Working stack: (9 word(s))
 - null
 - int 77
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -52040,7 +52040,7 @@ Working stack: (9 word(s))
 - null
 - int 77
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -52142,7 +52142,7 @@ Working stack: (9 word(s))
 - null
 - int 77
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -52333,7 +52333,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -52433,7 +52433,7 @@ Working stack: (7 word(s))
 - int 77
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -52594,7 +52594,7 @@ Working stack: (9 word(s))
 - null
 - int 78
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -52696,7 +52696,7 @@ Working stack: (9 word(s))
 - null
 - int 78
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -52719,7 +52719,7 @@ Working stack: (9 word(s))
 - null
 - int 78
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -52821,7 +52821,7 @@ Working stack: (9 word(s))
 - null
 - int 78
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -52927,7 +52927,7 @@ Working stack: (9 word(s))
 - null
 - int 78
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -53010,7 +53010,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -53110,7 +53110,7 @@ Working stack: (7 word(s))
 - int 78
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -53271,7 +53271,7 @@ Working stack: (9 word(s))
 - null
 - int 79
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -53304,7 +53304,7 @@ Working stack: (9 word(s))
 - null
 - int 79
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -53406,7 +53406,7 @@ Working stack: (9 word(s))
 - null
 - int 79
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -53508,7 +53508,7 @@ Working stack: (9 word(s))
 - null
 - int 79
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -53699,7 +53699,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -53799,7 +53799,7 @@ Working stack: (7 word(s))
 - int 79
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -53960,7 +53960,7 @@ Working stack: (9 word(s))
 - null
 - int 80
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -53993,7 +53993,7 @@ Working stack: (9 word(s))
 - null
 - int 80
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -54095,7 +54095,7 @@ Working stack: (9 word(s))
 - null
 - int 80
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -54197,7 +54197,7 @@ Working stack: (9 word(s))
 - null
 - int 80
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -54303,7 +54303,7 @@ Working stack: (9 word(s))
 - null
 - int 80
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -54386,7 +54386,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -54486,7 +54486,7 @@ Working stack: (7 word(s))
 - int 80
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -54647,7 +54647,7 @@ Working stack: (9 word(s))
 - null
 - int 81
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -54749,7 +54749,7 @@ Working stack: (9 word(s))
 - null
 - int 81
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -54772,7 +54772,7 @@ Working stack: (9 word(s))
 - null
 - int 81
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -54874,7 +54874,7 @@ Working stack: (9 word(s))
 - null
 - int 81
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -54980,7 +54980,7 @@ Working stack: (9 word(s))
 - null
 - int 81
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -55063,7 +55063,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -55163,7 +55163,7 @@ Working stack: (7 word(s))
 - int 81
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -55324,7 +55324,7 @@ Working stack: (9 word(s))
 - null
 - int 82
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -55357,7 +55357,7 @@ Working stack: (9 word(s))
 - null
 - int 82
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -55459,7 +55459,7 @@ Working stack: (9 word(s))
 - null
 - int 82
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -55561,7 +55561,7 @@ Working stack: (9 word(s))
 - null
 - int 82
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -55752,7 +55752,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -55852,7 +55852,7 @@ Working stack: (7 word(s))
 - int 82
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -56013,7 +56013,7 @@ Working stack: (9 word(s))
 - null
 - int 83
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -56046,7 +56046,7 @@ Working stack: (9 word(s))
 - null
 - int 83
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -56148,7 +56148,7 @@ Working stack: (9 word(s))
 - null
 - int 83
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -56250,7 +56250,7 @@ Working stack: (9 word(s))
 - null
 - int 83
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -56441,7 +56441,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -56541,7 +56541,7 @@ Working stack: (7 word(s))
 - int 83
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -56702,7 +56702,7 @@ Working stack: (9 word(s))
 - null
 - int 84
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -56804,7 +56804,7 @@ Working stack: (9 word(s))
 - null
 - int 84
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -56827,7 +56827,7 @@ Working stack: (9 word(s))
 - null
 - int 84
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -56929,7 +56929,7 @@ Working stack: (9 word(s))
 - null
 - int 84
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -57035,7 +57035,7 @@ Working stack: (9 word(s))
 - null
 - int 84
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -57118,7 +57118,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -57218,7 +57218,7 @@ Working stack: (7 word(s))
 - int 84
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -57379,7 +57379,7 @@ Working stack: (9 word(s))
 - null
 - int 85
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -57412,7 +57412,7 @@ Working stack: (9 word(s))
 - null
 - int 85
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -57514,7 +57514,7 @@ Working stack: (9 word(s))
 - null
 - int 85
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -57616,7 +57616,7 @@ Working stack: (9 word(s))
 - null
 - int 85
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -57722,7 +57722,7 @@ Working stack: (9 word(s))
 - null
 - int 85
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -57805,7 +57805,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -57905,7 +57905,7 @@ Working stack: (7 word(s))
 - int 85
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -58066,7 +58066,7 @@ Working stack: (9 word(s))
 - null
 - int 86
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -58099,7 +58099,7 @@ Working stack: (9 word(s))
 - null
 - int 86
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -58201,7 +58201,7 @@ Working stack: (9 word(s))
 - null
 - int 86
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -58303,7 +58303,7 @@ Working stack: (9 word(s))
 - null
 - int 86
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -58494,7 +58494,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -58594,7 +58594,7 @@ Working stack: (7 word(s))
 - int 86
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -58755,7 +58755,7 @@ Working stack: (9 word(s))
 - null
 - int 87
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -58857,7 +58857,7 @@ Working stack: (9 word(s))
 - null
 - int 87
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -58880,7 +58880,7 @@ Working stack: (9 word(s))
 - null
 - int 87
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -58982,7 +58982,7 @@ Working stack: (9 word(s))
 - null
 - int 87
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -59088,7 +59088,7 @@ Working stack: (9 word(s))
 - null
 - int 87
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -59171,7 +59171,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -59271,7 +59271,7 @@ Working stack: (7 word(s))
 - int 87
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -59432,7 +59432,7 @@ Working stack: (9 word(s))
 - null
 - int 88
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -59465,7 +59465,7 @@ Working stack: (9 word(s))
 - null
 - int 88
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -59567,7 +59567,7 @@ Working stack: (9 word(s))
 - null
 - int 88
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -59669,7 +59669,7 @@ Working stack: (9 word(s))
 - null
 - int 88
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -59860,7 +59860,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -59960,7 +59960,7 @@ Working stack: (7 word(s))
 - int 88
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -60121,7 +60121,7 @@ Working stack: (9 word(s))
 - null
 - int 89
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -60154,7 +60154,7 @@ Working stack: (9 word(s))
 - null
 - int 89
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -60256,7 +60256,7 @@ Working stack: (9 word(s))
 - null
 - int 89
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -60358,7 +60358,7 @@ Working stack: (9 word(s))
 - null
 - int 89
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -60549,7 +60549,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -60649,7 +60649,7 @@ Working stack: (7 word(s))
 - int 89
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -60810,7 +60810,7 @@ Working stack: (9 word(s))
 - null
 - int 90
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -60912,7 +60912,7 @@ Working stack: (9 word(s))
 - null
 - int 90
 - true
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -60935,7 +60935,7 @@ Working stack: (9 word(s))
 - null
 - int 90
 - true
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -61041,7 +61041,7 @@ Working stack: (9 word(s))
 - null
 - int 90
 - null
-- int 89
+- int 39
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -61124,7 +61124,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -61224,7 +61224,7 @@ Working stack: (7 word(s))
 - int 90
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -61385,7 +61385,7 @@ Working stack: (9 word(s))
 - null
 - int 91
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -61418,7 +61418,7 @@ Working stack: (9 word(s))
 - null
 - int 91
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -61520,7 +61520,7 @@ Working stack: (9 word(s))
 - null
 - int 91
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -61622,7 +61622,7 @@ Working stack: (9 word(s))
 - null
 - int 91
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -61813,7 +61813,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -61913,7 +61913,7 @@ Working stack: (7 word(s))
 - int 91
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -62074,7 +62074,7 @@ Working stack: (9 word(s))
 - null
 - int 92
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -62107,7 +62107,7 @@ Working stack: (9 word(s))
 - null
 - int 92
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -62209,7 +62209,7 @@ Working stack: (9 word(s))
 - null
 - int 92
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -62311,7 +62311,7 @@ Working stack: (9 word(s))
 - null
 - int 92
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -62502,7 +62502,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -62602,7 +62602,7 @@ Working stack: (7 word(s))
 - int 92
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -62763,7 +62763,7 @@ Working stack: (9 word(s))
 - null
 - int 93
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -62865,7 +62865,7 @@ Working stack: (9 word(s))
 - null
 - int 93
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -62888,7 +62888,7 @@ Working stack: (9 word(s))
 - null
 - int 93
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -62990,7 +62990,7 @@ Working stack: (9 word(s))
 - null
 - int 93
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -63096,7 +63096,7 @@ Working stack: (9 word(s))
 - null
 - int 93
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -63179,7 +63179,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -63279,7 +63279,7 @@ Working stack: (7 word(s))
 - int 93
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -63440,7 +63440,7 @@ Working stack: (9 word(s))
 - null
 - int 94
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -63473,7 +63473,7 @@ Working stack: (9 word(s))
 - null
 - int 94
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -63575,7 +63575,7 @@ Working stack: (9 word(s))
 - null
 - int 94
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -63677,7 +63677,7 @@ Working stack: (9 word(s))
 - null
 - int 94
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -63868,7 +63868,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -63968,7 +63968,7 @@ Working stack: (7 word(s))
 - int 94
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -64129,7 +64129,7 @@ Working stack: (9 word(s))
 - null
 - int 95
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -64162,7 +64162,7 @@ Working stack: (9 word(s))
 - null
 - int 95
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -64264,7 +64264,7 @@ Working stack: (9 word(s))
 - null
 - int 95
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -64366,7 +64366,7 @@ Working stack: (9 word(s))
 - null
 - int 95
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -64472,7 +64472,7 @@ Working stack: (9 word(s))
 - null
 - int 95
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -64555,7 +64555,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -64655,7 +64655,7 @@ Working stack: (7 word(s))
 - int 95
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -64816,7 +64816,7 @@ Working stack: (9 word(s))
 - null
 - int 96
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -64918,7 +64918,7 @@ Working stack: (9 word(s))
 - null
 - int 96
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -64941,7 +64941,7 @@ Working stack: (9 word(s))
 - null
 - int 96
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -65043,7 +65043,7 @@ Working stack: (9 word(s))
 - null
 - int 96
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -65149,7 +65149,7 @@ Working stack: (9 word(s))
 - null
 - int 96
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -65232,7 +65232,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -65332,7 +65332,7 @@ Working stack: (7 word(s))
 - int 96
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -65493,7 +65493,7 @@ Working stack: (9 word(s))
 - null
 - int 97
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -65526,7 +65526,7 @@ Working stack: (9 word(s))
 - null
 - int 97
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -65628,7 +65628,7 @@ Working stack: (9 word(s))
 - null
 - int 97
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -65730,7 +65730,7 @@ Working stack: (9 word(s))
 - null
 - int 97
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -65921,7 +65921,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -66021,7 +66021,7 @@ Working stack: (7 word(s))
 - int 97
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -66182,7 +66182,7 @@ Working stack: (9 word(s))
 - null
 - int 98
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -66215,7 +66215,7 @@ Working stack: (9 word(s))
 - null
 - int 98
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -66317,7 +66317,7 @@ Working stack: (9 word(s))
 - null
 - int 98
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -66419,7 +66419,7 @@ Working stack: (9 word(s))
 - null
 - int 98
 - false
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -66610,7 +66610,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -66710,7 +66710,7 @@ Working stack: (7 word(s))
 - int 98
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -66871,7 +66871,7 @@ Working stack: (9 word(s))
 - null
 - int 99
 - true
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -66973,7 +66973,7 @@ Working stack: (9 word(s))
 - null
 - int 99
 - false
-- int 40
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -66996,7 +66996,7 @@ Working stack: (9 word(s))
 - null
 - int 99
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -67098,7 +67098,7 @@ Working stack: (9 word(s))
 - null
 - int 99
 - true
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -67204,7 +67204,7 @@ Working stack: (9 word(s))
 - null
 - int 99
 - null
-- int 89
+- int 23
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -67287,7 +67287,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -67387,7 +67387,7 @@ Working stack: (7 word(s))
 - int 99
 - null
 - false
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -67548,7 +67548,7 @@ Working stack: (9 word(s))
 - null
 - int 100
 - false
-- int 39
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -67581,7 +67581,7 @@ Working stack: (9 word(s))
 - null
 - int 100
 - false
-- int 50
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -67683,7 +67683,7 @@ Working stack: (9 word(s))
 - null
 - int 100
 - false
-- int 66
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -67785,7 +67785,7 @@ Working stack: (9 word(s))
 - null
 - int 100
 - true
-- int 82
+- int 8
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -67891,7 +67891,7 @@ Working stack: (9 word(s))
 - null
 - int 100
 - null
-- int 89
+- int 7
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 90, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
@@ -67974,7 +67974,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 4
+- int -90
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
@@ -68074,7 +68074,7 @@ Working stack: (7 word(s))
 - null
 - null
 - true
-- int 18
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -68102,7 +68102,7 @@ Working stack: (4 word(s))
 - null
 - iter XXXXXXXX
 - null
-- int 94
+- int 78
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 95, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))

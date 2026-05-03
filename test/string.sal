@@ -1,0 +1,7 @@
+asm {
+    "hello rose"
+    (-1)
+    s0
+    get
+    trap log
+}

@@ -1056,7 +1056,7 @@ Working stack: (1 word(s))
 halt
 
 
-sam_run returns: half with result array XXXXXXXX:
+sam_run returns: halt with result blob XXXXXXXX:
 - int 1
 - int 2
 Array: XXXXXXXX (1 item(s))

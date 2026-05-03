@@ -1,0 +1,36 @@
+asm {
+    // Copy an array's only reference
+    new
+    trap copy
+    // Append an item, then prepend an item to the new array, then copy the array
+    13
+    -2
+    s0
+    get
+    append
+    42
+    -2
+    s0
+    get
+    prepend
+    -1
+    s0
+    get
+    trap copy
+    // Pop an item from one of the copies
+    -1
+    s0
+    get
+    pop
+    // Shift an item from the same copy
+    -2
+    s0
+    get
+    shift
+    // Pop an item from the current array using pop (no effect!)
+    s0
+    pop
+    // Exit
+    0
+    halt
+}

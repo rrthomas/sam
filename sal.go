@@ -171,12 +171,13 @@ type LogicExp struct {
 type Expression struct {
 	Pos lexer.Position
 
-	Ifs        *Ifs        `  @@`
-	Loop       *Block      `| "loop" @@`
-	ForVar     string      `| "for" @Ident "in"`
-	Iter       *Expression `  @@`
-	Body       *Block      `  @@`
-	Expression *LogicExp   `| @@`
+	Ifs        *Ifs            `  @@`
+	Loop       *Block          `| "loop" @@`
+	Asm        *[]AsmStatement `| "asm" "{" (@@)* "}"`
+	ForVar     string          `| "for" @Ident "in"`
+	Iter       *Expression     `  @@`
+	Body       *Block          `  @@`
+	Expression *LogicExp       `| @@`
 }
 
 type Ifs struct {
@@ -240,6 +241,17 @@ type Block struct {
 	Pos lexer.Position
 
 	Body *Body `"{" @@ "}"`
+}
+
+type AsmStatement struct {
+	Pos lexer.Position
+
+	Trap       *string     `  "trap" @Ident ";"`
+	Single     *string     `| "single" @Ident ";"`
+	Quote      *string     `| "quote" @Ident ";"`
+	QuoteTrap  *string     `| "quote" "trap" @Ident ";"`
+	Insn       *string     `| @Ident ";"`
+	Expression *PrimaryExp `| @@ ";"`
 }
 
 type Function struct {
@@ -611,6 +623,10 @@ func (e *Expression) Compile(ctx *Scope) {
 		ctx.assembleNull()
 		blockCtx := e.Loop.Compile(ctx, true)
 		ctx.assembleLoop(&blockCtx)
+	} else if e.Asm != nil {
+		for _, s := range *e.Asm {
+			s.Compile(ctx)
+		}
 	} else if e.ForVar != "" {
 		// Initialize iterator
 		ctx.locals = append(ctx.locals, Local{id: "$iter", pos: int(ctx.frame.sp)})
@@ -661,7 +677,7 @@ func (ctx *Scope) compileIf(cond compiler, then compiler, else_ compiler) {
 	thenJumpAddr = libsam.Uword(ctx.frame.asm.array.Sp() - 1)
 	ctx.assembleTrap("jump")
 	ctx.frame.asm.flushInstructions()
-	ctx.frame.asm.array.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.array.Sp()))))
+	ctx.frame.asm.array.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.array.Sp()-ifJumpAddr-2))))
 	ctx.frame.sp = ifJumpSp
 	if else_ != nil {
 		else_(ctx)
@@ -669,7 +685,7 @@ func (ctx *Scope) compileIf(cond compiler, then compiler, else_ compiler) {
 		ctx.assembleNull()
 	}
 	ctx.frame.asm.flushInstructions()
-	ctx.frame.asm.array.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.array.Sp()))))
+	ctx.frame.asm.array.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.array.Sp()-thenJumpAddr-2))))
 }
 
 func (ctx *Scope) compileIfs(il *[]If, fe *Block) {
@@ -697,6 +713,24 @@ func (ctx *Scope) compileIfs(il *[]If, fe *Block) {
 
 func (i *Ifs) Compile(ctx *Scope) {
 	ctx.compileIfs(i.IfList, i.FinalElse)
+}
+
+func (a *AsmStatement) Compile(ctx *Scope) {
+	if a.Insn != nil {
+		ctx.frame.asm.assembleInstruction(*a.Insn)
+	} else if a.Trap != nil {
+		ctx.assembleTrap(*a.Trap)
+	} else if a.Single != nil {
+		ctx.assembleSingle(*a.Single)
+	} else if a.Quote != nil {
+		ctx.assembleQuote(*a.Quote)
+	} else if a.QuoteTrap != nil {
+		ctx.assembleQuoteTrap(*a.QuoteTrap)
+	} else if a.Expression != nil {
+		a.Expression.Compile(ctx)
+	} else {
+		panic(fmt.Errorf("invalid AsmStatement"))
+	}
 }
 
 // Assignment, or an rvalue that is syntactically an lvalue
@@ -786,7 +820,7 @@ func (t *Terminator) Compile(ctx *Scope) {
 		for range ctx.frame.sp - ctx.loop.baseSp {
 			ctx.assembleInst("drop")
 		}
-		ctx.assembleInt(int(ctx.loop.initialPc))
+		ctx.assembleInt(int(ctx.loop.initialPc - ctx.frame.asm.array.Sp() - 3))
 		ctx.assembleTrap("jump")
 	} else {
 		panic("invalid Terminator")
@@ -1106,6 +1140,22 @@ func (ctx *Scope) assembleCode(asm *assembler) {
 	ctx.assembleBlob(asm.array)
 }
 
+func (ctx *Scope) assembleQuote(inst string) {
+	ctx.assembleTrap("quote")
+	ctx.assembleSingle(inst)
+	// Now undo the stack effect of the instruction we just compiled
+	delta := libsam.StackDifference[inst]
+	ctx.adjustSp(-delta)
+}
+
+func (ctx *Scope) assembleQuoteTrap(trapName string) {
+	ctx.assembleTrap("quote")
+	ctx.assembleTrap(trapName)
+	// Now undo the stack effect of the instruction we just compiled
+	stackEffect := trapStackEffect(trapName)
+	ctx.adjustSp(int(stackEffect.In) - int(stackEffect.Out))
+}
+
 func trapStackEffect(function string) libsam.StackEffect {
 	stackEffect, ok := libsam.TrapStackEffect[strings.ToUpper(function)]
 	if !ok {
@@ -1126,8 +1176,8 @@ func (ctx *Scope) assembleTrap(trapName string) {
 
 func (ctx *Scope) resolveExitJumps() {
 	jumpAddr := ctx.frame.asm.array.Sp()
-	jumpInst := libsam.Uword(libsam.MakeInstInt(libsam.Word(jumpAddr)))
 	for _, addr := range ctx.exitJumps {
+		jumpInst := libsam.Uword(libsam.MakeInstInt(libsam.Word(jumpAddr - addr - 2)))
 		ctx.frame.asm.array.Poke(addr, jumpInst)
 	}
 }
@@ -1163,7 +1213,7 @@ func (ctx *Scope) assembleLoop(bodyCtx *Scope) {
 	for range bodyCtx.frame.sp - bodyCtx.baseSp {
 		ctx.assembleInst("drop")
 	}
-	ctx.assembleInt(int(bodyCtx.initialPc))
+	ctx.assembleInt(int(bodyCtx.initialPc - ctx.frame.asm.array.Sp() - 3))
 	ctx.assembleTrap("jump")
 	bodyCtx.loop.resolveExitJumps()
 }

@@ -8,13 +8,13 @@ Array: XXXXXXXX (12 item(s))
   - s0 get
   - int 0
   - eq
-  - int 12
+  - int 6
   - trap JUMP_IF_FALSE
   - null
   - int 1
   - int -2
   - s0 set
-  - int 29
+  - int 17
   - trap JUMP
   - null
   - int 3
@@ -182,7 +182,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - int 5
 - false
-- int 12
+- int 6
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -560,7 +560,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - int 4
 - false
-- int 12
+- int 6
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -938,7 +938,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - int 3
 - false
-- int 12
+- int 6
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -1316,7 +1316,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - int 2
 - false
-- int 12
+- int 6
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -1694,7 +1694,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - int 1
 - false
-- int 12
+- int 6
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -2072,7 +2072,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - int 0
 - true
-- int 12
+- int 6
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -2134,7 +2134,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - int 0
 - int 1
-- int 29
+- int 17
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))

@@ -35,12 +35,12 @@ Array: XXXXXXXX (58 item(s))
 - _two s0 get
 - null
 - eq
-- int 43
+- int 5
 - trap JUMP_IF_FALSE
 - drop drop
-- int 56
+- int 15
 - trap JUMP
-- int 53
+- int 10
 - trap JUMP
 - null
 - new
@@ -53,7 +53,7 @@ Array: XXXXXXXX (58 item(s))
 - int -2
 - s0 set
 - drop drop drop
-- int 29
+- int -27
 - trap JUMP
 - int -5
 - s0 set drop drop drop halt
@@ -513,7 +513,7 @@ Working stack: (9 word(s))
 - int 1
 - null
 - false
-- int 43
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -866,7 +866,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - iter XXXXXXXX
 - null
-- int 29
+- int -27
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -990,7 +990,7 @@ Working stack: (9 word(s))
 - int 3
 - null
 - false
-- int 43
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1343,7 +1343,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - iter XXXXXXXX
 - null
-- int 29
+- int -27
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -1467,7 +1467,7 @@ Working stack: (9 word(s))
 - null
 - null
 - true
-- int 43
+- int 5
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
@@ -1503,7 +1503,7 @@ Working stack: (6 word(s))
 - map XXXXXXXX
 - iter XXXXXXXX
 - null
-- int 56
+- int 15
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 57, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))

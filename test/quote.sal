@@ -1,0 +1,7 @@
+asm {
+    // Assemble a CALL instruction
+    quote call
+    // Exit
+    0
+    halt
+}

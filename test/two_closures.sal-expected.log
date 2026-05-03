@@ -1986,7 +1986,7 @@ Working stack: (1 word(s))
 halt
 
 
-sam_run returns: half with result array XXXXXXXX:
+sam_run returns: halt with result blob XXXXXXXX:
 - int 3
 - int 4
 - int 3

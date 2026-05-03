@@ -17,6 +17,7 @@ package libsam
 import "C"
 import (
 	"fmt"
+	"strings"
 	"unsafe"
 )
 
@@ -290,13 +291,12 @@ func (state *State) ErrorMessage(code Word) string {
 		res := C.disas(state.result)
 		goRes := C.GoString(res)
 		msg := "halt with result"
-		if (state.result & C.SAM_BLOB_TAG_MASK) == C.SAM_BLOB_TAG {
-			// FIXME: deal with other blob types
-			arr := state.result & ^C.SAM_BLOB_TAG_MASK
+		if (state.result & BLOB_TAG_MASK) == BLOB_TAG {
+			arr := state.result & ^BLOB_TAG_MASK
 			if len(goRes) == 0 {
-				goRes = "(empty array)\n"
+				goRes = "(empty blob)\n"
 			}
-			msg += fmt.Sprintf(" array %#x:\n", arr) + goRes[0:max(len(goRes)-1, 0)]
+			msg += fmt.Sprintf(" blob %#x:\n", arr) + strings.TrimSpace(goRes)
 		} else {
 			msg += " " + goRes
 		}

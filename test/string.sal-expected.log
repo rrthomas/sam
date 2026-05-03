@@ -1,0 +1,67 @@
+Array: XXXXXXXX (7 item(s))
+- null
+- string hello rose
+- int -1
+- s0 get
+- trap LOG
+- int -2
+- s0 set halt
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
+Working stack: (0 word(s))
+null
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- null
+blob
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- null
+- string hello rose
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- string hello rose
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- string hello rose
+- int -1
+- array XXXXXXXX (4 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- string hello rose
+- string hello rose
+trap LOG
+hello rosesam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- null
+- string hello rose
+int
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- string hello rose
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- string hello rose
+- int -2
+- array XXXXXXXX (4 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- string hello rose
+halt
+
+
+sam_run returns: halt with result blob XXXXXXXX:
+string hello rose
+Array: XXXXXXXX (1 item(s))
+- string hello rose

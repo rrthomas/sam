@@ -251,12 +251,12 @@ These instructions implement branches, conditions and subroutine calls.
 > `JUMP`  
 > `i` →
 > 
-> Pop `i`. Set `PC` to `i`.
+> Pop `i`. Add `i` to `PC`.
 
 > `JUMP_IF_FALSE`  
 > `b` `i` →
 > 
-> Pop `b` and `i`. If `b` is false, set `PC` to `i`.
+> Pop `b` and `i`. If `b` is false, add `i` to `PC`.
 
 > `CALL`  
 > `x₁`…`xₙ` `i₁` `c` `a` → `i₂`

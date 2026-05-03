@@ -76,19 +76,19 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
         break;
     case TRAP_BASIC_JUMP:
         {
-            sam_uword_t addr;
-            POP_UINT(addr);
-            state->pc = addr;
+            sam_word_t offset;
+            POP_INT(offset);
+            state->pc += offset;
         }
         break;
     case TRAP_BASIC_JUMP_IF_FALSE:
         {
-            sam_uword_t addr;
-            POP_UINT(addr);
+            sam_word_t offset;
+            POP_INT(offset);
             sam_word_t flag;
             POP_BOOL(flag);
             if (!flag)
-                state->pc = addr;
+                state->pc += offset;
         }
         break;
     case TRAP_BASIC_RET:

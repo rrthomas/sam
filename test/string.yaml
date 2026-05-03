@@ -1,8 +1,0 @@
-- string "hello rose"
-- int -1
-- s0
-- get
-- trap log
-# Exit 
-- int 0
-- halt

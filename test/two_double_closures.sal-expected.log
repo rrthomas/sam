@@ -4069,7 +4069,7 @@ Working stack: (1 word(s))
 halt
 
 
-sam_run returns: half with result array XXXXXXXX:
+sam_run returns: halt with result blob XXXXXXXX:
 - array XXXXXXXX (3 items)
   - int 3
   - int 4

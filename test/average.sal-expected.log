@@ -1,0 +1,2504 @@
+Array: XXXXXXXX (18 item(s))
+- null
+- int 0
+- array XXXXXXXX (40 items)
+  - float 0.000000
+  - int 3
+  - s0 get
+  - trap ITER
+  - null
+  - int 5
+  - s0 get
+  - trap NEXT
+  - null
+  - _two s0 get
+  - null
+  - eq
+  - int 5
+  - trap JUMP_IF_FALSE
+  - drop drop
+  - int 14
+  - trap JUMP
+  - int 9
+  - trap JUMP
+  - null
+  - int 4
+  - s0 get
+  - int 7
+  - s0 get add _one s0 get
+  - int 4
+  - s0 set
+  - int -2
+  - s0 set
+  - drop drop drop
+  - int -26
+  - trap JUMP
+  - drop
+  - int 4
+  - s0 get
+  - int 3
+  - s0 get
+  - trap SIZE
+  - trap I2F
+  - trap DIV
+  - trap RET
+- trap NEW_CLOSURE
+- new
+- float 2.000000
+- _two s0 get append
+- float 5.000000
+- _two s0 get append
+- float 10.000000
+- _two s0 get append
+- float 20.000000
+- _two s0 get append
+- int 1
+- int 1
+- s0 get new call
+- int -3
+- s0 set drop halt
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
+Working stack: (0 word(s))
+null
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- null
+- int 0
+blob
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- int 0
+- array XXXXXXXX (40 items)
+trap NEW_CLOSURE
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- null
+- closure XXXXXXXX
+new
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+float
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- float 2.000000
+_two
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- float 2.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- float 2.000000
+- int -2
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- float 2.000000
+- array XXXXXXXX (0 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+float
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+- float 5.000000
+_two
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+- float 5.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+- float 5.000000
+- int -2
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+- float 5.000000
+- array XXXXXXXX (1 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (2 items)
+float
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (2 items)
+- float 10.000000
+_two
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (2 items)
+- float 10.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (2 items)
+- float 10.000000
+- int -2
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (2 items)
+- float 10.000000
+- array XXXXXXXX (2 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (3 items)
+float
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (3 items)
+- float 20.000000
+_two
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (3 items)
+- float 20.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (3 items)
+- float 20.000000
+- int -2
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (3 items)
+- float 20.000000
+- array XXXXXXXX (3 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (4 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (4 items)
+- int 1
+int
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (4 items)
+- int 1
+- int 1
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (4 items)
+- int 1
+- int 1
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (4 items)
+- int 1
+- closure XXXXXXXX
+new
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (4 items)
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+call
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+float
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- int 3
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- array XXXXXXXX (4 items)
+trap ITER
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+null
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- int 5
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- iter XXXXXXXX
+trap NEXT
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+_two
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- int -2
+- array XXXXXXXX (11 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- float 2.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- float 2.000000
+- null
+eq
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- false
+- int 5
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- int 4
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 0.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 0.000000
+- int 7
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 0.000000
+- int 7
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 0.000000
+- float 2.000000
+add
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+_one
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+- int -1
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+- float 2.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+- float 2.000000
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 0.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+- float 2.000000
+- int 4
+- array XXXXXXXX (14 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- null
+- float 2.000000
+- int -2
+- array XXXXXXXX (13 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+- float 2.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 2.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- int -26
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- int 5
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- iter XXXXXXXX
+trap NEXT
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+_two
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- int -2
+- array XXXXXXXX (11 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- float 5.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- float 5.000000
+- null
+eq
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- false
+- int 5
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- int 4
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 2.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 2.000000
+- int 7
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 2.000000
+- int 7
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 2.000000
+- float 5.000000
+add
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+_one
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+- int -1
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+- float 7.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+- float 7.000000
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 2.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+- float 7.000000
+- int 4
+- array XXXXXXXX (14 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- null
+- float 7.000000
+- int -2
+- array XXXXXXXX (13 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+- float 7.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 5.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- int -26
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- int 5
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- iter XXXXXXXX
+trap NEXT
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+_two
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- int -2
+- array XXXXXXXX (11 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- float 10.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- float 10.000000
+- null
+eq
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- false
+- int 5
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- int 4
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 7.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 7.000000
+- int 7
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 7.000000
+- int 7
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 7.000000
+- float 10.000000
+add
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+_one
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+- int -1
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+- float 17.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+- float 17.000000
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 7.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+- float 17.000000
+- int 4
+- array XXXXXXXX (14 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- null
+- float 17.000000
+- int -2
+- array XXXXXXXX (13 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+- float 17.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 10.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- int -26
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- int 5
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- iter XXXXXXXX
+trap NEXT
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+_two
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- int -2
+- array XXXXXXXX (11 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- float 20.000000
+null
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- float 20.000000
+- null
+eq
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- false
+int
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- false
+- int 5
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- int 4
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 17.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 17.000000
+- int 7
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 17.000000
+- int 7
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 17.000000
+- float 20.000000
+add
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+_one
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+- int -1
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+- float 37.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+- float 37.000000
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 17.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+- float 37.000000
+- int 4
+- array XXXXXXXX (14 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- null
+- float 37.000000
+- int -2
+- array XXXXXXXX (13 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+- float 37.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- float 20.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- int -26
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- int 5
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- iter XXXXXXXX
+trap NEXT
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+- null
+_two
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+- null
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+- null
+- int -2
+- array XXXXXXXX (11 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+- null
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+- null
+- null
+- null
+eq
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+- null
+- true
+int
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+- null
+- true
+- int 5
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+- int 14
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+int
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- int 4
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- float 37.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- float 37.000000
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- float 37.000000
+- int 3
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- float 37.000000
+- array XXXXXXXX (4 items)
+trap SIZE
+sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- float 37.000000
+- int 4
+trap I2F
+sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- float 37.000000
+- float 4.000000
+trap DIV
+sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (3 items)
+- array XXXXXXXX (18 items)
+- array XXXXXXXX (0 items)
+- array XXXXXXXX (4 items)
+- float 37.000000
+- iter XXXXXXXX
+- float 9.250000
+trap RET
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- closure XXXXXXXX
+- float 9.250000
+int
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- closure XXXXXXXX
+- float 9.250000
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- closure XXXXXXXX
+- float 9.250000
+- int -3
+- array XXXXXXXX (5 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- float 9.250000
+- closure XXXXXXXX
+drop
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- float 9.250000
+halt
+
+
+sam_run returns: halt with result float 9.250000
+Array: XXXXXXXX (1 item(s))
+- float 9.250000

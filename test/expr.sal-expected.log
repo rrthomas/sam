@@ -2,7 +2,7 @@ Array: XXXXXXXX (60 item(s))
 - null
 - int 2
 - true
-- int 57
+- int 52
 - trap JUMP_IF_FALSE
 - null
 - int 0
@@ -27,13 +27,13 @@ Array: XXXXXXXX (60 item(s))
   - s0 get
   - int 4
   - s0 get _two s0 extract lt
-  - int 12
+  - int 6
   - trap JUMP_IF_FALSE
   - null
   - int 3
   - s0 get
   - trap RET
-  - int 13
+  - int 1
   - trap JUMP
   - null
   - drop
@@ -88,7 +88,7 @@ Array: XXXXXXXX (60 item(s))
 - s0 set
 - int -7
 - s0 set drop drop drop drop drop
-- int 58
+- int 1
 - trap JUMP
 - null
 - int -3
@@ -116,7 +116,7 @@ Working stack: (4 word(s))
 - null
 - int 2
 - true
-- int 57
+- int 52
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
@@ -690,7 +690,7 @@ Working stack: (7 word(s))
 - int 5
 - int 1
 - true
-- int 12
+- int 6
 trap JUMP_IF_FALSE
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -1588,7 +1588,7 @@ Working stack: (4 word(s))
 - null
 - int 30
 - int 30
-- int 58
+- int 1
 trap JUMP
 sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))

@@ -10,16 +10,9 @@ AM_TESTS_ENVIRONMENT = export top_srcdir=$(top_srcdir); \
 	cp $(srcdir)/turtle.sal .;
 
 TESTS = \
-	average.yaml \
-	basic_block.yaml \
-	double_list.yaml \
-	map.yaml \
-	quote.yaml \
-	screen_graphics.yaml \
-	set.yaml \
-	stack.yaml \
-	string.yaml \
 	ackermann.sal \
+	average.sal \
+	basic_block.sal \
 	double_list.sal \
 	empty_loop.sal \
 	expr.sal \
@@ -28,28 +21,25 @@ TESTS = \
 	fizzbuzz.sal \
 	iter.sal \
 	map.sal \
+	map_asm.sal \
 	mutated_capture.sal \
+	quote.sal \
 	repeated_closure.sal \
 	screen_graphics.sal \
 	screen_levy-c.sal \
 	screen_turtle-demo.sal \
+	set.sal \
+	stack.sal \
+	string.sal \
 	sum_evens.sal \
 	two_double_closures.sal \
 	two_closures.sal \
 	$(EMPTY)
 
 RESULTS = \
-	average.yaml-expected.log \
-	basic_block.yaml-expected.log \
-	double_list.yaml-expected.log \
-	map.yaml-expected.log \
-	quote.yaml-expected.log \
-	screen_graphics.yaml-expected.log \
-	screen_graphics.yaml-expected.pbm \
-	set.yaml-expected.log \
-	stack.yaml-expected.log \
-	string.yaml-expected.log \
 	ackermann.sal-expected.log \
+	average.sal-expected.log \
+	basic_block.sal-expected.log \
 	double_list.sal-expected.log \
 	empty_loop.sal-expected.log \
 	expr.sal-expected.log \
@@ -58,7 +48,9 @@ RESULTS = \
 	fizzbuzz.sal-expected.log \
 	iter.sal-expected.log \
 	map.sal-expected.log \
+	map_asm.sal-expected.log \
 	mutated_capture.sal-expected.log \
+	quote.sal-expected.log \
 	repeated_closure.sal-expected.log \
 	screen_graphics.sal-expected.log \
 	screen_graphics.sal-expected.pbm \
@@ -66,6 +58,9 @@ RESULTS = \
 	screen_levy-c.sal-expected.pbm \
 	screen_turtle-demo.sal-expected.log \
 	screen_turtle-demo.sal-expected.pbm \
+	set.sal-expected.log \
+	stack.sal-expected.log \
+	string.sal-expected.log \
 	sum_evens.sal-expected.log \
 	two_double_closures.sal-expected.log \
 	two_closures.sal-expected.log \

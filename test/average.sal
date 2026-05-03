@@ -1,0 +1,9 @@
+let average = fn(l) {
+    let tot = 0.0
+    for e in l {
+        tot := tot + e
+    }
+    return tot / I2F(#l)
+}
+
+average([2.0, 5.0, 10.0, 20.0])

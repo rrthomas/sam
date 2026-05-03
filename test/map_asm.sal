@@ -1,0 +1,52 @@
+asm {
+    // Copy a array's only reference
+    trap new_map
+    trap copy
+    // Insert two items, then copy the array
+    13
+    1.0
+    -3
+    s0
+    get
+    set
+    42
+    2.0
+    -3
+    s0
+    get
+    set
+    -1
+    s0
+    get
+    trap copy
+    // Remove an item from one of the copies
+    null
+    1.0
+    -3
+    s0
+    get
+    set
+    // Replace an item in the same copy
+    28
+    2.0
+    -3
+    s0
+    get
+    set
+    // Iterate over the map, getting and discarding its values
+    -1
+    s0
+    get
+    trap iter
+    -1 // loop start
+    s0
+    get
+    trap next
+    null
+    eq
+    -7
+    trap jump_if_false
+    // Exit
+    0
+    halt
+}

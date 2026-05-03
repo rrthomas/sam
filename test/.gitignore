@@ -1,5 +1,4 @@
 *.sal.log
-*.yaml.log
 /*.trs
 /*-fixed.log
 /*-output.log
