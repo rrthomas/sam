@@ -18,8 +18,6 @@ TESTS = \
 	map.yaml \
 	quote.yaml \
 	screen_graphics.yaml \
-	screen_turtle-demo.yaml \
-	screen_levy-c.yaml \
 	set.yaml \
 	stack.yaml \
 	string.yaml \
@@ -35,6 +33,8 @@ TESTS = \
 	mutated_capture.sal \
 	repeated_closure.sal \
 	screen_graphics.sal \
+	screen_levy-c.sal \
+	screen_turtle-demo.sal \
 	sum_evens.sal \
 	two_double_closures.sal \
 	two_closures.sal \
@@ -50,10 +50,6 @@ RESULTS = \
 	quote.yaml-expected.log \
 	screen_graphics.yaml-expected.log \
 	screen_graphics.yaml-expected.pbm \
-	screen_turtle-demo.yaml-expected.log \
-	screen_turtle-demo.yaml-expected.pbm \
-	screen_levy-c.yaml-expected.log \
-	screen_levy-c.yaml-expected.pbm \
 	set.yaml-expected.log \
 	stack.yaml-expected.log \
 	string.yaml-expected.log \
@@ -70,13 +66,17 @@ RESULTS = \
 	repeated_closure.sal-expected.log \
 	screen_graphics.sal-expected.log \
 	screen_graphics.sal-expected.pbm \
+	screen_levy-c.sal-expected.log \
+	screen_levy-c.sal-expected.pbm \
+	screen_turtle-demo.sal-expected.log \
+	screen_turtle-demo.sal-expected.pbm \
 	sum_evens.sal-expected.log \
 	two_double_closures.sal-expected.log \
 	two_closures.sal-expected.log \
 	$(EMPTY)
 
 EXTRA_DIST = $(LOG_COMPILER) $(TESTS) $(RESULTS) \
-	turtle.yaml \
+	turtle.sal \
 	keyboard.sal \
 	audio.sal \
 	$(EMPTY)

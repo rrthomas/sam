@@ -1,0 +1,27 @@
+use turtle.sal
+
+init()
+
+// Move just down from top left of screen and point towards right
+turn(RAD(-90.0))
+go(I2F(DISPLAY_HEIGHT) / 4.0)
+turn(RAD(90.0))
+go(I2F(DISPLAY_WIDTH) / 4.0)
+pendown()
+
+let levy_c = fn(order, size) {
+    let sqrt2 = POW(2.0, 0.5)
+    if order == 0 {
+        go(size)
+    } else {
+        turn(RAD(-45.0))
+        order := order - 1
+        size := size / sqrt2
+        levy_c(order, size)
+        turn(RAD(90.0))
+        levy_c(order, size)
+        turn(RAD(-45.0))
+    }
+}
+
+levy_c(6, I2F(DISPLAY_WIDTH) / 2.0)

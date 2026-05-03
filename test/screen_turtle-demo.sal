@@ -1,0 +1,6 @@
+use turtle.sal
+
+init()
+pendown()
+turn(RAD(-45.0))
+go(500.0)

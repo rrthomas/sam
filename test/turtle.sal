@@ -1,0 +1,37 @@
+let pen_x = 0.0
+let pen_y = 0.0
+let pen_theta = 0.0
+let pen_color = 0
+let pen_drawing = false
+
+let penup = fn() {
+  pen_drawing := false
+}
+
+let pendown = fn() {
+  pen_drawing := true
+  SETDOT(F2I(pen_x), F2I(pen_y), pen_color)
+}
+
+let init = fn() {
+  CLEARSCREEN(BLACK)
+  pen_x := 0.0
+  pen_y := 0.0
+  pen_theta := 0.0
+  pen_color := WHITE
+  penup()
+}
+
+let turn = fn(angle) {
+  pen_theta := pen_theta - angle
+}
+
+let go = fn(distance) {
+  let new_pen_x = pen_x + COS(pen_theta) * distance
+  let new_pen_y = pen_y + SIN(pen_theta) * distance
+  if pen_drawing {
+    DRAWLINE(F2I(pen_x), F2I(pen_y), F2I(new_pen_x), F2I(new_pen_y), pen_color)
+  }
+  pen_x := new_pen_x
+  pen_y := new_pen_y
+}

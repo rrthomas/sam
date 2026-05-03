@@ -200,6 +200,12 @@ type Declaration struct {
 	Value    *Expression `@@`
 }
 
+type Use struct {
+	Pos lexer.Position
+
+	Path *[]string `"use" @Ident ("." @Ident)*`
+}
+
 type Assignment struct {
 	Pos lexer.Position
 
@@ -211,6 +217,7 @@ type Statement struct {
 	Pos lexer.Position
 
 	Empty        bool           `  @";"`
+	Use          *Use           `| @@ ";"`
 	Assignment   *Assignment    `| @@ ";"`
 	Declarations *[]Declaration `| (@@ ";")+`
 }
@@ -739,6 +746,12 @@ func (s *Statement) Compile(ctx *Scope) {
 		for _, d := range *s.Declarations {
 			d.Compile(ctx)
 		}
+	} else if s.Use != nil {
+		filename := strings.Join(*s.Use.Path, ".")
+		if src, err := os.ReadFile(filename); err == nil {
+			body := parseSource(string(src))
+			body.Compile(ctx)
+		}
 	} else {
 		panic("invalid Statement")
 	}
@@ -784,7 +797,7 @@ func (b *Body) Compile(ctx *Scope) {
 	if b.Statements != nil {
 		for i, s := range *b.Statements {
 			s.Compile(ctx)
-			if s.Declarations == nil && (i < len(*b.Statements)-1 || b.Terminator != nil) {
+			if s.Assignment != nil && (i < len(*b.Statements)-1 || b.Terminator != nil) {
 				ctx.assembleInst("drop")
 			}
 		}
@@ -1155,11 +1168,16 @@ func (ctx *Scope) assembleLoop(bodyCtx *Scope) {
 	bodyCtx.loop.resolveExitJumps()
 }
 
-func Sal(src string, ast bool) libsam.Blob {
+func parseSource(src string) *Body {
 	body, err := parser.ParseString("", src)
 	if err != nil {
 		panic(fmt.Errorf("error in source %v", err))
 	}
+	return body
+}
+
+func Sal(src string, ast bool) libsam.Blob {
+	body := parseSource(src)
 
 	if ast {
 		if err := json.NewEncoder(os.Stdout).Encode(body); err != nil {

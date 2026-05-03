@@ -1,0 +1,6032 @@
+Array: XXXXXXXX (74 item(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- s0
+- int 5
+- int 2
+- array XXXXXXXX (8 items)
+  - false
+  - _one s0 get two s0 get
+  - int 1
+  - _two s0 get get
+  - int 0
+  - int -3
+  - s0 extract get set
+  - trap RET
+- trap NEW_CLOSURE
+- s0
+- int 5
+- s0
+- int 1
+- s0
+- int 2
+- s0
+- int 4
+- int 8
+- array XXXXXXXX (29 items)
+  - true
+  - _one s0 get two s0 get
+  - int 1
+  - _two s0 get get
+  - int 0
+  - int -3
+  - s0 extract get set drop two s0 get
+  - int 3
+  - _two s0 get get
+  - int 2
+  - int -3
+  - s0 extract get get
+  - trap F2I
+  - two s0 get
+  - int 5
+  - _two s0 get get
+  - int 4
+  - int -3
+  - s0 extract get get
+  - trap F2I
+  - two s0 get
+  - int 7
+  - _two s0 get get
+  - int 6
+  - int -3
+  - s0 extract get get
+  - trap SETDOT
+  - null
+  - trap RET
+- trap NEW_CLOSURE
+- s0
+- int 1
+- s0
+- int 2
+- s0
+- int 3
+- s0
+- int 4
+- s0
+- int 6
+- int 10
+- array XXXXXXXX (38 items)
+  - trap BLACK
+  - trap CLEARSCREEN
+  - null
+  - drop
+  - float 0.000000
+  - _one s0 get two s0 get
+  - int 1
+  - _two s0 get get
+  - int 0
+  - int -3
+  - s0 extract get set drop
+  - float 0.000000
+  - _one s0 get two s0 get
+  - int 3
+  - _two s0 get get
+  - int 2
+  - int -3
+  - s0 extract get set drop
+  - float 0.000000
+  - _one s0 get two s0 get
+  - int 5
+  - _two s0 get get
+  - int 4
+  - int -3
+  - s0 extract get set drop
+  - trap WHITE
+  - _one s0 get two s0 get
+  - int 7
+  - _two s0 get get
+  - int 6
+  - int -3
+  - s0 extract get set drop zero two s0 get
+  - int 9
+  - _two s0 get get
+  - int 8
+  - int -3
+  - s0 extract get get new call
+  - trap RET
+- trap NEW_CLOSURE
+- s0
+- int 3
+- int 2
+- array XXXXXXXX (14 items)
+  - two s0 get
+  - int 1
+  - _two s0 get get
+  - int 0
+  - int -3
+  - s0 extract get get
+  - int 3
+  - s0 get neg add _one s0 get two s0 get
+  - int 1
+  - _two s0 get get
+  - int 0
+  - int -3
+  - s0 extract get set
+  - trap RET
+- trap NEW_CLOSURE
+- s0
+- int 1
+- s0
+- int 3
+- s0
+- int 2
+- s0
+- int 5
+- s0
+- int 4
+- int 10
+- array XXXXXXXX (84 items)
+  - two s0 get
+  - int 1
+  - _two s0 get get
+  - int 0
+  - int -3
+  - s0 extract get get two s0 get
+  - int 3
+  - _two s0 get get
+  - int 2
+  - int -3
+  - s0 extract get get
+  - trap COS
+  - int 3
+  - s0 get mul add two s0 get
+  - int 5
+  - _two s0 get get
+  - int 4
+  - int -3
+  - s0 extract get get two s0 get
+  - int 3
+  - _two s0 get get
+  - int 2
+  - int -3
+  - s0 extract get get
+  - trap SIN
+  - int 3
+  - s0 get mul add two s0 get
+  - int 7
+  - _two s0 get get
+  - int 6
+  - int -3
+  - s0 extract get get
+  - int 67
+  - trap JUMP_IF_FALSE
+  - null
+  - two s0 get
+  - int 1
+  - _two s0 get get
+  - int 0
+  - int -3
+  - s0 extract get get
+  - trap F2I
+  - two s0 get
+  - int 5
+  - _two s0 get get
+  - int 4
+  - int -3
+  - s0 extract get get
+  - trap F2I
+  - int 4
+  - s0 get
+  - trap F2I
+  - int 5
+  - s0 get
+  - trap F2I
+  - two s0 get
+  - int 9
+  - _two s0 get get
+  - int 8
+  - int -3
+  - s0 extract get get
+  - trap DRAWLINE
+  - null
+  - int -2
+  - s0 set
+  - int 68
+  - trap JUMP
+  - null
+  - drop
+  - int 4
+  - s0 get _one s0 get two s0 get
+  - int 1
+  - _two s0 get get
+  - int 0
+  - int -3
+  - s0 extract get set drop
+  - int 5
+  - s0 get _one s0 get two s0 get
+  - int 5
+  - _two s0 get get
+  - int 4
+  - int -3
+  - s0 extract get set
+  - trap RET
+- trap NEW_CLOSURE
+- zero
+- int 8
+- s0 get new call
+- drop zero
+- int 7
+- s0 get new call
+- drop
+- float 45.000000
+- neg
+- trap RAD
+- int 1
+- int 9
+- s0 get new call
+- drop
+- float 500.000000
+- int 1
+- int 10
+- s0 get new call
+- int -12
+- s0 set drop drop drop drop drop drop drop drop drop
+- drop halt
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
+Working stack: (0 word(s))
+null
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- null
+float
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- null
+- float 0.000000
+float
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- null
+- float 0.000000
+- float 0.000000
+float
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+bool
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- array XXXXXXXX (7 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- array XXXXXXXX (8 items)
+- int 5
+int
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- array XXXXXXXX (9 items)
+- int 5
+- int 2
+blob
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- array XXXXXXXX (10 items)
+- int 5
+- int 2
+- array XXXXXXXX (8 items)
+trap NEW_CLOSURE
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (8 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (9 items)
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (10 items)
+- int 5
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (11 items)
+- int 5
+- array XXXXXXXX (11 items)
+- int 1
+s0
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (12 items)
+- int 5
+- array XXXXXXXX (12 items)
+- int 1
+- array XXXXXXXX (12 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (13 items)
+- int 5
+- array XXXXXXXX (13 items)
+- int 1
+- array XXXXXXXX (13 items)
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (14 items)
+- int 5
+- array XXXXXXXX (14 items)
+- int 1
+- array XXXXXXXX (14 items)
+- int 2
+- array XXXXXXXX (14 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (15 items)
+- int 5
+- array XXXXXXXX (15 items)
+- int 1
+- array XXXXXXXX (15 items)
+- int 2
+- array XXXXXXXX (15 items)
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (16 items)
+- int 5
+- array XXXXXXXX (16 items)
+- int 1
+- array XXXXXXXX (16 items)
+- int 2
+- array XXXXXXXX (16 items)
+- int 4
+- int 8
+blob
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- array XXXXXXXX (17 items)
+- int 5
+- array XXXXXXXX (17 items)
+- int 1
+- array XXXXXXXX (17 items)
+- int 2
+- array XXXXXXXX (17 items)
+- int 4
+- int 8
+- array XXXXXXXX (29 items)
+trap NEW_CLOSURE
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (9 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (10 items)
+- int 1
+s0
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (11 items)
+- int 1
+- array XXXXXXXX (11 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (12 items)
+- int 1
+- array XXXXXXXX (12 items)
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (13 items)
+- int 1
+- array XXXXXXXX (13 items)
+- int 2
+- array XXXXXXXX (13 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (14 items)
+- int 1
+- array XXXXXXXX (14 items)
+- int 2
+- array XXXXXXXX (14 items)
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (15 items)
+- int 1
+- array XXXXXXXX (15 items)
+- int 2
+- array XXXXXXXX (15 items)
+- int 3
+- array XXXXXXXX (15 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (16 items)
+- int 1
+- array XXXXXXXX (16 items)
+- int 2
+- array XXXXXXXX (16 items)
+- int 3
+- array XXXXXXXX (16 items)
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (17 items)
+- int 1
+- array XXXXXXXX (17 items)
+- int 2
+- array XXXXXXXX (17 items)
+- int 3
+- array XXXXXXXX (17 items)
+- int 4
+- array XXXXXXXX (17 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 18, ir = XXXXXXXX
+Working stack: (18 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (18 items)
+- int 1
+- array XXXXXXXX (18 items)
+- int 2
+- array XXXXXXXX (18 items)
+- int 3
+- array XXXXXXXX (18 items)
+- int 4
+- array XXXXXXXX (18 items)
+- int 6
+int
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 19, ir = XXXXXXXX
+Working stack: (19 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (19 items)
+- int 1
+- array XXXXXXXX (19 items)
+- int 2
+- array XXXXXXXX (19 items)
+- int 3
+- array XXXXXXXX (19 items)
+- int 4
+- array XXXXXXXX (19 items)
+- int 6
+- int 10
+blob
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 20, ir = XXXXXXXX
+Working stack: (20 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (20 items)
+- int 1
+- array XXXXXXXX (20 items)
+- int 2
+- array XXXXXXXX (20 items)
+- int 3
+- array XXXXXXXX (20 items)
+- int 4
+- array XXXXXXXX (20 items)
+- int 6
+- int 10
+- array XXXXXXXX (38 items)
+trap NEW_CLOSURE
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (11 items)
+- int 3
+int
+sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (12 items)
+- int 3
+- int 2
+blob
+sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (13 items)
+- int 3
+- int 2
+- array XXXXXXXX (14 items)
+trap NEW_CLOSURE
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+s0
+sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (11 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (12 items)
+- int 1
+s0
+sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (13 items)
+- int 1
+- array XXXXXXXX (13 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (14 items)
+- int 1
+- array XXXXXXXX (14 items)
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (15 items)
+- int 1
+- array XXXXXXXX (15 items)
+- int 3
+- array XXXXXXXX (15 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (16 items)
+- int 1
+- array XXXXXXXX (16 items)
+- int 3
+- array XXXXXXXX (16 items)
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (17 items)
+- int 1
+- array XXXXXXXX (17 items)
+- int 3
+- array XXXXXXXX (17 items)
+- int 2
+- array XXXXXXXX (17 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 18, ir = XXXXXXXX
+Working stack: (18 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (18 items)
+- int 1
+- array XXXXXXXX (18 items)
+- int 3
+- array XXXXXXXX (18 items)
+- int 2
+- array XXXXXXXX (18 items)
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 19, ir = XXXXXXXX
+Working stack: (19 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (19 items)
+- int 1
+- array XXXXXXXX (19 items)
+- int 3
+- array XXXXXXXX (19 items)
+- int 2
+- array XXXXXXXX (19 items)
+- int 5
+- array XXXXXXXX (19 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 20, ir = XXXXXXXX
+Working stack: (20 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (20 items)
+- int 1
+- array XXXXXXXX (20 items)
+- int 3
+- array XXXXXXXX (20 items)
+- int 2
+- array XXXXXXXX (20 items)
+- int 5
+- array XXXXXXXX (20 items)
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 52, s0 = XXXXXXXX, sp = 21, ir = XXXXXXXX
+Working stack: (21 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (21 items)
+- int 1
+- array XXXXXXXX (21 items)
+- int 3
+- array XXXXXXXX (21 items)
+- int 2
+- array XXXXXXXX (21 items)
+- int 5
+- array XXXXXXXX (21 items)
+- int 4
+- int 10
+blob
+sam_run: p0 = XXXXXXXX, pc = 53, s0 = XXXXXXXX, sp = 22, ir = XXXXXXXX
+Working stack: (22 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- array XXXXXXXX (22 items)
+- int 1
+- array XXXXXXXX (22 items)
+- int 3
+- array XXXXXXXX (22 items)
+- int 2
+- array XXXXXXXX (22 items)
+- int 5
+- array XXXXXXXX (22 items)
+- int 4
+- int 10
+- array XXXXXXXX (84 items)
+trap NEW_CLOSURE
+sam_run: p0 = XXXXXXXX, pc = 54, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+zero
+sam_run: p0 = XXXXXXXX, pc = 55, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- int 8
+s0
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- int 8
+- array XXXXXXXX (14 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+new
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+call
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+trap BLACK
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4278190080
+trap CLEARSCREEN
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+null
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+float
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+_one
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- int -1
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+two
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 1
+_two
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 1
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 1
+int
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 1
+- int 0
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 1
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+float
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+_one
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- int -1
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+two
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+_two
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 2
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 2
+- int 2
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 2
+- int 2
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 2
+- int 2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 2
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+float
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+_one
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- int -1
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+two
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 5
+_two
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 5
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 5
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 5
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+int
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 4
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 4
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 3
+- int 4
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+- float 0.000000
+- int 3
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 0.000000
+drop
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+trap WHITE
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+_one
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int -1
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+two
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+- int 7
+_two
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+- int 7
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+- int 7
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+- int 7
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+- int 4
+- int 6
+int
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+- int 4
+- int 6
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- array XXXXXXXX (10 items)
+- int 4
+- int 6
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- int 4
+- int 6
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+- int 4294967295
+- int 4
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 4294967295
+drop
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+zero
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+two
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- int 2
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+- int 9
+_two
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+- int 9
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+- int 9
+- int -2
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+- int 9
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+- int 6
+int
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+- int 6
+- int 8
+int
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+- int 6
+- int 8
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- array XXXXXXXX (10 items)
+- int 6
+- int 8
+- int -3
+- array XXXXXXXX (9 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- int 6
+- int 8
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- int 6
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- closure XXXXXXXX
+new
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+call
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+bool
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+_one
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- int -1
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+two
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+- int 1
+_two
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+- int 1
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+- int 1
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+- int 1
+- array XXXXXXXX (2 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+- int 5
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+- int 5
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+- int 5
+- int 0
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- array XXXXXXXX (2 items)
+- int 5
+- int 0
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- int 5
+- int 0
+- array XXXXXXXX (2 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+- false
+- int 5
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (4 items)
+- array XXXXXXXX (38 items)
+- array XXXXXXXX (2 items)
+- false
+trap RET
+sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- false
+trap RET
+sam_run: p0 = XXXXXXXX, pc = 57, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- false
+drop
+sam_run: p0 = XXXXXXXX, pc = 57, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+zero
+sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- int 7
+s0
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- int 7
+- array XXXXXXXX (14 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+new
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+call
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+bool
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+_one
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- int -1
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+two
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+- int 1
+_two
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+- int 1
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+- int 1
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+- int 1
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+- int 5
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+- int 5
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+- int 5
+- int 0
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- array XXXXXXXX (8 items)
+- int 5
+- int 0
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- int 5
+- int 0
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+- true
+- int 5
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- true
+drop
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+two
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 2
+- array XXXXXXXX (5 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+- int 3
+_two
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+- int 3
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+- int 3
+- int -2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+- int 1
+int
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+- int 1
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+- int 1
+- int 2
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- array XXXXXXXX (8 items)
+- int 1
+- int 2
+- int -3
+- array XXXXXXXX (8 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 1
+- int 2
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 1
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- float 0.000000
+trap F2I
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+two
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 2
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+- int 5
+_two
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+- int 5
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+- int 5
+- int -2
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+- int 5
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+- int 2
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+- int 2
+- int 4
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- array XXXXXXXX (8 items)
+- int 2
+- int 4
+- int -3
+- array XXXXXXXX (9 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 2
+- int 4
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 2
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- float 0.000000
+trap F2I
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+two
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+- int 7
+_two
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+- int 7
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+- int 7
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+- int 7
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+- int 4
+- int 6
+int
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+- int 4
+- int 6
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- array XXXXXXXX (8 items)
+- int 4
+- int 6
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- int 4
+- int 6
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- int 4
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- int 0
+- int 0
+- int 4294967295
+trap SETDOT
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+null
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (8 items)
+- null
+trap RET
+sam_run: p0 = XXXXXXXX, pc = 60, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 61, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+float
+sam_run: p0 = XXXXXXXX, pc = 62, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 45.000000
+neg
+sam_run: p0 = XXXXXXXX, pc = 63, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -45.000000
+trap RAD
+sam_run: p0 = XXXXXXXX, pc = 64, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+int
+sam_run: p0 = XXXXXXXX, pc = 65, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+- int 1
+int
+sam_run: p0 = XXXXXXXX, pc = 66, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+- int 1
+- int 9
+s0
+sam_run: p0 = XXXXXXXX, pc = 66, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+- int 1
+- int 9
+- array XXXXXXXX (15 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 66, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+- int 1
+- closure XXXXXXXX
+new
+sam_run: p0 = XXXXXXXX, pc = 66, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+call
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+two
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- int 2
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+- int 1
+_two
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+- int 1
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+- int 1
+- int -2
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+- int 1
+- array XXXXXXXX (2 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+- int 3
+int
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+- int 3
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- array XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+- array XXXXXXXX (9 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- int 3
+- int 0
+- array XXXXXXXX (2 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- int 3
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.000000
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.000000
+- int 3
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.000000
+- float -0.785398
+neg
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.000000
+- float 0.785398
+add
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+_one
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- int -1
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+two
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- int 2
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+- int 1
+_two
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+- int 1
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+- int 1
+- int -2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+- int 1
+- array XXXXXXXX (2 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+- int 3
+int
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+- int 3
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- array XXXXXXXX (2 items)
+- int 3
+- int 0
+- int -3
+- array XXXXXXXX (11 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- int 3
+- int 0
+- array XXXXXXXX (2 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+- float 0.785398
+- int 3
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (2 items)
+- float -0.785398
+- float 0.785398
+trap RET
+sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 0.785398
+drop
+sam_run: p0 = XXXXXXXX, pc = 68, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+float
+sam_run: p0 = XXXXXXXX, pc = 69, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+int
+sam_run: p0 = XXXXXXXX, pc = 70, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+- int 1
+int
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+- int 1
+- int 10
+s0
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+- int 1
+- int 10
+- array XXXXXXXX (15 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+- int 1
+- closure XXXXXXXX
+new
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+call
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+two
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- int 2
+- array XXXXXXXX (6 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 2, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+- int 1
+_two
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int -2
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 3, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+- int 1
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 4, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+- int 1
+int
+sam_run: p0 = XXXXXXXX, pc = 5, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+- int -3
+- array XXXXXXXX (9 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- int 1
+- int 0
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- int 1
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+two
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+_two
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 8, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+int
+sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 2
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 2
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- int 3
+- int 2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- int 3
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 12, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- float 0.785398
+trap COS
+sam_run: p0 = XXXXXXXX, pc = 13, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- float 0.707107
+int
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- float 0.707107
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- float 0.707107
+- int 3
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- float 0.707107
+- float 500.000000
+mul
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 0.000000
+- float 353.553385
+add
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+two
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- int 2
+- array XXXXXXXX (7 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 15, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+_two
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- int -2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 16, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 17, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+- int -3
+- array XXXXXXXX (10 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- int 2
+- int 4
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- int 2
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+two
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- int 2
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+_two
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int -2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+int
+sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 2
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- array XXXXXXXX (10 items)
+- int 3
+- int 2
+- int -3
+- array XXXXXXXX (11 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- int 3
+- int 2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 24, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- int 3
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- float 0.785398
+trap SIN
+sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- float 0.707107
+int
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- float 0.707107
+- int 3
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- float 0.707107
+- int 3
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- float 0.707107
+- float 500.000000
+mul
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 0.000000
+- float 353.553385
+add
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+two
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- int 2
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 7
+_two
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 7
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 7
+- int -2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 7
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 30, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+int
+sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- int 6
+int
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- int 6
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- int 6
+- int -3
+- array XXXXXXXX (11 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- int 5
+- int 6
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- int 5
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 33, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- true
+int
+sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- true
+- int 67
+trap JUMP_IF_FALSE
+sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+null
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+two
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 36, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 2
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+- int 1
+_two
+sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+- int 1
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+- int 1
+- int -2
+- array XXXXXXXX (11 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 38, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+- int 1
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 39, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+- int 1
+int
+sam_run: p0 = XXXXXXXX, pc = 40, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+- int -3
+- array XXXXXXXX (12 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 1
+- int 0
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 41, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 1
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- float 0.000000
+trap F2I
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+two
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 43, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 44, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+- int 5
+_two
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+- int 5
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+- int 5
+- int -2
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 45, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+- int 5
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 46, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+- int -3
+- array XXXXXXXX (13 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 2
+- int 4
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 48, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 2
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- float 0.000000
+trap F2I
+sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 4
+- array XXXXXXXX (11 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 52, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- float 353.553385
+trap F2I
+sam_run: p0 = XXXXXXXX, pc = 53, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+int
+sam_run: p0 = XXXXXXXX, pc = 54, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 54, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 5
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 55, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- float 353.553385
+trap F2I
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+two
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- int 2
+- array XXXXXXXX (13 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 57, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+- int 9
+_two
+sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+- int 9
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+- int 9
+- int -2
+- array XXXXXXXX (15 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+- int 9
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 60, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+- int 4
+- int 8
+int
+sam_run: p0 = XXXXXXXX, pc = 61, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+- int 4
+- int 8
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 61, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- array XXXXXXXX (10 items)
+- int 4
+- int 8
+- int -3
+- array XXXXXXXX (16 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 61, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- int 4
+- int 8
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 61, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- int 4
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 62, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 0
+- int 0
+- int 354
+- int 354
+- int 4294967295
+trap DRAWLINE
+sam_run: p0 = XXXXXXXX, pc = 63, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+null
+sam_run: p0 = XXXXXXXX, pc = 64, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 65, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- null
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 65, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- null
+- int -2
+- array XXXXXXXX (10 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 66, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+int
+sam_run: p0 = XXXXXXXX, pc = 67, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+- int 68
+trap JUMP
+sam_run: p0 = XXXXXXXX, pc = 69, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- null
+drop
+sam_run: p0 = XXXXXXXX, pc = 70, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+int
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- int 4
+s0
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- int 4
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+_one
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int -1
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+two
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 71, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int 2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 72, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 1
+_two
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 1
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 1
+- int -2
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 1
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 74, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 1
+int
+sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+int
+sam_run: p0 = XXXXXXXX, pc = 76, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 76, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 1
+- int 0
+- int -3
+- array XXXXXXXX (13 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 76, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int 1
+- int 0
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 76, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int 1
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 76, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+drop
+sam_run: p0 = XXXXXXXX, pc = 77, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+int
+sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- int 5
+s0
+sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- int 5
+- array XXXXXXXX (8 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+_one
+sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int -1
+s0
+sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int -1
+- array XXXXXXXX (9 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+two
+sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int 2
+s0
+sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int 2
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 79, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+int
+sam_run: p0 = XXXXXXXX, pc = 80, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+_two
+sam_run: p0 = XXXXXXXX, pc = 80, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- int -2
+s0
+sam_run: p0 = XXXXXXXX, pc = 80, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- int -2
+- array XXXXXXXX (12 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 80, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 5
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 81, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 2
+int
+sam_run: p0 = XXXXXXXX, pc = 82, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+int
+sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+- int -3
+s0
+sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- array XXXXXXXX (10 items)
+- int 2
+- int 4
+- int -3
+- array XXXXXXXX (13 items)
+extract
+sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int 2
+- int 4
+- array XXXXXXXX (10 items)
+get
+sam_run: p0 = XXXXXXXX, pc = 83, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- int 2
+- array XXXXXXXX (12 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 84, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (74 items)
+- array XXXXXXXX (10 items)
+- float 500.000000
+- float 353.553385
+- float 353.553385
+- float 353.553385
+trap RET
+sam_run: p0 = XXXXXXXX, pc = 72, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
+Working stack: (12 word(s))
+- null
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 353.553385
+int
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 13, ir = XXXXXXXX
+Working stack: (13 word(s))
+- null
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 353.553385
+- int -12
+s0
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 353.553385
+- int -12
+- array XXXXXXXX (14 items)
+set
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
+Working stack: (11 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+drop
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
+Working stack: (10 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+drop
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
+Working stack: (9 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+drop
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+drop
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+drop
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+- true
+drop
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
+Working stack: (5 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 0.785398
+- int 4294967295
+drop
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
+Working stack: (4 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+- float 0.785398
+drop
+sam_run: p0 = XXXXXXXX, pc = 73, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
+Working stack: (3 word(s))
+- float 353.553385
+- float 353.553385
+- float 353.553385
+drop
+sam_run: p0 = XXXXXXXX, pc = 74, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
+Working stack: (2 word(s))
+- float 353.553385
+- float 353.553385
+drop
+sam_run: p0 = XXXXXXXX, pc = 74, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+Working stack: (1 word(s))
+- float 353.553385
+halt
+
+
+sam_run returns: halt with result float 353.553385
+Array: XXXXXXXX (1 item(s))
+- float 353.553385
