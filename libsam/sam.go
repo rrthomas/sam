@@ -50,8 +50,8 @@ var ONE_INST_SHIFT = C.SAM_ONE_INST_SHIFT
 var WORD_BIT = C.SAM_WORD_BIT
 var WORD_MASK = Uword(((1 << WORD_BIT) - 1))
 
-type Array struct {
-	array *C.sam_blob_t
+type Blob struct {
+	blob *C.sam_blob_t
 }
 
 type State struct {
@@ -59,53 +59,53 @@ type State struct {
 	result Word
 }
 
-func (state *State) Stack() Array {
-	return Array{state.state.s0}
+func (state *State) Stack() Blob {
+	return Blob{state.state.s0}
 }
 
-func NewArray() Array {
-	arr := Array{}
-	C.sam_array_new(&arr.array)
-	return arr
+func NewArray() Blob {
+	blob := Blob{}
+	C.sam_array_new(&blob.blob)
+	return blob
 }
 
-func NewString(str string) Array {
-	arr := Array{}
+func NewString(str string) Blob {
+	blob := Blob{}
 	cstr := C.CString(str)
-	C.sam_string_new(&arr.array, cstr, C.size_t(len(str)))
-	return arr
+	C.sam_string_new(&blob.blob, cstr, C.size_t(len(str)))
+	return blob
 }
 func NewState() State {
 	state := C.sam_state_new()
-	var arr *C.sam_blob_t
-	C.sam_array_new(&arr)
-	state.s0 = arr
+	var blob *C.sam_blob_t
+	C.sam_array_new(&blob)
+	state.s0 = blob
 	return State{state: state}
 }
 
-func (s *Array) Sp() Uword {
+func (s *Blob) Sp() Uword {
 	var arr *C.sam_array_t
-	C.sam_array_from_blob(s.array, &arr)
+	C.sam_array_from_blob(s.blob, &arr)
 	return arr.sp
 }
 
-func (arr *Array) Peek(addr Uword) (int, Uword) {
+func (arr *Blob) Peek(addr Uword) (int, Uword) {
 	var val Uword
-	res := C.sam_array_peek(arr.array, addr, &val)
+	res := C.sam_array_peek(arr.blob, addr, &val)
 	return int(res), val
 }
 
-func (arr *Array) Poke(addr Uword, val Uword) int {
-	return int(C.sam_array_poke(arr.array, addr, val))
+func (arr *Blob) Poke(addr Uword, val Uword) int {
+	return int(C.sam_array_poke(arr.blob, addr, val))
 }
 
-func (arr *Array) Push(val Word) int {
-	return int(C.sam_array_push(arr.array, val))
+func (arr *Blob) Push(val Word) int {
+	return int(C.sam_array_push(arr.blob, val))
 }
 
-func MakeInstArray(a Array) Word {
+func MakeInstArray(a Blob) Word {
 	var inst Word
-	if res := C.sam_make_inst_blob(&inst, a.array); res != ERROR_OK {
+	if res := C.sam_make_inst_blob(&inst, a.blob); res != ERROR_OK {
 		panic("invalid array")
 	}
 	return inst
@@ -151,39 +151,39 @@ func MakeInstInsts(insts Uword) Word {
 	return inst
 }
 
-func (arr *Array) PushWord(w Word) int {
-	return int(C.sam_array_push(arr.array, w))
+func (arr *Blob) PushWord(w Word) int {
+	return int(C.sam_array_push(arr.blob, w))
 }
 
-func (arr *Array) PushArray(a Array) int {
-	return int(C.sam_array_push(arr.array, MakeInstArray(a)))
+func (arr *Blob) PushBlob(a Blob) int {
+	return int(C.sam_array_push(arr.blob, MakeInstArray(a)))
 }
 
-func (arr *Array) PushInt(i Word) int {
-	return int(C.sam_array_push(arr.array, MakeInstInt(i)))
+func (arr *Blob) PushInt(i Word) int {
+	return int(C.sam_array_push(arr.blob, MakeInstInt(i)))
 }
 
-func (arr *Array) PushFloat(f float64) int {
-	return int(C.sam_array_push(arr.array, MakeInstFloat(f)))
+func (arr *Blob) PushFloat(f float64) int {
+	return int(C.sam_array_push(arr.blob, MakeInstFloat(f)))
 }
 
-func (arr *Array) PushAtom(atomType Uword, operand Uword) int {
-	return int(C.sam_array_push(arr.array, MakeInstAtom(atomType, operand)))
+func (arr *Blob) PushAtom(atomType Uword, operand Uword) int {
+	return int(C.sam_array_push(arr.blob, MakeInstAtom(atomType, operand)))
 }
 
-func (arr *Array) PushTrap(function Uword) int {
-	return int(C.sam_array_push(arr.array, MakeInstTrap(function)))
+func (arr *Blob) PushTrap(function Uword) int {
+	return int(C.sam_array_push(arr.blob, MakeInstTrap(function)))
 }
 
-func (arr *Array) PushInsts(insts Uword) int {
-	return int(C.sam_array_push(arr.array, MakeInstInsts(insts)))
+func (arr *Blob) PushInsts(insts Uword) int {
+	return int(C.sam_array_push(arr.blob, MakeInstInsts(insts)))
 }
 
-func Run(state *State, code *Array) Word {
-	state.state.p0 = code.array
+func Run(state *State, code *Blob) Word {
+	state.state.p0 = code.blob
 	res := C.sam_run(state.state)
 	if res == ERROR_OK {
-		blob := state.Stack().array
+		blob := state.Stack().blob
 		var array *C.sam_array_t
 		C.sam_array_from_blob(blob, &array)
 		var val Uword
@@ -228,8 +228,8 @@ func SetDebug(flag bool) {
 	}
 }
 
-func (arr *Array) Print() {
-	C.sam_print_array(arr.array)
+func (arr *Blob) Print() {
+	C.sam_print_array(arr.blob)
 }
 
 func DumpScreen(file string) {
@@ -291,6 +291,7 @@ func (state *State) ErrorMessage(code Word) string {
 		goRes := C.GoString(res)
 		msg := "halt with result"
 		if (state.result & C.SAM_BLOB_TAG_MASK) == C.SAM_BLOB_TAG {
+			// FIXME: deal with other blob types
 			arr := state.result & ^C.SAM_BLOB_TAG_MASK
 			if len(goRes) == 0 {
 				goRes = "(empty array)\n"

@@ -26,14 +26,14 @@ import (
 // FIXME: check all return codes from libsam and panic on error
 // FIXME: separate assembler in this module from assembler in assembler.go
 type assembler struct {
-	stack  libsam.Array
+	array  libsam.Blob
 	insts  libsam.Uword
 	nInsts uint
 }
 
 func (a *assembler) flushInstructions() {
 	if a.nInsts > 0 {
-		a.stack.PushInsts(a.insts)
+		a.array.PushInsts(a.insts)
 	}
 	a.nInsts = 0
 	a.insts = 0
@@ -52,12 +52,12 @@ func (a *assembler) addInstruction(opcode libsam.Instruction) {
 
 func (a *assembler) addTrap(function libsam.Uword) {
 	a.flushInstructions()
-	a.stack.PushTrap(function)
+	a.array.PushTrap(function)
 }
 
 func (a *assembler) addNull() {
 	a.flushInstructions()
-	a.stack.PushAtom(libsam.ATOM_NULL, 0)
+	a.array.PushAtom(libsam.ATOM_NULL, 0)
 }
 
 func (a *assembler) addBool(f bool) {
@@ -68,22 +68,22 @@ func (a *assembler) addBool(f bool) {
 	} else {
 		boolVal = libsam.Uword(libsam.FALSE)
 	}
-	a.stack.PushAtom(libsam.ATOM_BOOL, boolVal)
+	a.array.PushAtom(libsam.ATOM_BOOL, boolVal)
 }
 
 func (a *assembler) addInt(int libsam.Word) {
 	a.flushInstructions()
-	a.stack.PushInt(int)
+	a.array.PushInt(int)
 }
 
 func (a *assembler) addFloat(float float64) {
 	a.flushInstructions()
-	a.stack.PushFloat(float)
+	a.array.PushFloat(float)
 }
 
-func (a *assembler) addStack(stack libsam.Array) {
+func (a *assembler) addBlob(blob libsam.Blob) {
 	a.flushInstructions()
-	a.stack.PushArray(stack)
+	a.array.PushBlob(blob)
 }
 
 func (a *assembler) addSingleInstruction(opcode libsam.Instruction) {

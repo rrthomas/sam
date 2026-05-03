@@ -645,16 +645,16 @@ func (ctx *Scope) compileIf(cond compiler, then compiler, else_ compiler) {
 	}
 	cond(ctx)
 	ctx.assembleInt(0) // space for jump target
-	ifJumpAddr := libsam.Uword(ctx.frame.asm.stack.Sp() - 1)
+	ifJumpAddr := libsam.Uword(ctx.frame.asm.array.Sp() - 1)
 	ctx.assembleTrap("jump_if_false")
 	ifJumpSp := ctx.frame.sp
 	then(ctx)
 	var thenJumpAddr libsam.Uword
 	ctx.assembleInt(0) // space for jump target
-	thenJumpAddr = libsam.Uword(ctx.frame.asm.stack.Sp() - 1)
+	thenJumpAddr = libsam.Uword(ctx.frame.asm.array.Sp() - 1)
 	ctx.assembleTrap("jump")
 	ctx.frame.asm.flushInstructions()
-	ctx.frame.asm.stack.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.stack.Sp()))))
+	ctx.frame.asm.array.Poke(ifJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.array.Sp()))))
 	ctx.frame.sp = ifJumpSp
 	if else_ != nil {
 		else_(ctx)
@@ -662,7 +662,7 @@ func (ctx *Scope) compileIf(cond compiler, then compiler, else_ compiler) {
 		ctx.assembleNull()
 	}
 	ctx.frame.asm.flushInstructions()
-	ctx.frame.asm.stack.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.stack.Sp()))))
+	ctx.frame.asm.array.Poke(thenJumpAddr, libsam.Uword(libsam.MakeInstInt(libsam.Word(ctx.frame.asm.array.Sp()))))
 }
 
 func (ctx *Scope) compileIfs(il *[]If, fe *Block) {
@@ -807,7 +807,7 @@ func (f *Function) Compile(ctx *Scope) {
 	}
 	captures := make([]Capture, 0)
 	frame := Frame{
-		asm: &assembler{stack: libsam.NewArray()},
+		asm: &assembler{array: libsam.NewArray()},
 		sp:  libsam.Word(nargs) + 3,
 	}
 	innerCtx := Scope{
@@ -1083,14 +1083,14 @@ func (ctx *Scope) assembleFloat(f float64) {
 	ctx.adjustSp(1)
 }
 
-func (ctx *Scope) assembleBlob(s libsam.Array) {
-	ctx.frame.asm.addStack(s)
+func (ctx *Scope) assembleBlob(s libsam.Blob) {
+	ctx.frame.asm.addBlob(s)
 	ctx.adjustSp(1)
 }
 
 func (ctx *Scope) assembleCode(asm *assembler) {
 	asm.flushInstructions()
-	ctx.assembleBlob(asm.stack)
+	ctx.assembleBlob(asm.array)
 }
 
 func trapStackEffect(function string) libsam.StackEffect {
@@ -1112,10 +1112,10 @@ func (ctx *Scope) assembleTrap(trapName string) {
 }
 
 func (ctx *Scope) resolveExitJumps() {
-	jumpAddr := ctx.frame.asm.stack.Sp()
+	jumpAddr := ctx.frame.asm.array.Sp()
 	jumpInst := libsam.Uword(libsam.MakeInstInt(libsam.Word(jumpAddr)))
 	for _, addr := range ctx.exitJumps {
-		ctx.frame.asm.stack.Poke(addr, jumpInst)
+		ctx.frame.asm.array.Poke(addr, jumpInst)
 	}
 }
 
@@ -1125,7 +1125,7 @@ func (ctx *Scope) assembleBreak() {
 		ctx.assembleInst("drop")
 	}
 	ctx.assembleInt(0) // space for jump target
-	ctx.loop.exitJumps = append(ctx.loop.exitJumps, ctx.frame.asm.stack.Sp()-1)
+	ctx.loop.exitJumps = append(ctx.loop.exitJumps, ctx.frame.asm.array.Sp()-1)
 	ctx.assembleTrap("jump")
 }
 
@@ -1137,7 +1137,7 @@ func (ctx *Scope) newBlock(isLoop bool) Scope {
 		captures:  ctx.captures,
 		baseSp:    ctx.frame.sp,
 		loop:      ctx.loop,
-		initialPc: ctx.frame.asm.stack.Sp(),
+		initialPc: ctx.frame.asm.array.Sp(),
 		exitJumps: make([]libsam.Uword, 0),
 	}
 	if isLoop {
@@ -1155,7 +1155,7 @@ func (ctx *Scope) assembleLoop(bodyCtx *Scope) {
 	bodyCtx.loop.resolveExitJumps()
 }
 
-func Sal(src string, ast bool) libsam.Array {
+func Sal(src string, ast bool) libsam.Blob {
 	body, err := parser.ParseString("", src)
 	if err != nil {
 		panic(fmt.Errorf("error in source %v", err))
@@ -1171,7 +1171,7 @@ func Sal(src string, ast bool) libsam.Array {
 	block := Block{Pos: body.Pos, Body: body}
 	captures := make([]Capture, 0)
 	frame := Frame{
-		asm: &assembler{stack: libsam.NewArray()},
+		asm: &assembler{array: libsam.NewArray()},
 	}
 	ctx := Scope{
 		frame:     &frame,
@@ -1182,5 +1182,5 @@ func Sal(src string, ast bool) libsam.Array {
 	ctx.compileBlock(&block)
 	ctx.assembleInst("halt")
 
-	return ctx.frame.asm.stack
+	return ctx.frame.asm.array
 }

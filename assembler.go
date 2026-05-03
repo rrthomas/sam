@@ -75,14 +75,14 @@ func parseLiteral(argStr string) libsam.Word {
 }
 
 type address struct {
-	stack libsam.Array
+	array libsam.Blob
 	item  libsam.Uword
 }
 
 var labels map[string]address
 
 func (a *assembler) newLabel(label string) {
-	labels[label] = address{stack: a.stack, item: a.stack.Sp()}
+	labels[label] = address{array: a.array, item: a.array.Sp()}
 }
 
 func (a *assembler) getLabel(label string) address {
@@ -93,12 +93,12 @@ func (a *assembler) getLabel(label string) address {
 	panic(fmt.Errorf("no such label ‘%s’", label))
 }
 
-func (a *assembler) parseStack(argStr string) libsam.Array {
+func (a *assembler) parseArray(argStr string) libsam.Blob {
 	address := a.getLabel(argStr)
 	if address.item != 0 {
-		panic(fmt.Errorf("expected stack but found other label ‘%s’", argStr))
+		panic(fmt.Errorf("expected array but found other label ‘%s’", argStr))
 	}
-	return address.stack
+	return address.array
 }
 
 func (a *assembler) assembleInstruction(str string) {
@@ -138,9 +138,9 @@ func (a *assembler) assembleInstruction(str string) {
 		case libsam.BLOB_TAG:
 			switch insn.Opcode {
 			case libsam.BLOB_ARRAY:
-				a.addStack(a.parseStack(operandStr))
+				a.addBlob(a.parseArray(operandStr))
 			case libsam.BLOB_STRING:
-				a.addStack(libsam.NewString(strings.TrimPrefix(strings.TrimSuffix(strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(str), "string")), "\""), "\"")))
+				a.addBlob(libsam.NewString(strings.TrimPrefix(strings.TrimSuffix(strings.TrimSpace(strings.TrimPrefix(strings.TrimSpace(str), "string")), "\""), "\"")))
 			default:
 				panic(fmt.Errorf("invalid blob type %+v", insn.Opcode))
 			}
@@ -202,9 +202,9 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	switch n.Type() {
 	case ast.SequenceType:
 		a.flushInstructions()
-		subA := assembler{stack: libsam.NewArray()}
+		subA := assembler{array: libsam.NewArray()}
 		subA.assembleSequence(n)
-		a.addStack(subA.stack)
+		a.addBlob(subA.array)
 		return nil
 	case ast.StringType:
 		var s string
@@ -247,18 +247,18 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 			subProg := readProg(r)
 			// Assemble the included file in a nested stack.
 			a.flushInstructions()
-			subA := assembler{stack: libsam.NewArray()}
+			subA := assembler{array: libsam.NewArray()}
 			subA.assembleSequence(subProg)
-			a.addStack(subA.stack)
+			a.addBlob(subA.array)
 		case "!iarray":
 			val := tag.Value
 			if val.Type() != ast.StringType {
-				panic(fmt.Errorf("invalid !istack: label argument expected"))
+				panic(fmt.Errorf("invalid !iarray: label argument expected"))
 			}
 			label := val.String()
 			address := a.getLabel(label)
 			a.assembleInstruction(fmt.Sprintf("int %d", address.item))
-			a.addStack(address.stack)
+			a.addBlob(address.array)
 		case "!single":
 			val := tag.Value
 			if val.Type() != ast.StringType {
@@ -275,10 +275,10 @@ func (a *assembler) Visit(n ast.Node) ast.Visitor {
 	}
 }
 
-func Assemble(source []byte) libsam.Array {
+func Assemble(source []byte) libsam.Blob {
 	prog := readProg(bytes.NewReader(source))
 	labels = map[string]address{}
-	a := assembler{stack: libsam.NewArray()}
+	a := assembler{array: libsam.NewArray()}
 	a.assembleSequence(prog)
-	return a.stack
+	return a.array
 }

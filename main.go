@@ -45,7 +45,7 @@ var rootCmd = &cobra.Command{
 		libsam.SetDebug(debug)
 		progFile := args[0]
 
-		var code libsam.Array
+		var code libsam.Blob
 		{
 			ext := filepath.Ext(progFile)
 			var err error
