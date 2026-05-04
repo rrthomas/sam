@@ -38,7 +38,7 @@ var (
 			{Name: "Int", Pattern: `\b(\d+)\b`, Action: nil},
 			{Name: "String", Pattern: `"`, Action: lexer.Push("String")},
 			{Name: "Newline", Pattern: `\n`, Action: nil},
-			{Name: "Operator", Pattern: `->|%=|>=|<=|&&|\|\||==|!=|<<<|>>>|<<|>>`, Action: nil},
+			{Name: "Operator", Pattern: `>=|<=|&&|\|\||==|!=|<<<|>>>|<<|>>`, Action: nil},
 			{Name: "Assignment", Pattern: `=|:=`, Action: nil},
 			{Name: "SingleOperator", Pattern: `[-+*/<>%^!|&]`, Action: nil},
 			{Name: "Punct", Pattern: `[]` + "`" + `~[()@#${}:;?.,]`, Action: nil},
