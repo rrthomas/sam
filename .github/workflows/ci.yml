@@ -11,9 +11,10 @@ jobs:
     env:
       CC: gcc-15
       ASAN_FLAGS: "-fsanitize=address -fsanitize=undefined"
+      CGO_CFLAGS_ALLOW: -fno-strict-overflow
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@main
       - name: Install dependencies
@@ -65,7 +66,7 @@ jobs:
   #         mingw-w64-${{matrix.env}}-gcc
   #         mingw-w64-${{matrix.env}}-go
   #         mingw-w64-${{matrix.env}}-SDL2_mixer
-  #   - uses: actions/checkout@v5
+  #   - uses: actions/checkout@v6
   #   - name: configure
   #     run: autoreconf -fi && ./configure && go mod download
   #   - name: make
