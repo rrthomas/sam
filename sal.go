@@ -250,7 +250,6 @@ type AsmStatement struct {
 	Single     *string     `| "single" @Ident ";"`
 	Quote      *string     `| "quote" @Ident ";"`
 	QuoteTrap  *string     `| "quote" "trap" @Ident ";"`
-	Insn       *string     `| @Ident ";"`
 	Expression *PrimaryExp `| @@ ";"`
 }
 
@@ -716,9 +715,7 @@ func (i *Ifs) Compile(ctx *Scope) {
 }
 
 func (a *AsmStatement) Compile(ctx *Scope) {
-	if a.Insn != nil {
-		ctx.frame.asm.assembleInstruction(*a.Insn)
-	} else if a.Trap != nil {
+	if a.Trap != nil {
 		ctx.assembleTrap(*a.Trap)
 	} else if a.Single != nil {
 		ctx.assembleSingle(*a.Single)
@@ -727,7 +724,15 @@ func (a *AsmStatement) Compile(ctx *Scope) {
 	} else if a.QuoteTrap != nil {
 		ctx.assembleQuoteTrap(*a.QuoteTrap)
 	} else if a.Expression != nil {
-		a.Expression.Compile(ctx)
+		if a.Expression.Variable != nil {
+			if insn, ok := libsam.Instructions[strings.ToLower(*a.Expression.Variable)]; ok {
+				ctx.frame.asm.addInstruction(insn)
+			} else {
+				a.Expression.Compile(ctx)
+			}
+		} else {
+			a.Expression.Compile(ctx)
+		}
 	} else {
 		panic(fmt.Errorf("invalid AsmStatement"))
 	}

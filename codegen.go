@@ -19,9 +19,6 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 package main
 
 import (
-	"fmt"
-	"strings"
-
 	"github.com/rrthomas/sam/libsam"
 )
 
@@ -93,35 +90,4 @@ func (a *assembler) addSingleInstruction(opcode libsam.Instruction) {
 	a.flushInstructions()
 	a.addInstruction(opcode)
 	a.flushInstructions()
-}
-
-func parseInsn(instStr string) libsam.Instruction {
-	insn, ok := libsam.Instructions[strings.ToLower(instStr)]
-	if !ok {
-		panic(fmt.Errorf("unknown instruction %s", instStr))
-	}
-	return insn
-}
-
-func (a *assembler) assembleInstruction(instStr string) {
-	insn := parseInsn(instStr)
-	if insn.Operands != 0 {
-		panic("cannot assemble instruction that takes operands")
-	}
-
-	switch insn.Tag {
-	case libsam.ATOM_TAG:
-		a.flushInstructions()
-
-		switch insn.Opcode {
-		case libsam.ATOM_NULL:
-			a.addNull()
-		default:
-			panic(fmt.Errorf("invalid atom type %d", insn.Opcode))
-		}
-	case libsam.INSTS_TAG:
-		a.addInstruction(insn)
-	default:
-		panic(fmt.Errorf("unknown tag %d", insn.Tag))
-	}
 }

@@ -10,8 +10,8 @@ Array: XXXXXXXX (13 item(s))
 - int -3
 - trap DIV
 - halt
-- int -4
-- s0 set drop drop halt
+- int -5
+- s0 set drop drop drop halt
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
