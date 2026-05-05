@@ -31,5 +31,5 @@ asm {
     set
     drop
     0
-    halt
+    trap halt
 }

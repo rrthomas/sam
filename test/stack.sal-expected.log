@@ -1,4 +1,4 @@
-Array: XXXXXXXX (20 item(s))
+Array: XXXXXXXX (21 item(s))
 - null
 - new
 - trap COPY
@@ -16,9 +16,10 @@ Array: XXXXXXXX (20 item(s))
 - int -2
 - s0 get shift s0 pop
 - int 0
-- halt
-- int -9
-- s0 set drop drop drop drop drop drop drop halt
+- trap HALT
+- int -8
+- sset drop drop drop drop drop drop
+- trap HALT
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
@@ -214,7 +215,7 @@ Working stack: (6 word(s))
 - int 13
 - int 42
 - int 0
-halt
+trap HALT
 
 
 sam_run returns: halt with result int 0

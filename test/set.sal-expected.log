@@ -1,4 +1,4 @@
-Array: XXXXXXXX (27 item(s))
+Array: XXXXXXXX (28 item(s))
 - null
 - int 1
 - int 2
@@ -22,10 +22,11 @@ Array: XXXXXXXX (27 item(s))
 - int -2
 - s0 set drop
 - int 0
-- halt
-- int -17
-- s0 set drop drop drop drop drop drop drop drop drop
-- drop drop drop drop drop drop halt
+- trap HALT
+- int -16
+- sset drop drop drop drop drop drop drop drop drop drop
+- drop drop drop drop
+- trap HALT
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
@@ -249,7 +250,7 @@ Working stack: (3 word(s))
 - null
 - float 1.000000
 - int 0
-halt
+trap HALT
 
 
 sam_run returns: halt with result int 0

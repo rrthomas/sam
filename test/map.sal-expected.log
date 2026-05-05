@@ -1,38 +1,38 @@
-Array: XXXXXXXX (58 item(s))
+Array: XXXXXXXX (59 item(s))
 - null
 - trap NEW_MAP
 - int 2
 - int 1
 - int -3
-- s0 get set
+- sget set
 - int 4
 - int 3
 - int -3
-- s0 get set
+- sget set
 - null
 - int 5
 - int -3
-- s0 get set
+- sget set
 - trap NEW_MAP
 - int 3
 - int 1
-- s0 get get drop
+- sget get drop
 - int 5
-- _one s0 get
+- dup
 - int 2
 - int 2
-- s0 get set drop
+- sget set drop
 - int 2
-- s0 get drop
+- sget drop
 - int 1
-- s0 get
+- sget
 - trap ITER
 - null
 - int 3
-- s0 get
+- sget
 - trap NEXT
 - null
-- _two s0 get
+- over
 - null
 - eq
 - int 5
@@ -45,18 +45,19 @@ Array: XXXXXXXX (58 item(s))
 - null
 - new
 - int 5
-- s0 get _two s0 get append
+- sget over append
 - int 5
-- s0 get
+- sget
 - int 1
-- s0 get get _two s0 get append
+- sget get over append
 - int -2
-- s0 set
+- sset
 - drop drop drop
 - int -27
 - trap JUMP
 - int -5
-- s0 set drop drop drop halt
+- sset drop drop drop
+- trap HALT
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
@@ -89,16 +90,7 @@ Working stack: (5 word(s))
 - int 2
 - int 1
 - int -3
-s0
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- null
-- map XXXXXXXX
-- int 2
-- int 1
-- int -3
-- array XXXXXXXX (6 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
@@ -132,16 +124,7 @@ Working stack: (5 word(s))
 - int 4
 - int 3
 - int -3
-s0
-sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- null
-- map XXXXXXXX
-- int 4
-- int 3
-- int -3
-- array XXXXXXXX (6 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
@@ -175,16 +158,7 @@ Working stack: (5 word(s))
 - null
 - int 5
 - int -3
-s0
-sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- null
-- map XXXXXXXX
-- null
-- int 5
-- int -3
-- array XXXXXXXX (6 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 14, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
@@ -218,16 +192,7 @@ Working stack: (5 word(s))
 - map XXXXXXXX
 - int 3
 - int 1
-s0
-sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- int 3
-- int 1
-- array XXXXXXXX (6 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
@@ -255,24 +220,7 @@ Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int 5
-_one
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- int 5
-- int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 20, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- int 5
-- int -1
-- array XXXXXXXX (6 items)
-get
+dup
 sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
@@ -299,18 +247,7 @@ Working stack: (7 word(s))
 - int 5
 - int 2
 - int 2
-s0
-sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- int 5
-- int 5
-- int 2
-- int 2
-- array XXXXXXXX (8 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 23, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
 Working stack: (7 word(s))
 - null
@@ -340,15 +277,7 @@ Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int 2
-s0
-sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- int 2
-- array XXXXXXXX (5 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 25, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
@@ -368,15 +297,7 @@ Working stack: (4 word(s))
 - map XXXXXXXX
 - map XXXXXXXX
 - int 1
-s0
-sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- int 1
-- array XXXXXXXX (5 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 28, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
@@ -407,17 +328,7 @@ Working stack: (6 word(s))
 - iter XXXXXXXX
 - null
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- array XXXXXXXX (7 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
@@ -445,30 +356,7 @@ Working stack: (7 word(s))
 - null
 - int 1
 - null
-_two
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- int -2
-- array XXXXXXXX (9 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
@@ -560,21 +448,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (0 items)
 - int 5
-s0
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- null
-- array XXXXXXXX (0 items)
-- int 5
-- array XXXXXXXX (11 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - null
@@ -587,36 +461,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (0 items)
 - int 1
-_two
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- null
-- array XXXXXXXX (0 items)
-- int 1
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- null
-- array XXXXXXXX (0 items)
-- int 1
-- int -2
-- array XXXXXXXX (12 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -655,21 +500,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (1 items)
 - int 5
-s0
-sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- null
-- array XXXXXXXX (1 items)
-- int 5
-- array XXXXXXXX (11 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - null
@@ -696,22 +527,7 @@ Working stack: (11 word(s))
 - array XXXXXXXX (1 items)
 - int 1
 - int 1
-s0
-sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- null
-- array XXXXXXXX (1 items)
-- int 1
-- int 1
-- array XXXXXXXX (12 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -738,36 +554,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (1 items)
 - int 2
-_two
-sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- null
-- array XXXXXXXX (1 items)
-- int 2
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- null
-- array XXXXXXXX (1 items)
-- int 2
-- int -2
-- array XXXXXXXX (12 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -806,21 +593,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (2 items)
 - int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 53, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 1
-- null
-- null
-- array XXXXXXXX (2 items)
-- int -2
-- array XXXXXXXX (11 items)
-set
+sset
 sam_run: p0 = XXXXXXXX, pc = 54, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
@@ -884,17 +657,7 @@ Working stack: (6 word(s))
 - iter XXXXXXXX
 - null
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- array XXXXXXXX (7 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
@@ -922,30 +685,7 @@ Working stack: (7 word(s))
 - null
 - int 3
 - null
-_two
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- int -2
-- array XXXXXXXX (9 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
@@ -1037,21 +777,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (0 items)
 - int 5
-s0
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- null
-- array XXXXXXXX (0 items)
-- int 5
-- array XXXXXXXX (11 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - null
@@ -1064,36 +790,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (0 items)
 - int 3
-_two
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- null
-- array XXXXXXXX (0 items)
-- int 3
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- null
-- array XXXXXXXX (0 items)
-- int 3
-- int -2
-- array XXXXXXXX (12 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 47, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -1132,21 +829,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (1 items)
 - int 5
-s0
-sam_run: p0 = XXXXXXXX, pc = 49, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- null
-- array XXXXXXXX (1 items)
-- int 5
-- array XXXXXXXX (11 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 10, ir = XXXXXXXX
 Working stack: (10 word(s))
 - null
@@ -1173,22 +856,7 @@ Working stack: (11 word(s))
 - array XXXXXXXX (1 items)
 - int 3
 - int 1
-s0
-sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- null
-- array XXXXXXXX (1 items)
-- int 3
-- int 1
-- array XXXXXXXX (12 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -1215,36 +883,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (1 items)
 - int 4
-_two
-sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- null
-- array XXXXXXXX (1 items)
-- int 4
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 12, ir = XXXXXXXX
-Working stack: (12 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- null
-- array XXXXXXXX (1 items)
-- int 4
-- int -2
-- array XXXXXXXX (12 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 51, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
 Working stack: (11 word(s))
 - null
@@ -1283,21 +922,7 @@ Working stack: (10 word(s))
 - null
 - array XXXXXXXX (2 items)
 - int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 53, s0 = XXXXXXXX, sp = 11, ir = XXXXXXXX
-Working stack: (11 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- null
-- null
-- array XXXXXXXX (2 items)
-- int -2
-- array XXXXXXXX (11 items)
-set
+sset
 sam_run: p0 = XXXXXXXX, pc = 54, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
@@ -1361,17 +986,7 @@ Working stack: (6 word(s))
 - iter XXXXXXXX
 - null
 - int 3
-s0
-sam_run: p0 = XXXXXXXX, pc = 31, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int 3
-- array XXXXXXXX (7 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 32, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
@@ -1399,30 +1014,7 @@ Working stack: (7 word(s))
 - null
 - null
 - null
-_two
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- null
-- null
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 34, s0 = XXXXXXXX, sp = 9, ir = XXXXXXXX
-Working stack: (9 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- null
-- null
-- int -2
-- array XXXXXXXX (9 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 35, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
 Working stack: (8 word(s))
 - null
@@ -1521,17 +1113,7 @@ Working stack: (6 word(s))
 - iter XXXXXXXX
 - null
 - int -5
-s0
-sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- null
-- map XXXXXXXX
-- map XXXXXXXX
-- iter XXXXXXXX
-- null
-- int -5
-- array XXXXXXXX (7 items)
-set
+sset
 sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
@@ -1550,10 +1132,10 @@ Working stack: (2 word(s))
 - null
 - map XXXXXXXX
 drop
-sam_run: p0 = XXXXXXXX, pc = 58, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - null
-halt
+trap HALT
 
 
 sam_run returns: halt with result null

@@ -42,6 +42,9 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
     CHECK_BLOB(state->s0, SAM_BLOB_ARRAY);
 
     switch (function) {
+    case TRAP_BASIC_HALT:
+        HALT(SAM_ERROR_HALT);
+        break;
     case TRAP_BASIC_SIZE:
         {
             sam_blob_t *blob;
@@ -319,6 +322,8 @@ error:
 char *sam_basic_trap_name(sam_word_t function)
 {
     switch (function) {
+    case TRAP_BASIC_HALT:
+        return "HALT";
     case TRAP_BASIC_SIZE:
         return "SIZE";
     case TRAP_BASIC_QUOTE:

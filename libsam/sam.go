@@ -239,6 +239,7 @@ func DumpScreen(file string) {
 
 const (
 	ERROR_OK                = C.SAM_ERROR_OK
+	ERROR_HALT              = C.SAM_ERROR_HALT
 	ERROR_INVALID_OPCODE    = C.SAM_ERROR_INVALID_OPCODE
 	ERROR_INVALID_ADDRESS   = C.SAM_ERROR_INVALID_ADDRESS
 	ERROR_ARRAY_UNDERFLOW   = C.SAM_ERROR_ARRAY_UNDERFLOW
@@ -331,6 +332,11 @@ var Instructions = map[string]Instruction{
 	"new":     {C.SAM_INSTS_TAG, C.INST_NEW, 0, false},
 	"s0":      {C.SAM_INSTS_TAG, C.INST_S0, 0, false},
 	"drop":    {C.SAM_INSTS_TAG, C.INST_DROP, 0, false},
+	"sget":    {C.SAM_INSTS_TAG, C.INST_SGET, 0, false},
+	"sset":    {C.SAM_INSTS_TAG, C.INST_SSET, 0, false},
+	"dup":     {C.SAM_INSTS_TAG, C.INST_DUP, 0, false},
+	"swap":    {C.SAM_INSTS_TAG, C.INST_SWAP, 0, false},
+	"over":    {C.SAM_INSTS_TAG, C.INST_OVER, 0, false},
 	"get":     {C.SAM_INSTS_TAG, C.INST_GET, 0, false},
 	"set":     {C.SAM_INSTS_TAG, C.INST_SET, 0, false},
 	"extract": {C.SAM_INSTS_TAG, C.INST_EXTRACT, 0, false},
@@ -354,10 +360,10 @@ var Instructions = map[string]Instruction{
 	"_one":    {C.SAM_INSTS_TAG, C.INST_MINUS_1, 0, false},
 	"two":     {C.SAM_INSTS_TAG, C.INST_2, 0, false},
 	"_two":    {C.SAM_INSTS_TAG, C.INST_MINUS_2, 0, false},
-	"halt":    {C.SAM_INSTS_TAG, C.INST_HALT, 0, true},
 }
 
 var Traps = map[string]uint{
+	"HALT":          C.TRAP_BASIC_HALT,
 	"SIZE":          C.TRAP_BASIC_SIZE,
 	"QUOTE":         C.TRAP_BASIC_QUOTE,
 	"COPY":          C.TRAP_BASIC_COPY,
@@ -710,6 +716,11 @@ var StackDifference = map[string]int{
 	"new":     1,
 	"s0":      1,
 	"drop":    -1,
+	"sget":    0,
+	"sset":    -2,
+	"dup":     1,
+	"swap":    0,
+	"over":    1,
 	"get":     -1,
 	"set":     -3,
 	"extract": -2,
@@ -733,7 +744,6 @@ var StackDifference = map[string]int{
 	"_one":    1,
 	"two":     1,
 	"_two":    1,
-	"halt":    -1,
 
 	// Traps depend on the trap code.
 }
@@ -745,6 +755,7 @@ type StackEffect struct {
 
 var TrapStackEffect = map[string]StackEffect{
 	// Basic traps
+	"HALT":          {1, 0},
 	"SIZE":          {1, 1},
 	"QUOTE":         {0, 1},
 	"COPY":          {1, 1},

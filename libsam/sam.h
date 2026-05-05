@@ -56,6 +56,7 @@ typedef struct sam_state sam_state_t;
 // Error codes
 enum SAM_ERROR {
     SAM_ERROR_OK,
+    SAM_ERROR_HALT,
     SAM_ERROR_INVALID_OPCODE,
     SAM_ERROR_INVALID_ADDRESS,
     SAM_ERROR_ARRAY_UNDERFLOW,

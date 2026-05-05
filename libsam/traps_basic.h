@@ -21,7 +21,8 @@ char *sam_basic_trap_name(sam_word_t function);
 #define SAM_TRAP_BASIC_BASE 0x0
 
 enum SAM_TRAP_BASIC {
-    TRAP_BASIC_SIZE = SAM_TRAP_BASIC_BASE,
+    TRAP_BASIC_HALT = SAM_TRAP_BASIC_BASE,
+    TRAP_BASIC_SIZE,
     TRAP_BASIC_QUOTE,
     TRAP_BASIC_COPY,
     TRAP_BASIC_JUMP,

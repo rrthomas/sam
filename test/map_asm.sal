@@ -48,5 +48,5 @@ asm {
     trap jump_if_false
     // Exit
     0
-    halt
+    trap halt
 }

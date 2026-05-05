@@ -170,6 +170,51 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT(SAM_ERROR_ARRAY_UNDERFLOW);
                     s->sp -= 1;
                     break;
+                case INST_SGET:
+                    {
+                        sam_word_t pos;
+                        POP_INT(pos);
+                        sam_uword_t addr, item;
+                        HALT_IF_ERROR(sam_array_item(state->s0, pos, &addr));
+                        HALT_IF_ERROR(sam_array_peek(state->s0, addr, &item));
+                        PUSH_WORD(item);
+                    }
+                    break;
+                case INST_SSET:
+                    {
+                        sam_word_t pos, val;
+                        POP_INT(pos);
+                        sam_uword_t dest;
+                        HALT_IF_ERROR(sam_array_item(state->s0, pos, &dest));
+                        POP_WORD(&val);
+                        HALT_IF_ERROR(sam_array_poke(state->s0, dest, val));
+                    }
+                    break;
+                case INST_DUP:
+                    {
+                        sam_word_t a;
+                        POP_WORD(&a);
+                        PUSH_WORD(a);
+                        PUSH_WORD(a);
+                    }
+                    break;
+                case INST_SWAP:
+                    {
+                        sam_word_t a, b;
+                        POP_WORD(&a);
+                        POP_WORD(&b);
+                        PUSH_WORD(a);
+                        PUSH_WORD(b);
+                    }
+                    break;
+                case INST_OVER:
+                    {
+                        sam_uword_t addr, item;
+                        HALT_IF_ERROR(sam_array_item(state->s0, -2, &addr));
+                        HALT_IF_ERROR(sam_array_peek(state->s0, addr, &item));
+                        PUSH_WORD(item);
+                    }
+                    break;
                 case INST_GET:
                     {
                         sam_blob_t *blob;
@@ -473,9 +518,6 @@ sam_word_t sam_run(sam_state_t *state)
                 case INST_MINUS_2:
                     PUSH_INT(-2);
                     break;
-                case INST_HALT:
-                    HALT(SAM_ERROR_OK);
-                    break;
                 }
 
                 opcodes >>= SAM_ONE_INST_SHIFT;
@@ -495,5 +537,5 @@ sam_word_t sam_run(sam_state_t *state)
     }
 
 error:
-    return error;
+    return error == SAM_ERROR_HALT ? SAM_ERROR_OK : error;
 }

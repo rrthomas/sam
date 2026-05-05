@@ -73,6 +73,16 @@ char *inst_name(sam_uword_t inst_opcode)
         return "s0";
     case INST_DROP:
         return "drop";
+    case INST_SGET:
+        return "sget";
+    case INST_SSET:
+        return "sset";
+    case INST_DUP:
+        return "dup";
+    case INST_SWAP:
+        return "swap";
+    case INST_OVER:
+        return "over";
     case INST_GET:
         return "get";
     case INST_SET:
@@ -119,8 +129,6 @@ char *inst_name(sam_uword_t inst_opcode)
         return "two";
     case INST_MINUS_2:
         return "_two";
-    case INST_HALT:
-        return "halt";
     default:
         return "INVALID INSTRUCTION";
     }

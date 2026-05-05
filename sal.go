@@ -272,8 +272,7 @@ func (ctx *Scope) compileBlock(b *Block) {
 		}
 		// Set result
 		blockCtx.compileInt(-int(blockCtx.frame.sp - blockCtx.baseSp + 1))
-		blockCtx.compileInst("s0")
-		blockCtx.compileInst("set")
+		blockCtx.compileInst("sset")
 		// Drop remaining stack items in this block
 		for range blockCtx.frame.sp - blockCtx.baseSp {
 			blockCtx.compileInst("drop")
@@ -319,9 +318,7 @@ func (e *PrimaryExp) Compile(ctx *Scope) {
 			ctx.compileInst("new")
 			for _, e := range *e.Container {
 				e.Key.Compile(ctx)
-				ctx.compileInst("_two")
-				ctx.compileInst("s0")
-				ctx.compileInst("get")
+				ctx.compileInst("over")
 				ctx.compileInst("append")
 			}
 		} else {
@@ -330,8 +327,7 @@ func (e *PrimaryExp) Compile(ctx *Scope) {
 				e.Value.Compile(ctx)
 				e.Key.Compile(ctx)
 				ctx.compileInt(-3)
-				ctx.compileInst("s0")
-				ctx.compileInst("get")
+				ctx.compileInst("sget")
 				ctx.compileInst("set")
 			}
 		}
@@ -519,15 +515,11 @@ func (e *CompareExp) Compile(ctx *Scope) {
 		case "<":
 			ctx.compileInst("lt")
 		case "<=":
-			ctx.compileInst("_two")
-			ctx.compileInst("s0")
-			ctx.compileInst("extract")
+			ctx.compileInst("swap")
 			ctx.compileInst("lt")
 			ctx.compileInst("not")
 		case ">":
-			ctx.compileInst("_two")
-			ctx.compileInst("s0")
-			ctx.compileInst("extract")
+			ctx.compileInst("swap")
 			ctx.compileInst("lt")
 		case ">=":
 			ctx.compileInst("lt")
@@ -561,16 +553,12 @@ func (e *PushExp) Compile(ctx *Scope) {
 		case "<<": // List append: l << i
 			e.Left.Compile(ctx)
 			e.Right.Compile(ctx)
-			ctx.compileInst("_two")
-			ctx.compileInst("s0")
-			ctx.compileInst("get")
+			ctx.compileInst("over")
 			ctx.compileInst("append")
 		case ">>": // List prepend: i >> l
 			e.Right.Compile(ctx)
 			e.Left.Compile(ctx)
-			ctx.compileInst("_two")
-			ctx.compileInst("s0")
-			ctx.compileInst("get")
+			ctx.compileInst("over")
 			ctx.compileInst("prepend")
 		default:
 			panic(fmt.Errorf("unknown PushExp.Op %s", e.Op))
@@ -641,9 +629,7 @@ func (e *Expression) Compile(ctx *Scope) {
 		blockCtx.compileNull() // return value
 		blockCtx.compileIf(
 			func(ctx *Scope) {
-				ctx.compileInst("_two")
-				ctx.compileInst("s0")
-				ctx.compileInst("get")
+				ctx.compileInst("over")
 				ctx.compileNull()
 				ctx.compileInst("eq")
 			},
@@ -742,9 +728,7 @@ func (a *AsmStatement) Compile(ctx *Scope) {
 func (a *Assignment) Compile(ctx *Scope) {
 	if a.Expression != nil {
 		a.Expression.Compile(ctx)
-		ctx.compileInst("_one")
-		ctx.compileInst("s0")
-		ctx.compileInst("get")
+		ctx.compileInst("dup")
 		ctx.compileAssignLvalue(a.Lvalue)
 	} else {
 		a.Lvalue.Compile(ctx)
@@ -811,8 +795,7 @@ func (t *Terminator) Compile(ctx *Scope) {
 			ctx.compileNull()
 		}
 		ctx.compileInt(int(ctx.loop.baseSp - (ctx.frame.sp + 1)))
-		ctx.compileInst("s0")
-		ctx.compileInst("set")
+		ctx.compileInst("sset")
 		ctx.compileBreak()
 	} else if t.Continue {
 		if ctx.loop == nil {
@@ -962,12 +945,9 @@ func (ctx *Scope) compileCaptures(blockCtx *Scope) {
 
 func (ctx *Scope) compileCaptureAddr(i uint) {
 	ctx.compileInst("two")
-	ctx.compileInst("s0")
-	ctx.compileInst("get")
+	ctx.compileInst("sget")
 	ctx.compileInt(int(i*2 + 1))
-	ctx.compileInst("_two")
-	ctx.compileInst("s0")
-	ctx.compileInst("get")
+	ctx.compileInst("over")
 	ctx.compileInst("get")
 	ctx.compileInt(int(i * 2))
 	ctx.compileInt(-3)
@@ -988,8 +968,7 @@ func (ctx *Scope) isTrap(id string) bool {
 func (ctx *Scope) compileGetVar(id string) {
 	if l := ctx.findLocal(id); l != nil {
 		ctx.compileInt(l.pos)
-		ctx.compileInst("s0")
-		ctx.compileInst("get")
+		ctx.compileInst("sget")
 	} else if c := ctx.findCapture(id); c != nil {
 		ctx.compileCaptureAddr(*c)
 		ctx.compileInst("get")
@@ -1003,8 +982,7 @@ func (ctx *Scope) compileGetVar(id string) {
 func (ctx *Scope) compileSetVar(id string) {
 	if l := ctx.findLocal(id); l != nil {
 		ctx.compileInt(l.pos)
-		ctx.compileInst("s0")
-		ctx.compileInst("set")
+		ctx.compileInst("sset")
 	} else if c := ctx.findCapture(id); c != nil {
 		ctx.compileCaptureAddr(*c)
 		ctx.compileInst("set")
@@ -1253,7 +1231,7 @@ func Sal(src string, ast bool) libsam.Blob {
 		exitJumps: make([]libsam.Uword, 0),
 	}
 	ctx.compileBlock(&block)
-	ctx.compileInst("halt")
+	ctx.compileTrap("halt")
 
 	return ctx.frame.asm.array
 }

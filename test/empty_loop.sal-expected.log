@@ -1,13 +1,13 @@
-Array: XXXXXXXX (26 item(s))
+Array: XXXXXXXX (27 item(s))
 - null
 - int 1
 - trap ITER
 - null
 - int 1
-- s0 get
+- sget
 - trap NEXT
 - null
-- _two s0 get
+- over
 - null
 - eq
 - int 5
@@ -19,12 +19,13 @@ Array: XXXXXXXX (26 item(s))
 - trap JUMP
 - null
 - int -1
-- s0 set
+- sset
 - drop drop
 - int -20
 - trap JUMP
 - int -3
-- s0 set drop halt
+- sset drop
+- trap HALT
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
@@ -54,15 +55,7 @@ Working stack: (4 word(s))
 - iter XXXXXXXX
 - null
 - int 1
-s0
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- null
-- iter XXXXXXXX
-- null
-- int 1
-- array XXXXXXXX (5 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
@@ -84,26 +77,7 @@ Working stack: (5 word(s))
 - null
 - int 0
 - null
-_two
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- null
-- iter XXXXXXXX
-- null
-- int 0
-- null
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- null
-- iter XXXXXXXX
-- null
-- int 0
-- null
-- int -2
-- array XXXXXXXX (7 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
@@ -168,18 +142,7 @@ Working stack: (7 word(s))
 - null
 - null
 - int -1
-s0
-sam_run: p0 = XXXXXXXX, pc = 21, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
-Working stack: (8 word(s))
-- null
-- iter XXXXXXXX
-- null
-- int 0
-- null
-- null
-- int -1
-- array XXXXXXXX (8 items)
-set
+sset
 sam_run: p0 = XXXXXXXX, pc = 22, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
 - null
@@ -220,15 +183,7 @@ Working stack: (4 word(s))
 - iter XXXXXXXX
 - null
 - int 1
-s0
-sam_run: p0 = XXXXXXXX, pc = 6, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- null
-- iter XXXXXXXX
-- null
-- int 1
-- array XXXXXXXX (5 items)
-get
+sget
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - null
@@ -250,26 +205,7 @@ Working stack: (5 word(s))
 - null
 - null
 - null
-_two
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
-Working stack: (6 word(s))
-- null
-- iter XXXXXXXX
-- null
-- null
-- null
-- int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 9, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
-Working stack: (7 word(s))
-- null
-- iter XXXXXXXX
-- null
-- null
-- null
-- int -2
-- array XXXXXXXX (7 items)
-get
+over
 sam_run: p0 = XXXXXXXX, pc = 10, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
 Working stack: (6 word(s))
 - null
@@ -348,24 +284,16 @@ Working stack: (4 word(s))
 - iter XXXXXXXX
 - null
 - int -3
-s0
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
-Working stack: (5 word(s))
-- null
-- iter XXXXXXXX
-- null
-- int -3
-- array XXXXXXXX (5 items)
-set
+sset
 sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - null
 - iter XXXXXXXX
 drop
-sam_run: p0 = XXXXXXXX, pc = 26, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sam_run: p0 = XXXXXXXX, pc = 27, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - null
-halt
+trap HALT
 
 
 sam_run returns: halt with result null

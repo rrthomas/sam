@@ -1,4 +1,4 @@
-Array: XXXXXXXX (37 item(s))
+Array: XXXXXXXX (38 item(s))
 - null
 - trap NEW_MAP
 - trap COPY
@@ -32,10 +32,11 @@ Array: XXXXXXXX (37 item(s))
 - int -7
 - trap JUMP_IF_FALSE
 - int 0
-- halt
-- int -18
-- s0 set drop drop drop drop drop drop drop drop drop
-- drop drop drop drop drop drop drop halt
+- trap HALT
+- int -17
+- sset drop drop drop drop drop drop drop drop drop drop
+- drop drop drop drop drop
+- trap HALT
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
@@ -430,7 +431,7 @@ Working stack: (5 word(s))
 - map XXXXXXXX
 - iter XXXXXXXX
 - int 0
-halt
+trap HALT
 
 
 sam_run returns: halt with result int 0

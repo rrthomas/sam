@@ -32,5 +32,5 @@ asm {
     pop
     // Exit
     0
-    halt
+    trap halt
 }

@@ -188,6 +188,31 @@ These instructions manage arrays.
 >
 > Discard `x` from the top of the stack.
 
+> `SGET`  
+> `i` → `x`
+>
+> Pop `i` from the stack. Push the `i`th item of the stack to the stack.
+
+> `SET`  
+> `x` `i` →
+>
+> Pop `i` from the stack. Set the `i`th item of the stack to `x`. Pop `x` from the stack.
+
+> `DUP`  
+> `x₁` → `x₁` `x₁`
+>
+> Push the top item of the stack to the stack.
+
+> `SWAP`  
+> `x₁` `x₂` → `x₂` `x₁`
+>
+> Swap the top two items on the stack.
+
+> `OVER`  
+> `x₁` `x₂` → `x₁` `x₂` `x₁`
+>
+> Push the second item of the stack to the stack.
+
 > `GET`  
 > `i` `a` → `x`
 >

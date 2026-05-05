@@ -3,5 +3,5 @@ asm {
     quote call
     // Exit
     0
-    halt
+    trap halt
 }

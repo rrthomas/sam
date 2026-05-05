@@ -9,5 +9,5 @@ asm {
     add
     -3
     trap div
-    halt
+    trap halt
 }

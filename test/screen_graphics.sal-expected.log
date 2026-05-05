@@ -1,4 +1,4 @@
-Array: XXXXXXXX (74 item(s))
+Array: XXXXXXXX (75 item(s))
 - null
 - int 50
 - int 100
@@ -72,7 +72,8 @@ Array: XXXXXXXX (74 item(s))
 - trap FONT_REGULAR
 - trap TEXT
 - int -2
-- s0 set halt
+- sset
+- trap HALT
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
@@ -498,18 +499,11 @@ Working stack: (3 word(s))
 - null
 - float 449.878510
 - int -2
-s0
-sam_run: p0 = XXXXXXXX, pc = 74, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
-Working stack: (4 word(s))
-- null
-- float 449.878510
-- int -2
-- array XXXXXXXX (4 items)
-set
-sam_run: p0 = XXXXXXXX, pc = 74, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
+sset
+sam_run: p0 = XXXXXXXX, pc = 75, s0 = XXXXXXXX, sp = 1, ir = XXXXXXXX
 Working stack: (1 word(s))
 - float 449.878510
-halt
+trap HALT
 
 
 sam_run returns: halt with result float 449.878510

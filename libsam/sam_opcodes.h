@@ -75,6 +75,11 @@ enum SAM_INST {
   INST_NEW,
   INST_S0,
   INST_DROP,
+  INST_SGET,
+  INST_SSET,
+  INST_DUP,
+  INST_SWAP,
+  INST_OVER,
   INST_GET,
   INST_SET,
   INST_EXTRACT,
@@ -98,9 +103,10 @@ enum SAM_INST {
   INST_MINUS_1,
   INST_2,
   INST_MINUS_2,
-  INST_HALT,
+
+  INST_INSTS,
 };
-/* FIXME _Static_assert(INST_HALT == 31); */
+_Static_assert(INST_INSTS == 32);
 
 // Useful aliases
 #define SAM_VALUE_NULL ((SAM_ATOM_NULL << SAM_ATOM_TYPE_SHIFT) | SAM_ATOM_TAG)

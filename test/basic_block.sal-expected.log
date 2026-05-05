@@ -1,4 +1,4 @@
-Array: XXXXXXXX (13 item(s))
+Array: XXXXXXXX (14 item(s))
 - null
 - null
 - drop
@@ -9,9 +9,10 @@ Array: XXXXXXXX (13 item(s))
 - neg add
 - int -3
 - trap DIV
-- halt
-- int -5
-- s0 set drop drop drop halt
+- trap HALT
+- int -4
+- sset drop drop
+- trap HALT
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 0, ir = XXXXXXXX
 Working stack: (0 word(s))
 null
@@ -71,7 +72,7 @@ sam_run: p0 = XXXXXXXX, pc = 11, s0 = XXXXXXXX, sp = 2, ir = XXXXXXXX
 Working stack: (2 word(s))
 - null
 - int -13
-halt
+trap HALT
 
 
 sam_run returns: halt with result int -13
