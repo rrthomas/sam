@@ -5,7 +5,6 @@ go 1.22.2
 require (
 	github.com/alecthomas/assert/v2 v2.11.0
 	github.com/alecthomas/participle/v2 v2.1.4
-	github.com/goccy/go-yaml v1.18.0
 	github.com/spf13/cobra v1.10.1
 )
 

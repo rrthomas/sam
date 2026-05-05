@@ -19,36 +19,13 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 package main
 
 import (
-	"bytes"
 	"errors"
 	"fmt"
-	"io"
-	"os"
 	"strconv"
 	"strings"
 
-	"github.com/goccy/go-yaml"
-	"github.com/goccy/go-yaml/ast"
 	"github.com/rrthomas/sam/libsam"
 )
-
-// Read the program from a YAML slice
-func readProg(r io.Reader) ast.Node {
-	dec := yaml.NewDecoder(r)
-
-	var doc ast.Node
-	if err := dec.Decode(&doc); err == io.EOF {
-		panic(errors.New("input was empty"))
-	}
-
-	// Check that there was only one document in the file
-	var eofDoc ast.Node
-	if err := dec.Decode(&eofDoc); err != io.EOF {
-		panic(errors.New("only one program allowed at a time"))
-	}
-
-	return doc
-}
 
 // Assemble a program
 func parseInsn(instStr string) libsam.Instruction {
@@ -187,101 +164,4 @@ func (a *assembler) assembleInstruction(str string) {
 
 func (a *assembler) assembleSingleInstruction(instStr string) {
 	a.addSingleInstruction(parseInsn(instStr))
-}
-
-func (a *assembler) assembleSequence(n ast.Node) {
-	if n.Type() != ast.SequenceType {
-		panic("program must be a list of instructions")
-	}
-	seq := n.(ast.ArrayNode)
-	i := seq.ArrayRange()
-	for i.Next() {
-		ast.Walk(a, i.Value())
-	}
-	a.flushInstructions()
-}
-
-func (a *assembler) Visit(n ast.Node) ast.Visitor {
-	switch n.Type() {
-	case ast.SequenceType:
-		a.flushInstructions()
-		subA := assembler{array: libsam.NewArray()}
-		subA.assembleSequence(n)
-		a.addBlob(subA.array)
-		return nil
-	case ast.StringType:
-		var s string
-		yaml.NodeToValue(n, &s)
-		a.assembleInstruction(s)
-		return nil
-	case ast.NullType: // Special case for "null"
-		a.assembleInstruction("null")
-		return nil
-	case ast.MappingType:
-		mapn := n.(*ast.MappingNode)
-		vals := mapn.Values
-		if len(vals) != 1 {
-			panic(errors.New("bad label"))
-		}
-		mapNode := vals[0]
-		keyNode := mapNode.Key
-		if keyNode.Type() != ast.StringType {
-			panic(fmt.Errorf("bad label: string expected"))
-		}
-		label := keyNode.String()
-		a.flushInstructions()
-		a.newLabel(label)
-		subNode := mapNode.Value
-		ast.Walk(a, subNode)
-		return nil
-	case ast.TagType:
-		tag := n.(*ast.TagNode)
-		switch tagName := tag.GetToken().Value; tagName {
-		case "!include":
-			val := tag.Value
-			if val.Type() != ast.StringType {
-				panic(fmt.Errorf("invalid !include: string argument expected"))
-			}
-			file := val.String()
-			r, err := os.Open(file)
-			if err != nil {
-				panic(err)
-			}
-			subProg := readProg(r)
-			// Assemble the included file in a nested stack.
-			a.flushInstructions()
-			subA := assembler{array: libsam.NewArray()}
-			subA.assembleSequence(subProg)
-			a.addBlob(subA.array)
-		case "!iarray":
-			val := tag.Value
-			if val.Type() != ast.StringType {
-				panic(fmt.Errorf("invalid !iarray: label argument expected"))
-			}
-			label := val.String()
-			address := a.getLabel(label)
-			a.assembleInstruction(fmt.Sprintf("int %d", address.item))
-			a.addBlob(address.array)
-		case "!single":
-			val := tag.Value
-			if val.Type() != ast.StringType {
-				panic(fmt.Errorf("invalid !single: instruction expected"))
-			}
-			instName := val.String()
-			a.assembleSingleInstruction(instName)
-		default:
-			panic(fmt.Errorf("invalid directive %s", tagName))
-		}
-		return nil
-	default:
-		panic(fmt.Errorf("invalid code %v", n))
-	}
-}
-
-func Assemble(source []byte) libsam.Blob {
-	prog := readProg(bytes.NewReader(source))
-	labels = map[string]address{}
-	a := assembler{array: libsam.NewArray()}
-	a.assembleSequence(prog)
-	return a.array
 }
