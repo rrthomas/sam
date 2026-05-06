@@ -19,20 +19,20 @@
 #define PUSH_WORD(val)                          \
     HALT_IF_ERROR(sam_array_push(state->s0, val))
 
-#define _EXTRACT_INSN(var, insn, insn_mask, rshift, shift) \
+#define EXTRACT_INSN(var, insn, insn_mask, rshift, shift)  \
     CHECK_TYPE(var, insn_mask, insn);                      \
     var = rshift(var, shift);                              \
 
 #define _PEEK_INSN(var, pos, insn, insn_mask, rshift, shift)    \
     do {                                                        \
         PEEK_WORD((sam_uword_t *)&var, pos);                    \
-        _EXTRACT_INSN(var, insn, insn_mask, rshift, shift);     \
+        EXTRACT_INSN(var, insn, insn_mask, rshift, shift);      \
     } while (0)
 
 #define _POP_INSN(var, insn, insn_mask, rshift, shift)          \
     do {                                                        \
         POP_WORD((sam_word_t *)&var);                           \
-        _EXTRACT_INSN(var, insn, insn_mask, rshift, shift);     \
+        EXTRACT_INSN(var, insn, insn_mask, rshift, shift);      \
     } while (0)
 
 #define _POP_INT(var, rshift)                   \
@@ -77,11 +77,4 @@
         sam_word_t inst;                                       \
         HALT_IF_ERROR(sam_make_inst_float(&inst, val));        \
         HALT_IF_ERROR(sam_array_push(state->s0, inst));        \
-    } while (0)
-
-// Execution macros
-#define GO(addr)                                \
-    do {                                        \
-        state->p0 = (sam_blob_t *)addr;         \
-        state->pc = 0;                          \
     } while (0)

@@ -295,7 +295,7 @@ Array: XXXXXXXX (242 item(s))
 - int 3
 - int 1
 - int 9
-- sget new call
+- sget new zero over append resume
 - trap ITER
 - null
 - int 10
@@ -10078,7 +10078,61 @@ Working stack: (14 word(s))
 - int 1
 - closure XXXXXXXX
 - array XXXXXXXX (0 items)
-call
+zero
+sam_run: p0 = XXXXXXXX, pc = 213, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- closure XXXXXXXX
+- int 3
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+over
+sam_run: p0 = XXXXXXXX, pc = 213, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- closure XXXXXXXX
+- int 3
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+- array XXXXXXXX (0 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 213, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- iter XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- array XXXXXXXX (2 items)
+- iter XXXXXXXX
+- map XXXXXXXX
+- iter XXXXXXXX
+- iter XXXXXXXX
+- closure XXXXXXXX
+- int 3
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+resume
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - array XXXXXXXX (11 items)
@@ -10297,7 +10351,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -10419,7 +10473,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -10573,7 +10627,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - null
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 61, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -10740,7 +10794,7 @@ Working stack: (8 word(s))
 - int 10
 - int 10
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 70, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -10856,7 +10910,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -11321,7 +11375,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -11443,7 +11497,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -11597,7 +11651,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - null
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -11747,7 +11801,7 @@ Working stack: (8 word(s))
 - int 5
 - int 5
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -11878,7 +11932,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -12343,7 +12397,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -12465,7 +12519,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -12619,7 +12673,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - null
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 61, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -12786,7 +12840,7 @@ Working stack: (8 word(s))
 - int 16
 - int 16
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 70, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -12902,7 +12956,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -13367,7 +13421,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -13489,7 +13543,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -13643,7 +13697,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - null
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -13793,7 +13847,7 @@ Working stack: (8 word(s))
 - int 8
 - int 8
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -13924,7 +13978,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -14389,7 +14443,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -14511,7 +14565,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -14665,7 +14719,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - null
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -14815,7 +14869,7 @@ Working stack: (8 word(s))
 - int 4
 - int 4
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -14946,7 +15000,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -15411,7 +15465,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -15533,7 +15587,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -15687,7 +15741,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - null
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -15837,7 +15891,7 @@ Working stack: (8 word(s))
 - int 2
 - int 2
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -15968,7 +16022,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -16433,7 +16487,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -16555,7 +16609,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 29, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -16709,7 +16763,7 @@ Working stack: (6 word(s))
 - array XXXXXXXX (2 items)
 - null
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 42, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -16859,7 +16913,7 @@ Working stack: (8 word(s))
 - int 1
 - int 1
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 50, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -16990,7 +17044,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -17455,7 +17509,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 7, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
@@ -17631,7 +17685,7 @@ Working stack: (8 word(s))
 - null
 - null
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 set
 sam_run: p0 = XXXXXXXX, pc = 19, s0 = XXXXXXXX, sp = 5, ir = XXXXXXXX
 Working stack: (5 word(s))
@@ -17762,7 +17816,7 @@ Working stack: (5 word(s))
 - array XXXXXXXX (242 items)
 - array XXXXXXXX (2 items)
 - int 3
-- array XXXXXXXX (4 items)
+- array XXXXXXXX (5 items)
 get
 sam_run: p0 = XXXXXXXX, pc = 78, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))

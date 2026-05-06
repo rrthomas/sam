@@ -283,15 +283,15 @@ These instructions implement branches, conditions and subroutine calls.
 > 
 > Pop `b` and `i`. If `b` is false, add `i` to `PC`.
 
-> `CALL`  
+> `RESUME`  
 > `x₁`…`xₙ` `i₁` `c` `a` → `i₂`
 >
-> Pop `i₁`, `c` and `a`. Push `S0` and `P0` to the array given by `a`, then push `c`’s context array. Pop `i₁` stack items, and push them to the array given by `a`, in order from `x₁` to `xₙ`. Push `PC` to the current stack. Set `S0` to `a`, `P0` to `c`’s code array and `PC` to 0.
+> Pop `x₁`…`xₙ`, `i₁`, `c` and `a`, and push `PC`. Pop `PC` from `a`, then push `S0`, `P0`, `c`’s context array, and `x₁`…`xₙ` to `a`. Set `S0` to `a`, and `P0` to `c`’s code array.
 
-> `RET`  
-> `x` `i` →
+> `YIELD`  
+> `x` → `i`
 >
-> Pop `x`. Set `P0` to item 1 of `S0` and `S0` to item 0 of `S0`. Pop `PC` from the stack, and push `x` to the stack.
+> Pop `x`, and push `PC`. Set `P0` to item 1 of the current stack and `S0` to item 0 of `S0`. Pop `PC`, and push `x`.
 
 
 ### Logic and shifts
