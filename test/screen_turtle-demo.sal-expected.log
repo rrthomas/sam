@@ -106,7 +106,7 @@ Array: XXXXXXXX (73 item(s))
   - over get
   - int 8
   - int -3
-  - s0 extract get get new call
+  - s0 extract get get new zero over append resume
   - trap RET
 - trap NEW_CLOSURE
 - s0
@@ -227,21 +227,21 @@ Array: XXXXXXXX (73 item(s))
 - trap NEW_CLOSURE
 - zero
 - int 8
-- sget new call
+- sget new zero over append resume
 - drop zero
 - int 7
-- sget new call
+- sget new zero over append resume
 - drop
 - float -45.000000
 - trap RAD
 - int 1
 - int 9
-- sget new call
+- sget new zero over append resume
 - drop
 - float 500.000000
 - int 1
 - int 10
-- sget new call
+- sget new zero over append resume
 - int -12
 - sset drop drop drop drop drop drop drop drop drop drop
 - trap HALT
@@ -1113,7 +1113,61 @@ Working stack: (14 word(s))
 - int 0
 - closure XXXXXXXX
 - array XXXXXXXX (0 items)
-call
+zero
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+over
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+- array XXXXXXXX (0 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 56, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 0
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+resume
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - array XXXXXXXX (12 items)
@@ -1801,7 +1855,37 @@ Working stack: (6 word(s))
 - int 0
 - closure XXXXXXXX
 - array XXXXXXXX (0 items)
-call
+zero
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (73 items)
+- array XXXXXXXX (10 items)
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+over
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (73 items)
+- array XXXXXXXX (10 items)
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+- array XXXXXXXX (0 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 37, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- array XXXXXXXX (12 items)
+- array XXXXXXXX (73 items)
+- array XXXXXXXX (10 items)
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+resume
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - array XXXXXXXX (4 items)
@@ -2035,7 +2119,61 @@ Working stack: (14 word(s))
 - int 0
 - closure XXXXXXXX
 - array XXXXXXXX (0 items)
-call
+zero
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+over
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+- array XXXXXXXX (0 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 59, s0 = XXXXXXXX, sp = 14, ir = XXXXXXXX
+Working stack: (14 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- false
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- int 0
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+resume
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 3, ir = XXXXXXXX
 Working stack: (3 word(s))
 - array XXXXXXXX (12 items)
@@ -2642,7 +2780,64 @@ Working stack: (15 word(s))
 - int 1
 - closure XXXXXXXX
 - array XXXXXXXX (0 items)
-call
+zero
+sam_run: p0 = XXXXXXXX, pc = 65, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+over
+sam_run: p0 = XXXXXXXX, pc = 65, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+- array XXXXXXXX (0 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 65, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.000000
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float -0.785398
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+resume
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - array XXXXXXXX (12 items)
@@ -3033,7 +3228,64 @@ Working stack: (15 word(s))
 - int 1
 - closure XXXXXXXX
 - array XXXXXXXX (0 items)
-call
+zero
+sam_run: p0 = XXXXXXXX, pc = 70, s0 = XXXXXXXX, sp = 16, ir = XXXXXXXX
+Working stack: (16 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+over
+sam_run: p0 = XXXXXXXX, pc = 70, s0 = XXXXXXXX, sp = 17, ir = XXXXXXXX
+Working stack: (17 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+- array XXXXXXXX (0 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 70, s0 = XXXXXXXX, sp = 15, ir = XXXXXXXX
+Working stack: (15 word(s))
+- null
+- float 0.000000
+- float 0.000000
+- float 0.785398
+- int 4294967295
+- true
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- closure XXXXXXXX
+- float 500.000000
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+resume
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - array XXXXXXXX (12 items)

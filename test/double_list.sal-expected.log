@@ -53,7 +53,7 @@ Array: XXXXXXXX (31 item(s))
 - over prepend
 - int 1
 - int 1
-- sget new call
+- sget new zero over append resume
 - int 2
 - sget shift
 - int 2
@@ -232,7 +232,37 @@ Working stack: (6 word(s))
 - int 1
 - closure XXXXXXXX
 - array XXXXXXXX (0 items)
-call
+zero
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 7, ir = XXXXXXXX
+Working stack: (7 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (5 items)
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+over
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 8, ir = XXXXXXXX
+Working stack: (8 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (5 items)
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (0 items)
+- int 0
+- array XXXXXXXX (0 items)
+append
+sam_run: p0 = XXXXXXXX, pc = 18, s0 = XXXXXXXX, sp = 6, ir = XXXXXXXX
+Working stack: (6 word(s))
+- null
+- closure XXXXXXXX
+- array XXXXXXXX (5 items)
+- int 1
+- closure XXXXXXXX
+- array XXXXXXXX (1 items)
+resume
 sam_run: p0 = XXXXXXXX, pc = 1, s0 = XXXXXXXX, sp = 4, ir = XXXXXXXX
 Working stack: (4 word(s))
 - array XXXXXXXX (3 items)

@@ -94,10 +94,11 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 state->pc += offset;
         }
         break;
-    case TRAP_BASIC_RET:
+    case TRAP_BASIC_YIELD:
         {
             sam_word_t item;
-            HALT_IF_ERROR(sam_array_pop(state->s0, &item));
+            POP_WORD(&item);
+            PUSH_INT(state->pc);
             sam_blob_t *frame, *old_stack_blob = state->s0;
             sam_array_t *old_stack;
             EXTRACT_BLOB(old_stack_blob, SAM_BLOB_ARRAY, sam_array_t, old_stack);
@@ -269,7 +270,8 @@ sam_word_t sam_basic_trap(sam_state_t *state, sam_uword_t function)
                 HALT_IF_ERROR(sam_array_push(frame, inst));
                 PUSH_INT(state->pc);
                 state->s0 = frame;
-                GO(cl->code);
+                state->p0 = cl->code;
+                state->pc = 0;
             } else {
                 sam_word_t val;
                 sam_iter_t *iter;
@@ -334,7 +336,7 @@ char *sam_basic_trap_name(sam_word_t function)
         return "JUMP";
     case TRAP_BASIC_JUMP_IF_FALSE:
         return "JUMP_IF_FALSE";
-    case TRAP_BASIC_RET:
+    case TRAP_BASIC_YIELD:
         return "RET";
     case TRAP_BASIC_NEW_CLOSURE:
         return "NEW_CLOSURE";

@@ -1,7 +1,5 @@
 asm {
-    // Assemble a CALL instruction
-    quote call
-    // Exit
+    quote resume
     0
     trap halt
 }

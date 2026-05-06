@@ -333,11 +333,15 @@ sam_word_t sam_run(sam_state_t *state)
                         HALT_IF_ERROR(sam_array_prepend(stack, val));
                     }
                     break;
-                case INST_CALL:
+                case INST_RESUME:
                     {
                         sam_blob_t *blob, *frame;
                         POP_BLOB(frame);
                         sam_word_t inst;
+                        HALT_IF_ERROR(sam_array_pop(frame, &inst));
+                        sam_uword_t new_pc;
+                        EXTRACT_INSN(inst, SAM_INT_TAG, SAM_INT_TAG_MASK, LRSHIFT, SAM_INT_SHIFT);
+                        new_pc = (sam_uword_t)inst;
                         HALT_IF_ERROR(sam_make_inst_blob(&inst, state->s0));
                         HALT_IF_ERROR(sam_array_push(frame, inst));
                         HALT_IF_ERROR(sam_make_inst_blob(&inst, state->p0));
@@ -359,7 +363,8 @@ sam_word_t sam_run(sam_state_t *state)
                             POP_WORD(&val);
                         PUSH_INT(state->pc);
                         state->s0 = frame;
-                        GO(cl->code);
+                        state->p0 = cl->code;
+                        state->pc = new_pc;
                         opcodes = 0;
                     }
                     break;

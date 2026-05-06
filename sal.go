@@ -439,7 +439,10 @@ func (e *CallExp) Compile(ctx *Scope) {
 				ctx.compileTrapCall(*e.Function.Object.Variable, args.Arguments)
 			} else {
 				ctx.compileInst("new")
-				ctx.compileInst("call")
+				ctx.compileInst("zero")
+				ctx.compileInst("over")
+				ctx.compileInst("append")
+				ctx.compileInst("resume")
 				if args.Arguments != nil {
 					ctx.adjustSp(-(len(*args.Arguments)))
 				}
@@ -783,7 +786,7 @@ func (s *Statement) Compile(ctx *Scope) {
 func (t *Terminator) Compile(ctx *Scope) {
 	if t.Return != nil {
 		t.Return.Compile(ctx)
-		ctx.compileTrap("ret")
+		ctx.compileTrap("yield")
 	} else if t.BreakExp != nil || t.Break {
 		if ctx.loop == nil {
 			panic("'break' used outside a loop")
@@ -862,7 +865,7 @@ func (f *Function) Compile(ctx *Scope) {
 	// Compile function body
 	blockCtx := f.Body.Compile(&innerCtx, false)
 	if f.Body.Body.Terminator == nil {
-		blockCtx.compileTrap("ret")
+		blockCtx.compileTrap("yield")
 	}
 
 	// Construct closure
