@@ -256,7 +256,8 @@ type AsmStatement struct {
 type Function struct {
 	Pos lexer.Position
 
-	Parameters *[]string `"fn" "(" [@Ident ("," @Ident)* ","?] ")"`
+	FnType     string    `(@"fn" | @"gen")`
+	Parameters *[]string `"(" [@Ident ("," @Ident)* ","?] ")"`
 	Body       *Block    `@@`
 }
 
@@ -860,6 +861,10 @@ func (f *Function) Compile(ctx *Scope) {
 		for i, p := range *f.Parameters {
 			innerCtx.locals = append(innerCtx.locals, Local{id: p, pos: i + 3})
 		}
+	}
+
+	// If this is a generator, compile generator wrapper
+	if f.FnType == "gen" {
 	}
 
 	// Compile function body
