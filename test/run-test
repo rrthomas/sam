@@ -12,7 +12,7 @@ if [[ "${basename#screen_}" != "$basename" ]]; then
 fi
 
 go run $top_srcdir --debug $graphics_log "$name" > "$basename-output.log" 2>&1
-sed -e 's/sam_run: p0 = [0-9a-fx]\+/sam_run: p0 = XXXXXXXX/g' -e 's/s0 = [0-9a-fx]\+/s0 = XXXXXXXX/g' -e 's/, ir = [0-9a-fx]\+/, ir = XXXXXXXX/g' -e 's/halt with result blob [0-9a-fx]\+/halt with result blob XXXXXXXX/g' -e 's/- array [0-9a-fx]\+/- array XXXXXXXX/g' -e 's/- closure [0-9a-fx]\+/- closure XXXXXXXX/g' -e 's/- map [0-9a-fx]\+/- map XXXXXXXX/g' -e 's/- iter [0-9a-fx]\+/- iter XXXXXXXX/g' -e 's/^Array: [0-9a-fx]\+/Array: XXXXXXXX/g' < "$basename-output.log" > "$basename-fixed.log"
+LC_ALL=C sed -E -e 's/sam_run: p0 = [0-9a-fx]+/sam_run: p0 = XXXXXXXX/g' -e 's/s0 = [0-9a-fx]+/s0 = XXXXXXXX/g' -e 's/, ir = [0-9a-fx]+/, ir = XXXXXXXX/g' -e 's/halt with result blob [0-9a-fx]+/halt with result blob XXXXXXXX/g' -e 's/- array [0-9a-fx]+/- array XXXXXXXX/g' -e 's/- closure [0-9a-fx]+/- closure XXXXXXXX/g' -e 's/- map [0-9a-fx]+/- map XXXXXXXX/g' -e 's/- iter [0-9a-fx]+/- iter XXXXXXXX/g' -e 's/^Array: [0-9a-fx]+/Array: XXXXXXXX/g' < "$basename-output.log" > "$basename-fixed.log"
 diff -u "$name-expected.log" "$basename-fixed.log"
 if [[ "$graphics_log" != "" ]]; then
     diff -u "$name-expected.pbm" "$basename-output.pbm"
