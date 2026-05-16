@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"runtime"
 
 	"github.com/rrthomas/sam/libsam"
 	"github.com/spf13/cobra"
@@ -116,6 +117,8 @@ func Execute() {
 }
 
 func init() {
+	runtime.LockOSThread() // ensure main.main runs on main thread
+	// This is needed for SDL on macOS.
 	rootCmd.SetUsageTemplate(`Usage: {{.CommandPath}} [OPTION...] PROGRAM
 
 {{.Flags.FlagUsages}}`)
