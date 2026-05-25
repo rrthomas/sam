@@ -774,6 +774,8 @@ func (s *Statement) Compile(ctx *Scope) {
 		if src, err := os.ReadFile(filename); err == nil {
 			body := parseSource(string(src))
 			body.Compile(ctx)
+		} else {
+			panic(fmt.Errorf("bad use path %s", filename))
 		}
 	} else {
 		panic("invalid Statement")
