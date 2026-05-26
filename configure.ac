@@ -5,6 +5,7 @@
 AC_PREREQ([2.73])
 AC_INIT([sam],[0.1])
 AM_INIT_AUTOMAKE([-Wall std-options foreign])
+AM_SILENT_RULES([yes])
 
 # Checks for programs
 AC_PROG_CC
