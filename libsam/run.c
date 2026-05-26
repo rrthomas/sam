@@ -85,6 +85,7 @@ static sam_word_t sam_trap(sam_state_t *state, sam_uword_t function)
 sam_word_t sam_run(sam_state_t *state)
 {
 #define s ((sam_array_t *)state->s0->data)
+    sam_uword_t tick_count = 0;
     sam_word_t error = SAM_ERROR_OK;
     CHECK_BLOB(state->s0, SAM_BLOB_ARRAY);
 
@@ -533,7 +534,8 @@ sam_word_t sam_run(sam_state_t *state)
             abort(); // The opcodes are exhaustive
         }
 
-        sam_sdl_process_events();
+        if (++tick_count % 1000 == 0)
+            sam_sdl_process_events();
     }
 
 error:
