@@ -293,7 +293,7 @@ func (state *State) ErrorMessage(code Word) string {
 		goRes := C.GoString(res)
 		msg := "halt with result"
 		if (state.result & BLOB_TAG_MASK) == BLOB_TAG {
-			arr := state.result & ^BLOB_TAG_MASK
+			arr := Uword(state.result & ^BLOB_TAG_MASK)
 			if len(goRes) == 0 {
 				goRes = "(empty blob)\n"
 			}
