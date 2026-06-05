@@ -7,6 +7,8 @@ LOG_COMPILER = $(srcdir)/run-test
 EMPTY =
 
 AM_TESTS_ENVIRONMENT = export top_srcdir=$(top_srcdir); \
+	export SAM_DISPLAY_WIDTH=1024; \
+	export SAM_DISPLAY_HEIGHT=720; \
 	cp $(srcdir)/turtle.sal .;
 
 TESTS = \

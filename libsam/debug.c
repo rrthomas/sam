@@ -405,15 +405,15 @@ void sam_dump_screen(const char *filename)
     else {
         fprintf(fp, "P3\n");
         fprintf(fp, "# SAM screen dump\n");
-        fprintf(fp, "%u %u 255\n", SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT);
-        for (size_t j = 0; j < SAM_DISPLAY_HEIGHT; j++) {
-            for (size_t i = 0; i < SAM_DISPLAY_WIDTH; i++) {
+        fprintf(fp, "%u %u 255\n", sam_display_width, sam_display_height);
+        for (size_t j = 0; j < sam_display_height; j++) {
+            for (size_t i = 0; i < sam_display_width; i++) {
                 uint32_t p = sam_getpixel(i, j);
                 uint8_t r = p & 0xff;
                 uint8_t g = (p >> 8) & 0xff;
                 uint8_t b = (p >> 16) & 0xff;
                 fprintf(fp, "%d %d %d", r, g, b);
-                if (i < SAM_DISPLAY_WIDTH - 1)
+                if (i < sam_display_width - 1)
                     fprintf(fp, "  ");
             }
             fprintf(fp, "\n");

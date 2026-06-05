@@ -8,7 +8,9 @@
 // THIS PROGRAM IS PROVIDED AS IS, WITH NO WARRANTY. USE IS AT THE USER’S
 // RISK.
 
+#include <limits.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 #include <SDL.h>
 #include <SDL_mixer.h>
@@ -37,6 +39,8 @@
 #include "traps_audio.h"
 
 unsigned sam_update_interval = 10; // milliseconds between screen updates
+unsigned sam_display_width = 1280;
+unsigned sam_display_height = 720;
 
 #define PIXEL_SIZE 2 // FIXME calculate pixel ratio
 static double text_size = 16.0;
@@ -230,6 +234,38 @@ uint32_t sam_getpixel(int x, int y)
     return *p;
 }
 
+// Set display dimensions to those of largest possible window
+static sam_word_t set_largest_window(void) {
+    sam_word_t error = SAM_ERROR_OK;
+
+    win = SDL_CreateWindow("SAM", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 32, 32, SDL_WINDOW_HIDDEN);
+    if (win == NULL)
+        HALT(SAM_ERROR_TRAP_INIT);
+    int display_index = SDL_GetWindowDisplayIndex(win);
+    SDL_DestroyWindow(win);
+    SDL_Rect rect;
+    if (SDL_GetDisplayUsableBounds(display_index, &rect) != 0)
+        return SAM_ERROR_TRAP_INIT;
+    sam_display_width = rect.w / PIXEL_SIZE;
+    sam_display_height = rect.h / PIXEL_SIZE;
+
+ error:
+    return error;
+}
+
+unsigned parse_dimension(char *var, unsigned default_val) {
+    char *val_str = getenv(var);
+    if (val_str != NULL && *val_str != '\0') {
+        char *endptr;
+        unsigned long val_env = strtoul(val_str, &endptr, 0);
+        if (*endptr != '\0' || val_env > UINT_MAX)
+            debug("%s invalid or too large", var);
+        else
+            return (unsigned)val_env;
+    }
+    return default_val;
+}
+
 sam_word_t sam_sdl_init(void)
 {
     sam_word_t error = SAM_ERROR_OK;
@@ -237,7 +273,11 @@ sam_word_t sam_sdl_init(void)
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0)
         return SAM_ERROR_TRAP_INIT;
 
-    win = SDL_CreateWindow("SAM", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SAM_DISPLAY_WIDTH * PIXEL_SIZE, SAM_DISPLAY_HEIGHT * PIXEL_SIZE, SDL_WINDOW_HIDDEN);
+    set_largest_window();
+    sam_display_width = parse_dimension("SAM_DISPLAY_WIDTH", sam_display_width);
+    sam_display_height = parse_dimension("SAM_DISPLAY_HEIGHT", sam_display_height);
+
+    win = SDL_CreateWindow("SAM", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, sam_display_width * PIXEL_SIZE, sam_display_height * PIXEL_SIZE, SDL_WINDOW_HIDDEN);
     if (win == NULL)
         HALT(SAM_ERROR_TRAP_INIT);
 
@@ -321,19 +361,19 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
         PUSH_INT(nvgRGBA(255, 255, 0, 255).c);
         break;
     case TRAP_GRAPHICS_DISPLAY_WIDTH:
-        PUSH_INT(SAM_DISPLAY_WIDTH);
+        PUSH_INT(sam_display_width);
         break;
     case TRAP_GRAPHICS_DISPLAY_HEIGHT:
-        PUSH_INT(SAM_DISPLAY_HEIGHT);
+        PUSH_INT(sam_display_height);
         break;
     case TRAP_GRAPHICS_CLEARSCREEN:
         {
             NVGcolor color;
             POP_COLOR(color);
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgBeginPath(vg);
             nvgFillColor(vg, color);
-            nvgRect(vg, 0, 0, SAM_DISPLAY_WIDTH * PIXEL_SIZE, SAM_DISPLAY_HEIGHT * PIXEL_SIZE);
+            nvgRect(vg, 0, 0, sam_display_width * PIXEL_SIZE, sam_display_height * PIXEL_SIZE);
             nvgFill(vg);
             nvgClosePath(vg);
             nvgEndFrame(vg);
@@ -347,7 +387,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_COLOR(color);
             POP_UINT(y);
             POP_UINT(x);
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgBeginPath(vg);
             nvgFillColor(vg, color);
             nvgLineTo(vg, x * PIXEL_SIZE, y * PIXEL_SIZE);
@@ -367,7 +407,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_UINT(x2);
             POP_UINT(y1);
             POP_UINT(x1);
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgBeginPath(vg);
             nvgStrokeColor(vg, color);
             nvgMoveTo(vg, x1 * PIXEL_SIZE, y1 * PIXEL_SIZE);
@@ -388,7 +428,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgBeginPath(vg);
             nvgStrokeColor(vg, color);
             nvgRect(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, width * PIXEL_SIZE, height * PIXEL_SIZE);
@@ -409,7 +449,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgBeginPath(vg);
             nvgStrokeColor(vg, color);
             nvgRoundedRect(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, width * PIXEL_SIZE, height * PIXEL_SIZE, radius * PIXEL_SIZE);
@@ -429,7 +469,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_UINT(width);
             POP_UINT(y);
             POP_UINT(x);
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgBeginPath(vg);
             nvgFillColor(vg, color);
             nvgRect(vg, x * PIXEL_SIZE, y * PIXEL_SIZE, width * PIXEL_SIZE, height * PIXEL_SIZE);
@@ -447,7 +487,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_UINT(radius);
             POP_UINT(yCenter);
             POP_UINT(xCenter);
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgBeginPath(vg);
             nvgStrokeColor(vg, color);
             nvgCircle(vg, xCenter * PIXEL_SIZE, yCenter * PIXEL_SIZE, radius * PIXEL_SIZE);
@@ -466,7 +506,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             POP_UINT(radius);
             POP_UINT(yCenter);
             POP_UINT(xCenter);
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgBeginPath(vg);
             nvgFillColor(vg, color);
             nvgCircle(vg, xCenter * PIXEL_SIZE, yCenter * PIXEL_SIZE, radius * PIXEL_SIZE);
@@ -533,7 +573,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
 
             // FIXME: make the following parameters or state
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgFontFaceId(vg, fonts[font]);
             nvgFontSize(vg, text_size * PIXEL_SIZE);
             nvgFillColor(vg, color);
@@ -563,7 +603,7 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
             EXTRACT_BLOB(blob, SAM_BLOB_STRING, sam_string_t, str);
 
             // FIXME: make the following parameters or state
-            nvgBeginFrame(vg, SAM_DISPLAY_WIDTH, SAM_DISPLAY_HEIGHT, (float)PIXEL_SIZE);
+            nvgBeginFrame(vg, sam_display_width, sam_display_height, (float)PIXEL_SIZE);
             nvgFontFaceId(vg, fonts[font]);
             nvgFontSize(vg, text_size * PIXEL_SIZE);
             nvgFillColor(vg, color);
