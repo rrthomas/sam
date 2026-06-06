@@ -360,6 +360,97 @@ sam_word_t sam_graphics_trap(sam_state_t *state, sam_uword_t function)
     case TRAP_GRAPHICS_YELLOW:
         PUSH_INT(nvgRGBA(255, 255, 0, 255).c);
         break;
+    case TRAP_GRAPHICS_SILVER:
+        PUSH_INT(nvgRGBA(192, 192, 192, 255).c);
+        break;
+    case TRAP_GRAPHICS_GRAY:
+        PUSH_INT(nvgRGBA(128, 128, 128, 255).c);
+        break;
+    case TRAP_GRAPHICS_CHARCOAL:
+        PUSH_INT(nvgRGBA(64, 64, 64, 255).c);
+        break;
+    case TRAP_GRAPHICS_SPRING_GREEN:
+        PUSH_INT(nvgRGBA(128, 255, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_VIOLET:
+        PUSH_INT(nvgRGBA(128, 0, 255, 255).c);
+        break;
+    case TRAP_GRAPHICS_SKY_BLUE:
+        PUSH_INT(nvgRGBA(0, 128, 255, 255).c);
+        break;
+    case TRAP_GRAPHICS_ORANGE:
+        PUSH_INT(nvgRGBA(255, 128, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_BLUE_GREEN:
+        PUSH_INT(nvgRGBA(0, 255, 128, 255).c);
+        break;
+    case TRAP_GRAPHICS_PINK:
+        PUSH_INT(nvgRGBA(255, 128, 255, 255).c);
+        break;
+    case TRAP_GRAPHICS_FADED_BLUE:
+        PUSH_INT(nvgRGBA(64, 64, 192, 255).c);
+        break;
+    case TRAP_GRAPHICS_FADED_GREEN:
+        PUSH_INT(nvgRGBA(64, 192, 64, 255).c);
+        break;
+    case TRAP_GRAPHICS_FADED_CYAN:
+        PUSH_INT(nvgRGBA(64, 192, 192, 255).c);
+        break;
+    case TRAP_GRAPHICS_FADED_RED:
+        PUSH_INT(nvgRGBA(192, 64, 64, 255).c);
+        break;
+    case TRAP_GRAPHICS_FADED_PINK:
+        PUSH_INT(nvgRGBA(192, 64, 192, 255).c);
+        break;
+    case TRAP_GRAPHICS_FADED_YELLOW:
+        PUSH_INT(nvgRGBA(192, 192, 64, 255).c);
+        break;
+    case TRAP_GRAPHICS_DARK_RED:
+        PUSH_INT(nvgRGBA(128, 0, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_DARK_GREEN:
+        PUSH_INT(nvgRGBA(0, 128, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_NAVY:
+        PUSH_INT(nvgRGBA(0, 0, 128, 255).c);
+        break;
+    case TRAP_GRAPHICS_PURPLE:
+        PUSH_INT(nvgRGBA(128, 0, 128, 255).c);
+        break;
+    case TRAP_GRAPHICS_OLIVE:
+        PUSH_INT(nvgRGBA(128, 128, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_TEAL:
+        PUSH_INT(nvgRGBA(0, 128, 128, 255).c);
+        break;
+    case TRAP_GRAPHICS_LIGHT_SKY_BLUE:
+        PUSH_INT(nvgRGBA(0, 192, 255, 255).c);
+        break;
+    case TRAP_GRAPHICS_BROWN:
+        PUSH_INT(nvgRGBA(128, 64, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_GOLD:
+        PUSH_INT(nvgRGBA(255, 215, 0, 255).c);
+        break;
+    case TRAP_GRAPHICS_BRONZE:
+        PUSH_INT(nvgRGBA(205, 127, 50, 255).c);
+        break;
+    case TRAP_GRAPHICS_FAIR_SKIN:
+        PUSH_INT(nvgRGBA(237, 202, 180, 255).c);
+        break;
+    case TRAP_GRAPHICS_MEDIUM_SKIN:
+        PUSH_INT(nvgRGBA(224, 172, 105, 255).c);
+        break;
+    case TRAP_GRAPHICS_LIGHT_BROWN_SKIN:
+        PUSH_INT(nvgRGBA(198, 134, 66, 255).c);
+        break;
+    case TRAP_GRAPHICS_BROWN_SKIN:
+        PUSH_INT(nvgRGBA(107, 74, 65, 255).c);
+        break;
+    case TRAP_GRAPHICS_BLACK_SKIN:
+        PUSH_INT(nvgRGBA(59, 34, 25, 255).c);
+        break;
+
     case TRAP_GRAPHICS_DISPLAY_WIDTH:
         PUSH_INT(sam_display_width);
         break;
@@ -659,6 +750,67 @@ char *sam_graphics_trap_name(sam_word_t function)
         return "MAGENTA";
     case TRAP_GRAPHICS_YELLOW:
         return "YELLOW";
+    case TRAP_GRAPHICS_SILVER:
+        return "SILVER";
+    case TRAP_GRAPHICS_GRAY:
+        return "GRAY";
+    case TRAP_GRAPHICS_CHARCOAL:
+        return "CHARCOAL";
+    case TRAP_GRAPHICS_SPRING_GREEN:
+        return "SPRING_GREEN";
+    case TRAP_GRAPHICS_VIOLET:
+        return "VIOLET";
+    case TRAP_GRAPHICS_SKY_BLUE:
+        return "SKY_BLUE";
+    case TRAP_GRAPHICS_ORANGE:
+        return "ORANGE";
+    case TRAP_GRAPHICS_BLUE_GREEN:
+        return "BLUE_GREEN";
+    case TRAP_GRAPHICS_PINK:
+        return "PINK";
+    case TRAP_GRAPHICS_FADED_BLUE:
+        return "FADED_BLUE";
+    case TRAP_GRAPHICS_FADED_GREEN:
+        return "FADED_GREEN";
+    case TRAP_GRAPHICS_FADED_CYAN:
+        return "FADED_CYAN";
+    case TRAP_GRAPHICS_FADED_RED:
+        return "FADED_RED";
+    case TRAP_GRAPHICS_FADED_PINK:
+        return "FADED_PINK";
+    case TRAP_GRAPHICS_FADED_YELLOW:
+        return "FADED_YELLOW";
+    case TRAP_GRAPHICS_DARK_RED:
+        return "DARK_RED";
+    case TRAP_GRAPHICS_DARK_GREEN:
+        return "DARK_GREEN";
+    case TRAP_GRAPHICS_NAVY:
+        return "NAVY";
+    case TRAP_GRAPHICS_PURPLE:
+        return "PURPLE";
+    case TRAP_GRAPHICS_OLIVE:
+        return "OLIVE";
+    case TRAP_GRAPHICS_TEAL:
+        return "TEAL";
+    case TRAP_GRAPHICS_LIGHT_SKY_BLUE:
+        return "LIGHT_SKY_BLUE";
+    case TRAP_GRAPHICS_BROWN:
+        return "BROWN";
+    case TRAP_GRAPHICS_GOLD:
+        return "GOLD";
+    case TRAP_GRAPHICS_BRONZE:
+        return "BRONZE";
+    case TRAP_GRAPHICS_FAIR_SKIN:
+        return "FAIR_SKIN";
+    case TRAP_GRAPHICS_MEDIUM_SKIN:
+        return "MEDIUM_SKIN";
+    case TRAP_GRAPHICS_LIGHT_BROWN_SKIN:
+        return "LIGHT_BROWN_SKIN";
+    case TRAP_GRAPHICS_BROWN_SKIN:
+        return "BROWN_SKIN";
+    case TRAP_GRAPHICS_BLACK_SKIN:
+        return "BLACK_SKIN";
+
     case TRAP_GRAPHICS_DISPLAY_WIDTH:
         return "DISPLAY_WIDTH";
     case TRAP_GRAPHICS_DISPLAY_HEIGHT:
